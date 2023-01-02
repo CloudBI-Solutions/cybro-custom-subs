@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="payment_tokens_list" inherit_id="payment.payment_tokens_list" name="Payment Tokens list Inherit">
+      <label t-if="acq.save_token == 'ask'" position="after">
+          <p t-if="acq.provider=='stripe_checkout'" class="text-warning m-0">
+            <i class="fa fa-exclamation-triangle"></i>
+            Card will be Saved automaticaly if the order contains a subscription product.
+          </p>
+      </label>
+  </template>
+  <data>
+    <!-- subscrptions from view inherit -->
+    <record id="subscrptions_subscrioption_form_view" model="ir.ui.view">
+          <field name="name">subscription.subscription.form</field>
+          <field name="model">subscription.subscription</field>
+          <field name="inherit_id" ref="subscription_management.subscription_subscription_form_view" />
+          <field name="arch" type="xml">
+              <xpath expr="//field[@name='so_origin']" position="after">
+                  <field name="payment_token_id" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+              </xpath>
+              <xpath expr="//group[@name='reason']" position="after">
+                <notebook>
+                  <page string="Payment Transections">
+                    <field name="payment_transections" attrs="{'readonly':True}"/>
+                  </page>
+                </notebook>
+              </xpath>
+          </field>
+      </record>
+  </data>
+</odoo>

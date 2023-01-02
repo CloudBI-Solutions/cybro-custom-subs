@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="infiniarc_frontend_layout" name="Frontend Layout" inherit_id="web.layout" primary="True">
+        <xpath expr="//html" position="before">
+            <t t-set="html_data" t-value="{
+            'lang': lang and lang.replace('_', '-'),
+            'data-website-id': website.id if website else None,
+            'data-editable': '1' if editable else None,
+            'data-translatable': '1' if translatable else None,
+            'data-edit_translations': '1' if edit_translations else None,
+            'data-view-xmlid': xmlid if editable or translatable else None,
+            'data-viewid': viewid if editable or translatable else None,
+            'data-main-object': repr(main_object),
+            'data-seo-object': repr(seo_object) if seo_object else None,
+            'data-oe-company-name': res_company.name,
+        }"/>
+        </xpath>
+        <xpath expr="//head" position="before">
+            <t t-if="not title">
+                <t t-if="not additional_title and main_object and 'name' in main_object">
+                    <t t-set="additional_title" t-value="main_object.name"/>
+                </t>
+                <t t-set="default_title">
+                    <t t-if="additional_title">
+                        <t t-out="additional_title"/>
+                        |
+                    </t>
+                    <t t-out="(website or res_company).name"/>
+                </t>
+                <t t-set="seo_object" t-value="seo_object or main_object"/>
+                <t t-if="seo_object and 'website_meta_title' in seo_object and seo_object.website_meta_title">
+                    <t t-set="title" t-value="seo_object.website_meta_title"/>
+                </t>
+                <t t-else="">
+                    <t t-set="title" t-value="default_title"></t>
+                </t>
+            </t>
+            <t t-set="x_icon" t-value="website.image_url(website, 'favicon')"/>
+        </xpath>
+        <xpath expr="//head/meta[last()]" position="after">
+            <meta name="generator" content="Odoo"/>
+            <t t-set="website_meta" t-value="seo_object and seo_object.get_website_meta() or {}"/>
+            <meta name="default_title" t-att-content="default_title" groups="website.group_website_designer"/>
+            <meta t-if="main_object and 'website_indexed' in main_object
+            and not main_object.website_indexed" name="robots" content="noindex"/>
+            <t t-set="seo_object" t-value="seo_object or main_object"/>
+            <t t-set="meta_description" t-value="seo_object and 'website_meta_description' in seo_object
+                and seo_object.website_meta_description or website_meta_description or website_meta.get('meta_description', '')"/>
+            <t t-set="meta_keywords" t-value="seo_object and 'website_meta_keywords' in seo_object
+                and seo_object.website_meta_keywords or website_meta_keywords"/>
+            <meta t-if="meta_description or editable" name="description" t-att-content="meta_description"/>
+            <meta t-if="meta_keywords or editable" name="keywords" t-att-content="meta_keywords"/>
+            <t t-if="seo_object">
+                <meta name="default_description"
+                      t-att-content="website_meta_description or website_meta.get('meta_description')"
+                      groups="website.group_website_designer"/>
+                <!-- OpenGraph tags for Facebook sharing -->
+                <t t-set="opengraph_meta" t-value="website_meta.get('opengraph_meta')"/>
+                <t t-if="opengraph_meta">
+                    <t t-foreach="opengraph_meta" t-as="property">
+                        <t t-if="isinstance(opengraph_meta[property], list)">
+                            <t t-foreach="opengraph_meta[property]" t-as="meta_content">
+                                <meta t-att-property="property" t-att-content="meta_content"/>
+                            </t>
+                        </t>
+                        <t t-else="">
+                            <meta t-att-property="property" t-att-content="opengraph_meta[property]"/>
+                        </t>
+                    </t>
+                </t>
+                <!-- Twitter tags for sharing -->
+                <t t-set="twitter_meta" t-value="website_meta.get('twitter_meta')"/>
+                <t t-if="opengraph_meta">
+                    <t t-foreach="twitter_meta" t-as="t_meta">
+                        <meta t-att-name="t_meta" t-att-content="twitter_meta[t_meta]"/>
+                    </t>
+                </t>
+            </t>
+
+            <t t-if="request and request.is_frontend_multilang and website">
+                <t t-set="alternate_languages"
+                   t-value="website._get_alternate_languages(canonical_params=canonical_params) if canonical_params else {}"/>
+                <t t-foreach="alternate_languages" t-as="lg">
+                    <link rel="alternate" t-att-hreflang="lg['hreflang']" t-att-href="lg['href']"/>
+                </t>
+            </t>
+            <link t-if="request and website and canonical_params" rel="canonical"
+                  t-att-href="website._get_canonical_url(canonical_params=canonical_params)"/>
+
+            <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""/>
+        </xpath>
+        <xpath expr="//head/meta[last()]" position="after">
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </xpath>
+        <xpath expr="//head/link[last()]" position="after">
+            <link rel="preload" href="/web/static/lib/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font"
+                  crossorigin=""/>
+            <t t-call-assets="web.assets_common" t-js="false"/>
+            <t t-call-assets="web.assets_frontend" t-js="false"/>
+            <t t-call-assets="website.assets_editor" t-js="false" groups="website.group_website_publisher"/>
+            <t t-call-assets="website.assets_editor" t-css="false" groups="website.group_website_publisher"
+               lazy_load="True"/>
+        </xpath>
+        <xpath expr="//head/script[@id='web.layout.odooscript']" position="after">
+            <script type="text/javascript">
+                odoo.__session_info__ =
+                <t t-out="json.dumps(request.env['ir.http'].get_frontend_session_info())"/>
+                ;
+                if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+                }
+            </script>
+            <t t-call-assets="web.assets_common_minimal" t-css="false" defer_load="True"/>
+            <t t-call-assets="web.assets_frontend_minimal" t-css="false" defer_load="True"/>
+            <t t-call="web.conditional_assets_tests"/>
+            <t t-call-assets="web.assets_common_lazy" t-css="false" lazy_load="True"/>
+            <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+        </xpath>
+        <xpath expr="//t[@t-out='0']" position="replace">
+            <div t-if="'with_loader' in request.params" class="o_theme_install_loader_container position-fixed fixed-top fixed-left
+            h-100 w-100 d-flex flex-column align-items-center text-white font-weight-bold text-center">
+                Building your website...
+                <div class="o_theme_install_loader"/>
+                <p class="o_theme_install_loader_tip w-25">
+                    TIP: Once loaded, follow the
+                    <span class="o_tooltip o_tooltip_visible bottom o_animated position-relative"></span>
+                    <br/>pointer to build the perfect page in 7 steps.
+                </p>
+            </div>
+            <nav groups="base.group_user" t-if="website" id="oe_main_menu_navbar" class="o_main_navbar">
+                <div id="oe_applications">
+                    <div class="dropdown active">
+                        <a class="dropdown-toggle full" data-toggle="dropdown" href="#" accesskey="h">
+                            <i class="fa fa-th-large mr-2"/>
+                            WEBSITE
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <!-- This will be populated on hover in JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn fa fa-bars float-right d-block d-md-none o_mobile_menu_toggle"
+                        aria-label="Menu" title="Menu" groups="website.group_website_designer"/>
+
+                <div class="o_menu_sections" groups="website.group_website_designer">
+                    <!-- Content -->
+                    <div t-if="editable" class="dropdown" id="content-menu">
+                        <a id="content-menu-button" class="dropdown-toggle o-no-caret waves" data-toggle="dropdown"
+                           data-display="static" href="#">Pages
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a role="menuitem" data-action="edit_menu" href="#" title="Edit Top Menu"
+                               class="dropdown-item">Edit Menu
+                            </a>
+                            <a role="menuitem" href="/website/pages" title="Manage Your Website Pages"
+                               class="dropdown-item">Manage Pages
+                            </a>
+                            <div t-if="deletable" role="separator" class="dropdown-divider"/>
+                            <a role="menuitem" href="#" data-action="page_properties" class="dropdown-item"
+                               t-if="deletable">Page Properties
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Customize -->
+                    <div class="dropdown" id="customize-menu">
+                        <a class="dropdown-toggle o-no-caret waves" data-toggle="dropdown" data-display="static"
+                           href="#">Customize
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a role="menuitem" href="#" data-action="ace" class="dropdown-item" id="html_editor">
+                                HTML/CSS/JS Editor
+                            </a>
+                            <a role="menuitem" href="/web#action=website.action_website_add_features"
+                               class="dropdown-item" id="install_apps">Add Features
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Promote -->
+                    <div class="dropdown" id="promote-menu">
+                        <a class="dropdown-toggle o-no-caret waves" data-toggle="dropdown" data-display="static"
+                           href="#">Promote
+                        </a>
+                        <div class="dropdown-menu oe_promote_menu" role="menu">
+                            <a role="menuitem" data-action="promote-current-page" href="#"
+                               title="Promote page on the web" class="dropdown-item">Optimize SEO
+                            </a>
+                        </div>
+                    </div>
+                    <t t-call="website.website_publisher">
+                        <t t-set="extra_classes" t-translation="off">d-flex d-sm-flex d-md-none</t>
+                    </t>
+                </div>
+
+                <div class="o_menu_systray d-none d-md-flex" groups="website.group_website_publisher">
+                    <t t-call="website.website_publisher">
+                        <t t-set="extra_classes" t-value=""/>
+                        <t t-set="desktop_navbar" t-value="true"/>
+                    </t>
+                    <!-- Mobile preview -->
+                    <div class="o_mobile_preview" id="mobile-menu">
+                        <a data-action="show-mobile-preview" href="#" accesskey="v">
+                            <span title="Mobile preview" role="img" aria-label="Mobile preview" class="fa fa-mobile"/>
+                        </a>
+                    </div>
+                    <div groups="website.group_multi_website" t-if="multi_website_websites" id="website_switcher">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" accesskey="w">
+                            <i class="fa fa-globe d-lg-none"/>
+                            <span class="d-none d-lg-inline-block">
+                                <t t-esc="multi_website_websites_current['name']"/>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <div class="d-lg-none dropdown-item active">
+                                <span t-esc="multi_website_websites_current['name']"/>
+                            </div>
+                            <t t-foreach="multi_website_websites" t-as="multi_website_website">
+                                <a role="menuitem" href="#"
+                                   t-att-domain="multi_website_website['domain']"
+                                   class="dropdown-item oe_menu_text js_multi_website_switch"
+                                   t-att-website-id="str(multi_website_website['website_id'])"
+                                >
+                                    <span t-esc="multi_website_website['name']"/>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+
+                    <!-- Page Edition -->
+                    <div class="o_new_content_menu" id="new-content-menu">
+                        <a href="#" accesskey="c"><span class="fa fa-plus mr-2"/>New
+                        </a>
+                        <div id="o_new_content_menu_choices" class="o_hidden">
+                            <div class="container pt32 pb32">
+                                <div class="row">
+                                    <t t-set="is_system" t-value="env.user.has_group('base.group_system')"/>
+                                    <t t-set="is_designer"
+                                       t-value="env.user.has_group('website.group_website_designer')"/>
+
+                                    <div t-if='is_designer' class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#" data-action="new_page" aria-label="New page" title="New page">
+                                            <i class="fa fa-file-o"/>
+                                            <p>Page</p>
+                                        </a>
+                                    </div>
+
+                                    <t t-set="mod" t-value="env.ref('base.module_website_blog')"/>
+                                    <div name="module_website_blog" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#" data-action="new_blog_post">
+                                            <i class="fa fa-rss"/>
+                                            <p>Blog Post</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_event')"/>
+                                    <div name="module_website_event" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#" data-action="new_event">
+                                            <i class="fa fa-ticket"/>
+                                            <p>Event</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_forum')"/>
+                                    <div name="module_website_forum" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element o_new_content_element_once">
+                                        <a href="#" data-url="/forum" data-action="new_forum">
+                                            <i class="fa fa-comment"/>
+                                            <p>Forum</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_hr_recruitment')"/>
+                                    <div name="module_website_hr_recruitment" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#">
+                                            <i class="fa fa-briefcase"/>
+                                            <p>Job Offer</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_sale')"/>
+                                    <div name="module_website_sale" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#" data-action="new_product">
+                                            <i class="fa fa-shopping-cart"/>
+                                            <p>Product</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_slides')"/>
+                                    <div name="module_website_slides" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element">
+                                        <a href="#" data-action="new_slide_channel">
+                                            <i class="fa module_icon" style="background-image: url('/website/static/src/img/apps_thumbs/website_slide.svg');
+                                                background-repeat: no-repeat; background-position: center;"/>
+                                            <p>Course</p>
+                                        </a>
+                                    </div>
+                                    <t t-set="mod" t-value="env.ref('base.module_website_livechat')"/>
+                                    <div name="module_website_livechat" t-if='is_system'
+                                         t-att-data-module-id="mod.id"
+                                         t-att-data-module-shortdesc="mod.shortdesc"
+                                         class="col-md-4 mb8 o_new_content_element o_new_content_element_once">
+                                        <a href="#" data-url="/livechat" data-action="new_channel">
+                                            <i class="fa fa-comments"/>
+                                            <p>Livechat Widget</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="not translatable" id="edit-page-menu">
+                        <a data-action="edit" href="#" accesskey="a"><span class="fa fa-pencil mr-2"/>Edit
+                        </a>
+                    </div>
+                    <div t-if="edit_in_backend or ('website_published' in main_object.fields_get() and main_object._name != 'website.page')">
+                        <a role="button" class="btn btn-primary btn-sm dropdown-toggle css_edit_dynamic"
+                           data-toggle="dropdown">
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </a>
+                        <div class="dropdown-menu" role="menu">
+                            <a role="menuitem" style="text-align: left;"
+                               t-attf-href="/web#view_type=form&amp;model=#{main_object._name}&amp;id=#{main_object.id}&amp;action=#{action}&amp;menu_id=#{backend_menu_id}"
+                               class="dropdown-item" title='Edit in backend' id="edit-in-backend">Edit in backend
+                            </a>
+                        </div>
+                    </div>
+                    <div t-if="translatable">
+                        <a data-action="translate" href="#">TRANSLATE</a>
+                    </div>
+                    <div t-if="translatable">
+                        <a data-action="edit_master" href="#">or Edit Master</a>
+                    </div>
+                </div>
+            </nav>
+            <t t-if="website and website.google_analytics_key and not editable">
+                <script id="tracking_code" async="1"
+                        t-attf-src="https://www.googletagmanager.com/gtag/js?id={{ website.google_analytics_key }}"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '<t t-esc="website.google_analytics_key"/>');
+                </script>
+            </t>
+            <div id="wrapwrap" t-attf-class="#{pageName or ''}">
+                <header t-if="not no_header" id="top" data-anchor="true">
+                    <img class="img-responsive d-block mx-auto" t-attf-src="/web/binary/company_logo" alt="Logo"/>
+                </header>
+                <main>
+                    <t t-out="0"/>
+                </main>
+                <footer t-if="not no_footer" id="bottom" data-anchor="true">
+                    <div id="footer" class="arc-container container container-fit-content pt64 pb64">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <h3 class="footer-title">PRODUCT</h3>
+                                        <ul class="footer-col-ul">
+                                            <li>Gaming Desktop</li>
+                                            <li>Gaming Laptops</li>
+                                            <li>Workstation Desktop</li>
+                                            <li>Workstation Laptops</li>
+                                            <li>Government &amp; Corporate</li>
+                                            <li>Gearshop</li>
+                                            <li>VR</li>
+                                            <li>4K Uncapped</li>
+                                            <li>Custom Design</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-4">
+                                        <h3 class="footer-title">REVIEWS</h3>
+                                        <ul class="footer-col-ul">
+                                            <li>News</li>
+                                            <li>Testimonials</li>
+                                            <li>A+ BBB Rating</li>
+                                            <li>Trustlink</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-4">
+                                        <h3 class="footer-title">SUPPORT</h3>
+                                        <ul class="footer-col-ul">
+                                            <li>Customer Service</li>
+                                            <li>FAQs</li>
+                                            <li>Wallpapers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <h3 class="footer-title">COMMUNITY</h3>
+                                        <ul class="footer-col-ul">
+                                            <li>ORIGINPCFAMILY</li>
+                                            <li>Blog</li>
+                                            <li>Twitch Prime</li>
+                                            <li>Affiliates</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-7">
+                                        <h3 class="footer-title">Newsletter</h3>
+                                        <p>Get access to exclusive offers!</p>
+                                        <form action="#" class="subscribe-form pt-2">
+                                            <input type="email" placeholder="Enter Your Email" class="email-subscriber"
+                                                   name="email"/>
+                                            <button type="submit" class="subscribe-form-submit mt-3">
+                                                SUBSCRIBE
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div t-if="not no_copyright" class="o_footer_copyright">
+                        <div class="container py-3">
+                            <div class="row">
+                                <div class="col-sm text-center text-sm-left">
+                                    <t t-call="web.debug_icon"/>
+                                    <span class="o_footer_copyright_name mr-2">
+                                        © 2022 INFINIARC Corporation. All Rights Reserved.
+                                    </span>
+                                </div>
+                                <div class="col-sm text-center text-sm-right">
+                                    <p class="fa-social-icon">
+                                        <i class="fa fa-whatsapp"/>
+                                        <i class="fa fa-linkedin-square"/>
+                                        <i class="fa fa-instagram"/>
+                                        <i class="fa fa-facebook-square"/>
+                                        <i class="fa fa-twitter"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="customize_header_style_8_001" inherit_id="portal.frontend_layout" name="Header style" priority="19">
+<!--        <xpath expr="//t[@t-call='website.submenu']" position="replace">-->
+<!--            <t t-call="website.submenu">-->
+<!--                <t t-set="item_class" t-value="'nav-item'"/>-->
+<!--                <t t-set="link_class" t-value="'nav-link'"/>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//div[@id='top_menu_container']" position="attributes">-->
+<!--            <attribute name="class">container-fluid</attribute>-->
+<!--        </xpath>-->
+<!--        <xpath expr="//div[@id='top_menu_collapse']" position="replace">-->
+<!--            <t t-foreach="website.menu_id.child_id" t-as="submenu">-->
+<!--                <li t-if="submenu.is_mega_menu" class="nav-item dropdown megamenu-li dmenu">-->
+<!--                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown"-->
+<!--                       aria-haspopup="true" aria-expanded="false">-->
+<!--                        <t t-esc="submenu.name"/>-->
+<!--                    </a>-->
+<!--                    &lt;!&ndash;                    <div class="dropdown-menu mega-dropdown-menu" aria-labelledby="dropdown01">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <t t-set="parent_ids" t-value="submenu.menu_category_ids.filtered(lambda l: not l.parent_id)"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        <div class="row">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <div class="col-3 left-menu">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                     aria-orientation="vertical">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <t t-foreach="parent_ids" t-as="ctg">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <a t-att-class="'nav-link ng-binding ng-scope active' if parent_ids.ids[0] == ctg.id else 'nav-link ng-binding ng-scope'"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                           id="v-pills-custompc-tab0" data-toggle="pill"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                           t-att-href="'#main-category-' + str(ctg.id)" role="tab"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                           aria-controls="v-pills-custompc0" aria-selected="true">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <t t-esc="ctg.name"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            <div class="col-9 mid-menu">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                <div class="tab-content" id="v-pills-tabContent">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    <t t-foreach="parent_ids" t-as="ctg">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        <div t-att-class="'tab-pane fade ng-scope show active' if parent_ids.ids[0] == ctg.id else 'tab-pane fade ng-scope show'"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                             t-att-id="'main-category-%s'%(ctg.id)" role="tabpanel"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                             aria-labelledby="v-pills-custompc-tab0"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                             ng-repeat="(cat,desktop) in desktops">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="row" t-if="ctg.child_id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="col-4 sub-items">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <div class="nav flex-column nav-pills inner" id="v-pills-tab"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                         role="tablist" aria-orientation="vertical">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        <t t-foreach="ctg.child_id" t-as="cha">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <a t-att-class="'nav-link ng-binding ng-scope active' if ctg.child_id.ids[0] == cha.id else 'nav-link ng-binding ng-scope'"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                               id="v-pills-custompc-tab0" data-toggle="pill"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                               t-att-href="'#category-' + str(cha.id)" role="tab"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                               aria-controls="v-pills-custompc0" aria-selected="true">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <t t-esc="cha.name"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="col-8 right-menu">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <div class="tab-content" id="v-pills-tabContent">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        <t t-if="ctg.child_id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <t t-set="child_id" t-value="ctg.child_id[0]"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        <t t-foreach="ctg.child_id" t-as="cha">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <t t-set="categ_product_id"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                               t-value="cha.get_product_by_categ()"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <div t-att-class="'tab-pane fade ng-scope show active' if child_id.id == cha.id else 'tab-pane fade ng-scope'"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                 t-att-id="'category-%s'%(cha.id)" role="tabpanel"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                 aria-labelledby="v-pills-bn00-tab">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <t t-if="categ_product_id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <div class="rm-header">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <h3 class="ng-binding">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            <t t-esc="categ_product_id.display_name"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </h3>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <div class="rm-body text-center">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            <div class="img-wrapper">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <img t-att-src="'/web/image?model=product.template&amp;id=%s&amp;field=image_128'%(categ_product_id.id)"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                     class="img-fluid" alt="img"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <div class="rm-footer">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            <div class="desc">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <p class="price strike ng-scope">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    Price:&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    <span class="ng-binding">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                        <span t-field="categ_product_id.sales_price"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                              t-options="{'widget': 'monetary', 'display_currency': categ_product_id.currency_id}"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    </span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                </p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <p class="offer ng-binding ng-scope">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    Offer Price :&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    <span t-field="categ_product_id.list_price"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                          t-options="{'widget': 'monetary', 'display_currency': categ_product_id.currency_id}"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                </p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <p class="vat">VAT Inclusive</p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            <div class="viewMore-customise">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <a class="view-more"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                   href="/products/desktops">View More&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <t t-if="categ_product_id.type_of_pc == 'customize'">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    <a t-att-href="'/store/%s'%(categ_product_id.product_variant_id.id)"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                       class="btn btn-customize ml-auto ng-scope">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                        CUSTOMIZE&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                <t t-else="">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    <button class="btn btn-secondary btn-add-cart pull-right"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                            t-att-data-id="categ_product_id.product_variant_id.id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                        ADD TO CART&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                    </button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            <div class="row" t-else="">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <t t-set="categ_products" t-value="ctg.get_productmulti_by_categ()"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                <div class="col-4 right-menu" t-foreach="categ_products"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                     t-as="categ_product_id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    <div class="tab-content" id="v-pills-tabContent">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        <div class="rm-header">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <div class="rm-body text-center">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <div class="img-wrapper">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <img t-att-src="'/web/image?model=product.template&amp;id=%s&amp;field=image_128'%(categ_product_id.id)"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                         class="img-fluid" alt="img"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <p class="ng-binding header-product-text">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <t t-esc="categ_product_id.display_name[:35] + '..'"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            </p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            <div class="product-d-desc">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <div class="desc">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <p class="price strike ng-scope">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        Price:&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <span class="ng-binding">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            <span t-field="categ_product_id.sales_price"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                  t-options="{'widget': 'monetary', 'display_currency': categ_product_id.currency_id}"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </span>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    </p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <p class="offer ng-binding ng-scope">Offer Price :&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <span t-field="categ_product_id.list_price"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                              t-options="{'widget': 'monetary', 'display_currency': categ_product_id.currency_id}"/>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    </p>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                <div class="viewMore-customise mt8">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <t t-if="categ_product_id.type_of_pc == 'customize'">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <a t-att-href="'/store/%s'%(categ_product_id.product_variant_id.id)"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                           class="btn btn-customize ml-auto ng-scope">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            CUSTOMIZE&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </a>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    <t t-else="">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        <button class="btn btn-secondary btn-add-cart"&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                                t-att-data-id="categ_product_id.product_variant_id.id">&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                            ADD TO CART&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                        </button>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                    </t>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                    </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                                    </t>&ndash;&gt;-->
+
+<!--                    &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                </li>-->
+<!--                <li t-else="" class="nav-item">-->
+<!--                    <a role="menuitem" t-att-href="submenu.url" class="nav-link active">-->
+<!--                        <span t-esc="submenu.name"/>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </t>-->
+<!--        </xpath>-->
+    </template>
+
+
+</odoo>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_component_type_inherit" model="ir.ui.view">
+        <field name="name">component.type.inherited</field>
+        <field name="model">component.type</field>
+        <field name="inherit_id" ref="iwesabe_website_theme.view_component_type_form"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="after">
+                <field name="component_type"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_pc_builder_product_template_inherit" model="ir.ui.view">
+        <field name="name">product.template.infiniarc.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="iwesabe_website_theme.view_product_template_infiniarc_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="filter_type"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+<odoo>
+    <record id="smsa_delivery_carrier" model="ir.ui.view">
+        <field name="name">SMSA Delivery Carrier</field>
+        <field name="model">delivery.carrier</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="SMSA Credentials" attrs="{'invisible':[('delivery_type','!=','smsa')]}">
+                    <group>
+                        <group>
+                            <field name="smsa_test_passkey" attrs="{'required':[('delivery_type', '==','smsa')]}"/>
+                        </group>     
+                        <group>
+                            <field name="smsa_prod_passkey" attrs="{'required':[('delivery_type', '==','smsa')]}"/>
+                        </group>                                            
+                    </group>                    
+                </page>
+            </xpath>
+            <xpath expr="//group[@name='Delivery Setting']" position="after">
+              <group string="SMSA Express Information "
+                  attrs="{'invisible':[('delivery_type', '!=', 'smsa')]}">
+                    <field name="smsa_service" attrs="{'required':[('delivery_type', '==','smsa')]}"/>
+                    <field name="is_cod" attrs="{'required':[('delivery_type','==','smsa')]}" />
+              </group>  
+          </xpath>            
+        </field>
+    </record>
+
+    <record id="smsa_stock_picking" model="ir.ui.view">
+        <field name="name">SMSA Stock Picking</field>
+        <field name="model">stock.picking</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='delivery_type']" position="after">
+                <field name="smsa_carrier_amount" string="SMSA Carrier Amount" attrs="{'invisible':[('delivery_type','!=','smsa')]}"/>
+                <field name="smsa_cod_amount" string="SMSA COD Amount" attrs="{'invisible':[('delivery_type','!=','smsa')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

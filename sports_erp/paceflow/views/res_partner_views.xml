@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//h1" position="after">
+                    <div class="o_row">
+                        <group>
+                            <field name="last_name"/>
+                        </group>
+                    </div>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <div name="options" groups="base.group_user">
+                        <div>
+                            <field name="is_client"/>
+                            <label for="is_client"/>
+                        </div>
+                        <div>
+                            <field name="is_child"/>
+                            <label for="is_child"/>
+                        </div>
+                        <div>
+                            <field name="is_parent"/>
+                            <label for="is_parent"/>
+                        </div>
+                    </div>
+                </xpath>
+                <page name="sales_purchases" position="after">
+                        <page string="Pace-flow" name="pace_flow">
+                            <group>
+                                <group>
+                                    <field name="hand"/>
+                                </group>
+                                <group>
+                                    <field name="dob"/>
+                                </group>
+                            </group>
+                        </page>
+                </page>
+                <div name="button_box" position="inside">
+                    <button name="view_assessments"
+                            string="Pace-flow" type="object"
+                            class="oe_stat_button" icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('is_client', '=', False)]}">
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

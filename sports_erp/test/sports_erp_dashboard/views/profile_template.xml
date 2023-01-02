@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="my_profile_template" name="Profile">
+        <t t-call="portal.portal_layout">
+            <div t-if="organisation" id="se-wrapper">
+                <div class="container-fluid">
+                    <form id="fan_edit_form"
+                          action="/my/update_profile" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="organisation_id"
+                               t-att-value="organisation.id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            My Profile
+                                        </h1>
+                                    </div>
+                                    <div class="se-dashboard__right-action w-100">
+                                        <div class="se-form__profile-img ml-auto">
+                                            <label for="name">
+                                                <t>
+                                                    <img t-if="organisation.partner_id.image_1920"
+                                                         id="profile_picture"
+                                                         t-att-src="image_data_uri(organisation.partner_id.image_1920)"
+                                                         width="36" height="36"
+                                                         style="cursor: pointer;"
+                                                         class="se-form__profile-img"/>
+                                                    <img id="profile_picture"
+                                                         t-if="not organisation.partner_id.image_1920"
+                                                         src="/sports_erp_dashboard/static/src/images/ui/account.svg"
+                                                         width="36" height="36"
+                                                         style="cursor: pointer;"
+                                                         class="se-form__profile-img"/>
+                                                </t>
+                                            </label>
+                                            <input id="name"
+                                                   style="margin-left: 50px;"
+                                                   onchange="image_preview()"
+                                                   type="file" name="photo"
+                                                   class="file"
+                                                   multiple="true"
+                                                   data-show-upload="true"
+                                                   data-show-caption="true"
+                                                   lass="file"
+                                                   data-show-preview="true"
+                                                   hidden="true"
+                                            />
+                                            <script>
+                                                function image_preview() {
+                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                                                }
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">Profile
+                                            Details
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                           t-att-value="organisation.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="email">Email
+                                                    </label>
+                                                    <input type="email"
+                                                           class="form-control se-form-control"
+                                                           id="email"
+                                                           name="email"
+                                                           t-att-value="organisation.email"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="last_name">Last Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="last_name"
+                                                           name="last_name"
+                                                           t-att-value="organisation.partner_id.last_name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="phone">Phone
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="phone"
+                                                           name="phone"
+                                                           t-att-value="organisation.phone"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mt-5">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-12">
+                                        <button class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                                type="submit"
+                                                style="float: right !important; border-radius: 5px !important;">
+                                            Update Profile
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

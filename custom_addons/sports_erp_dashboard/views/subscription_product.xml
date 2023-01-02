@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="subscription_product_template" name="Subscription Products">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscriptions"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscriptions
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscription_products"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscription Products
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="se-wrapper">
+                <div class="container-fluid">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__title-container">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Subscription Products
+                                </h2>
+                                <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                    <t t-esc="total"/>
+                                </span>
+                            </div>
+
+                            <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                <a href="#"
+                                   class="set-button set-button--primary-muted mr-2">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>Assign
+                                </a>
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                            data-toggle="modal"
+                                            data-target="#addProductModal">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        Add New Subscription Product
+                                    </button>
+                                    <!--                                    <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">-->
+                                    <!--                                        <a class="set-dropdown-item dropdown-item"-->
+                                    <!--                                           href="#"-->
+                                    <!--                                           data-toggle="modal"-->
+                                    <!--                                           data-target="#addProductModal">-->
+                                    <!--                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"-->
+                                    <!--                                                 width="14" height="14"-->
+                                    <!--                                                 class="mr-3"/>-->
+                                    <!--                                            <span>Add New Subscription Product-->
+                                    <!--                                            </span>-->
+                                    <!--                                        </a>-->
+                                    <!--                                    </div>-->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="set-dashboard__table-options">
+                                    <a href="#"
+                                       class="set-button set-button--light set-dashboard__table-button mr-2">
+                                        <i class="fa fa-filter mr-2"/>Filter
+                                    </a>
+                                    <div class="set-dashboard__input-container">
+                                        <input type="search" name="search"
+                                               id="search"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <table class="set-dashboard__table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select-all"/>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Subscription Plan</th>
+                                            <th>Subscription Contract</th>
+                                            <th>Price</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="subscription_product"
+                                           t-as="product">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select"/>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="product.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Subscription
+                                                            Product
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--blue set-badge--wide">
+                                                            <t t-esc="product.subscription_plan_id.name"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--green set-badge--wide">
+                                                            <t t-esc="product.subscription_contract_id.name"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--gold set-badge--wide">
+                                                            <t t-esc="product.list_price"/>
+                                                        </span>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-actions">
+                                                        <a t-att-href="'/my/subscription_product_details/%s' % product.id"
+                                                           class="set-dashboard__table-action mr-4">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Edit"
+                                                                 title="Edit"/>
+                                                        </a>
+                                                        <a t-att-href="'/my/delete_subscription_product/%s' % product.id"
+                                                           class="set-dashboard__table-action">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Remove"
+                                                                 title="Remove"/>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="set-dashboard__table-footer">
+                                    <span class="set-dashboard__page-position set-text set-text--grey">
+                                        Page
+                                        <span t-out="pager['page']['num']"/>
+                                        of
+                                        <t t-if="pager['page_count'] > 1">
+                                            <span t-out="pager['pages'][-1]['num']"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-out="pager['page']['num']"/>
+                                        </t>
+                                    </span>
+                                    <ul
+                                            class="set-dashboard__pagination">
+                                        <t t-foreach="pager['pages']"
+                                           t-as="page">
+                                            <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                <a t-att-href="page['url']"
+                                                   t-attf-class="page-link #{extraLinkClass}"
+                                                   t-out="page['num']"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--                    <div class="row">-->
+                    <!--                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+                    <!--                            <div class="se-dashboard">-->
+                    <!--                                <div>-->
+                    <!--                                    <h1 class="display-5 text-secondary se-dashboard__title">-->
+                    <!--                                        Subscription Products-->
+                    <!--                                    </h1>-->
+                    <!--                                </div>-->
+                    <!--                                <div class="se-dashboard__right-action w-100">-->
+                    <!--                                    <div class="d-flex w-50 ml-auto se-input-group se-input-group&#45;&#45;icon">-->
+                    <!--                                        <div class="sidebar"-->
+                    <!--                                             style="margin-right: 8px;">-->
+                    <!--                                            <div class="wrapper">-->
+                    <!--                                                <div class="box">-->
+                    <!--                                                    <form class="o_wsale_products_searchbar_form example dropdown show"-->
+                    <!--                                                          method="get"-->
+                    <!--                                                          action="/my/subscription_products"-->
+                    <!--                                                          style="margin:auto;max-width:600px">-->
+                    <!--                                                        <div t-attf-class="input-group #{_classes}"-->
+                    <!--                                                             role="search">-->
+                    <!--                                                            <input type="search"-->
+                    <!--                                                                   name="search"-->
+                    <!--                                                                   id="myInput"-->
+                    <!--                                                                   class="search-query form-control se-input se-input&#45;&#45;search mr-2 ml-auto"-->
+                    <!--                                                                   autocomplete="off"-->
+                    <!--                                                                   placeholder="Search.."-->
+                    <!--                                                                   onFocus="myFunction()"-->
+                    <!--                                                                   onBlur="setTimeout(myFunction, 300);"-->
+                    <!--                                                                   onkeyup="filterFunction()"/>-->
+                    <!--                                                            <button type="submit"-->
+                    <!--                                                                    class="btn btn-primary"-->
+                    <!--                                                                    style="background: #FF2905; border: none;">-->
+                    <!--                                                                <i class="fa fa-search se-input-group__icon"/>-->
+                    <!--                                                            </button>-->
+                    <!--                                                            <div id="myDropdown"-->
+                    <!--                                                                 class="dropdown-content">-->
+                    <!--                                                                <t t-foreach="total_subscription_products"-->
+                    <!--                                                                   t-as="product">-->
+                    <!--                                                                    <a t-att-href="'/my/subscription_products/%s' % product.id">-->
+                    <!--                                                                        <t t-esc="product.name"/>-->
+                    <!--                                                                    </a>-->
+                    <!--                                                                </t>-->
+                    <!--                                                            </div>-->
+                    <!--                                                        </div>-->
+                    <!--                                                    </form>-->
+                    <!--                                                    <script>function-->
+                    <!--                                                        myFunction() {-->
+                    <!--                                                        document.getElementById("myDropdown").classList.toggle("show");-->
+                    <!--                                                        } function-->
+                    <!--                                                        filterFunction() {-->
+                    <!--                                                        var input, filter,-->
+                    <!--                                                        ul, li, a, i; input-->
+                    <!--                                                        =-->
+                    <!--                                                        document.getElementById("myInput");-->
+                    <!--                                                        filter =-->
+                    <!--                                                        input.value.toUpperCase();-->
+                    <!--                                                        div =-->
+                    <!--                                                        document.getElementById("myDropdown");-->
+                    <!--                                                        a =-->
+                    <!--                                                        div.getElementsByTagName("a");-->
+                    <!--                                                        for (i = 0; i-->
+                    <!--                                                        &lt; a.length-->
+                    <!--                                                        ; i++) { txtValue =-->
+                    <!--                                                        a[i].textContent ||-->
+                    <!--                                                        a[i].innerText; if-->
+                    <!--                                                        (txtValue.toUpperCase().indexOf(filter)-->
+                    <!--                                                        > -1) {-->
+                    <!--                                                        a[i].style.display =-->
+                    <!--                                                        ""; } else {-->
+                    <!--                                                        a[i].style.display =-->
+                    <!--                                                        "none"; } } }-->
+                    <!--                                                    </script>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                        <button class="btn se-btn se-btn&#45;&#45;no-rounded se-btn&#45;&#45;primary w-50"-->
+                    <!--                                                data-toggle="modal"-->
+                    <!--                                                data-target="#addProductModal"-->
+                    <!--                                                style="border-radius: 5px !important;">-->
+                    <!--                                            + Add A Product-->
+                    <!--                                        </button>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                            <hr/>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="row">-->
+                    <!--                        <t t-if="total_subscription_products"-->
+                    <!--                           t-foreach="total_subscription_products"-->
+                    <!--                           t-as="product">-->
+                    <!--                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-2">-->
+                    <!--                                <div class="se-dashbaord__record-block">-->
+                    <!--                                    <div class="se-dashboard__record-block-details">-->
+                    <!--                                        <span class="d-block">-->
+                    <!--                                            <t t-esc="product.name"/>-->
+                    <!--                                        </span>-->
+                    <!--                                        <br/>-->
+                    <!--                                    </div>-->
+                    <!--                                    <div class="se-dashboard__record-block-action">-->
+                    <!--                                        <a t-att-href="'/my/subscription_product_details/%s' % product.id"-->
+                    <!--                                           class="se-dashboard__record-action">-->
+                    <!--                                            <img src="/sports_erp_dashboard/static/src/images/ui/edit.svg"-->
+                    <!--                                                 width="32" height="32"-->
+                    <!--                                                 class="se-dashboard__record-icon"/>-->
+                    <!--                                        </a>-->
+                    <!--                                        <a t-att-href="'/my/delete_subscription_product/%s' % product.id"-->
+                    <!--                                           class="se-dashboard__record-action">-->
+                    <!--                                            <img src="/sports_erp_dashboard/static/src/images/ui/trash.svg"-->
+                    <!--                                                 width="32" height="32"-->
+                    <!--                                                 class="se-dashboard__record-icon"/>-->
+                    <!--                                        </a>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+                    <!--                        </t>-->
+                    <!--                    </div>-->
+
+                    <div class="modal se-modal" id="addProductModal"
+                         tabindex="-1" role="dialog"
+                         aria-labelledby="addProductLabel" aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addProductModalLabel">Add New
+                                        Product
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/subscription_product"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="product_name">
+                                                    Product Name
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="product_name"
+                                                       name="product_name"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <div style="text-align: center;">
+                                                    <label for="name">
+                                                        <img id="profile_picture"
+                                                             src="/sports_erp_dashboard/static/src/images/ui/camera.png"
+                                                             style="cursor: pointer;"
+                                                             class="se-form__profile-img"/>
+                                                    </label>
+                                                    <input id="name"
+                                                           style="margin-left: 50px;"
+                                                           onchange="image_preview()"
+                                                           type="file"
+                                                           name="photo"
+                                                           class="file"
+                                                           multiple="true"
+                                                           data-show-upload="true"
+                                                           data-show-caption="true"
+                                                           lass="file"
+                                                           data-show-preview="true"
+                                                           hidden="true"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <script>
+                                                function image_preview() {
+                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                                                }
+                                            </script>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="is_subscription_addon">
+                                                    Subscription Addon
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="is_subscription_addon"
+                                                       name="is_subscription_addon"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="subscription_plan_ids">
+                                                    Subscription Plan
+                                                </label>
+
+                                                <select class="form-control se-form-control"
+                                                        id="subscription_plan_ids"
+                                                        name="subscription_plan_ids">
+                                                    <t t-foreach="plans"
+                                                       t-as="subscription_plan_id">
+                                                        <option t-att-value="subscription_plan_id.id">
+                                                            <t t-esc="subscription_plan_id.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="subscription_contract_ids">
+                                                    Subscription Contract
+                                                </label>
+
+                                                <select class="form-control se-form-control"
+                                                        id="subscription_contract_ids"
+                                                        name="subscription_contract_ids">
+                                                    <t t-foreach="contracts"
+                                                       t-as="subscription_contract_id">
+                                                        <option t-att-value="subscription_contract_id.id">
+                                                            <t t-esc="subscription_contract_id.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="is_able_to_assign">
+                                                    Is Able to Assign
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       name="is_able_to_assign"></input>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="sale_price">
+                                                    Sale Price
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="sale_price"
+                                                       id="sale_price"
+                                                       style="text-align: end;"
+                                                />
+                                                <input type="text"
+                                                       t-att-value="request.env.company.currency_id.symbol"
+                                                       id="currency_symbol"
+                                                       disabled="1"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-between align-items-center">
+                                            <a href="#"
+                                               class="font-weight-bold se-link--unstyled text-muted">
+                                                <i class="fa fa-cog mr-2"/>
+                                                Advanced Details
+                                            </a>
+                                            <input type="submit"
+                                                   class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                   value="Add Product"
+                                                   style="border-radius: 5px !important;"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                function hide_show_products()
+                { var element =
+                document.getElementById("se-sidebar");
+                var main = document.getElementById("main-container");
+                console.log("amin", main);
+                if
+                (main.classList.contains("main-container--margin")){
+                main.classList.toggle("main-container--margin");
+                }
+                if
+                (element.classList.contains("se-sidebar--show")){
+                element.classList.toggle("se-sidebar--show");
+                } };
+            </script>
+        </t>
+    </template>
+
+    <template id="subscription_product_details"
+              name="Subscription Product Details">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscriptions"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscriptions
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscription_products"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscription Products
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/subscription_product_details/%s' % subscription_product.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="subscription_product.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form id="contract_edit_form"
+                          action="/my/update_subscription_product"
+                          method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="subscription_product_id"
+                               t-att-value="subscription_product.id"/>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            <span>
+                                                <t t-esc="subscription_product.name"/>
+                                            </span>
+                                        </h1>
+                                    </div>
+                                    <div class="se-dashboard__right-action w-100">
+                                        <div class="se-form__profile-img ml-auto">
+                                            <label for="name">
+                                                <img t-if="subscription_product.image_1920"
+                                                     id="profile_picture"
+                                                     t-att-src="image_data_uri(subscription_product.image_1920)"
+                                                     width="36" height="36"
+                                                     style="cursor: pointer;"
+                                                     class="se-form__profile-img"/>
+                                                <img id="profile_picture"
+                                                     t-if="not subscription_product.image_1920"
+                                                     src="/sports_erp_dashboard/static/src/images/ui/camera.svg"
+                                                     width="36" height="36"
+                                                     style="cursor: pointer;"
+                                                     class="se-form__profile-img"/>
+                                            </label>
+                                            <input id="name"
+                                                   style="margin-left: 50px;"
+                                                   onchange="image_preview()"
+                                                   type="file" name="photo"
+                                                   class="file"
+                                                   multiple="true"
+                                                   data-show-upload="true"
+                                                   data-show-caption="true"
+                                                   lass="file"
+                                                   data-show-preview="true"
+                                                   hidden="true"
+                                            />
+                                            <script>
+                                                function image_preview() {
+                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                                                }
+                                            </script>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">Product
+                                            Details
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                           t-att-value="subscription_product.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_addon">
+                                                        Subscription Addon
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="subscription_addon"
+                                                           name="subscription_addon"
+                                                           t-att-checked="'checked' if subscription_product.is_subscription_addon else None"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="sale_price">
+                                                        Sale Price
+                                                    </label>
+                                                    <input type="number"
+                                                           class="form-control se-form-control"
+                                                           name="sale_price"
+                                                           id="sale_price"
+                                                           style="text-align: end;"
+                                                           t-att-value="subscription_product.list_price"
+                                                    />
+                                                    <input type="text"
+                                                           t-att-value="request.env.company.currency_id.symbol"
+                                                           id="currency_symbol"
+                                                           disabled="1"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_plan">
+                                                        Subscription Plan
+                                                    </label>
+
+                                                    <select class="form-control se-form-control"
+                                                            id="subscription_plan"
+                                                            name="subscription_plan">
+                                                        <option selected="1"
+                                                                t-att-value="subscription_product.subscription_plan_id.id">
+                                                            <t t-esc="subscription_product.subscription_plan_id.name"/>
+                                                        </option>
+                                                        <t t-foreach="plans"
+                                                           t-as="subscription_plan">
+                                                            <option t-att-value="subscription_plan.id">
+                                                                <t t-esc="subscription_plan.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_contract">
+                                                        Subscription Contract
+                                                    </label>
+
+                                                    <select class="form-control se-form-control"
+                                                            id="subscription_contract"
+                                                            name="subscription_contract">
+                                                        <option selected="1"
+                                                                t-att-value="subscription_product.subscription_contract_id.id">
+                                                            <t t-esc="subscription_product.subscription_contract_id.name"/>
+                                                        </option>
+                                                        <t t-foreach="contracts"
+                                                           t-as="subscription_contract">
+                                                            <option t-att-value="subscription_contract.id">
+                                                                <t t-esc="subscription_contract.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+
+                                                </div>
+
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="able_to_assign">
+                                                        Is Able to Assign
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="able_to_assign"
+                                                           name="able_to_assign"
+                                                           t-att-checked="'checked' if subscription_product.is_able_to_assign else None"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Product"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

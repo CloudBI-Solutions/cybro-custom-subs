@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="user_image" inherit_id="portal.user_dropdown"
+              name="Portal Dropdown Image">
+        <xpath expr="//span[@t-if='_user_name']" position="replace">
+            <span t-if="user_id">
+                <img src="/theme_sport_erp/static/src/images/ui/account.svg"
+                     width="20"
+                     height="20"
+                     style="margin-left: -30px; margin-top: -10px;"
+                     class="set-header__nav-icon"/>
+            </span>
+        </xpath>
+    </template>
+
+    <template id="cart_change">
+        <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+        <t t-set="show_cart" t-value="true"/>
+        <li t-attf-class="#{_item_class} divider d-none"/>
+        <div id="top_menu" style="margin-left: -23px !important; margin-right: 10px !important;">
+            <li t-attf-class="o_wsale_my_cart align-self-md-start #{not show_cart and 'd-none'} #{_item_class}">
+                <a href="/shop/cart" t-attf-class="#{_link_class}">
+                    <img style="margin-top: 4px !important;"
+                         src="/theme_sport_erp/static/src/images/ui/shopping-cart.svg"/>
+                    <span t-if="_text">My Cart</span>
+                    <sup class="my_cart_quantity badge badge-primary"
+                         t-esc="website_sale_order and website_sale_order.cart_quantity or '0'"
+                         t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                </a>
+            </li>
+        </div>
+    </template>
+
+    <template id="template_header_sportERP"
+              inherit_id="website.layout"
+              name="Template Sport ERP">
+        <xpath expr="//header" position="replace">
+            <header id="header__sports_erp">
+                <div class="set-topbar">
+                    <div class="set-wrapper set-topbar__container">
+                        <ul class="set-topbar__contacts">
+                            <li class="set-topbar__contact">
+                                <img src="/theme_sport_erp/static/src/images/ui/mail-outline.svg"
+                                     width="18"
+                                     height="18" class="set-topbar__icon"/>
+                                <span class="set-topbar__icon-info">
+                                    <t t-esc="res_company.email"/>
+                                </span>
+                            </li>
+                            <li class="set-topbar__contact">
+                                <img src="/theme_sport_erp/static/src/images/ui/local-phone.svg"
+                                     width="18"
+                                     height="18" class="set-topbar__icon"/>
+                                <span class="set-topbar__icon-info">
+                                    <t t-esc="res_company.phone"/>
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="set-topbar__links ">
+                            <a class="set-link set-link--unstyled set-topbar__icon-info set-topbar__icon-link mr-3"
+                               href="#">
+                                <img src="/theme_sport_erp/static/src/images/ui/support.svg"
+                                     width="18"
+                                     height="18" class="set-topbar__icon"/>
+                                Support
+                            </a>
+                            <a href="#" class="set-topbar__button">Try Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="set-header" style="background: white;">
+                    <div class="set-wrapper set-header__container">
+                        <a href="/" class="set-link set-link--unstyled navbar-brand">
+                            <img t-att-src="image_data_uri(res_company.logo)"
+                                 class="set-header__brand"
+                                 width="157" height="30" alt="Sport ERP"
+                                 title="Sport ERP"/>
+                        </a>
+                        <div class="set-header__right">
+                            <nav class="set-header__navigation">
+                                <ul class="set-header__nav">
+                                    <t t-foreach="website.menu_id.child_id"
+                                       t-as="submenu">
+                                        <li class="set-header__nav-item">
+                                            <a t-att-href="submenu.url"
+                                               class="set-header__nav-link">
+                                                <t t-esc="submenu.name"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </nav>
+                            <ul id="top_menu" class="set-header__nav-icons">
+                                <li class="set-header__nav-icon-item">
+                                    <t t-call="portal.placeholder_user_sign_in">
+                                        <t t-set="_item_class"
+                                           t-value="'nav-item'"/>
+                                        <t t-set="_link_class"
+                                           t-value="'nav-link'"/>
+                                    </t>
+                                    <t t-call="portal.user_dropdown">
+                                        <t t-set="_user_name" t-value="true"/>
+                                        <t t-set="_item_class"
+                                           t-value="'nav-item dropdown'"/>
+                                        <t t-set="_link_class"
+                                           t-value="'nav-link'"/>
+                                        <t t-set="_dropdown_menu_class"
+                                           t-value="'dropdown-menu-right'"/>
+                                    </t>
+                                </li>
+                                <li class="set-header__nav-icon-item">
+                                    <t t-call="theme_sport_erp.cart_change"/>
+                                </li>
+                                <li class="set-header__nav-icon-item set-header__nav-icon-item--desktop-only">
+                                    <img src="/theme_sport_erp/static/src/images/ui/search.svg"
+                                         width="20" height="20"
+                                         class="set-header__nav-icon margin-adjust"/>
+                                </li>
+                                <li class="set-header__nav-icon-item set-header__nav-icon-item--desktop-only">
+                                    <img src="/theme_sport_erp/static/src/images/ui/language.svg"
+                                         width="20" height="20"
+                                         class="set-header__nav-icon margin-adjust"/>
+                                </li>
+                                <li class="set-header__nav-icon-item set-header__nav-icon-item--mobile-only">
+                                    <a href="#" id="mobileMenuToggler"
+                                       class="set-link set-link--unstyled">
+                                        <img src="/theme_sport_erp/static/src/images/ui/menu.svg"
+                                             width="20"
+                                             height="20"
+                                             class="set-header__nav-icon"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!--                 Mobile Menu-->
+                <div class="set-mobile-menu d-none" id="mobileMenu"
+                    style="margin-top: 45px;">
+                    <div class="set-mobile-menu__header">
+                        <div class="set-mobile-menu__switcher">
+                            <select class="set-mobile-menu__language">
+                                <option value="1" selected="1">EN</option>
+                                <option value="2">FR</option>
+                            </select>
+                        </div>
+                        <a href="#" id="mobileMenuClose">
+                            <img src="/theme_sport_erp/static/src/images/ui/close.svg"/>
+                        </a>
+                    </div>
+                    <div class="set-mobile-menu__search-container">
+                        <input type="search" name="search" id="serach"
+                               placeholder="Search this website"
+                               class="set-mobile-menu__search"/>
+                    </div>
+
+                    <ul class="set-mobile-menu__links">
+                        <t t-foreach="website.menu_id.child_id"
+                           t-as="submenu">
+                            <li class="set-mobile-menu__link-item">
+                                <a t-att-href="submenu.url"
+                                   class="set-mobile-menu__link">
+                                    <t t-esc="submenu.name"/>
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </header>
+        </xpath>
+    </template>
+</odoo>

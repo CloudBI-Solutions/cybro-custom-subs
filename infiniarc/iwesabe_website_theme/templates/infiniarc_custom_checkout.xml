@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_custom_checkout" name="Infiniarc Custom Checkout">
+        <t t-call="website.layout">
+            <section id="infiniarc-checkout" class="mt-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="container design-methods">
+                                <div class="sec-title">
+                                    <h4>Design methods</h4>
+                                </div>
+                                <div class="design-method-type pt-2">
+                                    <div class="method-type-input">
+                                        <input type="radio" name="design-method" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>Individual</span>
+                                        </div>
+                                    </div>
+                                    <div class="method-type-input">
+                                        <input type="radio" name="design-method" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>Entity</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="customer-details ml-n3 pt-4">
+                                    <div class="customer-detail">
+                                        <input name="first_name" type="text" placeholder="Full Name"/>
+                                    </div>
+                                    <div class="customer-detail">
+                                        <input name="telephone" type="text" placeholder="Telephone"/>
+                                    </div>
+                                    <div class="customer-detail">
+                                        <input name="email" type="text" placeholder="Email"/>
+                                    </div>
+                                </div>
+
+                                <div class="pickup-type pt-3">
+                                    <div class="pickup-type-input">
+                                        <input type="radio" name="pickup-type" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>DELIVERY</span>
+                                        </div>
+                                    </div>
+                                    <div class="pickup-type-input">
+                                        <input type="radio" name="pickup-type" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>PICKUP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="extra-charges pt-4 ml-n3">
+                                    <table class="table table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="extra-charges-input">
+                                                        <input type="radio" name="extra-charge-input"
+                                                               class="global-radio"/>
+                                                        <div class="label-radio text-deco">
+                                                            <span>smsa</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-center text-deco">
+                                                        <span>1000$</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pull-right">
+                                                    <img src="/iwesabe_website_theme/static/src/img/checkout/info.png"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="extra-charges-input">
+                                                        <input type="radio" name="extra-charge-input"
+                                                               class="global-radio"/>
+                                                        <div class="label-radio text-deco">
+                                                            <span>smsa</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="text-center text-deco">
+                                                        <span>1000$</span>
+                                                    </div>
+                                                </td>
+                                                <td class="pull-right">
+                                                    <img src="/iwesabe_website_theme/static/src/img/checkout/info.png"/>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="delivery-address ml-n3 pt-3">
+                                    <input name="email" type="text"
+                                           placeholder="Delivery address (street, house, etc.)"/>
+                                </div>
+                            </div>
+                            <div class="container ml-0 payment-methods pt-3">
+                                <div class="sec-title">
+                                    <h4>Payment methods</h4>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-method-input">
+                                        <input type="radio" name="payment-method" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>Bank card</span>
+                                        </div>
+                                    </div>
+                                    <div class="payment-method-input">
+                                        <input type="radio" name="payment-method" class="global-radio"/>
+                                        <div class="label-radio">
+                                            <span>Credit / Installment</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="terms-condition pt-3">
+                                <label class="label-terms-condition">
+                                    by placing the order you are accepting the terms and conditions and privacy policy
+                                    <input type="checkbox" checked="checked"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="action-buttons pt-2">
+                                <button name="back" class="action-button transparent-button" type="button">
+                                    <a href="#">Back</a>
+                                </button>
+                                <button name="confirm" class="action-button ml-2" type="button">
+                                    <a href="#">Confirm</a>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="order-summary">
+                                <div class="sec-title text-center pt-5 pb-1">
+                                    <h4>Order Summary</h4>
+                                </div>
+                                <table class="table table-striped summary-lines">
+                                    <tbody>
+                                        <tr>
+                                            <td class="td-image">
+                                                <img src="/iwesabe_website_theme/static/src/img/cart/Rectangle 425.png"
+                                                     class="img rounded summary-product-img" alt="Cart Lines"/>
+                                            </td>
+                                            <td class="td-product-name">
+                                                <div class="product-name">
+                                                    <span>Keyb</span>
+                                                </div>
+                                                <div class="extra-line">
+                                                    <span>CO EXTENSION OPTIONS MORE RRY MX(1 pc)</span>
+                                                </div>
+                                            </td>
+                                            <td class="td-subtotal-price">
+                                                <div class="subtotal-price">
+                                                    <span>+50 $</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-image">
+                                                <img src="/iwesabe_website_theme/static/src/img/cart/Rectangle 425.png"
+                                                     class="img rounded summary-product-img" alt="Cart Lines"/>
+                                            </td>
+                                            <td class="td-product-name">
+                                                <div class="product-name">
+                                                    <span>Low</span>
+                                                </div>
+                                                <div class="extra-line">
+                                                    <span>1000$( 1 pc)</span>
+                                                </div>
+                                            </td>
+                                            <td class="td-subtotal-price">
+                                                <div class="subtotal-price">
+                                                    <span>+50 $</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="td-image">
+                                                <img src="/iwesabe_website_theme/static/src/img/cart/Rectangle 425.png"
+                                                     class="img rounded summary-product-img" alt="Cart Lines"/>
+                                            </td>
+                                            <td class="td-product-name">
+                                                <div class="product-name">
+                                                    <span>Attributes</span>
+                                                </div>
+                                                <div class="extra-line">
+                                                    <span>IPlay mat HYPERPC</span>
+                                                </div>
+                                            </td>
+                                            <td class="td-subtotal-price">
+                                                <div class="subtotal-price">
+                                                    <span>+50 $</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="summary-total pb-3">
+                                    <div class="common-div">
+                                        <span>Delivery (smsa‏)</span>
+                                        <span class="pull-right">+50 $</span>
+                                    </div>
+                                    <div class="common-div">
+                                        <span>Subtotal</span>
+                                        <span class="pull-right">1000$</span>
+                                    </div>
+                                    <div class="common-div">
+                                        <span>Value Added Tax</span>
+                                        <span class="pull-right">150$</span>
+                                    </div>
+                                    <div class="common-div border-none">
+                                        <span>Total</span>
+                                        <span class="pull-right">1150$</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>

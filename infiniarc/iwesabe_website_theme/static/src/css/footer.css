@@ -1,0 +1,157 @@
+.br-3 {
+	border-radius:3px;
+}
+#footer, footer{
+	background: #0F0E0E;
+}
+footer .bg-dark {
+	color:#1e1f24 !important;
+}
+
+footer .footer-img {
+	height: auto;
+	width: 140px;
+}
+
+footer img.social-icon {
+	height: 36px;
+	width: 36px;
+}
+
+footer ul.social-icons {
+	list-style: none;
+	display: flex;
+}
+footer ul.social-icons li{
+	margin-left: 18px;
+}
+footer div.footer-info {
+	text-align: center;
+}
+
+footer div.quick-links h4 {
+	font-size:20px;
+	font-weight: bolder;
+}
+
+footer .pt-45 {
+	padding-top: 45px !important;
+}
+
+footer .quick-links ul{
+	padding: 0;
+	list-style: none;
+	margin-left: 5px;
+	line-height: 2.3;
+}
+
+footer .quick-links ul li a{
+	text-decoration: none;
+	color: lightgray;
+}
+footer .quick-links ul li a span{ 
+	margin-left: 10px;
+}
+footer .email-subscriber{
+	height: 50px !important;
+	background: transparent !important;
+	border: 2px solid white !important;
+	color: white !important;
+	padding: 0px 16px 0px 16px !important;
+	width:250px !important;
+	margin-top: 10px !important;
+}
+footer input.email-subscriber::-webkit-input-placeholder {
+	font-size: 16px;
+}
+
+footer .subscribe-form-submit, .js_subscribe_btn{
+	width: 250px !important;
+	background: red !important;
+	color: white !important;
+	border: 0 !important;
+	padding: 14px !important;
+	border-radius: 0px !important;
+	font-size: 16px !important;
+	text-align: center;
+	display: block;
+}
+.footer-title{
+	font-style: normal;
+	font-weight: 700;
+	font-size: 25px;
+	line-height: 38px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+}
+.footer-col-ul{
+	list-style-type: none;
+	padding-inline-start: 0px;
+
+}
+.footer-col-ul li{
+	line-height: 3;
+    font-weight:bold;
+/*
+    font-family: "Source Sans Pro", "Odoo Unicode Support Noto", sans-serif !important;
+*/
+}
+.o_footer_copyright{
+	background: #141414;
+}
+.fa-social-icon i{
+	font-size: 26px;
+    padding: 4px 8px;
+}
+/* ========================= Footer CART CSS ========================= */
+#config-footer {
+    padding: 0.5rem;
+    background-color: #212529;
+    border-top: 1px solid #4c4f57;
+}
+.border-dark {
+    border-color: #1e1f24 !important;
+}
+#config-footer #system img {
+    height: 75px;
+}
+#config-footer #subtotal .label, #config-footer #ship-date .label {
+    color: #b0b1b6;
+}
+.gfsimulator {
+    font-size: 14px !important;
+    /*font-family: 'Montserrat' !important;*/
+    white-space: normal !important;
+    line-height: 1.42857143 !important;
+}
+.gfsimulator .gfsimulator-payment-container {
+    /*font-family: "ff-basic-gothic-pro",sans-serif !important;*/
+    font-size: 16px !important;
+}
+#config-footer #subtotal small, #config-footer #subtotal .gfsimulator span, #config-footer #ship-date small, #config-footer #ship-date .gfsimulator span {
+    margin-top: 3px;
+    font-size: .75rem !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: #f1f2f3;
+}
+#config-footer .questions .label, #cart .questions .label {
+    color: #b0b1b6;
+}
+#config-footer .questions ul li, #cart .questions ul li {
+    list-style: none;
+    display: inline;
+    margin: 0 4px;
+}
+.questions ul li a {
+    color: #b0b1b6;
+}
+.btn-summary{
+	border: 1px solid;
+}
+.btn-outline-light,
+.orignpcwhite {
+    color: #b0b1b6 !important;
+}

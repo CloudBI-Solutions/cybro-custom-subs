@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_event_form_inherit" model="ir.ui.view">
+        <field name="name">event.organisation.form.inherit</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id"
+               ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='event_notes']" position="after">
+                <page name="organisation_ids" string="Organisations">
+                    <group>
+                        <field name="organisation_ids" nolabel="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

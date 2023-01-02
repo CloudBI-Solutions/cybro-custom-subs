@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <menuitem id="booking_root_menu"
+                  name="Booking"
+                  sequence="20"
+                  groups="organisation.group_organisation_admins,organisation.group_organisation_coaches_internal"
+                  web_icon="booking,static/description/icon.png"/>
+<!--                  groups=""-->
+        <menuitem id="booking_menu"
+                  parent="booking_root_menu"
+                  name="Booking" sequence="5"
+                  action="booking.all_booking_menu_action"/>
+        <menuitem id="booking_products_menu_root"
+                  parent="booking_root_menu"
+                  name="Products" sequence="10"/>
+        <menuitem id="booking_products_menu"
+                  parent="booking_products_menu_root"
+                  name="Booking Products" sequence="1"
+                  action="booking.booking_products_action"/>
+        <menuitem id="config_menu"
+                  parent="booking_root_menu"
+                  name="Configuration" sequence="100"/>
+        <menuitem id="res_config_settings_menu"
+                  parent="config_menu"
+                  name="Settings" sequence="1"
+                  action="booking.res_config_settings_menu_action"/>
+        <menuitem id="booking_stages_menu"
+                  parent="config_menu"
+                  name="Stages" sequence="50"
+                  action="booking.booking_stages_menu_action"/>
+        <menuitem id="booking_type_menu"
+                  parent="config_menu"
+                  name="Appointment Type" sequence="100"
+                  action="booking.booking_type_menu_action"/>
+        <menuitem id="coach_schedule_menu"
+                  parent="config_menu"
+                  name="Coach Schedule" sequence="120"
+                  action="booking.coach_schedule_menu_action"/>
+        <menuitem id="calendar_checklist_menu"
+                  parent="config_menu"
+                  name="Checklist" sequence="150"
+                  action="booking.calendar_checklist_menu_action"/>
+
+    </data>
+</odoo>

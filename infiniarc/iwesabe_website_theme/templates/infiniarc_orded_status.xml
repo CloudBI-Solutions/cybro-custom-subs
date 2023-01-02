@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_order_status" name="Infiniarc Support">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/support" class="ian-link__unstyled">Support</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Order Status</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero-banner hero-banner--contactus">
+                    <h1 class="page-title mt32">
+                        Order Status
+                    </h1>
+                </div>
+
+            </section>
+
+
+            <section id="support-type" class="">
+                <div class="container order-status-container">
+                    <form action="/order_history_status">
+                        <div class="row flex-column">
+                            <label class="col-form-label col-sm-auto order-status-column"
+                                   for="Confirmation_number">
+                                <span>Order Confirmation Number</span>
+
+                            </label>
+                            <div class="col-sm">
+                                <input id="order_confirmation_number" type="text" class="order_status_input"
+                                       name="Confirmation_number" required="" data-fill-with="Confirmation_number"
+                                       placeholder="order confirmation number"/>
+                            </div>
+                        </div>
+                        <div class="row flex-column my-5">
+                            <label class="col-form-label col-sm-auto order-status-column"
+                                   for="phone_number">
+                                <span>Phone Number</span>
+
+                            </label>
+                            <div class="col-sm">
+                                <input id="phone_number" type="text" class="order_status_input"
+                                       name="phone_number" required="" data-fill-with="phone_number"
+                                       placeholder="phone number"/>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="subscribe-status-submit mt-3 btn-danger">Check Status</button>
+
+                    </form>
+                </div>
+            </section>
+
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="board_form_inherit" model="ir.ui.view">
+        <field name="name">inherit.survey.user_input.line.view.form</field>
+        <field name="model">ks_dashboard_ninja.board</field>
+        <field name="inherit_id" ref="ks_dashboard_ninja.board_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ks_dashboard_active']" position="before">
+                <field name="show_in_portal"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

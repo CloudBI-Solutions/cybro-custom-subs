@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sport_erp_dashboard_inherit"
+              inherit_id="sports_erp_dashboard.sports_erp_dashboard">
+        <xpath expr="//div[hasclass('registers')]" position="replace">
+            <div class="col-sm-12 col-md-6 col-lg-4 registers">
+                <div class="set-dashboard__tile">
+                    <div class="set-dashboard__tile-body">
+                        <div class="d-flex align-items-center flex-wrap">
+                            <div class="set-dashboard__icon mr-2">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/forms.svg"
+                                     width="18" height="18"
+                                     alt="Organization Profile"/>
+                            </div>
+                            <span class="set-dashboard__tile-title">
+                                Registers
+                            </span>
+                        </div>
+                    </div>
+                    <div class="set-dashboard__tile-footer">
+                        <a href="/my/registers"
+                           class="set-button set-button--link-primary set-dashboard__tile-link">
+                            <img src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                 width="14" height="14" class="set-dashboard__tile-link-icon"/>
+                            View
+                        </a>
+                        <a href="/my/registers"
+                           class="set-button set-button--link-primary set-dashboard__tile-link">
+                            <img src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                 width="14" height="14" class="set-dashboard__tile-link-icon"/>
+                            Add
+                        </a>
+                        <a href="#"
+                           class="set-button set-button--link-primary set-dashboard__tile-link">
+                            <img src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                 width="14" height="14" class="set-dashboard__tile-link-icon"/>
+                            Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

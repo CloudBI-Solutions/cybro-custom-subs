@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--     assessment   kanban view-->
+        <record model="ir.ui.view" id="assessments_view_kanban">
+            <field name="name">assessments.kanban</field>
+            <field name="model">assessment.assessment</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" class="o_modules_kanban" sample="1">
+                    <field name="partner_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_details oe_kanban_global_click">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        <t t-if="record.partner_id.raw_value">
+                                            Contact :
+                                            <field name="partner_id"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.report_date.raw_value">
+                                            Report Date :
+                                            <field name="report_date"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.done_date.raw_value">
+                                            Date Done :
+                                            <field name="done_date"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.coach_id.raw_value">
+                                            Responsible :
+                                            <field name="coach_id"/>
+                                        </t>
+                                    </li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <!--      assessment  form view-->
+        <record id="assessments_view_form" model="ir.ui.view">
+            <field name="name">assessments.view.form</field>
+            <field name="model">assessment.assessment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="stage_id" widget="statusbar"
+                               readonly="1" clickable="1"/>
+                        <button name="assign_and_send_mail" string="ASSIGN &amp; SEND MAIL"
+                                class="oe_highlight"
+                                type="object"
+                                attrs="{'invisible': [('stage_id', '!=', 1)]}"/>
+                        <button name="make_in_progress" string="IN PROGRESS"
+                                class="oe_highlight"
+                                type="object"
+                                groups="paceflow.group_paceflow_coaches"
+                                attrs="{'invisible': [('stage_id', '!=', 2)]}"/>
+                        <button name="assessment_done" string="DONE"
+                                class="oe_highlight"
+                                type="object"
+                                groups="paceflow.group_paceflow_coaches"
+                                attrs="{'invisible': [('stage_id', '!=', 3)]}"/>
+                        <button name="cancel_assessment" string="CANCELLED"
+                                type="object"
+                                groups="paceflow.group_paceflow_coaches"
+                                attrs="{'invisible': [('stage_id', 'in', (4,5))]}"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <field name="rear_video" invisible="1"/>
+                        <field name="side_video" invisible="1"/>
+                        <field name="section_legality_id" invisible="1"/>
+                        <field name="section_momentum_id" invisible="1"/>
+                        <field name="section_stability_id" invisible="1"/>
+                        <field name="section_paceflow_id" invisible="1"/>
+                        <field name="section_legality_note_id" invisible="1"/>
+                        <field name="section_momentum_note_id" invisible="1"/>
+                        <field name="section_stability_note_id" invisible="1"/>
+                        <field name="section_paceflow_note_id" invisible="1"/>
+                        <group>
+                            <group>
+                                <field name="company_id" invisible="1"/>
+                                <field name="partner_id"/>
+                                <field name="child_id"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="sale_order_id"/>
+                                <field name="report_date"/>
+                                <field name="tag_ids" widget="many2many_tags"
+                                       options="{'color_field': 'color', 'no_create_edit': True}"/>
+                            </group>
+                            <group>
+                                <field name="coach_id"/>
+                                <field name="done_date"/>
+                                <field name="hand"/>
+                                <field name="dob"/>
+                                <field name="age"/>
+                                <field name="highest_standard"/>
+                                <field name="velocity"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Summary" name="summary">
+                                <group>
+                                    <group>
+                                        <field name="summary_overall_score" widget="percentpie"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="img_summary_overall_1" widget="image"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_summary_overall_2" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="legality_score" widget="int_color"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="momentum_score" widget="percentpie"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="stability_score" widget="percentpie"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="paceflow_score" widget="percentpie"/>
+                                    </group>
+                                    <group/>
+                                </group>
+                                <!--                            <group>-->
+                                <!--                                <group>-->
+                                <!--                                    <field name="summary_side_view" widget="image"/>-->
+                                <!--                                </group>-->
+                                <!--                                <group>-->
+                                <!--                                    <field name="summary_rear_view" widget="image"/>-->
+                                <!--                                </group>-->
+                                <!--                            </group>-->
+                                <group string="Drills">
+                                    <field name="drill_ids" widget="slide_category_one2many">
+                                        <tree  string="Drills" decoration-bf="is_category" default_order="order_sequence">
+                                            <field name="name"/>
+                                            <field name="slide_type"/>
+                                            <field name="channel_id"/>
+                                            <field name="completion_time"/>
+                                            <field name="is_category" invisible="1"/>
+                                            <field name="order_sequence"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Comments">
+                                    <field name="summary_note_ids" widget="slide_category_one2many">
+                                        <tree string="Comments" decoration-bf="is_category" default_order="order_sequence">
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                            <field name="order_sequence"/>
+                                            <field name="is_category" invisible="1"/>
+                                        </tree>
+                                    </field>
+                                </group>
+
+                            </page>
+                            <page string="Legality" name="legality">
+                                <group>
+                                    <group>
+                                        <field name="legality_score" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_legality_overall" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="phase_1_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_phase_1" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="phase_2_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_phase_2" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="phase_3_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_phase_3" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="phase_4_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_phase_4" widget="image"/>
+                                    </group>
+                                </group>
+                                <group string="Legality">
+                                    <field name="legality_drill_ids">
+                                        <tree string="Momentum" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="slide_type"/>
+                                            <field name="channel_id"/>
+                                            <field name="completion_time"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Comments">
+                                    <field name="legality_note_ids">
+                                        <tree string="Comments" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Momentum" name="momentum">
+                                <group>
+                                    <group>
+                                        <field name="momentum_speed"/>
+                                    </group>
+                                    <group>
+                                        <field name="momentum_score" widget="percentpie"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="img_momentum_overall" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="cadence_efficiency_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_cadence_efficiency" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="cadence_tempo_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_cadence_tempo" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="cadence_stride_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_cadence_stride" widget="image"/>
+                                    </group>
+                                </group>
+                                <group string="Momentum">
+                                    <field name="momentum_drill_ids">
+                                        <tree string="Momentum" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="slide_type"/>
+                                            <field name="channel_id"/>
+                                            <field name="completion_time"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Comments">
+                                    <field name="momentum_note_ids">
+                                        <tree string="Comments" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Stability" name="stability">
+                                <group>
+                                    <group>
+                                        <field name="stability_score" widget="percentpie"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="img_stability_overall_1" widget="image"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_stability_overall_2" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="lp_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_lp" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="hp_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_fp" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="lhcd_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_lhcd" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="cm_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_cm_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bla_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_bfc_side" widget="image"/>
+                                        <field name="img_bfc_rear" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rb_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_rb_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="h_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_h_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bad_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_bad_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="cm_bfc_ffc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_cm_bfc_ffc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fa_bfc_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_fa_bfc" widget="image"/>
+                                    </group>
+                                </group>
+                                <group string="Stability">
+                                    <field name="stability_drill_ids">
+                                        <tree string="Momentum" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="slide_type"/>
+                                            <field name="channel_id"/>
+                                            <field name="completion_time"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Comments">
+                                    <field name="stability_note_ids">
+                                        <tree string="Comments" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Paceflow" name="paceflow">
+                                <group>
+                                    <group>
+                                        <field name="paceflow_score" widget="percentpie"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="img_paceflow_overall_1" widget="image"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_paceflow_overall_2" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="heel_strike_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_heel_strike" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="front_arm_position_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_front_arm_position" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="delayed_bowling_arm_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_delayed_bowling_arm" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="pelvis_control_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_pelvis_control" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="side_flexion_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_side_flexion" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="front_knee_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_front_knee" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="top_half_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_top_half_1" widget="image"/>
+                                        <field name="img_top_half_2" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="front_arm_end_point_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_front_arm_end_point" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="shoulder_delay_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_shoulder_delay" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="ft_energy_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_ft_energy" widget="image"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="ft_direction_selection" widget="int_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="img_ft_direction" widget="image"/>
+                                    </group>
+                                </group>
+                                <group string="Stability">
+                                    <field name="paceflow_drill_ids">
+                                        <tree string="Momentum" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="slide_type"/>
+                                            <field name="channel_id"/>
+                                            <field name="completion_time"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group string="Comments">
+                                    <field name="paceflow_note_ids">
+                                        <tree string="Comments" default_order='id'>
+                                            <field name="name"/>
+                                            <field name="description"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Videos" name="videos">
+                                <group>
+                                    <div class="o_video_preview_widget"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids"/>
+                            <field name="activity_ids"/>
+                            <field name="message_ids"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      assessment  tree view-->
+        <record id='assessments_view_tree' model='ir.ui.view'>
+            <field name="name">assessment_tree</field>
+            <field name="model">assessment.assessment</field>
+            <field name="arch" type="xml">
+                <tree string="Assessments" sample="1">
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                    <field name="report_date"/>
+                    <field name="coach_id"/>
+                    <field name="tag_ids"/>
+                </tree>
+            </field>
+        </record>
+        <!--        assessment menu action-->
+        <record id="all_assessments_menu_action" model="ir.actions.act_window">
+            <field name="name">Assessments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">assessment.assessment</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+        <!--        tags form view-->
+        <record model="ir.ui.view" id="assessment_tags_form_view">
+            <field name="name">Tags</field>
+            <field name="model">assessment.tags</field>
+            <field name="arch" type="xml">
+                <form string="Tags">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--        tags tree view-->
+        <record model="ir.ui.view" id="assessment_tags_tree_view">
+            <field name="name">Tags</field>
+            <field name="model">assessment.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Tags" editable="bottom" sample="1">
+                    <field name="name"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+        <!--        tags menu action-->
+        <record id="all_tags_menu_action" model="ir.actions.act_window">
+            <field name="name">Tags</field>
+            <field name="res_model">assessment.tags</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No tags found. Let's create one!
+                </p>
+                <p>
+                    Tags are perfect to categorize your assessments.
+                </p>
+            </field>
+        </record>
+        <!--        stage menu action-->
+        <record id="all_stages_menu_action" model="ir.actions.act_window">
+            <field name="name">Stage</field>
+            <field name="res_model">assessment.stage</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No stage found. Let's create one!
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+        <!--        stage form view-->
+        <record model="ir.ui.view" id="stages_form_view">
+            <field name="name">Stage</field>
+            <field name="model">assessment.stage</field>
+            <field name="arch" type="xml">
+                <form string="Assessment Stages">
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="fold"/>
+                            </group>
+                        </group>
+                        <separator string="Requirements"/>
+                        <field name="description" nolabel="1"
+                               placeholder="Give your team the requirements to move an opportunity to this stage."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--        stage tree view-->
+        <record model="ir.ui.view" id="assessment_stage_tree_view">
+            <field name="name">Stage</field>
+            <field name="model">assessment.stage</field>
+            <field name="arch" type="xml">
+                <tree string="Stages" sample="1" multi_edit="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

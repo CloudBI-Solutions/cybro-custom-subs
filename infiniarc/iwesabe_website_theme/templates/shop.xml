@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_products_inherit" inherit_id="website_sale.products">
+        <xpath expr="//div[hasclass('oe_website_sale')]" position="attributes">
+            <attribute name="class">container-fluid oe_website_sale shop-page pt-2</attribute>
+        </xpath>
+    </template>
+
+    <template id="iwesabe_website_theme_products_item_inherit" inherit_id="website_sale.products_item">
+        <xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="inside">
+            <div class="product-price text-center" itemprop="offers" itemscope="itemscope"
+                 itemtype="http://schema.org/Offer">
+                <span t-if="combination_info['price']" class="offer-price" t-esc="combination_info['price']"
+                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <del t-attf-class="text-danger mr-2 {{'' if combination_info['has_discounted_price'] else ''}}"
+                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_wsale_product_information_text')]" position="after">
+            <p class="vat">(VAT Inclusive)</p>
+            <div class="button-wrapper text-center">
+                <div class="btn-group add-to-cart-shop" role="group"
+                     t-att-data-product-id="'%s' % product.product_variant_id.id">
+                    <a class="btn btn-left show-toaster-cart">
+                        <img src="/iwesabe_website_theme/static/src/img/shop/cart-mob.png" class="img-fluid"
+                             alt="icon"/>
+                    </a>
+                    <a href="#" class="btn btn-right customize">Add to Cart</a>
+                </div>
+            </div>
+            <div class="quick text-center">
+                <a href="#" class="quick-view-a" t-att-data-id="'%s' % product.id">
+                    QUICK VIEW
+                </a>
+            </div>
+        </xpath>
+        <xpath expr="//a[hasclass('o_product_link')]" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+</odoo>

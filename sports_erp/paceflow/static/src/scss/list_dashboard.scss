@@ -1,0 +1,38 @@
+.o_portal_wrap > .container > .row > .col-lg-6{
+    flex: 0 0 66.66666667% !important;
+    width: 66.66666667% !important;
+    max-width: 66.66666667%
+}
+.o_portal_docs{
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+
+    .list-group-item{
+        width: 40%;
+        height: 150px;
+        background-color: #CA534F;
+        border: 1px solid #BC4441;
+        color: #fff;
+        margin: 0.75rem;
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center;
+        flex-direction: column-reverse !important;
+        font-size: 1.15rem;
+        border-radius: 0px !important;
+    }
+    .badge-secondary{
+        color: #FFF;
+        background-color: transparent;
+        font-size: 2rem;
+        margin-bottom: 0.3rem;
+    }
+    .badge-pill{
+        border-radius: 0px !important;
+        padding: 0px !important;
+    }
+
+
+}

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_frontend_layout_inherit_footer" inherit_id="website.layout" name="Header">
+        <xpath expr="//footer" position="replace">
+            <footer class="bg-dark pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="footer-info pt-5">
+                                <img src="/web/image/website/1/logo/My%20Website?unique=883d018" alt="Logo"
+                                     class="footer-img"/>
+                                <ul class="mt-5 social-icons">
+                                    <li class="ml-0">
+                                        <a href="#">
+                                            <img src="/iwesabe_website_theme/static/src/img/social-icon/whatsapp.png"
+                                                 alt="Whatsapp" class="social-icon"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/iwesabe_website_theme/static/src/img/social-icon/linkedin.png"
+                                                 alt="Linkedin" class="social-icon br-3"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/iwesabe_website_theme/static/src/img/social-icon/instagram.png"
+                                                 alt="Instagram" class="social-icon"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/iwesabe_website_theme/static/src/img/social-icon/facebook.png"
+                                                 alt="Facebook" class="social-icon"/>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="/iwesabe_website_theme/static/src/img/social-icon/twitter.png"
+                                                 alt="Twitter" class="social-icon"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <form action="#" class="subscribe-form pt-2">
+                                    <input type="email" placeholder="Enter Your Email" class="email-subscriber"
+                                           name="email"/>
+                                    <button type="submit" class="subscribe-form-submit mt-3">
+                                        SUBSCRIBE
+                                    </button>
+                                </form>
+                                <div class="mt-2">
+                                    <p>
+                                        newsletter
+                                    </p>
+                                    <p class="mt-n2">
+                                        get access to exclusive offers!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 pt-45">
+                            <div class="quick-links">
+                                <h4>Product</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>gaming desktops</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>gaming laptops</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>workstation desktops</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>workstation laptops</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>government &amp; corporate</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>gearshop</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>vr</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>4k uncapped</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>custom design</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 pt-45">
+                            <div class="quick-links">
+                                <h4>Reviews</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>news</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>testimonials</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>a+ bbb rating</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>trustlink</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 pt-45">
+                            <div class="quick-links">
+                                <h4>Support</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>customer service</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>faqs</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>wallpapers</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 pt-45">
+                            <div class="quick-links">
+                                <h4>Community</h4>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>originpcfamily</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>blog</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>twitch prime</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-angle-right"/>
+                                            <span>affiliates</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+
+</odoo>

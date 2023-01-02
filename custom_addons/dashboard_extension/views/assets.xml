@@ -1,0 +1,8 @@
+<odoo>
+    <template id="inherit_front_assets_1" inherit_id="web_editor.assets_frontend" name="inherit Assets">
+        <xpath expr="." position="inside">
+                        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"></script>
+
+        </xpath>
+    </template>
+</odoo>

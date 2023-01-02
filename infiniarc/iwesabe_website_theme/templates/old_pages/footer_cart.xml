@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="footer_cart" name="Infiniarc Destop">
+        <section id="config-cart-footer-section">
+            <footer id="config-footer" class="fixed-bottom" style="">
+                <div class="container">
+                    <div class="row d-none d-lg-flex">
+                        <div id="system" data-configuration="11"
+                             class="col d-inline-flex align-items-center border-right border-dark">
+                            <img id="imgSystemIcon"
+                                 src="https://cdn.originpc.com/opc/case/opc-blob-0b61c701-20bb-453e-bde1-c196ab4c748d.png"
+                                 class="img-fluid d-none d-xl-block"/>
+                            <h4 class="ml-2 mb-0" id="lblSystemName">NEURON</h4>
+                            <br/>
+                            <h6 class="ml-2 mb-0" id="lblSystemName">
+                                <small>(Game PC)</small>
+                            </h6>
+                        </div>
+                        <div id="subtotal"
+                             class="col d-flex flex-column align-items-center justify-content-center border-right border-dark text-light text-center">
+                            <p class="label mb-0 text-uppercase">Subtotal</p>
+                            <p class="mb-0 total">
+                                <span class="dollar position-relative">$</span>
+                                <span id="lblSystemPriceMobile" class="price">2,270</span>
+                                <small class="position-relative">USD</small>
+                            </p>
+                            <div class="col estimator">
+                                <div class="gfsimulator" id="gfsimulator-16">
+                                    <div class="gfsimulator-payment-container">
+                                        <span class="gfsimulator-payment">or as low as $53.99/month
+                                            <span data-index="16" id="btn-fico-16" class="gfsimulator-btn-info">
+                                                Details
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="ship-date"
+                             class="col d-flex flex-column align-items-center justify-content-center border-right border-dark text-light">
+                            <p class="label mt-1 mb-0">EST. SHIPPING</p>
+                            <div class="d-flex">
+                                <p class="lead-time mb-0">
+                                    <span id="lblSystemLeadTimeMobile" data-toggle="tooltip" data-placement="bottom"
+                                          title=""
+                                          data-original-title="COVID 19: ORIGIN PC is operating and following health guidelines to keep our employees safe. This situation is impacting delivery and service levels. We thank you greatly for your patience.">
+                                        13 - 15
+                                    </span>
+                                </p>
+                                <span data-toggle="tooltip" data-placement="bottom" title=""
+                                      data-original-title="COVID 19: ORIGIN PC is operating and following health guidelines to keep our employees safe. This situation is impacting delivery and service levels. We thank you greatly for your patience.">
+                                    <i class="fa fa-exclamation-triangle fa-lg text-warning mx-2"
+                                       style="font-size: 1rem;"></i>
+                                </span>
+                            </div>
+                            <small>Business Days</small>
+                        </div>
+                        <div id="config-btns" class="col d-flex align-items-center text-light">
+                            <button type="button"
+                                    class="btn btn-outline-light btn-summary shadow-none d-none d-xl-block waves-effect waves-light">
+                                Summary
+                            </button>
+                            <button id="btnAddToCartMobile" type="button"
+                                    class="btn btn-success d-block waves-effect waves-light"
+                                    onclick="if (!window.__cfRLUnblockHandlers) return false; cartApp.AddToCart('Desktop')">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <div class="questions text-right">
+                            <p class="label mb-0">Have Questions?</p>
+                            <p class="orignpcwhite mb-0">
+                                <i class="fa fa-phone"></i>
+                                1-877-674-4460 (US &amp; CA)
+                            </p>
+                            <ul class="mb-0">
+                                <li class="livechat_button" data-id="a081766d9f">
+                                    <a href="#">Chat Offline</a>
+                                </li>
+                                <li class="emailus">
+                                    <a href="mailto:sales@originpc.com?subject=Customer%20Service%20-%20Shopping%20Cart">
+                                        <i class="fa fa-envelope"></i>
+                                        Email Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row d-lg-none align-items-center">
+                        <div class="col">
+                            <h3 id="lblSystemName">NEURON</h3>
+                            <p class="mb-0 text-uppercase total">Subtotal:
+                                <span class="dollar">$</span>
+                                <span id="lblSystemPriceMobile2">2,270</span>
+                            </p>
+                            <p class="mb-0">EST. SHIPPING:
+                                <span id="lblSystemLeadTimeMobile2" data-toggle="tooltip" data-placement="bottom"
+                                      title=""
+                                      data-original-title="COVID 19: ORIGIN PC is operating and following health guidelines to keep our employees safe. This situation is impacting delivery and service levels. We thank you greatly for your patience.">
+                                    13 - 15
+                                </span>
+                            </p>
+                            <button type="button" class="btn btn-sm btn-outline-warning mx-0 waves-effect waves-light"
+                                    data-toggle="modal" data-target="#covidModal">
+                                <i class="fa fa-exclamation-triangle fa-lg mr-1"></i>
+                                COVID-19
+                            </button>
+                        </div>
+                        <div class="col">
+                            <button id="btnAddToCartMobile2" type="button"
+                                    class="btn btn-success btn-md float-right d-block waves-effect waves-light"
+                                    onclick="if (!window.__cfRLUnblockHandlers) return false; cartApp.AddToCart('Desktop')">
+                                <i class="fal fa-cart-plus"></i>
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </template>
+</odoo>

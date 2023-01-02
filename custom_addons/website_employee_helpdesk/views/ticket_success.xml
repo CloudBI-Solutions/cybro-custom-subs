@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Requests Thankyou-->
+        <record id="ticket_success" model="website.page">
+            <field name="name">Success(Ticket)</field>
+            <field name="type">qweb</field>
+            <field name="url">/ticket_success</field>
+            <field name="is_published">True</field>
+            <field name="key">website_employee_helpdesk.ticket_success</field>
+            <field name="arch" type="xml">
+                <t name="Success(Ticket)" t-name="website_employee_helpdesk.ticket_success">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="container">
+                                <h1>Thank You</h1>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="alert alert-success"
+                                             role="status">
+                                            Your ticket has been sent.
+                                        </div>
+                                        <p>
+                                            We will get back to you shortly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+    </data>
+</odoo>

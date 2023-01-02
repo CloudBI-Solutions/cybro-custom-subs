@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="helpdesk_action" model="ir.actions.act_window">
+    <field name="name">Employee Helpdesk</field>
+    <field name="res_model">employee.helpdesk</field>
+    <field name="view_mode">tree,form</field>
+    <field name="target">current</field>
+</record>
+
+<menuitem id="helpdesk_menu_root" name="Helpdesk" action="helpdesk_action"/>
+
+
+</odoo>

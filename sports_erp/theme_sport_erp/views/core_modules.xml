@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="s_video_template" name="Video Template">
+        <section class="">
+            <div class="tab_video">
+                <section>
+                    <div class="play_btn">
+                        <img src="/theme_sport_erp/static/src/images/core-module/play.svg"
+                             alt=""/>
+                    </div>
+                </section>
+                <section>
+                    <img class="video-fluid z-depth-1 image"
+                         src="/theme_sport_erp/static/src/video/video.png">
+                    </img>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="core_modules" name="Core Modules">
+        <t t-call="portal.portal_layout">
+            <div class="set-banner set-banner--light">
+                <div class="set-wrapper">
+                    <h1 class="set-title set-title--h2 mb-3">Core Modules</h1>
+                    <p class="set-banner__lead">
+                        Includes core SportERP functionality.
+                    </p>
+                </div>
+            </div>
+            <t t-call="theme_sport_erp.s_tabs_sport_erp"/>
+            <div id="wrap" class="oe_structure oe_empty"/>
+        </t>
+    </template>
+
+</odoo>

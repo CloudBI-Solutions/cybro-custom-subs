@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<odoo>
+    <data>
+        <template id='smsa_shipment'>
+        <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+            <soap12:Body>        
+                <addShip xmlns="http://track.smsaexpress.com/secom/">
+                    <passKey><t t-esc="data['passKey']"/></passKey>
+                    <refNo><t t-esc="data['refNo']"/></refNo>
+                    <sentDate><t t-esc="data['sentDate']"/></sentDate>
+                    <idNo><t t-esc="data['idNo']"/></idNo>
+                    <cName><t t-esc="data['consignee_data']['cName']"/></cName>
+                    <cntry><t t-esc="data['consignee_data']['cntry']"/></cntry>
+                    <cCity><t t-esc="data['consignee_data']['cCity']"/></cCity>
+                    <cZip><t t-esc="data['consignee_data']['cZip']"/></cZip>
+                    <cPOBox></cPOBox>
+                    <cMobile><t t-esc="data['consignee_data']['cMobile']"/></cMobile>
+                    <cTel1><t t-esc="data['consignee_data']['cTel1']"/></cTel1>
+                    <cTel2><t t-esc="data['consignee_data']['cTel2']"/></cTel2>
+                    <cAddr1><t t-esc="data['consignee_data']['cAddr1']"/></cAddr1>
+                    <cAddr2><t t-esc="data['consignee_data']['cAddr2']"/></cAddr2>
+                    <shipType><t t-esc="data['shipType']"/></shipType>
+                    <PCs><t t-esc="data['shipment_data']['PCs']"/></PCs>
+                    <cEmail><t t-esc="data['consignee_data']['cEmail']"/></cEmail>
+                    <carrValue><t t-esc="data['shipment_data']['carrValue']"/></carrValue>
+                    <carrCurr><t t-esc="data['shipment_data']['carrCurr']"/></carrCurr>
+                    <codAmt><t t-esc="data['shipment_data']['codAmt']"/></codAmt>
+                    <weight><t t-esc="data['shipment_data']['weight']"/></weight>
+                    <custVal></custVal>
+                    <custCurr></custCurr>
+                    <insrAmt><t t-esc="data['shipment_data']['insrAmt']"/></insrAmt>
+                    <insrCurr><t t-esc="data['shipment_data']['insrCurr']"/></insrCurr>
+                    <itemDesc>SMSA Shipment</itemDesc>
+                    <sName><t t-esc="data['shipper_data']['sName']"/></sName>
+                    <sContact><t t-esc="data['shipper_data']['sContact']"/></sContact>
+                    <sAddr1><t t-esc="data['shipper_data']['sAddr1']"/></sAddr1>
+                    <sAddr2><t t-esc="data['shipper_data']['sAddr2']"/></sAddr2>
+                    <sCity><t t-esc="data['shipper_data']['sCity']"/></sCity>
+                    <sPhone><t t-esc="data['shipper_data']['sPhone']"/></sPhone>
+                    <sCntry><t t-esc="data['shipper_data']['sCntry']"/></sCntry>
+                    <prefDelvDate></prefDelvDate>
+                    <gpsPoints></gpsPoints>
+                </addShip>
+            </soap12:Body>
+        </soap12:Envelope>            
+        </template>
+
+        <template id="smsa_label">
+        <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+            <soap12:Body>
+                <getPDF xmlns="http://track.smsaexpress.com/secom/">
+                    <awbNo><t t-esc='awbNo'/></awbNo>
+                    <passKey><t t-esc='passKey'/></passKey>
+                </getPDF>
+            </soap12:Body>
+        </soap12:Envelope>
+        </template>
+
+        <template id='smsa_cancel'>
+        <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+            <soap12:Body>
+                <cancelShipment xmlns="http://track.smsaexpress.com/secom/">
+                    <awbNo><t t-esc='awbNo'/></awbNo>
+                    <passkey><t t-esc='passkey'/></passkey>
+                    <reas><t t-esc='reas'/></reas>
+                </cancelShipment>
+            </soap12:Body>
+        </soap12:Envelope>
+        </template>
+
+        <template id='smsa_return'>
+        <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+        <soap12:Body>
+            <stoShipment xmlns="http://track.smsaexpress.com/secom/">
+            <awbNo><t t-esc='awbNo'/></awbNo>
+            <passkey><t t-esc='passkey'/></passkey>
+            </stoShipment>
+        </soap12:Body>
+        </soap12:Envelope>
+        </template>
+
+        <template id='smsa_rate'>
+        <soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">
+        <soap12:Body>
+            <getShipCharges xmlns="http://track.smsaexpress.com/secom/">
+            <passKey><t t-esc="data['passKey']"/></passKey>
+            <shipCity><t t-esc="data['shipper_data']['sCity']"/></shipCity>
+            <shipCntry><t t-esc="data['shipper_data']['sCntry']"/></shipCntry>
+            <destCity><t t-esc="data['consignee_data']['cCity']"/></destCity>
+            <destCntry><t t-esc="data['consignee_data']['cntry']"/></destCntry>
+            <shipType><t t-esc="data['shipType']"/></shipType>
+            <codAmt><t t-esc="data['codAmt']"/></codAmt>
+            <weight><t t-esc="data['weight']"/></weight>
+            </getShipCharges>
+        </soap12:Body>
+        </soap12:Envelope>
+        </template>
+    </data>
+</odoo>

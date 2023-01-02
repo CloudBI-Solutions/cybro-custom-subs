@@ -1,0 +1,1968 @@
+<odoo>
+    <data>
+        <!-- ASSESSMENT KANBAN -->
+        <record model="ir.ui.view" id="badminto_assessments_view_kanban">
+            <field name="name">badminto.assessments.kanban</field>
+            <field name="model">badminto.assessment</field>
+            <field name="priority">10</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="stage_id" class="o_modules_kanban"
+                        sample="1">
+                    <field name="partner_id"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_details oe_kanban_global_click">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <ul>
+                                    <li>
+                                        <t t-if="record.partner_id.raw_value">
+                                            Contact :
+                                            <field name="partner_id"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.report_date.raw_value">
+                                            Report Date :
+                                            <field name="report_date"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.done_date.raw_value">
+                                            Date Done :
+                                            <field name="done_date"/>
+                                        </t>
+                                    </li>
+                                    <li>
+                                        <t t-if="record.coach_id.raw_value">
+                                            Responsible :
+                                            <field name="coach_id"/>
+                                        </t>
+                                    </li>
+                                </ul>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- ASSESSMENT FORM -->
+
+        <record id="badminto_assessment_view_form" model="ir.ui.view">
+            <field name="name">badminto.assessment.view.form</field>
+            <field name="model">badminto.assessment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="stage_id" widget="statusbar"
+                               clickable="1"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_id"/>
+                                <field name="partner_id"/>
+                                <field name="athlete_id"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="report_date"/>
+                                <field name="tag_ids" widget="many2many_tags"
+                                       options="{'color_field': 'color', 'no_create_edit': True}"/>
+                                <field name="assessment_type_ids"
+                                       widget="many2many_tags"
+                                       options="{'color_field': 'color', 'no_open':True,'no_create':1, 'no_create_edit': True}"/>
+                            </group>
+                            <group>
+                                <field name="coach_id"/>
+                                <field name="done_date"/>
+                                <field name="hand"/>
+                                <field name="current_rank"/>
+                                <field name="dob"/>
+                                <field name="age"/>
+                                <field name="highest_standard"/>
+                                <field name="organisation_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="attachment_ids">
+                                <tree>
+                                    <field name="name"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <notebook>
+                            <page string="Technical Assessments"
+                                  name="technical_assessment">
+                                <group>
+                                    <group>
+                                        <field name="s_r"/>
+                                        <field name="fnz"/>
+                                        <field name="bnz"/>
+                                        <field name="fmz"/>
+                                        <field name="bmz"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz"/>
+                                        <field name="rcbz"/>
+                                        <field name="rcfz"/>
+                                        <field name="footwork"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="S/R" name="s_r_assessment"
+                                  attrs="{'invisible': [('s_r', '=', False)]}">
+                                <group string="IN: Service">
+                                    <field name="overall_in_service"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="service_grip"
+                                               widget="badminto_color"/>
+                                        <field name="service_sp"
+                                               widget="badminto_color"/>
+                                        <field name="service_bp"
+                                               widget="badminto_color"/>
+                                        <field name="service_be"
+                                               widget="badminto_color"/>
+                                        <field name="service_fs"
+                                               widget="badminto_color"/>
+                                        <field name="service_toi"
+                                               widget="badminto_color"/>
+                                        <field name="service_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="service_video" widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="IN: Receiving">
+                                    <field name="overall_in_receiving"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="receiving_grip"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_sp"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_bp"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_be"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_fs"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_toi"
+                                               widget="badminto_color"/>
+                                        <field name="receiving_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="receiving_video" widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="FNZ" name="fnz_assessment"
+                                  attrs="{'invisible': [('fnz', '=', False)]}">
+                                <group string="Overall FNZ">
+                                    <field name="overall_fnz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="TO: Forehand net kill">
+                                    <field name="fnz_to_fnk"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_to_fnk_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_to_fnk_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_to_fnk_video"
+                                               widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand net push">
+                                    <field name="fnz_co_fnp"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_fnp_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fnp_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_fnp_video"
+                                               widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Offensive forehand cross net">
+                                    <field name="fnz_co_ofcn"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_ofcn_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_ofcn_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_ofcn_video"
+                                               widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand offensive lift">
+                                    <field name="fnz_co_fol"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_fol_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fol_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_fol_video"
+                                               widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand straight spin">
+                                    <field name="fnz_co_fss"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_fss_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_fss_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_fss_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand reverse spin">
+                                    <field name="fnz_co_frs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_frs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_frs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_frs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50 to CO: Net block">
+                                    <field name="fnz_co_nb"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_co_nb_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_co_nb_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_co_nb_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Forehand reverse spin">
+                                    <field name="fnz_frs" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_frs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_frs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_frs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="Neutralisation">
+                                    <field name="fnz_neutralisation"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_neutralisation_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_neutralisation_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_neutralisation_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Defensive forehand cross net">
+                                    <field name="fnz_cd_dfcn"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_cd_dfcn_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfcn_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_cd_dfcn_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Defensive forehand lifts">
+                                    <field name="fnz_cd_dfl"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_cd_dfl_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_cd_dfl_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_cd_dfl_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TD: Defensive dive">
+                                    <field name="fnz_td_dd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fnz_td_dd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_be"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fnz_td_dd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fnz_td_dd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="BNZ" name="bnz_assessment"
+                                  attrs="{'invisible': [('bnz', '=', False)]}">
+                                <group>
+                                    <field name="overall_bnz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="TO: Forehand net kill">
+                                    <field name="bnz_to_fnk"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_to_fnk_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_to_fnk_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_to_fnk_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand net push">
+                                    <field name="bnz_co_fnp"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_fnp_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fnp_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_fnp_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Offensive forehand cross net">
+                                    <field name="bnz_co_ofcn"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_ofcn_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_ofcn_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_ofcn_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand offensive lift">
+                                    <field name="bnz_co_fol"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_fol_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fol_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_fol_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand straight spin">
+                                    <field name="bnz_co_fss"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_fss_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_fss_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_fss_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand reverse spin">
+                                    <field name="bnz_co_frs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_frs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_frs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_frs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50 to CO: Net block">
+                                    <field name="bnz_co_nb"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_co_nb_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_co_nb_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_co_nb_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Forehand reverse spin">
+                                    <field name="bnz_frs" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_frs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_frs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_frs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="Neutralisation">
+                                    <field name="bnz_neutralisation"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_neutralisation_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_neutralisation_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_neutralisation_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Defensive forehand cross net">
+                                    <field name="bnz_cd_dfcn"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_cd_dfcn_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfcn_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_cd_dfcn_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Defensive forehand lifts">
+                                    <field name="bnz_cd_dfl"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_cd_dfl_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_cd_dfl_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_cd_dfl_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TD: Defensive dive">
+                                    <field name="bnz_td_dd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bnz_td_dd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_be"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bnz_td_dd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bnz_td_dd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="FMZ" name="fmz_assessment"
+                                  attrs="{'invisible': [('fmz', '=', False)]}">
+                                <group>
+                                    <field name="overall_fmz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="CO: Side smash">
+                                    <field name="fmz_co_ss"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_co_ss_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_co_ss_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_co_ss_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Forehand mid-court push (straight &amp; cross)">
+                                    <field name="fmz_fmcp" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_fmcp_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fmcp_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_fmcp_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Forehand defense straight (short)">
+                                    <field name="fmz_cd_fds_s"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_cd_fds_s_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_s_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_cd_fds_s_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Forehand defense cross (short)">
+                                    <field name="fmz_cd_fdc_s"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_cd_fdc_s_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_s_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_cd_fdc_s_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Forehand defense straight (long)">
+                                    <field name="fmz_cd_fds_l"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_cd_fds_l_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fds_l_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_cd_fds_l_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Forehand defense cross (long)">
+                                    <field name="fmz_cd_fdc_l"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_cd_fdc_l_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdc_l_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_cd_fdc_l_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Forehand defense contra-attack">
+                                    <field name="fmz_cd_fdca"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_cd_fdca_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_cd_fdca_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_cd_fdca_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TD: Forehand dive">
+                                    <field name="fmz_fd" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="fmz_fd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_be"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="fmz_fd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="fmz_fd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="BMZ" name="bmz_assessment"
+                                  attrs="{'invisible': [('bmz', '=', False)]}">
+                                <group>
+                                    <field name="overall_bmz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="CO: Side smash">
+                                    <field name="bmz_co_ss"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_co_ss_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_co_ss_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_co_ss_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Backhand mid-court push (straight &amp; cross)">
+                                    <field name="bmz_bmcp" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_bmcp_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_bmcp_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_bmcp_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Backhand defense straight (short)">
+                                    <field name="bmz_cd_bds_s"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_cd_bds_s_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_s_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_cd_bds_s_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Backhand defense cross (short)">
+                                    <field name="bmz_cd_bdc_s"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_s_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_s_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_s_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Backhand defense straight (long)">
+                                    <field name="bmz_cd_bds_l"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_cd_bds_l_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bds_l_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_cd_bds_l_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Backhand defense cross (long)">
+                                    <field name="bmz_cd_bdc_l"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_l_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_l_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_l_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CD: Backhand defense contra-attack">
+                                    <field name="bmz_cd_bdc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_cd_bdc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_cd_bdc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TD: Backhand dive">
+                                    <field name="bmz_td_bd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="bmz_td_bd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_be"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="bmz_td_bd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="bmz_td_bd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="RCOvhZ" name="rcovhz_assessment"
+                                  attrs="{'invisible': [('rcovhz', '=', False)]}">
+                                <group>
+                                    <field name="overall_rcovhz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="TO: Jump smash">
+                                    <field name="rcovhz_to_js"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_to_js_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_js_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_to_js_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TO: Full-body rotation smash">
+                                    <field name="rcovhz_to_frs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_to_frs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_frs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_to_frs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TO to CO: Stick smash">
+                                    <field name="rcovhz_to_co_ss"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_to_co_ss_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_to_co_ss_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_to_co_ss_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Overhead cut">
+                                    <field name="rcovhz_co_oc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_co_oc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_oc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_co_oc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Overhead reverse cut">
+                                    <field name="rcovhz_co_orc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_co_orc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_orc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_co_orc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Overhead offensive clears">
+                                    <field name="rcovhz_co_ooc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_co_ooc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_co_ooc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_co_ooc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Overhead clears">
+                                    <field name="rcovhz_oc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcovhz_oc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcovhz_oc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcovhz_oc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="RCBZ" name="rcbz_assessment"
+                                  attrs="{'invisible': [('rcbz', '=', False)]}">
+                                <group>
+                                    <field name="overall_rcbz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="CO: Offensive backhand clear">
+                                    <field name="rcbz_co_obc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcbz_co_obc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_obc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcbz_co_obc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Backhand reverse drop">
+                                    <field name="rcbz_co_brd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcbz_co_brd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_co_brd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcbz_co_brd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Backhand cut drop">
+                                    <field name="rcbz_bcd" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcbz_bcd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_bcd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcbz_bcd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50 to CD: Neutralisation straight">
+                                    <field name="rcbz_cd_ns"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcbz_cd_ns_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_ns_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcbz_cd_ns_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50 to CD: Neutralisation cross">
+                                    <field name="rcbz_cd_nc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcbz_cd_nc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcbz_cd_nc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcbz_cd_nc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="RCFZ" name="rcfz_assessment"
+                                  attrs="{'invisible': [('rcfz', '=', False)]}">
+                                <group>
+                                    <field name="overall_rcfz"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="TO: Jump smash">
+                                    <field name="rcfz_to_js"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_to_js_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_js_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_to_js_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TO: Full body rotation smash">
+                                    <field name="rcfz_to_fbrs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_to_fbrs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_to_fbrs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_to_fbrs_video"
+                                               widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Offensive clears">
+                                    <field name="rcfz_co_oc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_oc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_oc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_oc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand cut straight">
+                                    <field name="rcfz_co_fcs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_fcs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_fcs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand cut cross">
+                                    <field name="rcfz_co_fcc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_fcc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fcc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_fcc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand normal drops">
+                                    <field name="rcfz_co_fnd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_fnd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_fnd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_fnd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO: Forehand reverse cut straight">
+                                    <field name="rcfz_co_frcs"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_frcs_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_frcs_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_frcs_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="CO to 50/50: Defensive clears">
+                                    <field name="rcfz_co_dc"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_co_dc_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_co_dc_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_co_dc_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="50/50: Forehand neutralisation">
+                                    <field name="rcfz_fn" widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_fn_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_fn_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_fn_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="TD: Forehand dive">
+                                    <field name="rcfz_td_fd"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="rcfz_td_fd_grip"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_sp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_bp"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_be"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_fs"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_toi"
+                                               widget="badminto_color"/>
+                                        <field name="rcfz_td_fd_ft"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="rcfz_td_fd_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Footwork Patterns"
+                                  name="footwork_patterns"
+                                  attrs="{'invisible': [('footwork', '=', False)]}">
+                                <group>
+                                    <field name="overall_footwork"
+                                           widget="percentpie"/>
+                                </group>
+                                <group string="Offensive footwork pattern: 6 corners">
+                                    <field name="footwork_ofp"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="footwork_ofp_fnz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_ofp_bnz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_ofp_fmz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_ofp_bmz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_ofp_rcovhz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_ofp_rcfz"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="footwork_ofp_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                                <group string="Defensive footwork pattern: 6 corners">
+                                    <field name="footwork_dfp"
+                                           widget="percentpie"/>
+                                </group>
+                                <group>
+                                    <group>
+                                        <field name="footwork_dfp_fnz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_dfp_bnz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_dfp_fmz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_dfp_bmz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_dfp_rcbz"
+                                               widget="badminto_color"/>
+                                        <field name="footwork_dfp_rcfz"
+                                               widget="badminto_color"/>
+                                    </group>
+                                    <group>
+                                        <field name="footwork_dfp_video"
+                                        widget="video_widget"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids"/>
+                            <field name="activity_ids"/>
+                            <field name="message_ids"/>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- ASSESSMENT TREE -->
+        <record id="badminto_assessment_view_tree" model="ir.ui.view">
+            <field name="name">badminto.assessment.view.tree</field>
+            <field name="model">badminto.assessment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="stage_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--         stage form view -->
+        <record model="ir.ui.view" id="badminto_stages_form_view">
+            <field name="name">Stage</field>
+            <field name="model">badminto.assessment.stage</field>
+            <field name="arch" type="xml">
+                <form string="Assessment Stages">
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="fold"/>
+                            </group>
+                        </group>
+                        <separator string="Requirements"/>
+                        <field name="description" nolabel="1"
+                               placeholder="Give your team the requirements to move an opportunity to this stage."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--         stage tree view -->
+        <record model="ir.ui.view" id="badminto_assessment_stage_tree_view">
+            <field name="name">Stage</field>
+            <field name="model">badminto.assessment.stage</field>
+            <field name="arch" type="xml">
+                <tree string="Stages" sample="1" multi_edit="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+        <!--         tags form view -->
+        <record model="ir.ui.view" id="badminto_assessment_tags_form_view">
+            <field name="name">Tags</field>
+            <field name="model">badminto.assessment.tags</field>
+            <field name="arch" type="xml">
+                <form string="Tags">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--         tags tree view -->
+        <record model="ir.ui.view" id="badminto.assessment_tags_tree_view">
+            <field name="name">Tags</field>
+            <field name="model">badminto.assessment.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Tags" editable="bottom" sample="1">
+                    <field name="name"/>
+                    <field name="color" widget="color_picker"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

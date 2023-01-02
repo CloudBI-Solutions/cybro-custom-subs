@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="saas_portal_pricing">
+            <t t-call="website.layout">
+                <div class="s_banner text-center" style="margin-bottom: 0px !important;">
+                    <h1 style="font-size: 5rem; padding: 25px;">
+                        Saas Pricing Portal
+                    </h1>
+                </div>
+                <form class="form pt-3">
+                <div class="row">
+                    <div class="col-12 col-md-8 col-lg-9">
+                        <div class="ml-3 mt-3 mb-4">
+                            <h2>Choose the number of Users</h2>
+                        </div>
+                        <div class="ml-3 row">
+                            <div class="col-2">
+                                <input id="users_count"
+                                       class="form-control" type="number"
+                                       min="1" value="1"
+                                       style="text-align: end; height: 2.8rem; font-size: 20px;"/>
+                            </div>
+                            <div class="col-4" style="vertical-align: middle;">
+                                <h3 style="margin-top: 5px;">
+                                   <b>Users</b>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="pricing">
+                            <div class="heading ml-3 mt-3 mb-4">
+                                <h2 id="our_apps">
+                                    Our <b>Apps</b>
+                                </h2>
+                            </div>
+                            <div class="mb24">
+                                <div class="form-row">
+                                    <t t-foreach="apps" t-as="app">
+                                        <div class="col-12 col-sm-6 col-lg-4">
+                                            <div class="card d-flex flex-row p-2 mb-2 align-items-stretch">
+                                                <div class="img-container">
+                                                    <img t-if="app.icon_image"
+                                                         width="60px"
+                                                         t-att-src="image_data_uri(app.icon_image)"/>
+                                                </div>
+                                                <span class="app-desc"
+                                                      style="color: rgba(0, 0, 0, 0.5); font-size: 1.15rem;">
+                                                    <t t-esc="app.shortdesc"/>
+                                                </span>
+                                                <input class="form-check-input"
+                                                       type="checkbox"
+                                                       t-att-value="app.id"
+                                                       style="display: none;"/>
+                                                <i class="fa fa-check-circle app-radio"
+                                                   aria-hidden="true"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4 col-lg-3 mt16">
+                        <h2>Pricing</h2>
+                        <div>
+                            <input class="radio" id="one" name="group" type="radio" checked="checked"/>
+                            <input class="radio" id="two" name="group" type="radio"/>
+                            <div class="tabs">
+                                <label class="tab" id="one-tab" for="one">Annually</label>
+                                <label class="tab" id="two-tab" for="two">Monthly</label>
+                            </div>
+                            <div class="panels">
+                                <div class="panel" id="one-panel"
+                                     style="height: fit-content;">
+                                    <div class="panel-title">Annual</div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input id="users_annual"
+                                                       class="form-control"
+                                                       type="number"
+                                                       min="1" value="1"
+                                                       readonly="1"
+                                                       disabled="1"
+                                                       style="font-weight: bold;
+                                                              text-align: end;
+                                                              border:none;
+                                                              background: white;
+                                                              font-size: 26px;">
+                                                </input>
+                                            </div>
+                                            <div class="col-5"
+                                                 style="vertical-align: middle;
+                                                        margin-left: -40px;">
+                                                <h4 style="margin-top: 12px;">
+                                                   <b>Users</b>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input id="apps_annual"
+                                                       class="form-control"
+                                                       type="number"
+                                                       min="0" value="0"
+                                                       readonly="1"
+                                                       disabled="1"
+                                                       style="font-weight: bold;
+                                                              text-align: end;
+                                                              border:none;
+                                                              background: white;
+                                                              font-size: 26px;">
+                                                </input>
+                                            </div>
+                                            <div class="col-5"
+                                                 style="vertical-align: middle;
+                                                        margin-left: -40px;">
+                                                <h4 style="margin-top: 12px;">
+                                                   <b>Apps</b>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <input type="button"
+                                                   class="btn btn-primary"
+                                                   value="Subscribe"
+                                                   style="padding: 10px 10px;"/>
+                                        </div>
+                                    </div>
+                                    <div class="panel" id="two-panel">
+                                        <div class="panel-title">Monthly</div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input id="users_monthly"
+                                                       class="form-control"
+                                                       type="number"
+                                                       min="1" value="1"
+                                                       readonly="1"
+                                                       disabled="1"
+                                                       style="font-weight: bold;
+                                                              text-align: end;
+                                                              border:none;
+                                                              background: white;
+                                                              font-size: 26px;">
+                                                </input>
+                                            </div>
+                                            <div class="col-5"
+                                                 style="vertical-align: middle;
+                                                        margin-left: -40px;">
+                                                <h4 style="margin-top: 12px;">
+                                                   <b>Users</b>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <input id="apps_monthly"
+                                                       class="form-control"
+                                                       type="number"
+                                                       min="0" value="0"
+                                                       readonly="1"
+                                                       disabled="1"
+                                                       style="font-weight: bold;
+                                                              text-align: end;
+                                                              border:none;
+                                                              background: white;
+                                                              font-size: 26px;">
+                                                </input>
+                                            </div>
+                                            <div class="col-5"
+                                                 style="vertical-align: middle;
+                                                        margin-left: -40px;">
+                                                <h4 style="margin-top: 12px;">
+                                                   <b>Apps</b>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <input type="button"
+                                                   class="btn btn-primary"
+                                                   value="Subscribe"
+                                                   style="padding: 10px 10px;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </t>
+        </template>
+    </data>
+</odoo>

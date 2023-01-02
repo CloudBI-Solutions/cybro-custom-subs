@@ -1,0 +1,980 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="subscription_contract_template" name="Subscription Contracts">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscriptions"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscriptions
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscription_contracts"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscription Contracts
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="se-wrapper">
+
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">
+                                Subscription Contracts
+                            </h2>
+                            <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                <t t-esc="total"/>
+                            </span>
+                        </div>
+
+                        <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                         width="18" height="18" class="mr-2"/>
+                                    <span class="title--show">Go To</span>
+                                </button>
+                                <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                    <a class="set-dropdown-item dropdown-item"
+                                       href="/my/subscriptions/">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                             width="14" height="14"
+                                             class="mr-3"/>
+                                        <span>Subscriptions</span>
+                                    </a>
+                                    <a class="set-dropdown-item dropdown-item"
+                                       href="/my/subscription_products/">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                             width="14" height="14"
+                                             class="mr-3"/>
+                                        <span>Subscription Products</span>
+                                    </a>
+                                    <a class="set-dropdown-item dropdown-item"
+                                       href="/my/subscription_plans/">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                             width="14" height="14"
+                                             class="mr-3"/>
+                                        <span>Subscription Plans</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                        data-toggle="modal"
+                                        data-target="#addContractModal">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>
+                                    <span class="title--show">
+                                        Add New Subscription Contract
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__table-options">
+                                <a href="#"
+                                   class="set-button set-button--light set-dashboard__table-button mr-2">
+                                    <i class="fa fa-filter mr-2"/>Filter
+                                </a>
+                                <div class="set-dashboard__input-container">
+                                    <form class="o_wsale_products_searchbar_form"
+                                          method="get"
+                                          action="/my/subscription_contracts">
+                                        <input type="search"
+                                               name="search"
+                                               id="myInput"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"
+                                               onFocus="myFunction()"
+                                               autocomplete="off"
+                                               onBlur="setTimeout(myFunction, 300);"
+                                               onkeyup="filterFunction()"/>
+                                        <div id="myDropdown"
+                                             class="dropdown-content">
+                                            <t t-foreach="total_subscription_contracts"
+                                               t-as="contract">
+                                                <a t-att-href="'/my/subscription_contract_details/%s' % contract.id">
+                                                    <t t-esc="contract.name"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <script>function
+                                myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show-div");
+                                } function
+                                filterFunction() {
+                                var input, filter,
+                                ul, li, a, i; input
+                                =
+                                document.getElementById("myInput");
+                                filter =
+                                input.value.toUpperCase();
+                                div =
+                                document.getElementById("myDropdown");
+                                a =
+                                div.getElementsByTagName("a");
+                                for (i = 0; i
+                                &lt; a.length
+                                ; i++) { txtValue =
+                                a[i].textContent ||
+                                a[i].innerText; if
+                                (txtValue.toUpperCase().indexOf(filter)
+                                > -1) {
+                                a[i].style.display =
+                                ""; } else {
+                                a[i].style.display =
+                                "none"; } } }
+                            </script>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="set-dashboard__table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select-all"/>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Status</th>
+                                        <th>Type</th>
+                                        <th>Subscriptions</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="subscription_contract"
+                                       t-as="contract">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select"/>
+                                            </td>
+                                            <td>
+                                                <a t-att-href="'/my/subscription_contract_details/%s' % contract.id">
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="contract.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Subscription
+                                                            Contract
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--blue set-badge--wide">
+                                                        <t t-esc="contract.contract_status"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--green set-badge--wide">
+                                                        <t t-esc="contract.contract_type"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <t t-foreach="contract.subscription_ids"
+                                                   t-as="contract_subscription">
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--gold set-badge--wide">
+                                                            <t t-esc="contract_subscription.name"/>
+                                                        </span>
+
+                                                    </div>
+                                                </t>
+                                            </td>
+                                            <td>
+                                                <div class="set-dashboard__table-actions">
+                                                    <a t-att-href="'/my/subscription_contract_details/%s' % contract.id"
+                                                       class="set-dashboard__table-action mr-4">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Edit"
+                                                             title="Edit"/>
+                                                    </a>
+                                                    <a t-att-href="'/my/delete_subscription_contract/%s' % contract.id"
+                                                       class="set-dashboard__table-action">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Remove"
+                                                             title="Remove"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+
+                            <div class="set-dashboard__table-footer">
+                                <span class="set-dashboard__page-position set-text set-text--grey">
+                                    Page
+                                    <span t-out="pager['page']['num']"/>
+                                    of
+                                    <t t-if="pager['page_count'] > 1">
+                                        <span t-out="pager['pages'][-1]['num']"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-out="pager['page']['num']"/>
+                                    </t>
+                                </span>
+                                <ul
+                                        class="set-dashboard__pagination">
+                                    <t t-foreach="pager['pages']"
+                                       t-as="page">
+                                        <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                            <a t-att-href="page['url']"
+                                               t-attf-class="page-link #{extraLinkClass}"
+                                               t-out="page['num']"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal se-modal" id="addContractModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addFanLabel" aria-hidden="true">
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addFanModalLabel">Add New Contract
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form action="/create/subscription_contract"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="contract_name">
+                                                Contract Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   id="contract_name"
+                                                   name="contract_name"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="partner_id">
+                                                Customer
+                                            </label>
+                                            <!--                                                SELECT CUSTOMER-->
+
+                                            <select name="customers"
+                                                    id="customers"
+                                                    class="form-control se-form-control sports-erp-dashbaord-select"
+                                                    multiple="multiple"
+                                                    placeholder="Choose Customers">
+                                                <t t-foreach="customers or []"
+                                                   t-as="customer">
+                                                    <option t-att-value="customer.id">
+                                                        <t t-esc="customer.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                            <!--                                                <select class="form-control se-form-control"-->
+                                            <!--                                                        id="partner_id"-->
+                                            <!--                                                        name="partner_id">-->
+                                            <!--                                                    <t t-foreach="customers"-->
+                                            <!--                                                       t-as="customer">-->
+                                            <!--                                                        <option t-att-value="customer.id">-->
+                                            <!--                                                            <t t-esc="customer.name"/>-->
+                                            <!--                                                        </option>-->
+                                            <!--                                                    </t>-->
+                                            <!--                                                </select>-->
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="pricelist">
+                                                Price List
+                                            </label>
+                                            <t t-set="pricelists"
+                                               t-value="request.env['product.pricelist'].sudo().search([])"/>
+                                            <select class="form-control se-form-control"
+                                                    id="pricelist"
+                                                    name="pricelist">
+                                                <t t-foreach="pricelists"
+                                                   t-as="pricelist">
+                                                    <option t-att-value="pricelist.id">
+                                                        <t t-esc="pricelist.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="contract_status">
+                                                Contract Status
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="contract_status"
+                                                    name="contract_status">
+                                                <option value="active">
+                                                    Active
+                                                </option>
+                                                <option value="finished">
+                                                    Finished
+                                                </option>
+                                                <option value="yet_start">
+                                                    Yet to Start
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="reason">
+                                                Reason
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="reason"
+                                                    name="reason">
+                                                <option value="new_member">
+                                                    New Member
+                                                </option>
+                                                <option value="renewal">
+                                                    Renewal
+                                                </option>
+                                                <option value="new_site">
+                                                    New Site Move
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="signed_agreement">
+                                                Signed Agreement
+                                            </label>
+                                            <input type="file"
+                                                   class="form-control se-form-control"
+                                                   id="signed_agreement"
+                                                   style="height: calc(1.5em + 0.75rem + 9px) !important;"
+                                                   name="signed_agreement"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="latest_record">
+                                                Latest Record
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="latest_record"
+                                                   name="latest_record"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="contract_type">
+                                                Contract Type
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="contract_type"
+                                                    name="contract_type">
+                                                <option value="online">
+                                                    Online
+                                                </option>
+                                                <option value="studio">
+                                                    Studio
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                    <div>
+                                        <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                            style="font-size: 1.15rem !important;">
+                                            Freeze Information
+                                        </h5>
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="allowed_freeze_count">
+                                                Allowed Freeze Count
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control se-form-control"
+                                                   name="allowed_freeze_count"
+                                                   id="allowed_freeze_count"
+                                                   style="text-align: end;"
+                                            />
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="freeze_period">
+                                                Freeze Period
+                                            </label>
+                                            <div>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="freeze_period"
+                                                       id="freeze_period"
+                                                       style="text-align: end;"
+                                                       min="0"
+                                                />
+                                                <input type="text"
+                                                       value="Days"
+                                                       id="days_freeze_count"
+                                                       disabled="1"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="freeze_price">
+                                                Freeze Price
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control se-form-control"
+                                                   name="freeze_price"
+                                                   id="freeze_price"
+                                                   step="0.01"
+                                                   value="0.00"
+                                                   style="text-align: end;"
+                                            />
+                                            <input type="text"
+                                                   t-att-value="request.env.company.currency_id.symbol"
+                                                   id="currency_symbol"
+                                                   disabled="1"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-between align-items-center">
+                                        <a href="#"
+                                           class="font-weight-bold se-link--unstyled text-muted">
+                                            <i class="fa fa-cog mr-2"/>
+                                            Advanced Details
+                                        </a>
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5"
+                                               value="Add Contract"
+                                               style="border-radius: 5px !important;"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function hide_show_contracts()
+                { var element =
+                document.getElementById("se-sidebar");
+                var main = document.getElementById("main-container");
+                console.log("amin", main);
+                if
+                (main.classList.contains("main-container--margin")){
+                main.classList.toggle("main-container--margin");
+                }
+                if
+                (element.classList.contains("se-sidebar--show")){
+                element.classList.toggle("se-sidebar--show");
+                } };
+            </script>
+        </t>
+    </template>
+
+    <!--    EDIT TEMPLATE-->
+
+    <template id="subscription_contract_edit_template"
+              name="Subscription Contract Edit">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscriptions"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscriptions
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/subscription_contracts"
+                               class="set-dashboard__breadcrumb-link">
+                                Subscription Contracts
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/subscription_contract_details/%s' % subscription_contract.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="subscription_contract.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form id="contract_edit_form"
+                          action="/my/update_subscription_contract"
+                          method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="subscription_contract_id"
+                               t-att-value="subscription_contract.id"/>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            <span>
+                                                <t t-esc="subscription_contract.name"/>
+                                            </span>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">
+                                            Contract
+                                            Details
+                                        </button>
+                                    </li>
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link"
+                                                id="freeze-tab"
+                                                data-toggle="tab"
+                                                data-target="#freeze"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="profile"
+                                                aria-selected="false">
+                                            Freeze
+                                            Information
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                           t-att-value="subscription_contract.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="customer_id">
+                                                        Customer
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="customer_id"
+                                                            name="customer_id">
+                                                        <option selected="1"
+                                                                t-att-value="subscription_contract.partner_id.id">
+                                                            <t t-esc="subscription_contract.partner_id.name"/>
+                                                        </option>
+                                                        <t t-foreach="customers"
+                                                           t-as="customer">
+                                                            <option t-att-value="customer.id">
+                                                                <t t-esc="customer.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="pricelist_id">
+                                                        Price List
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="pricelist_id"
+                                                            name="pricelist_id">
+                                                        <option selected="1"
+                                                                t-att-value="subscription_contract.pricelist_id.id">
+                                                            <t t-esc="subscription_contract.pricelist_id.name"/>
+                                                        </option>
+                                                        <t t-foreach="price_lists"
+                                                           t-as="price_list">
+                                                            <option t-att-value="price_list.id">
+                                                                <t t-esc="price_list.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="contract_status">
+                                                        Contract Status
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="contract_status"
+                                                            name="contract_status">
+                                                        <t t-if="subscription_contract.contract_status">
+                                                            <t t-if="subscription_contract.contract_status == 'active'">
+                                                                <option value="active"
+                                                                        selected="selected">
+                                                                    Active
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="active">
+                                                                    Active
+                                                                </option>
+                                                            </t>
+                                                            <t t-if="subscription_contract.contract_status == 'finished'">
+                                                                <option value="finished"
+                                                                        selected="selected">
+                                                                    Finished
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="finished">
+                                                                    Finished
+                                                                </option>
+                                                            </t>
+                                                            <t t-if="subscription_contract.contract_status == 'yet_start'">
+                                                                <option value="yet_start"
+                                                                        selected="selected">
+                                                                    Yet to
+                                                                    start
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="yet_start">
+                                                                    Yet to
+                                                                    start
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <option value=""
+                                                                    selected="1"
+                                                                    disabled="1">
+                                                                Choose
+                                                                Status
+                                                                *
+                                                            </option>
+                                                            <option value="active">
+                                                                Active
+                                                            </option>
+                                                            <option value="finished">
+                                                                Finished
+                                                            </option>
+                                                            <option value="yet_start">
+                                                                Yet to
+                                                                start
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="signed_agreement">
+                                                        Signed Agreement
+                                                    </label>
+                                                    <input type="file"
+                                                           class="form-control se-form-control"
+                                                           id="signed_agreement"
+                                                           name="signed_agreement"
+                                                           t-att-value="subscription_contract.signed_agreement"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="contract_type">
+                                                        Contract Type
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="contract_type"
+                                                            name="contract_type"
+                                                    >
+                                                        <t t-if="subscription_contract.contract_type">
+                                                            <t t-if="subscription_contract.contract_type == 'online'">
+                                                                <option value="online"
+                                                                        selected="selected">
+                                                                    Online
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="online">
+                                                                    Online
+                                                                </option>
+                                                            </t>
+                                                            <t t-if="subscription_contract.contract_type == 'studio'">
+                                                                <option value="studio"
+                                                                        selected="selected">
+                                                                    Studio
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="studio">
+                                                                    Studio
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <option value=""
+                                                                    selected="1"
+                                                                    disabled="1">
+                                                                Choose
+                                                                Type
+                                                                *
+                                                            </option>
+                                                            <option value="online">
+                                                                Online
+                                                            </option>
+                                                            <option value="studio">
+                                                                Studio
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="reason">
+                                                        Reason
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="reason"
+                                                            name="reason">
+                                                        <t t-if="subscription_contract.reason">
+                                                            <t t-if="subscription_contract.reason == 'new_member'">
+                                                                <option value="new_member"
+                                                                        selected="selected">
+                                                                    New
+                                                                    Member
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="new_member">
+                                                                    New
+                                                                    Member
+                                                                </option>
+                                                            </t>
+                                                            <t t-if="subscription_contract.reason == 'renewal'">
+                                                                <option value="renewal"
+                                                                        selected="selected">
+                                                                    Studio
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="renewal">
+                                                                    Renewal
+                                                                </option>
+                                                            </t>
+                                                            <t t-if="subscription_contract.reason == 'new_site'">
+                                                                <option value="new_site"
+                                                                        selected="selected">
+                                                                    New Site
+                                                                    Move
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option value="new_site">
+                                                                    New Site
+                                                                    Move
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <option value=""
+                                                                    selected="1"
+                                                                    disabled="1">
+                                                                Choose
+                                                                Reason
+                                                                *
+                                                            </option>
+                                                            <option value="new_member">
+                                                                New Member
+                                                            </option>
+                                                            <option value="renewal">
+                                                                Renewal
+                                                            </option>
+                                                            <option value="new_site">
+                                                                New Site
+                                                                Move
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="latest_record">
+                                                        Latest Record
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           name="latest_record"
+                                                           id="latest_record"
+                                                           class="form-control se-form-control"
+                                                           t-if="subscription_contract.latest_record"
+                                                           checked="checked"/>
+                                                    <input type="checkbox"
+                                                           name="latest_record"
+                                                           id="latest_record"
+                                                           class="form-control se-form-control"
+                                                           t-else=""
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="freeze"
+                                         role="tabpanel"
+                                         aria-labelledby="freeze-tab">
+                                        <div class="row col-12 col-sm-12">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="form-group">
+
+                                                    <label class="se-form-label"
+                                                           for="allowed_freeze_count">
+                                                        Allowed Freeze Count
+                                                    </label>
+                                                    <p>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               name="allowed_freeze_count"
+                                                               id="allowed_freeze_count"
+                                                               style="text-align: end;"
+                                                               t-att-value="subscription_contract.allowed_freeze_count"/>
+                                                    </p>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="se-form-label"
+                                                           for="freeze_period">
+                                                        Freeze Period
+                                                    </label>
+                                                    <p>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               name="freeze_period"
+                                                               id="freeze_period"
+                                                               style="text-align: end;"
+                                                               min="0"
+                                                               t-att-value="subscription_contract.freeze_period"
+                                                        />
+
+                                                        <input type="text"
+                                                               value="Days"
+                                                               id="days_freeze_count"
+                                                               disabled="1"/>
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="se-form-label"
+                                                           for="freeze_price">
+                                                        Freeze Price
+                                                    </label>
+                                                    <p>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               name="freeze_price"
+                                                               id="freeze_price"
+                                                               style="text-align: end;"
+                                                               t-att-value="subscription_contract.freeze_price"
+                                                        />
+                                                        <input type="text"
+                                                               t-att-value="request.env.company.currency_id.symbol"
+                                                               id="currency_symbol"
+                                                               disabled="1"
+                                                        />
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Contract"/>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+

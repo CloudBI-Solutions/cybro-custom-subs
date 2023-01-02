@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="payment_acquirer_form_tabby" model="ir.ui.view">
+        <field name="name">payment.acquirer.tabby.form.inherit</field>
+        <field name="model">payment.acquirer</field>
+        <field name="inherit_id" ref="payment.payment_acquirer_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='acquirer']" position="after">
+                <group attrs="{'invisible': [('provider', '!=', 'tabby')]}">
+                    <field name="tabby_key_public" password="True"/>
+                    <field name="tabby_key_secret" password="True"/>
+                    <field name="tabby_merchant_code_25" password="True"/>
+                    <field name="tabby_merchant_code_50" password="True"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

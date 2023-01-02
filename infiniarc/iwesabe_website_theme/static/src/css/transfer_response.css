@@ -1,0 +1,58 @@
+body{
+  background-color: #1d1d1d;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.ia-response__title{
+  font-size: 28px;
+  font-weight: bold;
+}
+.ia-response__order-id{
+  display: block;
+  font-weight: bold;
+}
+.ia-success__hero{
+  width: 70%;
+  height: auto;
+}
+.ia-response__points{
+  padding-left: 20px;
+}
+.ia-response__point{
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.ia-response__details{
+  display: block;
+}
+.ia-response__tabs{
+  border-bottom: 2px solid #2d2d2d;
+}
+.ia-response__tabs .nav-link{
+  color: #ffffff;
+  height: 60px;
+  border-radius: 0px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-right: 15px;
+}
+.ia-response__tabs .nav-link:hover{
+  border: none;
+  border-bottom: 2px solid #DF2304;
+}
+.ia-response__tabs .nav-link::last-child{
+  margin-right: 0px;
+}
+.ia-response__tabs .nav-link.active{
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #DF2304;
+  color: #ffffff;
+}
+.ia-response__tab-content {
+  padding: 50px 25px;
+}
+.ia-response__bank-logo{
+  width: 250px;
+  height: auto;
+}

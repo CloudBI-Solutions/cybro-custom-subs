@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="s_tabs_sport_erp" name="Tabs">
+        <section class="s_tabs pt48 pb48 set-core_module my-5" data-vcss="001">
+            <div class="set-wrapper">
+                <div class="s_tabs_main bt_pill_warpper row">
+                    <div class="s_tabs_nav mb-3 ml-3 mr-3">
+                        <ul class="nav flex-column nav-pills"
+                            role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="nav_tabs_link_1"
+                                   data-toggle="tab"
+                                   href="#nav_tabs_content_1"
+                                   role="tab"
+                                   aria-controls="nav_tabs_content_1"
+                                   aria-selected="true">Email
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="nav_tabs_link_2"
+                                   data-toggle="tab"
+                                   href="#nav_tabs_content_2"
+                                   role="tab"
+                                   aria-controls="nav_tabs_content_2"
+                                   aria-selected="false">Chat Hub
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   id="nav_tabs_link_3"
+                                   data-toggle="tab"
+                                   href="#nav_tabs_content_3"
+                                   role="tab"
+                                   aria-controls="nav_tabs_content_3"
+                                   aria-selected="false">Payment Processors
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="s_tabs_content tab-content col-md-9">
+                        <div class="tab-pane fade show active"
+                             id="nav_tabs_content_1" role="tabpanel"
+                             aria-labelledby="nav_tabs_link_1">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block">
+                                    <div class="set_c_m_content">
+                                        <section>
+                                            <div class="top_area">
+                                                <div class="mail_icon">
+                                                    <div class="s_badge badge badge-secondary img_wrapper wrapper-grey">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                             alt=""/>
+                                                    </div>
+                                                    <span class="email_c">
+                                                        Emails
+                                                    </span>
+                                                </div>
+                                                <a href="#"
+                                                   class="set-button set-button--learn-more  ">
+                                                    <span class="mr-1">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                                             alt=""/>
+                                                    </span>
+                                                    Learn More
+                                                </a>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div class="tab_main_content">
+                                                <section>
+                                                    <p>
+                                                        Lorem ipsum dolor
+                                                        sit
+                                                        amet,
+                                                        consectetur
+                                                        adipiscing
+                                                        elit.
+                                                        Duis nec tortor
+                                                        sapien.
+                                                        Nulla
+                                                        neque nunc, tempus
+                                                        sed
+                                                        egestas a, aliquam
+                                                        ut
+                                                        nisi.
+                                                        Vivamus faucibus
+                                                        odio
+                                                        vel
+                                                        diam
+                                                        varius
+                                                        scelerisque. Cras
+                                                        rutrum
+                                                        felis id ornare
+                                                        pharetra.
+                                                        Nunc vehicula
+                                                        fermentum
+                                                        egestas.
+                                                        Cras
+                                                        ornare vel turpis
+                                                        non
+                                                        volutpat. In tempus
+                                                        neque
+                                                        elit, pulvinar
+                                                        interdum
+                                                        sem
+                                                        aliquet
+                                                        fermentum.
+                                                    </p>
+                                                </section>
+                                                <section>
+                                                    <ul>
+                                                        <section>
+                                                            <li>
+                                                                <span>
+                                                                    <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                         alt=""/>
+                                                                </span>
+                                                                Aenean vel
+                                                                tortor
+                                                                lectus.
+                                                                Maecenas
+                                                                non
+                                                                aliquet
+                                                                felis.
+                                                            </li>
+                                                        </section>
+                                                        <section>
+                                                            <li>
+                                                                <span>
+                                                                    <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                         alt=""/>
+                                                                </span>
+                                                                Aenean vel
+                                                                tortor
+                                                                lectus.
+                                                                Maecenas
+                                                                non
+                                                                aliquet
+                                                                felis.
+                                                            </li>
+                                                        </section>
+                                                        <section>
+                                                            <li>
+                                                                <span>
+                                                                    <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                         alt=""/>
+                                                                </span>
+                                                                Aenean vel
+                                                                tortor
+                                                                lectus.
+                                                                Maecenas
+                                                                non
+                                                                aliquet
+                                                                felis.
+                                                            </li>
+                                                        </section>
+                                                        <div id="wrap"
+                                                             class="oe_structure oe_empty"/>
+                                                    </ul>
+                                                </section>
+                                                <section>
+                                                    <div class="tab_video">
+                                                        <div class="play_btn">
+                                                            <img src="/theme_sport_erp/static/src/images/core-module/play.svg"
+                                                                 alt=""/>
+                                                        </div>
+                                                        <video class="video-fluid z-depth-1 video"
+                                                               id="videoPlayer"
+                                                               controls="controls">
+                                                            <source src="/theme_sport_erp/static/src/video/DJ_Blurred_2.mov"
+                                                                    type="video/mp4"/>
+                                                        </video>
+                                                    </div>
+                                                </section>
+                                                <div id="wrap"
+                                                     class="oe_structure oe_empty"/>
+                                            </div>
+                                        </section>
+                                        <div id="wrap"
+                                             class="oe_structure oe_empty"/>
+                                    </div>
+
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_2"
+                             role="tabpanel"
+                             aria-labelledby="nav_tabs_link_2">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block">
+                                    <div class="set_c_m_content">
+                                        <section>
+                                            <div class="top_area">
+                                                <div class="mail_icon">
+                                                    <div class="s_badge badge badge-secondary img_wrapper wrapper-grey">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/chat.svg"
+                                                             alt=""/>
+                                                    </div>
+                                                    <span class="email_c">
+                                                        Chat
+                                                        Hub
+                                                    </span>
+                                                </div>
+                                                <a href="#"
+                                                   class="set-button set-button--learn-more  ">
+                                                    <span class="mr-1">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                                             alt=""/>
+                                                    </span>
+                                                    Learn More
+                                                </a>
+                                            </div>
+                                        </section>
+                                        <div id="wrap"
+                                             class="oe_structure oe_empty"/>
+                                        <section>
+                                            <div class="tab_main_content">
+                                                <p>
+                                                    Lorem ipsum dolor sit
+                                                    amet,
+                                                    consectetur adipiscing
+                                                    elit.
+                                                    Duis nec tortor
+                                                    sapien.
+                                                    Nulla
+                                                    neque nunc, tempus sed
+                                                    egestas a, aliquam ut
+                                                    nisi.
+                                                    Vivamus faucibus odio
+                                                    vel
+                                                    diam
+                                                    varius
+                                                    scelerisque. Cras rutrum
+                                                    felis id ornare
+                                                    pharetra.
+                                                    Nunc vehicula fermentum
+                                                    egestas.
+                                                    Cras
+                                                    ornare vel turpis non
+                                                    volutpat. In tempus
+                                                    neque
+                                                    elit, pulvinar interdum
+                                                    sem
+                                                    aliquet
+                                                    fermentum.
+                                                </p>
+                                                <ul>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                </ul>
+                                                <section>
+                                                    <div class="tab_video">
+                                                        <div class="play_btn">
+                                                            <img src="/theme_sport_erp/static/src/images/core-module/play.svg"
+                                                                 alt=""/>
+                                                        </div>
+                                                        <video class="video-fluid z-depth-1 video"
+                                                               id="videoPlayer"
+                                                               controls="controls">
+                                                            <source src="/theme_sport_erp/static/src/video/DJ_Blurred_2.mov"
+                                                                    type="video/mp4"/>
+                                                        </video>
+                                                    </div>
+                                                </section>
+                                                <div id="wrap"
+                                                     class="oe_structure oe_empty"/>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav_tabs_content_3"
+                             role="tabpanel"
+                             aria-labelledby="nav_tabs_link_3">
+                            <div class="oe_structure oe_empty">
+                                <section class="s_text_block">
+                                    <div class="set_c_m_content">
+                                        <section>
+                                            <div class="top_area">
+                                                <div class="mail_icon">
+                                                    <div class="s_badge badge badge-secondary img_wrapper wrapper-grey">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/card.svg"
+                                                             alt=""/>
+                                                    </div>
+                                                    <span class="email_c">
+                                                        Payment Processors
+                                                    </span>
+                                                </div>
+                                                <a href="#"
+                                                   class="set-button set-button--learn-more  ">
+                                                    <span class="mr-1">
+                                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                                             alt=""/>
+                                                    </span>
+                                                    Learn More
+                                                </a>
+                                            </div>
+                                        </section>
+                                        <section>
+                                            <div class="tab_main_content">
+                                                <p>
+                                                    Lorem ipsum dolor sit
+                                                    amet,
+                                                    consectetur adipiscing
+                                                    elit.
+                                                    Duis nec tortor
+                                                    sapien.
+                                                    Nulla
+                                                    neque nunc, tempus sed
+                                                    egestas a, aliquam ut
+                                                    nisi.
+                                                    Vivamus faucibus odio
+                                                    vel
+                                                    diam
+                                                    varius
+                                                    scelerisque. Cras rutrum
+                                                    felis id ornare
+                                                    pharetra.
+                                                    Nunc vehicula fermentum
+                                                    egestas.
+                                                    Cras
+                                                    ornare vel turpis non
+                                                    volutpat. In tempus
+                                                    neque
+                                                    elit, pulvinar interdum
+                                                    sem
+                                                    aliquet
+                                                    fermentum.
+                                                </p>
+                                                <ul>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li>
+                                                            <span>
+                                                                <img src="/theme_sport_erp/static/src/images/core-module/mark.svg"
+                                                                     alt=""/>
+                                                            </span>
+                                                            Aenean vel
+                                                            tortor
+                                                            lectus. Maecenas
+                                                            non
+                                                            aliquet felis.
+                                                        </li>
+                                                    </section>
+                                                </ul>
+                                                <section>
+                                                    <div class="tab_video">
+                                                        <div class="play_btn">
+                                                            <img src="/theme_sport_erp/static/src/images/core-module/play.svg"
+                                                                 alt=""/>
+                                                        </div>
+                                                        <video class="video-fluid z-depth-1 video"
+                                                               id="videoPlayer"
+                                                               controls="controls">
+                                                            <source src="/theme_sport_erp/static/src/video/DJ_Blurred_2.mov"
+                                                                    type="video/mp4"/>
+                                                        </video>
+                                                    </div>
+                                                </section>
+                                                <div id="wrap"
+                                                     class="oe_structure oe_empty"/>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+</odoo>

@@ -1,0 +1,160 @@
+<odoo>
+
+    <template inherit_id="survey.question_container" id="survey_assets" name="Survey Results assets inherited">
+<!--        <t t-set="answer_lines" t-value="answer.user_input_line_ids.filtered(lambda line: line.question_id == question)"/>-->
+        <xpath expr="//div[hasclass('o_survey_question_error')]" position="before">
+            <t t-if="question.question_type == 'progress_bar'">
+                <t t-call="survey_extension.question_progress_bar"/>
+            </t>
+            <t t-if="question.question_type == 'toggle'">
+                <t t-call="survey_extension.question_toggle"/>
+            </t>
+            <t t-if="question.question_type == 'calculated_metric'">
+                <t t-call="survey_extension.question_calculated_metric"/>
+            </t>
+            <t t-if="question.question_type == 'file'">
+                <t t-call="survey_extension.file" />
+            </t>
+        </xpath>
+        <xpath expr="//h3[@t-if='not hide_question_title']" position="replace">
+            <t t-if="question.question_type == 'calculated_metric'">
+            <h3 t-if="not hide_question_title and question.in_portal_show">
+                <span t-field='question.title' />
+                <span t-if="question.constr_mandatory" class="text-danger">*</span>
+            </h3>
+            </t>
+            <t t-else="">
+                <h3 t-if="not hide_question_title">
+                    <span t-field='question.title' />
+                    <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                </h3>
+            </t>
+        </xpath>
+    </template>
+     <template inherit_id="survey.survey_page_print" id="survey_page_print_inherit" name="Survey Review assets inherited">
+<!--         <t t-set="answer_lines" t-value="answer.user_input_line_ids.filtered(lambda line: line.question_id == question)"/>-->
+        <xpath expr="//div[hasclass('o_survey_question_error')]" position="before">
+            <t t-if="question.question_type == 'progress_bar'">
+                <t t-call="survey_extension.question_progress_bar"/>
+            </t>
+            <t t-if="question.question_type == 'body_map'">
+                <t t-call="survey_extension.tmpl_body_map_review"/>
+            </t>
+            <t t-if="question.question_type == 'toggle'">
+                <t t-call="survey_extension.question_toggle"/>
+            </t>
+            <t t-if="question.question_type == 'calculated_metric'">
+                <t t-call="survey_extension.question_calculated_metric"/>
+            </t>
+            <t t-if="question.question_type == 'file'">
+                <t t-call="survey_extension.tmpl_sh_file_print" />
+            </t>
+        </xpath>
+         <xpath expr="//div[hasclass('js_question-wrapper')]/h2" position="replace">
+             <t t-if="question.question_type == 'calculated_metric'">
+                 <h2 t-if="question.in_portal_show">
+                    <span t-field='question.title'/>
+                    <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                    <span t-if="scoring_display_correction" class="badge badge-pill" t-att-data-score-question="question.id"></span>
+                </h2>
+            </t>
+            <t t-else="">
+                <h2>
+                    <span t-field='question.title'/>
+                    <span t-if="question.constr_mandatory" class="text-danger">*</span>
+                    <span t-if="scoring_display_correction" class="badge badge-pill" t-att-data-score-question="question.id"></span>
+                </h2>
+            </t>
+         </xpath>
+    </template>
+
+    <template id="tmpl_sh_file_print" name="SH File">
+        <a t-att-href="'/survey/download/'+str(answer.id)+'/'+str(question.id)+'/'+str(answer.access_token)">Click here to download file</a>
+    </template>
+
+
+    <template id="question_toggle" name="Question: Toggle Button">
+        <input type="hidden" t-att-id="question.toggle_off_name" t-att-class="question.id"
+               t-att-value="question.toggle_on_name"/>
+        <div style="display: flex !important;">
+            <div>
+                <t t-set="vals" t-value="question.suggested_answer_ids.read(['id', 'value'])"/>
+                <label class="switch">
+                    <input type="checkbox" class="o_survey_form_choice_item" t-att-name="question.id" id="togBtn"
+                           t-att-data-is-conditional="question.is_conditional"
+                           t-att-checked="answer_lines[0].value_toggle if answer_lines else None"
+                           t-att-vals="vals" t-att-default-load="true"
+                           t-att-data-question-type="question.question_type" onclick="label_new(this.name, this.checked);"/>
+                    <span class="slider round"></span>
+            </label></div>
+            <t t-if="answer_lines">
+                <div class="ml-2 off_class toggle-text" t-attf-id="onoff#{question.id}"><t t-esc="answer_lines[0].toggle_answer"/></div>
+            </t>
+            <t t-else="">
+                <div class="ml-2 off_class toggle-text" t-attf-id="onoff#{question.id}"><t t-esc="question.toggle_off_name"/></div>
+            </t>
+        </div>
+        <script>
+            function label_new(id, checked)
+            {
+                var on = document.getElementsByClassName(id)[0].value;
+                var off = document.getElementsByClassName(id)[0].id;
+                var onff = "onoff";
+                var text_id = onff.concat(id);
+                var text_id_on = text_id.concat("_on");
+                var text_id_off = text_id.concat("_off");
+                if (checked == true){
+                    document.getElementById(text_id).innerHTML = on;
+                }
+                else{
+                    document.getElementById(text_id).innerHTML = off;
+
+                }
+            }
+        </script>
+    </template>
+
+    <template id="question_progress_bar" name="Question: Progress Bar">
+        <div class="o_survey_comment_container p-0 slidecontainer" style="display: flex !important;">
+            <div class="mr-2"><t t-esc="question.min_width"/></div>
+            <div class="w-100">
+                <input width="100" type="range" value="0"
+                       t-att-min="question.min_width" t-att-class="'slider_bar bg_color_custom' if question.set_color == 'green_to_red' else 'slider_bar bg_color_custom1'" t-att-max="question.max_width"
+                    t-att-step="question.step" t-att-name="question.id" t-att-data-question-type="question.question_type" t-att-title="answer_lines[0].value_progress_bar if answer_lines else None"/>
+            </div>
+            <div class="ml-2"><t t-esc="question.max_width"/></div>
+        </div >
+    </template>
+
+    <template id="question_calculated_metric" name="Question: Calculated Metric">
+        <div t-if="question.in_portal_show" class="o_survey_comment_container p-0 slidecontainer">
+            <input  type="text" class="calculated_metric form-control o_survey_question_numerical_box bg-transparent text-dark rounded-0 p-0"
+                   t-att-name="question.id" t-att-data-question-type="question.question_type" readonly="1"
+                   t-att-value="answer_lines[0].value_calculated_metric if answer_lines else None" />
+        </div>
+        <div t-else="" class="o_survey_comment_container p-0 slidecontainer" style="display:none;">
+            <input  type="text" class="calculated_metric form-control o_survey_question_numerical_box bg-transparent text-dark rounded-0 p-0"
+                   t-att-name="question.id" t-att-data-question-type="question.question_type" readonly="1"
+                   t-att-value="answer_lines[0].value_calculated_metric if answer_lines else None" />
+        </div>
+    </template>
+
+    <template id="survey.question_numerical_box" name="Question: numerical box">
+        <input type="number" step="any"
+               t-att-name="question.id" t-att-value="answer_lines[0].value_numerical_box if answer_lines else None"
+               t-att-data-question-type="question.question_type"
+               t-att-data-validation-float-min="question.validation_min_float_value if question.validation_required else False"
+               t-att-data-validation-float-max="question.validation_max_float_value if question.validation_required else False"/>
+    </template>
+
+    <template id="file" name="Upload File">
+        <t t-set="file" t-value="request.env['survey.user_input.line'].sudo().search([('user_input_id', '=', answer.id),('question_id','=',question.id)])"/>
+        <button class="addfiles">Choose file</button>
+        <label id="fileLabel"><t t-if="file" t-esc="file.file_name"/><t t-else="" >Choose file</t> </label>
+
+         <input type="text" t-att-id="question.id" t-att-name="question.id" class="image_data" style="display:none;" t-att-data-question-type="question.question_type"/>
+         <input type="file" name="file" class="file singleFile" data-show-upload="true"
+                                       accept="image/*,video/*" style="display:none;"/>
+    </template>
+
+</odoo>

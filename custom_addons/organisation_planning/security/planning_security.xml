@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<odoo>
+    <!--    planning internal coach rules-->
+    <data noupdate="1">
+        <record id="planning_internal_coach_rule" model="ir.rule">
+            <field name="name">Planning Internal Coach Rule</field>
+            <field name="model_id" ref="model_project_task"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[('assign_coach_ids.partner_id','in',user.partner_id.id)]</field>
+            <field name="groups" eval="[(4, ref('organisation.group_organisation_coaches_internal'))]"/>
+        </record>
+    </data>
+
+</odoo>

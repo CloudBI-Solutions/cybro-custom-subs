@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--        coach's dashboard     -->
+    <record id="coach_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Coach Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">coach.dashboard.link</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="coach_dashboard_tree" model="ir.ui.view">
+        <field name="name">coach_dashboard_ui.tree</field>
+        <field name="model">coach.dashboard.link</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="tile_active"/>
+                <field name="icon" widget="image" class="oe_avatar" width="50px"/>
+                <field name="tile_background_color_1" widget="color" width="100px"/>
+                <field name="tile_background_color_2" widget="color" width="100px"/>
+                <field name="tile_text_color" widget="color" width="100px"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Athlete's dashboard      -->
+    <record id="athlete_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Athlete Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">athlete.dashboard.link</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="athlete_dashboard_tree" model="ir.ui.view">
+        <field name="name">athlete_dashboard_ui.tree</field>
+        <field name="model">athlete.dashboard.link</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="tile_active"/>
+                <field name="icon" widget="image" class="oe_avatar" width="50px"/>
+                <field name="tile_background_color_1" widget="color" width="100px"/>
+                <field name="tile_background_color_2" widget="color" width="100px"/>
+                <field name="tile_text_color" widget="color" width="100px"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Fan's dashboard      -->
+    <record id="fan_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Fan Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fan.dashboard.link</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="fan_dashboard_tree" model="ir.ui.view">
+        <field name="name">fan_dashboard_ui.tree</field>
+        <field name="model">fan.dashboard.link</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="tile_active"/>
+                <field name="icon" widget="image" class="oe_avatar" width="50px"/>
+                <field name="tile_background_color_1" widget="color" width="100px"/>
+                <field name="tile_background_color_2" widget="color" width="100px"/>
+                <field name="tile_text_color" widget="color" width="100px"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Parent's dashboard      -->
+    <record id="parent_dashboard_action" model="ir.actions.act_window">
+        <field name="name">Parent Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">parent.dashboard.link</field>
+        <field name="view_mode">tree</field>
+    </record>
+    <record id="parent_dashboard_tree" model="ir.ui.view">
+        <field name="name">parent_dashboard_ui.tree</field>
+        <field name="model">parent.dashboard.link</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="tile_active"/>
+                <field name="icon" widget="image" class="oe_avatar" width="50px"/>
+                <field name="tile_background_color_1" widget="color" width="100px"/>
+                <field name="tile_background_color_2" widget="color" width="100px"/>
+                <field name="tile_text_color" widget="color" width="100px"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Menu Configurations      -->
+    <menuitem id="menu_org_dashboard_base" name="ERP Dashboard" parent="website.menu_website_configuration" sequence="101"/>
+    <menuitem id="coach_dashboard_menu" name="Coach Dashboard"
+              parent="organisation_ui.menu_org_dashboard_base"
+              sequence="15"
+              action="coach_dashboard_action"/>
+    <menuitem id="athlete_dashboard_menu" name="Athlete Dashboard"
+              parent="organisation_ui.menu_org_dashboard_base"
+              sequence="15"
+              action="athlete_dashboard_action"/>
+    <menuitem id="fan_dashboard_menu" name="Fan Dashboard"
+              parent="organisation_ui.menu_org_dashboard_base"
+              sequence="15"
+              action="fan_dashboard_action"/>
+    <menuitem id="parent_dashboard_menu" name="Parent Dashboard"
+              parent="organisation_ui.menu_org_dashboard_base"
+              sequence="15"
+              action="parent_dashboard_action"/>
+</odoo>

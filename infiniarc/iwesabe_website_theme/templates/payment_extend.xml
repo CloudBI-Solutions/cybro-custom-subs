@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="website_sale_address_on_payment_inherit" inherit_id="website_sale.payment">
+        <xpath expr="//div[@id='address_on_payment']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+        <xpath expr="//div[@id='payment_method']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+        <!--        <xpath expr="//div[@id='payment_method']" position="before">-->
+        <!--            <div class="row">-->
+        <!--                <div class="col-md-5"/>-->
+        <!--                <div class="col-md-7">-->
+        <!--                    <section id="infiniarc-checkout">-->
+        <!--                        <div class="container design-methods">-->
+        <!--                            <div class="sec-title">-->
+        <!--                                <h4>Design methods</h4>-->
+        <!--                            </div>-->
+        <!--                            <form action="/shop/confirm-address" method="POST">-->
+        <!--                                <div class="design-method-type pt-2">-->
+        <!--                                    <div class="method-type-input">-->
+        <!--                                        <input type="radio" name="design-method" class="global-radio" value="individual"-->
+        <!--                                               checked="checked"/>-->
+        <!--                                        <div class="label-radio">-->
+        <!--                                            <span>Individual</span>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="method-type-input">-->
+        <!--                                        <input type="radio" name="design-method" class="global-radio" value="entity"/>-->
+        <!--                                        <div class="label-radio">-->
+        <!--                                            <span>Entity</span>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                                <div class="customer-details ml-n3 pt-4">-->
+        <!--                                    <div class="customer-detail">-->
+        <!--                                        <input name="first_name" type="text" placeholder="Full Name"-->
+        <!--                                               class="text-light font-weight-bold" required="1"-->
+        <!--                                               t-att-value="partner.name"/>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="customer-detail">-->
+        <!--                                        <input name="telephone" type="text" placeholder="Telephone"-->
+        <!--                                               class="text-light font-weight-bold" required="1"-->
+        <!--                                               t-att-value="partner.phone"/>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="customer-detail">-->
+        <!--                                        <input name="email" type="email" placeholder="Email"-->
+        <!--                                               class="text-light font-weight-bold" required="1"-->
+        <!--                                               t-att-value="partner.email"/>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                                <div class="pickup-type pt-3">-->
+        <!--                                    <div class="pickup-type-input">-->
+        <!--                                        <input type="radio" name="pickup-type" class="global-radio" value="delivery"-->
+        <!--                                               checked="checked"/>-->
+        <!--                                        <div class="label-radio">-->
+        <!--                                            <span>DELIVERY</span>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                    <div class="pickup-type-input">-->
+        <!--                                        <input type="radio" name="pickup-type" class="global-radio" value="pickup"/>-->
+        <!--                                        <div class="label-radio">-->
+        <!--                                            <span>PICKUP</span>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                                <div class="extra-charges pt-4 ml-n3">-->
+        <!--                                    <table class="table table table-striped">-->
+        <!--                                        <tbody>-->
+        <!--                                            <tr>-->
+        <!--                                                <td>-->
+        <!--                                                    <div class="extra-charges-input">-->
+        <!--                                                        <input type="radio" name="extra-charge-input"-->
+        <!--                                                               class="global-radio"/>-->
+        <!--                                                        <div class="label-radio text-deco">-->
+        <!--                                                            <span>smsa</span>-->
+        <!--                                                        </div>-->
+        <!--                                                    </div>-->
+        <!--                                                </td>-->
+        <!--                                                <td>-->
+        <!--                                                    <div class="text-center text-deco">-->
+        <!--                                                        <span>1000$</span>-->
+        <!--                                                    </div>-->
+        <!--                                                </td>-->
+        <!--                                                <td class="text-right">-->
+        <!--                                                    <img src="/iwesabe_website_theme/static/src/img/checkout/info.png"/>-->
+        <!--                                                </td>-->
+        <!--                                            </tr>-->
+        <!--                                            <tr>-->
+        <!--                                                <td>-->
+        <!--                                                    <div class="extra-charges-input">-->
+        <!--                                                        <input type="radio" name="extra-charge-input"-->
+        <!--                                                               class="global-radio"/>-->
+        <!--                                                        <div class="label-radio text-deco">-->
+        <!--                                                            <span>smsa</span>-->
+        <!--                                                        </div>-->
+        <!--                                                    </div>-->
+        <!--                                                </td>-->
+        <!--                                                <td>-->
+        <!--                                                    <div class="text-center text-deco">-->
+        <!--                                                        <span>1000$</span>-->
+        <!--                                                    </div>-->
+        <!--                                                </td>-->
+        <!--                                                <td class="text-right">-->
+        <!--                                                    <img src="/iwesabe_website_theme/static/src/img/checkout/info.png"/>-->
+        <!--                                                </td>-->
+        <!--                                            </tr>-->
+        <!--                                        </tbody>-->
+        <!--                                    </table>-->
+        <!--                                </div>-->
+        <!--                                <div class="delivery-address ml-n3 pt-3">-->
+        <!--                                    <input name="street" type="text"-->
+        <!--                                           placeholder="Delivery address (street, house, etc.)"-->
+        <!--                                           class="text-light font-weight-bold" required="1"-->
+        <!--                                           t-att-value="partner.street"/>-->
+        <!--                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+        <!--                                    <input type="hidden" name="partner_id" t-att-value="partner.id"/>-->
+        <!--                                    <button name="submit_address" type="submit"-->
+        <!--                                            class="btn btn-primary font-weight-bold br-6 mt-3">Save the Address-->
+        <!--                                    </button>-->
+        <!--                                </div>-->
+        <!--                            </form>-->
+        <!--                        </div>-->
+        <!--                        <form name="o_payment_checkout"-->
+        <!--                              class="o_payment_form mt-3 clearfix"-->
+        <!--                              t-att-data-reference-prefix="reference_prefix"-->
+        <!--                              t-att-data-amount="amount"-->
+        <!--                              t-att-data-currency-id="currency and currency.id"-->
+        <!--                              t-att-data-partner-id="partner_id"-->
+        <!--                              t-att-data-access-token="access_token"-->
+        <!--                              t-att-data-transaction-route="transaction_route"-->
+        <!--                              t-att-data-landing-route="landing_route"-->
+        <!--                              t-att-data-allow-token-selection="True"-->
+        <!--                              t-att-data-invoice-id="invoice_id">-->
+        <!--                            <div class="container ml-0 payment-methods pt-3">-->
+        <!--                                <div class="sec-title">-->
+        <!--                                    <h4>Payment methods</h4>-->
+        <!--                                </div>-->
+        <!--                                <div class="payment-method" t-foreach="acquirers" t-as="acquirer">-->
+        <!--                                    <div class="payment-method-input">-->
+        <!--                                        <input type="radio" name="o_payment_radio" class="global-radio"-->
+        <!--                                               t-att-data-payment-option-id="acquirer.id"-->
+        <!--                                               t-att-data-provider="acquirer.provider"-->
+        <!--                                               data-payment-option-type="acquirer"/>-->
+        <!--                                        <div class="label-radio">-->
+        <!--                                            <span>-->
+        <!--                                                <t t-esc="acquirer.name"/>-->
+        <!--                                            </span>-->
+        <!--                                        </div>-->
+        <!--                                    </div>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                            <div class="terms-condition pt-3">-->
+        <!--                                <label class="label-terms-condition">-->
+        <!--                                    by placing the order you are accepting the terms and conditions and privacy policy-->
+        <!--                                    <input type="checkbox" checked="checked"/>-->
+        <!--                                    <span class="checkmark"/>-->
+        <!--                                </label>-->
+        <!--                            </div>-->
+        <!--                            <div class="action-buttons pt-2">-->
+        <!--                                <button name="back" class="action-button transparent-button" type="button">-->
+        <!--                                    <a href="#">Back</a>-->
+        <!--                                </button>-->
+        <!--                                <button name="confirm" class="action-button ml-2" type="submit">-->
+        <!--                                    <a href="#">Pay Now</a>-->
+        <!--                                </button>-->
+        <!--                            </div>-->
+        <!--                        </form>-->
+        <!--                    </section>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </xpath>-->
+    </template>
+</odoo>

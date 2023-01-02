@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="infiniarc_contactus_page" inherit_id="website.contactus">
+
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <section id="section-title">
+
+                    <div class="ian-main-banner__breadcrumb">
+                        <div class="ian-breadcrumb__container">
+                            <ul class="ian-main-banner__breadcrumb-items">
+                                <li class="ian-main-banner__breadcrumb-item">
+                                    <a href="/" class="ian-link__unstyled">Home</a>
+                                </li>
+                                <li class="ian-main-banner__breadcrumb-item">
+                                    <a href="#" class="ian-link__unstyled">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="ian-main-banner"
+                         style="background-image: url('/iwesabe_website_theme/static/src/img/unnamed.jpg');">
+                        <h2 class="ian-main-banner__header">Contact Us</h2>
+                        <p class="ian-main-banner__lead">Get help from our dedicated support team</p>
+                    </div>
+                    <!--                    <div class="hero-banner hero-banner&#45;&#45;contactus">-->
+                    <!--                        <h1 class="page-title mt32">-->
+                    <!--                            Contact Us-->
+                    <!--                        </h1>-->
+                    <!--                    </div>-->
+                </section>
+
+
+                <section>
+                    <form id="contactus_form" action="/contactus" method="post" enctype="multipart/form-data"
+                          class="o_mark_required" data-mark="*" data-model_name="mail.mail" data-success-mode="redirect"
+                          data-success-page="/contactus-thank-you" data-pre-fill="true">
+                        <div class="container" style="margin-bottom: 40px;">
+                            <div class="row contact-row" style="padding: 10px;">
+                                <div style="padding:10px;">
+                                    <div class="contact-details-card text-center"
+                                         style="background:#0a0a0a; width:940px;height:597px; border-radius: 10px;">
+                                        <div class="contact-details">
+                                            <label for="fname">
+                                                <span>First name:</span>
+                                            </label>
+                                            <input id="customer_fname" type="text" class="fname_custom"
+                                                   name="First Name" required=""
+                                                   data-fill-with="customer_fname"
+                                                   placeholder="first name"/>
+                                        </div>
+                                        <div class="contact-details">
+                                            <label for="lname">
+                                                <span>Last name:</span>
+                                            </label>
+                                            <input id="customer_lname" type="text" class="lname_custom"
+                                                   name="Lastt Name" required=""
+                                                   data-fill-with="customer_lname"
+                                                   placeholder="last name"/>
+                                        </div>
+                                        <div class="contact-details">
+                                            <label for="cnumber">
+                                                <span>Contact No:</span>
+                                            </label>
+                                            <input id="contact_number" type="text" class="contact_no"
+                                                   name="Contact Number" required=""
+                                                   data-fill-with="contact_no"
+                                                   placeholder="contact number"/>
+                                        </div>
+                                        <div class="contact-details">
+                                            <label for="email">
+                                                <span>Email:</span>
+                                            </label>
+                                            <input id="customer_email" type="text" class="email_custom"
+                                                   name="Email" required=""
+                                                   data-fill-with="customer_email"
+                                                   placeholder="email"/>
+                                        </div>
+                                        <div class="contact-details">
+                                            <label for="order_no">
+                                                <span>Order No:</span>
+                                            </label>
+                                            <input id="order_number" type="text" class="order_no"
+                                                   name="Order Number" required=""
+                                                   data-fill-with="order_no"
+                                                   placeholder="order no"/>
+                                        </div>
+                                        <div class="contact-details w-50">
+                                            <label for="subject">
+                                                <span>Subject:</span>
+                                            </label>
+                                            <input id="subject_order" type="text" class="subject"
+                                                   name="Subject" required=""
+                                                   data-fill-with="subject"
+                                                   placeholder="subject"/>
+                                        </div>
+                                        <div class="contact-details w-100">
+                                            <label for="description">
+                                                <span>Description:</span>
+                                            </label>
+                                            <textarea id="descrb" type="text" class="description"
+                                                      name="Description" required=""
+                                                      data-fill-with="description"
+                                                      placeholder="description"/>
+                                        </div>
+                                        <a href="/contactus-thank-you" role="button"
+                                           style="margin-left: 15px; border: none;"
+                                           class="subscribe-status-submit mt-3 btn-danger s_website_form_send">Submit
+                                        </a>
+
+                                    </div>
+                                </div>
+                                <div style="margin-top: -5px;margin-left: 10px;">
+                                    <div>
+                                        <!--                                    <div style="padding:10px;">-->
+                                        <div class="contact-card text-center ian-support-card"
+                                             style="background:#0a0a0a; width:390px;height:289px; padding:20px;">
+                                            <p class="contact-card-text">
+                                                <h4 class="ian-contact-card__title">Customer Service</h4>
+                                            </p>
+                                            <p>If you have any issues with your computer order, please contact one of
+                                                our
+                                                customer service specialists.
+                                            </p>
+                                            <br></br>
+                                            <p>
+                                                Mon - Fri: 8:30 am - 5:20 pm Pacific Time
+                                            </p>
+                                            <br></br>
+                                            <p style="margin-top: -31px;">
+                                                Phone: (888) 462-3899
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <!--                                    <div style="padding:10px;">-->
+                                        <div class="contact-card text-center"
+                                             style="background:#0a0a0a; width:390px;height:289px; padding:20px;border-radius: 10px;">
+
+                                            <p class="contact-card-text">
+                                                <h4 class="ian-contact-card__title">Technical Support</h4>
+                                            </p>
+                                            <p>
+                                                If you have any technical issues with your computer, please contact one
+                                                of
+                                                our
+                                                technicians
+                                            </p>
+                                            <br></br>
+                                            <p>
+                                                Mon - Fri: 8:30 am - 5:20 pm Pacific Time
+                                            </p>
+                                            <br></br>
+                                            <p style="margin-top: -31px;">
+                                                Phone: (888) 462-3899
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </section>
+
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_product_template_infiniarc_tree" model="ir.ui.view">
+        <field name="name">product.template.infiniarc.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Add Pc Builder">
+                <field name="name"/>
+                <field name="default_code"/>
+                <field name="brand_id"/>
+                <field name="standard_price"/>
+                <field name="sales_price"/>
+                <field name="list_price"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_product_template_infiniarc_form" model="ir.ui.view">
+        <field name="name">product.template.infiniarc.form</field>
+        <field name="model">product.template</field>
+        <field name="priority">20</field>
+        <field name="arch" type="xml">
+            <form string="Add Pc Builder">
+                <style>
+                    .o_horizontal_separator{
+                    font-size: 18px !important;
+                    color: #000;
+                    }
+                    .oe_list_btn{font-size: 32px;
+                    color: #000;
+                    background: #b6ddff;
+                    border-radius: 5px;
+                    width: 36px;
+                    padding: 0px;
+                    margin: 0px;
+                    box-shadow: 1px 1px 1px 1px #091124c2;
+                    }
+                    .oe_list_btn:hover{font-size: 30px;
+                    color: #00ff1e;
+                    background: #333e47;
+                    box-shadow: none;
+                    }
+                    .o_list_record_remove{
+                    display: none;
+                    }
+                </style>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <field name="sale_ok" invisible="1"/>
+                    <div class="oe_button_box" name="action_button_box">
+                        <field name="show_on_hand_qty_status_button" invisible="1"/>
+                        <field name="show_forecasted_qty_status_button" invisible="1"/>
+                        <button class="oe_stat_button" name="action_view_sales"
+                                type="object" icon="fa-signal" groups="sales_team.group_sale_salesman"
+                                help="Sold in the last 365 days" attrs="{'invisible': [('sale_ok', '=', False)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="sales_count" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">Sold</span>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="action_open_quants" icon="fa-cubes" type="object"
+                                attrs="{'invisible':[('show_on_hand_qty_status_button', '=', False)]}">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="qty_available" widget="statinfo" nolabel="1" class="mr4"/>
+                                    <field name="uom_name"/>
+                                </span>
+                                <span class="o_stat_text">On Hand</span>
+                            </div>
+                        </button>
+                        <button name="action_product_public" type="object" class="oe_stat_button"
+                                style="padding: 11px !important;background: #f6f6f6;"
+                                attrs="{'invisible': [('active', '=', False)]}">
+                            <!--  <i class="fa fa-globe"  />
+                             <i class="fa fa-globe"  /> -->
+                            <i class="fa fa-fw fa-globe" style="color: green;font-size: 20px;" aria-label="Publish"
+                               role="img" title="Publish" attrs="{'invisible': [('is_published', '=', False)]}">
+                                Published
+                            </i>
+                            <i class="fa fa-fw fa-globe" style="color: red;font-size: 20px;" aria-label="Publish"
+                               role="img" title="UnPublish" attrs="{'invisible': [('is_published', '=', True)]}">
+                                Unpublished
+                            </i>
+                            <field name="is_published" invisible="1"/>
+
+
+                        </button>
+                    </div>
+
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="image_1920" widget="image" class="oe_avatar" options="{'preview_image': 'image_128'}"/>
+                    <div class="oe_title">
+                        <label for="name" string="Product Name"/>
+                        <h1>
+                            <field name="name" placeholder="Product Name" required="1"/>
+                        </h1>
+                    </div>
+                    <h4>
+                        <field name="arabic_name" required="1" placeholder="Arabic Product Name"/>
+                    </h4>
+                    <!-- <group>
+                        <field name="active" string="Enable Pc Builder"/>
+                    </group> -->
+                    <group string="Basic Information">
+                        <group>
+                            <field name="type_of_pc" string="Type of PC Builder" widget="radio"
+                                   options="{'horizontal': true}"/>
+                            <field name="detailed_type"/>
+                            <field name="default_code" string="SKU" required="1"/>
+                            <field name="brand_id" string="Brand"/>
+                            <field name="filter_type" string="PC Type"/>
+                            <field name="categ_id" string="Product Category(Backend)"/>
+                            <field name="public_categ_ids" widget="many2many_tags" string="Website Category"/>
+                        </group>
+                        <group string="Price and Tax" class="title_oe">
+                            <field name="standard_price" string="Purchase Price"/>
+                            <field name="sales_price" string="Default Selling Price" required="1"/>
+                            <field name="list_price" string="Offer Price"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="micro_store_id"/>
+                            <field name="is_gear_store" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="is_free_shipping_pc_builder"/>
+                            <field name="min_delivery_days"/>
+                            <field name="max_delivery_days"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" string="Terms of Use"/>
+                        <field name="terms_of_use_arabic"/>
+                    </group>
+                    <h5>Component :</h5>
+                    <field name="component_lines" context="{'show_price':True}">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="mandatory_all" invisible="1"/>
+                            <field name="allowed_multi_sel"/>
+                            <field name="mandatory_category"/>
+<!--                            <field name="parent_category_id" string="Parent section/ Main Category" required="1"/>-->
+                            <field name="component_id"
+                                   required="1" string="Components Category"/>
+<!--                            <field name="component_id" domain="[('parent_category_id','=',parent_category_id)]"-->
+<!--                                   required="1" string="Components Category"/>-->
+                            <button type="action" string=" " context="{'default_type': 'add'}"
+                                    icon="fa-angle-double-right oe_list_btn" name="%(action_component_add_remove)d"
+                                    attrs="{'column_invisible': [('parent.type_of_pc', '=', 'normal')]}"/>
+                            <field name="product_ids" string="Components / Products" widget="many2many_tags"
+                                   domain="[('component_id', '=',component_id)]" context="{'show_price':True}"
+                                   attrs="{'column_invisible': [('parent.type_of_pc', '=', 'normal')]}"/>
+                            <field name="product_id" domain="[('id','in',product_ids)]" context="{'show_price':True}"/>
+                            <field name="allowed_number" attrs="{'readonly': [('allowed_multi_sel', '!=', True)]}"/>
+                            <field name="allowed_number_qty" attrs="{'readonly': [('allowed_multi_sel', '!=', True)]}"/>
+                            <button type="action" string=" " context="{'default_type': 'remove'}"
+                                    icon="fa-angle-double-left oe_list_btn" name="%(action_component_add_remove)d"
+                                    attrs="{'column_invisible': [('parent.type_of_pc', '=', 'normal')]}"/>
+                        </tree>
+                    </field>
+                    <notebook>
+                        <page string="Fit Products Definitions" invisible="1">
+                            <group>
+                                <field name="unfit_product_msg"/>
+                            </group>
+                            <field name="relative_product_ids" domain="[('type_products','=','normal')]">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="barcode"/>
+                                    <field name="default_code"/>
+                                    <field name="categ_id"/>
+                                    <field name="public_categ_ids"/>
+                                    <field name="brand_id"/>
+                                    <field name="sales_price"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <field name="product_template_image_ids" class="o_website_sale_image_list"
+                           context="{'default_name': name}" mode="kanban" add-label="Add a Media"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_template_infiniarc" model="ir.actions.act_window">
+        <field name="name">Add Pc Builder</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('type_products','=','customized')]</field>
+        <field name="context">{'default_type_products': 'customized','default_type_of_pc': 'customize', 'default_gaming_pc': True}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Product Components.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_product_template_infiniarc_kanban" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="product.product_template_kanban_view"/>
+        <field name="act_window_id" ref="action_product_template_infiniarc"/>
+    </record>
+
+    <record id="action_product_template_infiniarc_tree" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_product_template_infiniarc_tree"/>
+        <field name="act_window_id" ref="action_product_template_infiniarc"/>
+    </record>
+
+    <!-- Form -->
+    <record id="action_product_template_infiniarc_form" model="ir.actions.act_window.view">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_product_template_infiniarc_form"/>
+        <field name="act_window_id" ref="action_product_template_infiniarc"/>
+    </record>
+
+    <menuitem
+            name="Add Pc Builder"
+            parent="stock.menu_stock_inventory_control"
+            action="action_product_template_infiniarc"
+            id="sub_menu_stock_product_template_infiniarc"/>
+
+
+    <menuitem
+            name="Add Pc Builder"
+            parent="stock.menu_stock_inventory_control"
+            action="action_product_template_infiniarc"
+            id="sub_menu_stock_product_template_infiniarc"/>
+
+</odoo>

@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="payment_acquirer_payfort" model="payment.acquirer">
+            <field name="name">Payfort</field>
+            <field name="display_as">Payfort(Powered by Amazon)</field>
+            <field name="inline_form_view_id" ref="inline_form"/>
+            <field name="provider">payfort</field>
+            <!--            <field name="environment">test</field>-->
+            <field name="sequence">1</field>
+<!--            <field name="company_id" ref="base.main_company"/>-->
+            <field name="image_128" type="base64" file="payfort_payment_gateway/static/src/img/payfort.png"/>
+            <field name="description" type="html">
+                <p>
+                    A payment gateway to accept online payments via credit/debit cards.
+                </p>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><i class="fa fa-check"/>Online Payment
+                    </li>
+                    <li class="list-inline-item"><i class="fa fa-check"/>Payment Status Tracking
+                    </li>
+                </ul>
+            </field>
+        </record>
+
+    </data>
+
+    <record id="payment_method_payfort" model="account.payment.method">
+        <field name="name">Payfort</field>
+        <field name="code">payfort</field>
+        <field name="payment_type">inbound</field>
+    </record>
+
+
+    <record id="menu_request_form" model="website.menu">
+        <field name="name">Request</field>
+        <field name="url">/payfort_request/form</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">18</field>
+    </record>
+
+
+</odoo>

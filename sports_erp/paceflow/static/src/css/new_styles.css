@@ -1,0 +1,73 @@
+.nav-tabs .nav-link {
+	 border-top-left-radius: 0;
+	 border-top-right-radius: 0;
+	 font-size: 14px;
+}
+ .tab-pane {
+	 padding: 15px 0;
+}
+ .tab-pane--comments {
+	 max-height: 400px;
+	 overflow-y: auto;
+}
+ .tab-pane--comments::after {
+	 content: "
+	"
+	;
+	 position: absolute;
+	 pointer-events: none;
+	 background: #fff;
+	 background: -moz-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+	 background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+	 background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+	 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="
+	#ffffff"
+	,endColorstr="
+	#ffffff"
+	,GradientType=1);
+	 height: 100px;
+	 width: 100%;
+	 left: 0;
+	 bottom: 0;
+}
+ .tab-pane--comments .paceflow-comment__footer {
+	 display: flex;
+	 justify-content: space-between;
+	 align-items: center;
+}
+ .tab-pane--comments .paceflow-comment__profile {
+	 width: 30px;
+	 height: 30px;
+	 margin-right: 10px;
+}
+ .tab-pane--comments .paceflow-comment__profile-image {
+	 object-fit: cover;
+	 width: 100%;
+	 height: 100%;
+	 border-radius: 50%;
+}
+ .tab-pane--comments .paceflow-comment__user {
+	 display: flex;
+	 align-items: center;
+}
+ .tab-pane--comments .paceflow-comment__author {
+	 font-size: 14px;
+	 color: #554f4f;
+}
+ .tab-pane--comments .paceflow-comment__timestamp {
+	 color: #7f7e7f;
+	 font-size: 12px;
+}
+ .tab-pane--comments .paceflow-comments {
+	 list-style: none;
+	 padding-left: 0;
+}
+ .tab-pane--comments .paceflow-comment {
+	 padding: 30px 20px;
+	 font-size: 14px;
+	 border-bottom: 1px dashed #e6e6e6;
+}
+ .tab-pane--comments .paceflow-comment:last-child {
+	 border-bottom: none;
+}
+ 

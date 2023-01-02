@@ -1,0 +1,49 @@
+#label{
+    color:gray;
+}
+@media(min-width:768px){
+    .o_viewer_video{
+        max-width:100% !important;
+        max-height:100% !important;
+        min-width:100% !important;
+        min-height:100% !important;
+
+    }
+    #video_container{
+        padding:5px !important;
+        min-height:400px !important;
+        max-height:400px !important;
+        min-width:600px !important;
+        max-width:600px !important;
+        margin-top:10px !important;
+    }
+    #button_container{
+        padding:5px;
+        min-width:400px;
+        max-width:400px;
+        margin-left:50px;
+        margin-top:10px !important;
+    }
+}
+@media(max-width: 768px) {
+    .o_viewer_video{
+        max-width: 100% !important;
+        max-height: 100% !important;
+        min-width: 100% !important;
+        min-height: 100% !important;
+        }
+    #video_container{
+        padding:5px;
+        min-height:100px !important;
+        max-height:100px !important ;
+        width:100%;
+        margin-top:5px !important;
+    }
+    #button_container{
+        margin-top:5%;
+        padding:5px;
+        min-width:100%;
+        max-width:100%;
+    }
+
+}

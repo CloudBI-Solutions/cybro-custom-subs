@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="infiniarc_terms_and_conditions" name="Infiniarc Terms And Conditions">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/support" class="ian-link__unstyled">Support</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Terms and Conditions</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ian-main-banner"
+                     style="background-image: url('/iwesabe_website_theme/static/src/img/background.jpeg');">
+                    <h2 class="ian-main-banner__header">Terms and Conditions</h2>
+                    <p class="ian-main-banner__lead"></p>
+                </div>
+
+                <!--                <div class="hero-banner hero-banner&#45;&#45;contactus">-->
+                <!--                    <h1 class="page-title mt32">-->
+                <!--                        Terms and Conditions-->
+                <!--                    </h1>-->
+                <!--                </div>-->
+
+            </section>
+
+
+            <section id="infiniarc-models" class="mt32 mb32">
+                <div class="container"
+                     style="text-align: center;">
+                    <div class="warranty-container mt16 mb16">
+                        <ul class="content-center nav">
+                            <t t-foreach="type" t-as="typ">
+
+                                <li class="models-categ col content-center nav-item">
+                                    <a role="tab" class="nav-link nav-title-root" id="networking-tab"
+                                       aria-selected="false" aria-controls="networking"
+                                       t-attf-href="/terms/{{slug(typ)}}" t-esc="typ.types"/>
+                                </li>
+                            </t>
+
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="support-type" class="">
+                <div class="container">
+                    <div class="row support-row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <t t-foreach="terms" t-as="term">
+
+                                <h2 class="ial-terms-h2 mb-0">
+                                    <t t-esc="term.policy"/>
+                                </h2>
+
+
+                                <div class="ial-terms-p">
+                                    <t t-esc="term.description"/>
+                                </div>
+
+
+                                <!--                            <h3 style="margin-bottom:25px; color:#00FFD4;">-->
+                                <!--                                <t t-esc="term.policy"/>-->
+                                <!--                            </h3>-->
+                                <!--                            <t t-esc="term.description"/>-->
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+</odoo>

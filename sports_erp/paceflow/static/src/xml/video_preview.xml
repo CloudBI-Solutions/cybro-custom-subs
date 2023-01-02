@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="video_preview_widget" owl="1">
+        <div>
+            <t t-foreach="props" t-as="prop" t-key="prop" class="px-5">
+                <div class="row">
+                    <div class="col-xs-4 border rounded" id="video_container">
+                        <video class="o_viewer_video"
+                               t-attf-id="video_viewer{{prop}}"
+                               controls="controls">
+
+                            <source t-attf-src="data:video/mp4;base64,{{props[prop].data}}"
+                                    t-attf-id="{{prop}}"
+                                    type="video/mp4"/>
+                        </video>
+                        <br/>
+                        <br/>
+                        <div class="row g-3 align-items-center">
+                            <div class="col-auto">
+                                <t t-if="props[prop].reference">
+                                <label for="reference" class="col-form-label">
+                                    <strong>Reference :</strong></label>
+                                </t>
+                            </div>
+                            <div class="col-auto">
+                                <t t-if="props[prop].reference">
+                                <strong>
+                                <t t-esc="props[prop].reference"/></strong>
+                                </t>
+
+                            </div>
+                            <div class="col-auto">
+                                <t t-if="props[prop].upd_date">
+                                <label for="date" class="col-form-label">
+                                    <strong>Upload Date :</strong></label>
+                                </t>
+                            </div>
+                            <div class="col-auto">
+                                <t t-if="props[prop].upd_date">
+                                <strong>
+                                 <t t-esc="props[prop].upd_date"/>
+                                </strong>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 border rounded"
+                         id="button_container">
+                            <div class=" mt-1">
+                                <h4 id="label">Legality</h4>
+                                <input type="button"
+                                       class="btn btn-primary px-2 mr-1 mt-1"
+                                       value="Phase 1"
+                                       t-attf-id="{{prop}}"
+                                       t-attf-name="Phase1"
+                                       t-on-click="phaseOneButton"/>
+                                <input type="button"
+                                       class="btn btn-primary px-2 mr-1 mt-1"
+                                       value="Phase 2"
+                                       t-attf-id="{{prop}}"
+                                       t-attf-name="Phase2"
+                                       t-on-click="phaseOneButton"/>
+                                <input type="button"
+                                       class="btn btn-primary px-2 mr-1 mt-1 "
+                                       value="Phase 3"
+                                       t-attf-id="{{prop}}"
+                                       t-attf-name="Phase3"
+                                       t-on-click="phaseOneButton"/>
+                                <input type="button"
+                                       class="btn btn-primary px-2 mr-1 mt-1 "
+                                       value="Phase 4"
+                                       t-attf-id="{{prop}}"
+                                       t-attf-name="Phase4"
+                                       t-on-click="phaseOneButton"/>
+
+                            </div>
+                        <div class=" mt-1">
+                                <h4 id="label">Momentum</h4>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Cadence/Efficiency"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Cadence/Efficiency"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Cadence/Tempo"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Cadence/Tempo"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Cadence/Stride length(% Difference)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Cadence/Stridelength"
+                                   t-on-click="phaseOneButton"/>
+                            </div>
+                        <div class=" mt-1">
+                                <h4 id="label">Stability</h4>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Bowling arm slot LP"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="LP"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Bowling arm slot HP"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="HP"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Lower half change of direction"
+                                   t-attf-name="LHCD"
+                                   t-attf-id="{{prop}}"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="CM direction to BFC"
+                                   t-attf-name="CM-BFC"
+                                   t-attf-id="{{prop}}"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Front leg angle BFC"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="BFC"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Back leg angles BFC (Side view)"
+                                   t-attf-name="BFCSideview"
+                                   t-attf-id="{{prop}}"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Back leg angles BFC (Rear view)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="BlaBFCRearview"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Rock back BFC(Slide view)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="BlaBFCSideview"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Hinge BFC(Slide view)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="HBFCSideview"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Bowling arm delay at BFC"
+                                   t-attf-name="BadaBFC"
+                                   t-attf-id="{{prop}}"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="CM direction BFC to FFC"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="CMdBFCtFFC"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Front arm at BFC"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="FaaBFC"
+                                   t-on-click="phaseOneButton"/>
+                             </div>
+                        <div class=" mt-1">
+                                <h4 id="label">Paceflow</h4>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Heel strike"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Hs"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Front arm position"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Fap"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Delayed bowling arm"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Dba"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Pelvis Control"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="PC"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Side Flexion"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="SF"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Front Knee"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="FK"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Top Half(Ball release side view)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="THBrsv"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   value="Top Half(FFC Side view)"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="THFFCsv"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1 "
+                                   value="Front arm end point"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Faep"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1 "
+                                   value="Shoulder delay" t-attf-id="{{prop}}"
+                                   t-attf-name="Sd"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1 "
+                                   value="Follow through energy"
+                                   t-attf-id="{{prop}}"
+                                   t-attf-name="Fte"
+                                   t-on-click="phaseOneButton"/>
+                            <input type="button"
+                                   class="btn btn-primary px-2 mr-1 mt-1"
+                                   t-attf-name="Ftd"
+                                   value="Follow through direction"
+                                   t-attf-id="{{prop}}"
+                                   t-on-click="phaseOneButton"/>
+                            </div>
+                    </div>
+                    <canvas t-attf-id="capture{{prop}}" class="col-3"
+                            style="display:none;" width="1280" height="1024"/>
+                    <img id="snapshot" class="col-3" style="display:none;"/>
+                </div>
+            </t>
+        </div>
+    </t>
+</template>

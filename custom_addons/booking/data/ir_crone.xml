@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ir_cron_archive_scheduler_action" model="ir.cron">
+        <field name="name">Archive Bookings</field>
+        <field name="active" eval="True" />
+        <field name="model_id" ref="model_booking_booking"/>
+        <field name="state">code</field>
+        <field name="code">model._compute_archive()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+    <record id="ir_cron_booking_done_scheduler_action" model="ir.cron">
+        <field name="name">Done Bookings</field>
+        <field name="active" eval="True" />
+        <field name="model_id" ref="model_booking_booking"/>
+        <field name="state">code</field>
+        <field name="code">model._compute_done()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>

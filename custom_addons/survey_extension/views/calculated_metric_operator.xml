@@ -1,0 +1,51 @@
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="calculated_metric_operator_view_form" model="ir.ui.view">
+        <field name="name">calculated.metric.operator.view.form</field>
+        <field name="model">calculated.metric.operator</field>
+
+        <field name="arch" type="xml">
+            <form string="department">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="view_calculated_metric_operator" model="ir.ui.view">
+            <field name="name">calculated.metric.operator.tree</field>
+            <field name="model">calculated.metric.operator</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+                    <field name="name"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+    <record id="calculated_metric_operator_action" model="ir.actions.act_window">
+            <field name="name">Calculated Operator</field>
+            <field name="res_model">calculated.metric.operator</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+    <menuitem
+                id="survey_menu_configuration"
+                name="Configuration"
+                parent="survey.menu_surveys"
+                sequence="91"
+                />
+    <menuitem
+                id="survey_calculated_operator"
+                name="Calculated Operators"
+                action="calculated_metric_operator_action"
+                parent="survey_menu_configuration"
+                />
+</odoo>

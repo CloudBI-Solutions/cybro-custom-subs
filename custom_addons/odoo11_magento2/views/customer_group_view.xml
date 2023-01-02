@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="customer_groups_tree" model="ir.ui.view">
+        <field name="name">customer.group.tree</field>
+        <field name="model">customer.group</field>
+        <field name="arch" type="xml">
+            <tree string="Customer Groups">
+                <field name="group_id"/>
+                <field name="group"/>
+                <field name="tax_class"/>
+
+            </tree>
+
+        </field>
+    </record>
+    <record id="magento_customer_groups_action" model="ir.actions.act_window">
+            <field name="name">Customer Groups</field>
+            <field name="res_model">customer.group</field>
+            <field name="view_mode">kanban,tree,form,pivot</field>
+            <field name="view_id" ref="odoo11_magento2.customer_groups_tree"/>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Customer Group.
+                </p>
+            </field>
+        </record>
+
+    <menuitem action="magento_customer_groups_action" id="magento_customer_groups" name="Customer Groups" parent="odoo11_magento2.magento_customers" sequence="0" />
+
+</odoo>

@@ -1,0 +1,1 @@
+from . import component_type_inherit

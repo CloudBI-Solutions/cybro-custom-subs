@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="event_stages_page" name="Event Stages">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/events"
+                               class="set-dashboard__breadcrumb-link">
+                                Events
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/event/stages"
+                               class="set-dashboard__breadcrumb-link">
+                                Event Stages
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="se-wrapper">
+                <div class="container-fluid">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__title-container">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Event Stages
+                                </h2>
+                                <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                    <t t-esc="total"/>
+                                </span>
+                            </div>
+                            <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                <a href="#"
+                                   class="set-button set-button--primary-muted mr-2">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>Assign
+                                </a>
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                            data-toggle="modal"
+                                            data-target="#addEventTemplateModal"
+                                            aria-expanded="false">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        Add New Event Stage
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="set-dashboard__table-options">
+                                    <a href="#"
+                                       class="set-button set-button--light set-dashboard__table-button mr-2">
+                                        <i class="fa fa-filter mr-2"/>Filter
+                                    </a>
+                                    <div class="set-dashboard__input-container">
+                                        <input type="search" name="search"
+                                               id="search"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <table class="set-dashboard__table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select-all"/>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Sequence</th>
+                                            <th>Description</th>
+                                            <th>End Stage</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="event_stage" t-as="stage">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select"/>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="stage.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Event Stage
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--blue set-badge--wide">
+                                                            <t t-esc="stage.sequence"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--green set-badge--wide">
+                                                            <t t-esc="stage.description"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--gold set-badge--wide">
+
+                                                            <t t-esc="stage.pipe_end"/>
+
+                                                        </span>
+
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-actions">
+                                                        <a t-att-href="'/my/event/stage/detail?stage=%s' % stage.id"
+                                                           class="set-dashboard__table-action mr-4">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Edit"
+                                                                 title="Edit"/>
+                                                        </a>
+                                                        <a t-att-href="'/my/event/stage/delete/?stage=%s' % stage.id"
+                                                           class="set-dashboard__table-action">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Remove"
+                                                                 title="Remove"/>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="set-dashboard__table-footer">
+                                    <span class="set-dashboard__page-position set-text set-text--grey">
+                                        Page
+                                        <span t-out="pager['page']['num']"/>
+                                        of
+                                        <t t-if="pager['page_count'] > 1">
+                                            <span t-out="pager['pages'][-1]['num']"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-out="pager['page']['num']"/>
+                                        </t>
+                                    </span>
+                                    <ul
+                                            class="set-dashboard__pagination">
+                                        <t t-foreach="pager['pages']"
+                                           t-as="page">
+                                            <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                <a t-att-href="page['url']"
+                                                   t-attf-class="page-link #{extraLinkClass}"
+                                                   t-out="page['num']"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal se-modal" id="addEventTemplateModal"
+                         tabindex="-1" role="dialog"
+                         aria-labelledby="addEventTemplateModal"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addEventTemplateModal">Add
+                                        New
+                                        Event Stage
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/event/stage"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="name">
+                                                    Stage Name
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       name="name"
+                                                       id="name"
+                                                />
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="sequence">
+                                                    Sequence
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       name="sequence"
+                                                       id="sequence"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="folded">
+                                                    Folded in Kanban
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="folded"
+                                                       name="folded"
+                                                       checked="1"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="end_stage">
+                                                    End Stage
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="end_stage"
+                                                       name="end_stage"
+                                                       checked="1"/>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="description">
+                                                    Description
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="description"
+                                                       name="description"
+                                                />
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="modal-footer d-flex">
+                                            <input type="submit"
+                                                   class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                   value="Add Event Stage"
+                                                   style="border-radius: 5px !important;"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+
+    </template>
+    <template id="event_stage_details" name="Events Stage Details">
+        <t t-call="portal.portal_layout">
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/events"
+                               class="set-dashboard__breadcrumb-link">
+                                Events
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/event/stages"
+                               class="set-dashboard__breadcrumb-link">
+                                Event Stages
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/event/stage/detail?stage=%s' % event_stage.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="event_stage.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form action="/update/event/stage" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden"
+                               name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="stage"
+                               t-att-value="event_stage.id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            Stage Name:
+                                            <t t-esc="event_stage.name"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab"
+                                                data-toggle="tab"
+                                                data-target="#home"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">
+                                            Stage Details
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="nameform-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                           t-att-value="event_stage.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="sequence">
+                                                        Sequence
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           name="sequence"
+                                                           id="sequence"
+                                                           t-att-value="event_stage.sequence"
+                                                    />
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="folded">
+                                                        Folded in Kanban
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="folded"
+                                                           name="folded"
+                                                           t-att-checked="event_stage.fold"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="end_stage">
+                                                        End Stage
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="end_stage"
+                                                           name="end_stage"
+                                                           t-att-checked="event_stage.pipe_end"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="description">
+                                                        Description
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="description"
+                                                           name="description"
+                                                           t-att-value="event_stage.description"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Event Template"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="portal_booking_dashboard" name="Booking">
+        <t t-call="portal.portal_layout"><br/>
+            <t t-if="partner.create_booking">
+                <div class="row">
+                    <form action='/create_booking' method="post">
+                        <button type="submit" class="btn btn-primary float-right mb32 ">
+                            New Booking
+                            <i class="fa fa-pencil"/>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="coach">
+                                <input type="hidden" name="coach_id" t-att-value="coach.id"/>
+                            </t>
+                            <t t-if="athlete">
+                                <input type="hidden" name="athlete_id" t-att-value="athlete.id"/>
+                            </t>
+                            <t t-if="fan">
+                                <input type="hidden" name="fan_id" t-att-value="fan.id"/>
+                            </t>
+                        </button>
+                    </form>
+                </div>
+            </t>
+            <t t-if="not bookings">
+                <div class="alert alert-warning mt8" role="alert">
+                    No Assigned Booking found!
+                </div>
+            </t>
+            <t t-else="">
+                <h3><i>Assigned Bookings</i></h3>
+                <div class="row">
+                    <t t-if="bookings" t-call="portal.portal_table">
+                        <thead>
+                            <th>Ref</th>
+                            <th>Appointment Type</th>
+                            <th>Start from</th>
+                            <th>Description</th>
+                            <th>Stage</th>
+                            <th/>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="bookings" t-as="booking">
+                                <td>
+                                    <span t-field="booking.sequence"/>
+                                </td>
+                                <td>
+                                    <span t-esc="booking.appointment_type_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="booking.event_start"/>
+                                </td>
+                                <td>
+                                    <span t-field="booking.description"/>
+                                </td>
+                                <td>
+                                    <span class="badge badge-info badge-pill" t-field="booking.stage_id"/>
+                                </td>
+                                <td class="formio_form_actions">
+                                        <t t-if="not booking.event_id">
+                                        <form action='/booking' method="post">
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <input type="hidden" name="booking_id" t-att-value="booking.id"/>
+                                            <button type="submit" class="btn btn-sm btn-primary">
+                                                Schedule
+                                            </button>
+                                        </form>
+                                    </t>
+<!--                                    </t>-->
+                                    <t t-else="else">
+                                        <t t-if="booking.state == 'booked'">
+                                            <form action='/cancel_booking' method="post">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                <input type="hidden" name="booking_id" t-att-value="booking.id"/>
+                                                <button type="submit" class="btn btn-sm btn-danger">
+                                                    Cancel
+                                                </button>
+                                            </form>
+                                        </t>
+                                    </t>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </t>
+                </div><br/><br/>
+            </t>
+            <div id="related_booking_button">
+                <t t-if="my_bookings">
+                    <button id="show_related_bookings" class='input-group-append btn btn-sm btn-primary o_sign_resend_sms'>Related Bookings
+                        <span class="fa fa-2x fa-long-arrow-down"></span></button>
+                    <button id="hide_related_bookings" class='input-group-append btn btn-sm btn-primary o_sign_resend_sms'>Related Bookings
+                        <span class="fa fa-2x fa-long-arrow-up"></span></button>
+                </t>
+            </div><br/><br/>
+            <div id="related_bookings" style="display:none">
+                <h3><i>Related Bookings</i></h3>
+                    <div class="row">
+                        <t t-if="my_bookings" t-call="portal.portal_table">
+                            <thead>
+                                <th>Ref</th>
+                                <th>Appointment Type</th>
+                                <th>Start from</th>
+                                <th>Assigned to</th>
+                                <th>Description</th>
+                                <th>Stage</th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="my_bookings" t-as="booking">
+                                    <td>
+                                        <span t-field="booking.sequence"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="booking.appointment_type_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="booking.event_start"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="booking.assigned_user_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="booking.description"/>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-info badge-pill" t-field="booking.stage_id"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </t>
+                    </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_booking_form" name="Appointment">
+            <t t-call="portal.portal_layout"><br/><br/>
+                <t t-set="no_breadcrumbs" t-value="1"/><br/><br/>
+                <t t-set="additional_title">Booking Details</t>
+                <form action="/my/submit_appointment" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="booking_id" t-att-value="booking.id"/>
+                <div class="clearfix">
+                    <button type="submit" class="btn btn-primary float-right mb32 ">
+                        Confirm
+                        <span class="fa fa-long-arrow-right" />
+                    </button>
+                </div>
+                    <div id="schedule_form" class="s_website_form_rows row s_col_no_bgcolor">
+                    <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="child">
+                                <span class="s_website_form_label_content">Ref : </span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div class="col-sm">
+                                <input type="string" name="sequence" class="form-control s_website_form_input" readonly="readonly" t-att-value="booking.sequence"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="child">
+                                <span class="s_website_form_label_content">Appointment Type : </span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div id="type" class="col-sm">
+                                <select id="type_selected" name="type" t-attf-class="form-control" required="required">
+                                    <option value="">Select...</option>
+                                    <t t-foreach="types or []" t-as="type">
+                                        <option class="state" t-att-value="type.id">
+                                            <t t-esc="type.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="dob">
+                                <span class="s_website_form_label_content">Duration :</span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div class="col-sm">
+                                <input id="duration" type="string" class="form-control s_website_form_input" name="duration" required="required" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="dob">
+                                <span class="s_website_form_label_content">Venue :</span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div class="col-sm">
+                                <input id="venue" type="string" class="form-control s_website_form_input" name="duration" required="required" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="dob">
+                                <span class="s_website_form_label_content">Coach :</span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div class="col-sm">
+                                <input id="coach" type="string" class="form-control s_website_form_input" name="duration" required="required" readonly="readonly"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="dob">
+                                <span class="s_website_form_label_content">Appointment Date :</span>
+                                <span class="s_website_form_mark"> *</span>
+                            </label>
+                            <div class="col-sm">
+                                <input id="appointment_date" type="date" class="form-control s_website_form_input" name="appointment_date" required="required"/>
+                            </div>
+                            <input type="hidden" id="coach_id" name="coach_id"/>
+                            <input type="hidden" name="booking_id" t-att-value="booking.id"/>
+                        </div>
+                    </div>
+                </div>
+                </form>
+                <br/>
+            </t>
+    </template>
+
+    <template id="portal_cancel_form" name="Cancel Appointment">
+            <t t-call="portal.portal_layout">
+                <t t-set="no_breadcrumbs" t-value="1"/><br/><br/>
+                <t t-set="additional_title">Booking Details</t>
+                <form action="/my/cancel_appointment" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="booking_id" t-att-value="booking.id"/>
+                <div class="clearfix">
+                    <button type="submit" class="btn btn-primary float-right mb32 ">
+                        Cancel
+                        <span class="fa fa-long-arrow-right" />
+                    </button>
+                </div>
+                <div class="row o_portal_details">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div t-attf-class="form-group col-xl-6">
+                                <label class="col-form-label" for="name">Ref</label>
+                                <input type="text" name="sequence" t-attf-class="form-control" t-att-value="booking.sequence" readonly="readonly"/>
+                            </div>
+                            <div t-attf-class="form-group col-xl-6">
+                                <label class="col-form-label" for="date">Date</label>
+                                <input type="date" name="date" t-attf-class="form-control" t-att-value="booking.event_start" readonly="readonly"/>
+                            </div>
+                            <div t-attf-class="form-group col-xl-6">
+                                <label class="col-form-label" for="date">Reason</label>
+                                <input type="text" name="reason" t-attf-class="form-control"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                </form>
+            </t>
+    </template>
+
+<!--    user booking creation-->
+    <template id="portal_create_booking_form" name="Booking Form">
+        <t t-call="website.layout">
+<!--            <t t-set="no_breadcrumbs" t-value="1"/><br/><br/>-->
+            <div id="wrap" class="oe_structure oe_empty oe_website_sale">
+                <section class="s_website_form pt16 pb16 o_colored_level">
+                    <div class="container">
+                        <form id="booking_form" action="/my/form_submit" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="coach">
+                                <input type="hidden" name="assign_coach_id" t-att-value="coach.id"/>
+                            </t>
+                            <t t-if="athlete">
+                                <input type="hidden" name="assign_athlete_id" t-att-value="athlete.id"/>
+                            </t>
+                            <t t-if="fan">
+                                <input type="hidden" name="assign_fan_id" t-att-value="fan.id"/>
+                            </t>
+                            <div id="submit_form" class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="type">
+                                            <span class="s_website_form_label_content">Appointment type: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div id="type_selection" class="col-sm">
+                                            <select id="type_id" name="type_id" required="required" class="form-control">
+                                                <option value="">Select...</option>
+                                                <t t-foreach="types or []" t-as="type">
+                                                    <option class="state" t-att-value="type.id">
+                                                        <t t-esc="type.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="duration">
+                                            <span class="s_website_form_label_content">Duration: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="input_duration" type="string" class="form-control s_website_form_input" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="coach">
+                                            <span class="s_website_form_label_content">Coach: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="input_coach" type="string" class="form-control s_website_form_input" name="coach_id" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="venue">
+                                            <span class="s_website_form_label_content">Venue: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="input_venue" type="string" class="form-control s_website_form_input" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="coach">
+                                            <span class="s_website_form_label_content">Attendees: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select name="user_ids"
+                                                    id="user_ids"
+                                                    class="form-control form-control s_website_form_input sports-erp-dashbaord-select"
+                                                    multiple="multiple"
+                                                    placeholder="Choose Attendees">
+                                                <t t-foreach="user_ids or []"
+                                                   t-as="user_id">
+                                                    <option t-att-value="user_id.id">
+                                                        <t t-esc="user_id.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+<!--                                            <input id="input_coach" type="string" class="form-control s_website_form_input" name="coach_id" required="required" readonly="readonly"/>-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="date">
+                                            <span class="s_website_form_label_content">Appointment Date :</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="input_appointment_date" t-att-min="'%s' %date" type="date" class="form-control s_website_form_input" name="appointment_date" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" id="booking_coach_id" name="coach_id"/>
+                            <div class="row radio-toolbar" id="schedules"/>
+                            <div class="clearfix col-12">
+                                <button type="submit" class="btn btn-primary float-right btn-md">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+<!--    public booking creation-->
+    <template id="portal_create_public_booking_form" name="Booking Form">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty oe_website_sale">
+                <section class="s_website_form pt16 pb16 o_colored_level">
+                    <div class="container">
+                        <form id="public_booking_form" method="post" action="/create_public_booking" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div id="public_submit_form" class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="name">
+                                            <span class="s_website_form_label_content">Your Name: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="user_name" name="user_name" type="string" class="form-control s_website_form_input" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="email">
+                                            <span class="s_website_form_label_content">Your Email: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="user_email" name="user_email" type="email" class="form-control s_website_form_input" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="type">
+                                            <span class="s_website_form_label_content">Appointment type: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div id="public_type_selection" class="col-sm">
+                                            <select id="public_type_id" name="type_id" required="required" class="form-control">
+                                                <option value="">Select...</option>
+                                                <t t-foreach="types or []" t-as="type">
+                                                    <option class="state" t-att-value="type.id">
+                                                        <t t-esc="type.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="duration">
+                                            <span class="s_website_form_label_content">Duration: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="public_input_duration" type="string" class="form-control s_website_form_input" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="coach">
+                                            <span class="s_website_form_label_content">Coach: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="public_input_coach" type="string" class="form-control s_website_form_input" name="coach_id" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="venue">
+                                            <span class="s_website_form_label_content">Venue: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="public_input_venue" type="string" class="form-control s_website_form_input" required="required" readonly="readonly"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="date">
+                                            <span class="s_website_form_label_content">Appointment Date :</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="public_input_appointment_date" t-att-min="'%s' %date" type="date" class="form-control s_website_form_input" name="appointment_date" required="required"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="public_user_id" id="public_user_id" t-att-value="user.id"/>
+                            <div class="row radio-toolbar" id="public_schedules"/>
+                            <div id="div_button_confirm_schedule" class="clearfix col-12">
+                                <button type="submit" id="button_confirm_schedule" class="btn btn-primary float-right btn-md">
+                                    Confirm
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_confirm_public_booking_form" name="Booking Form">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty oe_website_sale">
+                <section class="s_website_form pt16 pb16 o_colored_level">
+                    <div class="container">
+                        <t t-if="booking">
+                        <form method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="name">
+                                            <span class="s_website_form_label_content">Your Name: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="string" class="form-control s_website_form_input" readonly="readonly" t-att-value="user_name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="email">
+                                            <span class="s_website_form_label_content">Your Email: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="email" class="form-control s_website_form_input" readonly="readonly" t-att-value="user_email"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="type">
+                                            <span class="s_website_form_label_content">Appointment type: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div id="public_type_selection" class="col-sm">
+                                            <select readonly="readonly" class="form-control">
+                                                <option class="state" t-att-value="appointment_type.id">
+                                                    <t t-esc="appointment_type.name"/>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="duration">
+                                            <span class="s_website_form_label_content">Duration: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="string" class="form-control s_website_form_input" readonly="readonly" t-att-value="duration"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="coach">
+                                            <span class="s_website_form_label_content">Coach: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="string" class="form-control s_website_form_input" name="coach_id" readonly="readonly" t-att-value="appointment_type.coach_id.name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="venue">
+                                            <span class="s_website_form_label_content">Venue: </span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="string" class="form-control s_website_form_input" readonly="readonly" t-att-value="appointment_type.venue_id.name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="slot">
+                                            <span class="s_website_form_label_content">Appointment Slot :</span>
+                                            <span class="s_website_form_mark"> *</span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input type="string" class="form-control s_website_form_input" name="appointment_slot" readonly="readonly" t-att-value="slot"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        </t>
+                    </div>
+                </section>
+                <t t-if="access_form">
+                    <section class="s_website_form pt16 pb16 o_colored_level">
+                        <div  class="oe_structure">
+                        </div>
+                    </section>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <!--     thanks page -->
+    <template id="booking_creation_thanks_page" name="Thanks">
+        <t t-call="website.layout">
+          <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                        <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                            <div class="container">
+                                <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                <h1 class="text-center">Thank You!</h1>
+                                <div class="pb16 pt16 s_hr" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                </div>
+                                <h5 class="text-center">
+                                    <span class="fa fa-check-circle"/>
+                                    <span>Your booking has been created <b>successfully</b></span>
+                                </h5>
+<!--                                <p class="text-center">We will get back to you shortly.</p>-->
+                            </div>
+                        </section>
+                    </div>
+<!--                    <div class="col-lg-4">-->
+<!--                        <t t-call="website.company_description"/>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+          </div>
+        </t>
+    </template>
+
+    <record id="contactus_thanks_inherit" model="ir.ui.view">
+        <field name="name">Thanks (Contact us)</field>
+        <field name="type">qweb</field>
+        <field name="key">website.contactus_thanks</field>
+        <field name="inherit_id" ref="website.contactus_thanks_ir_ui_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='wrap']" position="after">
+                <script>
+                    setTimeout(function(){
+                        window.location.href = '/';
+                    }, 2000);
+                </script>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

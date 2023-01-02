@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_filter_view" name="Product Filter">
+        <t t-call="website.layout">
+
+        </t>
+    </template>
+</odoo>

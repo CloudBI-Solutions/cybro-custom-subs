@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_download" name="Infiniarc Support">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="hero-banner hero-banner--contactus">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="breadcrumb-item" aria-current="page">
+                                <a href="/support">Support</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Driver Download</li>
+                        </ol>
+                    </nav>
+
+                    <h1 class="page-title mt32">
+                        <span>Driver Download</span>
+                    </h1>
+                </div>
+
+            </section>
+
+            <section id="support-type" class="">
+                <div class="download-container" style="margin-bottom:60px;">
+                    <t t-call="website.website_search_box_input">
+
+                    </t>
+                </div>
+            </section>
+
+            <section id="support-type" class="">
+                <div class="container download-container mb-5">
+                    <div class="row s_nb_column_fixed">
+                        <t t-foreach="driver" t-as="download">
+                        <div class="col-lg-3 s_table_of_content_navbar_wrap s_table_of_content_navbar_sticky s_table_of_content_vertical_navbar d-print-none d-none d-lg-block o_not_editable o_cc o_cc1"
+                             data-name="Navbar" style="background:none;">
+                            <div class="s_table_of_content_navbar list-group o_no_link_popover"/>
+                            <p style="color: white;">
+                                <b><t t-esc="download.driver"/></b>
+
+                            </p>
+
+                        </div>
+                        <div class="col-lg-9 s_table_of_content_main oe_structure oe_empty" data-name="Content">
+                            <section class="pb16">
+                                <p><t t-esc="download.description"/>
+
+                                </p>
+
+                            </section>
+                        </div>
+                        </t>
+                    </div>
+
+
+                </div>
+            </section>
+
+        </t>
+    </template>
+</odoo>

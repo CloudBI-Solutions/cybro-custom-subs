@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="athlete_dashboard_template" name="Athletes Dashboard">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/athletes/home"
+                               class="set-dashboard__breadcrumb-link">Athletes
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2">Athletes</h2>
+                        <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                            <t t-esc="total"/>
+                        </span>
+                    </div>
+                    <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                        <a href="#"
+                           class="set-button set-button--primary-muted mr-2">
+                            <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                 width="18" height="18" class="mr-2"/>
+                            Assign
+                        </a>
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                    data-toggle="modal"
+                                    data-target="#addAthleteModal">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                     width="18" height="18" class="mr-2"/>
+                                Add New Athlete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__table-options">
+                            <a href="#"
+                               class="set-button set-button--light set-dashboard__table-button mr-2">
+                                <i class="fa fa-filter mr-2"/>
+                                Filter
+                            </a>
+                            <div class="set-dashboard__input-container">
+                                <input type="search" name="search" id="search"
+                                       placeholder="Search"
+                                       class="set-dashboard__input-search"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <table class="set-dashboard__table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select-all"/>
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Age</th>
+                                    <th>Member ID</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="athletes" t-as="athlete">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select"/>
+                                        </td>
+                                        <td>
+                                            <div class="set-dashboard__table-details image-name-class">
+                                                <div style="max-width: 70px;">
+                                                    <img t-att-src="'/web/image/organisation.athletes/%s/img_athletes' % athlete.id"
+                                                         alt="Athlete Image"
+                                                         class="sport-erp-image"/>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <span class="set-dashboard__table-name mb-1">
+                                                        <t t-esc="athlete.name"/>
+                                                    </span>
+                                                    <span class="set-dashboard__table-role">
+                                                        Athlete
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                <span class="set-badge set-badge--blue set-badge--wide">
+                                                    <t t-esc="athlete.phone"/>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                <span class="set-badge set-badge--green set-badge--wide">
+                                                    <t t-esc="athlete.age"/>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                <span class="set-badge set-badge--gold set-badge--wide">
+                                                    <t t-esc="athlete.member_id"/>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="set-dashboard__table-actions">
+                                                <a t-att-href="'/my/athlete/%s' % athlete.id"
+                                                   class="set-dashboard__table-action mr-4">
+                                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                         class="set-dashboard__table-action-icon"
+                                                         alt="Edit"
+                                                         title="Edit"/>
+                                                </a>
+                                                <a t-att-href="'/remove/%s' % athlete.id"
+                                                   class="set-dashboard__table-action">
+                                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                         class="set-dashboard__table-action-icon"
+                                                         alt="Remove"
+                                                         title="Remove"/>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                        <div class="set-dashboard__table-footer">
+                            <span class="set-dashboard__page-position set-text set-text--grey">
+                                Page
+                                <span t-out="pager['page']['num']"/>
+                                of
+                                <t t-if="pager['page_count'] > 1">
+                                    <span t-out="pager['pages'][-1]['num']"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-out="pager['page']['num']"/>
+                                </t>
+                            </span>
+                            <ul class="set-dashboard__pagination">
+                                <t t-foreach="pager['pages']" t-as="page">
+                                    <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                        <a t-att-href="page['url']"
+                                           t-attf-class="page-link #{extraLinkClass}"
+                                           t-out="page['num']"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal se-modal" id="addAthleteModal" tabindex="-1"
+                 role="dialog" aria-labelledby="addAthleteModal"
+                 aria-hidden="true">
+                <div class="modal-dialog se-modal__dialog" role="document">
+                    <div class="modal-content se-modal__content">
+                        <div class="modal-header">
+                            <h5 class="modal-title se-modal__title"
+                                id="addAthleteModalLabel">Add New Athlete
+                            </h5>
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">X</span>
+                            </button>
+                        </div>
+                        <form action="/create/athlete" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <div class="modal-body">
+                                <div class="row px-4">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="athlete_name">First Name
+                                        </label>
+                                        <input type="text"
+                                               class="form-control se-form-control"
+                                               id="athlete_name"
+                                               name="athlete_name"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <div>
+                                            <label for="name">
+                                                <img id="profile_picture"
+                                                     src="/sports_erp_dashboard/static/src/images/ui/user.svg"
+                                                     style="cursor: pointer;"
+                                                     class="se-form__profile-img"/>
+                                            </label>
+                                            <input id="name"
+                                                   style="margin-left: 50px;"
+                                                   onchange="image_preview()"
+                                                   type="file" name="photo"
+                                                   class="file" multiple="true"
+                                                   data-show-upload="true"
+                                                   data-show-caption="true"
+                                                   lass="file"
+                                                   data-show-preview="true"
+                                                   hidden="true"/>
+                                        </div>
+                                    </div>
+                                    <script>function image_preview() {
+                                        profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                                        } function ageCalculator() { var
+                                        userinput =
+                                        document.getElementById("dob").value;
+                                        var dob = new Date(userinput);
+                                        if(!userinput==null || !userinput=='') {
+                                        var month_diff = Date.now() -
+                                        dob.getTime(); var age_dt = new
+                                        Date(month_diff); var year =
+                                        age_dt.getUTCFullYear(); var age =
+                                        Math.abs(year - 1970);
+                                        document.getElementById("age").value =
+                                        age } }
+                                    </script>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="last_name">Last Name
+                                        </label>
+                                        <input type="text"
+                                               class="form-control se-form-control"
+                                               id="last_name" name="last_name"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="phone">Phone
+                                        </label>
+                                        <input type="text"
+                                               class="form-control se-form-control"
+                                               id="phone" name="phone"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="email">Email
+                                        </label>
+                                        <input type="email"
+                                               class="form-control se-form-control"
+                                               id="email" name="email"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="member_id">Member ID
+                                        </label>
+                                        <input type="text"
+                                               class="form-control se-form-control"
+                                               id="member_id" name="member_id"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label" for="tags">
+                                            Tags
+                                        </label>
+                                        <t t-set="tags"
+                                           t-value="request.env['athletes.tags'].search([])"/>
+                                        <select name="tags" id="tags"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Tags">
+                                            <t t-foreach="tags or []"
+                                               t-as="tag">
+                                                <option t-att-value="tag.id">
+                                                    <t t-esc="tag.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <img src="/sports_erp_dashboard/static/src/images/ui/plus-circle-add.png"
+                                             width="18" height="18"
+                                             class="position-absolute"
+                                             style="top: 54px; right: 20px;"
+                                             onclick="open_tag_modal()"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="booking">Booking Creation
+                                        </label>
+                                        <input type="checkbox"
+                                               class="se-form-control ml-2"
+                                               id="booking" name="booking"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label" for="dob">
+                                            Date of Birth
+                                        </label>
+                                        <input type="date"
+                                               class="form-control se-form-control"
+                                               id="dob" name="dob"
+                                               oninput="ageCalculator()"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label" for="dob">
+                                            Age
+                                        </label>
+                                        <input type="number"
+                                               class="form-control se-form-control"
+                                               id="age" name="dob"
+                                               readonly="1"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label" for="tags">
+                                            Organisations
+                                        </label>
+                                        <select name="organisations"
+                                                id="organisations"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Organisations">
+                                            <t t-foreach="organisations or []"
+                                               t-as="organisation">
+                                                <option t-att-value="organisation.id">
+                                                    <t t-esc="organisation.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="parents">Parents
+                                        </label>
+                                        <!--                                         <t t-set="parents" -->
+                                        <!--                                            t-value="request.env['organisation.parents'].search([])"/> -->
+                                        <select name="parents" id="parent"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Parent">
+                                            <t t-foreach="parents or []"
+                                               t-as="parent">
+                                                <option t-att-value="parent.id">
+                                                    <t t-esc="parent.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="groups">Groups
+                                        </label>
+                                        <select name="groups" id="groups"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Groups">
+                                            <t t-foreach="groups or []"
+                                               t-as="group">
+                                                <option t-att-value="group.id">
+                                                    <t t-esc="group.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="parents">Coaches
+                                        </label>
+                                        <select name="coaches" id="coaches"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Coaches">
+                                            <t t-foreach="coaches or []"
+                                               t-as="coach">
+                                                <option t-att-value="coach.id">
+                                                    <t t-esc="coach.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="disciplines">Disciplines
+                                        </label>
+                                        <select name="disciplines"
+                                                id="disciplines"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Disciplines">
+                                            <t t-foreach="disciplines or []"
+                                               t-as="discipline">
+                                                <option t-att-value="discipline.id">
+                                                    <t t-esc="discipline.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <!--                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3"> -->
+                                    <!--                                         <label class="se-form-label" -->
+                                    <!--                                                for="products"> -->
+                                    <!--                                             Products -->
+                                    <!--                                         </label> -->
+                                    <!--                                         <t t-set="products" -->
+                                    <!--                                            t-value="request.env['product.product'].search([])"/> -->
+                                    <!--                                         <select name="products" id="product" -->
+                                    <!--                                                 class="form-control se-form-control sports-erp-dashbaord-select" -->
+                                    <!--                                                 multiple="multiple" -->
+                                    <!--                                                 placeholder="Choose Products"> -->
+                                    <!--                                             <t t-foreach="products or []" -->
+                                    <!--                                                t-as="product"> -->
+                                    <!--                                                 <option t-att-value="product.id"> -->
+                                    <!--                                                     <t t-esc="product.name"/> -->
+                                    <!--                                                 </option> -->
+                                    <!--                                             </t> -->
+                                    <!--                                         </select> -->
+                                    <!--                                     </div> -->
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn--primary se-btn--no-rounded px-5"
+                                       value="Add Athlete"/>
+                            </div>
+                            <script>function hide_show_coaches() { var element =
+                                document.getElementById("se-sidebar"); var main
+                                = document.getElementById("main-container"); if
+                                (main.classList.contains("main-container--margin")){
+                                main.classList.toggle("main-container--margin");
+                                } if
+                                (element.classList.contains("se-sidebar--show")){
+                                element.classList.toggle("se-sidebar--show"); }
+                                };
+                            </script>
+                            <script>function open_tag_modal() {
+                                $('#addTagModal').modal('show'); } function
+                                closeModal() {
+                                document.getElementById('addTagModal').style.display
+                                = "none"; } function hide_show_fans() { var
+                                element = document.getElementById("se-sidebar");
+                                var main =
+                                document.getElementById("main-container");
+                                console.log("amin", main); if
+                                (main.classList.contains("main-container--margin")){
+                                main.classList.toggle("main-container--margin");
+                                } if
+                                (element.classList.contains("se-sidebar--show")){
+                                element.classList.toggle("se-sidebar--show"); }
+                                };
+                            </script>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal se-modal" id="addTagModal" tabindex="-1"
+                 role="dialog" aria-labelledby="addTagLabel" aria-hidden="true">
+                <div class="modal-dialog se-modal__dialog" role="document">
+                    <div class="modal-content se-modal__content">
+                        <div class="modal-header">
+                            <h5 class="modal-title se-modal__title"
+                                id="addTagModalLabel">Add Athlete Tag
+                            </h5>
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">X</span>
+                            </button>
+                        </div>
+                        <form action="/create/athlete_tag" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <div class="modal-body">
+                                <div class="row px-4">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="tag_name">Tag Name
+                                        </label>
+                                        <input type="text"
+                                               class="form-control se-form-control"
+                                               id="tag_name" name="tag_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between align-items-center">
+                                <input type="submit"
+                                       class="btn se-btn--primary se-btn--no-rounded px-5"
+                                       value="Add Tag"
+                                       style="border-radius: 5px !important; margin-right: 0 !important;margin-left: auto;"
+                                       onclick="setTimeout(closeModal, 200);"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="athlete_dashboard_details_template" name="Athlete">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/athletes/home"
+                               class="set-dashboard__breadcrumb-link">Athletes
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/athlete/%s' % athlete.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="athlete.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form action="/update/athlete" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="athlete"
+                               t-att-value="athlete.id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            Athlete:
+                                            <t t-esc="athlete.name"/>
+                                        </h1>
+                                    </div>
+                                    <div class="se-dashboard__right-action w-100">
+                                        <div class="se-form__profile-img ml-auto">
+                                            <label for="name">
+                                                <img t-if="athlete.img_athletes"
+                                                     id="profile_picture"
+                                                     t-att-src="image_data_uri(athlete.img_athletes)"
+                                                     width="36" height="36"
+                                                     style="cursor: pointer;"
+                                                     class="se-form__profile-img"/>
+                                                <img id="profile_picture"
+                                                     t-if="not athlete.img_athletes"
+                                                     src="/sports_erp_dashboard/static/src/images/ui/account.svg"
+                                                     width="36" height="36"
+                                                     style="cursor: pointer;"
+                                                     class="se-form__profile-img"/>
+                                            </label>
+                                            <input id="name"
+                                                   style="margin-left: 50px;"
+                                                   onchange="image_preview()"
+                                                   type="file" name="photo"
+                                                   class="file" multiple="true"
+                                                   data-show-upload="true"
+                                                   data-show-caption="true"
+                                                   lass="file"
+                                                   data-show-preview="true"
+                                                   hidden="true"/>
+                                            <script>function image_preview() {
+                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                                                }
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">Personal
+                                            Information
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="profile-tab"
+                                                data-toggle="tab"
+                                                data-target="#profile"
+                                                type="button" role="tab"
+                                                aria-controls="profile"
+                                                aria-selected="false">Health
+                                            Details
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="performance-tab"
+                                                data-toggle="tab"
+                                                data-target="#performance"
+                                                type="button" role="tab"
+                                                aria-controls="performance"
+                                                aria-selected="false">
+                                            Performance
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="discipline-tab"
+                                                data-toggle="tab"
+                                                data-target="#discipline"
+                                                type="button" role="tab"
+                                                aria-controls="discipline"
+                                                aria-selected="false">Discipline
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="parents-tab"
+                                                data-toggle="tab"
+                                                data-target="#parents"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="false">Parents
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="organisation-tab"
+                                                data-toggle="tab"
+                                                data-target="#organisations-tab"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="false">
+                                            Organisations
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="coaches-tab"
+                                                data-toggle="tab"
+                                                data-target="#coaches"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="false">Coaches
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="products-tab"
+                                                data-toggle="tab"
+                                                data-target="#products"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="false">Products
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name" name="name"
+                                                           t-att-value="athlete.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="email">Email
+                                                    </label>
+                                                    <input type="email"
+                                                           class="form-control se-form-control"
+                                                           id="email"
+                                                           name="email"
+                                                           t-att-value="athlete.email"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="phone">Phone
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="phone"
+                                                           name="phone"
+                                                           t-att-value="athlete.phone"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="otoPrice">Member
+                                                        ID
+                                                    </label>
+                                                    <input type="number"
+                                                           class="form-control se-form-control"
+                                                           id="member_id"
+                                                           t-att-value="athlete.member_id"
+                                                           name="member_id"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="address">Address
+                                                    </label>
+                                                    <address t-field="athlete.partner_id" t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': True}" class="
+                                                    se-form-control" id="address
+                                                    "/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="dob">Date of
+                                                        Birth
+                                                    </label>
+                                                    <input type="date"
+                                                           class="form-control se-form-control"
+                                                           id="dob" name="dob"
+                                                           t-att-value="athlete.dob"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="age">Age
+                                                    </label>
+                                                    <input type="number"
+                                                           class="form-control se-form-control"
+                                                           id="age" name="age"
+                                                           t-att-value="athlete.age"
+                                                           readonly="1"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="tags">Tags
+                                                    </label>
+                                                    <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                                            id="tags"
+                                                            name="tags"
+                                                            multiple="true"
+                                                            style="height: calc(1.5em + 0.75rem + 2px) !important;">
+                                                        <t t-foreach="athlete.tag_ids or []"
+                                                           t-as="tag">
+                                                            <option selected="selected"
+                                                                    t-att-value="tag.id">
+                                                                <t t-esc="tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                        <t t-set="tags"
+                                                           t-value="request.env['athletes.tags'].sudo().search([])"/>
+                                                        <t t-foreach="tags or []"
+                                                           t-as="tag">
+                                                            <option t-att-value="tag.id">
+                                                                <t t-esc="tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile"
+                                         role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div class="row col-12 col-sm-12">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="se-form-label"
+                                                           for="height">Height
+                                                    </label>
+                                                    <p>
+                                                        <input type="number"
+                                                               name="height"
+                                                               class="form-control se-form-control"
+                                                               t-att-value="athlete.partner_id.height"/>
+                                                    </p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="se-form-label"
+                                                           for="phone">Weight
+                                                    </label>
+                                                    <p>
+                                                        <input type="number"
+                                                               name="weight"
+                                                               class="form-control se-form-control"
+                                                               t-att-value="athlete.partner_id.weight"/>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label class="se-form-label"
+                                                           for="notes">Notes
+                                                    </label>
+                                                    <p>
+                                                        <textarea name="notes"
+                                                                  class="form-control se-form-control"/>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="discipline"
+                                         role="tabpanel"
+                                         aria-labelledby="discipline-tab">
+                                        <div>
+                                            <span class="d-block text-muted"
+                                                  style="margin-top:50px !important;">
+                                                <select name="disciplines"
+                                                        id="discipline"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        placeholder="Disciplines*">
+                                                    <t t-if="athlete.discipline_ids"
+                                                       t-foreach="athlete.discipline_ids or []"
+                                                       t-as="discipline">
+                                                        <option selected="selected"
+                                                                t-att-value="discipline.id">
+                                                            <t t-esc="discipline.name"/>
+                                                        </option>
+                                                    </t>
+                                                    <t t-foreach="disciplines or []"
+                                                       t-as="discipline">
+                                                        <option t-att-value="discipline.id">
+                                                            <t t-esc="discipline.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="coaches"
+                                         role="tabpanel"
+                                         aria-labelledby="coaches-tab">
+                                        <div>
+                                            <span class="d-block text-muted"
+                                                  style="margin-top:50px !important;">
+                                                <select name="coaches"
+                                                        id="coaches"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        placeholder="Coaches*">
+                                                    <t t-if="athlete.coach_ids"
+                                                       t-foreach="athlete.coach_ids or []"
+                                                       t-as="coach">
+                                                        <option selected="selected"
+                                                                t-att-value="coach.id">
+                                                            <t t-esc="coach.name"/>
+                                                        </option>
+                                                    </t>
+                                                    <t t-set="coach_ids"
+                                                       t-value="request.env['organisation.coaches'].sudo().search([])"/>
+                                                    <t t-foreach="coaches or []"
+                                                       t-as="coach_id">
+                                                        <option t-att-value="coach_id.id">
+                                                            <t t-esc="coach_id.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade"
+                                         id="organisations-tab" role="tabpanel"
+                                         aria-labelledby="organisation-tab">
+                                        <div>
+                                            <span class="d-block text-muted"
+                                                  style="margin-top:50px !important;">
+                                                <select name="organisations"
+                                                        id="organisations"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        placeholder="Organisations*">
+                                                    <t t-if="athlete.organisation_ids"
+                                                       t-foreach="athlete.organisation_ids or []"
+                                                       t-as="organisation_id">
+                                                        <option selected="selected"
+                                                                t-att-value="organisation_id.id">
+                                                            <t t-esc="organisation_id.name"/>
+                                                        </option>
+                                                    </t>
+                                                    <t t-foreach="organisations or []"
+                                                       t-as="organisation_id">
+                                                        <option t-att-value="organisation_id.id">
+                                                            <t t-esc="organisation_id.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="performance"
+                                         role="tabpanel"
+                                         aria-labelledby="documents-tab">
+                                        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">
+                                            <img src="/sports_erp_dashboard/static/src/images/ui/robot.svg"
+                                                 width="64" height="64"
+                                                 class="se-dashboard__message-icon mb-3"/>
+                                            <span class="d-block text-muted">
+                                                Performance
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="parents"
+                                         role="tabpanel"
+                                         aria-labelledby="parents-tab">
+                                        <div class="w-100 h-100"
+                                             style="margin-top:50px !important;">
+                                            <select name="parents" id="parent"
+                                                    class="form-control se-form-control sports-erp-dashbaord-select"
+                                                    multiple="multiple"
+                                                    placeholder="Parents*">
+                                                <t t-if="athlete.parent_ids"
+                                                   t-foreach="athlete.parent_ids or []"
+                                                   t-as="parent_id">
+                                                    <option selected="selected"
+                                                            t-att-value="parent_id.id">
+                                                        <t t-esc="parent_id.name"/>
+                                                    </option>
+                                                </t>
+                                                <!--                                                 <t t-set="parents" -->
+                                                <!--                                                    t-value="request.env['organisation.parents'].sudo().search([])"/> -->
+                                                <t t-foreach="parents or []"
+                                                   t-as="parent_id">
+                                                    <option t-att-value="parent_id.id">
+                                                        <t t-esc="parent_id.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="products"
+                                         role="tabpanel"
+                                         aria-labelledby="products-tab">
+                                        <div class="w-100 h-100"
+                                             style="margin-top:50px !important;">
+                                            <select name="products"
+                                                    id="products"
+                                                    class="form-control se-form-control sports-erp-dashbaord-select"
+                                                    multiple="multiple"
+                                                    placeholder="Products*"
+                                                    style="pointer-events: none;">
+                                                <t t-if="athlete.sudo().product_ids"
+                                                   t-foreach="athlete.sudo().product_ids or []"
+                                                   t-as="product_id">
+                                                    <option selected="selected"
+                                                            t-att-value="product_id.id">
+                                                        <t t-esc="product_id.name"/>
+                                                    </option>
+                                                </t>
+                                                <!--                                                 <t t-set="product_ids" -->
+                                                <!--                                                    t-value="request.env['product.product'].sudo().search([])"/> -->
+                                                <!--                                                 <t t-foreach="product_ids or []" -->
+                                                <!--                                                    t-as="product_id"> -->
+                                                <!--                                                     <option t-att-value="product_id.id"> -->
+                                                <!--                                                         <t t-esc="product_id.name"/> -->
+                                                <!--                                                     </option> -->
+                                                <!--                                                 </t> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Profile"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="pos_z_session_reports.ReportButton" owl="1">
+      <button class="control-button" style="color: #555555;">
+                <i class='fa fa-list'/>
+                <span class="label">Session Report</span>
+                </button>
+   </t>
+</templates>

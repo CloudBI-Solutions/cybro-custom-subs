@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="infiniarc_about_us_page" name="About Us">
+        <t t-call="website.layout">
+
+            <div class="ian-main-banner__breadcrumb">
+                <div class="ian-breadcrumb__container">
+                    <ul class="ian-main-banner__breadcrumb-items">
+                        <li class="ian-main-banner__breadcrumb-item">
+                            <a href="/" class="ian-link__unstyled">Home</a>
+                        </li>
+                        <li class="ian-main-banner__breadcrumb-item active">
+                            <a href="#" class="ian-link__unstyled">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="ia-about-us-hero">
+
+                <div class="ia-wrapper d-flex flex-column justify-content-center align-items-center">
+
+                    <h1 class="ia-about-us-hero__title text-center">WE MAKE EVERY MOVE COUNT</h1>
+                    <p class="ia-about-us-hero__subtitle text-center w-75 mx-auto">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing
+                        elit Torem ipsum dolor
+                        sit amet, consectetu.
+                    </p>
+<!--                    <a href="#" class="btn ia-btn ia-btn&#45;&#45;primary ia-btn&#45;&#45;large mt-3">-->
+<!--                        <span>Learn More</span>-->
+<!--                    </a>-->
+                </div>
+            </section>
+            <section class="ia-about-us-secondary d-flex justify-content-center align-items-center">
+                <div class="ia-wrapper">
+                    <p class="ia-about-us-secondary__lead text-center">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Duis
+                        libero
+                        tellus, vehicula ut massa at, viverra
+                        finibus metus. In a elementum lacus. Sed vel ex in orci ullamcorper efficitur. Donec hendrerit
+                        lobortis posuere.
+                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque
+                        ut diam quis
+                        metus
+                        commodo imperdiet.
+                    </p>
+                    <div class="ia-counter ia-my-8">
+                        <ul class="ia-counter__items">
+                            <li class="ia-counter__item">
+                                <span class="ia-counter__count mr-2">05</span>
+                                <span class="ia-counter__capiton ia-counter__capiton--grey">Years
+                                    <br/>
+                                    and counting
+                                </span>
+                            </li>
+                            <li class="ia-counter__item">
+                                <span class="ia-counter__count mr-2">1M</span>
+                                <span class="ia-counter__capiton ia-counter__capiton--grey">Over 1 Million
+                                    <br></br>
+                                    Satisfied Customers
+                                </span>
+                            </li>
+                            <li class="ia-counter__item">
+                                <span class="ia-counter__count mr-2">20</span>
+                                <span class="ia-counter__capiton ia-counter__capiton--grey">National Level
+                                    <br></br>
+                                    Tournaments Hosted
+                                </span>
+                            </li>
+                            <li class="ia-counter__item">
+                                <span class="ia-counter__count mr-2">02</span>
+                                <span class="ia-counter__capiton ia-counter__capiton--grey">Offline Shops at
+                                    <br/>
+                                    2 Cities
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ia-section">
+                <div class="ia-wrapper ia-py-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <h2 class="ia-section__h2 my-4">Our Mision</h2>
+                            <p class="ia-section__content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis libero tellus, vehicula ut
+                                massa
+                                at, viverra
+                                finibus metus. In a elementum lacus. Sed vel ex in orci ullamcorper efficitur. Donec
+                                hendrerit
+                                lobortis
+                                posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                                cubilia curae;
+                                Quisque ut
+                                diam quis metus commodo imperdiet.
+                            </p>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="ia-section__image-container ia-section__image-container--gradient-overlay">
+                                <img src="iwesabe_website_theme/static/src/img/quick-view/about-us-1.jpg"
+                                     class="ia-section__image" alt="Our Mission"
+                                     width="100%"
+                                     height="auto"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="ia-section ia-section--alt">
+                <div class="ia-wrapper ia-py-6">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="ia-section__image-container ia-section__image-container--gradient-overlay">
+                                <img src="iwesabe_website_theme/static/src/img/quick-view/about-us-2.jpg"
+                                     class="ia-section__image" alt="Our Goals"
+                                     width="100%"
+                                     height="auto"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center">
+                            <h2 class="ia-section__h2 my-4">Our Goals</h2>
+                            <p class="ia-section__content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis libero tellus, vehicula ut
+                                massa
+                                at, viverra
+                                finibus metus. In a elementum lacus. Sed vel ex in orci ullamcorper efficitur. Donec
+                                hendrerit
+                                lobortis
+                                posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+                                cubilia curae;
+                                Quisque ut
+                                diam quis metus commodo imperdiet.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <section class="ia-about-us-secondary d-flex justify-content-center align-items-center">
+                <div class="ia-wrapper d-flex flex-column justify-content-center">
+                    <h2 class="ia-section__h1 mb-4 text-center">Get in Touch With Us</h2>
+                    <p class="ia-about-us-secondary__lead text-center w-50 mx-auto">Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing
+                        elit Torem
+                        ipsum dolor sit amet, consectetu.
+                    </p>
+                    <div class="ia-about-us__cards">
+                        <div class="ia-about-us__card">
+                            <div class="ia-about-us__card-header">
+                                <div class="ia-about-us__card-icon-container mr-2">
+                                    <img src="iwesabe_website_theme/static/src/img/quick-view/chat.svg"
+                                         class="ia-about-us__card-icon" alt="Address" width="24" height="24"/>
+                                </div>
+                                <h3 class="ia-about-us__card-title mt-2">Address</h3>
+                            </div>
+                            <div class="ia-about-us__card__content">
+                                Al Mazroua, Hofuf,
+                                Saudi Arabia
+                            </div>
+                        </div>
+                        <div class="ia-about-us__card">
+                            <div class="ia-about-us__card-header">
+                                <div class="ia-about-us__card-icon-container mr-2">
+                                    <img src="iwesabe_website_theme/static/src/img/icons/geo-alt.svg"
+                                         class="ia-about-us__card-icon" alt="Address" width="24" height="24"/>
+                                </div>
+                                <h3 class="ia-about-us__card-title mt-2">Communication</h3>
+                            </div>
+                            <div class="ia-about-us__card__content">
+                                (+966) 538888468
+                                <br/>
+                                cs@infiniarc.com
+                            </div>
+                        </div>
+                        <div class="ia-about-us__card">
+                            <div class="ia-about-us__card-header">
+                                <div class="ia-about-us__card-icon-container mr-2">
+                                    <img src="iwesabe_website_theme/static/src/img/icons/clock-history.svg"
+                                         class="ia-about-us__card-icon" alt="Address" width="24" height="24"/>
+                                </div>
+                                <h3 class="ia-about-us__card-title mt-2">Work Hours</h3>
+                            </div>
+                            <div class="ia-about-us__card__content">
+                                Saturday - Friday
+                                <br/>
+                                From 10:00 AM to 10:00 PM
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </t>
+
+    </template>
+</odoo>

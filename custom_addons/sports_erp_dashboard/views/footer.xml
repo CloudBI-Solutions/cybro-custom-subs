@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="sport_erp_footer" inherit_id="website.layout">
+            <xpath expr="//div[@id='footer']" position="replace">
+                <div id="footer"
+                     class="set-dashboard__footer" style="background: white;">
+                    <div class="set-wrapper">
+                        <div class="set-dashboard__footer-container">
+                            <div class="set-dashboard__left">
+                                <span class="set-dashboard__copyright">All
+                                    rights
+                                    reserved &#169; Sport ERP Limited 2021 -
+                                    2022
+                                </span>
+                            </div>
+                            <div class="set-dashboard__right">
+                                <ul class="set-dashboard__footer-items">
+                                    <li class="set-dashboard__footer-item">
+                                        <a href=""
+                                           class="set-dashboard__footer-link">
+                                            Tutorials
+                                        </a>
+                                    </li>
+                                    <li class="set-dashboard__footer-item">
+                                        <a href=""
+                                           class="set-dashboard__footer-link">
+                                            Terms
+                                            &amp; Conditions
+                                        </a>
+                                    </li>
+                                    <li class="set-dashboard__footer-item">
+                                        <a href=""
+                                           class="set-dashboard__footer-link">
+                                            About
+                                            Us
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </xpath>
+            <xpath expr="//div[hasclass('o_footer_copyright')]"
+                   position="replace">
+                <div t-if="not no_copyright" class="o_footer_copyright"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

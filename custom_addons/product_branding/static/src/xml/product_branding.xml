@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="product_branding_template" xml:space="preserve">
+    <t t-name="orderline" t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension" owl="1">
+        <xpath expr="//span[hasclass('product-name')]" position="after">
+            <t t-if="props.line.brand_name">
+                <div>
+                <span>Brand : </span>
+                <t t-esc="props.line.brand_name"/>
+                </div>
+            </t>
+        </xpath>
+    </t>
+</template>

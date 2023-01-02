@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--      Group  form view-->
+        <record id="group_view_form" model="ir.ui.view">
+        	<field name="name">group.view.form</field>
+        	<field name="model">paceflow.child.group</field>
+			<field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    <group>
+                        <field name="responsible_user"/>
+                        <field name="description"/>
+                    </group>
+                    <notebook>
+                        <page name="players" string="Players">
+                            <field name="child_ids"/>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+                </form>
+			</field>
+        </record>
+        <!--      Group  tree view-->
+        <record id='group_view_tree' model='ir.ui.view'>
+            <field name="name">group_tree</field>
+            <field name="model">paceflow.child.group</field>
+            <field name="arch" type="xml">
+                <tree string="Group" sample="1">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="responsible_user"/>
+                    <field name="child_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+        <!--        Group menu action-->
+        <record id="all_group_menu_action" model="ir.actions.act_window">
+            <field name="name">Groups</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">paceflow.child.group</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

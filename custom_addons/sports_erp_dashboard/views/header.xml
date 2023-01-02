@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sport_erp_user" inherit_id="portal.user_dropdown"
+              name="Portal Dropdown Image">
+        <xpath expr="//span[@t-if='_user_name']" position="replace">
+            <span t-if="_user_name">
+                <div class="dropdown show set-dashbaord__header-profile--light set-dashbaord__header-profile">
+                    <div class="set-dashboard__profile">
+                        <span t-if="user_id.sudo().partner_id.image_1920">
+                            <img width="42" height="42"
+                                 class="set-dashboard__profile-image"
+                                 t-att-src="image_data_uri(user_id.sudo().partner_id.image_1920)"/>
+                        </span>
+                        <span t-if="not user_id.sudo().partner_id.image_1920">
+                            <img width="42" height="42"
+                                 class="set-dashboard__profile-image"
+                                 src="/sports_erp_dashboard/static/src/images/ui/user.svg"/>
+                        </span>
+                        <span class="set-dashboard__organization set-dashboard__organization--primary">
+                            <t t-esc="user_id.sudo().partner_id.name[0]"/>
+                        </span>
+                    </div>
+
+                    <span class="set-dashboard__profile-name">
+                        <t t-esc="user_id.sudo().partner_id.name"/>
+                    </span>
+                </div>
+            </span>
+        </xpath>
+        <xpath expr="//a[@id='o_logout']" position="replace">
+            <a t-attf-href="/web/session/logout?redirect=/"
+               role="menuitem" id="o_logout" class="dropdown-item">
+                <img src="/sports_erp_dashboard/static/src/images/dashboard/logout.svg"
+                     class="set-dropdown-item__icon"/>
+                Logout
+            </a>
+        </xpath>
+        <xpath expr="//a[@href='/my/home']" position="replace">
+            <a href="/my/home" role="menuitem" class="dropdown-item">
+                <img src="/sports_erp_dashboard/static/src/images/dashboard/user.svg"
+                     class="set-dropdown-item__icon"/>My Account
+            </a>
+            <hr/>
+        </xpath>
+    </template>
+
+
+    <template id="cart_change">
+        <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+        <t t-set="show_cart" t-value="true"/>
+        <li t-attf-class="#{_item_class} divider d-none"/>
+        <div id="top_menu" style="margin-top: 12px; margin-right: 10px;">
+            <li t-attf-class="o_wsale_my_cart align-self-md-start #{not show_cart and 'd-none'} #{_item_class}">
+                <a href="/shop/cart" t-attf-class="#{_link_class}">
+                    <i class="fa fa-shopping-cart nav-link paceflow-nav__link"
+                       style="margin-bottom: -60px;
+                                  color: #000000;
+                                  margin-top: 10px;"/>
+                    <span t-if="_text">My Cart</span>
+                    <sup class="my_cart_quantity badge badge-primary"
+                         style="margin-bottom: 19px; margin-left: 24px; margin-top: 25px; background-color: rgb(255,41,5); border-radius: 10px;"
+                         t-esc="website_sale_order and website_sale_order.cart_quantity or '0'"
+                         t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                </a>
+            </li>
+        </div>
+    </template>
+
+    <template id="organisation_header" name="Organisation Header"
+              inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <header id="sport_erp_default_header"
+                    style="background-color:white !important;">
+                <div class="set-dasboard__header-container">
+                    <div class="set-wrapper py-0">
+                        <div class="set-dashboard__header">
+
+                            <div class="set-dashboard__header-left">
+                                <a href="#" id="openMenu">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/menu.svg"
+                                         width="32" height="32"
+                                         class="set-dashboard__mobile-icon"/>
+                                </a>
+                                <a href="/my/home"
+                                   class="set-dashboard__header-logo set-link set-link--unstyled">
+                                    <img src="/sports_erp_dashboard/static/src/images/brand/logo-color.png"
+                                         class="set-dashboard__logo" height="30"
+                                         width="157" alt="SportERP"/>
+                                </a>
+                                <a href="#" id="navMenu"
+                                   class="set-dashboard-nav__trigger-link">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/keyboard-arrow-down.svg"
+                                         class="set-dashboard-nav__trigger"
+                                         width="24" height="24"/>
+                                </a>
+
+                                <nav class="set-dashboard-nav set-dashboard-nav__hide-resp">
+                                    <ul class="set-dashboard-nav__items">
+                                        <t t-foreach="website.menu_id.child_id"
+                                           t-as="submenu">
+                                            <li class="set-dashboard-nav__item">
+                                                <a t-att-href="submenu.url"
+                                                   class="set-dashboard-nav__link">
+                                                    <t t-esc="submenu.name"/>
+                                                </a>
+                                            </li>
+                                        </t>
+                                        <t t-call="sports_erp_dashboard.cart_change"/>
+                                    </ul>
+
+                                </nav>
+                            </div>
+
+                            <div class="set-dashboard__header-right">
+                                <ul id="top_menu">
+                                    <t t-call="portal.placeholder_user_sign_in">
+                                        <t t-set="_item_class"
+                                           t-value="'nav-item'"/>
+                                        <t t-set="_link_class"
+                                           t-value="'nav-link'"/>
+                                    </t>
+                                    <t t-call="portal.user_dropdown">
+                                        <t t-set="_user_name"
+                                           t-value="true"/>
+                                        <t t-set="_item_class"
+                                           t-value="'nav-item dropdown'"/>
+                                        <t t-set="_link_class"
+                                           t-value="'nav-link'"/>
+                                        <t t-set="_dropdown_menu_class"
+                                           t-value="'dropdown-menu-right'"/>
+                                    </t>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+            <div id="se-header"
+                 t-if="is_account"
+                 class="set-dashboard__sidebar set-dashboard__menu-hide">
+                <a href="#" class="set-dashboard__sidebar-back"
+                   id="closeMenu">
+                    <img src="/sports_erp_dashboard/static/src/images/dashboard/chevron-back.svg"
+                         width="36"
+                         height="36"
+                         class="set-dashboard__sidebar-back-icon"/>
+                </a>
+                <nav class="set-dashboard__sidebar-nav"
+                     style="width: 20%; margin-left: 6%; background: white;">
+                    <ul class="set-dashboard__sidebar-items">
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/home" href="/my/home"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/home.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Home
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/edit/chathubs"
+                               href="/edit/chathubs"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/chat.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Chat Hub
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/coaches" href="/my/coaches"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/whistle.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Coaches
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/venues" href="/my/venues"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/map.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Venues
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/athletes/home" href="/my/athletes/home"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/running.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Athletes
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/parents" href="/my/parents"
+                               class="set-dashboard__sidebar-link">
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/family.svg">
+                                </img>
+
+                                <span class="set-dashboard__sidebar-text">
+                                    Parents
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/fans" href="/my/fans"
+                               class="set-dashboard__sidebar-link">
+
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/fans.svg">
+                                </img>
+
+                                <span class="set-dashboard__sidebar-text">
+                                    Fans
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/groups" href="/my/groups"
+                               class="set-dashboard__sidebar-link">
+
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/group.svg">
+                                </img>
+                                <span class="set-dashboard__sidebar-text">
+                                    Groups
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/disciplines" href="/my/disciplines"
+                               class="set-dashboard__sidebar-link">
+
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/baseball.svg">
+                                </img>
+
+                                <span class="set-dashboard__sidebar-text">
+                                    Disciplines
+                                </span>
+                            </a>
+                        </li>
+
+                        <li class="set-dashboard__sidebar-item">
+                            <a id="/my/dashboard" href="/my/dashboard"
+                               class="set-dashboard__sidebar-link">
+
+                                <img class="set-dashboard__sidebar-icon"
+                                     id="Layer_1"
+                                     src="/sports_erp_dashboard/static/src/images/dashboard/setting.svg">
+                                </img>
+
+                                <span class="set-dashboard__sidebar-text">
+                                    Configuration
+                                </span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+            <script>
+                /*** Show / Hide Mobile Menu ***/
+
+                // Selectors
+                let openMenuLink = document.querySelector('#openMenu');
+                console.log(openMenuLink, 'openMenuLink')
+                let closeMenuLink = document.querySelector('#closeMenu');
+                console.log(closeMenuLink, 'closeMenuLink')
+                let navMenuLink = document.querySelector('#navMenu');
+                console.log(navMenuLink, 'navMenuLink')
+                let mobileMenuEl =
+                document.querySelector('.set-dashboard__sidebar');
+                console.log(mobileMenuEl, 'mobileMenuEl')
+                let bodyEl = document.querySelector('body');
+                console.log(bodyEl, 'bodyEl')
+                let navEl = document.querySelector('.set-dashboard-nav');
+                console.log('navEl', navEl);
+
+                // Open Menu
+                openMenuLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (mobileMenuEl){
+                    mobileMenuEl.classList.toggle('set-dashboard__menu-hide');
+                }
+                bodyEl.classList.toggle('set-dashboard__menu-overlay');
+                });
+
+                // Close Menu
+                if (closeMenuLink){
+                    closeMenuLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    mobileMenuEl.classList.toggle('set-dashboard__menu-hide');
+                    bodyEl.classList.toggle('set-dashboard__menu-overlay');
+                    });
+                }
+
+                // Toggle Nav Menu
+                navMenuLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                navEl.classList.toggle('set-dashboard-nav__hide-resp');
+                navMenuLink.classList.toggle('set-dashboard-nav__trigger-link--up');
+                });
+            </script>
+        </xpath>
+    </template>
+
+    <template id="my_settings_link" name="Link to Settings"
+              inherit_id="portal.user_dropdown">
+        <xpath expr="//a[hasclass('dropdown-item')]" position="before">
+            <t t-set="user" t-value="request.env.user"/>
+            <div t-if="user.partner_id.org_group_selection"
+                 class="se-dropdown__top px-4">
+                <span class="set-dropdown__label">Account Type</span>
+                <br/>
+                <div class="set-dropdown__value">
+                    <t t-if="user.partner_id.org_group_selection == 'organisation'">
+                        Organisation
+                    </t>
+                    <t t-elif="user.partner_id.org_group_selection == 'ex_coaches'">
+                        Coach
+                    </t>
+                    <t t-elif="user.partner_id.org_group_selection == 'parents'">
+                        Parent
+                    </t>
+                    <t t-elif="user.partner_id.org_group_selection == 'athletes'">
+                        Athlete
+                    </t>
+                    <t t-elif="user.partner_id.org_group_selection == 'fans'">
+                        Fan
+                    </t>
+                </div>
+                <div role="menuitem" class="dropdown-item">
+                    <t t-set="organisations"
+                       t-value="request.env['organisation.organisation'].sudo().search(['|', ('partner_id', '=', user.partner_id.id), ('allowed_user_ids', 'in', [request.env.user.id])])"/>
+                    <t t-if="user.partner_id.org_group_selection == 'organisation'">
+                        <select id="organisations">
+                            <t t-foreach="organisations or []"
+                               t-as="organisation">
+                                <t t-if="organisation.is_selected_organisation">
+                                    <option t-att-value="organisation.id"
+                                            selected="1">
+                                        <t t-esc="organisation.name"/>
+                                    </option>
+                                </t>
+                                <t t-else="">
+                                    <option t-att-value="organisation.id">
+                                        <t t-esc="organisation.name"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </select>
+                    </t>
+                </div>
+            </div>
+            <div class="dropdown-divider"/>
+        </xpath>
+
+        <xpath expr="//*[@id='o_logout_divider']" position="before">
+            <a href="#" role="menuitem" class="dropdown-item">
+                <img src="/sports_erp_dashboard/static/src/images/dashboard/help.svg"
+                     class="set-dropdown-item__icon"/>
+                Helpdesk
+            </a>
+            <a href="/my/subscriptions" role="menuitem" class="dropdown-item">
+                <img src="/sports_erp_dashboard/static/src/images/dashboard/monetization.svg"
+                     class="set-dropdown-item__icon"/>
+                Subscriptions
+            </a>
+            <a href="/my/settings" role="menuitem" class="dropdown-item">
+                <img src="/sports_erp_dashboard/static/src/images/dashboard/setting_drop_down.svg"
+                     class="set-dropdown-item__icon"/>
+                Settings
+            </a>
+        </xpath>
+    </template>
+
+</odoo>

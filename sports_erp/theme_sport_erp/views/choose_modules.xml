@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="s_modules_one" name="Module Red One">
+        <section>
+            <div class="card choose">
+                <div class="card-body">
+                    <p class="badge-banner">
+                            </p>
+                    <h5 class="card-title">
+                        <div class="mail_icon">
+                            <div class="img_wrapper">
+                                <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                     alt=""/>
+                            </div>
+                            <span class="email_c">
+                                Module Name
+                            </span>
+                        </div>
+                        <a href="#"
+                           class="info">
+                            <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                 alt=""/>
+                        </a>
+                    </h5>
+                    <p class="card-text">Module description
+                    </p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_modules_grey_one" name="Module Grey One">
+        <section>
+            <div class="card choose">
+                <div class="card-body">
+                    <p class="badge-banner">
+                            </p>
+                    <h5 class="card-title">
+                        <div class="mail_icon">
+                            <div class="img_wrapper wrapper-grey">
+                                <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                     alt=""/>
+                            </div>
+                            <span class="email_c">
+                                Module Name
+                            </span>
+                        </div>
+                        <a href="#"
+                           class="info">
+                            <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                 alt=""/>
+                        </a>
+                    </h5>
+                    <p class="card-text">Module description
+                    </p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_modules_two" name="Module Red Two">
+        <section>
+            <div class="b_p_wrapper">
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_modules_grey_two" name="Module Grey Two">
+        <section>
+            <div class="b_p_wrapper">
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper wrapper-grey">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper wrapper-grey">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_modules_three" name="Module Red Three">
+        <section>
+            <div class="b_p_wrapper">
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_modules_grey_three" name="Module Grey Three">
+        <section>
+            <div class="b_p_wrapper">
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper wrapper-grey">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper wrapper-grey">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper wrapper-grey">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Module Name
+                                        </span>
+                                    </div>
+                                    <a href="#"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Module description
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </template>
+
+
+    <template id="s_core_modules" name="Core Modules">
+        <div class="b_p_wrapper">
+            <h3>
+                Core Modules
+            </h3>
+            <div class="card-wrapper">
+                <section>
+                    <div class="card choose">
+                        <div class="card-body">
+                            <p class="badge-banner">
+                            </p>
+                            <h5 class="card-title">
+                                <div class="mail_icon">
+                                    <div class="img_wrapper wrapper-grey">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                             alt=""/>
+                                    </div>
+                                    <span class="email_c">
+                                        Emails
+                                    </span>
+                                </div>
+                                <a href="/core_modules"
+                                   class="info">
+                                    <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                         alt=""/>
+                                </a>
+                            </h5>
+                            <p class="card-text">Lorem
+                                ipsum dolor sit amet,
+                                consectetur adipiscing
+                                elit.
+                                Sed sit amet finibus
+                                eros.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="card choose">
+                        <div class="card-body">
+                            <p class="badge-banner">
+                            </p>
+                            <h5 class="card-title">
+                                <div class="mail_icon">
+                                    <div class="img_wrapper wrapper-grey">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/chat.svg"
+                                             alt=""/>
+                                    </div>
+                                    <span class="email_c">
+                                        Chat Hub
+                                    </span>
+                                </div>
+                                <a href="/core_modules"
+                                   class="info">
+                                    <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                         alt=""/>
+                                </a>
+                            </h5>
+                            <p class="card-text">Lorem
+                                ipsum dolor sit amet,
+                                consectetur adipiscing
+                                elit.
+                                Sed sit amet finibus
+                                eros.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="card choose">
+                        <div class="card-body">
+                            <p class="badge-banner">
+                            </p>
+                            <h5 class="card-title">
+                                <div class="mail_icon">
+                                    <div class="img_wrapper wrapper-grey">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/card.svg"
+                                             alt=""/>
+                                    </div>
+                                    <span class="email_c">
+                                        Payment
+                                        Processors
+                                    </span>
+                                </div>
+                                <a href="/core_modules"
+                                   class="info">
+                                    <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                         alt=""/>
+                                </a>
+                            </h5>
+                            <p class="card-text">Lorem
+                                ipsum dolor sit amet,
+                                consectetur adipiscing
+                                elit.
+                                Sed sit amet finibus
+                                eros.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <div id="wrap"
+                     class="oe_structure oe_empty"/>
+            </div>
+            <div id="wrap"
+                 class="oe_structure oe_empty"/>
+        </div>
+        <div id="wrap"
+             class="oe_structure oe_empty"/>
+    </template>
+
+    <template id="s_business_management" name="Sport Business Management">
+        <section>
+            <div class="b_p_wrapper">
+                <h3>
+                    Sport Business Management
+                </h3>
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/organisation.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Organization
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/group.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Groups
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/whistle.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Coaches
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/parent.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Parents
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/athlete.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Athlete
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/subscription.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Subscription
+                                            Sales
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/package.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Product Sales
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/event.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Events
+                                            Management
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/diary.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Diaries
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                                </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/form.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Forms
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/document.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Documents
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/survey.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Surveys
+                                        </span>
+                                    </div>
+                                    <a href="/sport_business_management"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="wrap"
+                         class="oe_structure oe_empty"/>
+                </div>
+                <div id="wrap"
+                     class="oe_structure oe_empty"/>
+            </div>
+            <div id="wrap"
+                 class="oe_structure oe_empty"/>
+        </section>
+    </template>
+
+
+    <template id="s_brand" name="Branded Company and Backend Access">
+        <section>
+            <div class="b_p_wrapper">
+                <h3>
+                    Company and Backend Access
+                </h3>
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Backend Access
+                                        </span>
+                                    </div>
+                                    <a href="/company_and_backend_access"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                 <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Branded Portal
+                                        </span>
+                                    </div>
+                                    <a href="/company_and_backend_access"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/Vector (1).svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Customized Payments
+                                        </span>
+                                    </div>
+                                    <a href="/company_and_backend_access"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="wrap"
+                         class="oe_structure oe_empty"/>
+                </div>
+                <div id="wrap"
+                     class="oe_structure oe_empty"/>
+            </div>
+            <div id="wrap"
+                 class="oe_structure oe_empty"/>
+        </section>
+    </template>
+
+    <template id="s_sport_performance"
+              name="Sport Performance and Customizations">
+        <section>
+            <div class="b_p_wrapper">
+                <h3>
+                    Sport Performance and Customizations
+                </h3>
+                <div class="card-wrapper">
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/general.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            General Management
+                                        </span>
+                                    </div>
+                                    <a href="/performance_and_customizations"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/football.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Football
+                                        </span>
+                                    </div>
+                                    <a href="/performance_and_customizations"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body ">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/badminton.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Badminton
+                                        </span>
+                                    </div>
+                                    <a href="/performance_and_customizations"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/website.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Full Functional Website
+                                        </span>
+                                    </div>
+                                    <a href="/performance_and_customizations"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="card choose">
+                            <div class="card-body">
+                                <p class="badge-banner">
+                            </p>
+                                <h5 class="card-title">
+                                    <div class="mail_icon">
+                                        <div class="img_wrapper ">
+                                            <img src="/theme_sport_erp/static/src/images/core-module/addon.svg"
+                                                 alt=""/>
+                                        </div>
+                                        <span class="email_c">
+                                            Add-ons
+                                        </span>
+                                    </div>
+                                    <a href="/performance_and_customizations"
+                                       class="info">
+                                        <img src="/theme_sport_erp/static/src/images/core-module/Vector.svg"
+                                             alt=""/>
+                                    </a>
+                                </h5>
+                                <p class="card-text">Lorem
+                                    ipsum dolor sit amet,
+                                    consectetur adipiscing
+                                    elit.
+                                    Sed sit amet finibus
+                                    eros.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <div id="wrap"
+                         class="oe_structure oe_empty"/>
+                </div>
+                <div id="wrap"
+                     class="oe_structure oe_empty"/>
+            </div>
+            <div id="wrap"
+                 class="oe_structure oe_empty"/>
+        </section>
+    </template>
+
+
+    <template id="s_enterprise"
+              name="Enterprise">
+        <section>
+            <div class="b_p_wrapper">
+                <h3>
+                    Enterprise
+                </h3>
+                <div class="card-wrapper">
+                    <t t-call="theme_sport_erp.s_modules_one"/>
+                    <div id="wrap"
+                         class="oe_structure oe_empty"/>
+
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="choose_modules" name="Choose Modules">
+        <t t-call="portal.portal_layout">
+            <div class="set-banner set-banner--light">
+                <div class="set-wrapper">
+                    <h1 class="set-title set-title--h2 mb-3">Choose Modules</h1>
+                    <p class="set-banner__lead"
+                    >Handpick all the modules that satisfy your requirements.
+                    </p>
+                </div>
+            </div>
+            <section class="set-choose_module my-5">
+                <div class="set-wrapper">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-12 col-12">
+                            <div class="choose_module_left">
+                                <!--                                <div class="top_search_bar">-->
+                                <!--                                    <div class="input-group mb-3">-->
+                                <!--                                        <div class="input-group-prepend">-->
+                                <!--                                            <button class="btn search"-->
+                                <!--                                                    type="button">-->
+                                <!--                                                <i>-->
+                                <!--                                                    <img src="/theme_sport_erp/static/src/images/ui/search.svg"-->
+                                <!--                                                         alt=""/>-->
+                                <!--                                                </i>-->
+                                <!--                                            </button>-->
+                                <!--                                        </div>-->
+                                <!--                                        <input type="text" class="form-control"-->
+                                <!--                                               placeholder="Search for a feature or module"-->
+                                <!--                                               aria-label=""-->
+                                <!--                                               aria-describedby="basic-addon1"/>-->
+                                <!--                                    </div>-->
+                                <!--                                </div>-->
+                                <div class="botom_part">
+                                    <t t-call="theme_sport_erp.s_core_modules"/>
+                                    <t t-call="theme_sport_erp.s_business_management"/>
+                                    <t t-call="theme_sport_erp.s_brand"/>
+                                    <t t-call="theme_sport_erp.s_sport_performance"/>
+                                    <t t-call="theme_sport_erp.s_enterprise"/>
+
+                                    <div id="wrap"
+                                         class="oe_structure oe_empty"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-12">
+                            <div class="choose_module_right"
+                                 style="top: 0; height: 100%;">
+                                <div class="summary"
+                                     style="position: sticky; top: 50px;">
+                                    <h4>Summary</h4>
+                                    <div class="s_modules">
+                                        <h5>
+                                            Selected Modules
+                                        </h5>
+                                        <div class="accordion"
+                                             id="accordionExample">
+                                            <div class="card"
+                                                 style="box-shadow: none !important;">
+                                                <div class="card-header"
+                                                     id="headingOne">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseOne"
+                                                                aria-expanded="true"
+                                                                aria-controls="collapseOne">
+                                                            Core Modules
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapseOne"
+                                                     class="collapse "
+                                                     aria-labelledby="headingOne"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="content">
+                                                            Content Here
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card"
+                                                 style="box-shadow: none !important;">
+                                                <div class="card-header"
+                                                     id="headingTwo">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseTwo"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseTwo">
+                                                            Sport Business
+                                                            Management
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapseTwo"
+                                                     class="collapse"
+                                                     aria-labelledby="headingTwo"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="content">
+                                                            Content Here
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card"
+                                                 style="box-shadow: none !important;">
+                                                <div class="card-header"
+                                                     id="headingThree">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseThree"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseThree">
+                                                            Company and Backend
+                                                            Access
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapseThree"
+                                                     class="collapse"
+                                                     aria-labelledby="headingThree"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="content">
+                                                            Content Here
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card"
+                                                 style="box-shadow: none !important;">
+                                                <div class="card-header"
+                                                     id="headingFour">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseFour"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseFour">
+                                                            Sport Performance
+                                                            and Customizations
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapseFour"
+                                                     class="collapse"
+                                                     aria-labelledby="headingFour"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="content">
+                                                            Content Here
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="card"
+                                                 style="box-shadow: none !important;">
+                                                <div class="card-header"
+                                                     id="headingFive">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed"
+                                                                type="button"
+                                                                data-toggle="collapse"
+                                                                data-target="#collapseFive"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseFour">
+                                                            Enterprise
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="collapseFive"
+                                                     class="collapse"
+                                                     aria-labelledby="headingFive"
+                                                     data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <div class="content">
+                                                            Content Here
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+</odoo>

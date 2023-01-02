@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sh_pos_config_form_view_inherit_partial_payment">
+        <field name="name">pos.config.form.extended.view</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <h2 name="order">Enable Partial Payment</h2>
+                <div class="row mt16 o_settings_container">
+                    <div id="autocomplete_address" class="col-xs-12 col-md-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="enable_partial_payment" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="enable_partial_payment" />
+                        </div>
+                    </div>
+                    <div id="autocomplete_address" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': ['|',('sh_enable_order_list','!=',True),('enable_partial_payment','!=',True)]}">
+                        <div class="o_setting_left_pane">
+                            <field name="sh_allow_to_pay_order" />
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_allow_to_pay_order" />
+                        </div>
+                    </div>
+                    <div id="autocomplete_address" class="col-xs-12 col-md-6 o_setting_box" attrs="{'invisible': ['|',('sh_enable_order_list','!=',True),('enable_partial_payment','!=',True)]}" invisible="1">
+                        <div class="o_setting_left_pane">
+                            <field name="sh_partial_pay_product_id" widget="many2many_tag"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="sh_partial_pay_product_id" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </xpath>
+            
+        </field>
+    </record>
+
+    <record id="sh_pos_customer_partial_payment_form" model="ir.ui.view">
+        <field name="name">sh.pos.partial.payment.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <field name="property_payment_term_id" position="before">
+                <field name="not_allow_partial_payment" />
+            </field>
+        </field>
+    </record>
+
+    <record id="sh_pos_account_partial_label_form" model="ir.ui.view">
+        <field name="name">account.invoice.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//widget[3]" position="replace">
+                <widget name="web_ribbon" title="Partially Paid"
+                                attrs="{'invisible': ['|', ('payment_state', '!=', 'partial'), ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sh_pos_order_form" model="ir.ui.view">
+        <field name="name">pos.order.inherit</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form" />
+        <field name="arch" type="xml">
+            <field name="amount_paid" position="after">
+                <field name="sh_amount_residual" />
+            </field>
+        </field>
+    </record>
+
+</odoo>

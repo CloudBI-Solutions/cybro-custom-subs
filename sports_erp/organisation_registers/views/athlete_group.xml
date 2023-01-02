@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="organisation_group_form_view_inherit" model="ir.ui.view">
+        <field name="name">organisation.group.form.view.inherit</field>
+        <field name="model">athlete.groups</field>
+        <field name="inherit_id"
+               ref="organisation.athletes_groups_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pricelist_id']" position="after">
+                <field name="venue_id"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Coaches" name="coaches">
+                    <field name="coach_ids">
+                        <tree string="Coaches" default_order='id'>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="tag_ids"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Availability" name="availability">
+                    <group>
+                        <group>
+                        <field name="mon" widget="boolean_toggle"/>
+                        <field name="wed" widget="boolean_toggle"/>
+                        <field name="fri" widget="boolean_toggle"/>
+                        <field name="sun" widget="boolean_toggle"/>
+                    </group>
+                    <group>
+                        <field name="tue" widget="boolean_toggle"/>
+                        <field name="thu" widget="boolean_toggle"/>
+                        <field name="sat" widget="boolean_toggle"/>
+                    </group>
+                    </group>
+
+
+                </page>
+                <page name="monday" string="Monday">
+                    <field name="mon_schedule_ids">
+                        <tree string="Monday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="mon_from" widget="float_time"/>
+                            <field name="mon_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="tuesday" string="Tuesday">
+                    <field name="tue_schedule_ids">
+                        <tree string="Tuesday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="tue_from" widget="float_time"/>
+                            <field name="tue_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="wednesday" string="Wednesday">
+                    <field name="wed_schedule_ids">
+                        <tree string="Wednesday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="wed_from" widget="float_time"/>
+                            <field name="wed_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="thursday" string="Thursday">
+                    <field name="thu_schedule_ids">
+                        <tree string="Thursday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="thu_from" widget="float_time"/>
+                            <field name="thu_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="friday" string="Friday">
+                    <field name="fri_schedule_ids">
+                        <tree string="Friday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="fri_from" widget="float_time"/>
+                            <field name="fri_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="saturday" string="Saturday">
+                    <field name="sat_schedule_ids">
+                        <tree string="Saturday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="sat_from" widget="float_time"/>
+                            <field name="sat_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+                <page name="sunday" string="Sunday">
+                    <field name="sun_schedule_ids">
+                        <tree string="Sunday" editable="bottom">
+                            <field name="name"/>
+                            <field name="venue_id"/>
+                            <field name="is_recurrent" widget="boolean_toggle"/>
+                            <field name="sun_from" widget="float_time"/>
+                            <field name="sun_to" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

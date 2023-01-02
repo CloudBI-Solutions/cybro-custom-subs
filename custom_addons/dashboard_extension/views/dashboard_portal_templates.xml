@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_dashboard" name="Show Dashboard" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="100">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Dashboard</t>
+                <t t-set="url" t-value="'/my/custom_dashboards'"/>
+                <t t-set="placeholder_count" t-value=""/>
+                <t t-set="id">custom_ks_dashboard</t>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_docs_entry_inherit" inherit_id="portal.portal_docs_entry">
+        <xpath expr="//a" position="attributes">
+            <attribute name="t-att-id">'custom_dashboard_id' if title=='Dashboard' else ''</attribute>
+        </xpath>
+    </template>
+
+    <template id="portal_dashboard_line" name="Dashboards">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Dashboards</t>
+            </t>
+            <t t-if="not dashboards">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no dashboards.
+                </div>
+            </t>
+            <t t-if="dashboards" t-call="portal.portal_table">
+                <thead>
+                    <tr t-attf-class="{{'thead-light' if not groupby == 'none' else ''}}">
+                        <th class="text-left">Dashboards</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="dashboards" t-as="dashboard">
+                        <td>
+                            <a t-attf-href="/my/dashboard/#{dashboard.id}?{{ keep_query() }}">
+                                <span t-field="dashboard.name"/>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+
+        </t>
+    </template>
+    <template id="portal_dashboard" name="Dashboard">
+<!--        <t t-call="dashboard_extension.ksDashboardNinjaHeader">-->
+<!--            <t t-set="ks_dashboard_name" t-value='dashboard.name'></t>-->
+<!--            <t t-set="ks_dashboard_manager" t-value='dashboard_manager'></t>-->
+<!--            <t t-set="ks_dashboard_data" t-value='dashboard_data'></t>-->
+<!--&lt;!&ndash;            <t t-set="date_selection_data">dashboard.ks_data_filter_selection</t>&ndash;&gt;-->
+<!--&lt;!&ndash;            <t t-set="date_selection_order">dashboard.ks_data_filter_selection</t>&ndash;&gt;-->
+
+<!--        </t>-->
+<!--        <t t-call="dashboard_extension.ks_main_body_container" name="Body">-->
+
+<!--        </t>-->
+        <t t-call="website.layout">
+          <div class="oe_structure">
+            <div class="">
+                <input type="text" id="dashboard_id" t-att-value="dashboard.id" style="display:none;"/>
+            <div class="ks_dynamic_dashboard">
+    <!--                <a tabindex="-1" href="#" class="dropdown-item js_dashboard_dropdown" data-dashboard_configure="">-->
+    <!--                    Website Dashboard-->
+    <!--                </a>-->
+                </div>
+            </div>
+          </div>
+        </t>
+<!--        <tr t-foreach="dashboard_items" t-as="item">-->
+<!--            <td>-->
+<!--                <span t-esc="item"/>-->
+<!--            </td>-->
+<!--        </tr>-->
+    </template>
+</odoo>

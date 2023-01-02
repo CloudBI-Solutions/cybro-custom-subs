@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="sh_task_checklist_form_view_inherit" model="ir.ui.view">
+            <field name="name">sh.task.checklist.form.view.inherit</field>
+            <field name="model">task.checklist</field>
+            <field name="inherit_id" ref="sh_all_in_one_pms.sh_task_checklist_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="athlete_id"/>
+                    <field name="coach_id"/>
+                    <field name="group_id"/>
+                    <field name="task_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="task_form_checklist_inherit" model="ir.ui.view">
+            <field name="name">task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='checklist']//field[@name='checklist_ids']" position="replace">
+                    <field name="checklist_ids">
+                        <tree editable="bottom">
+                            <field name="name" />
+                            <field name="description" invisible="1"/>
+                            <field name="state" invisible="1"/>
+                            <button string="Complete" name="btn_check" type="object" icon="fa-check" attrs="{'invisible':[('state','=','completed')]}" />
+                        </tree>
+                    </field>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

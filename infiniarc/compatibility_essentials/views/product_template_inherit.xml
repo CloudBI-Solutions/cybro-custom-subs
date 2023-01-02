@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_inherit" model="ir.ui.view">
+        <field name="name">product.template.inherited</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <field name="categ_id" position="after">
+                <field name="component_type"/>
+            </field>
+            <xpath expr="//notebook/page[@name='specification']"
+                   position="replace">
+                <page string="Specification" name="specification">
+                    <group>
+                        <field name="power_watt"/>
+                    </group>
+                    <group string="Cpu"
+                           attrs="{'invisible': [('component_type', '!=', 'cpu')]}">
+                        <field name="cpu_type_id"/>
+                        <field name="support_oc"/>
+                        <field name="is_k_type"/>
+                    </group>
+                    <group string="Motherboard"
+                           attrs="{'invisible': [('component_type', '!=', 'board')]}">
+                        <field name="cpu_support_id"/>
+                        <field name="memories_type_support_id"/>
+                        <field name="m_2_support"/>
+                        <field name="serics_motherboard"/>
+                    </group>
+                    <group string="Cooler"
+                           attrs="{'invisible': [('component_type', '!=', 'cooler')]}">
+                        <field name="type_cooler"/>
+                        <field name="air_height"
+                               attrs="{'invisible': [('type_cooler', '!=', 'air_cooler')]}"/>
+                        <field name="radiator_size_id"/>
+                        <field name="cooler_fans_count"/>
+                    </group>
+                    <group string="Case"
+                           attrs="{'invisible': [('component_type', '!=', 'case')]}">
+                        <field name="type_cooler_support"/>
+                        <field name="air_cooler_height"
+                               attrs="{'invisible': [('type_cooler_support', 'not in', ['both', 'air_cooler'])]}"/>
+                        <field name="radiator_size_ids"
+                               widget="many2many_tags"/>
+                        <field name="built_fans_no"/>
+                        <field name="fans_no_support"/>
+                    </group>
+                    <group string="Memory"
+                           attrs="{'invisible': [('component_type', '!=', 'memory')]}">
+                        <field name="memories_type_id"/>
+                    </group>
+                    <group string="Fan"
+                           attrs="{'invisible': [('component_type', '!=', 'fans')]}">
+                        <field name="pak_fans_no"/>
+                    </group>
+                    <group string="Power Supply"
+                           attrs="{'invisible': [('component_type', '!=', 'power')]}">
+                        <field name="power_value_support"/>
+
+                    </group>
+                    <group string="M2"
+                           attrs="{'invisible': [('component_type', '!=', 'm_2')]}">
+                        <field name="m_2_no"/>
+                    </group>
+                    <h4 style="margin-top: 20px;text-align: center;border-bottom: 3px solid #eee;
+    border-bottom-style: dashed;">Specification Items
+                    </h4>
+                    <field name="specification_line">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="item_id" required="1"/>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

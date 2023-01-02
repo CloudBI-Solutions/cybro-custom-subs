@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!--        Coach Dashboard      -->
+        <record id="tile_profile" model="coach.dashboard.link">
+            <field name="name">Profile</field>
+            <field name="link">profile</field>
+            <field name="tile_active">True</field>
+            <field name="dynamic_link">True</field>
+            <field name="sequence">1</field>
+            <field file="organisation_ui/static/src/img/profile.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_booking" model="coach.dashboard.link">
+            <field name="name">Booking</field>
+            <field name="link">booking</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">2</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/booking.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_calendar" model="coach.dashboard.link">
+            <field name="name">Calendar</field>
+            <field name="link">calendar</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">3</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/calendar.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_assignment" model="coach.dashboard.link">
+            <field name="name">Assignments</field>
+            <field name="link">assignment</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">4</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/assignment.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_forms" model="coach.dashboard.link">
+            <field name="name">Forms</field>
+            <field name="link">forms</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">5</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/forms.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_my_chat_hubs" model="coach.dashboard.link">
+            <field name="name">Chat-Hub</field>
+            <field name="link">my_chat_hub</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">6</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/chat.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_my_timesheet" model="coach.dashboard.link">
+            <field name="name">My Timesheet</field>
+            <field name="link">my_timesheet</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">7</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/timesheet.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_my_invoices" model="coach.dashboard.link">
+            <field name="name">My Invoices</field>
+            <field name="link">my_invoices</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">8</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/invoice.png" name="icon" type="base64"/>
+        </record>
+        <record id="tile_documents" model="coach.dashboard.link">
+            <field name="name">Documents</field>
+            <field name="link">documents</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">9</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/documents.png" name="icon" type="base64"/>
+        </record>
+
+        <!--        Athletes Dashboard      -->
+        <record id="athlete_profile" model="athlete.dashboard.link">
+            <field name="name">Profile</field>
+            <field name="link">profile</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">1</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/profile.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_booking" model="athlete.dashboard.link">
+            <field name="name">Booking</field>
+            <field name="link">booking</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">2</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/booking.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_attendance" model="athlete.dashboard.link">
+            <field name="name">Attendance</field>
+            <field name="link">attendance</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">3</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/attendance.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_calendar" model="athlete.dashboard.link">
+            <field name="name">Calendar</field>
+            <field name="link">calendar</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">4</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/calendar.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_assignments" model="athlete.dashboard.link">
+            <field name="name">Assignments</field>
+            <field name="link">assignment</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">5</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/assignment.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_products" model="athlete.dashboard.link">
+            <field name="name">Products</field>
+            <field name="link">invoice</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">6</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/products.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_forms" model="athlete.dashboard.link">
+            <field name="name">Forms &amp; Surveys</field>
+            <field name="link">forms</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">7</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/forms.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_documents" model="athlete.dashboard.link">
+            <field name="name">Documents</field>
+            <field name="link">documents</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">8</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/documents.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_timesheet" model="athlete.dashboard.link">
+            <field name="name">Timesheet</field>
+            <field name="link">timesheet</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">9</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/timesheet.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_chat_hub" model="athlete.dashboard.link">
+            <field name="name">Chat-Hub</field>
+            <field name="link">chat_hub</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">10</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/chat.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_coaches" model="athlete.dashboard.link">
+            <field name="name">Coaches</field>
+            <field name="link">coach</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">11</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/coach.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_parents" model="athlete.dashboard.link">
+            <field name="name">Parents</field>
+            <field name="link">parent</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">12</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/parent.png" name="icon" type="base64"/>
+        </record>
+        <record id="athlete_invoices" model="athlete.dashboard.link">
+            <field name="name">My Invoices</field>
+            <field name="link">my_invoices</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">13</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/invoice.png" name="icon" type="base64"/>
+        </record>
+
+        <!--        Fans Dashboard      -->
+        <record id="fan_profile" model="fan.dashboard.link">
+            <field name="name">Profile</field>
+            <field name="link">fan_profile</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">1</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/profile.png" name="icon" type="base64"/>
+        </record>
+        <record id="fan_booking" model="fan.dashboard.link">
+            <field name="name">Booking</field>
+            <field name="link">fan_booking</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">2</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/booking.png" name="icon" type="base64"/>
+        </record>
+        <record id="fan_calendar" model="fan.dashboard.link">
+            <field name="name">Calendar</field>
+            <field name="link">fan_calendar</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">3</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/calendar.png" name="icon" type="base64"/>
+        </record>
+
+        <!--        parents Dashboard      -->
+        <record id="parent_profile" model="parent.dashboard.link">
+            <field name="name">Profile</field>
+            <field name="link">parent_profile</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">1</field>
+            <field name="dynamic_link">True</field>
+            <field file="organisation_ui/static/src/img/profile.png" name="icon" type="base64"/>
+        </record>
+        <record id="parent_invoices" model="parent.dashboard.link">
+            <field name="name">My Invoices</field>
+            <field name="link">parent/invoices</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">2</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/invoice.png" name="icon" type="base64"/>
+        </record>
+        <record id="parent_chat_hub" model="parent.dashboard.link">
+            <field name="name">Chat-Hub</field>
+            <field name="link">my_chat_hub</field>
+            <field name="tile_active">True</field>
+            <field name="sequence">3</field>
+            <field name="dynamic_link">False</field>
+            <field file="organisation_ui/static/src/img/chat.png" name="icon" type="base64"/>
+        </record>
+
+    </data>
+</odoo>

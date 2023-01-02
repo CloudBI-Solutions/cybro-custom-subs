@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="redirect_form">
+        <form t-att-action="api_url" method="get">
+           <input type="hidden" name="sessionId" t-att-value="id"/>
+            <input type="hidden" name="apiKey" t-att-value="apiKey"/>
+<!--            <input type="hidden" name="gateway" t-att-value="gateway"/>-->
+            <input type="hidden" name="product" t-att-value="Product"/>
+            <input type="hidden" name="merchantCode" t-att-value="merchantCode"/>
+<!--            <input type="hidden" name="description" t-att-value="description"/>-->
+<!--&lt;!&ndash;            <input type="hidden" name="notification_url" t-att-value="notification_url"/>&ndash;&gt;-->
+            <input type="hidden" name="return_url" t-att-value="return_url"/>
+<!--            <input type="hidden" name="cancel_url" t-att-value="merchant_urls['cancel']"/>-->
+        </form>
+    </template>
+</odoo>

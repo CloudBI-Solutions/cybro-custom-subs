@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="15"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Badmintoo"
+                     string="Badmintoo" data-key="badmintoo">
+                    <h2>Badmintoo</h2>
+
+                        <h5 style="padding-top: 10px;padding-left:10px;">General Assessment:</h5>
+                    <div class="row mt16 o_settings_container">
+
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="lifestyle_data_survey_id"
+                                       string="Lifestyle assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="lifestyle_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="mobility_data_survey_id"
+                                       string="Mobility/Stability assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="mobility_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="hrv_data_survey_id"
+                                       string="HR/HRV assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="hrv_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <h5 style="padding-top: 10px;padding-left:10px;">Mental Assessment:</h5>
+                    <div class="row mt16 o_settings_container">
+
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="mental_data_survey_id"
+                                       string="Mental assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="mental_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 style="padding-top: 10px;padding-left:10px;">Physical Assessment:</h5>
+                    <div class="row mt16 o_settings_container">
+
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="nutrition_data_survey_id"
+                                       string="Nutrition assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="nutrition_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="sc_data_survey_id"
+                                       string="S &amp; C assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="sc_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="aerobic_data_survey_id"
+                                       string="Aerobic assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="aerobic_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <label for="anaerobic_data_survey_id"
+                                       string="Anaerobic assessment data:"/>
+<!--                                <div class="text-muted">-->
+<!--                                  Label-->
+<!--                                </div>-->
+                                <div class="content-group">
+                                    <div class="mt16">
+                                        <field name="anaerobic_data_survey_id"
+                                               class="o_light_label"
+                                               />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="action_badmintoo_config" model="ir.actions.act_window">
+        <field name="name">Badmintoo</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module' : 'badmintoo'}</field>
+    </record>
+
+    <menuitem
+        id="badminto_settings_menu"
+        name="Settings"
+        parent="badminto_config_menu"
+        action="action_badmintoo_config"
+        groups="base.group_system"
+        sequence="100"/>
+
+</odoo>

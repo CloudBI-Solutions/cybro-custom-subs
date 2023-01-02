@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_customize" name="Infiniarc">
+        <t t-call="iwesabe_website_theme.infiniarc_frontend_layout">
+            <body data-spy="scroll" data-target=".navbar" data-offset="50"
+                  style="position: relative;">
+                <t t-set="body_classname" t-value="'website_dekstop_page'"/>
+                <div id="product_customise_div" class="container-fluid">
+                    <div class="alert alert-warning" role="alert"
+                         hidden="hidden"
+                         id="warning_id"
+                         style="position: fixed;top: 135px;right: 30px;z-index:99;">
+                        A simple warning alert—check it out!
+                    </div>
+                    <t t-call="iwesabe_website_theme.refresh_div"/>
+                </div>
+            </body>
+
+        </t>
+    </template>
+
+    <template id="refresh_div">
+        <div id="my_custom_div" class="scroll_main_class container-fluid row">
+            <input type="hidden" id="main_product_id"
+                   t-att-value="product_id.id"/>
+
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-2"
+                 style="padding-top: 40px;">
+                <div class="left_components_wrap d-none d-lg-block">
+                    <div class="card bg-white sticky-top left_components_card"
+                         style="border: none;">
+                        <div class="components_tabs"
+                             id="components_customize_tab">
+                            <t t-set="categ_ids"
+                               t-value="product_id.component_lines.component_id.parents_type"/>
+                            <t t-set="header_id" t-value="1"/>
+
+                            <t t-foreach="categ_ids"
+                               t-as="categ">
+                                <nav class="card navspy" style="border: none;">
+                                    <div class="card-header"
+                                         style="background-color: #101010; border-bottom:none;"
+                                         t-attf-id="#header_#{header_id}">
+
+                                        <div style="display: flex; align-items: center;">
+                                            <!--                                        <img t-if="categ.image"-->
+                                            <!--                                             t-att-src="image_data_uri(categ.image)"-->
+                                            <!--                                             class="compo-img"-->
+                                            <!--                                             style="width:50px;"/>-->
+
+                                            <!--                                        <img t-else=""-->
+                                            <!--                                             src="/iwesabe_website_theme/static/src/img/cpu.png"-->
+                                            <!--                                             class="compo-img"-->
+                                            <!--                                             style="width:50px !important;"/>-->
+
+                                            <t t-if="categ_index == 0">
+                                                <button class="components_buttons main_button_left collapsed btn btn-link btn-block text-left"
+                                                        type="button"
+                                                        t-attf-id="left_button_id#{categ.id}"
+                                                        data-toggle="collapse"
+                                                        t-attf-data-target="#categ_#{categ.id}"
+                                                        aria-expanded="true"
+                                                        t-attf-aria-controls="categ_#{categ.id}">
+                                                    <p class="categ_name"
+                                                       t-esc="categ.sudo().name"/>
+                                                </button>
+                                            </t>
+                                            <t t-else="">
+                                                <button class="components_buttons main_button_left btn btn-link btn-block text-left collapsed"
+                                                        type="button"
+                                                        data-toggle="collapse"
+                                                        t-attf-id="left_button_id#{categ.id}"
+                                                        t-attf-data-target="#categ_#{categ.id}"
+                                                        aria-expanded="false"
+                                                        t-attf-aria-controls="categ_#{categ.id}">
+                                                    <p class="categ_name"
+                                                       t-esc="categ.sudo().name"/>
+                                                </button>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <t t-set="lines"
+                                       t-value="product_id.component_lines.filtered(lambda x: x.component_id.parents_type.id == categ.id)"/>
+
+
+                                    <ul class="nav nav-tabs d-block">
+                                        <t t-foreach="lines" t-as="line">
+                                            <ll class="d-block list_items nav-item">
+                                                <div t-attf-id="categ_#{categ.id}"
+                                                     class="categ_heads collapse"
+                                                     t-attf-aria-labelledby="header_#{header_id}"
+                                                     data-parent="#components_customize_tab">
+                                                    <div class="card-body"
+                                                         style="background-color: #101010 !important;">
+                                                        <!--                                            <ul class="nav nav-tabs d-block">-->
+                                                        <!--                                                <ll class="d-block list_items">-->
+                                                        <!--                                                         {{ 'active' if line_index == 0 else '' }}-->
+                                                        <a t-attf-href="#component_id#{line.component_id.id}"
+                                                           t-attf-class="scroll_components_main nav-link"
+                                                           style="display:flex; justify-content:left;">
+
+                                                            <img t-if="line.sudo().component_id.image"
+                                                                 t-att-src="image_data_uri(line.sudo().component_id.image)"
+                                                                 class="compo-img"
+                                                                 style="width:38px;"/>
+
+                                                            <img t-else=""
+                                                                 src="/iwesabe_website_theme/static/src/img/cpu.png"
+                                                                 class="compo-img"
+                                                                 style="width:38px !important;"/>
+                                                            <p t-esc="line.component_id.sudo().name"
+                                                               style="padding-left:15px !important;margin:0 !important;padding-left: 15px !important;padding-top: 6px;text-transform: capitalize;"/>
+                                                        </a>
+                                                        <!--                                                </ll>-->
+                                                        <!--                                            </ul>-->
+                                                    </div>
+                                                </div>
+                                            </ll>
+                                        </t>
+                                    </ul>
+                                    <t t-set="header_id"
+                                       t-value="header_id + 1"/>
+                                </nav>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <div class="left_components_wrap_mob_view mob_sidebar_hide d-block d-lg-none">
+                    <div class="card bg-white sticky-top left_components_card"
+                         style="border: none;">
+                        <div class="components_tabs"
+                             id="components_customize_tab">
+                            <t t-set="categ_ids"
+                               t-value="product_id.component_lines.component_id.parents_type"/>
+                            <t t-set="header_id" t-value="1"/>
+
+                            <t t-foreach="categ_ids"
+                               t-as="categ">
+                                <nav class="card navspy" style="border: none;">
+                                    <div class="card-header"
+                                         style="background-color: #101010; border-bottom:none;"
+                                         t-attf-id="#header_#{header_id}">
+
+                                        <div style="display: flex; align-items: center;">
+                                            <t t-if="categ_index == 0">
+                                                <button class="components_buttons main_button_left collapsed btn btn-link btn-block text-left"
+                                                        type="button"
+                                                        t-attf-id="left_button_id#{categ.id}"
+                                                        data-toggle="collapse"
+                                                        t-attf-data-target="#categ_2#{categ.id}"
+                                                        aria-expanded="false"
+                                                        t-attf-aria-controls="categ_2#{categ.id}">
+                                                    <p class="categ_name"
+                                                       t-esc="categ.sudo().name"/>
+                                                </button>
+                                            </t>
+                                            <t t-else="">
+                                                <button class="components_buttons main_button_left btn btn-link btn-block text-left collapsed"
+                                                        type="button"
+                                                        data-toggle="collapse"
+                                                        t-attf-id="left_button_id#{categ.id}"
+                                                        t-attf-data-target="#categ_2#{categ.id}"
+                                                        aria-expanded="false"
+                                                        t-attf-aria-controls="categ_2#{categ.id}">
+                                                    <p class="categ_name"
+                                                       t-esc="categ.sudo().name"/>
+                                                </button>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <t t-set="lines"
+                                       t-value="product_id.component_lines.filtered(lambda x: x.component_id.parents_type.id == categ.id)"/>
+
+
+                                    <ul class="nav nav-tabs d-block">
+                                        <t t-foreach="lines" t-as="line">
+                                            <ll class="d-block list_items nav-item">
+                                                <div t-attf-id="categ_2#{categ.id}"
+                                                     class="categ_heads collapse"
+                                                     t-attf-aria-labelledby="header_#{header_id}"
+                                                     data-parent="#components_customize_tab">
+                                                    <div class="card-body"
+                                                         style="background-color: #101010 !important;">
+
+                                                        <a t-attf-href="#component_id#{line.component_id.id}"
+                                                           class="scroll_components scroll_components_mob_views nav-link"
+                                                           style="display:flex; justify-content:left;">
+
+                                                            <img t-if="line.sudo().component_id.image"
+                                                                 t-att-src="image_data_uri(line.sudo().component_id.image)"
+                                                                 class="compo-img"
+                                                                 style="width:38px;"/>
+
+                                                            <img t-else=""
+                                                                 src="/iwesabe_website_theme/static/src/img/cpu.png"
+                                                                 class="compo-img"
+                                                                 style="width:38px !important;"/>
+                                                            <p t-esc="line.component_id.sudo().name"
+                                                               style="padding-left:15px !important;margin:0 !important;padding-left: 15px !important;padding-top: 6px;text-transform: capitalize;"/>
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </ll>
+                                        </t>
+                                    </ul>
+                                    <t t-set="header_id"
+                                       t-value="header_id + 1"/>
+                                </nav>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 scrollpy col-md-12 col-lg-12 col-xl-7">
+                <!--                        call here!!!!-->
+                <t t-set="lines"
+                   t-value="product_id.component_lines"/>
+                <input type="hidden" id="currency_id"
+                       t-att-value="request.env.company.currency_id.symbol"/>
+                <t t-foreach="lines" t-as="line">
+                    <t t-if="not line.allowed_multi_sel">
+                        <t t-call="iwesabe_website_theme.component_products_card_single"/>
+                    </t>
+                    <t t-if="line.allowed_multi_sel">
+                        <t t-call="iwesabe_website_theme.component_products_card_multi"/>
+                    </t>
+                </t>
+
+
+                <!--                trigger product imager slider modal-->
+                <div class="modal fade" id="product_images_modal" tabindex="-1"
+                     role="dialog" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div id="modal_dialog_product_images"
+                         class="modal-dialog modal-lg">
+                        <t t-call="iwesabe_website_theme.dialogue_box_product_images"/>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-3">
+                <div class="ian-customize__price-bar"
+                     style="position:sticky;top: 150px;">
+                    <div class="ian-customize__price_contianer">
+                        <div class="ian-customization__image-photo">
+                            <img t-if="product_id.image_1920"
+                                 t-att-src="'/web/image?model=product.product&amp;id=%s&amp;field=image_1920'%(product_id.id)"
+                                 class="final_gear_store_image_comp"
+                                 t-att-alt="product_id.name"/>
+                            <img t-else=""
+                                 src="/iwesabe_website_theme/static/src/img/gaming-pc-desktop/game-pc.png"
+                                 class="final_gear_store_image_comp"
+                                 t-att-alt="product_id.name"/>
+                        </div>
+                        <span class="ian-customization__summary-title"
+                              t-esc="product_id.name[:45]"/>
+                        <div class="ian-customization__summary-price">
+                            <span class="ian-customization__summary-label">
+                                Starting from:
+                            </span>
+                            <div class="ian-customization__summary-price-figure">
+                                <t t-set="total_price_start"
+                                   t-value="sum(product_id.component_lines.mapped('product_id.list_price'))"/>
+                                <span class=""
+                                      t-out="total_price_start"
+                                      t-options='{"widget": "monetary", "display_currency": product_id.currency_id}'/>
+                            </div>
+                        </div>
+
+                        <div class="ian-customization__summary-updated-price">
+
+                            <span class="ian-customization__summary-updated-label">
+                                Updated Price:
+                            </span>
+                            <div>
+
+                                <div class="ian-customization__summary-updated-price-figure">
+
+                                    <t t-if="total_price_start">
+                                        <input type="text"
+                                               id="new_updated_total"
+                                               class="ian-customization__summary-updated-main-price"
+                                               t-att-value="total_price_start"
+                                               style="font-size: 16px;color: #1dd1a1; margin-bottom: 1px;"
+                                               t-options='{"widget": "monetary", "display_currency": product_id.currency_id}'
+                                               readonly="readonly"/>
+                                    </t>
+                                    <t t-else="">
+                                        <input type="text"
+                                               id="new_updated_total"
+                                               t-att-value="0"
+                                               style="font-size: 16px;color: #1dd1a1;"
+                                               class="ian-customization__summary-updated-main-price"
+                                               t-options='{"widget": "monetary", "display_currency": product_id.currency_id}'
+                                               readonly="readonly"/>
+                                    </t>
+                                    <span class="symbol_class"
+                                          style="font-size: 16px;color: #1dd1a1;"
+                                          t-esc="request.env.company.currency_id.symbol"/>
+                                </div>
+                                <div style="display: flex;flex-direction: column;align-items: flex-end;font-size:12px;">
+                                    (VAT Inclusive)
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ian-customiazation__summary-shipping">
+                            <span class="ian-customization__summary-shipping-label">
+                                Expected Shipping Date:
+                            </span>
+                            <span class="ian-customization__summary-shipping-date">
+                                <input type="text" id="shipping_date"
+                                       name="shipping_date"
+                                       readonly="readonly"
+                                       t-att-value="expected_date_min"/>-
+                                <input type="text" id="shipping_date2"
+                                       name="shipping_date"
+                                       readonly="readonly"
+                                       t-att-value="expected_date_max"/>
+                            </span>
+                        </div>
+
+                        <div class="ian-customiazation__summary-power">
+                            <span class="ian-customization__summary-power-label">
+                                Power Supply:
+                            </span>
+                            <span
+                                    class="ian-customization__summary-power-current ian-customization__summary-power-value--ok">
+                                <t t-set="total_capacity"
+                                   t-value="sum(product_id.component_lines.filtered(lambda x: x.product_id.component_id.component_type == 'power').mapped('product_id.power_value_support'))"/>
+                                <t t-set="power_sum"
+                                   t-value="sum(product_id.component_lines.filtered(lambda x: x.product_id.component_id.component_type != 'power').mapped('product_id.power_watt'))"/>
+                                <input type="text" id="power_capacity_sum"
+                                       name="power_capacity_sum"
+                                       class="power"
+                                       readonly="readonly"
+                                       t-att-value="power_sum if power_sum else '0'"/>
+                            </span>
+                            <span class="ian-customization__summary-power-limit ian-customization__summary-power-value--ok">
+                                <input type="text" id="power_capacity_total"
+                                       name="power_capacity_total"
+                                       class="power"
+                                       readonly="readonly"
+                                       t-att-value="total_capacity if total_capacity else '0'"/>
+                            </span>
+                            <span class="ian-customization__summary-power-unit ian-customization__summary-power-value--ok">
+                                watt
+                            </span>
+                        </div>
+
+                        <div class="ian-customization__actions">
+
+                            <button type="button"
+                                    style="height:55px;"
+                                    id="specifications_pop_up"
+                                    class="ian-btn ian-btn--block ian-btn--font-small ian-btn--dark-border"
+                                    data-toggle="modal"
+                                    data-target="#specification-modal">
+                                Specifications
+                            </button>
+
+                            <button type="button" name="Add To Cart"
+                                    id="add_total_project_btn"
+                                    t-att-data-id="'%s' % product_id.id"
+                                    class="ian-btn ian-btn--block ian-btn--font-small ian-btn--primary"
+                                    style="width:100%;height:55px;">
+                                <i class="fa fa-shopping-cart mr-2"/>
+                                Add To
+                                Cart
+                            </button>
+                        </div>
+
+                        <div class="ian-customization__secondary-actions">
+                            <button class="btn" id="save_customization"
+                                    aria-label="Save" title="Save">
+                                <img src="/iwesabe_website_theme/static/src/img/customisation/save.svg"
+                                     class=""/>
+                            </button>
+
+                            <button class="btn" id="refresh_button"
+                                    aria-label="Reset" title="Reset">
+                                <img src="/iwesabe_website_theme/static/src/img/customisation/referesh.svg"
+                                     class=""/>
+                            </button>
+                            <button class="btn" id="dwnld_customization"
+                                    aria-label="download" title="download">
+                                <img src="/iwesabe_website_theme/static/src/img/customisation/download.svg"
+                                     class=""/>
+                            </button>
+                            <button class="btn" id="share_customization"
+                                    aria-label="Share" title="share">
+                                <img src="/iwesabe_website_theme/static/src/img/customisation/share.svg"
+                                     class=""/>
+                            </button>
+                        </div>
+
+
+                        <div class="product-buttons"
+                             style="text-align: center;margin-top: 15px;flex-direction: column;">
+
+
+                            <div style="margin-top: 1.5rem;">
+
+                                <div id="total_errors"
+                                     class="position-relative">
+                                    <span class="d-none">.</span>
+                                    <div id="total_errors_2" class="d-none">
+                                        <span>Check the
+                                            Compatibility issues in:
+                                        </span>
+                                        <ul id="errors_list_ul">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                            trigger modal!-->
+                        <div class="modal fade dialogue_box_div"
+                             id="specification-modal"
+                             tabindex="-1"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div id="modal_dialog_div"
+                                 class="modal-dialog modal-lg">
+                                <t t-call="iwesabe_website_theme.dialogue_box_content"/>
+                            </div>
+                        </div>
+
+                        <div class="supported_dict" id="dictionary">
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="supported_dictionary"
+                                   t-attf-class="list_dict"/>
+                        </div>
+                        <div class="check_conditions" id="inputs">
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cpu_board_noti"
+                                   t-attf-class="notification_only"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cpu_cooler_type"
+                                   data-error_msg="CPU-Cooler"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cpu_board_type"
+                                   data-error_msg="CPU-Board"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="board_memory_type"
+                                   data-error_msg="Board-Memory"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="board_m2_match"
+                                   data-error_msg="Board-M2"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cooler_case_type"
+                                   data-error_msg="Case-Cooler-Type"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cooler_case_radi"
+                                   data-error_msg="Case-Cooler-Radiator-Size"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="cooler_case_height"
+                                   data-error_msg="Case-Cooler-Height"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="fans_error"
+                                   data-error_msg="Fans-Count"
+                                   t-attf-class="switch_cases"/>
+                            <input type="hidden" style="color:red;"
+                                   t-attf-id="power_supply_error"
+                                   data-error_msg="Power-Capacity"
+                                   t-attf-class="switch_cases"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mob_side_bar_toggle d-block d-lg-none"
+                 id="openMobSideBar">
+                <span class="mob_side_bar_toggle_item">
+                    <i class="fa fa-th-large mr-2" id="mobSidebarIconShow"></i>
+                    <i class="fa fa-times mr-2 d-none"
+                       id="mobSidebarIconHide"></i>Categories
+                </span>
+
+            </div>
+        </div>
+    </template>
+    <template id="component_products_card_single">
+        <div t-attf-id="error_power#{line.component_id.id}">
+            <span class="d-none">ddd</span>
+        </div>
+        <t t-if="line.component_id.component_type == 'cpu'">
+            <div t-att-data-component_id="line.component_id.id"
+                 t-attf-id="cpu_noti_div">
+                <span class="d-none">.</span>
+            </div>
+        </t>
+        <t t-if="line.component_id.component_type == 'board'">
+            <div t-att-data-component_id="line.component_id.id"
+                 t-attf-id="board_noti_div" class="mb-3 d-none">
+                <!--                <span class="d-none">.</span>-->
+            </div>
+        </t>
+        <div t-attf-id="error#{line.component_id.id}">
+            <span class="d-none">klk.</span>
+        </div>
+
+        <div data-target="#components_customize_tab"
+             data-offset="0" t-attf-id="component_id#{line.component_id.id}"
+             class="component_section d-block mb-3 p-4"
+             t-att-data-component_type="line.component_id.component_type">
+
+
+            <t t-if="line.component_id.component_type == 'power'">
+
+                <input type="hidden"
+                       t-attf-id="power_supply_uniq"
+                       t-att-value="line.component_id.id"/>
+
+            </t>
+
+
+            <!--                        //set the filed for prev power choosen-->
+            <t t-if="line.component_id.component_type != 'power'">
+                <t t-if="line.product_id">
+                    <input type="hidden"
+                           t-attf-id="prev_power#{line.component_id.id}"
+                           t-att-value="line.product_id.power_watt"/>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden"
+                           t-attf-id="prev_power#{line.component_id.id}"
+                           t-att-value="0"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'cpu'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="prev_cpu_type"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.cpu_type_id.id"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="prev_cpu_oc" class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.support_oc"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="prev_cpu_k_type"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.is_k_type"/>
+                </t>
+                <t t-else="">
+                    <input type="hidden" style="color:red"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-attf-id="prev_cpu_type"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-attf-id="prev_cpu_oc"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="prev_cpu_k_type"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'board'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="board_cpu_type"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.cpu_support_id.id"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="prev_memory_support_type"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.memories_type_support_id.id"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="board_m2_num" class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.m_2_support"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="board_series_type"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.serics_motherboard"/>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           t-attf-id="board_cpu_type"
+                           class="specification_values"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="prev_memory_support_type"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="board_m2_num"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="board_series_type"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'cooler'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="cooler_type" class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.type_cooler"/>
+                    <t t-if="line.product_id.type_cooler == 'air_cooler'">
+                        <input type="hidden" readonly="readonly"
+                               style="color:red" class="specification_values"
+                               t-attf-id="cooler_air_height"
+                               t-att-data-component_id="line.component_id.id"
+                               t-att-value="line.product_id.air_height"/>
+                    </t>
+                    <t t-else="">
+                        <input type="hidden" readonly="readonly"
+                               style="color:red" class="specification_values"
+                               t-att-data-component_id="line.component_id.id"
+                               t-attf-id="cooler_air_height"/>
+                    </t>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="cooler_radiator_size"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.radiator_size_id.id"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-attf-id="cooler_fans_count"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.cooler_fans_count"/>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="cooler_type"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="cooler_air_height"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="cooler_radiator_size"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="cooler_fans_count"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'case'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_type_cooler"
+                           t-att-value="line.product_id.type_cooler_support"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_radiator_size_list"
+                           t-att-value="line.product_id.radiator_size_ids.ids"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           t-attf-id="case_built_fans_no"
+                           class="specification_values"
+                           t-att-value="line.product_id.built_fans_no"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           t-attf-id="case_fans_support"
+                           class="specification_values"
+                           t-att-value="line.product_id.fans_no_support"/>
+                    <t t-if="line.product_id.type_cooler == 'air_cooler' or product_id.type_cooler == 'both'">
+                        <input type="hidden" readonly="readonly"
+                               style="color:red"
+                               t-att-data-component_id="line.component_id.id"
+                               class="specification_values"
+                               t-attf-id="case_cooler_height"
+                               t-att-value="line.product_id.air_cooler_height"/>
+                    </t>
+                    <t t-else="">
+                        <input type="hidden" readonly="readonly"
+                               style="color:red"
+                               t-att-data-component_id="line.component_id.id"
+                               class="specification_values"
+                               t-attf-id="case_cooler_height"/>
+                    </t>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_type_cooler"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_radiator_size_list"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_built_fans_no"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_fans_support"/>
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="case_cooler_height"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'memory'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly"
+                           t-attf-id="memory_type" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-att-value="line.product_id.memories_type_id.id"/>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="memory_type"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'fans'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly"
+                           t-attf-id="fans_package_no" style="color:red"
+                           class="specification_values"
+                           t-att-data-component_id="line.component_id.id"
+                           t-att-value="line.product_id.pak_fans_no"/>
+
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="pak_fans_no"/>
+                </t>
+            </t>
+            <t t-if="line.component_id.component_type == 'm_2'">
+                <t t-if="line.product_id">
+                    <input type="hidden" readonly="readonly"
+                           t-attf-id="m_2_sum" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-att-value="line.product_id.m_2_no"/>
+                </t>
+                <t t-else="">
+                    <input type="hidden" readonly="readonly" style="color:red"
+                           t-att-data-component_id="line.component_id.id"
+                           class="specification_values"
+                           t-attf-id="m_2_sum"/>
+                </t>
+            </t>
+            <t t-set="default_price" t-value="line.product_id.list_price"/>
+            <h2 class="heading_comp new_heading_comp">
+                <!--                call kkkk-->
+                <img t-if="line.sudo().component_id.image"
+                     t-att-src="image_data_uri(line.sudo().component_id.image)"
+                     class="compo-img"
+                     style="width:40px;margin-right:5px;"/>
+
+                <img t-else=""
+                     src="/iwesabe_website_theme/static/src/img/cpu.png"
+                     class="compo-img"
+                     style="width:40px !important;margin-right:5px;"/>
+                <p class="heading_comp heading_comp_p"
+                   t-esc="line.component_id.sudo().name"/>
+            </h2>
+            <t t-set="product_ids"
+               t-value="product_id.component_lines.filtered(lambda x: x.component_id == line.component_id).mapped('product_ids')"/>
+            <!--                //product_ids card here!-->
+            <div class="row" id="product-view-list">
+                <input type="hidden"
+                       t-attf-id="default_price_comp#{line.component_id.id}"
+                       t-att-value="line.product_id.list_price"/>
+                <t t-if="line.product_id.list_price">
+                    <input type="hidden"
+                           t-attf-id="prev_default_price_comp#{line.component_id.id}"
+                           t-att-value="line.product_id.list_price"/>
+                </t>
+                <t t-else="">
+                    <input type="hidden"
+                           t-attf-id="prev_default_price_comp#{line.component_id.id}"
+                           t-att-value="0"/>
+                </t>
+                <t t-foreach="product_ids" t-as="product">
+                    <div class="d_cards_products product_individual_single"
+                         t-att-id="product.id"
+                         t-att-data-component_id="line.component_id.id"
+                         t-att-data-component_type="line.component_id.component_type">
+                        <div t-attf-class="product_image_section glow_component#{line.component_id.id} {{ 'border_selected' if line.product_id.id == product.id else '' }}"
+                             t-attf-id="glow_#{product.id}">
+                            <!--                            //power supply field-->
+                            <t t-if="line.component_id.component_type == 'power'">
+                                <t t-if="product.power_value_support">
+                                    <input type="hidden"
+                                           t-attf-id="power_capacity_product#{product.id}"
+                                           t-attf-class="power_capacity_class#{line.component_id.id}"
+                                           t-att-value="product.power_value_support"/>
+
+                                    <!--                                    <input type="number"-->
+                                    <!--                                           t-attf-id="power_supply_uniq"-->
+                                    <!--                                           t-att-value="line.component_id.id"/>-->
+
+                                </t>
+                                <t t-else="">
+                                    <input type="hidden"
+                                           t-attf-id="power_capacity_product#{product.id}"
+                                           t-attf-class="power_capacity_class#{line.component_id.id}"
+                                           t-att-value="0"/>
+                                    <!--                                    <input type="number"-->
+                                    <!--                                           t-attf-id="power_supply_uniq"-->
+                                    <!--                                           t-att-value="line.component_id.id"/>-->
+                                </t>
+                            </t>
+                            <t t-elif="line.component_id.component_type != 'power'">
+                                <t t-if="product.power_watt">
+                                    <input type="hidden"
+                                           t-attf-id="power_watt_product#{product.id}"
+                                           t-attf-class="power_watt_class#{line.component_id.id}"
+                                           t-att-value="product.power_watt"/>
+
+                                </t>
+                                <t t-else="">
+                                    <input type="hidden"
+                                           t-attf-id="power_watt_product#{product.id}"
+                                           t-attf-class="power_watt_class#{line.component_id.id}"
+                                           t-att-value="0"/>
+                                </t>
+                            </t>
+                            <t t-if="line.product_id">
+                                <t t-if="line.product_id.id == product.id">
+                                    <div class="d-flex product_details_actions">
+                                        <div class="product_details_line">
+                                            <div class="product_selection_card">
+                                                <input class="d-none radio_buttons_class"
+                                                       type="radio"
+                                                       t-attf-id="radio_product_component#{int(product.id)}"
+                                                       t-att-name="line.component_id.sudo().name"
+                                                       checked="checked"
+                                                       t-att-data-component_id="line.component_id.id"
+                                                       t-att-data-product_id="product.id"/>
+                                                <div class="not_mandatory_div_and_tick">
+                                                    <t t-if="not line.mandatory_category">
+                                                        <div t-attf-id="tick_product#{int(product.id)}"
+                                                             style="display:flex;"
+                                                             t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                            <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                                 width="12"
+                                                                 height="12"
+                                                                 class="card_checked_icon"/>
+                                                        </div>
+                                                        <div t-attf-id="button_product#{int(product.id)}">
+                                                            <button type="button"
+                                                                    style="display:block;"
+                                                                    t-attf-class="not_mandatory_clear_div close_components_#{line.component_id.id}"
+                                                                    t-attf-id="radio_product_button#{int(product.id)}"
+                                                                    t-att-value="product.id"
+                                                                    t-att-data-component_id="line.component_id.id"
+                                                                    t-att-data-component_type="line.component_id.component_type"
+                                                                    t-att-name="line.component_id.sudo().name"
+                                                                    aria-label="Close">
+                                                                <img src="/iwesabe_website_theme/static/src/img/customisation/x(2).svg"
+                                                                     height="12"
+                                                                     width="12"
+                                                                     title="Clear Selection"
+                                                                     alt="Clear"/>
+                                                                <span class="clear_not_mandatory">
+                                                                    Clear
+                                                                </span>
+                                                            </button>
+                                                        </div>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <div t-attf-id="tick_product#{int(product.id)}"
+                                                             style="display:flex;"
+                                                             t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                            <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                                 width="12"
+                                                                 height="12"
+                                                                 class="card_checked_icon"/>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="d-flex product_details_actions">
+                                        <div class="product_details_line">
+                                            <div class="product_selection_card">
+                                                <input class="d-none radio_buttons_class"
+                                                       type="radio"
+                                                       t-attf-id="radio_product_component#{int(product.id)}"
+                                                       t-att-name="line.component_id.sudo().name"
+                                                       t-att-data-component_id="line.component_id.id"
+                                                       autocomplete="off"
+                                                       t-att-data-product_id="product.id"/>
+                                                <div class="not_mandatory_div_and_tick">
+                                                    <t t-if="not line.mandatory_category">
+                                                        <div t-attf-id="tick_product#{int(product.id)}"
+                                                             style="display:none;"
+                                                             t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                            <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                                 width="12"
+                                                                 height="12"
+                                                                 class="card_checked_icon"/>
+                                                        </div>
+                                                        <div t-attf-id="button_product#{int(product.id)}">
+                                                            <button type="button"
+                                                                    style="display:none;"
+                                                                    t-attf-class="not_mandatory_clear_div close_components_#{line.component_id.id}"
+                                                                    t-attf-id="radio_product_button#{int(product.id)}"
+                                                                    t-att-value="product.id"
+                                                                    t-att-data-component_id="line.component_id.id"
+                                                                    t-att-data-component_type="line.component_id.component_type"
+                                                                    t-att-name="line.component_id.sudo().name"
+                                                                    aria-label="Close">
+                                                                <img src="/iwesabe_website_theme/static/src/img/customisation/x(2).svg"
+                                                                     height="12"
+                                                                     width="12"
+                                                                     title="Clear Selection"
+                                                                     alt="Clear"/>
+                                                                <span class="clear_not_mandatory">
+                                                                    Clear
+                                                                </span>
+                                                            </button>
+                                                        </div>
+
+                                                    </t>
+                                                    <t t-else="">
+                                                        <div t-attf-id="tick_product#{int(product.id)}"
+                                                             style="display:none;"
+                                                             t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                            <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                                 width="12"
+                                                                 height="12"
+                                                                 class="card_checked_icon"/>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="d-flex product_details_actions">
+                                    <div class="product_details_line">
+                                        <div class="product_selection_card">
+                                            <input class="d-none radio_buttons_class"
+                                                   type="radio"
+                                                   t-attf-id="radio_product_component#{int(product.id)}"
+                                                   t-att-name="line.component_id.sudo().name"
+                                                   t-att-data-component_id="line.component_id.id"
+                                                   autocomplete="off"
+                                                   t-att-data-product_id="product.id"/>
+
+                                            <div class="not_mandatory_div_and_tick">
+                                                <t t-if="not line.mandatory_category">
+                                                    <div t-attf-id="tick_product#{int(product.id)}"
+                                                         style="display:none;"
+                                                         t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                        <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                             width="12"
+                                                             height="12"
+                                                             class="card_checked_icon"/>
+                                                    </div>
+                                                    <div t-attf-id="button_product#{int(product.id)}">
+                                                        <button type="button"
+                                                                style="display:none;"
+                                                                t-attf-class="not_mandatory_clear_div close_components_#{line.component_id.id}"
+                                                                t-attf-id="radio_product_button#{int(product.id)}"
+                                                                t-att-value="product.id"
+                                                                t-att-data-component_id="line.component_id.id"
+                                                                t-att-data-component_type="line.component_id.component_type"
+                                                                t-att-name="line.component_id.sudo().name"
+                                                                aria-label="Close">
+                                                            <img src="/iwesabe_website_theme/static/src/img/customisation/x(2).svg"
+                                                                 height="12"
+                                                                 width="12"
+                                                                 title="Clear Selection"
+                                                                 alt="Clear"/>
+                                                            <span class="clear_not_mandatory">
+                                                                Clear
+                                                            </span>
+                                                        </button>
+                                                    </div>
+
+                                                </t>
+                                                <t t-else="">
+                                                    <div t-attf-id="tick_product#{int(product.id)}"
+                                                         style="display:none;"
+                                                         t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                                        <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                                             width="12"
+                                                             height="12"
+                                                             class="card_checked_icon"/>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="product-img-comp">
+                                <img t-if="product.image_1920"
+                                     t-att-src="'/web/image?model=product.product&amp;id=%s&amp;field=image_1920'%(product.id)"
+                                     class="gear_store_image_comp pop_up_image_cards m-auto"
+                                     t-att-alt="product.name"/>
+                                <img t-else=""
+                                     src="/iwesabe_website_theme/static/src/img/gaming-pc-desktop/game-pc.png"
+                                     class="gear_store_image_comp pop_up_image_cards m-auto"
+                                     t-att-alt="product.name"/>
+                            </div>
+                            <div class="product-details-comp-single"
+                                 style="padding: 20px;">
+                                <input type="hidden"
+                                       t-attf-class="current_price_class#{line.component_id.id}"
+                                       t-att-data-product_id="product.id"
+                                       t-attf-id="current_price_product#{product.id}"
+                                       t-att-value="product.list_price"/>
+                                <p class="product-name_cust"
+                                   t-esc="product.name[:45]"/>
+                            </div>
+                            <div t-attf-class="price_tag_single learn_more_div_single price_tag_component#{line.component_id.id}"
+                                 t-attf-id="price_tag_product#{product.id}">
+                                <t t-set="current_price"
+                                   t-value="product.list_price"/>
+                                <t t-if="line.product_id.id == product.id">
+                                    <div class="combined_prices">
+                                        <div class="updated_amount_div">
+                                            <input type="text"
+                                                   style="color:#00ffd4;font-size:12px;"
+                                                   readonly="readonly"
+                                                   t-attf-class="test_comp_class#{line.component_id.id} updated_price_amount single_center"
+                                                   t-attf-id="test_product#{product.id}"/>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="default_price">
+                                        <t t-set="symbol"
+                                           t-value="request.env.company.currency_id.symbol"/>
+                                        <t t-if="int(current_price) &gt; int(default_price)">
+                                            <div class="combined_prices">
+                                                <!--                                                <div class="price_tag-single tag-single-price-increase">-->
+                                                <!--                                                    <span>+</span>-->
+                                                <!--                                                    <span t-esc="request.env.company.currency_id.symbol"/>-->
+                                                <t t-set="difference"
+                                                   t-value="float(current_price)-float(default_price)"/>
+                                                <t t-set="difference"
+                                                   t-value="'+ '+str(difference)+' '+symbol"/>
+                                                <!--                                                    <span t-esc="difference"/>-->
+                                                <!--                                                </div>-->
+                                                <div class="updated_amount_div">
+                                                    <input type="text"
+                                                           style="color:red;font-size:12px;"
+                                                           readonly="readonly"
+                                                           t-attf-class="single_center test_comp_class#{line.component_id.id} updated_price_amount"
+                                                           t-attf-id="test_product#{product.id}"
+                                                           t-att-value="difference"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-elif="int(current_price) &lt; int(default_price)">
+                                            <div class="combined_prices">
+                                                <!--                                                <div class="price_tag-single tag-single-price-decrease">-->
+                                                <!--                                                    <span>-</span>-->
+                                                <!--                                                    <span t-esc="request.env.company.currency_id.symbol"/>-->
+                                                <t t-set="difference"
+                                                   t-value="float(default_price)-float(current_price)"/>
+                                                <t t-set="difference"
+                                                   t-value="'-'+str(difference)+' '+symbol"/>
+                                                <!--                                                </div>-->
+                                                <div class="updated_amount_div">
+                                                    <input type="text"
+                                                           readonly="readonly"
+                                                           t-attf-class="single_center test_comp_class#{line.component_id.id} updated_price_amount"
+                                                           t-attf-id="test_product#{product.id}"
+                                                           t-att-value="difference"
+                                                           style="color:#00ffd4;font-size:12px;"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <t t-elif="int(current_price) == int(default_price)">
+                                            <div class="combined_prices">
+                                                <!--                                                <div class="price_tag-single tag-single-price-increase">-->
+                                                <!--                                                    <span>+</span>-->
+                                                <!--                                                    <span t-esc="request.env.company.currency_id.symbol"/>-->
+                                                <!--                                                    <t t-set="difference"-->
+                                                <!--                                                       t-value="float(default_price)-float(current_price)"/>-->
+                                                <!--                                                    <span t-esc="difference"/>-->
+                                                <!--                                                </div>-->
+                                                <!--                                                <div class="updated_amount_div">-->
+                                                <!--                                                    <input type="text"-->
+                                                <!--                                                           readonly="readonly"-->
+                                                <!--                                                           t-attf-class="test_comp_class#{line.component_id.id} updated_price_amount"-->
+                                                <!--                                                           t-attf-id="test_product#{product.id}"/>-->
+                                                <!--                                                </div>-->
+                                                <t t-set="difference"
+                                                   t-value="'+'+'0 '+symbol"/>
+                                                <!--                                                </div>-->
+                                                <div class="updated_amount_div">
+                                                    <input type="text"
+                                                           readonly="readonly"
+                                                           t-attf-class="single_center test_comp_class#{line.component_id.id} updated_price_amount"
+                                                           t-attf-id="test_product#{product.id}"
+                                                           t-att-value="difference"
+                                                           style="color:#00ffd4;font-size:12px;"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="combined_prices">
+                                            <!--                                            <div class="price_tag-single product-price-single-default">-->
+                                            <!--                                                <p class="product-price-p">-->
+                                            <!--                                                    <span t-field="product.list_price"-->
+                                            <!--                                                          class="offers-price"-->
+                                            <!--                                                          t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>-->
+                                            <!--                                                </p>-->
+                                            <!--                                            </div>-->
+                                            <div class="updated_amount_div">
+                                                <input type="text"
+                                                       readonly="readonly"
+                                                       style="font-size:12px;"
+                                                       t-attf-class="single_center test_comp_class#{line.component_id.id} updated_price_amount"
+                                                       t-attf-id="test_product#{product.id}"/>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                                <div class="pop_up_images_div_ids"
+                                     style="font-size: 12px;"
+                                     data-toggle="modal"
+                                     t-att-data-id="product.id"
+                                     data-target="#product_images_modal">
+                                    <span>Learn More</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </t>
+
+            </div>
+
+        </div>
+    </template>
+
+
+    <template id="component_products_card_multi">
+        <div t-attf-id="component_id#{line.component_id.id}"
+             class="component_section d-block my-3 p-4">
+            <h2 class="heading_comp new_heading_comp">
+                <img t-if="line.sudo().component_id.image"
+                     t-att-src="image_data_uri(line.sudo().component_id.image)"
+                     class="compo-img"
+                     style="width:40px;margin-right:5px;"/>
+
+                <img t-else=""
+                     src="/iwesabe_website_theme/static/src/img/cpu.png"
+                     class="compo-img"
+                     style="width:40px !important;margin-right:5px;"/>
+                <p class="heading_comp heading_comp_p"
+                   t-esc="line.component_id.sudo().name"/>
+                <input type="hidden"
+                       style="color:red;"
+                       t-attf-id="allowed_sel_component#{int(line.component_id.id)}"
+                       t-att-value="line.allowed_number"/>
+                <t t-if="line.product_id">
+                    <input type="hidden"
+                           style="color:red;"
+                           t-attf-id="total_allowed_component#{int(line.component_id.id)}"
+                           t-att-value="line.allowed_number_qty-1"/>
+                </t>
+                <t t-else="">
+                    <input type="hidden"
+                           style="color:red;"
+                           t-attf-id="total_allowed_component#{int(line.component_id.id)}"
+                           t-att-value="line.allowed_number_qty-1"/>
+                </t>
+            </h2>
+            <t t-set="product_ids"
+               t-value="product_id.component_lines.filtered(lambda x: x.component_id == line.component_id).mapped('product_ids')"/>
+            <!--                //product_ids card here!-->
+            <div class="row" id="product-view-list">
+                <t t-foreach="product_ids" t-as="product">
+                    <div class="d_cards_products product_individual_multi"
+                         id="product_individual_multi"
+                         t-att-data-component_id="line.component_id.id"
+                         t-att-data-component_type="line.component_id.component_type"
+                         t-att-data-product_id="product.id">
+                        <div t-attf-class="product_image_section {{ 'border_selected' if line.product_id.id == product.id else '' }}">
+                            <input type="hidden"
+                                   t-attf-class="current_price_class#{line.component_id.id}"
+                                   t-attf-id="current_price_product#{product.id}"
+                                   t-att-data-product_id="product.id"
+                                   t-att-value="product.list_price"/>
+                            <t t-if="line.component_id.component_type != 'power'">
+                                <t t-if="product.power_watt">
+                                    <input type="hidden"
+                                           t-attf-id="power_watt_product#{product.id}"
+                                           t-attf-class="power_watt_class#{line.component_id.id}"
+                                           t-att-value="product.power_watt"/>
+
+                                </t>
+                                <t t-else="">
+                                    <input type="hidden"
+                                           t-attf-id="power_watt_product#{product.id}"
+                                           t-attf-class="power_watt_class#{line.component_id.id}"
+                                           t-att-value="0"/>
+                                </t>
+                            </t>
+                            <t t-if="line.product_id.id == product.id">
+                                <div t-attf-id="tick_product#{int(product.id)}"
+                                     style="display:flex;"
+                                     t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                    <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                         width="12"
+                                         height="12"
+                                         class="card_checked_icon"/>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div t-attf-id="tick_product#{int(product.id)}"
+                                     style="display:none;"
+                                     t-attf-class="active_icon tick_component#{line.component_id.id}">
+                                    <img src="/iwesabe_website_theme/static/src/img/customisation/check.svg"
+                                         width="12"
+                                         height="12"
+                                         class="card_checked_icon"/>
+                                </div>
+                            </t>
+                            <t t-if="line.product_id">
+                                <t t-if="line.product_id.id == product.id">
+                                    <div class="d-flex product_details_actions">
+                                        <div class="product_details_line2">
+                                            <div class="product_selection_card2">
+                                                <input
+                                                        t-attf-class="d-none check_buttons_class check_class_component#{line.component_id.id}"
+                                                        type="checkbox"
+                                                        t-attf-id="radio_product_component#{int(product.id)}"
+                                                        t-att-name="checkbox_#{line.component_id.id}"
+                                                        t-att-data-component_id="line.component_id.id"
+                                                        checked="checked"
+                                                        t-att-value="product.id"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div class="d-flex product_details_actions">
+                                        <div class="product_details_line2">
+                                            <div class="product_selection_card2">
+                                                <input t-attf-class="d-none check_buttons_class check_class_component#{line.component_id.id}"
+                                                       type="checkbox"
+                                                       t-attf-id="radio_product_component#{int(product.id)}"
+                                                       t-att-data-component_id="line.component_id.id"
+                                                       t-att-name="checkbox_#{product.id}"
+                                                       t-att-value="product.id"
+                                                       autocomplete="off"
+                                                />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="d-flex product_details_actions">
+                                    <div class="product_details_line2">
+                                        <div class="product_selection_card2">
+                                            <input t-attf-class="d-none check_buttons_class check_class_component#{line.component_id.id}"
+                                                   type="checkbox"
+                                                   t-att-data-component_id="line.component_id.id"
+                                                   t-attf-id="radio_product_component#{int(product.id)}"
+                                                   t-att-name="checkbox_#{product.id}"
+                                                   t-att-value="product.id"
+                                                   autocomplete="off"
+                                            />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <div class="product-img-comp">
+                                <img t-if="product.image_1920"
+                                     t-att-src="'/web/image?model=product.product&amp;id=%s&amp;field=image_1920'%(product.id)"
+                                     class="gear_store_image_comp  pop_up_image_cards m-auto"
+                                     t-att-alt="product.name"/>
+                                <img t-else=""
+                                     src="/iwesabe_website_theme/static/src/img/gaming-pc-desktop/game-pc.png"
+                                     class="gear_store_image_comp pop_up_image_cards m-auto"
+                                     t-att-alt="product.name"/>
+                            </div>
+                            <div class="product-details-comp">
+                                <p class="product-name_cust"
+                                   t-esc="product.name[:45]"/>
+                                <div class="product-multi-select">
+                                    <t t-if="line.product_id">
+                                        <t t-if="line.product_id.id == product.id">
+                                            <!--                                here selection-->
+                                            <t t-if="line.allowed_number_qty > 1">
+
+                                                <select style="height: 22px;display:block;"
+                                                        name="number_quantities"
+                                                        t-attf-class="selection_quantities selection_class_component#{line.component_id.id}"
+                                                        t-att-data-component_id="line.component_id.id"
+                                                        t-att-data-product_id="product.id"
+                                                        t-attf-id="selection_#{int(product.id)}">
+                                                    <t t-set="allowed_no"
+                                                       t-value="line.allowed_number_qty +1"/>
+                                                    <t t-foreach="range(allowed_no)"
+                                                       t-as="item">
+                                                        <t t-if="item == 1">
+                                                            <option t-att-value="item"
+                                                                    selected="selected">
+                                                                <t t-out="item"/>
+                                                            </option>
+                                                        </t>
+                                                        <t t-elif="not item_index == 0">
+                                                            <option t-att-value="item">
+                                                                <t t-out="item"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                                <input type="hidden"
+                                                       style="color:red;"
+                                                       t-attf-class="prev_choose prev_choose_component#{line.component_id.id}"
+                                                       t-attf-id="prev_chose#{int(product.id)}"
+                                                       value="1"/>
+
+                                            </t>
+
+                                        </t>
+                                        <t t-else="">
+                                            <!--                                here selection2-->
+                                            <t t-if="line.allowed_number_qty > 1">
+
+                                                <select style="height: 22px;display:none;"
+                                                        t-attf-class="selection_quantities selection_class_component#{line.component_id.id}"
+                                                        name="number_quantities"
+                                                        t-att-data-component_id="line.component_id.id"
+                                                        t-att-data-product_id="product.id"
+                                                        t-attf-id="selection_#{int(product.id)}">
+                                                    <t t-set="allowed_no"
+                                                       t-value="line.allowed_number_qty"/>
+                                                    <t t-foreach="range(allowed_no)"
+                                                       t-as="item">
+                                                        <t t-if="not item_index == 0">
+                                                            <option t-att-value="item">
+                                                                <t t-out="item"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                                <input type="hidden"
+                                                       style="color:red;"
+                                                       t-attf-class="prev_choose prev_choose_component#{line.component_id.id}"
+                                                       value="0"
+                                                       t-attf-id="prev_chose#{int(product.id)}"/>
+                                            </t>
+
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-if="line.allowed_number_qty > 1">
+                                            <select style="height: 22px;display:none;"
+                                                    name="number_quantities"
+                                                    t-att-data-component_id="line.component_id.id"
+                                                    t-att-data-product_id="product.id"
+                                                    t-attf-class="selection_quantities selection_class_component#{line.component_id.id}"
+                                                    t-attf-id="selection_#{int(product.id)}">
+                                                <t t-set="allowed_no"
+                                                   t-value="line.allowed_number_qty"/>
+                                                <t t-foreach="range(allowed_no)"
+                                                   t-as="item">
+                                                    <t t-if="not item_index == 0">
+                                                        <option t-att-value="item">
+                                                            <t t-out="item"/>
+                                                        </option>
+                                                    </t>
+                                                </t>
+                                            </select>
+                                            <input type="hidden"
+                                                   style="color:red;"
+                                                   t-attf-class="prev_choose prev_choose_component#{line.component_id.id}"
+                                                   value="0"
+                                                   t-attf-id="#{int(product.id)}"/>
+                                        </t>
+                                    </t>
+                                </div>
+
+                            </div>
+                            <div class="price_tag_single"
+                                 style="height: 42.7px;">
+                                <div t-attf-class="price_tag_multi price_tag_component#{line.component_id.id}"
+                                     t-attf-id="price_tag_product#{product.id}">
+                                    <t t-set="symbol"
+                                       t-value="request.env.company.currency_id.symbol"/>
+                                    <t t-set="current_price"
+                                       t-value="product.list_price"/>
+                                    <t t-set="price_add"
+                                       t-value="'+ '+str(current_price)+symbol"/>
+                                    <t t-if="line.product_id.id != product.id">
+                                        <input type="text"
+                                               style="color:#00FFD4;font-size:12px;"
+                                               readonly="readonly"
+                                               t-attf-class="test_comp_class#{line.component_id.id} updated_price_amount"
+                                               t-attf-id="test_product#{product.id}"
+                                               t-att-value="price_add"/>
+                                    </t>
+                                    <t t-else="">
+                                        <input type="text"
+                                               style="color:#00FFD4;font-size:12px;"
+                                               readonly="readonly"
+                                               t-attf-class="test_comp_class#{line.component_id.id} updated_price_amount"
+                                               t-attf-id="test_product#{product.id}"
+                                               t-att-value="price_add"/>
+                                    </t>
+
+                                </div>
+                                <div class="pop_up_images_div_ids"
+                                     data-toggle="modal"
+                                     style="font-size: 12px;"
+                                     t-att-data-id="product.id"
+                                     data-target="#product_images_modal">
+                                    <span>Learn More</span>
+                                </div>
+                                <!--                                ??-->
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </t>
+
+            </div>
+
+        </div>
+    </template>
+
+
+    <template id="dialogue_box_content">
+        <div id="dialogue_box_content">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <h2 style="font-size: 26px; margin-bottom: 20px;margin-bottom: 20px;max-width: 88%;">
+                                <t t-esc="product_id.name"/>
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="ian-specification-modal__tab-container">
+                        <button type="button"
+                                class="close ian-specification-modal__close"
+                                data-dismiss="modal"
+                                style="position: absolute;right: 30px;top: 30px;display: flex;align-items: center;justify-content: center;"
+                                aria-label="Close">
+                            <span aria-hidden="true">
+                                <svg width="20" height="20" fill="#ffffff"
+                                     viewBox="0 0 24 24"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 7.05 16.95 6 12 10.95 7.05 6 6 7.05 10.95 12 6 16.95 7.05 18 12 13.05 16.95 18 18 16.95 13.05 12 18 7.05Z"/>
+                                </svg>
+                            </span>
+                        </button>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                                <div class="ian-specification-modal__nav nav nav-pills"
+                                     id="v-pills-tab" role="tablist"
+                                     aria-orientation="vertical">
+                                    <t t-set="dialogue_lines"
+                                       t-value="product_id.component_lines.component_id.parents_type"/>
+
+                                    <t t-foreach="dialogue_lines" t-as="line">
+                                        <t t-if="line_index == 0">
+                                            <button class="nav-link active"
+                                                    id="v-pills-home-tab"
+                                                    data-toggle="pill"
+                                                    t-attf-data-target="#v-pills-#{line.id}"
+                                                    type="button" role="tab"
+                                                    aria-controls="v-pills-home"
+                                                    aria-selected="true">
+                                                <t t-esc="line.name"/>
+                                            </button>
+                                        </t>
+                                        <t t-else="">
+                                            <button class="nav-link"
+                                                    id="v-pills-home-tab"
+                                                    data-toggle="pill"
+                                                    t-attf-data-target="#v-pills-#{line.id}"
+                                                    type="button" role="tab"
+                                                    aria-controls="v-pills-home"
+                                                    aria-selected="true">
+                                                <t t-esc="line.name"/>
+                                            </button>
+                                        </t>
+                                    </t>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+                                <div class="tab-content"
+                                     id="v-pills-tabContent">
+                                    <!--                                            data-target="#v-pills-gallery"-->
+                                    <t t-foreach="dialogue_lines" t-as="line">
+                                        <t t-if="line_index == 0">
+                                            <div class="tab-pane popup_lists fade show active"
+                                                 t-attf-id="v-pills-#{line.id}"
+                                                 role="tabpanel"
+                                                 aria-labelledby="v-pills-messages-tab">
+                                                <t t-set="d_filtered"
+                                                   t-value="product_id.component_lines.filtered(lambda x: x.component_id.parents_type.id == line.id).mapped('component_id')"/>
+                                                <t t-foreach="d_filtered"
+                                                   t-as="d_line">
+                                                    <div style="width:100%;border: 1px solid #444;padding: 15px;background: #242424;color:white;margin:10px auto;">
+                                                        <span style="display: inline-block; width:200px;">
+                                                            <t t-esc="d_line.name"/>
+                                                            :
+                                                        </span>
+                                                        <t t-set="current_line"
+                                                           t-value="product_id.component_lines.filtered(lambda x:x.component_id.id == d_line.id)"/>
+                                                        <t t-if="product_ids_list">
+                                                            <t t-set="product_radio"
+                                                               t-value="product_ids_list.filtered(lambda x: x in current_line.product_ids)"/>
+                                                            <t t-foreach="product_radio"
+                                                               t-as="radio">
+                                                                <span class="pop-up-contents">
+                                                                    <t t-esc="radio.name"/>
+                                                                    <t t-if="dict_values.get(radio.id)">
+                                                                        (
+                                                                        <t t-esc="dict_values[radio.id]"/>
+                                                                        x
+                                                                        )
+                                                                    </t>
+                                                                </span>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <div class="tab-pane popup_lists fade"
+                                                 t-attf-id="v-pills-#{line.id}"
+                                                 role="tabpanel"
+                                                 aria-labelledby="v-pills-messages-tab">
+                                                <t t-set="d_filtered"
+                                                   t-value="product_id.component_lines.filtered(lambda x: x.component_id.parents_type.id == line.id).mapped('component_id')"/>
+                                                <t t-foreach="d_filtered"
+                                                   t-as="d_line">
+                                                    <div style="width:100%;border: 1px solid #444;padding: 15px;background: #242424;color:white;margin:10px auto;">
+                                                        <span style="display: inline-block; width:200px;">
+                                                            <t t-esc="d_line.name"/>
+                                                            :
+                                                        </span>
+                                                        <t t-set="current_line"
+                                                           t-value="product_id.component_lines.filtered(lambda x:x.component_id.id == d_line.id)"/>
+                                                        <t t-if="product_ids_list">
+                                                            <t t-set="product_radio"
+                                                               t-value="product_ids_list.filtered(lambda x: x in current_line.product_ids)"/>
+                                                            <t t-foreach="product_radio"
+                                                               t-as="radio">
+                                                                <span class="pop-up-contents">
+                                                                    <t t-esc="radio.name"/>
+                                                                    <t t-if="dict_values.get(radio.id)">
+                                                                        (
+                                                                        <t t-esc="dict_values[radio.id]"/>
+                                                                        x
+                                                                        )
+                                                                    </t>
+                                                                </span>
+                                                            </t>
+                                                        </t>
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </t>
+                                    </t>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--                //end body-->
+
+            </div>
+        </div>
+    </template>
+    <template id="dialogue_box_product_images">
+        <div id="dialogue_box_product_images">
+            <div class="modal-content">
+                <div class="ian-specification-modal__body modal-body">
+                    <button type="button"
+                            class="close ian-specification-modal__close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">
+                            <svg width="20" height="20" fill="#ffffff"
+                                 viewBox="0 0 24 24"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 7.05 16.95 6 12 10.95 7.05 6 6 7.05 10.95 12 6 16.95 7.05 18 12 13.05 16.95 18 18 16.95 13.05 12 18 7.05Z"/>
+                            </svg>
+                        </span>
+                    </button>
+
+                    <div class="ian-specification-modal__tab-container">
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-3">
+                                <div class="ian-specification-modal__nav nav nav-pills"
+                                     id="v-pills-tab" role="tablist"
+                                     aria-orientation="vertical">
+                                    <button class="nav-link active"
+                                            id="v-pills-home-tab"
+                                            data-toggle="pill"
+                                            data-target="#v-pills-gallery"
+                                            type="button" role="tab"
+                                            aria-controls="v-pills-home"
+                                            aria-selected="true">Gallery
+                                    </button>
+                                    <button class="nav-link"
+                                            id="v-pills-profile-tab"
+                                            data-toggle="pill"
+                                            data-target="#v-pills-specs"
+                                            type="button" role="tab"
+                                            aria-controls="v-pills-profile"
+                                            aria-selected="false">Specification
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-9">
+                                <div class="tab-content"
+                                     id="v-pills-tabContent">
+
+                                    <div class="tab-pane fade show active"
+                                         id="v-pills-gallery" role="tabpanel"
+                                         aria-labelledby="v-pills-profile-tab">
+
+                                        <!-- Carousel -->
+                                        <div id="carouselExampleIndicators"
+                                             class="ian-specification-modal__carousel carousel slide"
+                                             data-ride="carousel">
+                                            <t t-if="images">
+
+                                                <ol class="ian-specification-modal__indicator carousel-indicators">
+                                                    <t t-foreach="images"
+                                                       t-as="image">
+                                                        <t t-if="image_index == 0">
+                                                            <li t-attf-data-target="#carouselExampleIndicators"
+                                                                t-att-data-slide-to="image_index"
+                                                                class="active"
+                                                            ></li>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <li t-attf-data-target="#carouselExampleIndicators"
+                                                                t-att-data-slide-to="image_index"
+                                                            ></li>
+                                                        </t>
+                                                    </t>
+
+                                                </ol>
+
+                                                <div class="carousel-inner">
+                                                    <t t-foreach="images"
+                                                       t-as="image_url">
+                                                        <t t-if="image_url_index ==0">
+                                                            <div class="carousel-item active">
+                                                                <img t-att-src="'/web/image?model=product.image&amp;id=%s&amp;field=image_1920'%(image_url.id)"
+                                                                     class="ian-specification-modal__carousel-image d-block w-100"
+                                                                     t-att-alt="image_url.name"/>
+                                                            </div>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <div class="carousel-item">
+                                                                <img t-att-src="'/web/image?model=product.image&amp;id=%s&amp;field=image_1920'%(image_url.id)"
+                                                                     class="ian-specification-modal__carousel-image d-block w-100"
+                                                                     t-att-alt="image_url.name"/>
+                                                            </div>
+                                                        </t>
+                                                    </t>
+                                                </div>
+
+                                                <button class="carousel-control-prev"
+                                                        type="button"
+                                                        data-target="#carouselExampleIndicators"
+                                                        data-slide="prev">
+                                                    <span class="carousel-control-prev-icon"
+                                                          aria-hidden="true"></span>
+                                                    <span class="sr-only">
+                                                        Previous
+                                                    </span>
+                                                </button>
+                                                <button class="carousel-control-next"
+                                                        type="button"
+                                                        data-target="#carouselExampleIndicators"
+                                                        data-slide="next">
+                                                    <span class="carousel-control-next-icon"
+                                                          aria-hidden="true"></span>
+                                                    <span class="sr-only">Next
+                                                    </span>
+                                                </button>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="ian-specification-modal__empty">
+                                                    <img src="/iwesabe_website_theme/static/src/img/customisation/sad.svg"
+                                                         width="64"
+                                                         height="64"
+                                                         class="ian-specification-modal__empty-icon"/>
+                                                    <span class="ian-specification-modal__empty-title">
+                                                        No images found.
+                                                    </span>
+                                                </div>
+
+                                            </t>
+                                        </div>
+                                        <!-- End of Carousel -->
+
+                                    </div>
+                                    <div class="tab-pane fade"
+                                         id="v-pills-specs" role="tabpanel"
+                                         aria-labelledby="v-pills-messages-tab">
+                                        <ul class="ian-specification-modal__items">
+                                            <t t-foreach="specs" t-as="spec">
+                                                <li class="ian-specification-modal__item">
+                                                    <div class="ian-specification-modal__item-card">
+                                                        <span class="ian-specification-modal__item-label">
+                                                            <t t-esc="spec"/>
+                                                        </span>
+                                                        <span class="ian-specification-modal__item-content">
+                                                            <t t-esc="specs[spec]"/>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

@@ -1,0 +1,1940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_layout_paceflow" name="Portal" inherit_id="portal.portal_layout" customize_show="True" priority="100">
+        <xpath expr="//div[hasclass('o_my_sidebar')]" position="replace">
+
+        </xpath>
+    </template>
+    <!--    main portal menu-->
+<!--    <template id="portal_pace_flow_upload" name="Upload" inherit_id="portal.portal_my_home" customize_show="True" priority="100">-->
+<!--        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">-->
+<!--            <t t-call="portal.portal_docs_entry">-->
+<!--                <t t-set="title">Upload</t>-->
+<!--                <t t-set="url" t-value="'/my/upload_form'"/>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--    <template id="portal_pace_flow_profile" name="Profile" inherit_id="portal.portal_my_home" customize_show="True" priority="-100">-->
+<!--        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">-->
+<!--            <t t-call="portal.portal_docs_entry">-->
+<!--                <t t-set="title">Profile</t>-->
+<!--                <t t-set="url" t-value="'/my/profile'"/>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--    <template id="portal_pace_flow_child" name="Upload" inherit_id="portal.portal_my_home" customize_show="True" priority="-50">-->
+<!--        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">-->
+<!--            <t t-call="portal.portal_docs_entry">-->
+<!--                <t t-set="title">Child Contacts</t>-->
+<!--                <t t-set="url" t-value="'/my/child_cont'"/>-->
+<!--            </t>-->
+<!--        </xpath>-->
+<!--    </template>-->
+
+<!--    DASHBOARD-->
+
+    <template id="paceflow_portal_my_home" name="Coach Dashboard">
+        <t t-call="portal.portal_layout">
+            <br/><br/>
+            <t t-set="no_breadcrumbs" t-value="1"/>
+            <div class="container py-3">
+
+                <div class="container py-5">
+                <div class="row mb-3">
+                  <div class="col-12 col-md-6 col-lg-6">
+                    <h1 class="paceflow-section-header--h1 font-weight-bold paceflow-text-grey-800 paceflow-mb-3-resp">Home</h1>
+                  </div>
+                  <div class="col-12 col-md-6 col-lg-3 offset-lg-3">
+                    <div class="paceflow-badge paceflow-badge--primary d-flex justify-content-between align-items-center">
+                      <div>Getting Started</div>
+                      <img src="/paceflow/static/description/images/ui/exclaimation.png" class="paceflow-badge__icon"/>
+                    </div>
+                  </div>
+                </div>
+                </div>
+                <div class="row paceflow-reverse-resp">
+                    <div class="col-12 col-md-12 col-lg-6">
+                        <a href="/my/profile">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/profile.png" width="35" height="35" class="paceflow-card-item__icon-image ml-3" />
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Profile
+                            </div>
+                        </div>
+                        </a>
+
+                        <a href="/my/child_cont">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/person.png" width="35" height="35" class="paceflow-card-item__icon-image ml-3" />
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Players
+                            </div>
+                        </div>
+                        </a>
+
+                        <a href="/my/group">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/groups.png" width="41" height="34" class="paceflow-card-item__icon-image ml-3" />
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Groups
+                            </div>
+                        </div>
+                        </a>
+
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/person.png" width="35" height="35" class="paceflow-card-item__icon-image ml-3" />
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Parents
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-12 col-lg-3 offset-lg-3">
+                        <form id="upload_video" method="post" action="/my/upload">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="child_contacts">
+                            <div class="paceflow-card  paceflow-shadow mb-3">
+                                <div class="paceflow-card__header d-flex justify-content-between align-items-center paceflow-card__header--plus">
+                                    <div class="paceflow-card__header-text">Upload New Video</div>
+
+                                        <input type="image" src="/paceflow/static/description/images/ui/plus-circle-o.png" alt="Submit"/>
+                                </div>
+
+                                <div class="paceflow-card__body d-none d-lg-block d-xl-block">
+                                    <img src="/paceflow/static/description/images/ui/background-video.png"
+                                         class="paceflow-card__video-background" />
+                                </div>
+
+                                <div class="paceflow-card__footer py-4">
+                                    <select class="paceflow-select" id="child_id" name="child_id">
+                                        <t t-foreach="child_contacts or []" t-as="child">
+                                            <option class="state" t-att-value="child.id">
+                                                <t t-esc="child.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                            </t>
+                            <t t-else="">
+                                <a href="/my/create_child">
+                                    <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected">
+                                        Add New Player
+                                        <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                             width="16" height="16"/>
+                                    </div>
+                                </a>
+                            </t>
+                        </form>
+                    </div>
+                </div>
+
+
+                    <div class="row px-2">
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/profile">
+                                <div class="tile">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Profiless
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/dashboard">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Client Dashboard
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/history_dashboard">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Historical Dashboard
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/child_cont">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Child Contacts
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/quots">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Quotations
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/orders">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Sales Orders
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/invoices">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Invoices &amp; Bills
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div t-attf-class="col-#{mobile if mobile else '12'} col-sm-#{mobile if mobile else '12'} col-md-#{tablet if tablet else '6'} col-lg-#{desktop if desktop else '4'} my-2 px-2 px-md-3 my-md-3">
+                            <a href="/my/upload">
+                                <div class="tile"
+                                     style="background: linear-gradient((135deg, rgb(255, 204, 51) 0%, rgb(226, 51, 255) 100%));">
+                                    <strong class="my-2"
+                                            style="color: #000000;">
+                                        Upload
+                                    </strong>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+    </template>
+
+<!--    portal profile-->
+    <template id="my_profile" name="Profile">
+        <t t-call="portal.portal_layout">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                            <a href="/my/home/">
+                                <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                            </a>
+                            <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                                My Profile
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+        <form id="profile_edit_form" action="/my/update_profile"
+              method="post" enctype="multipart/form-data"
+              name="upload_form"
+              class="o_mark_required" data-model_name="mail.mail">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="row">
+
+                <div class="col-sm-12 col-md-12 col-lg-5 d-flex flex-column justify-content-center align-items-center my-5">
+                    <div class="paceflow-profile-section">
+                        <div class="paceflow-profile-section__photo">
+                            <label for="picture">
+                                <t t-if="partner.image_1024">
+                                    <img id="profile_picture"
+                                         width="100" height="100"
+                                         class="paceflow-profile-section__photo"
+                                         t-att-src="image_data_uri(partner.image_1024)"
+                                         style="cursor: pointer;"/>
+                                </t>
+                                <t t-if="not partner.image_1024">
+                                    <img id="profile_picture"
+                                         class="paceflow-profile-section__camera"
+                                         src="/paceflow/static/description/images/ui/camera.png"
+                                         style="cursor: pointer;"/>
+                                </t>
+                            </label>
+                            <input id="picture"
+                                   style="margin-left: 50px;"
+                                   onchange="image_preview()"
+                                   type="file" name="photo" class="file"
+                                   multiple="true"
+                                   data-show-upload="true"
+                                   data-show-caption="true" lass="file"
+                                   data-show-preview="true"
+                                   hidden="true"/>
+                        </div>
+                        <div class="paceflow-profile-section__meta position-relative">
+                            <div class="paceflow-profile-section__name paceflow-text-grey-800">
+                                <input type="text" name="partner_name"
+                                       t-if="partner.last_name"
+                                       t-att-value='partner.name +" "+ partner.last_name'
+                                       style="background-color: #ececec;
+                                                color: #7f7e7f;
+                                                outline: none;
+                                                border:none;
+                                                text-align: center;" >
+                                </input>
+                                <input type="text"
+                                       name="partner_name"
+                                       t-if="not partner.last_name"
+                                       t-att-value='partner.name'
+                                       style="background-color: #ececec;
+                                              color: #7f7e7f;
+                                              outline: none;
+                                              border:none;
+                                              text-align: center;" >
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-12 col-lg-7 my-5">
+                    <input type="text" name="email" id="email"
+                           class="paceflow-form-control" placeholder="Email"
+                           t-att-value='partner.email'/>
+                    <div class="form-row">
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <input type="text" name="code" id="code"
+                                   class="paceflow-form-control"
+                                   t-att-value="country_code"
+                                   />
+                        </div>
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <input type="text" name="phone" id="phone"
+                                   class="paceflow-form-control"
+                                   placeholder="Phone (incl. country code)"
+                                   t-att-value="number"/>
+                        </div>
+                    </div>
+
+                    <input type="text" name="partner" id="partner"
+                           t-att-value="partner.id" hidden="true"/>
+
+                    <input type="text" name="house" id="house"
+                           class="paceflow-form-control"
+                           placeholder="House No./ Name"
+                           t-if="partner.street" t-att-value="partner.street"/>
+
+                    <input type="text" name="street" id="street"
+                           class="paceflow-form-control" placeholder="Street"
+                           t-if="partner.street2" t-att-value="partner.street2"/>
+
+                    <input type="text" name="town" id="town"
+                           class="paceflow-form-control" placeholder="Town"
+                           t-att-value="partner.city"/>
+
+                    <div class="form-row">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                            <select name="state_id" class="paceflow-select">
+                                <t t-foreach="states or []" t-as="state">
+                                    <option class="state" t-att-value="state.id"
+                                            t-att-country="state.country_id.id"
+                                            t-att-selected="state.id == partner.state_id.id">
+                                        <t t-esc="state.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                            <input type="text" name="phonecode" id="phonecode"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Post Code"
+                                   t-att-value="partner.zip"/>
+                        </div>
+                    </div>
+                    <select name="country_id"
+                            class="paceflow-select">
+                        <t t-foreach="countries or []" t-as="country">
+                            <option t-att-value="country.id"
+                                    t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                <t t-esc="country.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="w-100 d-flex justify-content-center align-items-center">
+                    <button type="submit"
+                            class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </form>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+<!--                <t t-set="card_header">-->
+<!--                    <div class="row no-gutters">-->
+<!--                        <div class="col-12">-->
+<!--                            <h3 class="d-flex mb-1 mb-md-0 row">-->
+<!--                                <span t-field="partner.name" class="col-9 text-truncate"/></h3>-->
+<!--                                <a role="button" href="/my/account" class="btn btn-sm btn-link"><i class="fa fa-pencil"/> Edit</a>-->
+<!--                                <a href="/my/security"><i class="fa fa-pencil mx-1"/>Edit Password/Security Settings</a>-->
+<!--                                <div class="col-lg-6 pt16 pb16 o_colored_level">-->
+<!--                                    <div class="img-bg">-->
+<!--                                        <img style="width:100%; height: 100%;" t-if="partner.image_1024" class="img img-responsive img-fluid d-block mx-auto mr4" t-att-src="image_data_uri(partner.image_1024)"/>-->
+<!--                                        <img t-if="not partner.image_1024" class="img img-responsive img-fluid d-block mx-auto mr4" src="/web/static/src/img/placeholder.png"/>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </t>-->
+<!--                    <div class="row mb-4">-->
+<!--                        <div class="col-12 col-md-6" t-if="partner.phone">-->
+<!--                            <p class="pt8 mb-0">-->
+<!--                                    <i class="fa fa-phone" style="margin-left: 50px;"/>-->
+<!--                                    <span class=""><span t-field="partner.phone"/></span>-->
+<!--                                </p>-->
+<!--                        </div>-->
+<!--                        <div class="col-12 col-md-6" t-if="partner.email">-->
+<!--                            <p class="pt8 mb-0">-->
+<!--                                    <i class="fa fa-envelope-o" style="margin-left: 50px;"/>-->
+<!--                                    <span class="athlete-detail"><t t-esc="partner.email"/></span>-->
+<!--                                </p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </t>
+    </template>
+
+    <!--    portal upload form template -->
+    <template id="portal_upload_form" name="Upload Form">
+        <t t-call="portal.portal_layout">
+            <form id="upload_form" action="/my/form_submit" method="post" enctype="multipart/form-data"
+                  name="upload_form"
+                  class="o_mark_required" data-mark="*" data-model_name="mail.mail"
+                  onsubmit="return validateForm()">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div id="submit_form" class="s_website_form_rows row s_col_no_bgcolor">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                            <a href="/my/home/">
+                                <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                            </a>
+                            <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                                Upload
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center my-3">
+                            <div class="paceflow-upload-video-thumbnail w-100">
+                                <div class="paceflow-upload-video-thumbnail__image"
+                                     style="min-height: 300px; background-image: url('/paceflow/static/description/images/ui/background-video.png');">
+                                        <label for="upload_video">
+                                        <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                             width="24" height="24"
+                                             class="position-absolute"
+                                             style="top: 20px; right: 30px; cursor: pointer;"
+                                             title="Add Video"/>
+                                        </label>
+                                        <iframe class="paceflow-upload-video-thumbnail__image" id="preview_attachment" frameborder="0" src=""
+                                                />
+                                        <input id="upload_video" type="file"
+                                               onchange="preview()"
+                                               hidden="true"
+                                               name="attachment" class="file" multiple="true"
+                                               accept="video/mp4,video/ogg,video/x-m4v,video/*"
+                                               data-show-upload="true" data-show-caption="true"
+                                               lass="file" data-show-preview="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-6 my-3">
+                            <h2 class="paceflow-section-header--h3 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800">
+                                <t t-esc="child_id.name"/>
+                                <t t-if="child_id.last_name">
+                                    <t t-esc="child_id.last_name"/>
+                                </t>
+
+                            </h2>
+                            <input type="text" name="upload_child_id"
+                                   id="upload_child_id"
+                                   t-att-value='child_id.id'
+                                   hidden="true"/>
+                            <input type="text" name="reference"
+                                   id="reference"
+                                   class="paceflow-form-control"
+                                   placeholder="Reference*"/>
+                            <input type="text" name="date" id="date"
+                                   class="paceflow-form-control paceflow-datepicker"
+                                   autocomplete="off" onfocus="(this.type='date')"
+                                   placeholder="Date"
+                                   required="1"/>
+                            <select name="video_position"
+                                    class="paceflow-select"
+                                    id="video_position">
+                                <option value="rear_video">Rear Video</option>
+                                <option value="side_video">Side Video</option>
+                            </select>
+                            <button type="submit"
+                                    class="paceflow-btn paceflow-btn--primary mt-4">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function validateForm() {
+                        let att = document.forms['upload_form']['attachment'].value;
+                        if (att == "") {
+                            window.alert("Please choose a Video !!!");
+                            return false;
+                        }
+                    }
+                    function preview() {
+                        preview_attachment.src=URL.createObjectURL(event.target.files[0]);
+                    }
+                </script>
+            </div>
+        </form>
+        </t>
+    </template>
+
+    <!--    portal upload thanks page -->
+    <template id="portal_upload_thanks_page" name="Thanks">
+        <t t-call="website.layout">
+          <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                        <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                            <div class="container">
+                                <span class="d-block fa fa-4x fa-thumbs-up mx-auto rounded-circle bg-primary"/><br/>
+                                <h1 class="text-center">Thank You!</h1>
+                                <div class="pb16 pt16 s_hr" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                </div>
+                                <h5 class="text-center">
+                                    <span class="fa fa-check-circle"/>
+                                    <span>Your data has been sent <b>successfully</b></span>
+                                </h5>
+<!--                                <p class="text-center">We will get back to you shortly.</p>-->
+                            </div>
+                        </section>
+                    </div>
+<!--                    <div class="col-lg-4">-->
+<!--                        <t t-call="website.company_description"/>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+          </div>
+        </t>
+    </template>
+<!--    portal upload error page-->
+    <template id="portal_upload_error_page" name="Error!">
+        <t t-call="website.layout">
+          <div id="wrap">
+            <div class="oe_structure"/>
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-lg-7 col-xl-6 mr-lg-auto oe_structure">
+                        <section class="pt40 s_text_block pb40 o_colored_level o_cc o_cc1" data-snippet="s_text_block" data-name="Text">
+                            <div class="container">
+                                <span class="d-block fa fa-4x fa-exclamation-triangle mx-auto rounded-circle bg-danger"/><br/>
+                                <h1 class="text-center">ERROR!!</h1>
+                                <div class="pb16 pt16 s_hr" data-snippet="s_hr" data-name="Separator">
+                                    <hr class="mx-auto border-top w-50 border-dark text-center"/>
+                                </div>
+                                <h5 class="text-center">
+                                    <span class="fa fa-close"/>
+                                    <span>Some <b>ERROR</b> occurred</span>
+                                </h5>
+                                <p class="text-center">Please try after some time.</p>
+                            </div>
+                        </section>
+                    </div>
+<!--                    <div class="col-lg-4">-->
+<!--                        <t t-call="website.company_description"/>-->
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="oe_structure" id="oe_structure_website_form_contact_us_thanks_2"/>
+          </div>
+        </t>
+    </template>
+
+    <template id="paceflow_child" name="Child">
+        <t t-call="portal.portal_layout"><br/>
+
+<!-- NEWWW TEMPLATEEEE CHILD-->
+
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header paceflow-section-header--resp-down col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Players
+                        </h1>
+                        <a href="/my/create_child">
+                        <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected">
+                            Add New Player
+                            <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                 width="16" height="16"/>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <t t-foreach="child_contacts" t-as="child">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                        <a t-att-href="'child_details/%s' % child.id">
+                            <div class="paceflow-card-item paceflow-card-item--xx-large paceflow-card-item--right paceflow-shadow">
+                                <div class="paceflow-card-item__profile-image mr-5">
+                                    <img class="paceflow-card-item__profile-image ml-3"
+                                         width="100" height="100"
+                                         t-if="child.partner_id.image_1024"
+                                         t-att-src="image_data_uri(child.partner_id.image_1024)"/>
+                                    <img t-if="not child.partner_id.image_1024"
+                                         width="100" height="100"
+                                         class="paceflow-card-item__profile-image ml-3"
+                                         src="/paceflow/static/description/images/ui/profile-placeholder.png"/>
+                                </div>
+                                <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                    <t t-esc="child.name"/>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+<!--                OLDD TEMPLATE   -->
+
+<!--                <button type="submit" class="btn btn-primary float-left mb32 ">-->
+<!--                Create New Child-->
+<!--                <span class="fa fa-long-arrow-right" />-->
+<!--                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                </button>-->
+<!--            <br/>-->
+<!--            <t t-if="not child_contacts">-->
+<!--                <div class="alert alert-warning mt8" role="alert">-->
+<!--                    No Child Contacts!! Create one here...-->
+<!--                </div>-->
+<!--            </t>-->
+<!--            <t t-else="">-->
+<!--                <div class="container row mx-n2 mt8">-->
+<!--                    <t t-foreach="child_contacts" t-as="child">-->
+<!--                        <div class="col-12 col-sm-12 col-md-12 col-lg-6 pb16">-->
+<!--                            <a class="child-card list-group-item-action d-block mx-auto" t-att-href="'child_details/%s' % child.id">-->
+<!--                                <div class="media">-->
+<!--                                    <div class="img-bg">-->
+<!--                                        <img style="width:100%; height: 100%;" t-if="child.partner_id.image_1024" class="custom-profile-image rounded-circle img img-responsive img-fluid d-block mx-auto mr4" t-att-src="image_data_uri(child.partner_id.image_1024)"/>-->
+<!--                                        <img t-if="not child.partner_id.image_1024" class="custom-profile-image rounded-circle img img-responsive img-fluid d-block mx-auto mr4" src="/web/static/src/img/placeholder.png"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="media-body">-->
+<!--                                        <h4 id="child_name" style="border-bottom: 1px solid #e7e7e7;" class="pb8"><span class="child-name"><t t-esc="child.name"/></span></h4>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div><br/>-->
+<!--                    </t>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+    <template id="create_child_template" name="Create Child">
+        <t t-call="portal.portal_layout">
+
+            <div class="container py-5">
+
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/child_cont">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Add Player
+                        </h1>
+                    </div>
+                </div>
+
+                <form id="upload_form" action="/my/create" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+
+<!--                        New PROFILE SECTION-->
+
+                        <div class="paceflow-profile-section">
+
+                            <div class="paceflow-profile-section__photo">
+
+                                <label for="name">
+                                    <img id="profile_picture"
+                                         src="/paceflow/static/description/images/ui/camera.png"
+                                         class="paceflow-profile-section__camera"
+                                         style="cursor: pointer;"/>
+                                </label>
+                                <input id="name" style="margin-left: 50px;"
+                                       onchange="image_preview()"
+                                       type="file" name="photo" class="file"
+                                       multiple="true" data-show-upload="true"
+                                       data-show-caption="true" lass="file"
+                                       data-show-preview="true"
+                                       hidden="true"
+                                        />
+                            </div>
+
+                        </div>
+                    </div>
+                    <script>
+                    function image_preview() {
+                        profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                        profile_picture.className="paceflow-profile-section__photo";
+                    }
+                </script>
+
+<!--                <div class="row">-->
+                    <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                        <input type="text" name="name" id="firstName"
+                               class="paceflow-form-control paceflow-form-control--max-width"
+                               placeholder="First Name*"/>
+                        <input type="text" name="lastname" id="lastName"
+                               class="paceflow-form-control paceflow-form-control--max-width"
+                               placeholder="Last Name*"/>
+                        <input type="email" name="email" id="email"
+                               class="paceflow-form-control paceflow-form-control--max-width"
+                               placeholder="Email*"/>
+                        <div class="form-row">
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                <input type="text" name="code" id="code"
+                                       class="paceflow-form-control paceflow-form-control--max-width"
+                                       placeholder="+44"/>
+                            </div>
+                            <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                <input type="text" name="phone" id="phone"
+                                       class="paceflow-form-control paceflow-form-control--max-width"
+                                       placeholder="Phone (incl. country code)"/>
+                            </div>
+                        </div>
+                        <div class="input-group position-relative">
+                            <input type="text" name="guardian" id="guardian"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Guardian"/>
+                            <a href="#">
+                                <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                     width="18" height="18"
+                                     class="position-absolute"
+                                     style="top: 16px; right: 15px"/>
+                            </a>
+                        </div>
+                        <input type="text" name="dob" id="dob"
+                               class="paceflow-form-control paceflow-form-control--max-width paceflow-datepicker"
+                               onfocus="(this.type='date')"
+                               placeholder="DOB*"/>
+                        <input type="text" name="group" id="group"
+                               class="paceflow-form-control paceflow-form-control--max-width"
+                               placeholder="Group"/>
+                        <select name="highestStd" id="highestStd"
+                                class="paceflow-select"
+                                placeholder="Highest Standard Played">
+                            <option hidden="true" selected="true" value="">
+                                Highest Standard Played</option>
+                            <option value="professional">Professional</option>
+                            <option value="country_academy">Country Academy</option>
+                            <option value="country_age_group">Country Age Group</option>
+                            <option value="club_cricket">Club Cricket</option>
+                            <option value="non_competitive">Non-Competitive</option>
+                        </select>
+
+                        <div class="w-100 d-flex justify-content-center align-items-center">
+                            <button type="submit"
+                                    class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+<!-- OLD TEMPLATE -->
+<!--            <form id="upload_form" action="/my/create" method="post" enctype="multipart/form-data" class="o_mark_required" data-mark="*" data-model_name="mail.mail">-->
+<!--                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+<!--                <div class="s_website_form_rows row s_col_no_bgcolor">-->
+<!--                    <div class="form-group col-12 s_website_form_field s_website_form_custom s_website_form_required" data-type="char" data-name="Field">-->
+<!--                        <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="name">-->
+<!--                                <span class="s_website_form_label_content">Name: </span>-->
+<!--                                <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                            <div class="col-sm">-->
+<!--                                <input id="name" type="text"  class="form-control s_website_form_input" name="name" required=""-->
+<!--                                onkeypress="return (event.charCode &gt; 64 &amp; event.charCode &lt; 91) || (event.charCode &gt; 96 &amp; event.charCode &lt; 123) || (event.charCode==32) || (event.charCode==189)"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">-->
+<!--                        <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="email">-->
+<!--                                <span class="s_website_form_label_content">Email</span>-->
+<!--                                <span class="s_website_form_mark"> *</span>-->
+<!--                            </label>-->
+<!--                            <div class="col-sm">-->
+<!--                                <input id="email" type="email" class="form-control s_website_form_input" name="email" required=""/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--&lt;!&ndash;                    <div class="row">&ndash;&gt;-->
+<!--                        <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">-->
+<!--                            <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                                <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="dob">-->
+<!--                                    <span class="s_website_form_label_content">DOB:</span>-->
+<!--                                    <span class="s_website_form_mark"> *</span>-->
+<!--                                </label>-->
+<!--                                <div class="col-sm">-->
+<!--                                    <input id="dob" type="date" t-att-max="'%s' %date" class="form-control s_website_form_input" name="dob" required=""/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    <div class="form-group col-12 s_website_form_field s_website_form_custom" data-type="char" data-name="Field">-->
+<!--                        <div class="row s_col_no_resize s_col_no_bgcolor">-->
+<!--                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 300px" for="phone">-->
+<!--                                <span class="s_website_form_label_content">Phone: </span>-->
+<!--                            </label>-->
+<!--                            <div class="col-sm">-->
+<!--                                <input id="phone" type="text" class="form-control s_website_form_input" name="phone" required=""/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                   <div class="clearfix col-12">-->
+<!--                       <button type="submit" class="btn btn-primary btn-md o_website_form_send">-->
+<!--                           Create-->
+<!--                       </button>-->
+<!--                   </div>-->
+<!--                </div>-->
+<!--            </form>-->
+        </t>
+    </template>
+
+    <template id="portal_client_dashboard" name="Client Dashboard">
+        <t t-call="portal.portal_layout"><br/><br/>
+            <t t-if="not assessments">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no done assessments  for this child
+                </div>
+            </t>
+            <t t-else="">
+                <div class="container">
+                    <div id="filter" class="row d-flex align-items-center py-4 border-bottom">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <div class="db-greeting">Good morning</div>
+                            <div class="db-username"><t t-esc="child_partner.name"/></div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <label class="db-top-label" for="dateFrom">Date From</label>
+                            <input type="date" id="date_from"  class="db-form-control"/>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <label class="db-top-label" for="dateTo">Date To</label>
+                              <button id="clear_dates" type="reset" class="db-btn-clear mb-1"><i class="fa fa-times mr-1"></i>Clear</button>
+                            </div>
+                            <input type="date" id="date_to" class="db-form-control"/>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <label class="db-top-label" for="recentAssessment">10 Most Recent Assessments</label>
+                            <select id="filter_selection" class="db-form-control">
+                                <t t-foreach="assessments or []" t-as="assessment">
+                                    <option class="state" t-att-value="assessment.id">
+                                        <t t-esc="assessment.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                        <div style="display:none;">
+                            <input name="child" id="child_id" t-att-value="child_partner.id"/>
+                        </div>
+                    </div>
+                    <!-- Video Secion -->
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="db-subsection">
+                                <div class="db-subsection__head">Videos</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="db-video-card" id="attachment1">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="db-video-card" id="attachment2">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Overview Section -->
+                    <div class="row border-bottom">
+                        <div class="col-sm-12">
+                            <div class="db-subsection">
+                                <div class="db-subsection__head">Overview</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row position-relative">
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <img src="/paceflow/static/description/images/ball.png" width="100"
+                                         height="100" alt="Overview"/>
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">Ball
+                                        Speed
+                                    </div>
+                                    <div id="velocity" class="db-stats-card__item-value">
+                                    </div>
+                                    <div class="db-stats-card__item-unit">MPH
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card db-card-toggler" data-expand-id="summary">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <canvas id="summary_summary" width="150px" height="150px"></canvas>
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">
+                                        Overall Score
+                                    </div>
+                                    <div id="summary_summary_score" class="db-stats-card__item-value">
+                                    </div>
+                                    <div class="db-stats-card__item-unit">%
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Summary Card -->
+                            <div class="db-card-expand hide" id="summary">
+                                <div id="summary-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h2>Summary</h2>
+                                                <a href="#"
+                                                   class="btn btn-info db-card-expand__shuffle"
+                                                   data-slide-id="summary-switch">
+                                                    <i class="fa fa-random"></i>
+                                                </a>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide summary-switch show">
+                                        <div id="img_summary1" class="col-sm-12 col-md-12 col-lg-6">
+                                            <img t-if="img_summary1" t-att-src="image_data_uri(img_summary1)"
+                                                 class="db-card-expand__image"
+                                                 alt="Summary"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6">
+                                            <div class="db-card-expand__container mb-4">
+                                                <div class="db-card-expand__section-head">
+                                                    Comment
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="summary_notes_notifier1">
+                                                            </div>
+                                                            <div id="div_summary_notes1" class="row">
+                                                                <div class="db-section-header">Legality Comments</div>
+                                                                <div id="l_summary_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Momentum Comments</div>
+                                                                <div id="m_summary_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Stability Comments</div>
+                                                                <div id="s_summary_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Paceflow Comments</div>
+                                                                <div id="p_summary_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="db-card-expand__container">
+                                                <div class="db-card-expand__section-head">
+                                                    <div>Drills</div>
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="summary_drills_notifier1">
+                                                            </div>
+                                                            <div id="div_summary_drills1" class="row">
+                                                                <div class="db-section-header">Legality Drills</div>
+                                                                <div id="l_summary_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Momentum Drills</div>
+                                                                <div id="m_summary_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Stability Drills</div>
+                                                                <div id="s_summary_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                                <div class="db-section-header">Paceflow Drills</div>
+                                                                <div id="p_summary_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide summary-switch hide">
+                                    <div id="img_summary2" class="col-sm-12 col-md-12 col-lg-6">
+                                        <img t-if="img_summary2" t-att-src="image_data_uri(img_summary2)"
+                                             class="db-card-expand__image"
+                                             alt="Summary"/>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+                                        <div class="db-card-expand__container mb-4">
+                                            <div class="db-card-expand__section-head">
+                                                Comment
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="summary_notes_notifier2">
+                                                        </div>
+                                                        <div id="div_summary_notes2" class="row">
+                                                            <div class="db-section-header">Legality Comments</div>
+                                                            <div id="l_summary_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Momentum Comments</div>
+                                                            <div id="m_summary_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Stability Comments</div>
+                                                            <div id="s_summary_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Paceflow Comments</div>
+                                                            <div id="p_summary_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-card-expand__container">
+                                            <div class="db-card-expand__section-head">
+                                                <div>Drills</div>
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="summary_drills_notifier2">
+                                                        </div>
+                                                        <div id="div_summary_drills2" class="row">
+                                                            <div class="db-section-header">Legality Drills</div>
+                                                            <div id="l_summary_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Momentum Drills</div>
+                                                            <div id="m_summary_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Stability Drills</div>
+                                                            <div id="s_summary_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                            <div class="db-section-header">Paceflow Drills</div>
+                                                            <div id="p_summary_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 mb-4"/>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- End of Summary Card -->
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card db-card-toggler" data-expand-id="legality">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <img src="/paceflow/static/description/images/file.png" width="100"
+                                         height="100" alt="Overview"/>
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">
+                                        Legality
+                                    </div>
+                                    <div class="db-stats-card__item-value" style="padding-top: 10px;">
+                                        <div id="div_legality_container" class="legality-container">
+                                            <div id="legality_red" color="red"></div>
+                                            <div id="legality_yellow" color="yellow"></div>
+                                            <div id="legality_green" color="green"></div>
+                                        </div>
+                                    </div>
+<!--                                    <div id="summary_legality_score" class="db-stats-card__item-value">-->
+<!--                                    </div>-->
+<!--                                    <div class="db-stats-card__item-unit">%-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                            <!-- Legality Card -->
+                            <div class="db-card-expand hide" id="legality">
+                                <div id="legality-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2>Legality</h2>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div id="img_legality" class="col-sm-12 col-md-12 col-lg-6">
+                                        <img t-if="img_legality" t-att-src="image_data_uri(img_legality)"
+                                             class="db-card-expand__image"
+                                             alt="Legatily"/>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+<!--                                        <div class="db-card-expand__container mb-4">-->
+<!--                                            <div class="db-card-expand__section-head">-->
+<!--                                                Legailty-->
+<!--                                                <hr/>-->
+<!--                                            </div>-->
+<!--&lt;!&ndash;                                            <div id="legality_selection" class="db-card-expand__content">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                <h5>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                    <span class="badge badge-success">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                        Green&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                    </span>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                                </h5>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                                        </div>-->
+
+                                        <div class="db-card-expand__container mb-4">
+                                            <div class="db-card-expand__section-head">
+                                                Comment
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="legality_notes_notifier">
+                                                            <t t-if="not legality_notes">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no legality comments for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_legality_notes" class="row">
+                                                            <div id="legality_notes_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="legality_notes" t-foreach="legality_notes" t-as="note">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <span t-field="note.name"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span t-field="note.description"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-card-expand__container">
+                                            <div class="db-card-expand__section-head">
+                                                Drills
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="legality_drills_notifier">
+                                                            <t t-if="not legality_drills">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no legality drills for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_legality_drills" class="row">
+                                                            <div id="legality_drills_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="legality_drills" t-foreach="legality_drills" t-as="slide">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <t t-call="website_slides.slide_icon">
+                                                                                <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                            </t>
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <a class="o_wslides_js_slides_list_slide_link">
+                                                                                    <span t-field="slide.name"/>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span class="badge badge-info">
+                                                                                <span t-field="slide.slide_type"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- End of Legality Card -->
+                        </div>
+                    </div>
+                    <div class="row position-relative">
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card db-card-toggler" data-expand-id="momentum">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <canvas width="150px" height="150px" id="summary_momentum"></canvas>
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">
+                                        Momentum
+                                    </div>
+                                    <div id="summary_momentum_score" class="db-stats-card__item-value">
+                                    </div>
+                                    <div class="db-stats-card__item-unit">%
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Momentum Card -->
+                            <div class="db-card-expand hide" id="momentum">
+                                <div id="momentum-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2>Momentum</h2>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    <div id="img_momentum" class="col-sm-12 col-md-12 col-lg-6">
+                                        <img t-if="img_momentum" t-att-src="image_data_uri(img_momentum)"
+                                             class="db-card-expand__image"
+                                             alt="Momentum"/>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+<!--                                        <div class="db-card-expand__container mb-4">-->
+<!--                                            <div class="db-card-expand__section-head">-->
+<!--                                                Momentum-->
+<!--                                                <hr/>-->
+<!--                                            </div>-->
+<!--&lt;!&ndash;                                            <div id="slide_summary_momentum_score" class="db-card-expand__content">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                                        </div>-->
+
+                                        <div class="db-card-expand__container mb-4">
+                                            <div class="db-card-expand__section-head">
+                                                Comment
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="momentum_notes_notifier">
+                                                            <t t-if="not momentum_notes">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no momentum comments for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_momentum_notes" class="row">
+                                                            <div id="momentum_notes_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="momentum_notes" t-foreach="momentum_notes" t-as="note">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <span t-field="note.name"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span t-field="note.description"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-card-expand__container">
+                                            <div class="db-card-expand__section-head">
+                                                Drills
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="momentum_drills_notifier">
+                                                            <t t-if="not paceflow_drills">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no momentum drills for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_momentum_drills" class="row">
+                                                            <div id="momentum_drills_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="momentum_drills" t-foreach="momentum_drills" t-as="slide">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <t t-call="website_slides.slide_icon">
+                                                                                <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                            </t>
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <a class="o_wslides_js_slides_list_slide_link">
+                                                                                    <span t-field="slide.name"/>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span class="badge badge-info">
+                                                                                <span t-field="slide.slide_type"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- End of Momentum Card -->
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card db-card-toggler" data-expand-id="stability">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <canvas height="150px" width="150px" id="summary_stability"></canvas>
+<!--                                    <img src="/assets/card.png" width="150"-->
+<!--                                         height="150" alt="Overview"/>-->
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">
+                                        Stability
+                                    </div>
+                                    <div id="summary_stability_score"
+                                         class="db-stats-card__item-value">
+                                    </div>
+                                    <div class="db-stats-card__item-unit">%
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Stability Card -->
+                            <div class="db-card-expand hide" id="stability">
+                                <div id="stability-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h2>Stability</h2>
+                                                <a href="#"
+                                                   class="btn btn-info db-card-expand__shuffle"
+                                                   data-slide-id="stability-switch">
+                                                    <i class="fa fa-random"></i>
+                                                </a>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide stability-switch show">
+                                        <div id="img_stability1" class="col-sm-12 col-md-12 col-lg-6">
+                                            <img t-if="img_stability1" t-att-src="image_data_uri(img_stability1)"
+                                                 class="db-card-expand__image"
+                                                 alt="Stability"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6">
+    <!--                                        <div class="db-card-expand__container mb-4">-->
+    <!--                                            <div class="db-card-expand__section-head">-->
+    <!--                                                Stability-->
+    <!--                                                <hr/>-->
+    <!--                                            </div>-->
+    <!--&lt;!&ndash;                                            <div id="slide_summary_stability_score1" class="db-card-expand__content">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+    <!--                                        </div>-->
+
+                                            <div class="db-card-expand__container mb-4">
+                                                <div class="db-card-expand__section-head">
+                                                    Comment
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="stability_notes_notifier1">
+                                                                <t t-if="not rear_stability_notes">
+                                                                    <div class="alert alert-warning mt8" role="alert">
+                                                                        There are no rear stability comments for this assessment
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                            <div id="div_stability_notes1" class="row">
+                                                                <div id="stability_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                    <t t-if="rear_stability_notes" t-foreach="rear_stability_notes" t-as="note">
+                                                                        <div class="db-tutorial-item">
+                                                                            <div class="db-tutorial-item__info">
+                                                                                <div class="db-tutorial-item__name">
+                                                                                    <span t-field="note.name"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="db-tutorial-item__kind">
+                                                                                <span t-field="note.description"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="db-card-expand__container">
+                                                <div class="db-card-expand__section-head">
+                                                    <div>Drills</div>
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="stability_drills_notifier1">
+                                                                <t t-if="not rear_stability_drills">
+                                                                    <div class="alert alert-warning mt8" role="alert">
+                                                                        There are no rear stability drills for this assessment
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                            <div id="div_stability_drills1" class="row">
+                                                                <div id="stability_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                    <t t-if="rear_stability_drills" t-foreach="rear_stability_drills" t-as="slide">
+                                                                        <div class="db-tutorial-item">
+                                                                            <div class="db-tutorial-item__info">
+                                                                                <t t-call="website_slides.slide_icon">
+                                                                                    <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                                </t>
+                                                                                <div class="db-tutorial-item__name">
+                                                                                    <a class="o_wslides_js_slides_list_slide_link">
+                                                                                        <span t-field="slide.name"/>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="db-tutorial-item__kind">
+                                                                                <span class="badge badge-info">
+                                                                                    <span t-field="slide.slide_type"/>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide stability-switch hide">
+                                    <div id="img_stability2" class="col-sm-12 col-md-12 col-lg-6">
+                                        <img t-if="img_stability2" t-att-src="image_data_uri(img_stability2)"
+                                             class="db-card-expand__image"
+                                             alt="Stability"/>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+<!--                                        <div class="db-card-expand__container mb-4">-->
+<!--                                            <div class="db-card-expand__section-head">-->
+<!--                                                Stability-->
+<!--                                                <hr/>-->
+<!--                                            </div>-->
+<!--&lt;!&ndash;                                            <div id="slide_summary_stability_score2" class="db-card-expand__content">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                                        </div>-->
+
+                                        <div class="db-card-expand__container mb-4">
+                                            <div class="db-card-expand__section-head">
+                                                Comment
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="stability_notes_notifier2">
+                                                            <t t-if="not side_stability_notes">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no stability comments for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_stability_notes2" class="row">
+                                                            <div id="stability_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="side_stability_notes" t-foreach="side_stability_notes" t-as="note">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <span t-field="note.name"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span t-field="note.description"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-card-expand__container">
+                                            <div class="db-card-expand__section-head">
+                                                <div>Drills</div>
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="stability_drills_notifier2">
+                                                            <t t-if="not side_stability_drills">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no side stability drills for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_stability_drills2" class="row">
+                                                            <div id="stability_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="side_stability_drills" t-foreach="side_stability_drills" t-as="slide">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <t t-call="website_slides.slide_icon">
+                                                                                <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                            </t>
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <a class="o_wslides_js_slides_list_slide_link">
+                                                                                    <span t-field="slide.name"/>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span class="badge badge-info">
+                                                                                <span t-field="slide.slide_type"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- End of Stability Card -->
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 db-stats-card-container">
+                            <div class="db-stats-card db-card-toggler" data-expand-id="paceflow">
+                                <div class="db-stats-card__icon">
+                                    <!-- PUT CANVAS HERE -->
+                                    <canvas height="150px" width="150px"
+                                            id="summary_paceflow"></canvas>
+                                    <!-- ENd CANVAS HERE -->
+                                </div>
+                                <div class="db-stats-card__details">
+                                    <div class="db-stats-card__item-title">
+                                        Pace-Flow
+                                    </div>
+                                    <div id="summary_paceflow_score"
+                                         class="db-stats-card__item-value">
+                                    </div>
+                                    <div class="db-stats-card__item-unit">%
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Paceflow Card -->
+                            <div class="db-card-expand hide" id="paceflow">
+                                <div id="paceflow-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h2>Pace-Flow</h2>
+                                                <a href="#"
+                                                   class="btn btn-info db-card-expand__shuffle"
+                                                   data-slide-id="paceflow-switch">
+                                                    <i class="fa fa-random"></i>
+                                                </a>
+                                            </div>
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide paceflow-switch show">
+                                        <div id="img_paceflow1" class="col-sm-12 col-md-12 col-lg-6">
+                                            <img t-if="img_paceflow1" t-att-src="image_data_uri(img_paceflow1)"
+                                                 class="db-card-expand__image"
+                                                 alt="Paceflow"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6">
+    <!--                                        <div class="db-card-expand__container mb-4">-->
+    <!--                                            <div class="db-card-expand__section-head">-->
+    <!--                                                Paceflow-->
+    <!--                                                <hr/>-->
+    <!--                                            </div>-->
+    <!--&lt;!&ndash;                                            <div id="slide_summary_paceflow_score1" class="db-card-expand__content">&ndash;&gt;-->
+
+    <!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+    <!--                                        </div>-->
+
+                                            <div class="db-card-expand__container mb-4">
+                                                <div class="db-card-expand__section-head">
+                                                    Comment
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="paceflow_notes_notifier1">
+                                                                <t t-if="not paceflow_notes">
+                                                                    <div class="alert alert-warning mt8" role="alert">
+                                                                        There are no paceflow comments for this assessment
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                            <div id="div_paceflow_notes1" class="row">
+                                                                <div id="paceflow_notes_tbody1" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                    <t t-if="paceflow_notes" t-foreach="paceflow_notes" t-as="note">
+                                                                        <div class="db-tutorial-item">
+                                                                            <div class="db-tutorial-item__info">
+                                                                                <div class="db-tutorial-item__name">
+                                                                                    <span t-field="note.name"/>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="db-tutorial-item__kind">
+                                                                                <span t-field="note.description"/>
+                                                                            </div>
+                                                                        </div>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="db-card-expand__container">
+                                                <div class="db-card-expand__section-head">
+                                                    <div>Drills</div>
+                                                    <hr/>
+                                                </div>
+                                                <div class="db-card-expand__content">
+                                                    <div class="row">
+                                                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                            <!-- First Item: Loop this -->
+                                                            <div id="paceflow_drills_notifier1">
+                                                                <t t-if="not paceflow_drills">
+                                                                    <div class="alert alert-warning mt8" role="alert">
+                                                                        There are no paceflow drills for this assessment
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                            <div id="div_paceflow_drills1" class="row">
+                                                                <div id="paceflow_drills_tbody1" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                    <t t-if="paceflow_drills" t-foreach="paceflow_drills" t-as="slide">
+                                                                        <div class="db-tutorial-item">
+                                                                            <div class="db-tutorial-item__info">
+                                                                                <t t-call="website_slides.slide_icon">
+                                                                                    <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                                </t>
+                                                                                <div class="db-tutorial-item__name">
+                                                                                    <a class="o_wslides_js_slides_list_slide_link">
+                                                                                        <span t-field="slide.name"/>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="db-tutorial-item__kind">
+                                                                                <span class="badge badge-info">
+                                                                                    <span t-field="slide.slide_type"/>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </t>
+                                                                </div>
+                                                            </div>
+                                                            <!-- End of First Item -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row db-expand-slide paceflow-switch hide">
+                                    <div id="img_paceflow2" class="col-sm-12 col-md-12 col-lg-6">
+                                        <img t-if="img_paceflow2" t-att-src="image_data_uri(img_paceflow2)"
+                                             class="db-card-expand__image"
+                                             alt="Paceflow"/>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-6">
+<!--                                        <div class="db-card-expand__container mb-4">-->
+<!--                                            <div class="db-card-expand__section-head">-->
+<!--                                                Paceflow-->
+<!--                                                <hr/>-->
+<!--                                            </div>-->
+<!--&lt;!&ndash;                                            <div id="slide_summary_paceflow_score2" class="db-card-expand__content">&ndash;&gt;-->
+<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
+<!--                                        </div>-->
+
+                                        <div class="db-card-expand__container mb-4">
+                                            <div class="db-card-expand__section-head">
+                                                Comment
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="paceflow_notes_notifier2">
+                                                            <t t-if="not paceflow_notes">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no paceflow comments for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_paceflow_notes2" class="row">
+                                                            <div id="paceflow_notes_tbody2" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="paceflow_notes" t-foreach="paceflow_notes" t-as="note">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <span t-field="note.name"/>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span t-field="note.description"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="db-card-expand__container">
+                                            <div class="db-card-expand__section-head">
+                                                <div>Drills</div>
+                                                <hr/>
+                                            </div>
+                                            <div class="db-card-expand__content">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                                                        <!-- First Item: Loop this -->
+                                                        <div id="paceflow_drills_notifier2">
+                                                            <t t-if="not paceflow_drills">
+                                                                <div class="alert alert-warning mt8" role="alert">
+                                                                    There are no paceflow drills for this assessment
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                        <div id="div_paceflow_drills2" class="row">
+                                                            <div id="paceflow_drills_tbody2" class="col-sm-12 col-md-12 col-lg-12 py-4">
+                                                                <t t-if="paceflow_drills" t-foreach="paceflow_drills" t-as="slide">
+                                                                    <div class="db-tutorial-item">
+                                                                        <div class="db-tutorial-item__info">
+                                                                            <t t-call="website_slides.slide_icon">
+                                                                                <t t-set="icon_class" t-value="'py-2 mx-2'"/>
+                                                                            </t>
+                                                                            <div class="db-tutorial-item__name">
+                                                                                <a class="o_wslides_js_slides_list_slide_link">
+                                                                                    <span t-field="slide.name"/>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="db-tutorial-item__kind">
+                                                                            <span class="badge badge-info">
+                                                                                <span t-field="slide.slide_type"/>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <!-- End of First Item -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <!-- End of Paceflow Card -->
+
+                        </div>
+                    </div>
+
+                    <!-- End of Overview Section -->
+                    <!-- Drill Section -->
+<!--                    <div class="row border-bottom">-->
+<!--                        <div class="col-sm-12">-->
+<!--                            <div class="db-subsection">-->
+<!--                                <div class="db-subsection__head">Drills</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div id="drills_notifier">-->
+<!--                        <t t-if="not drills">-->
+<!--                            <div class="alert alert-warning mt8" role="alert">-->
+<!--                                There are no drills for this assessment-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </div>-->
+<!--                    <div id="div_drills" class="row">-->
+<!--                            <div id="drills_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">-->
+<!--                                <t t-if="drills" t-foreach="drills" t-as="slide">-->
+<!--                                    <div class="db-tutorial-item">-->
+<!--                                        <div class="db-tutorial-item__info">-->
+<!--                                            <t t-call="website_slides.slide_icon">-->
+<!--                                                <t t-set="icon_class" t-value="'py-2 mx-2'"/>-->
+<!--                                            </t>-->
+<!--                                            <div class="db-tutorial-item__name">-->
+<!--                                                <a class="o_wslides_js_slides_list_slide_link" t-attf-href="/slides/slide/#{slug(slide)}">-->
+<!--                                                    <span t-field="slide.name"/>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="db-tutorial-item__kind">-->
+<!--                                            <span class="badge badge-info">-->
+<!--                                                <span t-field="slide.slide_type"/>-->
+<!--                                            </span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </t>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    <!-- End of Drill Section -->
+                    <!-- Comment Section -->
+<!--                    <div class="row border-bottom">-->
+<!--                        <div class="col-sm-12">-->
+<!--                            <div class="db-subsection">-->
+<!--                                <div class="db-subsection__head">Comments</div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div id="notes_notifier">-->
+<!--                        <t t-if="not notes">-->
+<!--                            <div class="alert alert-warning mt8" role="alert">-->
+<!--                                There are no comments for this assessment-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </div>-->
+<!--                    <div id="div_notes" class="row">-->
+<!--                            <div id="notes_tbody" class="col-sm-12 col-md-12 col-lg-12 py-4">-->
+<!--                                <t t-if="notes"  t-foreach="notes" t-as="note">-->
+<!--                                    <div class="db-tutorial-item">-->
+<!--                                        <div class="db-tutorial-item__info">-->
+<!--                                            <div class="db-tutorial-item__name">-->
+<!--                                                <span t-field="note.name"/>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <div class="db-tutorial-item__kind">-->
+<!--                                            <span t-field="note.description"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </t>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                    <!-- End of Comment Section -->
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

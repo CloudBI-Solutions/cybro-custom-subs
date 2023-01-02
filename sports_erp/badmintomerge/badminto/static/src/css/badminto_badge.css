@@ -1,0 +1,333 @@
+/**
+ * BADGE COLORS
+**/
+/* ===================================
+*             BAR GAUGE
+* ===================================*/
+.set-bar-gauge {
+  position: relative;
+  width: 85px;
+  height: auto;
+  background-color: #4f5e74; }
+
+.set-bar-gauge__tile {
+  position: relative;
+  height: 76.3px;
+  padding: 8px;
+  background-color: #5a6b83;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1px;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out; }
+  .set-bar-gauge__tile:last-child {
+    margin-bottom: 0px; }
+  .set-bar-gauge__tile:hover {
+    background-color: #5f718d;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out; }
+
+.set-bar-gauge__title {
+  display: block;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; }
+
+.set-bar-gauge__item-title,
+.set-bar-gauge__item-score {
+  font-weight: bold;
+  text-transform: uppercase; }
+
+.set-bar-gauge__item-title {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8) !important; }
+
+.set-bar-gauge__item-score {
+  font-size: 20px;
+  color: white; }
+
+.set-bar-gauge__gauge-container {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 25px;
+  background-color: #a3a9b5; }
+
+.set-bar-gauge__tile-indicator {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  left: 0;
+  top: 0; }
+
+.set-bar-gauge__gauge {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  border-radius: 25px; }
+
+.set-bar-gauge__gauge--green,
+.set-bar-gauge__tile-indicator--green,
+.set-bar-gauge__details-gauge--green {
+  background-color: #50d15d; }
+
+.set-bar-gauge__gauge--yellow,
+.set-bar-gauge__tile-indicator--yellow,
+.set-bar-gauge__details-gauge--yellow {
+  background-color: #ffc700; }
+
+.set-bar-gauge__gauge--orange,
+.set-bar-gauge__tile-indicator--orange,
+.set-bar-gauge__details-gauge--orange {
+  background-color: #f08c37; }
+
+.set-bar-gauge__gauge--dark-orange,
+.set-bar-gauge__tile-indicator--dark-orange,
+.set-bar-gauge__details-gauge--dark-orange {
+  background-color: #e05a33; }
+
+.set-bar-gauge__gauge--red,
+.set-bar-gauge__tile-indicator--red,
+.set-bar-gauge__details-gauge--red {
+  background-color: #c12f3b; }
+
+.set-dashboard__guage-details-container {
+  position: relative;
+  width: 85px;
+  z-index: 99; }
+
+.set-bar-gauge__details {
+  position: fixed;
+  width: 450px;
+  height: auto;
+  background-color: #5f718d;
+  padding: 25px;
+  color: white;
+  z-index: 2; }
+  @media (max-width: 576px) {
+    .set-bar-gauge__details {
+      top: 0px !important;
+      left: 0px !important;
+      height: 100%;
+      width: 100%;
+      z-index: 999; } }
+
+.set-bar-gauge__resp-close {
+  display: none; }
+  @media (max-width: 576px) {
+    .set-bar-gauge__resp-close {
+      display: block;
+      width: 100%;
+      height: 40px;
+      padding: 25px; } }
+
+.set-bar-gauge__close-icon {
+  cursor: pointer; }
+  @media (max-width: 576px) {
+    .set-bar-gauge__close-icon {
+      position: absolute;
+      top: 5px;
+      right: 5px; } }
+
+.set-bar-gauge__details-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.set-bar-gauge__details-body {
+  display: block;
+  height: 25px; }
+
+.set-bar-gauge__detail-title {
+  font-size: 14px; }
+
+.set-bar-gauge__details-item {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #4f5e74; }
+  .set-bar-gauge__details-item:last-child {
+    margin-bottom: 0px;
+    border-bottom: none; }
+
+.set-bar-gauge__details-gauge-container {
+  display: block;
+  background: #a3a9b5;
+  position: relative;
+  border-radius: 25px;
+  width: 100%;
+  height: 6px;
+  margin-top: 10px; }
+
+.set-bar-gauge__details-gauge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 25px; }
+
+/* ===================================
+*          BADMINTOO GAUGE
+* ===================================*/
+.set-cust-gauge-inner-base,
+.set-cust-gauge-outer-base {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+.set-cust-gauge-inner-base,
+.set-cust-gauge-outer-base {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #b7afab;
+  border: 4px solid white;
+  border-bottom: none;
+  overflow: hidden;
+  position: relative; }
+
+.set-cust-gauge-inner-base,
+.set-cust-gauge-inner-base__gauge {
+  width: 240px;
+  height: 120px;
+  z-index: 2; }
+
+.set-cust-gauge-outer-base,
+.set-cust-gauge-outer-base__gauge {
+  width: 350px;
+  height: 175px; }
+
+.set-cust-gauge-outer-base {
+  border-radius: 350px 350px 0 0; }
+
+.set-cust-gauge-inner-base {
+  border-radius: 240px 240px 0 0; }
+
+.set-cust-gauge-outer-base__gauge {
+  top: 175px; }
+
+.set-cust-gauge-inner-base__gauge {
+  top: 120px; }
+
+.set-cust-gauge-inner-base__gauge,
+.set-cust-gauge-outer-base__gauge {
+  position: absolute;
+  background-color: #ffda66;
+  -webkit-transform-origin: center top;
+  -ms-transform-origin: center top;
+  transform-origin: center top;
+  -webkit-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  left: 0px; }
+
+.set-cust-gauge-percentage-container {
+  width: 140px;
+  height: 70px;
+  border-radius: 140px 140px 0 0;
+  background-color: white;
+  z-index: 2; }
+
+.set-cust-gauge-percentage {
+  position: absolute;
+  top: 65%;
+  left: 34%;
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #383838; }
+
+.set-cust-gauge-gauge-meter-red,
+.set-cust-gauge-gauge-meter-yellow {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 150px;
+  height: 75px; }
+
+.set-cust-gauge-gauge-meter {
+  position: absolute;
+  top: 43px;
+  width: 150px;
+  height: 75px;
+  border-radius: 150px 150px 0 0;
+  background-color: #92d050;
+  border: 2px solid #fff;
+  overflow: hidden;
+  z-index: 2; }
+
+.set-cust-gauge-gauge-meter-red,
+.set-cust-gauge-gauge-meter-yellow {
+  -webkit-transform-origin: center top;
+  -ms-transform-origin: center top;
+  transform-origin: center top; }
+
+.set-cust-gauge-gauge-meter-red {
+  background-color: #ff0707;
+  -webkit-transform: rotate(0.2turn);
+  -ms-transform: rotate(0.2turn);
+  transform: rotate(0.2turn); }
+
+.set-cust-gauge-gauge-meter-yellow {
+  background-color: #ffd966;
+  -webkit-transform: rotate(0.4turn);
+  -ms-transform: rotate(0.4turn);
+  transform: rotate(0.4turn); }
+
+@media (max-width: 405px) {
+  .set-cust-gauge-inner-base,
+  .set-cust-gauge-inner-base__gauge {
+    width: 240px;
+    height: 120px;
+    z-index: 2; }
+  .set-cust-gauge-outer-base,
+  .set-cust-gauge-outer-base__gauge {
+    width: 100%;
+    height: 190px; }
+  .set-cust-gauge-outer-base__gauge {
+    height: 190px; }
+  .set-cust-gauge-percentage-container {
+    width: 140px;
+    height: 70px;
+    border-radius: 140px 140px 0 0;
+    background-color: white;
+    z-index: 2; }
+  .set-cust-gauge-gauge-meter-red,
+  .set-cust-gauge-gauge-meter-yellow {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px;
+    height: 75px; } }
+
+.set-tag{display:inline-block;padding:5px 10px;border-radius:25px;margin:5px;font-size:12px;font-weight:bold;-webkit-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out;cursor:pointer}.set-tag:hover{opacity:0.8;-webkit-transition:all 0.4s ease-in-out;transition:all 0.4s ease-in-out}.set-tag--primary{background-color:rgb(255,41,5);color:rgb(255,255,255)}.set-tag--primary-light{background-color:rgba(235,37,2,0.1);color:rgb(255,41,5)}.set-tag--primary-light:before{background-color:rgb(254,239,240)}.set-tag--close{position:relative;padding-right:25px}.set-tag--close:before{position:absolute;content:" ";font-size:18px;top:0px;right:0px;width:22px;height:100%;border-radius:0px 25px 25px 0px}.set-tag--close:after{position:absolute;content:"×";font-size:18px;top:-3px;right:8px;opacity:0.8}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_faq" name="Infiniarc Support">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/support" class="ian-link__unstyled">Support</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">FAQs And Knowledge Base</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero-banner hero-banner--contactus">
+
+                    <h1 class="page-title mt32">
+                        FAQ’S / Knowledge base
+                    </h1>
+                </div>
+
+            </section>
+
+            <section id="support-type" class="">
+                <div class="container" style="margin-bottom:100px">
+                    <div class="section-faq" style="margin-bottom: 70px;">
+                        <h3 style="margin-bottom:25px; color:#00FFD4;">Frequently Asked Questions</h3>
+                        <t t-foreach="faq" t-as="faqs">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card card-faq">
+                                    <div class="card-header faq-card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button"
+                                                    data-toggle="collapse" data-target="#collapseOne"
+                                                    aria-expanded="true"
+                                                    aria-controls="collapseOne" style="color: white !important;">
+                                                <span>Q:</span>
+                                                <t t-esc="faqs.question"/>
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                         data-parent="#accordionExample">
+                                        <div class="card-body faq-card-body">
+                                            <span>A:</span>
+                                            <t t-esc="faqs.answer"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+
+                    <div class="section-faq">
+                        <h3 style="margin-bottom:25px; color:#00FFD4;">Knowledge Base</h3>
+                        <t t-foreach="knowledge" t-as="knowledges">
+                            <div class="accordion" id="accordionExample">
+                                <div class="card card-faq">
+                                    <div class="card-header faq-card-header" id="headingOne">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link btn-block text-left" type="button"
+                                                    data-toggle="collapse" data-target="#collapseTwo"
+                                                    aria-expanded="true"
+                                                    aria-controls="collapseOne" style="color: white !important;">
+                                                <span>Q:</span>
+                                                <t t-esc="knowledges.question"/>
+                                            </button>
+                                        </h2>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne"
+                                         data-parent="#accordionExample">
+                                        <div class="card-body faq-card-body">
+                                            <span>A:</span>
+                                            <t t-esc="knowledges.answer"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </section>
+
+        </t>
+    </template>
+</odoo>

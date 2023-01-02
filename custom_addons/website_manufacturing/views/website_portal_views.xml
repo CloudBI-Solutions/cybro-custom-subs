@@ -1,0 +1,83 @@
+<odoo>
+
+    <template id="portal_my_home_mo" name="Show Manufacturing Orders"
+              customize_show="True" inherit_id="portal.portal_my_home"
+              priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Manufacturing Orders</t>
+                <t t-set="url" t-value="'/my/mos'"/>
+                <t t-set="placeholder_count" t-value="'mo_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_manufacturing"
+              name="Portal layout : manufacturing menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="24">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'mo'"
+                t-attf-class="breadcrumb-item #{'active ' if not mos else ''}">
+                <t>
+                    <a t-attf-href="/my/mos?{{ keep_query() }}">
+                        Manufacturing Orders</a>
+                </t>
+            </li>
+        </xpath>
+    </template>
+
+
+    <template id="portal_my_mo" name="My Manufacturing Orders">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Manufacturing Orders</t>
+            </t>
+            <t t-if="not mos">
+                <p>There are currently no manufacturing orders for your
+                    account.
+                </p>
+            </t>
+            <t t-if="mos" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>Manufacturing Orders #</th>
+                        <th class="text-right">Scheduled Date</th>
+                        <th class="text-right">Product</th>
+                        <th class="text-center"/>
+                        <th class="text-center">State</th>
+                    </tr>
+                </thead>
+                <t t-foreach="mos" t-as="mo">
+                    <tr>
+                        <td>
+                            <span t-esc="mo.name"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="mo.date_planned_start"/>
+                        </td>
+                        <td class="text-right"><span t-field="mo.product_id"/></td>
+                        <td/>
+                        <td class="text-center">
+                            <span t-if="mo.state == 'draft'" class="badge badge-pill badge-secondary"> Draft
+                                <a t-attf-href='/remove/{{mo.id}}'>
+                                <button type="button" class="fa fa-trash"/>
+                                </a>
+                            </span>
+                            <span t-if="mo.state == 'confirmed'" class="badge badge-pill badge-secondary"> Confirmed
+                                <a t-attf-href='/remove/{{mo.id}}'>
+                                <button type="button" class="fa fa-trash"/>
+                                </a>
+                            </span>
+                            <span t-if="mo.state == 'progress'" class="badge badge-pill badge-secondary"> In Progress</span>
+                            <span t-if="mo.state == 'to_close'" class="badge badge-pill badge-secondary"> To Close</span>
+                            <span t-if="mo.state == 'done'" class="badge badge-pill badge-secondary"> Done</span>
+                        </td>
+<!--                        </form>-->
+                    </tr>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

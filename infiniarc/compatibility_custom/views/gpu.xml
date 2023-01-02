@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_product_gpu_inherit" model="ir.ui.view">
+        <field name="name">product.template.gpu</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="gpu_id"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Tree View -->
+    <record id="view_gpu_gpu_tree" model="ir.ui.view">
+        <field name="name">gpu.gpu.tree</field>
+        <field name="model">gpu.gpu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_gpu_gpu_form" model="ir.ui.view">
+        <field name="name">gpu.gpu.form</field>
+        <field name="model">gpu.gpu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_gpu_gpu" model="ir.actions.act_window">
+        <field name="name">GPU</field>
+        <field name="res_model">gpu.gpu</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Product Brand.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="GPU"
+            parent="website.menu_website_global_configuration"
+            action="action_gpu_gpu"
+            id="submenu_gpu_gpu_config"
+            sequence="102"/>
+
+</odoo>

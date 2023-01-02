@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="company_and_backend_access" name="Company and Backend Access">
+        <t t-call="portal.portal_layout">
+            <div class="set-banner set-banner--light">
+                <div class="set-wrapper">
+                    <h1 class="set-title set-title--h2 mb-3">Company and Backend
+                        Access
+                    </h1>
+                    <p class="set-banner__lead">
+                        Includes core SportERP functionality.
+                    </p>
+                </div>
+            </div>
+            <t t-call="theme_sport_erp.s_tabs_sport_erp"/>
+            <div id="wrap" class="oe_structure oe_empty"/>
+        </t>
+    </template>
+
+</odoo>

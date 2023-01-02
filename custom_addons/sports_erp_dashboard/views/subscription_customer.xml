@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <template id="subscription_customer_template" name="Subscription Customers">-->
+<!--        <t t-call="portal.portal_layout">-->
+<!--            <div id="se-wrapper">-->
+<!--                <div class="container-fluid">-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+<!--                            <div class="se-dashboard">-->
+<!--                                <div>-->
+<!--                                    <h1 class="display-5 text-secondary se-dashboard__title">-->
+<!--                                        Subscription Customers-->
+<!--                                    </h1>-->
+<!--                                </div>-->
+<!--                                <div class="se-dashboard__right-action w-100">-->
+<!--                                    <div class="d-flex w-50 ml-auto se-input-group se-input-group&#45;&#45;icon">-->
+<!--                                        <div class="sidebar"-->
+<!--                                             style="margin-right: 8px;">-->
+<!--                                            <div class="wrapper">-->
+<!--                                                <div class="box">-->
+<!--                                                    <form class="o_wsale_products_searchbar_form example dropdown show"-->
+<!--                                                          method="get"-->
+<!--                                                          action="/my/subscription_customers"-->
+<!--                                                          style="margin:auto;max-width:600px">-->
+<!--                                                        <div t-attf-class="input-group #{_classes}"-->
+<!--                                                             role="search">-->
+<!--                                                            <input type="search"-->
+<!--                                                                   name="search"-->
+<!--                                                                   id="myInput"-->
+<!--                                                                   class="search-query form-control se-input se-input&#45;&#45;search mr-2 ml-auto"-->
+<!--                                                                   autocomplete="off"-->
+<!--                                                                   placeholder="Search.."-->
+<!--                                                                   onFocus="myFunction()"-->
+<!--                                                                   onBlur="setTimeout(myFunction, 300);"-->
+<!--                                                                   onkeyup="filterFunction()"/>-->
+<!--                                                            <button type="submit"-->
+<!--                                                                    class="btn btn-primary"-->
+<!--                                                                    style="background: #FF2905; border: none;">-->
+<!--                                                                <i class="fa fa-search se-input-group__icon"/>-->
+<!--                                                            </button>-->
+<!--                                                            <div id="myDropdown"-->
+<!--                                                                 class="dropdown-content">-->
+<!--                                                                <t t-foreach="total_subscription_customers"-->
+<!--                                                                   t-as="customer">-->
+<!--                                                                    <a t-att-href="'/my/subscription_customer/%s' % customer.id">-->
+<!--                                                                        <t t-esc="customer.name"/>-->
+<!--                                                                        <t t-if="customer.last_name"-->
+<!--                                                                           t-esc="customer.last_name"/>-->
+<!--                                                                    </a>-->
+<!--                                                                </t>-->
+<!--                                                            </div>-->
+<!--                                                        </div>-->
+<!--                                                    </form>-->
+<!--                                                    <script>function-->
+<!--                                                        myFunction() {-->
+<!--                                                        document.getElementById("myDropdown").classList.toggle("show");-->
+<!--                                                        } function-->
+<!--                                                        filterFunction() {-->
+<!--                                                        var input, filter,-->
+<!--                                                        ul, li, a, i; input-->
+<!--                                                        =-->
+<!--                                                        document.getElementById("myInput");-->
+<!--                                                        filter =-->
+<!--                                                        input.value.toUpperCase();-->
+<!--                                                        div =-->
+<!--                                                        document.getElementById("myDropdown");-->
+<!--                                                        a =-->
+<!--                                                        div.getElementsByTagName("a");-->
+<!--                                                        for (i = 0; i-->
+<!--                                                        &lt; a.length-->
+<!--                                                        ; i++) { txtValue =-->
+<!--                                                        a[i].textContent ||-->
+<!--                                                        a[i].innerText; if-->
+<!--                                                        (txtValue.toUpperCase().indexOf(filter)-->
+<!--                                                        > -1) {-->
+<!--                                                        a[i].style.display =-->
+<!--                                                        ""; } else {-->
+<!--                                                        a[i].style.display =-->
+<!--                                                        "none"; } } }-->
+<!--                                                    </script>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        <button class="btn se-btn se-btn&#45;&#45;no-rounded se-btn&#45;&#45;primary w-50"-->
+<!--                                                data-toggle="modal"-->
+<!--                                                data-target="#addCustomerModal"-->
+<!--                                                onclick="hide_show_customers()"-->
+<!--                                                style="border-radius: 5px !important;">-->
+<!--                                            + Add A Customer-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <hr/>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <t t-if="subscription_customers"-->
+<!--                           t-foreach="subscription_customers"-->
+<!--                           t-as="customer">-->
+<!--                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-2">-->
+<!--                                <div class="se-dashbaord__record-block">-->
+<!--                                    <div class="se-dashboard__record-block-details">-->
+<!--                                       <div class="se-dashboard__profile-container mr-3">-->
+<!--                                           <img class="se-dashboard__profile-image"-->
+<!--                                                 t-if="customer.image_1920"-->
+<!--                                                 t-att-src="image_data_uri(customer.image_1920)"/>-->
+<!--                                           <img class="se-dashboard__profile-image"-->
+<!--                                                 t-if="not customer.image_1920"-->
+<!--                                                 src="/sports_erp_dashboard/static/src/images/ui/user.svg"/>-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                    <span class="d-block">-->
+<!--                                            <t t-esc="customer.name"/>-->
+<!--                                            <t t-if="customer.last_name"-->
+<!--                                               t-esc="customer.last_name"/>-->
+<!--                                        </span>-->
+<!--                                        <br/>-->
+<!--                                    <div class="se-dashboard__record-block-action">-->
+<!--                                        <a t-att-href="'/my/subscription_customer_details/%s' % customer.id"-->
+<!--                                           class="se-dashboard__record-action">-->
+<!--                                            <img src="/sports_erp_dashboard/static/src/images/ui/edit.svg"-->
+<!--                                                 width="32" height="32"-->
+<!--                                                 class="se-dashboard__record-icon"/>-->
+<!--                                        </a>-->
+<!--                                        <a t-att-href="'/my/delete_subscription_customer/%s' % customer.id"-->
+<!--                                           class="se-dashboard__record-action">-->
+<!--                                            <img src="/sports_erp_dashboard/static/src/images/ui/trash.svg"-->
+<!--                                                 width="32" height="32"-->
+<!--                                                 class="se-dashboard__record-icon"/>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </t>-->
+<!--                    </div>-->
+
+<!--                    <div class="modal se-modal" id="addCustomerModal"-->
+<!--                         tabindex="-1" role="dialog"-->
+<!--                         aria-labelledby="addCustomerLabel" aria-hidden="true">-->
+<!--                        <div class="modal-dialog se-modal__dialog"-->
+<!--                             role="document">-->
+<!--                            <div class="modal-content se-modal__content">-->
+<!--                                <div class="modal-header">-->
+<!--                                    <h5 class="modal-title se-modal__title"-->
+<!--                                        id="addCustomerModalLabel">Add New-->
+<!--                                        Customer-->
+<!--                                    </h5>-->
+<!--                                    <button type="button" class="close"-->
+<!--                                            data-dismiss="modal"-->
+<!--                                            aria-label="Close">-->
+<!--                                        <span aria-hidden="false">X</span>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                <form action="/create/subscription_customer"-->
+<!--                                      method="post"-->
+<!--                                      enctype="multipart/form-data">-->
+<!--                                    <input type="hidden" name="csrf_token"-->
+<!--                                           t-att-value="request.csrf_token()"/>-->
+<!--                                    <div class="modal-body">-->
+<!--                                        <div class="row px-4">-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="customer_name">-->
+<!--                                                    First Name-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="customer_name"-->
+<!--                                                       name="customer_name"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <div>-->
+<!--                                                    <label for="name">-->
+<!--                                                        <img id="profile_picture"-->
+<!--                                                             src="/sports_erp_dashboard/static/src/images/ui/user.svg"-->
+<!--                                                             style="cursor: pointer;"-->
+<!--                                                             class="se-form__profile-img"/>-->
+<!--                                                    </label>-->
+<!--                                                    <input id="name"-->
+<!--                                                           style="margin-left: 50px;"-->
+<!--                                                           onchange="image_preview()"-->
+<!--                                                           type="file"-->
+<!--                                                           name="photo"-->
+<!--                                                           class="file"-->
+<!--                                                           multiple="true"-->
+<!--                                                           data-show-upload="true"-->
+<!--                                                           data-show-caption="true"-->
+<!--                                                           lass="file"-->
+<!--                                                           data-show-preview="true"-->
+<!--                                                           hidden="true"-->
+<!--                                                    />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <script>-->
+<!--                                                function image_preview() {-->
+<!--                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);-->
+<!--                                                }-->
+<!--                                            </script>-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="last_name">-->
+<!--                                                    Last Name-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="last_name"-->
+<!--                                                       name="last_name"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="phone">Phone-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="phone" name="phone"/>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="email">Email-->
+<!--                                                </label>-->
+<!--                                                <input type="email"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="email" name="email"/>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="street_name">-->
+<!--                                                    Street Name-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="street_name"-->
+<!--                                                       name="street_name"/>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="city_name">-->
+<!--                                                    City-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="city_name"-->
+<!--                                                       name="city_name"/>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="state_id">-->
+<!--                                                    State-->
+<!--                                                </label>-->
+<!--                                                <t t-set="states"-->
+<!--                                                   t-value="request.env['res.country.state'].sudo().search([])"/>-->
+<!--                                                <select name="state_id"-->
+<!--                                                        id="state_id"-->
+<!--                                                        class="form-control se-form-control">-->
+<!--                                                    <t t-foreach="states or []"-->
+<!--                                                       t-as="state">-->
+<!--                                                        <option t-att-value="state.id">-->
+<!--                                                            <t t-esc="state.name"/>-->
+<!--                                                        </option>-->
+<!--                                                    </t>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="zip_code">-->
+<!--                                                    Zip Code-->
+<!--                                                </label>-->
+<!--                                                <input type="text"-->
+<!--                                                       class="form-control se-form-control"-->
+<!--                                                       id="zip_code"-->
+<!--                                                       name="zip_code"/>-->
+<!--                                            </div>-->
+
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+<!--                                                <label class="se-form-label"-->
+<!--                                                       for="country_id">-->
+<!--                                                    Country-->
+<!--                                                </label>-->
+<!--                                                <t t-set="countries"-->
+<!--                                                   t-value="request.env['res.country'].sudo().search([])"/>-->
+<!--                                                <select name="country_id"-->
+<!--                                                        id="country_id"-->
+<!--                                                        class="form-control se-form-control">-->
+<!--                                                    <t t-foreach="countries or []"-->
+<!--                                                       t-as="country">-->
+<!--                                                        <option t-att-value="country.id">-->
+<!--                                                            <t t-esc="country.name"/>-->
+<!--                                                        </option>-->
+<!--                                                    </t>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+
+<!--                                        </div>-->
+<!--                                        <div class="modal-footer d-flex justify-content-between align-items-center">-->
+<!--                                            <a href="#"-->
+<!--                                               class="font-weight-bold se-link&#45;&#45;unstyled text-muted">-->
+<!--                                                <i class="fa fa-cog mr-2"/>-->
+<!--                                                Advanced Details-->
+<!--                                            </a>-->
+<!--                                            <input type="submit"-->
+<!--                                                   class="btn se-btn&#45;&#45;primary se-btn&#45;&#45;no-rounded px-5"-->
+<!--                                                   value="Add Customer"-->
+<!--                                                   style="border-radius: 5px !important;"/>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+<!--                    <div class="products_pager se-pagination">-->
+<!--                        <div class="se-pagination__page-info">-->
+<!--                            <strong>-->
+<!--                                Page-->
+<!--                                <span t-out="pager['page']['num']"/>-->
+<!--                                of-->
+<!--                                <t t-if="pager['page_count'] > 1">-->
+<!--                                    <span t-out="pager['pages'][-1]['num']"/>-->
+<!--                                </t>-->
+<!--                                <t t-else="">-->
+<!--                                    <span t-out="pager['page']['num']"/>-->
+<!--                                </t>-->
+<!--                            </strong>-->
+<!--                        </div>-->
+<!--                        <ul t-if="pager['page_count'] > 1"-->
+<!--                            class="se-pagination__links">-->
+<!--                            <t t-foreach="pager['pages']"-->
+<!--                               t-as="page">-->
+<!--                                <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">-->
+<!--                                    <a t-att-href="page['url']"-->
+<!--                                       t-attf-class="page-link #{extraLinkClass}"-->
+<!--                                       t-out="page['num']"/>-->
+<!--                                </li>-->
+<!--                            </t>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <script>-->
+<!--                function hide_show_customers()-->
+<!--                { var element =-->
+<!--                document.getElementById("se-sidebar");-->
+<!--                var main = document.getElementById("main-container");-->
+<!--                console.log("amin", main);-->
+<!--                if-->
+<!--                (main.classList.contains("main-container&#45;&#45;margin")){-->
+<!--                main.classList.toggle("main-container&#45;&#45;margin");-->
+<!--                }-->
+<!--                if-->
+<!--                (element.classList.contains("se-sidebar&#45;&#45;show")){-->
+<!--                element.classList.toggle("se-sidebar&#45;&#45;show");-->
+<!--                } };-->
+<!--            </script>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+
+<!--    <template id="subscription_customer_details_template"-->
+<!--              name="Subscription Customer Details">-->
+<!--        <t t-call="portal.portal_layout">-->
+<!--            <div id="se-wrapper">-->
+<!--                <div class="container-fluid">-->
+<!--                    <form id="contract_edit_form"-->
+<!--                          action="/my/update_subscription_customer"-->
+<!--                          method="post"-->
+<!--                          enctype="multipart/form-data">-->
+<!--                        <input type="hidden" name="csrf_token"-->
+<!--                               t-att-value="request.csrf_token()"/>-->
+<!--                        <input type="hidden" name="subscription_customer_id"-->
+<!--                               t-att-value="subscription_customer.id"/>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+<!--                                <div class="se-dashboard">-->
+<!--                                    <div class="w-100">-->
+<!--                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">-->
+<!--                                            <span>-->
+<!--                                                <t t-esc="subscription_customer.name"/>-->
+<!--                                            </span>-->
+<!--                                        </h1>-->
+<!--                                    </div>-->
+<!--                                    <div class="se-dashboard__right-action w-100">-->
+<!--                                        <div class="se-form__profile-img ml-auto">-->
+<!--                                            <label for="name">-->
+<!--                                                <img t-if="subscription_customer.image_1920"-->
+<!--                                                     id="profile_picture"-->
+<!--                                                     t-att-src="image_data_uri(subscription_customer.image_1920)"-->
+<!--                                                     width="36" height="36"-->
+<!--                                                     style="cursor: pointer;"-->
+<!--                                                     class="se-form__profile-img"/>-->
+<!--                                                <img id="profile_picture"-->
+<!--                                                     t-if="not subscription_customer.image_1920"-->
+<!--                                                     src="/sports_erp_dashboard/static/src/images/ui/coach.svg"-->
+<!--                                                     width="36" height="36"-->
+<!--                                                     style="cursor: pointer;"-->
+<!--                                                     class="se-form__profile-img"/>-->
+<!--                                            </label>-->
+<!--                                            <input id="name"-->
+<!--                                                   style="margin-left: 50px;"-->
+<!--                                                   onchange="image_preview()"-->
+<!--                                                   type="file" name="photo"-->
+<!--                                                   class="file"-->
+<!--                                                   multiple="true"-->
+<!--                                                   data-show-upload="true"-->
+<!--                                                   data-show-caption="true"-->
+<!--                                                   lass="file"-->
+<!--                                                   data-show-preview="true"-->
+<!--                                                   hidden="true"-->
+<!--                                            />-->
+<!--                                            <script>-->
+<!--                                                function image_preview() {-->
+<!--                                                profile_picture.src=URL.createObjectURL(event.target.files[0]);-->
+<!--                                                }-->
+<!--                                            </script>-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <hr/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+<!--                                <ul class="nav nav-tabs" id="myTab"-->
+<!--                                    role="tablist">-->
+<!--                                    <li class="nav-item" role="presentation">-->
+<!--                                        <button class="nav-link active"-->
+<!--                                                id="home-tab" data-toggle="tab"-->
+<!--                                                data-target="#home"-->
+<!--                                                type="button" role="tab"-->
+<!--                                                aria-controls="home"-->
+<!--                                                aria-selected="true">Customer-->
+<!--                                            Details-->
+<!--                                        </button>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                                <div class="tab-content" id="myTabContent">-->
+<!--                                    <div class="tab-pane fade show active"-->
+<!--                                         id="home" role="tabpanel"-->
+<!--                                         aria-labelledby="home-tab">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="name">First Name-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           id="name"-->
+<!--                                                           name="name"-->
+<!--                                                           t-att-value="subscription_customer.name"/>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="last_name">Last Name-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           id="last_name"-->
+<!--                                                           name="last_name"-->
+<!--                                                           t-att-value="subscription_customer.last_name"/>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="email">-->
+<!--                                                        Email-->
+<!--                                                    </label>-->
+<!--                                                    <input type="email"-->
+<!--                                                           name="email"-->
+<!--                                                           id="email"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           t-att-value="subscription_customer.email"-->
+<!--                                                           />-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="city">-->
+<!--                                                        City-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           name="city"-->
+<!--                                                           id="city"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           t-att-value="subscription_customer.city"-->
+<!--                                                           />-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="zip_code">-->
+<!--                                                        Zip Code-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           name="zip_code"-->
+<!--                                                           id="zip_code"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           t-att-value="subscription_customer.zip"-->
+<!--                                                           />-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="phone">-->
+<!--                                                        Phone-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           name="phone"-->
+<!--                                                           id="phone"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           t-att-value="subscription_customer.phone"-->
+<!--                                                           />-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="street_name">-->
+<!--                                                        Street Name-->
+<!--                                                    </label>-->
+<!--                                                    <input type="text"-->
+<!--                                                           name="street_name"-->
+<!--                                                           id="street_name"-->
+<!--                                                           class="form-control se-form-control"-->
+<!--                                                           t-att-value="subscription_customer.street"-->
+<!--                                                           />-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="state">-->
+<!--                                                        State-->
+<!--                                                    </label>-->
+<!--                                                    <select class="form-control se-form-control"-->
+<!--                                                            id="state"-->
+<!--                                                            name="state">-->
+<!--                                                        <option selected="1"-->
+<!--                                                                t-att-value="subscription_customer.state_id.id">-->
+<!--                                                            <t t-esc="subscription_customer.state_id.name"/>-->
+<!--                                                        </option>-->
+<!--                                                        <t t-foreach="states"-->
+<!--                                                           t-as="state">-->
+<!--                                                            <option t-att-value="state.id">-->
+<!--                                                                <t t-esc="state.name"/>-->
+<!--                                                            </option>-->
+<!--                                                        </t>-->
+<!--                                                    </select>-->
+<!--                                                </div>-->
+<!--                                                <div class="form-group py-3">-->
+<!--                                                    <label class="se-form-label"-->
+<!--                                                           for="country">-->
+<!--                                                        Country-->
+<!--                                                    </label>-->
+<!--                                                    <select class="form-control se-form-control"-->
+<!--                                                            id="country"-->
+<!--                                                            name="country">-->
+<!--                                                        <option selected="1"-->
+<!--                                                                t-att-value="subscription_customer.country_id.id">-->
+<!--                                                            <t t-esc="subscription_customer.country_id.name"/>-->
+<!--                                                        </option>-->
+<!--                                                        <t t-foreach="countries"-->
+<!--                                                           t-as="country">-->
+<!--                                                            <option t-att-value="country.id">-->
+<!--                                                                <t t-esc="country.name"/>-->
+<!--                                                            </option>-->
+<!--                                                        </t>-->
+<!--                                                    </select>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+<!--                        <div class="row">-->
+<!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">-->
+<!--                                <input type="submit"-->
+<!--                                       style="float:right !important; border-radius: 5px !important;"-->
+<!--                                       class="btn se-btn se-btn&#45;&#45;no-rounded se-btn&#45;&#45;primary px-4"-->
+<!--                                       value="Update Customer"/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+</odoo>

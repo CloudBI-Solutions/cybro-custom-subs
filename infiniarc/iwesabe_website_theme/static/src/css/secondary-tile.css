@@ -1,0 +1,72 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap");*/
+.ia-header-carousel {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.ia-metal-background {
+  background: url("/images/uploads/about-us-secondary.jpg");
+}
+
+.ia-secondary-carousel .owl-stage-outer {
+  overflow: hidden;
+}
+
+.ia-carousel-stage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ia-carousel-stage .owl-item {
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 15px;
+  height: 200px;
+}
+
+.ia-secondary-carousel {
+  position: relative;
+}
+
+.ia-secondary-carousel__item {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.ia-secondary-carousel__image {
+  border-radius: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.ia-section-carousel {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.ia-secondary-carousel .owl-nav {
+  position: absolute;
+  top: -45px;
+  right: 0;
+}
+
+.ia-secondary-carousel .owl-prev, .ia-secondary-carousel .owl-next {
+  background: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  margin: 10px;
+}
+
+.ia-secondary-carousel .owl-dots {
+  display: none;
+}
+
+.ia-secondary-nav-icons {
+  width: 36px;
+  height: 36px;
+}

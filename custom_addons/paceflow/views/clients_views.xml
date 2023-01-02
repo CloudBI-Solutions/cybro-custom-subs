@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--      clients  form view-->
+        <record id="clients_view_form" model="ir.ui.view">
+        	<field name="name">clients.view.form</field>
+        	<field name="model">paceflow.client</field>
+			<field name="arch" type="xml">
+                <form>
+                    <header/>
+
+                <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                            <field name="email"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="child" string="Player Contacts">
+                            <field name="child_ids">
+                                <tree string="Player Contact" default_order='id'>
+                                    <field name="partner_id"/>
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="group" string="Groups">
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+                </form>
+			</field>
+        </record>
+        <!--      clients  tree view-->
+        <record id='clients_view_tree' model='ir.ui.view'>
+            <field name="name">clients_tree</field>
+            <field name="model">paceflow.client</field>
+            <field name="arch" type="xml">
+                <tree string="Clients" sample="1">
+                    <field name="partner_id"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+        <!--        clients menu action-->
+        <record id="all_clients_menu_action" model="ir.actions.act_window">
+            <field name="name">Coach</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">paceflow.client</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

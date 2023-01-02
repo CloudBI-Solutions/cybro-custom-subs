@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_description" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="product_description"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="product_template_notebook" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Extra Info" name="extra_info">
+                    <group>
+                        <group string="Extra Info">
+                            <field name="extra_info"/>
+
+
+                        </group>
+                        <group string="Terms And Conditions">
+                            <field name="terms"/>
+
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//div[@name='options']" position="inside">
+                <span class="d-inline-block">
+                    <field name="best"/>
+                    <label for="best"/>
+                </span>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="product_product_template_form_view_extend" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <div name="options" position="after">
+                <field name="type_of_pc" invisible="1"/>
+                <field name="is_gear_store"/>
+                <label for="is_gear_store" string="Gear Store Product "/>
+                <field name="arrival"/>
+                <label for="arrival" string="New Arrival"/>
+                <field name="best_seller"/>
+                <label for="best_seller" string="Best Sellers"/>
+                <label for="type_products" invisible="1"/>
+                <field name="type_products" invisible="1" widget="radio" options="{'horizontal': true}"/>
+            </div>
+            <field name="categ_id" position="before">
+                <field name="sales_price"/>
+            </field>
+            <field name="categ_id" position="after">
+                <field name="public_categ_ids" widget="many2many_tags" string="Website Category"/>
+            </field>
+            <label for="list_price" position="attributes">
+                <attribute name="string">Offer Price</attribute>
+            </label>
+            <field name="detailed_type" position="after">
+                <field name="parents_type" string="Component Type"/>
+                <field name="component_id" string="Component"/>
+                <field name="brand_id"/>
+                <field name="micro_store_id"/>
+            </field>
+            <notebook position="inside">
+                <page string="Fit Products Definitions" invisible="1">
+                    <group>
+                        <field name="unfit_product_msg"/>
+                    </group>
+                    <field name="relative_product_ids" domain="[('type_products','=','normal')]">
+                        <tree>
+                            <field name="name" required="1"/>
+                            <field name="barcode"/>
+                            <field name="default_code"/>
+                            <field name="categ_id"/>
+                            <field name="public_categ_ids"/>
+                            <field name="brand_id"/>
+                            <field name="sales_price"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Specification" name="specification">
+                    <h4 style="text-align: center;border-bottom: 3px solid #eee;
+    border-bottom-style: dashed;">Components Restrictions
+                    </h4>
+                    <group>
+                        <group>
+                            <field name="power_watt"/>
+                        </group>
+                    </group>
+                    <div style="text-align: center;">
+                        <field name="type_of_restrictions" widget="radio" options="{'horizontal': true}"/>
+                    </div>
+                    <div name="cpu_config" attrs="{'invisible': [('type_of_restrictions', '!=','is_cpu')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>CPU Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="cpu_type_id" widget="selection"/>
+                            </group>
+                            <group>
+                                <field name="support_oc"/>
+                                <field name="is_k_type"/>
+                            </group>
+                        </group>
+                        <group attrs="{'invisible': [('support_oc', '=','no')]}">
+                            <field name="water_cooling_ids" widget="many2many_tags"/>
+                        </group>
+                    </div>
+                    <div name="motherboard_config"
+                         attrs="{'invisible': [('type_of_restrictions', '!=','is_motherboard')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>Motherboard Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="memories_type_support_id" widget="selection"/>
+                                <field name="cpu_support_id" widget="selection"/>
+                            </group>
+                            <group>
+                                <field name="no_of_support"/>
+                                <field name="serics_motherboard"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="motherboard_ids" widget="many2many_tags"/>
+                        </group>
+                    </div>
+                    <div name="cooler_config" attrs="{'invisible': [('type_of_restrictions', '!=', 'is_cooler')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>Cooler Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="type_cooler"/>
+                                <field name="no_of_fans" attrs="{'invisible': [('type_cooler', '!=','water_cooler')]}"/>
+                            </group>
+                            <group>
+                                <field name="air_height" attrs="{'invisible': [('type_cooler', '=','water_cooler')]}"/>
+                                <field name="radiator_size_id"
+                                       attrs="{'invisible': [('type_cooler', '=','air_cooler')]}"/>
+                            </group>
+                        </group>
+                    </div>
+
+                    <div name="case_config" attrs="{'invisible': [('type_of_restrictions', '!=','is_case')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>CASE Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="type_cooler_support"/>
+                                <field name="fans_no_support"/>
+                                <field name="built_fans_no"/>
+                            </group>
+                            <group>
+                                <field name="air_cooler_height"
+                                       attrs="{'invisible': [('type_cooler_support', '=','water_cooler')]}"/>
+                                <field name="radiator_size_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                        <group attrs="{'invisible': [('type_cooler_support', '=','air_cooler')]}">
+                            <field name="water_cooler_ids" widget="many2many_tags"
+                                   domain="[('type_cooler','=','water_cooler')]"/>
+                        </group>
+                    </div>
+                    <div name="memory_config" attrs="{'invisible': [('type_of_restrictions', '!=','is_memory')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>Memory Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="memories_type_id" widget="selection"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </div>
+                    <div name="fans_config" attrs="{'invisible': [('type_of_restrictions', '!=','is_fans')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>Fans Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="pak_fans_no"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </div>
+                    <div name="power_value_config"
+                         attrs="{'invisible': [('type_of_restrictions', '!=','is_power_suplly')]}"
+                         style="border-bottom: 2px solid rgb(68 75 90 / 4%);margin: 15px 0px;">
+                        <h4>Power Supply Configuration</h4>
+                        <group>
+                            <group>
+                                <field name="power_value_support"/>
+                            </group>
+                            <group>
+                            </group>
+                        </group>
+                    </div>
+
+
+                    <h4 style="margin-top: 20px;text-align: center;border-bottom: 3px solid #eee;
+    border-bottom-style: dashed;">Specification Items
+                    </h4>
+                    <field name="specification_line">
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="item_id" required="1"/>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+            <notebook position="after">
+                <h3 style="text-align: center;margin-top: 30px;">Website Multi Media</h3>
+                <field name="product_template_image_ids" class="o_website_sale_image_list"
+                       context="{'default_name': name}" mode="kanban" add-label="Add a Media"/>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="sale.product_template_action" model="ir.actions.act_window">
+        <field name="domain">[('type_products','=','normal')]</field>
+        <field name="context">{"search_default_filter_to_sell":1, "sale_multi_pricelist_product_template": 1,
+            "default_type_products":"normal"}
+        </field>
+    </record>
+
+    <record id="stock.product_template_action_product" model="ir.actions.act_window">
+        <field name="domain">[('type_products','=','normal')]</field>
+        <field name="context">{"search_default_consumable": 1, 'default_detailed_type':
+            'product',"default_type_products":"normal"}
+        </field>
+    </record>
+
+</odoo>

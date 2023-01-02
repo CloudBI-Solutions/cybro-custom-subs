@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="cart_change">
+            <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+            <t t-set="show_cart" t-value="true"/>
+            <li t-attf-class="#{_item_class} divider d-none"/>
+            <div id="top_menu">
+            <li t-attf-class="o_wsale_my_cart align-self-md-start #{not show_cart and 'd-none'} #{_item_class}">
+                <a href="/shop/cart" t-attf-class="#{_link_class}">
+                    <i class="fa fa-shopping-cart nav-link paceflow-nav__link" style="color: white;"/>
+                    <span t-if="_text">My Cart</span>
+                    <sup class="my_cart_quantity badge badge-primary"
+                         t-esc="website_sale_order and website_sale_order.cart_quantity or '0'"
+                         t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                </a>
+            </li>
+            </div>
+        </template>
+
+        <template id="paceflow_header" inherit_id="website.layout">
+            <xpath expr="//header" position="replace">
+                <header>
+                <div id="paceflow_header">
+                <nav class="navbar navbar-expand-lg navbar-dark paceflow-nav">
+                    <a class="navbar-brand" href="/my/home/">
+                        <img src="/paceflow/static/description/images/website/paceflow-logo-invert.png"
+                             class="paceflow-nav__logo"
+                             width="138.19" height="50"/>
+                    </a>
+
+                    <button class="navbar-toggler" type="button"
+                            data-toggle="collapse"
+                            data-target="#navbarNavAltMarkup"
+                            aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"/>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                         id="navbarNavAltMarkup">
+                        <div class="navbar-nav ml-auto">
+
+                            <a class="nav-link paceflow-nav__link"
+                               href="/my/home/">Home
+                            </a>
+                            <a class="nav-link paceflow-nav__link"
+                               href="/shop">Shop
+                            </a>
+                            <a class="nav-link paceflow-nav__link" href="#">
+                                Features
+                            </a>
+                            <a class="nav-link paceflow-nav__link" href="#">
+                                Pricing
+                            </a>
+                            <ul id="top_menu" class="nav navbar-nav ml-auto">
+                                <t t-call="portal.placeholder_user_sign_in">
+                                    <t t-set="_item_class"
+                                       t-value="'nav-item'"/>
+                                    <t t-set="_link_class"
+                                       t-value="'nav-link'"/>
+                                </t>
+                                <t t-call="portal.user_dropdown">
+                                    <t t-set="_user_name" t-value="true"/>
+                                    <t t-set="_item_class"
+                                       t-value="'nav-item dropdown'"/>
+                                    <t t-set="_link_class"
+                                       t-value="'nav-link'"/>
+                                    <t t-set="_dropdown_menu_class"
+                                       t-value="'dropdown-menu-right'"/>
+                                </t>
+                            </ul>
+                            <t t-call="paceflow.cart_change"/>
+                        </div>
+                    </div>
+                </nav>
+                </div>
+                </header>
+            </xpath>
+        </template>
+    </data>
+
+    <data>
+        <template id="breadcrumbs_remove" inherit_id="portal.portal_layout">
+            <xpath expr="//div" position="replace">
+            </xpath>
+        </template>
+    </data>
+</odoo>

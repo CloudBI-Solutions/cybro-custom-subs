@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="infiniarc_quick_view_container" name="Infiniarc Quick View Container">
+        <div class="infiniarc-quick_view_container">
+            <table class="custom-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">Base Components</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>Video card: GIGABYTE GeForce GTX 1660 SUPER GAMING</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>ASUS GeForce RTX 3080 Ti STRIX</td>
+                    </tr>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>CPU: Intel® Core ™ i5-11400 (F)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>AMD Ryzen 9 5950X</td>
+                    </tr>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>Motherboard: ASUS PRIME B560M-A</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>64GB Kingston Renegade RGB DDR4-3600 (2 x 32GB)</td>
+                    </tr>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>RAM: 16GB Kingston Fury Beast RGB DDR4-3200 (2 x 8GB)</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>2TB HYPERPC PRO M.2</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="2">Accessories</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>Samsung C27FG73FQI</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>4TB Seagate BarraCuda</td>
+                    </tr>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>Logitech G413</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>Super Flower Leadex Platinum SE 850W</td>
+                    </tr>
+                    <tr>
+                        <td class="categ-type">
+                            <div>
+                                <div>
+                                    <img src="/iwesabe_website_theme/static/src/img/quick-view/video-card.png"
+                                         alt="IMG 1" class="table-img"/>
+                                </div>
+                                <div class="ml-3">
+                                    <span>Samsung C27FG73FQI</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td>4TB Seagate BarraCuda</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </template>
+
+</odoo>

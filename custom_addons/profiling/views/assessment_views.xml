@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--      assessments form view-->
+        <record id="assessments_view_form" model="ir.ui.view">
+        	<field name="name">assessments.view.form</field>
+        	<field name="model">assessment.assessment</field>
+			<field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <field name="active" invisible="1"/>
+                    <group>
+                        <group>
+                            <field name="company_id" invisible="1"/>
+                            <field name="datetime"/>
+                            <field name="partner_id"/>
+                            <field name="gender"/>
+                            <field name="height"/>
+                            <field name="age"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Measurements" name="measurements">
+                            <group string="Body Composition" name="body_composition">
+                                <group>
+<!--                                    <field name="m_datetime"/>-->
+                                    <field name="weight"/>
+                                    <field name="muscle_mass"/>
+                                </group>
+                                <group>
+                                    <field name="fat_mass"/>
+                                    <field name="body_water"/>
+                                    <field name="w_h_ratio"/>
+                                </group>
+                            </group>
+                            <group string="Measurements" name="measurements">
+                                <group>
+                                    <field name="chest"/>
+                                    <field name="arm"/>
+                                    <field name="narrow_waist"/>
+                                </group>
+                                <group>
+                                    <field name="waist"/>
+                                    <field name="hips"/>
+                                    <field name="glute_fold"/>
+                                </group>
+                            </group>
+                            <group string="Calculations" name="calculations">
+                                <group>
+                                    <field name="fat_free_mass"/>
+                                    <field name="bmi"/>
+                                </group>
+                                <group>
+                                     <field name="body_fat_perc"/>
+                                    <field name="bmr"/>
+                                    <field name="str_weight"
+                                   placeholder="Weight(Imperial)"/>
+                                </group>
+                            </group>
+                            <separator/>
+                            <group>
+                                <group>
+                                    <field name="latest_record"/>
+                                    <field name="override_validation"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="One to One" name="o2o">
+                            <group string="Notes" name="notes">
+<!--                                <field name="o2o_datetime"/>-->
+                                <group>
+                                    <field name="p_feedback"/>
+                                    <field name="n_feedback"/>
+                                    <field name="nutrition_plan"/>
+                                    <field name="training_plan"/>
+                                </group>
+                                <group>
+                                    <field name="supplements"/>
+                                    <field name="medication"/>
+                                    <field name="injuries"/>
+                                    <field name="menstrual_cycle"/>
+                                    <field name="notes"/>
+                                </group>
+                            </group>
+                            <group string="Measurements" name="measurements">
+                                <group>
+                                    <field name="systolic_reading"/>
+                                    <field name="diastolic_reading"/>
+                                </group>
+                                <group>
+                                    <field name="resting_heart_rate"/>
+                                    <field name="blood_sugar_level"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="o2o_latest_record"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Photo" name="img">
+                            <group string="Photo" name="photo">
+                                <field name="img_date"/>
+                                <group>
+                                    <field name="img_front" widget="image"/>
+                                    <field name="img_left" widget="image"/>
+                                </group>
+                                <group>
+                                    <field name="img_back" widget="image"/>
+                                    <field name="img_right" widget="image"/>
+                                </group>
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="img_latest_record"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </sheet>
+                </form>
+			</field>
+        </record>
+        <!--      assessments  tree view-->
+        <record id='assessments_view_tree' model='ir.ui.view'>
+            <field name="name">assessments_tree</field>
+            <field name="model">assessment.assessment</field>
+            <field name="arch" type="xml">
+                <tree string="Assessments" sample="1">
+                    <field name="partner_id"/>
+                    <field name="user_id"/>
+                    <field name="datetime"/>
+                    <field name="gender"/>
+                    <field name="age"/>
+                    <field name="weight" optional="1"/>
+                    <field name="muscle_mass" optional="1"/>
+                    <field name="fat_mass" optional="1"/>
+                    <field name="body_water" optional="1"/>
+                    <field name="w_h_ratio" optional="1"/>
+                    <field name="chest" optional="1"/>
+                    <field name="arm" optional="1"/>
+                    <field name="narrow_waist" optional="1"/>
+                    <field name="waist" optional="1"/>
+                    <field name="hips" optional="1"/>
+                    <field name="glute_fold" optional="1"/>
+                    <field name="fat_free_mass" optional="1"/>
+                    <field name="bmi" optional="1"/>
+                    <field name="body_fat_perc" optional="1"/>
+                    <field name="bmr" optional="1"/>
+                    <field name="str_weight" optional="1"/>
+                    <field name="latest_record" optional="1"/>
+                    <field name="override_validation" optional="1"/>
+<!--                    <field name="o2o_datetime" optional="1"/>-->
+                    <field name="p_feedback" optional="1"/>
+                    <field name="n_feedback" optional="1"/>
+                    <field name="nutrition_plan" optional="1"/>
+                    <field name="training_plan" optional="1"/>
+                    <field name="supplements" optional="1"/>
+                    <field name="medication" optional="1"/>
+                    <field name="injuries" optional="1"/>
+                    <field name="menstrual_cycle" optional="1"/>
+                    <field name="notes" optional="1"/>
+                    <field name="systolic_reading" optional="1"/>
+                    <field name="diastolic_reading" optional="1"/>
+                    <field name="resting_heart_rate" optional="1"/>
+                    <field name="blood_sugar_level" optional="1"/>
+                    <field name="o2o_latest_record" optional="1"/>
+                    <field name="img_date" optional="1"/>
+                    <field name="img_front" widget="image" optional="1"/>
+                    <field name="img_back" widget="image" optional="1"/>
+                    <field name="img_left" widget="image" optional="1"/>
+                    <field name="img_right" widget="image" optional="1"/>
+                    <field name="img_latest_record" optional="1"/>
+                </tree>
+            </field>
+        </record>
+        <!--        assessment search view-->
+        <record id="assessments_view_search" model="ir.ui.view">
+            <field name="name">assessments.search</field>
+            <field name="model">assessment.assessment</field>
+            <field name="arch" type="xml">
+                <search string="Assessment">
+                    <separator/>
+                    <filter string="Latest Record" name="filter_latest_record"
+                            domain="[('latest_record', '=', True)]"/>
+                    <filter string="Male" name="filter_male"
+                            domain="[('gender', '=', 'male')]"/>
+                    <filter string="Female" name="filter_female"
+                            domain="[('gender', '=', 'female')]"/>
+                    <separator/>
+                    <field string="Member Name" name="partner_id"
+                           filter_domain="[('partner_id', 'ilike', self)]"/>
+                    <field string="Height (cm)" name="height"
+                           filter_domain="[('height', 'ilike', self)]"/>
+                    <field string="Age" name="age"
+                           filter_domain="[('age', 'ilike', self)]"/>
+                    <field string="Coach" name="user_id"
+                           filter_domain="[('user_id', 'ilike', self)]"/>
+<!--                    <field string="Date-Time" name="m_datetime"-->
+<!--                           filter_domain="[('m_datetime', 'ilike', self)]"/>-->
+                    <field string="Weight (kg)" name="weight"
+                           filter_domain="[('weight', 'ilike', self)]"/>
+                    <field string="Muscle Mass (kg)" name="muscle_mass"
+                           filter_domain="[('muscle_mass', 'ilike', self)]"/>
+                    <field string="Fat Mass (kg)" name="fat_mass"
+                           filter_domain="[('fat_mass', 'ilike', self)]"/>
+                    <field string="Body Water (kg)" name="body_water"
+                           filter_domain="[('body_water', 'ilike', self)]"/>
+                    <field string="Waist Hip Ratio" name="w_h_ratio"
+                           filter_domain="[('w_h_ratio', 'ilike', self)]"/>
+                    <field string="Chest" name="chest"
+                           filter_domain="[('chest', 'ilike', self)]"/>
+                    <field name="arm"
+                           filter_domain="[('arm', 'ilike', self)]"/>
+                    <field name="narrow_waist"
+                           filter_domain="[('narrow_waist', 'ilike', self)]"/>
+                    <field name="waist"
+                           filter_domain="[('waist', 'ilike', self)]"/>
+                    <field name="hips"
+                           filter_domain="[('hips', 'ilike', self)]"/>
+                    <field name="glute_fold"
+                           filter_domain="[('glute_fold', 'ilike', self)]"/>
+                    <field name="fat_free_mass"
+                           filter_domain="[('fat_free_mass', 'ilike', self)]"/>
+                    <field name="bmi"
+                           filter_domain="[('bmi', 'ilike', self)]"/>
+                    <field name="body_fat_perc"
+                           filter_domain="[('body_fat_perc', 'ilike', self)]"/>
+                    <field name="bmr"
+                           filter_domain="[('bmr', 'ilike', self)]"/>
+                    <field name="p_feedback"
+                           filter_domain="[('p_feedback', 'ilike', self)]"/>
+                    <field name="n_feedback"
+                           filter_domain="[('n_feedback', 'ilike', self)]"/>
+                    <field name="nutrition_plan"
+                           filter_domain="[('nutrition_plan', 'ilike', self)]"/>
+                    <field name="training_plan"
+                           filter_domain="[('training_plan', 'ilike', self)]"/>
+                    <field name="supplements"
+                           filter_domain="[('supplements', 'ilike', self)]"/>
+                    <field name="medication"
+                           filter_domain="[('medication', 'ilike', self)]"/>
+                    <field name="injuries"
+                           filter_domain="[('injuries', 'ilike', self)]"/>
+                    <field name="n_feedback"
+                           filter_domain="[('n_feedback', 'ilike', self)]"/>
+                    <field name="menstrual_cycle"
+                           filter_domain="[('menstrual_cycle', 'ilike', self)]"/>
+                    <field name="notes"
+                           filter_domain="[('notes', 'ilike', self)]"/>
+                    <field name="systolic_reading"
+                           filter_domain="[('systolic_reading', 'ilike', self)]"/>
+                    <field name="diastolic_reading"
+                           filter_domain="[('diastolic_reading', 'ilike', self)]"/>
+                    <field name="resting_heart_rate"
+                           filter_domain="[('resting_heart_rate', 'ilike', self)]"/>
+                    <field name="blood_sugar_level"
+                           filter_domain="[('blood_sugar_level', 'ilike', self)]"/>
+                    <group expand="1" string="Group By">
+                        <filter string="Member Name" name="groupby_partner_id"
+                                context="{'group_by': 'partner_id'}"/>
+                        <filter string="Coach" name="groupby_user_id"
+                                context="{'group_by': 'user_id'}"/>
+<!--                        <filter string="Date-Time" name="groupby_m_datetime"-->
+<!--                                context="{'group_by': 'm_datetime'}"/>-->
+                        <filter string="Weight (kg)" name="groupby_weight"
+                                context="{'group_by': 'weight'}"/>
+                        <filter string="Muscle Mass (kg)" name="groupby_muscle_mass"
+                                context="{'group_by': 'muscle_mass'}"/>
+                        <filter string="Fat Mass (kg)" name="groupby_fat_mass"
+                                context="{'group_by': 'fat_mass'}"/>
+                        <filter string="Body Water (kg)" name="groupby_body_water"
+                                context="{'group_by': 'body_water'}"/>
+                        <filter string="Waist Hip Ratio" name="groupby_w_h_ratio"
+                                context="{'group_by': 'w_h_ratio'}"/>
+                        <filter string="Chest" name="groupby_chest"
+                                context="{'group_by': 'chest'}"/>
+                        <filter string="Arm" name="groupby_arm"
+                                context="{'group_by': 'arm'}"/>
+                        <filter string="Narrow Waist" name="groupby_narrow_waist"
+                                context="{'group_by': 'narrow_waist'}"/>
+                        <filter string="Waist" name="groupby_waist"
+                                context="{'group_by': 'waist'}"/>
+                        <filter string="Hips" name="groupby_hips"
+                                context="{'group_by': 'hips'}"/>
+                        <filter string="Glute Fold" name="groupby_glute_fold"
+                                context="{'group_by': 'glute_fold'}"/>
+                        <filter string="Fat Free Mass (kg)" name="groupby_fat_free_mass"
+                                context="{'group_by': 'fat_free_mass'}"/>
+
+                        <filter string="BMI" name="groupby_bmi"
+                                context="{'group_by': 'bmi'}"/>
+                        <filter string="Body Fat %" name="groupby_body_fat_perc"
+                                context="{'group_by': 'body_fat_perc'}"/>
+                        <filter string="BMR" name="groupby_bmr"
+                                context="{'group_by': 'bmr'}"/>
+                        <filter string="Positive Feedback" name="groupby_p_feedback"
+                                context="{'group_by': 'p_feedback'}"/>
+                        <filter string="Negative Feedback" name="groupby_n_feedback"
+                                context="{'group_by': 'n_feedback'}"/>
+                        <filter string="Nutrition Plan" name="groupby_nutrition_plan"
+                                context="{'group_by': 'nutrition_plan'}"/>
+                        <filter string="Training Plan" name="training_plan"
+                                context="{'group_by': 'training_plan'}"/>
+                        <filter string="Supplements" name="groupby_supplements"
+                                context="{'group_by': 'supplements'}"/>
+                        <filter string="Medication" name="groupby_medication"
+                                context="{'group_by': 'medication'}"/>
+                        <filter string="Injuries" name="groupby_injuries"
+                                context="{'group_by': 'injuries'}"/>
+                        <filter string="Menstrual Cycle" name="groupby_menstrual_cycle"
+                                context="{'group_by': 'menstrual_cycle'}"/>
+                        <filter string="Additional Notes" name="groupby_notes"
+                                context="{'group_by': 'notes'}"/>
+                        <filter string="Systolic Reading" name="groupby_systolic_reading"
+                                context="{'group_by': 'systolic_reading'}"/>
+                        <filter string="Diastolic Reading" name="groupby_diastolic_reading"
+                                context="{'group_by': 'diastolic_reading'}"/>
+                        <filter string="Resting Heart Reading" name="groupby_resting_heart_rate"
+                                context="{'group_by': 'resting_heart_rate'}"/>
+                        <filter string="Blood Sugar Level" name="groupby_blood_sugar_level"
+                                context="{'group_by': 'blood_sugar_level'}"/>
+                    </group>
+
+                </search>
+            </field>
+        </record>
+        <!--        assessments menu action-->
+        <record id="all_assessments_menu_action" model="ir.actions.act_window">
+            <field name="name">Assessments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">assessment.assessment</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

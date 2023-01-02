@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherit_product_variant_booking" model="ir.ui.view">
+        <field name="name">product.product.view.form.booking</field>
+        <field name="model">product.product</field>
+        <!-- <field name="mode">primary</field> -->
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options']" position="inside">
+                <span class="d-inline-block">
+                    <field name="is_booking"/>
+                    <label for="is_booking"/>
+                </span>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="after">
+                <field name="booking_type_id"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="booking_products_action" model="ir.actions.act_window">
+        <field name="name">Booking Products</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.product</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('is_booking', '=', True)]</field>
+        <field name="context">{
+            'default_is_booking':True,
+            }</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Records Found!
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

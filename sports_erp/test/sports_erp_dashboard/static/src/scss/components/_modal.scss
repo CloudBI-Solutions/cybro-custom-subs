@@ -1,0 +1,28 @@
+.se-modal__content {
+  border-radius: 0px;
+  border: none;
+}
+.se-modal__title {
+  font-weight: bold;
+}
+.modal-content {
+  padding: 15px 10px;
+}
+.modal-header,
+.modal-footer {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.modal-footer {
+  border-top: none;
+}
+.se-modal--wide {
+  width: 80%;
+}
+.se-modal__dialog {
+  // Large devices (desktops, 992px and up)
+  @media (min-width: 992px) {
+    min-width: 900px;
+  }
+}

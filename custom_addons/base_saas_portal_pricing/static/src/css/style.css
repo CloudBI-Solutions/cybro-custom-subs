@@ -1,0 +1,62 @@
+.card{height: 80px; box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; cursor: pointer;}.img-container{position: absolute; left: 8px;}.form{padding:100px; background-color: #f2f2f2;}.app-desc{margin-left:4.5rem;}
+.app-radio{color: #364d81; position: absolute; bottom: 0; right: 0; margin-right: 4px; margin-bottom: 4px; font-size: large;}
+h1{font-weight: bold; background-color: #e6e8ff; font-family: "Times New Roman", Times, serif; color: #5d6178;}
+.tab {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 0px 2px;
+  background: #32557f;
+  display: inline-block;
+  color: #fff;
+  border-radius: 3px 3px 0px 0px;
+}
+
+.panels {
+  background: #fff;
+  height: fit-content;
+  width: 100%;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.panel {
+  display: none;
+  animation: fadein 0.2s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.panel-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.radio {
+  display: none;
+}
+
+#one:checked ~ .panels #one-panel,
+#two:checked ~ .panels #two-panel,
+#three:checked ~ .panels #three-panel {
+  display: block;
+}
+
+#one:checked ~ .tabs #one-tab,
+#two:checked ~ .tabs #two-tab,
+#three:checked ~ .tabs #three-tab {
+  background: #fff;
+  color: #000;
+  border-top: 3px solid #32557f;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}

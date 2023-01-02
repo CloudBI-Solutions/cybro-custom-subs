@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id ="paceflow_package" model="product.product">
+            <field name="name">Pace-flow Package</field>
+            <field name="type">service</field>
+            <field name="list_price">100</field>
+        </record>
+    </data>
+
+    <data noupdate="1">
+        <record id ="slide_channel_sections" model="slide.channel">
+            <field name="name">Demo Sections</field>
+            <field name="active">False</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_assessment" model="assessment.stage">
+            <field name="name">Assessment</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_assigned" model="assessment.stage">
+            <field name="name">Assigned</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_in_progress" model="assessment.stage">
+            <field name="name">In Progress</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_done" model="assessment.stage">
+            <field name="name">Done</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_cancel" model="assessment.stage">
+            <field name="name">Cancel</field>
+        </record>
+    </data>
+</odoo>

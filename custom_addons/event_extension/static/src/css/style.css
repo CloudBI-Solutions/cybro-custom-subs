@@ -1,0 +1,21 @@
+.warning_placeholder::-webkit-input-placeholder {
+    color: #dc3545;
+    opacity: 1;
+ }
+#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
+}
+
+.tacbox {
+  display:block;
+  padding: 0.5em;
+  border: 3px solid #ddd;
+  background-color: #eee;
+  max-width: 800px;
+}
+.canvas_border{
+    background: #e8e8e8;
+    border-radius: 15px;
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <template name="Badge" id="s_special_badge">
+            <span class="s_badge badge badge-secondary o_animable set-card-badge set-card-badge--warning"
+                  data-name="Badge">Special
+            </span>
+        </template>
+
+    </data>
+</odoo>

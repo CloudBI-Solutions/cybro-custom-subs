@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="paceflow_footer" inherit_id="website.layout">
+            <xpath expr="//div[@id='footer']" position="replace">
+                <div id="footer">
+                <div class="paceflow-footer">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center align-items-center">
+                            <img src="/paceflow/static/description/images/website/paceflow-logo.png"
+                                 alt="Paceflow" width="139" height="70"/>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center align-items-center">
+                            <ul class="paceflow-footer-links">
+                                <li class="paceflow-footer-links__item">
+                                    <a href="#"
+                                       class="paceflow-footer-link text-uppercase">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li class="paceflow-footer-links__item">
+                                    <a href="#"
+                                       class="paceflow-footer-link text-uppercase">
+                                        Terms &amp; Conditions
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 d-flex justify-content-center align-items-center">
+                            <ul class="paceflow-footer-social">
+                                <li class="paceflow-footer-social__item">
+                                    <a href="#"
+                                       class="paceflow-footer-social__icons">
+                                        <img src="/paceflow/static/description/images/ui/facebook.png"
+                                             height="24" width="24"
+                                             alt="Facebook"/>
+                                    </a>
+                                </li>
+                                <li class="paceflow-footer-social__item">
+                                    <a href="#"
+                                       class="paceflow-footer-social__icons">
+                                        <img src="/paceflow/static/description/images/ui/youtube.png"
+                                             height="24" width="24"
+                                             alt="YouTube"/>
+                                    </a>
+                                </li>
+                                <li class="paceflow-footer-social__item">
+                                    <a href="#"
+                                       class="paceflow-footer-social__icons">
+                                        <img src="/paceflow/static/description/images/ui/twitter.png"
+                                             height="24" width="24"
+                                             alt="Twitter"/>
+                                    </a>
+                                </li>
+                                <li class="paceflow-footer-social__item">
+                                    <a href="#"
+                                       class="paceflow-footer-social__icons">
+                                        <img src="/paceflow/static/description/images/ui/instagram.png"
+                                             height="24" width="24"
+                                             alt="Instagram"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                            <small class="paceflow-footer-credits text-primary">
+                                Powered by Dineticq (C) 2022 DINETICQ
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//*[hasclass('o_footer_copyright')]" position="replace">
+            </xpath>
+
+        </template>
+    </data>
+</odoo>

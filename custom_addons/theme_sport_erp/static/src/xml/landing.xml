@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <templates id="template" xml:space="preserve">
+        <t t-name="SportERP_Landing"
+           t-inherit="website.template"
+           t-inherit-mode="extension">
+            <xpath expr="//h2" position="replace">
+                <t t-call="theme_sport_erp.s_hero_snippet"/>
+                <t t-call="theme_sport_erp.s_feature_snippet"/>
+                <t t-call="theme_sport_erp.s_leader_template"/>
+                <t t-call="theme_sport_erp.s_coaches_template"/>
+            </xpath>
+            <xpath expr="//p" position="replace">
+            </xpath>
+        </t>
+    </templates>

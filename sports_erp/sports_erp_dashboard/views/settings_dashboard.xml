@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="settings_dashboard" name="Settings">
+            <t t-call="portal.portal_layout">
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <h1 class="display-5 text-secondary se-dashboard__title">
+                                        My Dashboard
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                            <hr/>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-2">
+                                    <a href="/my/invoices?{{ keep_query() }}">
+                                    <div class="se-dashbaord__record-block">
+                                        <div class="se-dashboard__record-block-details">
+                                            <span class="d-block">
+                                                <img src="/sports_erp_dashboard/static/src/images/ui/invoice.png"
+                                     width="45" height="50"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                                                Invoices
+                                            </span>
+                                            <br/>
+                                        </div>
+
+
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                                </div>
+                            </div>
+
+
+            </t>
+
+        </template>
+    </data>
+</odoo>

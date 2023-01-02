@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_slide_channel_form_inherit" model="ir.ui.view">
+            <field name="name">view.slide.channel.form.inherit</field>
+            <field name="model">slide.channel</field>
+            <field name="inherit_id" ref="website_slides.view_slide_channel_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <div name="options" groups="base.group_user">
+                        <div>
+                            <field name="is_paceflow_course" force_save="1"/>
+                            <label for="is_paceflow_course"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_slide_slide_form_inherit" model="ir.ui.view">
+            <field name="name">view.slide.slide.form.inherit</field>
+            <field name="model">slide.slide</field>
+            <field name="inherit_id" ref="website_slides.view_slide_slide_form"/>
+            <field name="arch" type="xml">
+                <page name="statistics" position="after">
+                        <page string="Pace-flow" name="pace_flow">
+                            <group>
+                                <group>
+                                    <field name="is_drill"/>
+                                </group>
+                                <group name="drill_type">
+                                    <field name="legality" attrs="{'invisible': [('is_drill', '!=', True)]}"/>
+                                    <field name="momentum" attrs="{'invisible': [('is_drill', '!=', True)]}"/>
+                                    <field name="stability" attrs="{'invisible': [('is_drill', '!=', True)]}"/>
+                                    <field name="stability_rear" attrs="{'invisible': [('stability', '!=', True)]}"/>
+                                    <field name="stability_side" attrs="{'invisible': [('stability', '!=', True)]}"/>
+                                    <field name="paceflow" attrs="{'invisible': [('is_drill', '!=', True)]}"/>
+                                    <field name="paceflow_rear" attrs="{'invisible': [('paceflow', '!=', True)]}"/>
+                                    <field name="paceflow_side" attrs="{'invisible': [('paceflow', '!=', True)]}"/>
+                                </group>
+                            </group>
+                        </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="all_drills_menu_action" model="ir.actions.act_window">
+            <field name="name">Drills</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">slide.slide</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_drill','=', True)]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

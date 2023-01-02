@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="sequence_booking" model="ir.sequence">
+       <field name="name">Booking</field>
+       <field name="code">booking.booking</field>
+       <field name="active">TRUE</field>
+       <field name="prefix">B</field>
+       <field name="padding">6</field>
+       <field name="number_next">1</field>
+       <field name="number_increment">1</field>
+    </record>
+    <data noupdate="1">
+        <record id ="stage_enquiry" model="booking.stage">
+            <field name="name">Enquiry</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_follow_up" model="booking.stage">
+            <field name="name">Follow-up</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_booked" model="booking.stage">
+            <field name="name">Booked</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_done" model="booking.stage">
+            <field name="name">Done</field>
+        </record>
+    </data>
+    <data noupdate="1">
+        <record id ="stage_cancel" model="booking.stage">
+            <field name="name">Cancel</field>
+        </record>
+    </data>
+    <data>
+        <record id="base.model_res_users" model="ir.model">
+            <field name="website_form_key">create_user</field>
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Create a User/Fan</field>
+        </record>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>res.users</value>
+            <value eval="[
+                'name', 'email', 'login'
+            ]"/>
+        </function>
+    </data>
+</odoo>

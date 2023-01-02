@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_layout_paceflow" name="Portal"
+              inherit_id="portal.portal_layout" customize_show="True"
+              priority="100">
+        <xpath expr="//div[hasclass('o_my_sidebar')]" position="replace">
+
+        </xpath>
+    </template>
+
+    <!--    DASHBOARD HOME-->
+
+    <template id="paceflow_portal_my_home" name="Coach Dashboard">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <h1 class="paceflow-section-header--h1 font-weight-bold paceflow-text-grey-800 paceflow-mb-3-resp">
+                            Home
+                        </h1>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3 offset-lg-3">
+                        <div class="paceflow-badge paceflow-badge--primary d-flex justify-content-between align-items-center">
+                            <div>Getting Started</div>
+                            <img src="/paceflow/static/description/images/ui/exclaimation.png"
+                                 class="paceflow-badge__icon"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row paceflow-reverse-resp">
+                <div class="col-12 col-md-12 col-lg-6">
+                    <a href="/my/profile">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/profile.png"
+                                     width="35" height="35"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Profile
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="/my/child_cont">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/person.png"
+                                     width="35" height="35"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Players
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/my/group">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/groups.png"
+                                     width="41" height="34"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Groups
+                            </div>
+                        </div>
+                    </a>
+                    <a href="/my/parent_home">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/person.png"
+                                     width="35" height="35"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Parents
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-12 col-lg-3 offset-lg-3">
+                    <form id="upload_video" method="post" action="/my/upload">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <t t-if="child_contacts">
+                            <div class="paceflow-card  paceflow-shadow mb-3">
+                                <div class="paceflow-card__header d-flex justify-content-between align-items-center paceflow-card__header--plus">
+                                    <div class="paceflow-card__header-text">
+                                        Upload New Video
+                                    </div>
+
+                                    <input type="image"
+                                           src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                           alt="Submit"/>
+                                </div>
+
+                                <div class="paceflow-card__body d-none d-lg-block d-xl-block">
+                                    <img src="/paceflow/static/description/images/ui/background-video.png"
+                                         class="paceflow-card__video-background"/>
+                                </div>
+
+                                <div class="paceflow-card__footer py-4">
+                                    <select class="paceflow-select"
+                                            id="child_id" name="child_id">
+                                        <t t-foreach="child_contacts or []"
+                                           t-as="child">
+                                            <option class="state"
+                                                    t-att-value="child.id">
+                                                <t t-esc="child.name"/>
+                                                <t t-if="child.last_name">
+                                                    <t t-esc="child.last_name"/>
+                                                </t>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <a href="/my/create_child">
+                                <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected">
+                                    Add New Player
+                                    <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                         width="16" height="16"/>
+                                </div>
+                            </a>
+                        </t>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    MY PROFILE -->
+    <template id="my_profile" name="Profile">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/home/">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            My Profile
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <form id="profile_edit_form" action="/my/update_profile"
+                  method="post" enctype="multipart/form-data"
+                  name="upload_form"
+                  class="o_mark_required" data-model_name="mail.mail">
+                <input type="hidden" name="csrf_token"
+                       t-att-value="request.csrf_token()"/>
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-12 col-lg-5 d-flex flex-column justify-content-center align-items-center my-5">
+                        <div class="paceflow-profile-section">
+                            <div class="paceflow-profile-section__photo">
+                                <label for="picture">
+                                    <t t-if="partner.image_1024">
+                                        <img id="profile_picture"
+                                             width="100" height="100"
+                                             class="paceflow-profile-section__photo"
+                                             t-att-src="image_data_uri(partner.image_1024)"
+                                             style="cursor: pointer;"/>
+                                    </t>
+                                    <t t-if="not partner.image_1024">
+                                        <img id="profile_picture"
+                                             class="paceflow-profile-section__camera"
+                                             src="/paceflow/static/description/images/ui/camera.png"
+                                             style="cursor: pointer;"/>
+                                    </t>
+                                </label>
+                                <input id="picture"
+                                       style="margin-left: 50px;"
+                                       onchange="image_preview()"
+                                       type="file" name="photo" class="file"
+                                       multiple="true"
+                                       data-show-upload="true"
+                                       data-show-caption="true" lass="file"
+                                       data-show-preview="true"
+                                       hidden="true"/>
+                            </div>
+                            <div class="paceflow-profile-section__meta position-relative">
+                                <div class="paceflow-profile-section__name paceflow-text-grey-800">
+                                    <input type="text" name="partner_name"
+                                           t-if="partner.last_name"
+                                           t-att-value='partner.name +" "+ partner.last_name'
+                                           style="background-color: transparent;
+                                              color: #7f7e7f;
+                                              outline: none;
+                                              border:none;
+                                              text-align: center;">
+                                    </input>
+                                    <input type="text"
+                                           name="partner_name"
+                                           t-if="not partner.last_name"
+                                           t-att-value='partner.name'
+                                           style="background-color: transparent;
+                                              color: #7f7e7f;
+                                              outline: none;
+                                              border:none;
+                                              text-align: center;">
+                                    </input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-12 col-lg-7 my-5">
+                        <input type="text" name="email" id="email"
+                               class="paceflow-form-control" placeholder="Email"
+                               t-att-value='partner.email'/>
+                        <div class="form-row">
+                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                <input type="text" name="code" id="code"
+                                       class="paceflow-form-control"
+                                       t-att-value="country_code"
+                                />
+                            </div>
+                            <div class="col-sm-10 col-md-10 col-lg-10">
+                                <input type="text" name="phone" id="phone"
+                                       class="paceflow-form-control"
+                                       placeholder="Phone (incl. country code)"
+                                       t-att-value="number"/>
+                            </div>
+                        </div>
+                        <input type="text" name="partner" id="partner"
+                               t-att-value="partner.id" hidden="true"/>
+                        <input type="text" name="house" id="house"
+                               class="paceflow-form-control"
+                               placeholder="House No./ Name"
+                               t-att-value="partner.street"/>
+                        <input type="text" name="street" id="street"
+                               class="paceflow-form-control"
+                               placeholder="Street"
+                               t-att-value="partner.street2"/>
+                        <input type="text" name="town" id="town"
+                               class="paceflow-form-control" placeholder="Town"
+                               t-att-value="partner.city"/>
+                        <div class="form-row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <select name="state_id" class="paceflow-select">
+                                    <t t-foreach="states or []" t-as="state">
+                                        <option class="state"
+                                                t-att-value="state.id"
+                                                t-att-country="state.country_id.id"
+                                                t-att-selected="state.id == partner.state_id.id">
+                                            <t t-esc="state.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <input type="text" name="phonecode"
+                                       id="phonecode"
+                                       class="paceflow-form-control paceflow-form-control--max-width"
+                                       placeholder="Post Code"
+                                       t-att-value="partner.zip"/>
+                            </div>
+                        </div>
+                        <select name="country_id"
+                                class="paceflow-select">
+                            <t t-foreach="countries or []" t-as="country">
+                                <option t-att-value="country.id"
+                                        t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">
+                                    <t t-esc="country.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="w-100 d-flex justify-content-center align-items-center">
+                        <button type="submit"
+                                class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+        </t>
+    </template>
+
+    <!--    portal upload thanks page -->
+    <template id="portal_upload_thanks_page" name="Thanks">
+        <t t-call="portal.portal_layout">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-4 mx-auto">
+                        <div class="paceflow-message-container">
+                            <img src="/paceflow/static/description/images/ui/check-mark.png"
+                                 width="70"
+                                 height="70"
+                                 class="paceflow-message-container__icon"
+                                 alt="Success"/>
+                            <h1 class="text-center">Success</h1>
+                            <p class="text-center">The videos are uploaded.
+                            </p>
+                            <a href="/my/home/"
+                               class="paceflow-btn paceflow-btn--muted text-center"
+                               style="margin-top: 15px;">
+                                <i class="fa fa-home mr-2"/>Go Home
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    portal upload error page-->
+    <template id="portal_upload_error_page" name="Error!">
+        <t t-call="portal.portal_layout">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4 mx-auto">
+                    <div class="paceflow-message-container">
+                        <img src="/paceflow/static/description/images/ui/sad.png"
+                             width="70" height="70"
+                             class="paceflow-message-container__icon"
+                             alt="Success"/>
+                        <h1 class="text-center">Oops! Something Went Wrong</h1>
+                        <p class="text-center">Please try after some time.</p>
+                        <a href="/my/home"
+                           class="paceflow-btn paceflow-btn--muted text-center"
+                           style="margin-top: 15px;"><i
+                                class="fa fa-home mr-2"/>Go Home
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Assessment Dashboard-->
+    <template id="portal_client_dashboard" name="Client Dashboard">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/child_cont">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Assessment Report
+                        </h1>
+                    </div>
+                </div>
+                <t t-if="not assessments">
+                    <div class="container-fluid pt-5">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-8 mx-auto">
+                                <div class="alert paceflow-alert paceflow-alert--info"
+                                     role="alert">
+                                    <t t-esc="child.name"/>
+                                    <t t-if="child.last_name"
+                                       t-esc="child.last_name"/>
+                                    <span>
+                                        has no assessment done.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="container">
+                        <div id="filter"
+                             class="row d-flex align-items-center py-4 border-bottom">
+                            <div class="col-sm-12 col-md-12 col-lg-3">
+                                <label class="db-top-label"
+                                       for="recentAssessment">Assessments
+                                </label>
+                                <select id="filter_selection"
+                                        class="db-form-control">
+                                    <t t-foreach="assessments or []"
+                                       t-as="assessment">
+                                        <option class="state"
+                                                t-att-value="assessment.id">
+                                            <t t-esc="assessment.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                            <div style="display:none;">
+                                <input name="child" id="child_id"
+                                       t-att-value="child.id"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+
+<!--                        OVERALL CHART-->
+                            <div class="paceflow-chart paceflow-assesment-main-chart">
+                                <div class="paceflow-chart__chart paceflow-chart-container">
+                                    <canvas width="220px" height="220px"
+                                            id="summary_summary"/>
+                                    <div class="text-secondary paceflow-chart-container__count paceflow-chart-container__count--lg">
+                                        <span id="summary_summary_score"/>
+                                        <sup class="paceflow-chart-container__percent paceflow-chart-container__percent--lg">
+                                            %
+                                        </sup>
+                                    </div>
+                                </div>
+                                <h2 class="paceflow-chart__text ml-3">Overall
+                                    <br/>
+                                    Score
+                                </h2>
+                            </div>
+                            <div class="row">
+
+<!--                            IMAGE CAROUSEL-->
+
+                                <div class="col-sm-12 col-md-12 col-lg-12 paceflow-assessment-gallery">
+                                    <div id="carouselExampleIndicators"
+                                         class="carousel w-100 mt-2"
+                                         data-ride="carousel">
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carouselExampleIndicators"
+                                                data-slide-to="0"
+                                                class="active"/>
+                                            <li data-target="#carouselExampleIndicators"
+                                                data-slide-to="1"
+                                                class="active"/>
+                                        </ol>
+
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active">
+                                                <img id="img_summary_overall_1"
+                                                     class="d-block w-100"/>
+                                            </div>
+                                            <div class="carousel-item">
+                                                <img id="img_summary_overall_2"
+                                                     class="d-block w-100"/>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev"
+                                                type="button"
+                                                data-target="#carouselExampleIndicators"
+                                                data-slide="prev"
+                                                style="border: none; background: none;">
+                                            <i class="fa fa-chevron-left paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Previous
+                                            </span>
+                                        </button>
+                                        <button class="carousel-control-next"
+                                                type="button"
+                                                data-target="#carouselExampleIndicators"
+                                                data-slide="next"
+                                                style="border: none; background: none;">
+                                            <i class="fa fa-chevron-right paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="row">
+
+                                <!--                        PROFILE-->
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square">
+                                        <div class="paceflow-profile-section paceflow-assessment-profile-section h-auto">
+                                            <div class="paceflow-profile-section__photo paceflow-profile-section__photo--square">
+                                                <t t-if="child.partner_id.image_1024">
+                                                    <img id="profile_picture"
+                                                         t-att-src="image_data_uri(child.partner_id.image_1024)"
+                                                         class="paceflow-profile-section__photo paceflow-profile-section__photo--square"/>
+                                                </t>
+                                                <t t-if="not child.partner_id.image_1024">
+                                                    <img id="profile_picture"
+                                                         class="paceflow-profile-section__camera paceflow-profile-section__camera--square"
+                                                         src="/paceflow/static/description/images/ui/camera.png"
+                                                         style="cursor: pointer;"/>
+                                                </t>
+                                            </div>
+                                            <div class="paceflow-profile-section__meta position-relative paceflow-assesment-resp-px-3">
+                                                <div class="paceflow-profile-section__name paceflow-profile-section__name--square paceflow-text-grey-800 text-center">
+                                                    <t t-esc="child.name"/>
+                                                    <t t-if="child.last_name">
+                                                        <t t-esc="child.last_name"/>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                        LEGALITY CARD-->
+
+                                <div onclick="goto_legality()" id="legality_id"
+                                     class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square paceflow-card-item--right paceflow-card-item--right-square paceflow-shadow">
+                                        <div id="div_legality_container"
+                                             class="paceflow-chart__chart paceflow-chart-container"
+                                             style="margin-bottom: 15px;">
+                                            <span id="legality_light"/>
+                                        </div>
+                                        <div class="paceflow-card-item__text paceflow-card-item__text--large text-center">
+                                            Legality
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                        MOMENTUM CARD-->
+                                <div onclick="goto_momentum()"
+                                     class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square paceflow-card-item--right paceflow-card-item--right-square paceflow-shadow">
+                                        <div class="paceflow-chart__chart paceflow-chart-container"
+                                             style="top: -5px;">
+                                            <canvas width="120px" height="120px"
+                                                    id="summary_momentum"/>
+                                            <div class="text-secondary paceflow-chart-container__count paceflow-chart-container__count--square"
+                                                 style="top: 33px">
+                                                <span id="summary_momentum_score"/>
+                                                <sup class="paceflow-chart-container__percent paceflow-chart-container__percent--sm">
+                                                    %
+                                                </sup>
+                                            </div>
+                                        </div>
+                                        <div class="paceflow-card-item__text paceflow-card-item__text--large text-center">
+                                            Momentum
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                        STABILITY CARD-->
+
+                                <div onclick="goto_stability()"
+                                     class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square paceflow-card-item--right paceflow-card-item--right-square paceflow-shadow">
+                                        <div class="paceflow-chart__chart paceflow-chart-container"
+                                             style="top: -5px;">
+                                            <canvas width="120px" height="120px"
+                                                    id="summary_stability"/>
+                                            <div class="text-secondary paceflow-chart-container__count paceflow-chart-container__count--square"
+                                                 style="top: 33px">
+                                                <span id="summary_stability_score"/>
+                                                <sup class="paceflow-chart-container__percent paceflow-chart-container__percent--sm">
+                                                    %
+                                                </sup>
+                                            </div>
+                                        </div>
+                                        <div class="paceflow-card-item__text paceflow-card-item__text--large text-center">
+                                            Stability
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                        BALL SPEED-->
+
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square paceflow-shadow">
+                                        <img src="/paceflow/static/description/images/ui/cricket-ball.png"
+                                             width="100" height="100"
+                                             style="margin-bottom: 15px;"/>
+                                        <div class="paceflow-card-item__text paceflow-card-item__text--large text-center">
+                                            Ball Speed
+                                            <strong>
+                                                <span id="velocity">
+                                                </span>
+                                                <span>MPH
+                                                </span>
+                                            </strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+<!--                    PACE FLOW-->
+
+                                <div onclick="goto_paceflow()"
+                                     class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="paceflow-card-item paceflow-card-item--square paceflow-card-item--right paceflow-card-item--right-square paceflow-shadow">
+                                        <div class="paceflow-chart__chart paceflow-chart-container"
+                                             style="top: -5px;">
+                                            <canvas width="120px" height="120px"
+                                                    id="summary_paceflow"/>
+                                            <div class="text-secondary paceflow-chart-container__count paceflow-chart-container__count--square"
+                                                 style="top: 33px">
+                                                <span id="summary_paceflow_score"/>
+                                                <sup class="paceflow-chart-container__percent paceflow-chart-container__percent--sm">
+                                                    %
+                                                </sup>
+                                            </div>
+                                        </div>
+                                        <div class="paceflow-card-item__text paceflow-card-item__text--large text-center">
+                                            Paceflow
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+<!--                COMMENTS-->
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="paceflow-assessment-section my-5">
+                                <h2 class="paceflow-assessment-section__title">
+                                    Comments
+                                </h2>
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <ul class="nav nav-tabs" id="myTab"
+                                        role="tablist">
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <a class="nav-link active"
+                                               id="legality-tab"
+                                               data-toggle="tab"
+                                               href="#legality" role="tab"
+                                               aria-controls="home"
+                                               aria-selected="true">Legality
+                                            </a>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <a class="nav-link"
+                                               id="stability-tab"
+                                               data-toggle="tab"
+                                               href="#momentum" role="tab"
+                                               aria-controls="profile"
+                                               aria-selected="false">Momentum
+                                            </a>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <a class="nav-link"
+                                               id="ball-speed-tab"
+                                               data-toggle="tab"
+                                               href="#stability" role="tab"
+                                               aria-controls="contact"
+                                               aria-selected="false">Stability
+                                            </a>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <a class="nav-link"
+                                               id="paceflow-tab"
+                                               data-toggle="tab"
+                                               href="#paceflow" role="tab"
+                                               aria-controls="contact"
+                                               aria-selected="false">Paceflow
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane tab-pane--comments  fade show active"
+                                             id="legality" role="tabpanel"
+                                             aria-labelledby="legality-tab">
+                                            <ul id="legality_comments" class="paceflow-comments">
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane tab-pane--comments fade"
+                                             id="momentum" role="tabpanel"
+                                             aria-labelledby="stability-tab">
+                                            <ul id="momentum_comments" class="paceflow-comments">
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane tab-pane--comments fade"
+                                             id="stability" role="tabpanel"
+                                             aria-labelledby="ball-speed-tab">
+                                            <ul id="stability_comments" class="paceflow-comments">
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane tab-pane--comments fade"
+                                             id="paceflow" role="tabpanel"
+                                             aria-labelledby="paceflow-tab">
+                                            <ul id="paceflow_comments" class="paceflow-comments">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+<!--                            DRILLS -->
+                            <div class="paceflow-assessment-section my-5">
+                                <h2 class="paceflow-assessment-section__title mb-4">
+                                    Recommended Drills
+                                </h2>
+                                <ul class="nav nav-tabs" id="myTabDrillntent"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active"
+                                           id="legality-tab-drill"
+                                           data-toggle="tab"
+                                           href="#legality-drill" role="tab"
+                                           aria-controls="home"
+                                           aria-selected="true">Legality
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link"
+                                           id="momentum-tab-drill"
+                                           data-toggle="tab"
+                                           href="#momentum-drill" role="tab"
+                                           aria-controls="profile"
+                                           aria-selected="false">Momentum
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link"
+                                           id="stability-tab-drill"
+                                           data-toggle="tab"
+                                           href="#stability-drill" role="tab"
+                                           aria-controls="contact"
+                                           aria-selected="false">Stability
+                                        </a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link"
+                                           id="paceflow-tab-drill"
+                                           data-toggle="tab"
+                                           href="#paceflow-drill" role="tab"
+                                           aria-controls="contact"
+                                           aria-selected="false">Paceflow
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabDrillContent">
+                                    <div class="tab-pane   fade show active"
+                                         id="legality-drill" role="tabpanel"
+                                         aria-labelledby="legality-tab-drill">
+
+                                        <!-- Video Carousel Legality-->
+
+                                        <div id="carouselDrillIndicatorsLegality"
+                                             class="carousel slide"
+                                             data-ride="carousel">
+
+                                            <div id="video_carousel_legality" class="carousel-inner">
+                                            </div>
+                                            <button id="prev_button_legality"
+                                                class="carousel-control-prev"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsLegality"
+                                                data-slide="prev"
+                                                style="border: none; background: none; width: 12px;">
+                                                <i class="fa fa-chevron-left paceflow-carousel__nav-icon"/>
+                                                <span class="sr-only">Previous</span>
+                                            </button>
+                                            <button id="next_button_legality"
+                                                    class="carousel-control-next"
+                                                    type="button"
+                                                    data-target="#carouselDrillIndicatorsLegality"
+                                                    data-slide="next"
+                                                    style="border: none; background: none; width: 12px;">
+                                                    <i class="fa fa-chevron-right paceflow-carousel__nav-icon"/>
+                                                    <span class="sr-only">Next</span>
+                                            </button>
+                                        </div>
+
+                                        <!--  End of Video Carousel -->
+                                    </div>
+                                    <div class="tab-pane fade"
+                                         id="momentum-drill" role="tabpanel"
+                                         aria-labelledby="momentum-tab-drill">
+
+<!--                                        VIDEO CAROUSEL MOMENTUM-->
+
+                                        <div id="carouselDrillIndicatorsMomentum"
+                                             class="carousel slide"
+                                             data-ride="carousel">
+
+                                            <div id="video_carousel_momentum" class="carousel-inner">
+                                            </div>
+                                            <button id="prev_button_momentum"
+                                                class="carousel-control-prev"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsMomentum"
+                                                data-slide="prev"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-left paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Previous
+                                            </span>
+                                        </button>
+                                        <button id="next_button_momentum"
+                                                class="carousel-control-next"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsMomentum"
+                                                data-slide="next"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-right paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Next</span>
+                                        </button>
+                                        </div>
+<!--                                        END OF VIDEO CAROUSEL-->
+                                    </div>
+
+                                    <div class="tab-pane fade"
+                                         id="stability-drill" role="tabpanel"
+                                         aria-labelledby="stability-tab-drill">
+
+<!--                                        Video Carousel Stability-->
+
+                                        <div id="carouselDrillIndicatorsStability"
+                                             class="carousel slide"
+                                             data-ride="carousel">
+
+                                            <div id="video_carousel_stability" class="carousel-inner">
+                                            </div>
+                                            <button id="prev_button_stability"
+                                                class="carousel-control-prev"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsStability"
+                                                data-slide="prev"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-left paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Previous
+                                            </span>
+                                        </button>
+                                        <button id="next_button_stability"
+                                                class="carousel-control-next"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsStability"
+                                                data-slide="next"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-right paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Next</span>
+                                        </button>
+                                        </div>
+<!--                                        Video Carousel End-->
+                                    </div>
+
+
+                                    <div class="tab-pane fade"
+                                         id="paceflow-drill" role="tabpanel"
+                                         aria-labelledby="paceflow-tab-drill">
+
+<!--                                        PACEFLOW DRILL VIDEO CAROUSEL -->
+
+                                            <div id="carouselDrillIndicatorsPaceflow"
+                                             class="carousel slide"
+                                             data-ride="carousel">
+
+                                            <div id="video_carousel_paceflow" class="carousel-inner">
+                                            </div>
+                                            <button id="prev_button_paceflow"
+                                                class="carousel-control-prev"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsPaceflow"
+                                                data-slide="prev"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-left paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Previous
+                                            </span>
+                                        </button>
+                                        <button id="next_button_paceflow"
+                                                class="carousel-control-next"
+                                                type="button"
+                                                data-target="#carouselDrillIndicatorsPaceflow"
+                                                data-slide="next"
+                                                style="border: none; background: none; width: 12px;">
+                                            <i class="fa fa-chevron-right paceflow-carousel__nav-icon"/>
+                                            <span class="sr-only">Next</span>
+                                        </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                                crossorigin="anonymous"/>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                            crossorigin="anonymous"/>
+                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                            crossorigin="anonymous"/>
+                    <script>
+
+                        function goto_paceflow() {
+                        var goto = '/my/assessment_report/' +
+                        $("#child_id").val() + '/paceflow/' +
+                        $("select[id='filter_selection']").val()
+                        window.location = goto;
+                        }
+                        function goto_stability() {
+                        var goto = '/my/assessment_report/' +
+                        $("#child_id").val() + '/stability/' +
+                        $("select[id='filter_selection']").val()
+                        window.location = goto;
+                        }
+                        function goto_momentum() {
+                        var goto = '/my/assessment_report/' +
+                        $("#child_id").val() + '/momentum/' +
+                        $("select[id='filter_selection']").val()
+                        window.location = goto;
+                        }
+                        function goto_legality() {
+                        var goto = '/my/assessment_report/' +
+                        $("#child_id").val() + '/legality/' +
+                        $("select[id='filter_selection']").val()
+                        window.location = goto;
+                        }
+                    </script>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_calculated_metric_operator,access.calculated.metric.operator,model_calculated_metric_operator,,1,1,1,1
+access_calculated_metric,access.calculated.metric,model_calculated_metric,,1,1,1,1
+access_metric,access.metric,model_metric_management,,1,1,1,1
+access_metric_visual,access.metric.visual,model_assessment_visualization_configuration,,1,1,1,1
+access_lifestyle_configuration,access.lifestyle.configuration,model_lifestyle_assessment_configuration,,1,1,1,1
+access_hrv_configuration,access.hrv.configuration,model_hrv_assessment_configuration,,1,1,1,1
+access_sc_configuration,access.sc.configuration,model_sc_assessment_configuration,,1,1,1,1
+access_mobility_configuration,access.mobility.configuration,model_mobility_assessment_configuration,,1,1,1,1
+access_mental_configuration,access.mental.configuration,model_mental_assessment_configuration,,1,1,1,1
+access_nutrition_configuration,access.nutrition.configuration,model_nutrition_assessment_configuration,,1,1,1,1
+access_aerobic_configuration,access.aerobic.configuration,model_aerobic_assessment_configuration,,1,1,1,1
+access_anaerobic_configuration,access.anaerobic.configuration,model_anaerobic_assessment_configuration,,1,1,1,1
+access_visual_configuration,access.visual.configuration,model_visualisation_configuration,,1,1,1,1

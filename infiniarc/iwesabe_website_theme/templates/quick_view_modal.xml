@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="products_quick_view">
+        <div class="modal fade quick-view-model-root" id="quick_view_model_shop" tabindex='-1'>
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content quick_view_modal">
+
+
+                    <div class="ian-body">
+                        <div class="ian-container">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#staticBackdrop">
+                                Launch static backdrop modal
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal ia-popup fade" id="staticBackdrop" data-backdrop="static"
+                                 data-keyboard="false" tabindex="-1"
+                                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body ian-popup__modal-body">
+                                            <button type="button" class="close ian-popup__close-btn"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <img src="./images/icons/close.svg" width="22" height="22"/>
+                                                </span>
+                                            </button>
+                                            <div class="ian-popup__product-details">
+                                                <div class="ian-popup__product-image-container">
+                                                    <div class="ian-popup__badge-container">
+                                                        <span class="ian-badge ian-badge--yellow">Best Seller</span>
+                                                    </div>
+                                                    <div id="popupIndicators" class="carousel slide"
+                                                         data-ride="carousel">
+                                                        <div class="carousel-inner">
+                                                            <div class="carousel-item active">
+                                                                <img src="./images/Wave_3.png"
+                                                                     class="d-block w-100 ian-popup__product-image"
+                                                                     alt="..."/>
+                                                            </div>
+                                                            <div class="carousel-item">
+                                                                <img src="./images/product-1.png"
+                                                                     class="d-block w-100 ian-popup__product-image"
+                                                                     alt="..."/>
+                                                            </div>
+                                                        </div>
+                                                        <button class="carousel-control-prev ian-popup__nav-button"
+                                                                type="button" data-target="#popupIndicators"
+                                                                data-slide="prev">
+                                                            <span class="carousel-control-prev-icon ian-popup__nav-icon--left"
+                                                                  aria-hidden="true"> </span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next ian-popup__nav-button "
+                                                                type="button" data-target="#popupIndicators"
+                                                                data-slide="next">
+                                                            <span class="carousel-control-next-icon ian-popup__nav-icon--right"
+                                                                  aria-hidden="true"> </span>
+                                                            <span class="sr-only">Next</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="ian-popup__product-meta-details">
+                                                    <span class="ian-popup__product-title">Elgato Wave:3 Gaming
+                                                        Microphone
+                                                    </span>
+                                                    <div class="ian-popup__price">
+                                                        <span class="ian-popup__product-price">SAR 870.00</span>
+                                                        <span class="ian-popup__old-price">SAR 1,199.00</span>
+                                                        <span class="ian-popup__percentage">10% Off</span>
+                                                    </div>
+                                                    <div class="ian-popup__counter">
+                                                        <a href="#" class="ian-popup__counter-btn" id="decreaseCount">
+                                                            <img src="./images/icons/subtract.svg" width="18"
+                                                                 height="18"/>
+                                                        </a>
+                                                        <input type="number" class="ian-popup__counter-input" step="1"
+                                                               value="1" min="1" readonly="readonly"/>
+                                                        <a href="#" class="ian-popup__counter-btn" id="increaseCount">
+                                                            <img src="./images/icons/add.svg" width="18" height="18"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex justify-content-start align-items-center flex-wrap mt-4">
+                                                        <input type="hidden" class="ian_prod_id" t-att-value="product.product_variant_id.id"/>
+                                                        <a class="btn ia-product-card__cta-btn ia-btn--primary ian-add-cart-btn"
+                                                                t-att-data-id="'%s' % product.product_variant_id.id"
+                                                                style="width:75%; height:50px; border-radius:0px; margin-top:0px; margin-bottom:0px; align-items:center;">
+                                                            <span>Add To Cart</span>
+                                                        </a>
+                                                        <a t-att-href="'/shop/%s'%(product.id)"
+                                                           class="ian-btn--link ian-btn--view-detail py-3 text-center text-white d-block">
+                                                            View in detail
+                                                        </a>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center align-items-center w-100">
+                                                        <a href="#" class="ian-popup__view-spec-btn">
+                                                            View Specification
+                                                            <img src="./images/icons/chevron-up-arrow.svg"
+                                                                 class="ian-popup__viewspec ian-popup__viewspec--up ml-1 d-none"
+                                                                 width="12" height="12"/>
+                                                            <img src="./images/icons/chevron-down-arrow.svg"
+                                                                 class="ian-popup__viewspec ian-popup__viewspec--down ml-1"
+                                                                 width="12" height="12"/>
+                                                        </a>
+                                                    </div>
+                                                    <div class="ian-popup__product-specification d-none">
+                                                        <ul class="ian-popup__product-spec-items">
+                                                            <li class="ian-popup__product-spec-item">
+                                                                <span class="ian-popup__product-spec-title">Type</span>
+                                                                <span class="ian-popup__product-spec-value">Condenser
+                                                                    Microphone
+                                                                </span>
+                                                            </li>
+                                                            <li class="ian-popup__product-spec-item">
+                                                                <span class="ian-popup__product-spec-title">Connection
+                                                                    Type
+                                                                </span>
+                                                                <span class="ian-popup__product-spec-value">USB-C</span>
+                                                            </li>
+                                                            <li class="ian-popup__product-spec-item">
+                                                                <span class="ian-popup__product-spec-title">Capsule
+                                                                </span>
+                                                                <span class="ian-popup__product-spec-value">17 mm
+                                                                    Electret
+                                                                </span>
+                                                            </li>
+                                                            <li class="ian-popup__product-spec-item">
+                                                                <span class="ian-popup__product-spec-title">Sample
+                                                                    Rate
+                                                                </span>
+                                                                <span class="ian-popup__product-spec-value">48 / 96
+                                                                    kHz
+                                                                </span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            // Show / Hide Specificaion
+                            let viewSpecBtn = document.querySelector('.ian-popup__view-spec-btn');
+                            let viewSpecArrowUp = document.querySelector('.ian-popup__viewspec--up');
+                            let viewSpecArrowDown = document.querySelector('.ian-popup__viewspec--down');
+                            let viewSpec = document.querySelector('.ian-popup__product-specification');
+
+                            viewSpecBtn.addEventListener("click", function(e){
+                            e.preventDefault();
+                            viewSpecArrowUp.classList.toggle('d-none');
+                            viewSpecArrowDown.classList.toggle('d-none');
+                            viewSpec.classList.toggle('d-none');
+                            });
+                        </script>
+
+                        <!-- CUSTOM SCRIPT -->
+
+                    </div>
+                    <!--                    <div class="modal-header">-->
+                    <!--                        &lt;!&ndash;                                <h4 class="modal-title w-100 text-center text-uppercase">Modal Header</h4>&ndash;&gt;-->
+                    <!--                        <button type="button" class="quick_close" data-dismiss="modal"-->
+                    <!--                                aria-label="Close" tabindex="-1">-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                    <!--                    <div class="modal-body">-->
+                    <!--                        <div class="preview">-->
+                    <!--                            <div class="wrapper_main">-->
+                    <!--                                <div class="container-fluid">-->
+                    <!--                                    <div class="row">-->
+                    <!--                                        <div class="col-lg-6 col-md-5 col-12">-->
+                    <!--                                            <div class="preview_product">-->
+                    <!--                                                <t t-if="quick">-->
+                    <!--                                                    <div class="slider-container">-->
+                    <!--                                                        <div class="slider-for">-->
+                    <!--                                                            <div class="img_warpper">-->
+                    <!--                                                                <img class="item-slick"-->
+                    <!--                                                                     t-att-src="'/web/image?model=product.template&amp;id=%s&amp;field=image_1920'%(quick.id)"/>-->
+
+                    <!--                                                            </div>-->
+                    <!--                                                        </div>-->
+                    <!--                                                        <div class="slider-nav">-->
+                    <!--                                                            <img class="item-slick"-->
+                    <!--                                                                 t-att-src="'/web/image?model=product.template&amp;id=%s&amp;field=image_1920'%(quick.id)"/>-->
+
+                    <!--                                                        </div>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </t>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                        <div class="col-lg-6 col-md-7 col-12 oe_website_sale">-->
+                    <!--                                            <div class="preview_details">-->
+                    <!--                                                <div class="wrapper">-->
+                    <!--                                                    <h4>-->
+                    <!--                                                        <t t-esc="quick"/>-->
+                    <!--                                                        <t t-if='quick' t-esc="quick.name"/>-->
+                    <!--                                                    </h4>-->
+                    <!--                                                    <div class="desc">-->
+                    <!--                                                        <p>-->
+                    <!--                                                            <t t-esc="quick.description_sale"/>-->
+                    <!--                                                        </p>-->
+                    <!--                                                    </div>-->
+
+                    <!--                                                    <t t-if='quick'>-->
+                    <!--                                                        <div class="preview_price">-->
+                    <!--                                                            <span class="new_p"-->
+                    <!--                                                                  t-esc="quick.list_price"/>-->
+                    <!--                                                            <span class="old_p"-->
+                    <!--                                                                  t-esc="quick.sales_price">-->
+
+                    <!--                                                            </span>-->
+                    <!--                                                            <span class="offer">20% OFF</span>-->
+                    <!--                                                        </div>-->
+                    <!--                                                    </t>-->
+                    <!--                                                    <div class="choose_color">-->
+                    <!--                                                        <t t-if="product">-->
+                    <!--                                                            <t t-if="product.attribute_line_ids"-->
+                    <!--                                                               t-foreach="product.attribute_line_ids.attribute_id"-->
+                    <!--                                                               t-as="attributes">-->
+                    <!--                                                                <h6>-->
+                    <!--                                                                    <t t-esc="attributes.name"/>-->
+                    <!--                                                                </h6>-->
+                    <!--                                                                <div id="example" class="color-picker">-->
+                    <!--                                                                    <t t-foreach="attributes.value_ids"-->
+                    <!--                                                                       t-as="value">-->
+                    <!--                                                                        <label class="color-option">-->
+                    <!--                                                                            <input class="color-radio"-->
+                    <!--                                                                                   type="radio"-->
+                    <!--                                                                                   checked="checked"-->
+                    <!--                                                                                   name="radio"-->
+                    <!--                                                                            />-->
+                    <!--                                                                            <span class="checkmark"-->
+                    <!--                                                                                  style="background-color:#5b5e60;">-->
+                    <!--                                                                                <t t-esc="value.name"/>-->
+                    <!--                                                                            </span>-->
+                    <!--                                                                        </label>-->
+
+                    <!--                                                                    </t>-->
+                    <!--                                                                </div>-->
+                    <!--                                                            </t>-->
+                    <!--                                                        </t>-->
+
+                    <!--                                                    </div>-->
+                    <!--                                                    <div class="quantity css_quantity">-->
+                    <!--                                                        <div class="input-group">-->
+                    <!--                                                            <span class="input-group-btn">-->
+                    <!--                                                                <a href=""-->
+                    <!--                                                                   class="quantity-left-minus js_add_cart_json btn btn-minus btn-number"-->
+                    <!--                                                                   data-type="minus" data-field="">-->
+                    <!--                                                                    <span class="">-</span>-->
+                    <!--                                                                </a>-->
+                    <!--                                                            </span>-->
+                    <!--                                                            <input type="text" id="quantity" name="quantity"-->
+                    <!--                                                                   class="form-control js_quantity input-number"-->
+                    <!--                                                                   value="1"-->
+                    <!--                                                                   min="1"-->
+                    <!--                                                                   max="100"/>-->
+                    <!--                                                            <span class="input-group-btn">-->
+                    <!--                                                                <button type="button"-->
+                    <!--                                                                        class="quantity-right-plus btn btn-minus btn-number"-->
+                    <!--                                                                        data-type="plus" data-field="">-->
+                    <!--                                                                    <span class="">+</span>-->
+                    <!--                                                                </button>-->
+                    <!--                                                            </span>-->
+                    <!--                                                        </div>-->
+                    <!--                                                    </div>-->
+                    <!--                                                    <t t-if="quick">-->
+                    <!--                                                        <div class="btn_link mt-5">-->
+                    <!--                                                            <t t-esc="quick.product_variant_id"/>-->
+                    <!--                                                            &lt;!&ndash;                                                                    <button t-att-data-id="'%s' % product_id.product_variant_id.id"&ndash;&gt;-->
+                    <!--                                                            &lt;!&ndash;                                                                            class="btn btn-add cart-icon">&ndash;&gt;-->
+                    <!--                                                            &lt;!&ndash;                                                                        <i class="bi bi-cart-plus mr-1"></i>&ndash;&gt;-->
+                    <!--                                                            &lt;!&ndash;                                                                        Add to cart&ndash;&gt;-->
+                    <!--                                                            &lt;!&ndash;                                                                    </button>&ndash;&gt;-->
+                    <!--                                                            <a t-att-href="'/shop/%s'%(quick.id)"-->
+                    <!--                                                               class="view_link">view in detail-->
+                    <!--                                                            </a>-->
+                    <!--                                                        </div>-->
+                    <!--                                                    </t>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                            </div>-->
+
+                    <!--                        </div>-->
+
+                    <!--                    </div>-->
+                    <div class="modal-footer">
+                        <button t-att-data-id="'%s' % quick.id"
+                                class="btn btn-add cart-icon">
+                            <i class="bi bi-cart-plus mr-1"></i>
+                            Add to cart
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</odoo>

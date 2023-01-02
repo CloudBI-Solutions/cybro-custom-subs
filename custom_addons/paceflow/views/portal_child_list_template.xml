@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="child_contact_list" name="Child Contacts">
+        <t t-call="portal.portal_layout">
+            <br/>
+            <t t-if="not child_contacts">
+                <div class="alert alert-warning mt8" role="alert">
+                    No Child Contacts!
+                </div>
+            </t>
+            <t t-else="">
+                <div class="container row mx-n2 mt8">
+                    <t t-foreach="child_contacts" t-as="child">
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 pb16">
+                            <a class="child-card list-group-item-action d-block mx-auto"
+                               t-att-href="'child/%s' % child.id">
+                                <div class="media">
+                                    <div class="img-bg">
+                                        <img style="width:100%; height: 100%;"
+                                             t-if="child.partner_id.image_1024"
+                                             class="custom-profile-image rounded-circle img img-responsive img-fluid d-block mx-auto mr4"
+                                             t-att-src="image_data_uri(child.partner_id.image_1024)"/>
+                                        <img t-if="not child.partner_id.image_1024"
+                                             class="custom-profile-image rounded-circle img img-responsive img-fluid d-block mx-auto mr4"
+                                             src="/web/static/src/img/placeholder.png"/>
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 id="child_name"
+                                            style="border-bottom: 1px solid #e7e7e7;"
+                                            class="pb8">
+                                            <span class="child-name">
+                                                <t t-esc="child.name"/>
+                                            </span>
+                                        </h4>
+                                        <p class="pt8 mb-0">
+                                            <i class="fa fa-calendar"
+                                               style="margin-left: 50px;"></i>
+                                            <span class="child-detail">
+                                                <span t-field="child.dob"
+                                                      t-options='{"format": "dd/MM/yyyy"}'/>
+                                            </span>
+                                        </p>
+                                        <p class="pt8 mb-0">
+                                            <i class="fa fa-phone"
+                                               style="margin-left: 50px;"></i>
+                                            <span class="child-detail">
+                                                <t t-esc="child.phone"/>
+                                            </span>
+                                        </p>
+                                        <p class="pt8 mb-0">
+                                            <i class="fa fa-envelope-o"
+                                               style="margin-left: 50px;"></i>
+                                            <span class="child-detail">
+                                                <t t-esc="child.email"/>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <br/>
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_child_profile_dashboard" name="Child">
+        <t t-call="portal.portal_layout">
+
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/child_cont">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Player Home
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-5">
+                        <div class="paceflow-profile-section">
+                            <div class="paceflow-profile-section__photo">
+                                <t t-if="child.partner_id.image_1024">
+                                    <img id="profile_picture"
+                                         width="100" height="100"
+                                         class="paceflow-profile-section__photo"
+                                         t-att-src="image_data_uri(child.partner_id.image_1024)"
+                                         style="cursor: pointer;"/>
+                                </t>
+                                <t t-if="not child.partner_id.image_1024">
+                                    <img id="profile_picture"
+                                         class="paceflow-profile-section__camera"
+                                         src="/paceflow/static/description/images/ui/camera.png"
+                                         style="cursor: pointer;"/>
+                                </t>
+                            </div>
+                            <div class="paceflow-profile-section__meta position-relative">
+                                <div class="paceflow-profile-section__name paceflow-text-grey-800">
+                                    <t t-esc="child.name"/>
+                                    <t t-if="child.last_name">
+                                        <t t-esc="child.last_name"/>
+                                    </t>
+                                </div>
+
+<!--                                <a href="#"-->
+<!--                                   class="paceflow-profile-section__edit position-absolute"-->
+<!--                                   style="right: -100%; bottom: -10px">-->
+<!--                                    <i-->
+<!--                                            class="fa fa-edit paceflow-text-grey-800"/>-->
+<!--                                </a>-->
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-7 py-2">
+                        <a t-attf-href="/my/edit_child/{{child.id}}">
+                            <div class="paceflow-card-item paceflow-card-item--right paceflow-shadow">
+                                <img src="/paceflow/static/description/images/ui/person.png"
+                                     class="paceflow-card-item__icon" width="32"
+                                     height="32"/>
+                                Personal Details
+                            </div>
+                        </a>
+                        <a t-attf-href="/my/upload/{{child.id}}">
+                        <div class="paceflow-card-item paceflow-card-item--plus paceflow-card-item--outline paceflow-shadow">
+                            Upload New Video
+                        </div>
+                        </a>
+                        <select class="paceflow-select" name="state">
+                            <option value="1">Last Session</option>
+                            <option value="2">Last 10 Session</option>
+                            <option value="3">Custom Date Range</option>
+                        </select>
+                        <div class="paceflow-card-item paceflow-card-item--large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__gauge">
+                                60
+                                <span class="paceflow-card-item__percentage">%
+                                </span>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Title &#38; Date
+                            </div>
+                        </div>
+                        <div class="paceflow-card-item paceflow-card-item--large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__gauge">
+                                60
+                                <span class="paceflow-card-item__percentage">%
+                                </span>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Title &#38; Date
+                            </div>
+                        </div>
+                        <div class="paceflow-card-item paceflow-card-item--large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__gauge">
+                                60
+                                <span class="paceflow-card-item__percentage">%
+                                </span>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Title &#38; Date
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <!--            NEW EDIT DESIGNNN-->
+
+    <template id="child_edit_form_template" name="Edit">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a t-attf-href="/my/child_details/{{child.id}}">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Player Details
+                        </h1>
+                    </div>
+                </div>
+                <!---->
+                <form id="athlete_edit_form" action="/my/submit_details"
+                      method="post" enctype="multipart/form-data">
+                    <!---->
+                    <div class="row">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="child_id"
+                               t-att-value="child.id"/>
+                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="picture">
+                                        <t t-if="child.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 width="100" height="100"
+                                                 class="paceflow-profile-section__photo"
+                                                 t-att-src="image_data_uri(child.partner_id.image_1024)"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                        <t t-if="not child.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 class="paceflow-profile-section__camera"
+                                                 src="/paceflow/static/description/images/ui/camera.png"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                    </label>
+                                    <input id="picture"
+                                           style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                            <input type="text" name="name" id="firstName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="First Name*"
+                                   t-att-value="child.name"/>
+                            <input type="text" name="lastname" id="lastName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Last Name*"
+                                   t-att-value="child.last_name"/>
+                            <input type="email" name="email" id="email"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Email*"
+                                   t-att-value="child.email"/>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="code" id="code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           t-att-value="country_code"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="phone" id="phone"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           t-att-value="number"/>
+                                </div>
+                            </div>
+                            <input type="date" name="dob" id="dob"
+                                   class="paceflow-form-control paceflow-form-control--max-width paceflow-datepicker"
+                                   t-att-value="child.dob"/>
+                            <select name="highestStd" id="highestStd"
+                                    class="paceflow-select"
+                                    placeholder="Highest Standard Played">
+                                <t t-if="child.highest_standard">
+                                    <t t-if="child.highest_standard == 'professional'">
+                                        <option value="professional"
+                                                selected="selected">Professional
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="professional">
+                                            Professional
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_academy'">
+                                        <option value="country_academy"
+                                                selected="selected">Country
+                                            Academy
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="country_academy">Country
+                                            Academy
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_age_group'">
+                                        <option value="country_age_group"
+                                                selected="selected">Country Age
+                                            Group
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="country_age_group">
+                                            Country Age Group
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'club_cricket'">
+                                        <option value="club_cricket"
+                                                selected="selected">Club Cricket
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="club_cricket">Club
+                                            Cricket
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'non_competitive'">
+                                        <option value="non_competitive"
+                                                selected="selected">
+                                            Non-Competitive
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="non_competitive">
+                                            Non-Competitive
+                                        </option>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option value="professional">Professional
+                                    </option>
+                                    <option value="country_academy">Country
+                                        Academy
+                                    </option>
+                                    <option value="country_age_group">Country
+                                        Age Group
+                                    </option>
+                                    <option value="club_cricket">Club Cricket
+                                    </option>
+                                    <option value="non_competitive">
+                                        Non-Competitive
+                                    </option>
+                                </t>
+                            </select>
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <button type="submit"
+                                        class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+            <!--            OLD DEsIGNNN-->
+            <!--            <h2>Basic Details</h2>-->
+            <!--            <br/><br/>-->
+            <!--            <t t-call="portal.portal_record_layout">-->
+            <!--                <t t-set="card_header">-->
+            <!--                    <div class="row no-gutters">-->
+            <!--                        <div class="col-12">-->
+            <!--                            <h3 class="d-flex mb-1 mb-md-0 row">-->
+            <!--                                <span t-field="child.name" class="col-9 text-truncate"/>-->
+            <!--                                <form action='/my/edit_child' method="post">-->
+            <!--                                    <button type="submit" class="btn btn-primary float-right mb32 ">-->
+            <!--                                        Edit details-->
+            <!--                                        <i class="fa fa-pencil"/>-->
+            <!--                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+            <!--                                        <input type="hidden" name="child_id" t-att-value="child.id"/>-->
+            <!--                                    </button>-->
+            <!--                                </form>-->
+            <!--                                <div class="col-lg-6 pt16 pb16 o_colored_level">-->
+            <!--                                    <div class="img-bg">-->
+            <!--                                        <img style="width:100%; height: 100%;" t-if="child.partner_id.image_1024" class="custom-profile-image img img-responsive img-fluid d-block mx-auto mr4" t-att-src="image_data_uri(child.partner_id.image_1024)"/>-->
+            <!--                                        <img t-if="not child.partner_id.image_1024" class="custom-profile-image img img-responsive img-fluid d-block mx-auto mr4" src="/web/static/src/img/placeholder.png"/>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                            </h3>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </t>-->
+            <!--                <t t-set="card_body">-->
+            <!--                    <div class="row mb-4">-->
+            <!--                        <div class="col-12 col-md-6">-->
+            <!--                            <p class="pt8 mb-0">-->
+            <!--                                    <i class="fa fa-phone" style="margin-left: 50px;"></i>-->
+            <!--                                    <span><span t-if="child.phone" t-field="child.phone"/></span>-->
+            <!--                                </p>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-12 col-md-6">-->
+            <!--                            <p class="pt8 mb-0">-->
+            <!--                                    <i class="fa fa-envelope-o" style="margin-left: 50px;"></i>-->
+            <!--                                    <span><t t-if="child.email" t-esc="child.email"/></span>-->
+            <!--                                </p>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-12 col-md-6 mb-1">-->
+            <!--                            <p class="pt8 mb-0">-->
+            <!--                                <i class="fa fa-calendar" style="margin-left: 50px;"></i>-->
+            <!--                                <span>DOB: <span t-field="child.dob" t-options='{"format": "dd/MM/yyyy"}'/></span>-->
+            <!--                            </p>-->
+            <!--                        </div>-->
+            <!--                        <div class="col-12 col-md-6 mb-1" t-if="child_partner">-->
+            <!--                            <p class="pt8 mb-0">-->
+            <!--                                <i class="fa fa-map-marker" style="margin-left: 50px;"></i>-->
+            <!--                                <span>Address:</span>-->
+            <!--                                <div style="margin-left: 50px;" class="row mt16" t-if="child_partner">-->
+            <!--                                    <address class="col-8" t-field="child.partner_id" t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>-->
+            <!--                                </div>-->
+            <!--                            </p>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </t>-->
+            <!--            </t>-->
+            <!--            <hr/>-->
+        </t>
+    </template>
+
+    <!--    <template id="child_edit_form_template" name="Edit">-->
+    <!--            <t t-call="portal.portal_layout"><br/><br/>-->
+    <!--                <t t-set="no_breadcrumbs" t-value="1"/><br/><br/>-->
+    <!--                <t t-set="additional_title">Contact Details</t>-->
+    <!--                <form id="athlete_edit_form" action="/my/submit_details" method="post" enctype="multipart/form-data">-->
+    <!--                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>-->
+    <!--                <input type="hidden" name="child_id" t-att-value="child.id"/>-->
+    <!--                <div class="row o_portal_details">-->
+    <!--                    <div class="col-lg-8">-->
+    <!--                        <div class="row">-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="name">Name</label>-->
+    <!--                                <input type="text" name="name" t-attf-class="form-control" t-att-value="partner.name"/>-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="email">Email</label>-->
+    <!--                                <input type="email" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="partner.email" />-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="phone">Phone</label>-->
+    <!--                                <input type="tel" name="phone" t-attf-class="form-control" t-att-value="partner.phone" />-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="dob">DOB</label>-->
+    <!--                                <input type="date" name="dob" t-attf-class="form-control" t-att-value="child.dob" t-att-max="'%s' %date"/>-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="photo">Photo</label>-->
+    <!--                                <div class="row">-->
+    <!--                                    <input style="margin-left: 50px;" type="file" name="photo" class="file" multiple="true" data-show-upload="true" data-show-caption="true" lass="file" data-show-preview="true"/>-->
+    <!--                                </div>-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="street">Street</label>-->
+    <!--                                <input type="text" name="street" t-attf-class="form-control" t-att-value="partner.street"/>-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="city">City</label>-->
+    <!--                                <input type="text" name="city" t-attf-class="form-control" t-att-value="partner.city" />-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="zipcode">Zip / Postal Code</label>-->
+    <!--                                <input type="text" name="zipcode" t-attf-class="form-control" t-att-value="partner.zip" />-->
+    <!--                            </div>-->
+    <!--                            <div t-attf-class="form-group col-xl-6">-->
+    <!--                                <label class="col-form-label" for="country_id">Country</label>-->
+    <!--                                <select name="country_id" t-attf-class="form-control">-->
+    <!--                                    <option value="">Country...</option>-->
+    <!--                                    <t t-foreach="countries or []" t-as="country">-->
+    <!--                                        <option t-att-value="country.id" t-att-selected="country.id == int(country_id) if country_id else country.id == partner.country_id.id">-->
+    <!--                                            <t t-esc="country.name" />-->
+    <!--                                        </option>-->
+    <!--                                    </t>-->
+    <!--                                </select>-->
+    <!--                            </div>-->
+    <!--                        </div>-->
+    <!--                        <div class="clearfix">-->
+    <!--                            <button type="submit" class="btn btn-primary float-right mb32 ">-->
+    <!--                                Confirm-->
+    <!--                                <span class="fa fa-long-arrow-right" />-->
+    <!--                            </button>-->
+    <!--                        </div>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </form>-->
+    <!--            </t>-->
+    <!--    </template>-->
+
+</odoo>
+
+

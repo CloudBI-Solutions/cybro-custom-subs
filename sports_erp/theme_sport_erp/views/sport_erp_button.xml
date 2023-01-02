@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="s_demo_btn" name="Demo Button">
+        <section>
+            <div class="set-button set-button--primary-border my-3 mx-auto d-block demo-btn">
+                <a href="#">
+                    Demo
+                </a>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_pricing_btn" name="Pricing Button">
+        <section>
+            <div class="set-button set-button--primary-border my-3 mx-auto d-block return-cart">
+                Pick this Plan
+            </div>
+        </section>
+    </template>
+</odoo>

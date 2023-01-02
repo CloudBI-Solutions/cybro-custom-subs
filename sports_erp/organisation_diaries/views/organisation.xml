@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="organisation_view_form_inherited">
+        <field name="name">organisation.form.view.inherited</field>
+        <field name="model">organisation.organisation</field>
+        <field name="inherit_id" ref="organisation.organisation_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Assessment Configuration"
+                      name="assessment_configuration">
+                    <group string="Lifestyle Assessment">
+                        <group>
+                            <field name="lifestyle_assessment_data_id"
+                                   string="Lifestyle Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="lifestyle_assessment_configuration_ids" nolabel="1">
+                            <tree string="Lifestyle Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id"/>
+                            </tree>
+                            <form string="Lifestyle Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="S &amp; C Assessment">
+                        <group>
+                            <field name="sc_assessment_data_id"
+                                   string="S &amp; c Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="sc_assessment_configuration_ids" nolabel="1">
+                            <tree string="S &amp; C Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id"/>
+                            </tree>
+                            <form string="S &amp; C Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="Mobility Assessment">
+                        <group>
+                            <field name="mobility_assessment_data_id"
+                                   string="Mobility Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="mobility_assessment_configuration_ids" nolabel="1">
+                            <tree string="Mobility Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id"/>
+                            </tree>
+                            <form string="Mobility Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="Mental Assessment">
+                        <group>
+                            <field name="mental_assessment_data_id"
+                                   string="Mental Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="mental_assessment_configuration_ids" nolabel="1">
+                            <tree string="Mental Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id" widget="many2many_tags"/>
+                            </tree>
+                            <form string="Mental Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="HR/HRV Assessment">
+                        <group>
+                            <field name="hrv_assessment_data_id"
+                                   string="HR/HRV Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="hrv_assessment_configuration_ids" nolabel="1">
+                            <tree string="HR/HRV Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id" widget="many2many_tags"/>
+                            </tree>
+                            <form string="HR/HRV Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="Nutrition Assessment">
+                        <group>
+                            <field name="nutrition_assessment_data_id"
+                                   string="Nutrition Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="nutrition_assessment_configuration_ids" nolabel="1">
+                            <tree string="Nutrition Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id" widget="many2many_tags"/>
+                            </tree>
+                            <form string="Nutrition Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+                    <group string="Aerobic Assessment">
+                        <group>
+                            <field name="aerobic_assessment_data_id"
+                                   string="Aerobic Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="aerobic_assessment_configuration_ids" nolabel="1">
+                            <tree string="Aerobic Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id" widget="many2many_tags"/>
+                            </tree>
+                            <form string="Aerobic Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                    <group string="Anaerobic Assessment">
+                        <group>
+                            <field name="anaerobic_assessment_data_id"
+                                   string="Anaerobic Assessment Data"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="anaerobic_assessment_configuration_ids" nolabel="1">
+                            <tree string="Anaerobic Assessment Configuration">
+                                <field name="question_id"/>
+                                <field name="metric_id"/>
+                                <field name="visualisation_configuration_id" widget="many2many_tags"/>
+                            </tree>
+                            <form string="Anaerobic Assessment Configuration">
+                                <sheet>
+                                    <group>
+                                        <group>
+                                            <field name="question_id"
+                                                   string="Question"/>
+                                        </group>
+                                        <group>
+                                            <field name="metric_id"
+                                                   string="Calculated Metric"/>
+                                        </group>
+                                        <br/>
+                                        <br/>
+                                        <field name="visualisation_configuration_id">
+                                            <tree editable="bottom">
+                                                <field name="start"/>
+                                                <field name="end"/>
+                                                <field name="level"/>
+                                                <field name="comments"/>
+                                            </tree>
+                                        </field>
+
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+
+
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

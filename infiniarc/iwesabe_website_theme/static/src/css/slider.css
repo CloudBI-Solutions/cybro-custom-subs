@@ -1,0 +1,180 @@
+#infiniarc-slider .carousel .carousel-indicators li {
+	display: inline-block;
+	height: 2px !important;
+	text-indent: -99px;
+	cursor: pointer;
+	border: 1px solid #fff;
+	background: #fff;
+}
+
+.home-slider .carousel .carousel-indicators li {
+	width: 50px !important;
+	height: 5px !important;
+}
+
+#infiniarc-slider .card {
+	border: none;
+}
+#carouselindicators .previous, #carouselindicators .next{
+	font-size: 50px !important;
+	color: #ffffff;
+}
+#infiniarc-slider .container-fit-content {
+	width: 100%;
+	max-width: none;
+	padding: 0;
+}
+
+
+#infiniarc-slider .carousel-control-prev,
+#infiniarc-slider .carousel-control-next {
+	width: 8%;
+}
+
+#infiniarc-slider .slider-caption {
+	position: absolute;
+	left: 10%;
+	z-index: 10;
+	padding-bottom: 20px;
+	color: #FFFFFF;
+	text-align: left;
+	top: 35%;
+}
+#infiniarc-slider .slider-caption h4,
+#infiniarc-slider .slider-caption p {
+	/*font-family:  'Plus Jakarta Sans', sans-serif;*/
+	font-style: normal;
+}
+#infiniarc-slider .slider-caption h5{
+	font-weight: bold;
+	font-size: 36px;
+	/*font-family: "Source Sans Pro", "Odoo Unicode Support Noto", sans-serif !important;*/
+	line-height: 44px;
+}
+#infiniarc-slider .slider-caption p{
+	font-weight: normal;
+	line-height: 29px;
+	width: 85%;
+	margin:0;
+	font-size: 25px;
+	/*font-family: "Source Sans Pro", "Odoo Unicode Support Noto", sans-serif !important;*/
+}
+#infiniarc-slider .button.button-learn {
+	padding-left: 45px;
+	padding-right: 45px;
+}
+#infiniarc-models .tab-content > .active{
+	width: 100%;
+}
+
+
+
+/* Mid Selection Class */
+
+#infiniarc-middle-slider .carousel .carousel-indicators li {
+	display: inline-block;
+	height: 2px !important;
+	text-indent: -99px;
+	cursor: pointer;
+	border: 1px solid #fff;
+	background: #fff;
+}
+
+.mid-section-slider .carousel .carousel-indicators li {
+	width: 30px !important;
+	height: 2px !important;
+}
+
+#infiniarc-middle-slider .card {
+	border: none;
+}
+
+#infiniarc-middle-slider .container-fit-content {
+	width: 100%;
+	max-width: none;
+	padding: 0;
+}
+
+#infiniarc-middle-slider .carousel-item img {
+	height : 500px;
+}
+
+#infiniarc-middle-slider .slider-caption {
+	position: absolute;
+	left: 10%;
+	z-index: 10;
+	padding-bottom: 20px;
+	color: #FFFFFF;
+	text-align: left;
+	top: 35%;
+}
+#infiniarc-middle-slider .slider-caption h4,
+#infiniarc-middle-slider .slider-caption p {
+	/*font-family: Montserrat;*/
+	font-style: normal;
+}
+#infiniarc-middle-slider .slider-caption h5{
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 44px;
+	font-size:25px;
+/*
+	font-family: "Source Sans Pro", "Odoo Unicode Support Noto", sans-serif !important;
+*/
+}
+#infiniarc-middle-slider .slider-caption p{
+	font-weight: normal;
+	line-height: 29px;
+	width: 100%;
+	margin:0;
+	font-size:20px;
+	/*font-family: "Source Sans Pro", "Odoo Unicode Support Noto", sans-serif !important;*/
+}
+#infiniarc-middle-slider .button.button-learn {
+	padding-left: 45px;
+	padding-right: 45px;
+}
+
+
+/* ============================== New Slider ============================== */
+#infiniarc-boxed-slider .card {
+	border: none;
+}
+
+#infiniarc-boxed-slider .container-fit-content {
+	width: 98%;
+	max-width: none;
+	padding: 0;
+}
+
+#infiniarc-boxed-slider .slider-caption {
+	position: absolute;
+	left: 10%;
+	z-index: 10;
+	padding-bottom: 20px;
+	color: #FFFFFF;
+	text-align: left;
+	top: 35%;
+}
+#infiniarc-boxed-slider .slider-caption h4,
+#infiniarc-boxed-slider .slider-caption p {
+	/*font-family: Montserrat;*/
+	font-style: normal;
+}
+#infiniarc-boxed-slider .slider-caption h4{
+	font-weight: bold;
+	font-size: 36px;
+	line-height: 44px;
+}
+#infiniarc-boxed-slider .slider-caption p{
+	font-weight: normal;
+	line-height: 29px;
+	width: 100%;
+	margin:0;
+}
+#infiniarc-boxed-slider .button.button-learn {
+	padding-left: 45px;
+	padding-right: 45px;
+}
+
+

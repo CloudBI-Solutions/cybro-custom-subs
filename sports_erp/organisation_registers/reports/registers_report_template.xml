@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_organisation_registers">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <center>
+                            <h2>Registers - <t t-esc="o.name"/></h2>
+                        </center>
+                        <table class="table">
+                            <thead>
+                                <th>
+
+                                </th>
+                                <th t-foreach="o.athlete_ids" t-as="athlete" style="background-color: #fff; color: #000;">
+                                    <t t-esc="athlete.name"/>
+                                </th>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="registers.filtered(lambda x:x.group_id.id == o.id)" t-as="register">
+                                    <td>
+                                        <t t-esc="register.name"/>
+                                    </td>
+                                    <td t-foreach="register.attendee_ids" t-as="attendee">
+                                        <t t-if="attendee.is_attended">
+                                            <img src="sports_erp_dashboard/static/src/images/ui/icon-check-square.svg" width="20px" height="20px"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img src="sports_erp_dashboard/static/src/images/ui/square.png" width="20px" height="20px"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="tabby_payment_warning" inherit_id="website_sale.payment_footer">
+<!--        <xpath expr="//div[@id='oe_structure_website_sale_payment_1']" position="after">-->
+            <t t-esc="website_sale_order"/>
+            <t t-if="website_sale_order">
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Be aware!</h4>
+                    <p t-if="not only_services" groups="sale.group_delivery_invoice_address">
+                        You are editing your <b>billing and shipping</b> addresses at the same time!
+                        <br/>
+                        If you want to modify your shipping address, create a <a href='/compatibility/new_number'>new
+                        address</a>.
+                    </p>
+                </div>
+            </t>
+<!--        </xpath>-->
+    </template>
+</odoo>

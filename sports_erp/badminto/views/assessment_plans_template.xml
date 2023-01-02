@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assessment_plans_template" name="Assessment Template">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/badmintoo/assessment"
+                               class="set-dashboard__breadcrumb-link">
+                                Badminton Profiling(Assessment)
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/badmintoo/assessment/plan"
+                               class="set-dashboard__breadcrumb-link">
+                                Assessment Plans
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container badminto--main-title">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2 badminto-tiltle">
+                            Assessment Plans
+                        </h2>
+                    </div>
+                    <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn set-button set-button--primary set-button--no-shadow"
+                                    data-toggle="modal"
+                                    data-target="#addAssessmentPlanModal">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                     width="18" height="18" class="mr-2"/>
+                                Add New Plan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FILTER SECTION -->
+                <div class="row mt-4 ml-1">
+                    <div class="col-12 col-md-12 col-lg-3 badminto-sub">
+                        <h3>Assessment Plans</h3>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-9 d-flex badminto-date-range">
+                        <div class="col-6 filter-box-badminto">
+                            <a href="#"
+                               class="set-button set-button--sm set-button--dark w-50 my-3 mr-2">
+                                Date Range Filter
+                            </a>
+                        </div>
+                        <div class="col-6 search-box--badminto">
+                            <input type="search" name="search"
+                                   class="set-input__input w-75 my-3"/>
+                            <i class="fa fa-search badminto--search"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF FILTER SECTION -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <table class="set-dashboard__table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select-all"/>
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Assessment Product</th>
+                                    <th>Price</th>
+                                    <th>Assessment Type</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="assessments_plans"
+                                    t-as="assessment_plan">
+                                    <td>
+
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select"/>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/assessment_plan?assessment_plan={{assessment_plan.id}}">
+                                            <div class="set-dashboard__table-details">
+                                                <span class="set-dashboard__table-name mb-1">
+                                                    <t t-esc="assessment_plan.name"/>
+                                                </span>
+                                                <span class="set-dashboard__table-role">
+                                                    Athlete
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                            <span class="set-badge set-badge--blue set-badge--wide">
+                                                <t t-if="assessment_plan.product_id"
+                                                   t-esc="assessment_plan.product_id.product_tmpl_id.name"/>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                            <span class="set-badge set-badge--green set-badge--wide">
+                                                <t t-if="assessment_plan.price"
+                                                   t-esc="request.env.company.currency_id.symbol+ ' ' + str(assessment_plan.price)"/>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <t t-if="assessment_plan.assessment_type_ids">
+                                            <t t-foreach="assessment_plan.assessment_type_ids"
+                                               t-as="assessment_type_id">
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+
+                                                    <span class="set-badge set-badge--blue set-badge--wide">
+                                                        <t t-esc="assessment_type_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </t>
+                                        </t>
+                                    </td>
+                                    <td>
+                                        <div class="set-dashboard__table-actions">
+                                            <a href="#"
+                                               class="set-dashboard__table-action mr-4">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                     class="set-dashboard__table-action-icon"
+                                                     alt="Edit" title="Edit"/>
+                                            </a>
+                                            <a href="#"
+                                               class="set-dashboard__table-action">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                     class="set-dashboard__table-action-icon"
+                                                     alt="Remove"
+                                                     title="Remove"/>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="set-dashboard__table-footer">
+                            <span class="set-dashboard__page-position set-text set-text--grey">
+                                Page
+                                <span t-out="pager['page']['num']"/>
+                                of
+                                <t t-if="pager['page_count'] > 1">
+                                    <span t-out="pager['pages'][-1]['num']"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-out="pager['page']['num']"/>
+                                </t>
+                            </span>
+                            <ul
+                                    class="set-dashboard__pagination">
+                                <t t-foreach="pager['pages']"
+                                   t-as="page">
+                                    <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                        <a t-att-href="page['url']"
+                                           t-attf-class="page-link #{extraLinkClass}"
+                                           t-out="page['num']"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+
+
+                    </div>
+                    <!---->
+
+                    <div class="modal se-modal" id="addAssessmentPlanModal"
+                         tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="addAssessmentPlanModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addAssessmentModalLabel">Add New
+                                        Assessment Plan
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/assessment_plan"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Product plan name
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <input name="name"
+                                                       type="text"
+                                                       id="name"
+                                                       required="required"
+                                                       placeholder="Enter Plan Name..."
+                                                       class="form-control se-form-control sports-erp-dashbaord-select"/>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Assessments available for
+                                                    the product plan
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <select name="assessment_types"
+                                                        id="assessment_types"
+                                                        placeholder="Choose Assessment Types"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select-assessments"
+                                                        multiple="multiple">
+                                                    <option></option>
+                                                    <t t-foreach="assessment_types or []"
+                                                       t-as="type">
+                                                        <option t-att-value="type.id">
+                                                            <t t-esc="type.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="price">Price
+                                                </label>
+                                                <input type="number"
+                                                       id="price"
+                                                       name="price"
+                                                       class="form-control se-form-control"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="taxes">Taxes
+                                                </label>
+                                                <select name="taxes" id="taxes"
+                                                        class="form-control se-form-control"
+                                                        placeholder="Choose Tax">
+                                                    <t t-foreach="taxes or []"
+                                                       t-as="tax">
+                                                        <option t-att-value="tax.id">
+                                                            <t t-esc="tax.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="available_in_front_end">
+                                                    Is available in front end
+                                                </label>
+                                                <input type="checkbox"
+                                                       id="available_in_front_end"
+                                                       name="available_in_front_end"
+                                                       class="set-input--checkbox"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex">
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                               style="border-radius: 5px !important;"
+                                               value="Add Assessment Plan"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

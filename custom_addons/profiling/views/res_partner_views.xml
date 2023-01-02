@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="view_partner_form_inherit_assessment" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.assessment</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position='after'>
+                    <page string="Assessment" name="assessment">
+                        <group>
+                            <group>
+                                <field name="coach_id"/>
+                                <field name="latest_assessment_id"/>
+                                <field name="weight_goal"/>
+                                <field name="benchmark_weight"/>
+                                <field name="last_weight"/>
+                                <field name="kg_weight_diff"/>
+                                <field name="lbs_weight_diff"   decoration-danger="decorator_lbs_weight_diff == 'danger'"
+                                                                decoration-success="decorator_lbs_weight_diff == 'success'"
+                                                                decoration-warning="decorator_lbs_weight_diff == 'warning'"/>
+                                <field name="decorator_lbs_weight_diff" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="weight_30_days_ago"/>
+                                <field name="kg_diff_rolling"/>
+                                <field name="lbs_diff_rolling"  decoration-danger="decorator_lbs_diff_rolling == 'danger'"
+                                                                decoration-success="decorator_lbs_diff_rolling == 'success'"
+                                                                decoration-warning="decorator_lbs_diff_rolling == 'warning'"/>
+                                <field name="decorator_lbs_diff_rolling" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="assessment_ids">
+                                <tree string="Assessments" limit="5" default_order="datetime desc">
+                                    <field name="datetime"/>
+                                    <field name="weight"/>
+                                    <field name="fat_free_mass"/>
+                                    <field name="bmi"/>
+                                    <field name="body_fat_perc"/>
+                                    <field name="bmr"/>
+                                    <field name="str_weight"/>
+                                </tree>
+                            </field>
+                        </group>
+                        <group>
+                            <field name="log_benchmark_ids">
+                                <tree string="Benchmark Log">
+                                    <field name="partner_id" invisible="1"/>
+                                    <field name="datetime"/>
+                                    <field name="old_value"/>
+                                    <field name="new_value"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_view_tree_inherit_assessments" model="ir.ui.view">
+            <field name="name">res.partner.view.tree.inherit.assessments</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+<!--                <xpath expr="//tree" position="attributes">-->
+<!--                    <attribute name="decoration-danger">lbs_weight_diff &lt; .5</attribute>-->
+<!--                    <attribute name="decoration-success">lbs_weight_diff &gt; .5</attribute>-->
+<!--                    <attribute name="decoration-warning">lbs_weight_diff == .5</attribute>-->
+<!--                </xpath>-->
+                <xpath expr="//field[@name='country_id']" position="after">
+                    <field name="latest_assessment_id" invisible="1"/>
+                    <field name="coach_id" optional="show"/>
+                    <field name="weight_goal" optional="show"/>
+                    <field name="benchmark_weight" optional="show"/>
+                    <field name="last_weight" optional="hide"/>
+                    <field name="kg_weight_diff" optional="show"/>
+                    <field name="lbs_weight_diff" optional="show" decoration-danger="decorator_lbs_weight_diff == 'danger'"
+                                                                decoration-success="decorator_lbs_weight_diff == 'success'"
+                                                                decoration-warning="decorator_lbs_weight_diff == 'warning'"/>
+                    <field name="decorator_lbs_weight_diff" invisible="1"/>
+                    <field name="weight_30_days_ago" optional="show"/>
+                    <field name="kg_diff_rolling" optional="show"/>
+                    <field name="lbs_diff_rolling" optional="show" decoration-danger="decorator_lbs_diff_rolling == 'danger'"
+                                                                decoration-success="decorator_lbs_diff_rolling == 'success'"
+                                                                decoration-warning="decorator_lbs_diff_rolling == 'warning'"/>
+                    <field name="decorator_lbs_diff_rolling" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_partner_view_search" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/filter[@name='group_country']" position="after">
+                    <filter string="Coach" name="coach" domain="[]" context="{'group_by':'coach_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

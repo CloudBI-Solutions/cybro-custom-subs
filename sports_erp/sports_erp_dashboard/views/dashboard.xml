@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sports_erp_dashboard"
+              name="My Dashboard">
+        <t t-call="portal.portal_layout">
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Configuration
+                                </h2>
+                            </div>
+                            <hr/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/organization.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Organization Profile
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/profile"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/edit-primary.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/subscription.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Subscription
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/subscriptions"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/events.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Events
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/events"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="/my/events"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/booking.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Booking
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/bookings"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/calendar.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Calendar
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a t-att-href="'/my/calendar-%s' % request.env.user.partner_id.id"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/documents.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Documents
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/documents"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/documents.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Planning
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/chat_white.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Chathub
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/my_chat_hub"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a data-toggle="modal"
+                                       data-target="#addChatModal"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link"
+                                       style="color: #ff2905 !important;">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+
+                                    <a href="/edit/chathubs"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/edit-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Edit
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/diary.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Diaries
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/diary.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Products
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/forms.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Surveys/ Forms
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4 registers">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/modules/forms.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Registers
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="set-dashboard__tile">
+                                <div class="set-dashboard__tile-body">
+                                    <div class="d-flex align-items-center flex-wrap">
+                                        <div class="set-dashboard__icon mr-2">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/baseball-white.svg"
+                                                 width="18" height="18"
+                                                 alt="Organization Profile"/>
+                                        </div>
+                                        <span class="set-dashboard__tile-title">
+                                            Disciplines
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="set-dashboard__tile-footer">
+                                    <a href="/my/disciplines"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/view-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        View
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/add-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Add
+                                    </a>
+                                    <a href="#"
+                                       class="set-button set-button--link-primary set-dashboard__tile-link">
+                                        <img
+                                                src="/sports_erp_dashboard/static/src/images/dashboard/remove-red.svg"
+                                                width="14" height="14"
+                                                class="set-dashboard__tile-link-icon"/>
+                                        Remove
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal se-modal" id="addChatModal" tabindex="-1"
+                         role="dialog" aria-labelledby="addAthleteModal"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addAthleteModalLabel">Add New
+                                        Chathub
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/chathub" method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+
+                                        <div class="row px-4">
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="name">Name
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="name" name="name"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="members">Members
+                                                </label>
+                                                <select name="members"
+                                                        id="members"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        placeholder="Choose Members">
+                                                    <t t-foreach="members or []"
+                                                       t-as="member">
+                                                        <option t-att-value="member.id">
+                                                            <t t-esc="member.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="description">
+                                                    Description
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="description"
+                                                       name="description"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit"
+                                               style="float:right !important; border-radius: 5px !important;"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5"
+                                               value="Add Chathub"/>
+                                    </div>
+                                    <script>
+                                        function hide_show_coaches() {
+                                        var element =
+                                        document.getElementById("se-sidebar");
+                                        var main =
+                                        document.getElementById("main-container");
+                                        if
+                                        (main.classList.contains("main-container--margin")){
+                                        main.classList.toggle("main-container--margin");
+                                        }
+                                        if
+                                        (element.classList.contains("se-sidebar--show")){
+                                        element.classList.toggle("se-sidebar--show");
+                                        }
+                                        };
+                                    </script>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

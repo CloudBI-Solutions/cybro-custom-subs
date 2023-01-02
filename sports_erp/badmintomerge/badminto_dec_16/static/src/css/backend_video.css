@@ -1,0 +1,16 @@
+.badminto-backend-preview{
+    position: absolute;
+}
+.badminto-video-name{
+    position: absolute;
+    bottom: 0;
+}
+.badminto_video_string_preview{
+    text-align: center;
+    font-size: large;
+    font-weight: 700;
+    border: none;
+}
+.img-fluid{
+    height: 250px;
+}

@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="subscription_template" name="Subscriptions">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscriptions"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscriptions
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__title-container">
+                                <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                    <h2 class="set-dashboard__title mr-2">
+                                        Subscription
+                                    </h2>
+                                    <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                        <t t-esc="total"/>
+                                    </span>
+                                </div>
+
+                                <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                    <div class="btn-group">
+                                        <button type="button"
+                                                class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                                 width="18" height="18"
+                                                 class="mr-2"/>
+                                            Go To
+                                        </button>
+                                        <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/subscription_contracts/">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Subscription Contracts
+                                                </span>
+                                            </a>
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/subscription_products/">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Subscription Products
+                                                </span>
+                                            </a>
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/subscription_plans/">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Subscription Plans</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-group">
+                                        <button type="button"
+                                                class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                                data-toggle="modal"
+                                                data-target="#addSubscriptionModal"
+                                                aria-expanded="false">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                                 width="18" height="18"
+                                                 class="mr-2"/>
+                                            Add New Subscription
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="set-dashboard__table-options">
+                                        <a href="#"
+                                           class="set-button set-button--light set-dashboard__table-button mr-2">
+                                            <i class="fa fa-filter mr-2"/>Filter
+                                        </a>
+                                        <div class="set-dashboard__input-container">
+                                            <input type="search" name="search"
+                                                   id="search"
+                                                   placeholder="Search"
+                                                   class="set-dashboard__input-search"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <table class="set-dashboard__table mt-3">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select-all"/>
+                                                </th>
+                                                <th>Name</th>
+                                                <th>Plan</th>
+                                                <th>Product</th>
+                                                <th>State</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="subscriptions"
+                                               t-as="subscription">
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox"
+                                                               class="set-input--checkbox"
+                                                               name="select"/>
+                                                    </td>
+                                                    <td>
+                                                        <div class="set-dashboard__table-details">
+                                                            <span class="set-dashboard__table-name mb-1">
+                                                                <t t-esc="subscription.name"/>
+                                                            </span>
+                                                            <span class="set-dashboard__table-role">
+                                                                Subscription
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--blue set-badge--wide">
+                                                                <t t-esc="subscription.sub_plan_id.name"/>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--green set-badge--wide">
+                                                                <t t-esc="subscription.product_id.name"/>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--gold set-badge--wide">
+                                                                <t t-esc="subscription.stage_id.name"/>
+                                                            </span>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="set-dashboard__table-actions">
+                                                            <a t-att-href="'/my/subscription_details/%s' % subscription.id"
+                                                               class="set-dashboard__table-action mr-4">
+                                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                     class="set-dashboard__table-action-icon"
+                                                                     alt="Edit"
+                                                                     title="Edit"/>
+                                                            </a>
+                                                            <a t-att-href="'/my/delete_subscription/%s' % subscription.id"
+                                                               class="set-dashboard__table-action">
+                                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                     class="set-dashboard__table-action-icon"
+                                                                     alt="Remove"
+                                                                     title="Remove"/>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="set-dashboard__table-footer">
+                                        <span class="set-dashboard__page-position set-text set-text--grey">
+                                            Page
+                                            <span t-out="pager['page']['num']"/>
+                                            of
+                                            <t t-if="pager['page_count'] > 1">
+                                                <span t-out="pager['pages'][-1]['num']"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-out="pager['page']['num']"/>
+                                            </t>
+                                        </span>
+                                        <ul
+                                                class="set-dashboard__pagination">
+                                            <t t-foreach="pager['pages']"
+                                               t-as="page">
+                                                <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                    <a t-att-href="page['url']"
+                                                       t-attf-class="page-link #{extraLinkClass}"
+                                                       t-out="page['num']"/>
+                                                </li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+                        <!--                                <div class="se-dashboard">-->
+                        <!--                                    <h1 class="display-5 text-secondary se-dashboard__title">-->
+                        <!--                                        Subscriptions-->
+                        <!--                                    </h1>-->
+                        <!--                                    <div class="se-dashboard__right-action w-100">-->
+                        <!--                                        <div class="d-flex w-50 ml-auto se-input-group se-input-group&#45;&#45;icon">-->
+                        <!--                                            <div class="sidebar"-->
+                        <!--                                                 style="margin-right: 8px;">-->
+                        <!--                                                <div class="wrapper">-->
+                        <!--                                                    <div class="box">-->
+                        <!--                                                        <form class="o_wsale_products_searchbar_form example dropdown show"-->
+                        <!--                                                              method="get"-->
+                        <!--                                                              action="/my/subscriptions"-->
+                        <!--                                                              style="margin:auto;max-width:600px">-->
+                        <!--                                                            <div t-attf-class="input-group #{_classes}"-->
+                        <!--                                                                 role="search">-->
+                        <!--                                                                <input type="search"-->
+                        <!--                                                                       name="search"-->
+                        <!--                                                                       id="myInput"-->
+                        <!--                                                                       class="search-query form-control se-input se-input&#45;&#45;search mr-2 ml-auto"-->
+                        <!--                                                                       autocomplete="off"-->
+                        <!--                                                                       placeholder="Search.."-->
+                        <!--                                                                       onFocus="myFunction()"-->
+                        <!--                                                                       onBlur="setTimeout(myFunction, 300);"-->
+                        <!--                                                                       onkeyup="filterFunction()"/>-->
+                        <!--                                                                <button type="submit"-->
+                        <!--                                                                        class="btn btn-primary"-->
+                        <!--                                                                        style="background: #FF2905; border: none;">-->
+                        <!--                                                                    <i class="fa fa-search se-input-group__icon"/>-->
+                        <!--                                                                </button>-->
+                        <!--                                                                <div id="myDropdown"-->
+                        <!--                                                                     class="dropdown-content">-->
+                        <!--                                                                    <t t-set="total_subscriptions"-->
+                        <!--                                                                       t-value="request.env['subscription.subscription'].sudo().search([])"/>-->
+                        <!--                                                                    <t t-foreach="total_subscriptions"-->
+                        <!--                                                                       t-as="subscription">-->
+                        <!--                                                                        <a t-att-href="'/my/subscription/%s' % subscription.id">-->
+                        <!--                                                                            <t t-esc="subscription.name"/>-->
+                        <!--                                                                        </a>-->
+                        <!--                                                                    </t>-->
+                        <!--                                                                </div>-->
+                        <!--                                                            </div>-->
+                        <!--                                                        </form>-->
+                        <!--                                                        <script>function-->
+                        <!--                                                            myFunction() {-->
+                        <!--                                                            document.getElementById("myDropdown").classList.toggle("show");-->
+                        <!--                                                            } function-->
+                        <!--                                                            filterFunction() {-->
+                        <!--                                                            var input, filter,-->
+                        <!--                                                            ul, li, a, i; input-->
+                        <!--                                                            =-->
+                        <!--                                                            document.getElementById("myInput");-->
+                        <!--                                                            filter =-->
+                        <!--                                                            input.value.toUpperCase();-->
+                        <!--                                                            div =-->
+                        <!--                                                            document.getElementById("myDropdown");-->
+                        <!--                                                            a =-->
+                        <!--                                                            div.getElementsByTagName("a");-->
+                        <!--                                                            for (i = 0; i-->
+                        <!--                                                            &lt; a.length-->
+                        <!--                                                            ; i++) { txtValue =-->
+                        <!--                                                            a[i].textContent ||-->
+                        <!--                                                            a[i].innerText; if-->
+                        <!--                                                            (txtValue.toUpperCase().indexOf(filter)-->
+                        <!--                                                            > -1) {-->
+                        <!--                                                            a[i].style.display =-->
+                        <!--                                                            ""; } else {-->
+                        <!--                                                            a[i].style.display =-->
+                        <!--                                                            "none"; } } }-->
+                        <!--                                                        </script>-->
+                        <!--                                                    </div>-->
+                        <!--                                                </div>-->
+                        <!--                                            </div>-->
+                        <!--                                            <button class="btn se-btn se-btn&#45;&#45;no-rounded se-btn&#45;&#45;primary w-50"-->
+                        <!--                                                    data-toggle="modal"-->
+                        <!--                                                    data-target="#addSubscriptionModal"-->
+                        <!--                                                    style="border-radius: 5px !important;"-->
+                        <!--                                            >-->
+                        <!--                                                + Add A Subscription-->
+                        <!--                                            </button>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                                <hr/>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2 center">-->
+                        <!--                                <input type="button"-->
+                        <!--                                       value="Subscription Contracts"-->
+                        <!--                                       onclick="location.href='/my/subscription_contracts/';"-->
+                        <!--                                       class="btn btn-primary"-->
+                        <!--                                       style="background: #FF2905; border: none;"/>-->
+                        <!--                            </div>-->
+                        <!--                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2 center">-->
+                        <!--                                <input type="button" value="Products"-->
+                        <!--                                       onclick="location.href='/my/subscription_products/';"-->
+                        <!--                                       class="btn btn-primary"-->
+                        <!--                                       style="background: #FF2905; border: none;"/>-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash;                            <div class="col-12 col-sm-12 col-md-6 col-lg-3 my-2 center">&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                <input type="button" value="Customers"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                       onclick="location.href='/my/subscription_customers/';"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                       class="btn btn-primary"&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                                       style="background: #FF2905; border: none;"/>&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+                        <!--                            <div class="col-12 col-sm-12 col-md-6 col-lg-4 my-2 center">-->
+                        <!--                                <input type="button" value="Subscription Plans"-->
+                        <!--                                       onclick="location.href='/my/subscription_plans/';"-->
+                        <!--                                       class="btn btn-primary"-->
+                        <!--                                       style="background: #FF2905; border: none;"/>-->
+                        <!--                            </div>-->
+
+                        <!--                        </div>-->
+                        <!--                        <hr/>-->
+                        <!--                        <div class="row">-->
+                        <!--                            <t t-if="subscriptions"-->
+                        <!--                               t-foreach="subscriptions"-->
+                        <!--                               t-as="subscription">-->
+                        <!--                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 my-2">-->
+                        <!--                                    <div class="se-dashbaord__record-block">-->
+                        <!--                                        <div class="se-dashboard__record-block-details">-->
+                        <!--                                            <span class="d-block">-->
+                        <!--                                                <t t-esc="subscription.name"/>-->
+                        <!--                                            </span>-->
+                        <!--                                            <br/>-->
+                        <!--                                        </div>-->
+                        <!--                                        <div class="se-dashboard__record-block-action">-->
+                        <!--                                            <a t-att-href="'/my/subscription_details/%s' % subscription.id"-->
+                        <!--                                               class="se-dashboard__record-action">-->
+                        <!--                                                <img src="/sports_erp_dashboard/static/src/images/ui/edit.svg"-->
+                        <!--                                                     width="32" height="32"-->
+                        <!--                                                     class="se-dashboard__record-icon"/>-->
+                        <!--                                            </a>-->
+                        <!--                                            <a t-att-href="'/my/delete_subscription/%s' % subscription.id"-->
+                        <!--                                               class="se-dashboard__record-action">-->
+                        <!--                                                <img src="/sports_erp_dashboard/static/src/images/ui/trash.svg"-->
+                        <!--                                                     width="32" height="32"-->
+                        <!--                                                     class="se-dashboard__record-icon"/>-->
+                        <!--                                            </a>-->
+                        <!--                                        </div>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </t>-->
+                        <!--                        </div>-->
+
+                        <div class="modal se-modal" id="addSubscriptionModal"
+                             tabindex="-1" role="dialog"
+                             aria-labelledby="addSubscriptionLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog se-modal__dialog"
+                                 role="document">
+                                <div class="modal-content se-modal__content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title se-modal__title"
+                                            id="addSubscriptionModalLabel">Add
+                                            New
+                                            Subscription
+                                        </h5>
+                                        <button type="button" class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="false">X</span>
+                                        </button>
+                                    </div>
+                                    <form action="/create/subscription"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token"
+                                               t-att-value="request.csrf_token()"/>
+                                        <div class="modal-body">
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="active_subscription">
+                                                        Active Subscription
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="active_subscription"
+                                                           name="active_subscription"
+                                                           checked="1"/>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="activate">
+                                                        Activate
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="activate"
+                                                           name="activate"
+                                                           checked="1"/>
+                                                </div>
+                                            </div>
+                                            <hr/>
+                                            <!--                                            <div>-->
+                                            <!--                                                <h5 class="font-weight-bold se-link&#45;&#45;unstyled text-muted"-->
+                                            <!--                                                    style="font-size: 1.15rem !important;">-->
+                                            <!--                                                    Contract Information-->
+                                            <!--                                                </h5>-->
+                                            <!--                                            </div>-->
+                                            <!--                                            <div class="row px-4">-->
+                                            <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                            <!--                                                    <label class="se-form-label"-->
+                                            <!--                                                           for="subscription_contract">-->
+                                            <!--                                                        Contract-->
+                                            <!--                                                    </label>-->
+                                            <!--&lt;!&ndash;                                                    <t t-set="contracts"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;                                                       t-value="request.env['subscription.contract'].sudo().search([&ndash;&gt;-->
+                                            <!--&lt;!&ndash;                                                       ('company_id', '=', request.env.user.company_id.id)])"/>&ndash;&gt;-->
+                                            <!--                                                    <select class="form-control se-form-control"-->
+                                            <!--                                                            id="subscription_contracts"-->
+                                            <!--                                                            name="subscription_contracts">-->
+                                            <!--                                                        <t t-foreach="contracts"-->
+                                            <!--                                                           t-as="contract">-->
+                                            <!--                                                            <option t-att-value="contract.id">-->
+                                            <!--                                                                <t t-esc="contract.name"/>-->
+                                            <!--                                                            </option>-->
+                                            <!--                                                        </t>-->
+                                            <!--                                                    </select>-->
+                                            <!--                                                </div>-->
+                                            <!--                                            </div>-->
+
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Customer Information
+                                                </h5>
+                                            </div>
+                                            <hr/>
+
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_customers">
+                                                        Customers
+                                                    </label>
+                                                    <!--                                                SELECT CUSTOMER-->
+
+                                                    <select name="subscription_customers"
+                                                            id="subscription_customers"
+                                                            class="form-control se-form-control sports-erp-dashbaord-select"
+                                                            multiple="multiple"
+                                                            placeholder="Choose Customers">
+                                                        <t t-foreach="customers or []"
+                                                           t-as="customer">
+                                                            <option t-att-value="customer.id">
+                                                                <t t-esc="customer.name"/>
+                                                                <t t-if="customer.last_name"
+                                                                   t-esc="customer.last_name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <!--                                                <select class="form-control se-form-control"-->
+                                                    <!--                                                        id="partner_id"-->
+                                                    <!--                                                        name="partner_id">-->
+                                                    <!--                                                    <t t-foreach="customers"-->
+                                                    <!--                                                       t-as="customer">-->
+                                                    <!--                                                        <option t-att-value="customer.id">-->
+                                                    <!--                                                            <t t-esc="customer.name"/>-->
+                                                    <!--                                                        </option>-->
+                                                    <!--                                                    </t>-->
+                                                    <!--                                                </select>-->
+                                                </div>
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="subscription_customers">-->
+                                                <!--                                                        Customer Name-->
+                                                <!--                                                    </label>-->
+                                                <!--&lt;!&ndash;                                                    <t t-set="customers"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                       t-value="request.env['res.partner'].sudo().search([&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                       ('company_id', '=', request.env.user.company_id.id)])"/>&ndash;&gt;-->
+                                                <!--                                                    <select class="form-control se-form-control"-->
+                                                <!--                                                            id="subscription_customers"-->
+                                                <!--                                                            name="subscription_customers">-->
+                                                <!--                                                        <t t-foreach="customers"-->
+                                                <!--                                                           t-as="customer">-->
+                                                <!--                                                            <option t-att-value="customer.id">-->
+                                                <!--                                                                <t t-esc="customer.name"/>-->
+                                                <!--                                                                <t t-if="customer.last_name"-->
+                                                <!--                                                                   t-esc="customer.last_name"/>-->
+                                                <!--                                                            </option>-->
+                                                <!--                                                        </t>-->
+                                                <!--                                                    </select>-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="subscription_address">-->
+                                                <!--                                                        Customer Invoice/Billing-->
+                                                <!--                                                        Address-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    &lt;!&ndash;                                                    <t t-set="customers"&ndash;&gt;-->
+                                                <!--                                                    &lt;!&ndash;                                                       t-value="request.env['res.partner'].sudo().search([(&ndash;&gt;-->
+                                                <!--                                                    &lt;!&ndash;                                                       'company_id', '=', request.env.user.company_id.id)])"/>&ndash;&gt;-->
+                                                <!--                                                    <select class="form-control se-form-control"-->
+                                                <!--                                                            id="subscription_address"-->
+                                                <!--                                                            name="subscription_address">-->
+                                                <!--                                                        <t t-foreach="customers"-->
+                                                <!--                                                           t-as="customer">-->
+                                                <!--                                                            <option t-att-value="customer.id">-->
+                                                <!--                                                                <t t-esc="customer.name"/>-->
+                                                <!--                                                                <t t-if="customer.last_name"-->
+                                                <!--                                                                   t-esc="customer.last_name"/>-->
+                                                <!--                                                            </option>-->
+                                                <!--                                                        </t>-->
+                                                <!--                                                    </select>-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="subscription_company">-->
+                                                <!--                                                        Company-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <t t-set="companies"-->
+                                                <!--                                                       t-value="request.env['res.company'].sudo().search([])"/>-->
+                                                <!--                                                    <select class="form-control se-form-control"-->
+                                                <!--                                                            id="subscription_company"-->
+                                                <!--                                                            name="subscription_company">-->
+                                                <!--                                                        <t t-foreach="companies"-->
+                                                <!--                                                           t-as="company">-->
+                                                <!--                                                            <option t-att-value="company.id">-->
+                                                <!--                                                                <t t-esc="company.name"/>-->
+                                                <!--                                                            </option>-->
+                                                <!--                                                        </t>-->
+                                                <!--                                                    </select>-->
+                                                <!--                                                </div>-->
+
+                                            </div>
+                                            <hr/>
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Product Information
+                                                </h5>
+                                            </div>
+
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_products">
+                                                        Product
+                                                    </label>
+                                                    <!--                                                    <t t-set="products"-->
+                                                    <!--                                                       t-value="request.env['product.product'].sudo().search([('sale_ok', '=', True), ('activate_subscription', '=', True), ('company_id', '=', request.env.user.company_id.id)-->
+                                                    <!--                                                       ])"/>-->
+                                                    <select class="form-control se-form-control"
+                                                            id="subscription_products"
+                                                            name="subscription_products">
+                                                        <t t-foreach="products"
+                                                           t-as="product">
+                                                            <option t-att-value="product.id">
+                                                                <t t-esc="product.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="subscription_taxes">
+                                                        Taxes
+                                                    </label>
+                                                    <t t-set="taxes"
+                                                       t-value="request.env['account.tax'].sudo().search([])"/>
+                                                    <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                                            multiple="multiple"
+                                                            id="subscription_taxes"
+                                                            name="subscription_taxes">
+                                                        <t t-foreach="taxes"
+                                                           t-as="tax">
+                                                            <option t-att-value="tax.id">
+                                                                <t t-esc="tax.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="quantity">
+                                                        Quantity
+                                                    </label>
+                                                    <input type="number"
+                                                           class="form-control se-form-control"
+                                                           name="quantity"
+                                                           id="quantity"
+                                                           min="0"
+                                                           value="1.00"
+                                                           step="0.01"
+                                                           style="text-align: end;"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <hr/>
+                                            <!--                                            <div>-->
+                                            <!--                                                <h5 class="font-weight-bold se-link&#45;&#45;unstyled text-muted"-->
+                                            <!--                                                    style="font-size: 1.15rem !important;">-->
+                                            <!--                                                    Plan Information-->
+                                            <!--                                                </h5>-->
+                                            <!--                                            </div>-->
+
+                                            <div class="row px-4">
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="subscription_plans">-->
+                                                <!--                                                        Subscription Plan-->
+                                                <!--                                                    </label>-->
+                                                <!--&lt;!&ndash;                                                    <t t-set="plans"&ndash;&gt;-->
+                                                <!--&lt;!&ndash;                                                       t-value="request.env['subscription.plan'].sudo().search([])"/>&ndash;&gt;-->
+                                                <!--                                                    <select class="form-control se-form-control"-->
+                                                <!--                                                            id="subscription_plans"-->
+                                                <!--                                                            name="subscription_plans">-->
+                                                <!--                                                        <t t-foreach="plans"-->
+                                                <!--                                                           t-as="plan">-->
+                                                <!--                                                            <option t-att-value="plan.id">-->
+                                                <!--                                                                <t t-esc="plan.name"/>-->
+                                                <!--                                                            </option>-->
+                                                <!--                                                        </t>-->
+                                                <!--                                                    </select>-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="price">-->
+                                                <!--                                                        Price-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <input type="number"-->
+                                                <!--                                                           class="form-control se-form-control"-->
+                                                <!--                                                           step="0.01"-->
+                                                <!--                                                           name="price"-->
+                                                <!--                                                           id="price"-->
+                                                <!--                                                           value="0.00"-->
+                                                <!--                                                           style="text-align: end;"-->
+                                                <!--                                                    />-->
+                                                <!--                                                    <input type="text"-->
+                                                <!--                                                           t-att-value="request.env.company.currency_id.symbol"-->
+                                                <!--                                                           id="currency_symbol"-->
+                                                <!--                                                           disabled="1"-->
+                                                <!--                                                    />-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="recurrency">-->
+                                                <!--                                                        Recurrency-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <div>-->
+                                                <!--                                                        <div style="width: 60%; float:left">-->
+                                                <!--                                                            <input type="number"-->
+                                                <!--                                                                   class="form-control se-form-control"-->
+                                                <!--                                                                   name="recurrency"-->
+                                                <!--                                                                   id="recurrency"-->
+                                                <!--                                                                   min="0"-->
+                                                <!--                                                                   value="0"-->
+                                                <!--                                                                   style="text-align: end;"-->
+                                                <!--                                                            />-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div style="width: 35%; float:right">-->
+                                                <!--                                                            <select class="form-control se-form-control"-->
+                                                <!--                                                                    id="recurrency_duration_type"-->
+                                                <!--                                                                    name="recurrency_duration_type">-->
+                                                <!--                                                                <option value="day">-->
+                                                <!--                                                                    Day(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="week">-->
+                                                <!--                                                                    Week(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="month">-->
+                                                <!--                                                                    Month(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="year">-->
+                                                <!--                                                                    Year(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                            </select>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="has_trial_period">-->
+                                                <!--                                                        Plan has trial period-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <input type="checkbox"-->
+                                                <!--                                                           class="form-control se-form-control"-->
+                                                <!--                                                           name="has_trial_period"-->
+                                                <!--                                                           id="has_trial_period"-->
+                                                <!--                                                           onclick="hide_show_trial_duration()"-->
+                                                <!--                                                    />-->
+                                                <!--                                                </div>-->
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3"-->
+                                                <!--                                                     id="trial_duration_div"-->
+                                                <!--                                                     style="display: none;">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="trial_duration">-->
+                                                <!--                                                        Trial Duration-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <div>-->
+                                                <!--                                                        <div style="width: 60%; float:left">-->
+                                                <!--                                                            <input type="number"-->
+                                                <!--                                                                   class="form-control se-form-control"-->
+                                                <!--                                                                   name="trial_duration"-->
+                                                <!--                                                                   id="trial_duration"-->
+                                                <!--                                                                   min="0"-->
+                                                <!--                                                                   value="0"-->
+                                                <!--                                                                   style="text-align: end;"-->
+                                                <!--                                                            />-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                        <div style="width: 35%; float:right">-->
+                                                <!--                                                            <select class="form-control se-form-control"-->
+                                                <!--                                                                    id="trial_duration_type"-->
+                                                <!--                                                                    name="trial_duration_type">-->
+                                                <!--                                                                <option value="day">-->
+                                                <!--                                                                    Day(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="week">-->
+                                                <!--                                                                    Week(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="month">-->
+                                                <!--                                                                    Month(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                                <option value="year">-->
+                                                <!--                                                                    Year(s)-->
+                                                <!--                                                                </option>-->
+                                                <!--                                                            </select>-->
+                                                <!--                                                        </div>-->
+                                                <!--                                                    </div>-->
+                                                <!--                                                </div>-->
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="start_date">
+                                                        Start Date
+                                                    </label>
+                                                    <input type="date"
+                                                           class="form-control se-form-control"
+                                                           name="start_date"
+                                                           id="start_date"
+                                                    />
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="end_date">
+                                                        End Date
+                                                    </label>
+                                                    <input type="date"
+                                                           class="form-control se-form-control"
+                                                           name="end_date"
+                                                           id="end_date"
+                                                    />
+                                                </div>
+
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="billing_cycle">-->
+                                                <!--                                                        No of Billing Cycle-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <input type="number"-->
+                                                <!--                                                           class="form-control se-form-control"-->
+                                                <!--                                                           name="billing_cycle"-->
+                                                <!--                                                           id="billing_cycle"-->
+                                                <!--                                                           style="text-align: end;"-->
+                                                <!--                                                           value="0"-->
+                                                <!--                                                           min="0"-->
+                                                <!--                                                    />-->
+                                                <!--                                                </div>-->
+                                                <!--                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">-->
+                                                <!--                                                    <label class="se-form-label"-->
+                                                <!--                                                           for="next_payment">-->
+                                                <!--                                                        Date of Next Payment-->
+                                                <!--                                                    </label>-->
+                                                <!--                                                    <input type="date"-->
+                                                <!--                                                           class="form-control se-form-control"-->
+                                                <!--                                                           name="next_payment"-->
+                                                <!--                                                           id="next_payment"-->
+                                                <!--                                                    />-->
+                                                <!--                                                </div>-->
+
+                                            </div>
+
+                                            <div class="modal-footer d-flex justify-content-between align-items-center">
+                                                <a href="#"
+                                                   class="font-weight-bold se-link--unstyled text-muted">
+                                                    <i class="fa fa-cog mr-2"/>
+                                                    Advanced Details
+                                                </a>
+                                                <input type="submit"
+                                                       class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                       value="Add Subscription"
+                                                       style="border-radius: 5px !important;"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                    function hide_show_trial_duration(){
+                    var checkBox =
+                    document.getElementById("has_trial_period");
+                    var div =
+                    document.getElementById("trial_duration_div");
+                    if (checkBox.checked == false){
+                    document.getElementById("trial_duration").value = 0;
+                    div.style.display = "none";
+                    } else {
+                    div.style.display = "block";
+                    }
+                    }
+                    function hide_show_subscriptions()
+                    {
+                    var element =
+                    document.getElementById("se-sidebar");
+                    var main = document.getElementById("main-container");
+                    console.log("amin", main);
+                    if
+                    (main.classList.contains("main-container--margin")){
+                    main.classList.toggle("main-container--margin");
+                    }
+                    if
+                    (element.classList.contains("se-sidebar--show")){
+                    element.classList.toggle("se-sidebar--show");
+                    } };
+                </script>
+            </t>
+        </template>
+    </data>
+</odoo>

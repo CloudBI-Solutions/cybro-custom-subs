@@ -1,0 +1,14 @@
+<odoo>
+    <template id="latest_blog" inherit_id="website.snippets" name="Latest Blogs">
+        <xpath expr="//div[@id='snippet_effect']/div[@class='o_panel_body']"
+               position="inside">
+            <t t-snippet="website_snippet.s_dynamic_blog"/>
+        </xpath>
+    </template>
+
+    <template id="s_dynamic_blog" name="Blog Carousel">
+        <t t-call="website.s_dynamic_snippet_template">
+            <t t-set="snippet_name" t-value="'s_dynamic_snippet_carousel'"/>
+        </t>
+    </template>
+</odoo>

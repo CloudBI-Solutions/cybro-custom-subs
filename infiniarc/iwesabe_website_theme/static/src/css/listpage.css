@@ -1,0 +1,152 @@
+/* =========================================================
+*                BASE STYLES - DO NOT COPY
+* =========================================================*/
+body {
+  background-color: #101010;
+  color: white;
+  font-family: "Fira Sans", sans-serif;
+}
+
+.ian-container {
+  width: 90%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 1199.98px) {
+  .ian-container {
+    width: 98%;
+  }
+  .ian-container .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+a {
+  transition: all 0.4s ease-in-out;
+}
+a:hover {
+  transition: all 0.4s ease-in-out;
+}
+
+.ian-body {
+  margin-top: 75px;
+}
+
+/* =========================================================
+*                     WISHLIST STYLES
+* =========================================================*/
+.ian-listpage__tile-container {
+  display: block;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #343333;
+}
+
+.ian-listpage__title {
+  font-size: 28px;
+}
+
+.ian-listpage__table {
+  width: 100%;
+}
+
+.ian-listpage__th {
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #1a1a1a;
+}
+
+.ian-listpage__th,
+.ian-listpage__td {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-align: center;
+}
+
+.ian-listpage__tr:nth-child(even) {
+  background-color: #131313;
+}
+
+.ian-listpage__td {
+  font-size: 14px;
+}
+
+.ian-listpage__product-image-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: #1a1a1a;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ian-listpage__product-image-container img{
+  margin: auto;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.ian-listpage__product-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.ian-listpage__btn {
+  transition: all 0.4s ease-in-out;
+  width: 40px;
+  background: transparent;
+  border: none;
+}
+.ian-listpage__btn:hover {
+  transition: all 0.4s ease-in-out;
+}
+
+.ian-listpage__btn--primary {
+  min-width: 100px !important;
+  display: inline-block !important;
+  background-color: #3d0909 !important;
+  color: #d64c4b !important;
+  font-size: 12px !important;
+  border-radius: 25px !important;
+  padding: 5px 15px !important;
+}
+.ian-listpage__btn--primary:hover {
+  text-decoration: none;
+  background-color: #520c0c;
+  color: #d64c4b;
+}
+
+.ian-listpage__btn--icon {
+  display: inline-block;
+  opacity: 0.8;
+}
+.ian-listpage__btn--icon:hover {
+  opacity: 1;
+}
+.ial-table__button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ial-table__button-container > small{
+    order: 2;
+}
+.ial-table__button-container > button{
+    order: 1;
+}
+.ian-listpage__btn > span{
+    color: #FFF !important;
+    font-weight: bold;
+}
+p{
+    margin: unset;
+}
+/*# sourceMappingURL=listpage.css.map */

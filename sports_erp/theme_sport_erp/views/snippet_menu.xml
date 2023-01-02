@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sport_erp_snippets" inherit_id="website.snippets">
+        <xpath expr="//t[@id='default_snippets']" position="inside">
+
+            <div id="snippet_sportERP" class="o_panel">
+                <div class="o_panel_header">SportERP Home</div>
+                <div class="o_panel_body">
+                    <t t-snippet="theme_sport_erp.s_hero_snippet"
+                       t-thumbnail="/theme_sport_erp/static/src/images/brand/hero-image.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_feature_snippet"
+                       t-thumbnail="/theme_sport_erp/static/src/images/demo-section/features.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_leader_template"
+                       t-thumbnail="/theme_sport_erp/static/src/images/demo-section/leaders_and_managers.jpg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_coaches_template"
+                       t-thumbnail="/theme_sport_erp/static/src/images/demo-section/coaches_managing_groups.jpg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_athlete_template"
+                       t-thumbnail="/theme_sport_erp/static/src/images/demo-section/athletes_and_parents.jpg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_administrator_template"
+                       t-thumbnail="/theme_sport_erp/static/src/images/demo-section/smart_administrators.jpg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_branding"
+                       t-thumbnail="/theme_sport_erp/static/src/images/brand/brand.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_comments"
+                       t-thumbnail="/theme_sport_erp/static/src/images/client-slider/client-nina-jones.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                </div>
+            </div>
+
+            <div id="snippet_sportERP_pricing" class="o_panel">
+                <div class="o_panel_header">SportERP Pricing</div>
+                <div class="o_panel_body">
+                    <t t-snippet="theme_sport_erp.s_pricing_feature"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/pricing_features.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+<!--                    <t t-snippet="theme_sport_erp.s_mobile_features"-->
+<!--                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/pricing_features.png">-->
+<!--                        <keywords>separator, divider</keywords>-->
+<!--                    </t>-->
+                    <t t-snippet="theme_sport_erp.s_terms_and_conditions"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/term-and-conditions.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_f_a_q"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/faq.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_questions"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/question.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="theme_sport_erp.s_see_all_features"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/see_all.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                </div>
+            </div>
+
+
+            <div id="snippet_sportERP_inner" class="o_panel">
+                <div class="o_panel_header">SportERP Modules</div>
+                <div class="o_panel_body">
+                    <t t-snippet="theme_sport_erp.s_modules_one"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_modules_grey_one"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module_grey.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_modules_two"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_modules_grey_two"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module_grey.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_modules_three"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_modules_grey_three"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module_grey.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_special_badge"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/module_grey_special.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_video_template"
+                       t-thumbnail="/theme_sport_erp/static/src/video/video.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_tabs_sport_erp"
+                        t-thumbnail="/theme_sport_erp/static/src/images/snippets/tabs.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.sport_erp_newsletter_subscribe_form"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/sport_erp_news.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_demo_btn"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/demo_btn.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                    <t t-snippet="theme_sport_erp.s_pricing_btn"
+                       t-thumbnail="/theme_sport_erp/static/src/images/snippets/pick_this_plan.png">
+                        <keywords>separator, divider</keywords>
+                    </t>
+
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+</odoo>

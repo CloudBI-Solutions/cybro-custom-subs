@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    UPLOAD REAR VIDEO -->
+    <template id="upload_rear_video_form" name="Upload Rear Form">
+        <t t-call="portal.portal_layout">
+            <form id="upload_rear_form" action="/my/video_submit" method="post" enctype="multipart/form-data"
+                  name="upload_rear_form"
+                  class="o_mark_required" data-mark="*" data-model_name="mail.mail"
+                  onsubmit="return validateRearForm()">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div id="submit_rear_form" class="s_website_form_rows row s_col_no_bgcolor">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                            <a href="/my/home/">
+                                <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                            </a>
+                            <a href="/my/home">
+                                <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                                   style="margin-left: 65px;"/>
+                            </a>
+                            <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                                Upload Rear Video
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center my-3">
+                            <div class="paceflow-upload-video-thumbnail w-100">
+                                <div class="paceflow-upload-video-thumbnail__image"
+                                     style="min-height: 300px; background-image: url('/paceflow/static/description/images/ui/background-video.png');">
+
+                                    <label for="upload_rear_video">
+                                        <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                             onclick="clear_rear_rec()"
+                                             width="22" height="22"
+                                             class="position-absolute"
+                                             style="top: 6px; right: 30px; cursor: pointer;"
+                                             title="Add Video"/>
+                                    </label>
+                                    <label for="record_rear_video">
+                                        <img src="/paceflow/static/description/images/ui/camera-grey.png"
+                                             onclick="clear_rear_att()"
+                                             width="24" height="24" class="position-absolute"
+                                             style="top: 6px; right: 65px; cursor: pointer;"
+                                             title="Record Video"/>
+                                    </label>
+
+                                    <video class="paceflow-upload-video-thumbnail__image" id="preview_rear_attachment"
+                                           autoplay="" aria-hidden="false">
+                                    </video>
+
+                                    <input id="upload_rear_video" type="file"
+                                           onchange="preview_rear()"
+                                           hidden="true"
+                                           name="attachment_rear" class="file" multiple="true"
+                                           accept="video/mp4,video/mov,video/ogg,video/x-m4v"
+                                           data-show-upload="true" data-show-caption="true"
+                                           lass="file" data-show-preview="true"/>
+
+                                    <input id="record_rear_video" type="file"
+                                           onchange="preview_rear()"
+                                           hidden="true"
+                                           name="record_rear" class="file" multiple="true"
+                                           capture="camcorder"
+                                           accept="video/*"
+                                           data-show-upload="true" data-show-caption="true"
+                                           lass="file" data-show-preview="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-6 my-3">
+                            <h2 class="paceflow-section-header--h3 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800">
+                                <t t-esc="child_id.name"/>
+                                <t t-if="child_id.last_name">
+                                    <t t-esc="child_id.last_name"/>
+                                </t>
+                            </h2>
+                            <input type="text" name="upload_child_id"
+                                   id="upload_child_id"
+                                   t-att-value='child_id.id'
+                                   hidden="true"/>
+                            <input type="text" name="reference"
+                                   id="reference"
+                                   class="paceflow-form-control"
+                                   placeholder="Reference*"/>
+                            <input type="date" name="date" id="date_1"
+                                   class="paceflow-form-control paceflow-datepicker"
+                                   autocomplete="off"
+                                   placeholder="Date"
+                                   required="1"/>
+                            <button type="submit"
+                                    class="paceflow-btn paceflow-btn--primary mt-4">
+                                Submit
+                            </button>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6"/>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="paceflow-section-header--h3 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800"
+                                 style="cursor: pointer;"
+                                 id="instr_click"
+                                 onclick="toggle()"
+                                 >Instructions</div>
+                            <div class="justify-content-center align-items-center my-3 ml-5 mr-5 paceflow-text-grey-800"
+                                 id="instruction_rear"
+                                 style="display: none;">
+                                Please stand at a distance of 10m behind the wickets
+                                <br/>
+                                Stand in line of the wickets
+                                <br/>
+                                Record at least 5 steps before backfoot contact.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+
+                    function validateRearForm() {
+                        let att = document.forms['upload_rear_form']['attachment_rear'].value;
+                        let rec = document.forms['upload_rear_form']['record_rear'].value;
+                        if (att == "" &amp;&amp; rec == "") {
+                            window.alert("Please choose a Video !!!");
+                            return false;
+                        }
+                    }
+
+                    function clear_rear_rec() {
+                    if (document.forms['upload_rear_form']['record_rear'].value){
+                            document.forms['upload_rear_form']['record_rear'].value = '';
+                        }
+                    }
+
+                    function clear_rear_att() {
+                    if (document.forms['upload_rear_form']['attachment_rear'].value){
+                            document.forms['upload_rear_form']['attachment_rear'].value = '';
+                        }
+                    }
+
+                    function preview_rear() {
+                        preview_rear_attachment.src=URL.createObjectURL(event.target.files[0]);
+                        preview_rear_attachment.controls = "controls";
+                    }
+
+                    function toggle() {
+                        $('#instruction_rear').slideToggle("fast");
+                    }
+
+                </script>
+            </div>
+        </form>
+        </t>
+    </template>
+
+<!--    UPLOAD SIDE VIDEO -->
+
+    <template id="upload_side_video_form" name="Upload Side Form">
+        <t t-call="portal.portal_layout">
+            <form id="upload_side_form" action="/my/upload_complete" method="post" enctype="multipart/form-data"
+                  name="upload_side_form"
+                  class="o_mark_required" data-mark="*" data-model_name="mail.mail"
+                  onsubmit="return validateSideForm()">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div id="submit_side_form" class="s_website_form_rows row s_col_no_bgcolor">
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                            <a href="/my/home/">
+                                <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                            </a>
+                            <a href="/my/home">
+                                <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                                   style="margin-left: 65px;"/>
+                            </a>
+                            <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                                Upload Side Video
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-6 d-flex flex-column justify-content-center align-items-center my-3">
+                            <div class="paceflow-upload-video-thumbnail w-100">
+                                <div class="paceflow-upload-video-thumbnail__image"
+                                     style="min-height: 300px; background-image: url('/paceflow/static/description/images/ui/background-video.png');">
+
+                                    <label for="upload_side_video">
+                                    <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                         onclick="clear_side_rec()"
+                                         width="22" height="22"
+                                         class="position-absolute"
+                                         style="top: 6px; right: 30px; cursor: pointer;"
+                                         title="Add Video"/>
+                                    </label>
+
+                                    <label for="record_side_video">
+                                        <img src="/paceflow/static/description/images/ui/camera-grey.png"
+                                             onclick="clear_side_att()"
+                                             width="24" height="24" class="position-absolute"
+                                             style="top: 6px; right: 65px; cursor: pointer;"
+                                             title="Record Video"/>
+                                    </label>
+
+                                    <video class="paceflow-upload-video-thumbnail__image"
+                                           id="preview_side_attachment"
+                                           src="" autoplay=""/>
+
+                                    <input id="upload_side_video" type="file"
+                                           onchange="preview_side()"
+                                           hidden="true"
+                                           name="attachment_side" class="file" multiple="true"
+                                           accept="video/*"
+                                           data-show-upload="true" data-show-caption="true"
+                                           lass="file" data-show-preview="true"/>
+
+                                    <input id="record_side_video" type="file"
+                                           onchange="preview_side()"
+                                           hidden="true"
+                                           name="record_side" class="file" multiple="true"
+                                           capture="camcorder"
+                                           accept="video/*"
+                                           data-show-upload="true" data-show-caption="true"
+                                           lass="file" data-show-preview="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-6 my-3">
+                            <h2 class="paceflow-section-header--h3 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800">
+                                <t t-esc="child_id.name"/>
+                                <t t-if="child_id.last_name">
+                                    <t t-esc="child_id.last_name"/>
+                                </t>
+                            </h2>
+                            <input type="text" name="upload_child_id"
+                                   id="upload_child_id"
+                                   t-att-value='child_id.id'
+                                   hidden="true"/>
+                            <input type="text" name="reference"
+                                   id="reference"
+                                   class="paceflow-form-control"
+                                   placeholder="Reference*"/>
+                            <input type="hidden" name="assessment_id_video"
+                                   id="assessment_id_video"
+                                    t-att-value='assessment_id.id'/>
+                            <input type="date" name="date" id="date_2"
+                                   class="paceflow-form-control paceflow-datepicker"
+                                   autocomplete="off"
+                                   placeholder="Date"
+                                   required="1"/>
+                            <button type="submit"
+                                    class="paceflow-btn paceflow-btn--primary mt-4">
+                                Submit
+                            </button>
+                            </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6"/>
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="paceflow-section-header--h3 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800"
+                                 style="cursor: pointer;"
+                                 id="instr_click"
+                                 onclick="toggle()"
+                                 >Instructions</div>
+                            <div class="justify-content-center align-items-center my-3 ml-5 mr-5 paceflow-text-grey-800"
+                                 id="instruction_side"
+                                 style="display: none;">
+                                Make sure Wickets and Front crease is visible.
+                                <br/>
+                                Stand at least 5m away from Wicket.
+                                <br/>
+                                Ensure the step before back foot contact is captured.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function validateSideForm() {
+                        let att = document.forms['upload_side_form']['attachment_side'].value;
+                        let rec = document.forms['upload_side_form']['record_side'].value;
+                        if (att == "" &amp;&amp; rec == "") {
+                            window.alert("Please choose a Video !!!");
+                            return false;
+                        }
+                    }
+
+                    function clear_side_rec() {
+                    if (document.forms['upload_side_form']['record_side'].value){
+                            document.forms['upload_side_form']['record_side'].value = '';
+                        }
+                    }
+
+                    function clear_side_att() {
+                    if (document.forms['upload_side_form']['attachment_side'].value){
+                            document.forms['upload_side_form']['attachment_side'].value = '';
+                        }
+                    }
+                    function preview_side() {
+                        preview_side_attachment.src=URL.createObjectURL(event.target.files[0]);
+                    }
+
+                    function toggle() {
+                        $('#instruction_side').slideToggle("fast");
+                    }
+                </script>
+                </div>
+        </form>
+        </t>
+    </template>
+</odoo>

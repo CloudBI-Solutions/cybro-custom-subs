@@ -1,0 +1,304 @@
+#section-title .banner-area {
+	height: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#section-title .banner-content .breadcrumb {
+	background-color: transparent;
+	padding: 0px 0px 0px 10px;
+}
+#section-title .banner-title {
+	font-weight: 800;
+	font-size: 38px;
+}
+#support-type .support-card {
+	border-radius: 4px;
+	padding:20px;
+	margin-top: 32px;
+	height: 245px;
+	-webkit-transition: .4s ease-in-out;
+	-o-transition: .4s ease-in-out;
+	transition: .4s ease-in-out;
+}
+
+.support-row{
+    margin-bottom:100px;
+}
+
+/* #support-type .support-card:hover {
+	box-shadow: 0px 4px 24px 0px rgb(0 0 0 / 11%);
+} */
+#support-type .support-card .icon-wraper{
+	display: flex;
+	justify-content: center;
+}
+#support-type .support-card-text {
+	font-weight: bold;
+	color: rgb(255 255 255);
+}
+#support-type .support-card .icon-wraper .img-size {
+	width: fit-content;
+}
+
+#support-type .support-card .icon-wraper .img-size img{
+	height: 82px;
+	width: 82px;
+	padding: 12px 14px 14px 14px;
+}
+
+#support-type .support-card .icon-wraper .img-size:hover {
+	transition: 0.9s;
+	transform: rotateY(180deg);
+}
+
+#contact-support .form-wrap .btn-submit {
+	width: 278px;
+	height: 48px;
+	background: #d01922;
+	color: #fff;
+	border-radius: 0;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 700;
+	margin-top: 2.5rem;
+}
+
+#contact-support .title-wrapper h3{
+	font-weight: 800;
+	font-size: 38px;
+}
+#contact-support .form-wrap {
+	justify-content: center;
+}
+
+#contact-support .input-gp {
+	display:flex;
+}
+#contact-support .input-gp .telephone-code {
+	height: 49px;
+	margin-top: -1px;
+	background-color: lightgray;
+	outline: 0;
+}
+#contact-support .form-control {
+	background-color: #000;
+	color: white;
+	border: 1px solid #2b2c2d;
+    border-radius: 3px;
+}
+
+#contact-support .form-control:focus {
+	box-shadow: none;
+	border-color: #000000;
+}
+
+#contact-support .input-gp .telephone-code:focus { 
+	border:2px solid black;
+}
+#infiniarc-slider-support .card{
+	border: none !important;
+}
+
+#infiniarc-slider-support .carousel-inner .carousel-item,
+#infiniarc-slider-support .carousel-inner .carousel-item img{
+	min-height: 430px !important;
+	height: 430px !important;
+}
+
+[data-toggle="collapse"]:after {
+display: inline-block;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  content: "\f054";
+  transform: rotate(90deg) ;
+  transition: all linear 0.25s;
+  float: right;
+  padding: 10px;
+  }   
+[data-toggle="collapse"].collapsed:after {
+  transform: rotate(0deg) ;
+}
+#accordion .card,
+#accordion .card-body{
+	background: transparent;
+	border: none;
+	background-color: transparent !important;
+}
+.card-header{
+	padding: 0.25rem 0rem !important;
+}
+#accordion .card-body{
+	color: #fff;
+	font-size: 12px;
+	padding: 11px !important;
+}
+
+.card-header-box h5 > a{
+	font-size: 15px;
+}
+
+.hero-banner > *{
+    z-index: 2;
+}
+.hero-banner--support{
+    position: relative;
+    background-image: url('/iwesabe_website_theme/static/src/img/2508_msi_la_gi_4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.hero-banner--support::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(23,23,23);
+    background: -moz-linear-gradient(0deg, rgba(23,23,23,1) 0%, rgba(23,23,23,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(23,23,23,1) 0%, rgba(23,23,23,0) 100%);
+    background: linear-gradient(0deg, rgba(23,23,23,1) 0%, rgba(23,23,23,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#171717",endColorstr="#171717",GradientType=1);
+    z-index: 1;
+}
+
+/* FAQ page*/
+.card-faq{
+    background: #252525;
+    border: none;
+    margin-bottom: 25px;
+}
+
+.faq-card-header{
+     border: none;
+}
+.faq-card-body{
+    background: transparent;
+    background-color: #191919 !important;
+    color: white;
+    border: none;
+}
+
+/*Order Status page*/
+.order-status-column{
+    display: flex;
+    flex-direction: column;
+}
+.order_status_input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #8a8a8a;
+    width: 100%;
+    color:white;
+}
+.subscribe-status-submit{
+    padding: 13px 40px;
+    margin: 0 auto;
+}
+.order-status-container{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto 6.5rem;
+}
+
+/*Download page*/
+.s_table_of_content_navbar_wrap{
+    background: none;
+    border-right: 1px solid #8a8a8a;
+
+}
+.s_table_of_content_main{
+    padding-left: 40px;
+}
+.download-container{
+        display: block;
+    margin: 0px auto;
+    width: 70%;
+    max-width: 1400px;
+}
+.o_search_order_by{
+
+}
+.oe_search_box{
+    background: #242424 !important;
+    border: none !important;
+    height: 55px !important;
+}
+.input-group-append{
+    background: #242424;
+    height: 55px;
+}
+.ian-header__search .input-group{
+    width: 95% !important;
+    margin-top: 5px;
+}
+.oe_search_box{
+    background: transparent !important;
+}
+.input-group-append {
+    background: transparent !important;
+}
+
+/*Contactus page*/
+.contact-details-card{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px;
+}
+.contact-details{
+        width: calc(33.33% - 80px);
+        margin: 25px 15px;
+}
+.contact-details label{
+    display: block;
+    text-align: left;
+}
+.contact-details textarea{
+    width: 100%;
+    background: transparent;
+    border: 1px solid #343232;
+    padding: 8px;
+}
+.contact-details input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #8a8a8a;
+    display: block;
+    width: 100%;
+    padding: 6px;
+}
+.hero-banner > *{
+    z-index: 2;
+}
+.hero-banner nav{
+   margin-top: -83px;
+   margin-right: 600px;
+   width: max-content;
+}
+.hero-banner--contactus{
+    position: relative;
+    background-image: url('/iwesabe_website_theme/static/src/img/2508_msi_la_gi_4.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.hero-banner--contactus::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(16,16,16);
+    background: -moz-linear-gradient(0deg, rgba(16,16,16,1) 0%, rgba(16,16,16,0) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(16,16,16,1) 0%, rgba(16,16,16,0) 100%);
+    background: linear-gradient(0deg, rgba(16,16,16,1) 0%, rgba(16,16,16,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#101010",endColorstr="#101010",GradientType=1);
+}
+/*Warranty Page*/
+.warranty-container{
+    width: 100% !important;
+    display: inline-block;
+}

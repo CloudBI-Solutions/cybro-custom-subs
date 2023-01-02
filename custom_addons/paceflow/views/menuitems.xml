@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="pace-flow_root_menu"
+                  name="Pace-Flow"
+                  web_icon="paceflow,static/description/icon.png"
+                  groups="paceflow.group_paceflow_coaches,paceflow.group_paceflow_admins"
+                  sequence="10"/>
+        <menuitem id="assessments_menu"
+                  parent="pace-flow_root_menu"
+                  name="Assessments" sequence="5"
+                  action="paceflow.all_assessments_menu_action"/>
+        <menuitem id="drills_menu"
+                  parent="pace-flow_root_menu"
+                  name="Drills" sequence="10"
+                  action="paceflow.all_drills_menu_action"/>
+        <menuitem id="clients_menu"
+                  parent="pace-flow_root_menu"
+                  name="Coach" sequence="15"
+                  action="paceflow.all_clients_menu_action"/>
+        <menuitem id="child_menu"
+                  parent="pace-flow_root_menu"
+                  name="Player" sequence="20"
+                  action="paceflow.all_child_menu_action"/>
+        <menuitem id="parent_menu"
+                  parent="pace-flow_root_menu"
+                  name="Parents" sequence="20"
+                  action="paceflow.all_child_menu_action"/>
+        <menuitem id="group_menu"
+                  parent="pace-flow_root_menu"
+                  name="Groups" sequence="23"
+                  action="paceflow.all_group_menu_action"/>
+        <menuitem id="comments_menu"
+                  parent="pace-flow_root_menu"
+                  name="Comments" sequence="12"
+                  action="paceflow.all_comments_menu_action"/>
+        <menuitem id="config_menu"
+                  groups="paceflow.group_paceflow_admins"
+                  parent="pace-flow_root_menu"
+                  name="Configuration" sequence="100"/>
+        <menuitem id="assessment_stages_menu"
+                  parent="config_menu"
+                  name="Stages" sequence="10"
+                  action="paceflow.all_stages_menu_action"/>
+        <menuitem id="assessment_tags_menu"
+                  parent="config_menu"
+                  name="Tags" sequence="20"
+                  action="paceflow.all_tags_menu_action"/>
+        <menuitem id="res_config_settings_menu"
+                  parent="config_menu"
+                  name="Settings" sequence="1"
+                  action="paceflow.res_config_settings_menu_action"/>
+    </data>
+</odoo>

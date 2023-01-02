@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_event_registration_form_inherit" model="ir.ui.view">
+        <field name="name">event.registration.form.inherited</field>
+        <field name="model">event.registration</field>
+        <field name="inherit_id" ref="event.view_event_registration_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='event']" position="after">
+                <group string="Parent Information" name="event" attrs="{'invisible': [('event_extension', '=', False)]}">
+                    <field name="event_extension" invisible="1"/>
+                    <field name="parent_name"/>
+                    <field name="parent_email"/>
+                    <field name="parent_phone"/>
+                </group>
+                <group string="Additional Information" name="event" attrs="{'invisible': [('event_extension', '=', False)]}">
+                    <field string="Emergency No#1" name="emergency_contact_number_1"/>
+                    <field string="Emergency No#2"  name="emergency_contact_number_2"/>
+                    <field name="signature" widget="image"/>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='attendee']/field[@name='email']" position="after">
+                <field name="dob" attrs="{'invisible': [('event_extension', '=', False)]}"/>
+                <field name="medical_info" attrs="{'invisible': [('event_extension', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_event_form_inherit" model="ir.ui.view">
+        <field name="name">event.form.inherited</field>
+        <field name="model">event.event</field>
+        <field name="inherit_id" ref="event.view_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='auto_confirm']" position="after">
+                <field name="event_extension"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

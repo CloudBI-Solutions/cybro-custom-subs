@@ -1,0 +1,377 @@
+<odoo>
+    <template inherit_id="website_event.registration_template" id="registration_template" name="Registration">
+        <xpath expr="//select[hasclass('custom-select')]" position="replace">
+            <input t-if="event.event_extension" type="checkbox"
+               name="nb_ticket[]"
+               t-att-value="ticket.id"
+               t-att-data-ticket-id="ticket.id"
+               t-attf-onclick="ticket(this.checked, #{ticket.id});"
+            />
+
+            <select t-if="not ticket.is_expired and ticket.sale_available and event.event_extension"
+                    t-attf-name="nb_register-#{ticket.id}"
+                    t-attf-class="custom-select nb_register-#{ticket.id} d-none">
+                <t t-set="seats_max_ticket"
+                   t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1"/>
+                <t t-set="seats_max_event"
+                   t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>
+                <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)"/>
+                <t t-foreach="range(0, seats_max)" t-as="nb">
+                    <option t-esc="nb" t-att-value="nb" t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'"/>
+                </t>
+            </select>
+
+            <t t-if="not event.event_extension">
+                <select t-if="not ticket.is_expired and ticket.sale_available and not event.event_extension"
+                    t-attf-name="nb_register-#{ticket.id}"
+                    class="custom-select">
+                    <t t-set="seats_max_ticket" t-value="(not ticket.seats_limited or ticket.seats_available &gt; 9) and 10 or ticket.seats_available + 1"/>
+                    <t t-set="seats_max_event" t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>
+                    <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event)"/>
+                    <t t-foreach="range(0, seats_max)" t-as="nb">
+                        <option t-esc="nb" t-att-selected="len(ticket) == 0 and nb == 0 and 'selected'"/>
+                    </t>
+                </select>
+            </t>
+        </xpath>
+        <xpath expr="//div[hasclass('o_wevent_registration_single')]" position="replace">
+            <div t-else="" class="o_wevent_registration_single">
+                <div class="row p-2 pl-3">
+                    <div class="col-lg-8 d-flex flex-columns align-items-center" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                        <h6 itemprop="name" class="my-0 pr-3 border-right text-dark o_wevent_single_ticket_name">
+                            <span t-if="tickets" t-field="tickets.name"/>
+                            <span t-else="">Registration</span>
+                        </h6>
+                        <small t-if="tickets.end_sale_datetime and tickets.sale_available and not tickets.is_expired" class="text-muted mr-3" itemprop="availabilityEnds">Sales end on
+                            <span itemprop="priceValidUntil" t-esc="tickets.end_sale_datetime"
+                                t-options="{'widget': 'datetime', 'tz_name': event.date_tz, 'format': 'short'}"/>
+                            <span t-esc="tickets.event_id.date_tz"/>
+                        </small>
+                        <t t-call="website_event.registration_configure_tickets_button"
+                        t-if="request.env.user.has_group('event.group_event_manager')"/>
+                        <t t-if="event.event_extension">
+                            <input t-if="event.event_extension" type="checkbox"
+                               name="nb_ticket[]"
+                               style="padding-right:10px !important;"
+                               t-att-value="tickets.id"
+                               t-att-data-ticket-id="tickets.id"
+                               t-attf-onclick="ticket(this.checked, #{tickets.id});" checked="1"
+                            />
+                            <div class="ml-auto o_wevent_nowrap d-none">
+                                <t t-if="event.event_registrations_open">
+                                    <span class="text-dark font-weight-bold align-middle px-2">Qty</span>
+                                    <link itemprop="availability" content="http://schema.org/InStock"/>
+                                    <select t-att-name="'nb_register-%s' % (tickets.id if tickets else 0)" t-attf-class="w-auto custom-select nb_register-#{tickets.id}">
+                                        <t t-set="seats_max_ticket" t-value="(not tickets or not tickets.seats_limited or tickets.seats_available &gt; 9) and 10 or tickets.seats_available + 1"/>
+                                        <t t-set="seats_max_event" t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>
+                                        <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event) if tickets else seats_max_event"/>
+                                        <t t-foreach="range(0, seats_max)" t-as="nb">
+                                            <option t-esc="nb" t-att-value="nb" t-att-selected="nb == 1 and 'selected'"/>
+                                        </t>
+                                    </select>
+                                </t>
+                                <t t-else="">
+                                    <span itemprop="availability" content="http://schema.org/SoldOut" class="text-danger">
+                                        <i class="fa fa-ban mr-2"/>Sold Out
+                                    </span>
+                                </t>
+                            </div>
+
+                        </t>
+                        <t t-if="not event.event_extension">
+                            <div class="ml-auto o_wevent_nowrap">
+                                <t t-if="event.event_registrations_open">
+                                    <span class="text-dark font-weight-bold align-middle px-2">Qty</span>
+                                    <link itemprop="availability" content="http://schema.org/InStock"/>
+                                    <select t-att-name="'nb_register-%s' % (tickets.id if tickets else 0)" class="w-auto custom-select">
+                                        <t t-set="seats_max_ticket" t-value="(not tickets or not tickets.seats_limited or tickets.seats_available &gt; 9) and 10 or tickets.seats_available + 1"/>
+                                        <t t-set="seats_max_event" t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>
+                                        <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event) if tickets else seats_max_event"/>
+                                        <t t-foreach="range(0, seats_max)" t-as="nb">
+                                            <option t-esc="nb" t-att-selected="nb == 1 and 'selected'"/>
+                                        </t>
+                                    </select>
+                                </t>
+                                <t t-else="">
+                                    <span itemprop="availability" content="http://schema.org/SoldOut" class="text-danger">
+                                        <i class="fa fa-ban mr-2"/>Sold Out
+                                    </span>
+                                </t>
+                            </div>
+
+                        </t>
+                    </div>
+<!--                    <t t-if="event.event_extension">-->
+                    <div class="col-lg-4 pt-3 pt-lg-0 pl-2 pl-lg-0" t-attf-class="{{ 'd-none' if event.event_extension else '' }}">
+                        <button type="submit" class="btn btn-primary o_wait_lazy_js btn-block a-submit" t-attf-id="#{event.id}">
+                            Register
+                            <t t-if="event.seats_limited and event.seats_max and event.seats_available &lt;= (event.seats_max * 0.2)">
+                                (only <t t-esc="event.seats_available"/> available)
+                            </t>
+                        </button>
+                    </div>
+
+<!--                    </t>-->
+                </div>
+            </div>
+
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_wevent_nowrap')]" position="before">
+             <div t-if="event.event_extension" class="row mx-0 d-none">
+                <div class="col-md-4 offset-md-8 py-2 pl-md-0 pr-md-2">
+                    <input type="hidden" name="ticket_ids" id="ticket_ids" value="none"/>
+                    <input type="hidden" name="user_ticket_ids" id="user_ticket_ids" value="none"/>
+                    <input type="hidden" name="user_email" id="user_email" value="none"/>
+                    <input type="hidden" name="user_name" id="user_name" value="none"/>
+                    <input type="hidden" name="user_phone" id="user_phone" value="none"/>
+                    <input type="hidden" name="user_dob" id="user_dob" value="none"/>
+                    <input type="hidden" name="user_med_info" id="user_med_info" value="none"/>
+                    <button type="submit" class="btn btn-primary btn-block" id="a-submit" disabled="" onclick="array()">
+                        Register
+                        <t t-if="event.seats_limited and event.seats_max and event.seats_available &lt;= (event.seats_max * 0.2)">
+                            (only
+                            <t t-esc="event.seats_available"/>
+                            available)
+                        </t>
+                    </button>
+                </div>
+            </div>
+
+         </xpath>
+
+
+<!--        <xpath expr="//div[hasclass('o_wevent_nowrap')]" position="replace">-->
+<!--            <span>Text</span>-->
+<!--            <t t-if="event.event_extension">-->
+<!--                <div class="ml-auto o_wevent_nowrap d-none">-->
+<!--                    <t t-if="event.event_registrations_open">-->
+<!--                        <span class="text-dark font-weight-bold align-middle px-2">Qty</span>-->
+<!--                        <link itemprop="availability" content="http://schema.org/InStock"/>-->
+<!--                        <select t-att-name="'nb_register-%s' % (tickets.id if tickets else 0)" class="w-auto custom-select nb_register-#{tickets.id}">-->
+<!--                            <t t-set="seats_max_ticket" t-value="(not tickets or not tickets.seats_limited or tickets.seats_available &gt; 9) and 10 or tickets.seats_available + 1"/>-->
+<!--                            <t t-set="seats_max_event" t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>-->
+<!--                            <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event) if tickets else seats_max_event"/>-->
+<!--                            <t t-foreach="range(0, seats_max)" t-as="nb">-->
+<!--                                <option t-esc="nb" t-att-selected="nb == 1 and 'selected'"/>-->
+<!--                            </t>-->
+<!--                        </select>-->
+<!--                    </t>-->
+<!--                    <t t-else="">-->
+<!--                        <span itemprop="availability" content="http://schema.org/SoldOut" class="text-danger">-->
+<!--                            <i class="fa fa-ban mr-2"/>Sold Out-->
+<!--                        </span>-->
+<!--                    </t>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--&lt;!&ndash;            <input t-if="event.event_extension" type="checkbox"&ndash;&gt;-->
+<!--&lt;!&ndash;               name="nb_ticket[]"&ndash;&gt;-->
+<!--&lt;!&ndash;               t-att-value="tickets.id"&ndash;&gt;-->
+<!--&lt;!&ndash;               t-att-data-ticket-id="tickets.id"&ndash;&gt;-->
+<!--&lt;!&ndash;               t-attf-onclick="ticket(this.checked, #{tickets.id});" checked="1" disabled="1"&ndash;&gt;-->
+<!--&lt;!&ndash;            />&ndash;&gt;-->
+<!--            <t t-if="not event.event_extension">-->
+<!--                <div class="ml-auto o_wevent_nowrap">-->
+<!--                    <t t-if="event.event_registrations_open">-->
+<!--                        <span class="text-dark font-weight-bold align-middle px-2">Qty</span>-->
+<!--                        <link itemprop="availability" content="http://schema.org/InStock"/>-->
+<!--                        <select t-att-name="'nb_register-%s' % (tickets.id if tickets else 0)" class="w-auto custom-select">-->
+<!--                            <t t-set="seats_max_ticket" t-value="(not tickets or not tickets.seats_limited or tickets.seats_available &gt; 9) and 10 or tickets.seats_available + 1"/>-->
+<!--                            <t t-set="seats_max_event" t-value="(not event.seats_limited or event.seats_available &gt; 9) and 10 or event.seats_available + 1"/>-->
+<!--                            <t t-set="seats_max" t-value="min(seats_max_ticket, seats_max_event) if tickets else seats_max_event"/>-->
+<!--                            <t t-foreach="range(0, seats_max)" t-as="nb">-->
+<!--                                <option t-esc="nb" t-att-selected="nb == 1 and 'selected'"/>-->
+<!--                            </t>-->
+<!--                        </select>-->
+<!--                    </t>-->
+<!--                    <t t-else="">-->
+<!--                        <span itemprop="availability" content="http://schema.org/SoldOut" class="text-danger">-->
+<!--                            <i class="fa fa-ban mr-2"/>Sold Out-->
+<!--                        </span>-->
+<!--                    </t>-->
+<!--                </div>-->
+<!--            </t>-->
+<!--        </xpath>-->
+
+        <xpath expr="//div[@id='o_wevent_tickets']" position="before">
+            <t t-if="event.event_extension">
+                <div class="jumbotron text-center bg-white shadow-sm o_wevent_js_ticket_details d-none" id="thank_section">
+                    <h1 class="display-3">Thank You!</h1>
+                    <p class="lead">
+                        <strong>Your tickets are registered</strong>
+                        You will be redirected to the cart page.
+                    </p>
+                    <hr/>
+                </div>
+
+                <div class="bg-white shadow-sm o_wevent_js_ticket_details" id="entire_form">
+                    <div class="d-flex justify-content-between align-items-center py-2 pl-3 pr-2 border-bottom">
+                        <a href="#" role="button" class="btn o_wevent_registration_btn text-left"
+                           data-target="#o_wevent_tickets_collapse">
+                            <span class="py-2" id="heading_section">Please, enter the number of children you wish to register</span>
+                            <span class="close d-none">×</span>
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center px-0 py-2 pl-3 pr-2 border-bottom">
+                        <div class="">
+                            <div class="alert alert-danger rounded-0 o_website_event_configuration o_not_editable d-none"
+                                 role="status" id="checkbox_alert">
+                                <i class="fa fa-exclamation-triangle mr-2" role="img" aria-label="Edit"
+                                   title="Edit event registration in backend"/>
+                                <em>You have not selected any tickets, Please select to continue</em>
+                            </div>
+
+                            <div id="no_reg_div">
+                                <div class="col-lg my-2">
+                                    <label>Number of Registrations</label>
+                                    <div class="row">
+                                        <div class="col-6 p-0 m-0">
+                                            <input class="form-control" type="number" name="reg_no" id="limit"
+                                                   required="This field is required" value="1" min="1" max="9"
+                                            />
+                                        </div>
+                                        <div class="col-6 p-0 pl-1 m-0">
+                                            <button type="button" class="btn btn-info form-control"
+                                                    style="color: white;" id="reg_no" onclick="no_reg()">
+                                                Continue
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="font-weight-bold text-center d-none" id="candidate_no_div">
+                                <h4 id="candidate_no">Enter 1st Candidate Details</h4>
+                                <hr/>
+                            </div>
+                            <div id="reg_form_fields" class="d-none">
+                                <div class="row">
+                                    <div class="col-lg my-2">
+                                        <label>Name</label>
+                                        <input class="form-control" type="text" id="u_name"
+                                               required="This field is required"/>
+                                    </div>
+                                    <div class="col-lg my-2">
+                                        <label>Email</label>
+                                        <input class="form-control" type="email" id="u_email"
+                                               required="This field is required"/>
+                                    </div>
+                                    <div class="col-lg my-2">
+                                        <label>Phone
+                                            <small>(Optional)</small>
+                                        </label>
+                                        <input class="form-control" id="u_phone" type="tel"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg my-2">
+                                        <label id="u_dob_label">Date of birth</label>
+                                        <input class="form-control" type="date" id="u_dob"
+                                               required="This field is required"/>
+                                    </div>
+                                    <div class="col-lg my-2">
+                                        <label>Medical Information</label>
+                                        <input class="form-control" type="text" id="u_med_info"
+                                               required="This field is required"/>
+                                    </div>
+                                </div>
+                                <input class="d-none" type="text"/>
+                                <button type="button" class="btn btn-info btn-block text-decoration-none" style="color: white;" id="next_reg" onclick="next_reg_fun()">
+                                    Next
+                                </button>
+                            </div>
+                            <div id="parent_info_form" class="d-none">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control" type="text" name="parent_name" id="par_name"
+                                           required="This field is required"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input class="form-control" type="email" name="parent_email" id="par_email"
+                                           required="This field is required"/>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Telephone</label>
+                                            <input class="form-control" type="number" name="parent_phone" id="par_phone"
+                                                   required="This field is required"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Emergency Phone</label>
+                                            <input class="form-control" type="number" name="emergency_no_1"
+                                                   id="emergency_no_1"
+                                                   required="This field is required"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tacbox">
+                                    <input id="t_c" type="checkbox" onclick="t_c_check()"/>
+                                    <label for="checkbox">I agree to these <a href="#">Terms and Conditions</a>.
+                                    </label>
+                                </div>
+                                <label class="mt-2">Signature</label>
+                                <div id="signature-pad" class="signature-pad d-flex justify-content-center">
+                                    <div class="canvas_border d-flex flex-column">
+                                        <div class="signature-pad--body pb-0 mb-0 ">
+                                            <canvas id="sig-canvas" width="304" height="154"></canvas>
+                                            <input type="hidden" name="signature" id="sig-dataUrl"/>
+                                        </div>
+                                        <div class="canv_controls d-flex justify-content-center">
+                                            <button type="button" class="btn button clear border-0 pt-0" data-action="clear"
+                                                    id="canvs_control_clear">
+                                                <i class="fa fa-close"/>
+                                            </button>
+                                            <button type="button" class="btn button border-0 pt-0" data-action="undo"
+                                                    id="canvs_control_undo">
+                                                <i class="fa fa-undo"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="event_id" t-att-value="event.id"/>
+                                <button type="button" class="btn btn-primary btn-block text-decoration-none mt-2" disabled=""
+                                        style="color: white;" id="submit_form_id" onclick="submit_form_fun()">
+                                    Register
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='o_wevent_tickets_collapse']/div[hasclass('no-gutters')]" position="attributes">
+             <attribute name="t-attf-class" add="#{'d-none' if event.event_extension else ''}" separator=" "/>
+        </xpath>
+        <xpath expr="//div[@id='o_wevent_tickets']" position="attributes">
+            <attribute name="t-attf-class" add="#{'d-none' if event.event_extension else 'bg-white shadow-sm o_wevent_js_ticket_details'}" separator=" "/>
+            <attribute name="class" add="bg-white shadow-sm o_wevent_js_ticket_details" separator=" "/>
+        </xpath>
+
+        <xpath expr="//div[@id='o_wevent_tickets_collapse']/div[hasclass('no-gutters')]" position="before">
+            <div t-if="event.event_extension" class="row mx-0 d-none">
+                <div class="col-md-4 offset-md-8 py-2 pl-md-0 pr-md-2">
+                    <input type="hidden" name="ticket_ids" id="ticket_ids" value="none"/>
+                    <input type="hidden" name="user_ticket_ids" id="user_ticket_ids" value="none"/>
+                    <input type="hidden" name="user_email" id="user_email" value="none"/>
+                    <input type="hidden" name="user_name" id="user_name" value="none"/>
+                    <input type="hidden" name="user_phone" id="user_phone" value="none"/>
+                    <input type="hidden" name="user_dob" id="user_dob" value="none"/>
+                    <input type="hidden" name="user_med_info" id="user_med_info" value="none"/>
+                    <button type="submit" class="btn btn-primary btn-block" id="a-submit" disabled="" onclick="array()">
+                        Register
+                        <t t-if="event.seats_limited and event.seats_max and event.seats_available &lt;= (event.seats_max * 0.2)">
+                            (only
+                            <t t-esc="event.seats_available"/>
+                            available)
+                        </t>
+                    </button>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

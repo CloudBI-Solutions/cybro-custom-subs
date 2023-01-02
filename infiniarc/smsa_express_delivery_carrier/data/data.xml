@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record forcecreate="True" id="packaging_smsa_express" model="stock.package.type">
+            <field name="name">SMSA Custom Packaging</field>
+            <field name="package_carrier_type">smsa</field>
+            <field name= "shipper_package_code">SMSA_pkg</field>
+            <field name="height">10</field>
+            <field name="width">10</field>
+            <field name="packaging_length">10</field>
+            <field name="max_weight">10</field>
+            <field name="cover_amount">10</field>
+            <!-- <field name="qty">10</field> -->
+        </record>
+
+        <record forcecreate="True" id="product_smsa_express" model="product.product">
+            <field name="name">Delivery by SMSA Express</field>
+            <field name="default_code">Delivery</field>
+            <field name="type">service</field>
+            <field name="lst_price">10.00</field>
+            <field name="standard_price">10.0</field>
+            <!-- <field name="taxes_id">None</field> -->
+        </record>
+
+        <record forcecreate= "True" id= "product_packaging_smsa_express" model= "product.packaging">
+            <field name= "name">SMSA Custom Packaging</field>
+            <field name= "package_type_id" ref='packaging_smsa_express'/>
+            <field name= "product_id" ref='product_smsa_express'/>
+            <field name='qty'>10</field>
+        </record>
+
+        <record forcecreate="True" id="smsa_express_delivery_carrier" model="delivery.carrier">
+            <field name="name">SMSA Express</field>
+            <field name="delivery_type">smsa</field>
+            <field name="product_id" ref="product_smsa_express"/>
+            <field name="uom_id" ref="uom.product_uom_kgm"/>
+            <field name="delivery_uom">KG</field>
+            <field name="packaging_id" ref="product_packaging_smsa_express"/>
+            <field name="void_shipment">True</field>
+        </record>        
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--        Requests Thankyou-->
+        <record id="request_thanks" model="website.page">
+            <field name="name">Thanks (Request)</field>
+            <field name="type">qweb</field>
+            <field name="url">/request_thanks</field>
+            <field name="is_published">True</field>
+            <field name="key">repair_order.request_thanks</field>
+            <field name="arch" type="xml">
+                <t name="Thanks (Request)" t-name="repair_order.request_thanks">
+                    <t t-call="website.layout">
+                        <div id="wrap">
+                            <div class="container">
+                                <h1>Thank You</h1>
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="alert alert-success"
+                                             role="status">
+                                            Your request has been sent successfully
+                                        </div>
+                                        <p>
+                                            We will get back to you shortly.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

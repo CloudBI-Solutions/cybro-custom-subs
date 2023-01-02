@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="order_history_status_page" name="Order Status">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="hero-banner hero-banner--contactus">
+                    <h1 class="page-title mt32" style="margin-top: 65px !important;">
+                        Order Status
+                    </h1>
+                </div>
+                <section id="support-type" class="">
+                    <div class="container order-status-container">
+                        <div class="row">
+                            <label class="col-form-label col-sm-auto"
+                                   for="Confirmation_number">
+                                <span>Order Number:</span><t t-esc="sale_order.name"/>
+
+                            </label>
+
+                        </div>
+                        <div class="row flex-column my-5 order_status" style="margin-top: 10px !important;">
+                            <label class="col-form-label col-sm-auto"
+                                   for="shipping_code">
+                                <span>Order Date:</span><t t-esc="sale_order.date_order"/>
+
+                            </label>
+
+                        </div>
+                        <div class="row flex-column my-5 order_status" style="margin-top: 0px !important;">
+                            <label class="col-form-label col-sm-auto"
+                                   for="shipping_code">
+                                <span>Order Total:</span><t t-esc="sale_order.amount_total"/>
+
+                            </label>
+
+                        </div>
+
+                        <div class="row flex-column my-5 order_status" style="margin-top: 0px !important;">
+                            <label class="col-form-label col-sm-auto"
+                                   for="shipping_code">
+                                <span>Order Status:</span><t t-esc="sale_order.picking_ids.state"/>
+
+                            </label>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

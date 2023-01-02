@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="sports_erp_portal"
+              name="My Portal">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="set-dashboard__title-container ml-2 mr-2">
+                <h2 class="set-dashboard__title">Home</h2>
+                <span groups="organisation.group_organisation_administrator">
+                    <a href="/my/edit_home_image">
+                        <i class="fa fa-edit"
+                           alt="Edit"
+                           title="Edit"/>
+                        Edit
+                    </a>
+                </span>
+            </div>
+
+            <div class="row">
+                <t t-foreach="home_images" t-as="home_image">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <a href="#" class="set-link set-link--unstyled">
+                            <div class="set-newscard">
+                                <div class="set-newscard__image-container">
+                                    <img class="set-newscard__image"
+                                         t-att-src="image_data_uri(home_image.image) if home_image.image else None"
+                                         alt="Image"/>
+                                </div>
+                                <div class="set-newscard__details mt-2">
+                                    <span class="set-newscard__title">
+                                        <t t-esc="home_image.name"/>
+                                    </span>
+                                    <p class="set-newscard__description  mt-2">
+                                        <t t-esc="home_image.description"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </t>
+            </div>
+            <div id="wrap" class="row oe_structure oe_empty"/>
+            <div class="set-dashboard__title-container ml-2 mr-2">
+                <h2 class="set-dashboard__title">Gallery</h2>
+                <a href="/my/edit_gallery_image" groups="organisation.group_organisation_administrator">
+                    <i class="fa fa-edit"
+                       alt="Edit"
+                       title="Edit"/>
+                    Edit
+                </a>
+            </div>
+            <div class="row">
+                <t t-foreach="gallery_images" t-as="gallery_image">
+                    <div class="col-sm-12 col-md-6 col-lg-4 padding--mobile">
+                        <a href="#" class="set-link set-link--unstyled">
+                            <div class="set-dasboard__gallery-tile">
+                                <img class="set-dashboard__gallery-image"
+                                     t-att-src="image_data_uri(gallery_image.image) if home_image.image else None"
+                                     alt="Image"/>
+                                <div class="set-dashboard__gallery-meta">
+                                    <span class="set-dashboard__gallery-title">
+                                        <t t-esc="gallery_image.name"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </t>
+            </div>
+            <div id="wrap" class="row oe_structure oe_empty"/>
+        </t>
+    </template>
+
+</odoo>

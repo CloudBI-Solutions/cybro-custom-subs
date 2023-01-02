@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="lifestyle_assessment_survey" model="survey.survey">
+            <field name="title">Lifestyle Assessment</field>
+            <field name="is_diary">True</field>
+            <field name="question_and_page_ids" eval="[(5, 0),
+            (0, 0, {'title': 'Stress', 'is_page': True}),
+            (0, 0, {'title': 'Stress', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Sleep', 'is_page': True}),
+            (0, 0, {'title': 'Sleep', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Study/Work', 'is_page': True}),
+            (0, 0, {'title': 'Study/Work', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Training', 'is_page': True}),
+            (0, 0, {'title': 'Training', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Competitions', 'is_page': True}),
+            (0, 0, {'title': 'Competitions', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Dual Career', 'is_page': True}),
+            (0, 0, {'title': 'Dual Career', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Family', 'is_page': True}),
+            (0, 0, {'title': 'Family', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Injuries', 'is_page': True}),
+            (0, 0, {'title': 'Injuries', 'question_type': 'calculated_metric', 'is_page': False}),
+            (0, 0, {'title': 'Nutrition', 'is_page': True}),
+            (0, 0, {'title': 'Nutrition', 'question_type': 'calculated_metric', 'is_page': False}),
+            ]"/>
+        </record>
+        <record id="hr_assessment_survey" model="survey.survey">
+            <field name="title">HR/HRV Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="mobility_assessment_survey" model="survey.survey">
+            <field name="title">Mobility Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="mental_assessment_survey" model="survey.survey">
+            <field name="title">Mental Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="nutrition_assessment_survey" model="survey.survey">
+            <field name="title">Nutrition Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="aerobic_assessment_survey" model="survey.survey">
+            <field name="title">Aerobic Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="anaerobic_assessment_survey" model="survey.survey">
+            <field name="title">Anaerobic Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+        <record id="sc_assessment_survey" model="survey.survey">
+            <field name="title">S &amp; C Assessment</field>
+            <field name="is_diary">True</field>
+        </record>
+
+    </data>
+</odoo>

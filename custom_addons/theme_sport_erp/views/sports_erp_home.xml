@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sports_erp_home"
+              name="Sports ERP Home">
+        <t t-call="portal.portal_layout">
+            <div class="oe_structure oe_empty">
+                <t t-call="theme_sport_erp.hero_snippet"/>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template name="My Registers" id="registers_template">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/registers"
+                               class="set-dashboard__breadcrumb-link">
+                                Registers
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container get-values__list">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2">
+                            Registers
+                        </h2>
+                        <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                            <t t-esc="total"/>
+                        </span>
+                    </div>
+                    <div class="set-dashboard__right-action d-flex align-items-center flex-wrap"
+                         groups="organisation.group_organisation_administrator">
+                        <button type="button"
+                                id="assign-button"
+                                class="set-button set-button--primary-muted mr-2"
+                                data-toggle="modal"
+                                data-target="#assignCoachModal">
+                            <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                 width="18" height="18"
+                                 class="mr-2"/>
+                            <span class="title--show">Assign</span>
+                        </button>
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                    data-toggle="modal"
+                                    data-target="#addRegistersModal">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                     width="18" height="18"
+                                     class="mr-2"/>
+                                <span class="title--show">Add New Registers</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__table-options">
+                            <button class="set-button set-button--light set-dashboard__table-button mr-2"
+                                    onclick="filterDiv()">
+                                <i class="fa fa-filter mr-2"/>
+                                Filter
+                            </button>
+                            <div id="filterDropDown" class="dropdown-content">
+                                <form class="o_wsale_products_searchbar_form"
+                                      method="post" action="/my/coaches">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                        <div class="p-2 filter-padding">
+                                            O 2 O pricing
+                                            <div class="min-max">
+                                                <div>
+                                                    <label for="price-min">Min
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input type="number"
+                                                           name="price-min"
+                                                           class="form-control se-form-control"
+                                                           id="price-min"
+                                                           step="0.01"
+                                                           t-att-value="lowest_price"
+                                                           style="width:50%;"/>
+                                                </div>
+                                                <div>
+                                                    <label for="price-max">Max
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input type="number"
+                                                           name="price-max"
+                                                           class="form-control se-form-control"
+                                                           id="price-max"
+                                                           step="0.01"
+                                                           t-att-value="highest_price"
+                                                           style="width:50%;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 filter-padding">
+                                            Team pricing
+                                            <div class="min-max">
+                                                <div>
+                                                    <label for="team-min">Min
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input type="number"
+                                                           name="team-min"
+                                                           class="form-control se-form-control"
+                                                           id="team-min"
+                                                           step="0.01"
+                                                           t-att-value="team_session_low"
+                                                           style="width:50%;"/>
+                                                </div>
+                                                <div>
+                                                    <label for="team-max">Max
+                                                    </label>
+                                                </div>
+                                                <div>
+                                                    <input type="number"
+                                                           name="team-max"
+                                                           class="form-control se-form-control"
+                                                           id="team-max"
+                                                           step="0.01"
+                                                           t-att-value="team_session_high"
+                                                           style="width:50%;"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-2 filter-padding">
+                                            Tags
+                                            <div>
+                                                <div>
+                                                    <t t-set="tags"
+                                                       t-value="request.env['coaches.tags'].search([])"/>
+                                                    <select name="filtered_tags"
+                                                            id="filtered_tags"
+                                                            class="form-control se-form-control sports-erp-dashbaord-select"
+                                                            multiple="multiple"
+                                                            placeholder="Choose Tags">
+                                                        <t t-foreach="filtered_tags or []"
+                                                           t-if="filtered_tags"
+                                                           t-as="filtered_tag">
+                                                            <option t-att-value="filtered_tag.id"
+                                                                    selected="selected">
+                                                                <t t-esc="filtered_tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                        <t t-foreach="tags or []"
+                                                           t-as="tag">
+                                                            <option t-att-value="tag.id">
+                                                                <t t-esc="tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <input type="submit" value="Filter"
+                                               class="btn set-button mt-2 mb-2 set-button--primary set-button--no-shadow"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="set-dashboard__input-container">
+                                <form class="o_wsale_products_searchbar_form"
+                                      method="get" action="/my/coaches">
+                                    <input type="search" name="search"
+                                           id="myInput" placeholder="Search"
+                                           class="set-dashboard__input-search"
+                                           onFocus="myFunction()"
+                                           autocomplete="off"
+                                           onBlur="setTimeout(myFunction, 300);"
+                                           onkeyup="filterFunction()"/>
+                                    <div id="myDropdown"
+                                         class="dropdown-content">
+                                        <t t-foreach="registers"
+                                           t-as="register">
+                                            <a t-att-href="'/my/register/%s' % register.id">
+                                                <t t-esc="register.name"/>
+                                            </a>
+                                        </t>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <script>function filterDiv() {
+                            document.getElementById("filterDropDown").classList.toggle("show-div");
+                            } function myFunction() {
+                            document.getElementById("myDropdown").classList.toggle("show-div");
+                            } function filterFunction() { var input, filter, ul,
+                            li, a, i; input =
+                            document.getElementById("myInput"); filter =
+                            input.value.toUpperCase(); div =
+                            document.getElementById("myDropdown"); a =
+                            div.getElementsByTagName("a"); for (i = 0; i
+                            &lt; a.length
+                            ; i++) { txtValue = a[i].textContent ||
+                            a[i].innerText; if
+                            (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            a[i].style.display = ""; } else { a[i].style.display
+                            = "none"; } } }
+                        </script>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <table class="set-dashboard__table mt-3 get-values__list">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input id="select-all"
+                                               type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select-all"/>
+                                    </th>
+                                    <th>Name</th>
+<!--                                    <th>Phone</th>-->
+<!--                                    <th>One 2 One Price</th>-->
+<!--                                    <th>Team Session Price</th>-->
+                                    <th groups="organisation.group_organisation_administrator">
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="registers" t-as="register">
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   t-att-value="register.id"
+                                                   name="select"/>
+                                            <input type="hidden"
+                                                   t-att-id="register.id"
+                                                   t-att-value="register.name"/>
+                                        </td>
+                                        <td>
+                                            <a t-att-href="'/my/register/%s' % register.id">
+                                                <div class="set-dashboard__table-details image-name-class">
+                                                    <div class="ml-4 mt-3">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="register.name"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+<!--                                        <td>-->
+<!--                                            <div class="d-flex flex-wrap align-items-center align-content-center">-->
+<!--                                                <span class="set-badge set-badge&#45;&#45;blue set-badge&#45;&#45;wide">-->
+<!--                                                    <t t-esc="coach.phone"/>-->
+<!--                                                </span>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <div class="d-flex flex-wrap align-items-center align-content-center">-->
+<!--                                                <span class="set-badge set-badge&#45;&#45;green set-badge&#45;&#45;wide">-->
+<!--                                                    <t t-esc="request.env.company.currency_id.symbol"/>-->
+<!--                                                    <t t-esc="coach.price_o2o"/>-->
+<!--                                                </span>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+<!--                                        <td>-->
+<!--                                            <div class="d-flex flex-wrap align-items-center align-content-center">-->
+<!--                                                <span class="set-badge set-badge&#45;&#45;gold set-badge&#45;&#45;wide">-->
+<!--                                                    <t t-esc="request.env.company.currency_id.symbol"/>-->
+<!--                                                    <t t-esc="coach.price_team"/>-->
+<!--                                                </span>-->
+<!--                                            </div>-->
+<!--                                        </td>-->
+                                        <td groups="organisation.group_organisation_administrator">
+                                            <div class="set-dashboard__table-actions">
+                                                <a t-att-href="'/my/register/%s' % register.id"
+                                                   class="set-dashboard__table-action mr-4">
+                                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                         class="set-dashboard__table-action-icon"
+                                                         alt="Edit"
+                                                         title="Edit"/>
+                                                </a>
+                                                <a t-att-href="'/remove/register/%s' % register.id"
+                                                   class="set-dashboard__table-action">
+                                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                         class="set-dashboard__table-action-icon"
+                                                         alt="Remove"
+                                                         title="Remove"/>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <div class="set-dashboard__table-footer">
+                            <span class="set-dashboard__page-position set-text set-text--grey">
+                                Page
+                                <span t-out="pager['page']['num']"/>
+                                of
+                                <t t-if="pager['page_count'] > 1">
+                                    <span t-out="pager['pages'][-1]['num']"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-out="pager['page']['num']"/>
+                                </t>
+                            </span>
+                            <ul
+                                    class="set-dashboard__pagination">
+                                <t t-foreach="pager['pages']"
+                                   t-as="page">
+                                    <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                        <a t-att-href="page['url']"
+                                           t-attf-class="page-link #{extraLinkClass}"
+                                           t-out="page['num']"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal se-modal" id="addRegistersModal" tabindex="-1"
+                 role="dialog" aria-labelledby="addCoachLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog se-modal__dialog" role="document">
+                    <div class="modal-content se-modal__content">
+                        <div class="modal-header">
+                            <h5 class="modal-title se-modal__title"
+                                id="addCoachModalLabel">Add New Register
+                            </h5>
+                            <button type="button" class="close"
+                                    data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="false">X</span>
+                            </button>
+                        </div>
+                        <form action="/create/registers" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <div class="modal-body">
+                                <div class="row px-4">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label" for="tags">
+                                            Coach
+                                        </label>
+                                        <select name="coach" id="coach"
+                                                class="form-control se-form-control"
+                                                placeholder="Choose Coach">
+                                            <option></option>
+                                            <t t-foreach="coaches or []"
+                                               t-as="coach">
+                                                <option t-att-value="coach.id">
+                                                    <t t-esc="coach.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="date">Date
+                                        </label>
+                                        <input type="date"
+                                               class="form-control se-form-control"
+                                               id="date" name="date"/>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="group">Group
+                                        </label>
+                                        <select name="group" id="group"
+                                                class="form-control se-form-control"
+                                                placeholder="Choose Group">
+                                            <option>Choose Group</option>
+                                            <t t-foreach="groups or []"
+                                               t-as="group">
+<!--                                                <option t-att-value="group.id" t-att-data-group_id="group.id">-->
+<!--                                                    <t t-esc="group.name"/>-->
+<!--                                                </option>-->
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="venue">Venue
+                                        </label>
+                                        <select name="venue" id="venue"
+                                                class="form-control se-form-control"
+                                                placeholder="Choose Venue">
+                                            <t t-foreach="venues or []"
+                                               t-as="venue">
+                                                <option t-att-value="venue.id">
+                                                    <t t-esc="venue.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                        <label class="se-form-label"
+                                               for="athletes">
+                                            Athletes
+                                        </label>
+                                        <select name="athletes"
+                                                id="athletes"
+                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                multiple="multiple"
+                                                placeholder="Choose Athletes">
+                                            <t t-foreach="athletes or []"
+                                               t-as="athlete">
+                                                <option t-att-value="athlete.id">
+                                                    <t t-esc="athlete.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                        <label class="se-form-label"
+                                               for="is_cancel">
+                                            Is the training is cancelled?
+                                        </label>
+                                        <input type="checkbox" id="is_cancel" name="is_cancel" class="form-control se-form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex">
+                                <input type="submit"
+                                       class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                       style="border-radius: 5px !important;"
+                                       value="Add Register"/>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+    </template>
+    <template name="Register Details" id="registers_details_template">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/registers"
+                               class="set-dashboard__breadcrumb-link">Registers
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/register/%s' % register.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="register.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form action="/update/register" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="register"
+                               t-att-value="register.id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            Register:
+                                            <t t-esc="register.name"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">
+                                            Register
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12">
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="register.attendee_ids" t-as="attendee">
+                                                        <td>
+                                                            <input type="text"
+                                                                   class="form-control se-form-control"
+                                                                   id="name"
+                                                                   t-att-name="'attendee_name_' + str(i)"
+                                                                   t-att-value="attendee.attendee_id.name" readonly="1"/>
+                                                            <input type="hidden"
+                                                                   class="form-control se-form-control"
+                                                                   id="name"
+                                                                   t-att-name="'attendee_id_' + str(i)"
+                                                                   t-att-value="attendee.id" readonly="1"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type="checkbox"
+                                                                   class="form-control se-form-control"
+                                                                   id="attendee"
+                                                                   t-att-name="'is_attendee_' + str(i)"
+                                                                   t-att-checked="attendee.is_attended"/>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                    <div class="tab-pane fade" id="profile"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="profile-tab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="monday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.mon_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'row_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="mon_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'mon_from_' + str(i)"-->
+<!--                                                                   t-att-id="'mon_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.mon_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'mon_id_' + str(i)"-->
+<!--                                                                   t-att-id="'mon_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'mon_to_' + str(i)"-->
+<!--                                                                   t-att-id="'mon_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.mon_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="tuesdaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="tuesdaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="tuesday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.tue_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'tue_row_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="tue_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'tue_from_' + str(i)"-->
+<!--                                                                   t-att-id="'tue_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.tue_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'tue_id_' + str(i)"-->
+<!--                                                                   t-att-id="'tue_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'tue_to_' + str(i)"-->
+<!--                                                                   t-att-id="'tue_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.tue_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="wednesdaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="wednesdaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="wednesday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.wed_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'wed_from_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="wed_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'wed_from_' + str(i)"-->
+<!--                                                                   t-att-id="'wed_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.wed_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'wed_id_' + str(i)"-->
+<!--                                                                   t-att-id="'wed_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'wed_to_' + str(i)"-->
+<!--                                                                   t-att-id="'wed_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.wed_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="thursdaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="thursdaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="thursday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.thu_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'thu_row_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="thu_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'thu_from_' + str(i)"-->
+<!--                                                                   t-att-id="'thu_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.thu_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'thu_id_' + str(i)"-->
+<!--                                                                   t-att-id="'thu_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'thu_to_' + str(i)"-->
+<!--                                                                   t-att-id="'thu_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.thu_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="fridaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="fridaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="friday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.fri_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'fri_from_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="fri_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'fri_from_' + str(i)"-->
+<!--                                                                   t-att-id="'fri_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.fri_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'fri_id_' + str(i)"-->
+<!--                                                                   t-att-id="'fri_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'fri_to_' + str(i)"-->
+<!--                                                                   t-att-id="'fri_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.fri_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove from cart"-->
+<!--                                                               title="Remove from cart"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="saturdaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="saturdaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="saturday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.sat_slot_ids"-->
+<!--                                                        t-as="slot">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="mon_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'sat_from_' + str(i)"-->
+<!--                                                                   t-att-id="'sat_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.sat_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'sat_id_' + str(i)"-->
+<!--                                                                   t-att-id="'sat_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'sat_to_' + str(i)"-->
+<!--                                                                   t-att-id="'sat_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.sat_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    <div class="tab-pane fade" id="sundaytab"-->
+<!--                                         role="tabpanel"-->
+<!--                                         aria-labelledby="sundaytab">-->
+<!--                                        <div class="row col-12 col-sm-12">-->
+<!--                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"-->
+<!--                                                   id="sunday_table">-->
+<!--                                                <thead>-->
+<!--                                                    <tr>-->
+<!--                                                        <th class="td-img">-->
+<!--                                                            From-->
+<!--                                                        </th>-->
+<!--                                                        <th>To</th>-->
+<!--                                                        <th class="text-center td-action"/>-->
+<!--                                                    </tr>-->
+<!--                                                </thead>-->
+<!--                                                <tbody>-->
+<!--                                                    <t t-set="i" t-value="1"/>-->
+<!--                                                    <tr t-foreach="coach.sun_slot_ids"-->
+<!--                                                        t-as="slot"-->
+<!--                                                        t-att-id="'sun_row_' + str(i)">-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name"-->
+<!--                                                            name="mon_slot">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'sun_from_' + str(i)"-->
+<!--                                                                   t-att-id="'sun_from_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.sun_from"/>-->
+<!--                                                            <input type="hidden"-->
+<!--                                                                   t-att-name="'sun_id_' + str(i)"-->
+<!--                                                                   t-att-id="'sun_id_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.id"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td contenteditable='true'-->
+<!--                                                            class="td-product_name">-->
+<!--                                                            <input type="text"-->
+<!--                                                                   t-att-name="'sun_to_' + str(i)"-->
+<!--                                                                   t-att-id="'sun_to_' + str(i)"-->
+<!--                                                                   class="form-control"-->
+<!--                                                                   t-att-value="slot.sun_to"/>-->
+<!--                                                        </td>-->
+<!--                                                        <td class="td-action">-->
+<!--                                                            <a href="#"-->
+<!--                                                               aria-label="Remove"-->
+<!--                                                               title="Remove"-->
+<!--                                                               class="delete_image no-decoration">-->
+<!--                                                                <small>-->
+<!--                                                                    <i class="fa fa-trash-o"/>-->
+<!--                                                                </small>-->
+<!--                                                            </a>-->
+<!--                                                        </td>-->
+<!--                                                        <t t-set="i"-->
+<!--                                                           t-value="i+1"/>-->
+<!--                                                    </tr>-->
+<!--                                                    <input type="hidden"-->
+<!--                                                           id="number"-->
+<!--                                                           t-att-value="i"/>-->
+<!--                                                </tbody>-->
+<!--                                            </table>-->
+
+<!--                                        </div>-->
+<!--                                        <div id="add_item"-->
+<!--                                             class="float-left">+ Add an-->
+<!--                                            item-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Profile"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+
+    </template>
+</odoo>

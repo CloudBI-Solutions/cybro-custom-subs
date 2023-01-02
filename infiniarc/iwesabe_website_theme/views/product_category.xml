@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_component_parents_type_tree" model="ir.ui.view">
+        <field name="name">component.parents.type.tree</field>
+        <field name="model">component.parents.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_component_parents_type_form" model="ir.ui.view">
+        <field name="name">component.parents.type.form</field>
+        <field name="model">component.parents.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_component_parents_type" model="ir.actions.act_window">
+        <field name="name">component parents type</field>
+        <field name="res_model">component.parents.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Product component parent type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Parent component type"
+            parent="website.menu_website_global_configuration"
+            action="action_component_parents_type"
+            id="submenu_component_parents_type"
+            sequence="102"/>
+
+    <menuitem
+            name="Parent Section / Main Category"
+            parent="stock.menu_stock_config_settings"
+            action="website_sale.product_public_category_action"
+            id="website_sale_product_public_category"/>
+
+
+</odoo>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--    PARENT HOME-->
+
+    <template id="parent_home" name="Parents">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header paceflow-section-header--resp-down col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Parents
+                        </h1>
+                        <a href="/my/create_parent">
+                            <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected">
+                                Add New Parent
+                                <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                     width="16"
+                                     height="16"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <t t-foreach="parent_contacts" t-as="parent">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <a t-att-href="'parent_details/%s' % parent.id">
+                                <div class="paceflow-card-item paceflow-card-item--xx-large paceflow-card-item--right paceflow-shadow">
+                                    <div class="paceflow-card-item__profile-image mr-5">
+                                        <img class="paceflow-card-item__profile-image ml-3"
+                                             width="100" height="100"
+                                             t-if="parent.partner_id.image_1024"
+                                             t-att-src="image_data_uri(parent.partner_id.image_1024)"/>
+                                        <img t-if="not parent.partner_id.image_1024"
+                                             width="100" height="100"
+                                             class="paceflow-card-item__profile-image ml-3"
+                                             src="/paceflow/static/description/images/ui/profile-placeholder.png"/>
+                                    </div>
+                                    <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                        <t t-esc="parent.name"/>
+                                        <t t-if="parent.last_name">
+                                            <t t-esc="parent.last_name"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    PARENT CREATE-->
+
+    <template id="parent_create" name="Parent Create">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/parent_home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Add Parent
+                        </h1>
+                    </div>
+                </div>
+                <form id="parent_create_form" action="/my/submit_parent"
+                      method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+                    <div class="row">
+                         <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="name">
+                                        <img id="profile_picture"
+                                             src="/paceflow/static/description/images/ui/camera.png"
+                                             class="paceflow-profile-section__camera"
+                                             style="cursor: pointer;"/>
+                                    </label>
+                                    <input id="name" style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function image_preview() {
+                            profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                            profile_picture.className="paceflow-profile-section__photo";
+                            }
+                        </script>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                            <input type="text" name="firstname" id="firstName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="First Name*"/>
+                            <input type="text" name="lastname" id="lastName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Last Name*"/>
+                            <input type="email" name="email" id="email"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Email*"/>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="tele_code"
+                                           id="tele_code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="+44"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="telephone"
+                                           id="telephone"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="Telephone*"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="emer_code"
+                                           id="emer_code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="+44"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="emergency"
+                                           id="emergency"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="Emergency Number*"/>
+                                </div>
+                            </div>
+                            <select name="childs" id="childs"
+                                    class="paceflow-select"
+                                    multiple="multiple"
+                                    placeholder="Choose Player*">
+                                <t t-foreach="childs or []" t-as="child">
+                                    <option t-att-value="child.id">
+                                        <t t-esc="child.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <button type="submit"
+                                        class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!--    PARENT DETAILS-->
+
+    <template id="parent_details" name="parent_details">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a t-attf-href="/my/parent_home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Parent Details
+                        </h1>
+                    </div>
+                </div>
+                <form id="parent_edit_form" action="/my/update_parent_details"
+                      method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="id" id="id"
+                               t-att-value="parent.id"/>
+                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="picture">
+                                        <t t-if="parent.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 width="100" height="100"
+                                                 class="paceflow-profile-section__photo"
+                                                 t-att-src="image_data_uri(parent.partner_id.image_1024)"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                        <t t-if="not parent.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 class="paceflow-profile-section__camera"
+                                                 src="/paceflow/static/description/images/ui/camera.png"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                    </label>
+                                    <input id="picture"
+                                           style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                            <input type="text" name="name" id="firstName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="First Name*"
+                                   t-att-value="parent.name"/>
+                            <input type="text" name="lastname" id="lastName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Last Name*"
+                                   t-att-value="parent.last_name"/>
+                            <input type="email" name="email" id="email"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Email*"
+                                   t-att-value="parent.email"/>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="tele_code"
+                                           id="tele_code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="+44"
+                                           t-att-value="tele_code"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="phone"
+                                           id="phone"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="Telephone*"
+                                           t-att-value="phone"/>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="emer_code"
+                                           id="emer_code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="+44"
+                                           t-att-value="emer_code"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="emergency"
+                                           id="emergency"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="Emergency Number"
+                                           t-att-value="emergency"/>
+                                </div>
+                            </div>
+                            <select name="childs" id="childs"
+                                    class="paceflow-select"
+                                    multiple="multiple"
+                                    placeholder="Choose Player*">
+                                <t t-if="parent_child"
+                                   t-foreach="parent_child or []"
+                                   t-as="child">
+                                    <option selected="selected"
+                                            t-att-value="child.id">
+                                        <t t-esc="child.name"/>
+                                    </option>
+                                </t>
+                                <t t-foreach="child_ids or []"
+                                   t-as="child">
+                                    <option t-att-value="child.id">
+                                        <t t-esc="child.name"/>
+                                    </option>
+                                </t>
+                            </select>
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <button type="submit"
+                                        class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_categories" name="Infiniarc Categories">
+        <t t-call="website.layout">
+            <section id="infiniarc-slider-support" class="home-slider">
+                <div class="container-fit-content">
+                    <div class="row m-0">
+                        <div class="col-lg-12 p-0">
+                            <div class="card card-raised card-carousel">
+                                <div id="carouselindicators" class="carousel slide" data-ride="carousel"
+                                     data-interval="5000">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselindicators" data-slide-to="0" class="active"/>
+                                        <li data-target="#carouselindicators" data-slide-to="1" class=""/>
+                                        <li data-target="#carouselindicators" data-slide-to="2" class=""/>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active ">
+                                            <img class="d-block w-100"
+                                                 src="https://infiniarc.com/infiniarc/public/storage/app/banners/1602934424Support.png"
+                                                 alt=""/>
+                                            <div class="slider-caption d-none d-md-block">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item ">
+                                            <img class="d-block w-100"
+                                                 src="/iwesabe_website_theme/static/src/img/Rectangle-303.png" alt=""/>
+                                            <div class="slider-caption d-none d-md-block">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-item ">
+                                            <img class="d-block w-100"
+                                                 src="https://infiniarc.com/infiniarc/public/storage/app/banners/1602934424Support.png"
+                                                 alt="Second slide"/>
+                                            <div class="slider-caption d-none d-md-block">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-title">
+                <div class="banner-area">
+                    <div class="banner-content">
+                        <h2 class="text-center banner-title">Categories</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="https://www.infiniarc.com">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+
+            <div class="main-banner" id="top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="left-content">
+                                <a t-att-href="'/shop/category/%s'%(main_category.id)">
+                                    <div class="thumb">
+                                        <div class="inner-content">
+                                            <h4>
+                                                <t t-esc="main_category.display_name"/>
+                                            </h4>
+                                            <span>Awesome, clean &amp; creative HTML5 Template</span>
+                                        </div>
+                                        <img t-att-src="'/web/image?model=product.public.category&amp;id=%s&amp;field=image_1920'%(main_category.id)"
+                                             t-att-alt="main_category.display_name"/>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="right-content">
+                                <div class="row">
+                                    <t t-foreach="side_categories" t-as="side_category">
+                                        <div class="col-lg-6">
+                                            <div class="right-first-image">
+                                                <a t-att-href="'/shop/category/%s'%(side_category.id)">
+                                                    <div class="thumb">
+                                                        <div class="inner-content">
+                                                            <h4>
+                                                                <t t-esc="side_category.display_name"/>
+                                                            </h4>
+                                                            <span>Best Clothes For Women</span>
+                                                        </div>
+                                                        <t t-if="side_category.image_1920">
+                                                            <img t-att-src="'/web/image?model=product.public.category&amp;id=%s&amp;field=image_1920'%(side_category.id)"
+                                                                 t-att-alt="side_category.display_name"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/iwesabe_website_theme/static/src/img/categories/default_category_image.jpg"
+                                                                 t-att-alt="side_category.display_name"/>
+                                                        </t>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="right-content another-category">
+                                <div class="row">
+                                    <t t-foreach="another_categories" t-as="another_category">
+                                        <div class="col-lg-3">
+                                            <div class="right-first-image">
+                                                <a t-att-href="'/shop/category/%s'%(another_category.id)">
+                                                    <div class="thumb">
+                                                        <div class="inner-content">
+                                                            <h4>
+                                                                <t t-esc="another_category.display_name"/>
+                                                            </h4>
+                                                            <span>Best Clothes For Women</span>
+                                                        </div>
+                                                        <t t-if="another_category.image_1920">
+                                                            <img t-att-src="'/web/image?model=product.public.category&amp;id=%s&amp;field=image_1920'%(another_category.id)"
+                                                                 t-att-alt="another_category.display_name"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/iwesabe_website_theme/static/src/img/categories/default_category_image.jpg"
+                                                                 t-att-alt="side_category.display_name"/>
+                                                        </t>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 			<section id="categories" class="mt-5 mb-5"> -->
+            <!-- 				<div class="container"> -->
+            <!-- 					<div class="section-title"> -->
+            <!-- 						<h2>Category</h2> -->
+            <!-- 					</div> -->
+            <!-- 				</div> -->
+            <!-- 				<div class="container"> -->
+            <!-- 					<div class="categories-list row"> -->
+            <!-- 						<t t-foreach="categories" t-as="category"> -->
+            <!-- 							<div class="col-lg-3"> -->
+            <!-- 								<div class="card card-block categ-card mt-3"> -->
+            <!-- 									<a t-att-href="'/shop/category/%s'%(category.id)"> -->
+            <!-- 										<div class="category-icon"> -->
+            <!-- 											<img src="/iwesabe_website_theme/static/src/img/categories/RAM.png"/> -->
+            <!-- 										</div> -->
+            <!-- 										<div class="category_caption"><t t-esc="category.display_name"/></div> -->
+            <!-- 									</a> -->
+            <!-- 								</div> -->
+            <!-- 							</div> -->
+            <!-- 						</t> -->
+            <!-- 					</div> -->
+            <!-- 				</div> -->
+            <!-- 			</section> -->
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="data_website_configuration" model="website.configuration">
+            <field name="name">Website Configuration</field>
+        </record>
+
+        <record id="data_product_filters" model="product.filter">
+            <field name="filter">Gaming PC</field>
+        </record>
+        <record id="data_product_filters1" model="product.filter">
+            <field name="filter">Installment pc</field>
+        </record>
+        <record id="data_product_filters1" model="product.filter">
+            <field name="filter">Ready to ship pc</field>
+        </record>
+        <record id="data_product_filters1" model="product.filter">
+            <field name="filter">Workstations</field>
+        </record>
+
+        <record id="data_special_offers" model="special.offer">
+            <field name="name">Pc offers</field>
+        </record>
+        <record id="data_special_offers1" model="special.offer">
+            <field name="name">Gearstore offers</field>
+        </record>
+        <record id="data_special_offers2" model="special.offer">
+            <field name="name">Clearance sales</field>
+        </record>
+
+        <record id="data_parent_component_type1" model="component.parents.type">
+            <field name="name">Base Component</field>
+        </record>
+        <record id="data_parent_component_type2" model="component.parents.type">
+            <field name="name">Accessories</field>
+        </record>
+
+        <record id="data_policy_type1" model="terms.and.conditions">
+            <field name="types">Terms and Conditions</field>
+        </record>
+        <record id="data_policy_type2" model="terms.and.conditions">
+            <field name="types">Privacy Policy</field>
+        </record>
+    </data>
+</odoo>

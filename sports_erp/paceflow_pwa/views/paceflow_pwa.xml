@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="paceflow_pwa" name="Paceflow PWA" inherit_id="web.frontend_layout">
+        <xpath expr="//head/meta[last()]" position="after">
+            <link rel="manifest" href="/manifest/webmanifest"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+            <t t-set="pwa_name"
+                t-value="request.env['ir.config_parameter'].sudo().get_param('paceflow_pwa.pwa_name')"/>
+            <meta name="apple-mobile-web-app-title" t-att-content="pwa_name"/>
+            <link rel="apple-touch-icon" href="/paceflow_pwa/icon512x512.png"/>
+            <t t-set="pwa_theme_color"
+                t-value="request.env['ir.config_parameter'].sudo().get_param('paceflow_pwa.pwa_theme_color')"/>
+            <meta name="theme-color" t-att-content="pwa_theme_color"/>
+        </xpath>
+    </template>
+</odoo>

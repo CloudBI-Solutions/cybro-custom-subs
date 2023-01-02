@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <template id="sport_erp_newsletter_subscribe_form"
+                  name="Sport-ERP Newsletter">
+            <section>
+                <div class="s_newsletter_subscribe_form js_subscribe set-footer__newsletter-form-group"
+                     data-vxml="001" data-list-id="0"
+                     data-name="Newsletter Form">
+                    <div class="input-group">
+                        <input type="email" name="email"
+                               class="js_subscribe_email set-footer__newsletter-input"
+                               placeholder="Enter Your Email Address"/>
+                        <span class="input-group-append">
+                            <a role="button" href="#"
+                               class="btn btn-primary js_subscribe_btn o_submit set-footer__newsletter-submit"
+                               title="Subscribe">
+                                <img src="/theme_sport_erp/static/src/images/ui/chevron-submit-white.svg"
+                                     class="set-footer__newsletter-submit-arrow"
+                                     width="12" height="12"/>
+                            </a>
+                            <a role="button" href="#"
+                               class="btn btn-success js_subscribed_btn d-none o_submit set-footer__newsletter-submit"
+                               disabled="disabled"
+                               title="Subscribed">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked-green.svg"
+                                     class="set-footer__newsletter-submit-arrow"
+                                     width="12" height="12"/>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="sport_erp_footer" inherit_id="website.layout">
+            <xpath expr="//footer[@id='bottom']" position="replace">
+                <footer id="bottom">
+                    <div id="footer"
+                         class="set-footer">
+                        <div class="set-wrapper">
+                            <div class="row set-footer__top-row">
+                                <div class="col-sm-12 col-md-12 col-lg-6">
+                                    <h2 class="set-footer__newsletter-header">
+                                        Stay
+                                        on top your game.<br/>Subscribe to our
+                                        newsletter.
+                                    </h2>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-6 d-flex
+                                justify-content-center align-items-center">
+                                    <div id="wrap"
+                                         class="oe_structure oe_empty"
+                                         style="width: 100%;"/>
+                                </div>
+                            </div>
+                            <div class="row set-footer__links-container">
+                                <div class="col-sm-12 col-md-12 col-lg-2">
+                                    <div class="set-footer__accordion">
+                                        <div class="set-footer__accordion-head">
+                                            <span class="set-footer__accoridion-title">
+                                                Services
+                                            </span>
+                                            <img src="/theme_sport_erp/static/src/images/ui/plus.svg"
+                                                 class="set-footer__accordion-icon"
+                                                 height="14" width="14"/>
+                                        </div>
+                                        <div class="set-footer__accordion-body set-footer__accordion-body--resp-hide">
+                                            <ul class="set-footer__accordion-items">
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Implementation
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Project Management
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Privacy Policy
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Terms &amp; Conditions
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-2">
+                                    <div class="set-footer__accordion">
+                                        <div class="set-footer__accordion-head">
+                                            <span class="set-footer__accoridion-title">
+                                                Products
+                                            </span>
+                                            <img src="/theme_sport_erp/static/src/images/ui/plus.svg"
+                                                 class="set-footer__accordion-icon"
+                                                 height="14" width="14"/>
+                                        </div>
+                                        <div class="set-footer__accordion-body set-footer__accordion-body--resp-hide">
+                                            <ul class="set-footer__accordion-items">
+
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Minio
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Medio
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Maxio
+                                                    </a>
+                                                </li>
+
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Enterprise ERP
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-2">
+                                    <div class="set-footer__accordion">
+                                        <div class="set-footer__accordion-head">
+                                            <span class="set-footer__accoridion-title">
+                                                Pricing
+                                            </span>
+                                            <img src="/theme_sport_erp/static/src/images/ui/plus.svg"
+                                                 class="set-footer__accordion-icon"
+                                                 height="14" width="14"/>
+                                        </div>
+                                        <div class="set-footer__accordion-body set-footer__accordion-body--resp-hide">
+                                            <ul class="set-footer__accordion-items">
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Individual
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Group
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Compare
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-12 col-lg-2">
+                                    <div class="set-footer__accordion">
+                                        <div class="set-footer__accordion-head">
+                                            <span class="set-footer__accoridion-title">
+                                                Company
+                                            </span>
+                                            <img src="/theme_sport_erp/static/src/images/ui/plus.svg"
+                                                 class="set-footer__accordion-icon"
+                                                 height="14" width="14"/>
+                                        </div>
+                                        <div class="set-footer__accordion-body set-footer__accordion-body--resp-hide">
+                                            <ul class="set-footer__accordion-items">
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        About Us
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Contact Us
+                                                    </a>
+                                                </li>
+                                                <li class="set-footer__accordion-item">
+                                                    <a href="#"
+                                                       class="set-footer__accordion-link">
+                                                        Legal
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 com-md-12 col-lg-4 set-footer__cta-container">
+                                    <div class="set-link__social">
+                                        <a href="#"
+                                           class="set-link set-link--unstyled set-footer__social-icon">
+                                            <img src="/theme_sport_erp/static/src/images/ui/facebook.svg"
+                                                 class="set-footer__social-link"
+                                                 width="32" height="32"
+                                                 alt="Facebook"/>
+                                        </a>
+                                        <a href="#"
+                                           class="set-link set-link--unstyled set-footer__social-icon">
+                                            <img src="/theme_sport_erp/static/src/images/ui/twitter.svg"
+                                                 class="set-footer__social-link"
+                                                 width="32" height="32"
+                                                 alt="Twitter"/>
+                                        </a>
+                                        <a href="#"
+                                           class="set-link set-link--unstyled set-footer__social-icon">
+                                            <img src="/theme_sport_erp/static/src/images/ui/instagram.svg"
+                                                 class="set-footer__social-link"
+                                                 width="32" height="32"
+                                                 alt="Instagram"/>
+                                        </a>
+                                    </div>
+                                    <div class="set-footer__cta">
+                                        <a href="#"
+                                           class="set-button set-button--primary set-button--block set-button--shadow">
+                                            Schedule Demo
+                                        </a>
+                                        <a href="#"
+                                           class="set-button set-button--link text-white">
+                                            <img src="/theme_sport_erp/static/src/images/ui/play-circle-outline-white.svg"
+                                                 class="set-button__icon mr-1"/>
+                                            Check out our Videos
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row set-footer__bottom-row">
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 set-footer__bottom-first-column">
+                                    <img src="/theme_sport_erp/static/src/images/brand/logo-grey.png"
+                                         class="set-footer__logo" width="175"
+                                         height="32" alt="SportERP"
+                                         title="SportERP"/>
+                                    <span class="sport-footer__copyright">&#169;
+                                        2022 SportERP. All Rights Reserved.
+                                    </span>
+                                </div>
+                                <div class="col-6 col-sm-6 col-md-6 col-lg-6 set-footer__bottom-second-column">
+                                    <img src="/theme_sport_erp/static/src/images/ui/payment-icons.svg"
+                                         class="set-footer__payment-icons"
+                                         width="135" height="21" alt="SportERP"
+                                         title="SportERP"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <script>
+                    let accordionEls =
+                    document.querySelectorAll('.set-footer__accordion-head');
+
+                    accordionEls.forEach(accordion => {
+                    accordion.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if
+                    (e.target.parentElement.children[1].classList.contains('set-footer__accordion-body'))
+                    {
+                    e.target.parentElement.children[1].classList.toggle('set-footer__accordion-body--resp-hide');
+                    } else {
+                    e.target.parentElement.parentElement.children[1].classList.toggle('set-footer__accordion-body--resp-hide');
+                    }
+                    })
+                    })
+                </script>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,30 @@
+.text-primary{
+  color: $primary-500  !important;
+}
+.text-secondary{
+  color: $secondary-500  !important;
+}
+.navbar-dark .navbar-toggler{
+  border: none;
+}
+.form-control{
+  border-radius: 0;
+}
+.nav-tabs{
+  border-bottom: none;
+}
+.nav-tabs .nav-link{
+  min-height: 50px;
+  &:hover{
+    border: none;
+  }
+}
+.nav-tabs .nav-link.active{
+  border: none;
+  border-radius: none;
+  color: $primary-500;
+  border-bottom: 2px solid $primary-500;
+}
+.tab-content{
+  padding: 15px;
+}

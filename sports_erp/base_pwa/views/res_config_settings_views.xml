@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="base_pwa_settings_view_form" model="ir.ui.view">
+            <field name="name">base.pwa.settings.view.form.inherit.base.pwa
+            </field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id"
+                   ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <div id="emails" position="after">
+                    <h2>PWA Settings</h2>
+                    <div class="row mt16 o_settings_container"
+                         name="dashboard_columns_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="pwa_enable"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <span class="o_form_label">Enable
+                                    Progressive Web Application
+                                </span>
+                                <div class="text-muted">Enable Progressive
+                                    Web Application
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Name"
+                                           for="pwa_name"/>
+                                    <div class="text-muted">Give Name For
+                                        Progressive Web Application
+                                    </div>
+                                    <field name="pwa_name"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Short Name"
+                                           for="pwa_short_name"/>
+                                    <div class="text-muted">Give Short Name
+                                        For Progressive Web Application
+                                    </div>
+                                    <field name="pwa_short_name"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Description"
+                                           for="pwa_description"/>
+                                    <div class="text-muted">Give Description
+                                        For Progressive Web Application
+                                    </div>
+                                    <field name="pwa_description"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Theme Color"
+                                           for="pwa_theme_color"/>
+                                    <div class="text-muted">Give Theme Color
+                                        For Progressive Web Application
+                                    </div>
+                                    <field name="pwa_theme_color"
+                                           widget="color"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Background Color"
+                                           for="pwa_background_color"/>
+                                    <div class="text-muted">Give Background
+                                        Color For Progressive Web
+                                        Application
+                                    </div>
+                                    <field name="pwa_background_color"
+                                           widget="color"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="Start Link"
+                                           for="pwa_start_link"/>
+                                    <div class="text-muted">Give Start Link
+                                        of Progressive Web Application
+                                    </div>
+                                    <field name="pwa_start_link"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box"
+                             attrs="{'invisible': [('pwa_enable', '=', False)]}">
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <label string="PWA Icon"
+                                           for="pwa_icon"/>
+                                    <div class="text-muted">Choose Icon for
+                                        Progressive Web Application
+                                    </div>
+                                    <field name="pwa_icon" widget="image"
+                                           attrs="{'required': [('pwa_enable', '=', True)]}"/>
+                                    <field name="pwa_icon_link"/>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

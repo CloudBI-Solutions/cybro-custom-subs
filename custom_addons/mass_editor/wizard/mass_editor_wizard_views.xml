@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    Form-->
+    <data>
+        <record id="mass_editor_wizard_form" model="ir.ui.view">
+            <field name="name">mass.editor.wizard.form</field>
+            <field name="model">mass.editor.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="model_id"/>
+                        <field name="field_ids"
+                               options="{'no_create_edit':True}">
+                            <tree>
+                                <field name="field_description"/>
+                                <field name="ttype"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="btn_edit"
+                                string="Edit"
+                                type="object"
+                                class="btn-primary"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

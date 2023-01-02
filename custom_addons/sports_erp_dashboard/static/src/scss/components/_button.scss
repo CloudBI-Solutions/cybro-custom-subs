@@ -1,0 +1,23 @@
+.se-btn{
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    transition: all 0.3s ease-in-out;
+  }
+}
+.se-btn--grey{
+  background-color: $grey-500;
+  color: $grey-800;
+}
+.se-btn--no-rounded{
+  border-radius: 0 !important;
+}
+.se-btn--primary{
+  background-color: $primary-500;
+  color: $white-100;
+  &:hover{
+    filter: brightness(95%);
+    color: $white-100;
+  }
+}

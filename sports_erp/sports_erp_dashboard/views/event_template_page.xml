@@ -1,0 +1,1547 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="event_template_page" name="Events">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/events"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Events
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/event/templates"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Event Templates
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="se-wrapper">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__title-container">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Event Templates
+                                </h2>
+                                <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                    <t t-esc="total"/>
+                                </span>
+                            </div>
+                            <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        <span class="title--show">Go To</span>
+                                    </button>
+                                    <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/events">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Events</span>
+                                        </a>
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/event/stages">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Event Stages</span>
+                                        </a>
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/event/tag_category">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Event Tag Category</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                            data-toggle="modal"
+                                            data-target="#addEventTemplateModal"
+                                            aria-expanded="false">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        <span class="title--show">
+                                            Add New Event Template
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="set-dashboard__table-options">
+                                    <a href="#"
+                                       class="set-button set-button--light set-dashboard__table-button mr-2">
+                                        <i class="fa fa-filter mr-2"/>Filter
+                                    </a>
+                                    <div class="set-dashboard__input-container">
+                                        <form class="o_wsale_products_searchbar_form"
+                                              method="get"
+                                              action="/my/event/templates">
+                                            <input type="search"
+                                                   name="search"
+                                                   id="myInput"
+                                                   placeholder="Search"
+                                                   class="set-dashboard__input-search"
+                                                   onFocus="myFunction()"
+                                                   autocomplete="off"
+                                                   onBlur="setTimeout(myFunction, 300);"
+                                                   onkeyup="filterFunction()"/>
+                                            <div id="myDropdown"
+                                                 class="dropdown-content">
+                                                <t t-foreach="total_event_templates"
+                                                   t-as="event_type">
+                                                    <a t-att-href="'/my/event/template/detail?type_id=%s' % event_type.id">
+                                                        <t t-esc="event_type.name"/>
+                                                    </a>
+                                                </t>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <script>function
+                                    myFunction() {
+                                    document.getElementById("myDropdown").classList.toggle("show-div");
+                                    } function
+                                    filterFunction() {
+                                    var input, filter,
+                                    ul, li, a, i; input
+                                    =
+                                    document.getElementById("myInput");
+                                    filter =
+                                    input.value.toUpperCase();
+                                    div =
+                                    document.getElementById("myDropdown");
+                                    a =
+                                    div.getElementsByTagName("a");
+                                    for (i = 0; i
+                                    &lt; a.length
+                                    ; i++) { txtValue =
+                                    a[i].textContent ||
+                                    a[i].innerText; if
+                                    (txtValue.toUpperCase().indexOf(filter)
+                                    > -1) {
+                                    a[i].style.display =
+                                    ""; } else {
+                                    a[i].style.display =
+                                    "none"; } } }
+                                </script>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <table class="set-dashboard__table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select-all"/>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Time Zone</th>
+                                            <th>Tickets</th>
+                                            <th>Tags</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="event_types"
+                                           t-as="event_type">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select"/>
+                                                </td>
+                                                <td>
+                                                    <a t-att-href="'/my/event/template/detail?type_id=%s' % event_type.id">
+                                                        <div class="set-dashboard__table-details">
+                                                            <span class="set-dashboard__table-name mb-1">
+                                                                <t t-esc="event_type.name"/>
+                                                            </span>
+                                                            <span class="set-dashboard__table-role">
+                                                                Event Template
+                                                            </span>
+                                                        </div>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--blue set-badge--wide">
+                                                            <t t-esc="event_type.default_timezone"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <t t-foreach="event_type.event_type_ticket_ids"
+                                                       t-as="tickets">
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--green set-badge--wide">
+                                                                <t t-esc="tickets.name"/>
+                                                            </span>
+                                                        </div>
+                                                    </t>
+
+                                                </td>
+                                                <td>
+                                                    <t t-foreach="event_type.tag_ids"
+                                                       t-as="tags">
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--gold set-badge--wide">
+
+                                                                <t t-esc="tags.name"/>
+
+                                                            </span>
+
+                                                        </div>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-actions">
+                                                        <a t-att-href="'/my/event/template/detail?type_id=%s' % event_type.id"
+                                                           class="set-dashboard__table-action mr-4">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Edit"
+                                                                 title="Edit"/>
+                                                        </a>
+                                                        <a t-att-href="'/my/event/template/delete/?event_id=%s' % event_type.id"
+                                                           class="set-dashboard__table-action">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Remove"
+                                                                 title="Remove"/>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="set-dashboard__table-footer">
+                                    <span class="set-dashboard__page-position set-text set-text--grey">
+                                        Page
+                                        <span t-out="pager['page']['num']"/>
+                                        of
+                                        <t t-if="pager['page_count'] > 1">
+                                            <span t-out="pager['pages'][-1]['num']"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-out="pager['page']['num']"/>
+                                        </t>
+                                    </span>
+                                    <ul
+                                            class="set-dashboard__pagination">
+                                        <t t-foreach="pager['pages']"
+                                           t-as="page">
+                                            <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                <a t-att-href="page['url']"
+                                                   t-attf-class="page-link #{extraLinkClass}"
+                                                   t-out="page['num']"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!--                        <div class="row">-->
+                    <!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">-->
+                    <!--                                <div class="se-dashboard">-->
+                    <!--                                    <h1 class="display-5 text-secondary se-dashboard__title">-->
+                    <!--                                        Event Templates-->
+                    <!--                                    </h1>-->
+                    <!--                                    <div class="se-dashboard__right-action w-100">-->
+                    <!--                                        <div class="d-flex w-50 ml-auto se-input-group se-input-group&#45;&#45;icon">-->
+                    <!--                                            <div class="sidebar"-->
+                    <!--                                                 style="margin-right: 8px;">-->
+                    <!--                                                <div class="wrapper">-->
+                    <!--                                                    <div class="box">-->
+                    <!--                                                        <form class="o_wsale_products_searchbar_form example dropdown show"-->
+                    <!--                                                              method="get"-->
+                    <!--                                                              action="/my/event/templates"-->
+                    <!--                                                              style="margin:auto;max-width:600px">-->
+                    <!--                                                            <div t-attf-class="input-group #{_classes}"-->
+                    <!--                                                                 role="search">-->
+                    <!--                                                                <input type="search"-->
+                    <!--                                                                       name="search"-->
+                    <!--                                                                       id="myInput"-->
+                    <!--                                                                       class="search-query form-control se-input se-input&#45;&#45;search mr-2 ml-auto"-->
+                    <!--                                                                       autocomplete="off"-->
+                    <!--                                                                       placeholder="Search.."-->
+                    <!--                                                                       onFocus="myFunction()"-->
+                    <!--                                                                       onBlur="setTimeout(myFunction, 300);"-->
+                    <!--                                                                       onkeyup="filterFunction()"/>-->
+                    <!--                                                                <button type="submit"-->
+                    <!--                                                                        class="btn btn-primary"-->
+                    <!--                                                                        style="background: #FF2905; border: none;">-->
+                    <!--                                                                    <i class="fa fa-search se-input-group__icon"/>-->
+                    <!--                                                                </button>-->
+                    <!--                                                                <div id="myDropdown"-->
+                    <!--                                                                     class="dropdown-content">-->
+                    <!--                                                                    <t t-set="events"-->
+                    <!--                                                                       t-value="request.env['event.type'].sudo().search([])"/>-->
+                    <!--                                                                    <t t-foreach="events"-->
+                    <!--                                                                       t-as="event">-->
+                    <!--                                                                        <a t-att-href="'/my/event/%s' % event.id">-->
+                    <!--                                                                            <t t-esc="event.name"/>-->
+                    <!--                                                                        </a>-->
+                    <!--                                                                    </t>-->
+                    <!--                                                                </div>-->
+                    <!--                                                            </div>-->
+                    <!--                                                        </form>-->
+                    <!--                                                        <script>function-->
+                    <!--                                                            myFunction() {-->
+                    <!--                                                            document.getElementById("myDropdown").classList.toggle("show");-->
+                    <!--                                                            } function-->
+                    <!--                                                            filterFunction() {-->
+                    <!--                                                            var input, filter,-->
+                    <!--                                                            ul, li, a, i; input-->
+                    <!--                                                            =-->
+                    <!--                                                            document.getElementById("myInput");-->
+                    <!--                                                            filter =-->
+                    <!--                                                            input.value.toUpperCase();-->
+                    <!--                                                            div =-->
+                    <!--                                                            document.getElementById("myDropdown");-->
+                    <!--                                                            a =-->
+                    <!--                                                            div.getElementsByTagName("a");-->
+                    <!--                                                            for (i = 0; i-->
+                    <!--                                                            &lt; a.length-->
+                    <!--                                                            ; i++) { txtValue =-->
+                    <!--                                                            a[i].textContent ||-->
+                    <!--                                                            a[i].innerText; if-->
+                    <!--                                                            (txtValue.toUpperCase().indexOf(filter)-->
+                    <!--                                                            > -1) {-->
+                    <!--                                                            a[i].style.display =-->
+                    <!--                                                            ""; } else {-->
+                    <!--                                                            a[i].style.display =-->
+                    <!--                                                            "none"; } } }-->
+                    <!--                                                        </script>-->
+                    <!--                                                    </div>-->
+                    <!--                                                </div>-->
+                    <!--                                            </div>-->
+                    <!--                                            <button class="btn se-btn se-btn&#45;&#45;no-rounded se-btn&#45;&#45;primary w-50"-->
+                    <!--                                                    data-toggle="modal"-->
+                    <!--                                                    data-target="#addEventTemplateModal"-->
+                    <!--                                                    style="border-radius: 5px !important;"-->
+                    <!--                                            >-->
+                    <!--                                                + Add An Event Template-->
+                    <!--                                            </button>-->
+                    <!--                                        </div>-->
+                    <!--                                    </div>-->
+                    <!--                                </div>-->
+                    <!--                                <hr/>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+
+                    <div class="modal se-modal" id="addEventTemplateModal"
+                         tabindex="-1" role="dialog"
+                         aria-labelledby="addEventTemplateModal"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addEventTemplateModal">Add
+                                        New
+                                        Event Template
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/event/template"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="event_template">
+                                                    Event Template
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       name="event_template"
+                                                       id="event_template"
+                                                />
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="event_template">
+                                                    Time Zone
+                                                </label>
+                                                <select class="form-control se-form-control"
+                                                        id="time_zone"
+                                                        name="time_zone">
+                                                    <t t-foreach="time_zone"
+                                                       t-as="time">
+                                                        <option t-att-value="time[0]">
+                                                            <t t-esc="time[1]"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="website_menu">
+                                                    Website Sub Menu
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="website_menu"
+                                                       name="website_menu"
+                                                       checked="1"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="register_button">
+                                                    Register Button
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="register_button"
+                                                       name="register_button"
+                                                       checked="1"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="tags">
+                                                    Tags
+                                                </label>
+                                                <select class="form-control se-form-control"
+                                                        id="tags"
+                                                        name="tags">
+                                                    <t t-foreach="tags or []"
+                                                       t-as="tag">
+                                                        <option t-att-value="tag.id">
+                                                            <t t-esc="tag.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="limit_reg">
+                                                    Limit Registration
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="limit_reg"
+                                                       name="limit_reg"
+                                                       checked="1"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="limit_reg">
+                                                    Auto Confirmation
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="auto_confirm"
+                                                       name="auto_confirm"
+                                                       checked="1"/>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="notes">
+                                                    Notes
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="notes"
+                                                       name="notes"
+                                                />
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="extra_info">
+                                                    Ticket Extra
+                                                    Instructions
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="extra_info"
+                                                       name="extra_info"
+                                                />
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="modal-footer d-flex">
+                                            <input type="submit"
+                                                   class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                   value="Add Event template"
+                                                   style="border-radius: 5px !important;"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal se-modal" id="addEventTagsModal"
+                         tabindex="-1" role="dialog"
+                         aria-labelledby="addSubscriptionLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addSubscriptionModalLabel">Add
+                                        New
+                                        Event Tag Category
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/event/tag/categories"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="name">
+                                                    Name
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="name"
+                                                       name="name"
+                                                />
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="tags">
+                                                    Tags
+                                                </label>
+                                                <select name="tags"
+                                                        id="tags"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        placeholder="Choose Tags">
+                                                    <t t-foreach="tags or []"
+                                                       t-as="tag">
+                                                        <option t-att-value="tag.id">
+                                                            <t t-esc="tag.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <img src="/sports_erp_dashboard/static/src/images/ui/plus-circle-add.png"
+                                                     width="18" height="18"
+                                                     class="position-absolute"
+                                                     style="top: 54px; right: 20px;"
+                                                     onclick="open_tag_modal()"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer d-flex">
+                                            <input type="submit"
+                                                   class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                                   value="Add event tag category"
+                                                   style="border-radius: 5px !important;"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function open_tag_modal()
+                        {
+                        $('#addTagModal').modal('show');
+                        }
+                        function closeModal()
+                        {
+                        document.getElementById('addTagModal').style.display
+                        = "none";
+                        }
+                    </script>
+
+                </div>
+                <script>
+                    function hide_show_trial_duration(){
+                    var checkBox =
+                    document.getElementById("has_trial_period");
+                    var div =
+                    document.getElementById("trial_duration_div");
+                    if (checkBox.checked == false){
+                    document.getElementById("trial_duration").value = 0;
+                    div.style.display = "none";
+                    } else {
+                    div.style.display = "block";
+                    }
+                    }
+                    function hide_show_subscriptions()
+                    {
+                    var element =
+                    document.getElementById("se-sidebar");
+                    var main = document.getElementById("main-container");
+                    console.log("amin", main);
+                    if
+                    (main.classList.contains("main-container--margin")){
+                    main.classList.toggle("main-container--margin");
+                    }
+                    if
+                    (element.classList.contains("se-sidebar--show")){
+                    element.classList.toggle("se-sidebar--show");
+                    } };
+                </script>
+                <div class="modal se-modal" id="addTagModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addTagLabel" aria-hidden="true"
+                >
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addTagModalLabel">Add Event Tag
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form action="/create/tag" method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="tag_name">Tag Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   id="tag_name"
+                                                   name="tag_name"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer d-flex justify-content-between align-items-center">
+                                    <input type="submit"
+                                           class="btn se-btn--primary se-btn--no-rounded px-5"
+                                           value="Add Tag"
+                                           style="border-radius: 5px !important; margin-right: 0 !important;margin-left: auto;"
+                                           onclick="setTimeout(closeModal, 200);"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </t>
+        </template>
+        <template id="event_template_details" name="Events Template Details">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/events"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Events
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/event/templates"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Event Templates
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a t-att-href="'/my/event/template/detail?type_id=%s' % event_type.id"
+                                   class="set-dashboard__breadcrumb-link">
+                                    <t t-esc="event_type.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="se-wrapper">
+                    <div class="container-fluid events_template">
+                        <!--                        <form action="#" method="post"-->
+                        <!--                              enctype="multipart/form-data" class="update_event_template">-->
+                        <input type="hidden"
+                               name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="event_type"
+                               t-att-value="event_type.id" id="template_id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            Event Template:
+                                            <t t-esc="event_type.name"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab"
+                                                data-toggle="tab"
+                                                data-target="#home"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">
+                                            Template Details
+                                        </button>
+                                    </li>
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link"
+                                                id="profile-tab"
+                                                data-toggle="tab"
+                                                data-target="#profile"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="profile"
+                                                aria-selected="false">
+                                            Tickets
+                                        </button>
+                                    </li>
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link"
+                                                id="performance-tab"
+                                                data-toggle="tab"
+                                                data-target="#performance"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="performance"
+                                                aria-selected="false">
+                                            Communication
+                                        </button>
+                                    </li>
+                                    <li class="nav-item"
+                                        role="presentation">
+                                        <button class="nav-link"
+                                                id="discipline-tab"
+                                                data-toggle="tab"
+                                                data-target="#discipline"
+                                                type="button"
+                                                role="tab"
+                                                aria-controls="discipline"
+                                                aria-selected="false">
+                                            Notes
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="nameform-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="event_name"
+                                                           name="name"
+                                                           t-att-value="event_type.name"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="time_zone">
+                                                        Time
+                                                        Zone
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="time_zone"
+                                                            name="time_zone">
+                                                        <t t-foreach="time_zone"
+                                                           t-as="time">
+                                                            <t t-if="event_type.default_timezone == time[0]">
+                                                                <option t-att-value="time[0]"
+                                                                        selected="1">
+                                                                    <t t-esc="time[1]"/>
+                                                                </option>
+                                                            </t>
+                                                            <option t-att-value="time[0]">
+                                                                <t t-esc="time[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="website_menu">
+                                                        Website Sub Menu
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="website_menu"
+                                                           name="website_menu"
+                                                           t-att-value="event_type.website_menu"
+                                                           t-att-checked="event_type.website_menu"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="register_button">
+                                                        Register Button
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="register_button"
+                                                           t-att-value="event_type.menu_register_cta"
+                                                           t-att-checked="event_type.menu_register_cta"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="tags">
+                                                        Tags
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="tags"
+                                                            name="tags">
+                                                        <t t-foreach="tags or []"
+                                                           t-as="tag">
+                                                            <option t-att-value="tag.id">
+                                                                <t t-esc="tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="limit_reg">
+                                                        Limit Registration
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="limit_reg"
+                                                           name="limit_reg"
+                                                           t-att-checked="event_type.has_seats_limitation"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="limit_reg">
+                                                        Auto Confirmation
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="auto_confirm"
+                                                           name="auto_confirm"
+                                                           t-att-checked="event_type.auto_confirm"/>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile"
+                                         role="tabpanel"
+                                         aria-labelledby="profile-tab">
+
+                                        <div class="row col-lg-12 events_template">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="add_products">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            Name
+                                                        </th>
+                                                        <th>Product</th>
+                                                        <th>Description</th>
+                                                        <th>Price</th>
+                                                        <!--                                                            <th class="text-center td-qty">-->
+                                                        <!--                                                                Sales Start-->
+                                                        <!--                                                            </th>-->
+                                                        <!--                                                            <th>-->
+                                                        <!--                                                                Sales End-->
+                                                        <!--                                                            </th>-->
+                                                        <th>Maximum</th>
+                                                        <!--                                                            <th>Confirmed</th>-->
+                                                        <!--                                                            <th>Unconfirmed</th>-->
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="event_type.event_type_ticket_ids"
+                                                        t-as="ticket"
+                                                        t-att-id="'row_' + str(i)">
+
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="ticket_name">
+                                                            <input type="text"
+                                                                   name="ticket_name"
+                                                                   t-att-id="'name_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="ticket.name"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'product_' + str(i)">
+                                                                <option/>
+                                                                <t t-set="products"
+                                                                   t-value="request.env['product.product'].sudo().search([('detailed_type', '=', 'event')])"/>
+                                                                <t t-foreach="products"
+                                                                   t-as="product">
+                                                                    <option t-att-selected="product.id == ticket.product_id.id"
+                                                                            t-att-value="product.id">
+                                                                        <t t-esc="product.display_name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   name="ticket_description"
+                                                                   t-att-id="'description_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="ticket.description"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="text-center td-price">
+                                                            <input type="number"
+                                                                   name="price"
+                                                                   t-att-id="'price_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="ticket.price"/>
+                                                        </td>
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="start_date" id="start_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="end_date" id="end_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="number"
+                                                                   name="maximum"
+                                                                   t-att-id="'max_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="ticket.seats_max"/>
+                                                        </td>
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove from cart"
+                                                               title="Remove from cart"
+                                                               class="delete_product no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                    <tr t-att-id="'row_' + str(i)"
+                                                        class="products">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="ticket_name">
+                                                            <input type="text"
+                                                                   name="ticket_name"
+                                                                   t-att-id="'name_' + str(i)"
+                                                                   class="form-control"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'product_' + str(i)">
+                                                                <option/>
+                                                                <t t-set="products"
+                                                                   t-value="request.env['product.product'].sudo().search([('detailed_type', '=', 'event')])"/>
+                                                                <t t-foreach="products"
+                                                                   t-as="product">
+                                                                    <option t-att-value="product.id">
+                                                                        <t t-esc="product.display_name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   name="ticket_description"
+                                                                   t-att-id="'description_' + str(i)"
+                                                                   class="form-control"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="text-center td-price">
+                                                            <input type="number"
+                                                                   name="price"
+                                                                   t-att-id="'price_' + str(i)"
+                                                                   class="form-control"/>
+                                                        </td>
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="start_date" id="start_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="end_date" id="end_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="number"
+                                                                   name="maximum"
+                                                                   t-att-id="'max_' + str(i)"
+                                                                   class="form-control"/>
+                                                        </td>
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove from cart"
+                                                               title="Remove from cart"
+                                                               class="delete_product no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade"
+                                         id="performance"
+                                         role="tabpanel"
+                                         aria-labelledby="performance-tab">
+                                        <div class="row col-lg-12 communication_template">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="add_products">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            Send
+                                                        </th>
+                                                        <th>Template</th>
+                                                        <th>Interval</th>
+                                                        <th>Unit</th>
+                                                        <th>Trigger</th>
+                                                        <!--                                                        <th class="text-center td-action"/>-->
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="event_type.event_type_mail_ids"
+                                                        t-as="mail"
+                                                        t-att-id="'mail_' + str(i)">
+
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="mail_name">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'send_' + str(i)">
+                                                                <option t-att-value="mail"
+                                                                        t-att-selected="mail.notification_type == 'mail'">
+                                                                    Mail
+                                                                </option>
+                                                                <option t-att-value="sms"
+                                                                        t-att-selected="mail.notification_type == 'sms'">
+                                                                    SMS
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'template_' + str(i)">
+                                                                <option t-att-value="'mail.template'"
+                                                                        t-att-selected="mail.template_ref == 'mail.template'">
+                                                                    Event:
+                                                                    Registration
+                                                                </option>
+                                                                <option t-att-value="'sms.template'"
+                                                                        t-att-selected="mail.template_ref == 'sms.template'">
+                                                                    Event:
+                                                                    Reminder
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="number"
+                                                                   name="ticket_description"
+                                                                   t-att-id="'interval_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="mail.interval_nbr"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="text-center td-price">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'unit_' + str(i)">
+                                                                <option t-att-value="now"
+                                                                        t-att-selected="mail.interval_unit == 'now'">
+                                                                    Immediately
+                                                                </option>
+                                                                <option t-att-value="hours"
+                                                                        t-att-selected="mail.interval_unit == 'hours'">
+                                                                    Hours
+                                                                </option>
+                                                                <option t-att-value="days"
+                                                                        t-att-selected="mail.interval_unit == 'days'">
+                                                                    Days
+                                                                </option>
+                                                                <option t-att-value="weeks"
+                                                                        t-att-selected="mail.interval_unit == 'weeks'">
+                                                                    Weeks
+                                                                </option>
+                                                                <option t-att-value="months"
+                                                                        t-att-selected="mail.interval_unit == 'months'">
+                                                                    Months
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="start_date" id="start_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td contenteditable='true'-->
+                                                        <!--                                                                class="td-product_name">-->
+                                                        <!--                                                                <input type="datetime-local" name="end_date" id="end_date_1" class="form-control"/>-->
+                                                        <!--                                                            </td>-->
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <select class="form-control select_products"
+                                                                    name="product_select"
+                                                                    t-att-id="'type_' + str(i)">
+                                                                <option t-att-value="after_sub"
+                                                                        t-att-selected="mail.interval_type == 'after_sub'">
+                                                                    After each
+                                                                    registration
+                                                                </option>
+                                                                <option t-att-value="before_event"
+                                                                        t-att-selected="mail.interval_type == 'before_event'">
+                                                                    Before the
+                                                                    event
+                                                                </option>
+                                                                <option t-att-value="after_event"
+                                                                        t-att-selected="mail.interval_type == 'after_event'">
+                                                                    After the
+                                                                    event
+                                                                </option>
+                                                            </select>
+                                                        </td>
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                            <td-->
+                                                        <!--                                                                class="td-product_name">-->
+
+                                                        <!--                                                            </td>-->
+                                                        <!--                                                        <td class="td-action">-->
+                                                        <!--                                                            <a href="#"-->
+                                                        <!--                                                               aria-label="Remove from cart"-->
+                                                        <!--                                                               title="Remove from cart"-->
+                                                        <!--                                                               class="delete_product no-decoration">-->
+                                                        <!--                                                                <small>-->
+                                                        <!--                                                                    <i class="fa fa-trash-o"/>-->
+                                                        <!--                                                                </small>-->
+                                                        <!--                                                            </a>-->
+                                                        <!--                                                        </td>-->
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                    <!--                                                    <tr t-att-id="'row_' + str(i)"-->
+                                                    <!--                                                        class="products">-->
+                                                    <!--                                                        <td contenteditable='true'-->
+                                                    <!--                                                            class="td-product_name"-->
+                                                    <!--                                                            name="ticket_name">-->
+                                                    <!--                                                            <input type="text"-->
+                                                    <!--                                                                   name="ticket_name"-->
+                                                    <!--                                                                   t-att-id="'name_' + str(i)"-->
+                                                    <!--                                                                   class="form-control"/>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                        <td contenteditable='true'-->
+                                                    <!--                                                            class="td-product_name">-->
+                                                    <!--                                                            <select class="form-control select_products"-->
+                                                    <!--                                                                    name="product_select"-->
+                                                    <!--                                                                    t-att-id="'product_' + str(i)">-->
+                                                    <!--                                                                <option/>-->
+                                                    <!--                                                                <t t-set="products"-->
+                                                    <!--                                                                   t-value="request.env['product.product'].sudo().search([('detailed_type', '=', 'event')])"/>-->
+                                                    <!--                                                                <t t-foreach="products"-->
+                                                    <!--                                                                   t-as="product">-->
+                                                    <!--                                                                    <option t-att-value="product.id">-->
+                                                    <!--                                                                        <t t-esc="product.display_name"/>-->
+                                                    <!--                                                                    </option>-->
+                                                    <!--                                                                </t>-->
+                                                    <!--                                                            </select>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                        <td contenteditable='true'-->
+                                                    <!--                                                            class="td-product_name">-->
+                                                    <!--                                                            <input type="text"-->
+                                                    <!--                                                                   name="ticket_description"-->
+                                                    <!--                                                                   t-att-id="'description_' + str(i)"-->
+                                                    <!--                                                                   class="form-control"/>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                        <td contenteditable='true'-->
+                                                    <!--                                                            class="text-center td-price">-->
+                                                    <!--                                                            <input type="number"-->
+                                                    <!--                                                                   name="price"-->
+                                                    <!--                                                                   t-att-id="'price_' + str(i)"-->
+                                                    <!--                                                                   class="form-control"/>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                        &lt;!&ndash;                                                            <td contenteditable='true'&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                class="td-product_name">&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                <input type="datetime-local" name="start_date" id="start_date_1" class="form-control"/>&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                            </td>&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                            <td contenteditable='true'&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                class="td-product_name">&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                <input type="datetime-local" name="end_date" id="end_date_1" class="form-control"/>&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                            </td>&ndash;&gt;-->
+                                                    <!--                                                        <td contenteditable='true'-->
+                                                    <!--                                                            class="td-product_name">-->
+                                                    <!--                                                            <input type="number"-->
+                                                    <!--                                                                   name="maximum"-->
+                                                    <!--                                                                   t-att-id="'max_' + str(i)"-->
+                                                    <!--                                                                   class="form-control"/>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                        &lt;!&ndash;                                                            <td&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                class="td-product_name">&ndash;&gt;-->
+
+                                                    <!--                                                        &lt;!&ndash;                                                            </td>&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                            <td&ndash;&gt;-->
+                                                    <!--                                                        &lt;!&ndash;                                                                class="td-product_name">&ndash;&gt;-->
+
+                                                    <!--                                                        &lt;!&ndash;                                                            </td>&ndash;&gt;-->
+                                                    <!--                                                        <td class="td-action">-->
+                                                    <!--                                                            <a href="#"-->
+                                                    <!--                                                               aria-label="Remove from cart"-->
+                                                    <!--                                                               title="Remove from cart"-->
+                                                    <!--                                                               class="delete_product no-decoration">-->
+                                                    <!--                                                                <small>-->
+                                                    <!--                                                                    <i class="fa fa-trash-o"/>-->
+                                                    <!--                                                                </small>-->
+                                                    <!--                                                            </a>-->
+                                                    <!--                                                        </td>-->
+                                                    <!--                                                    </tr>-->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!--                                        <div id="add_item"-->
+                                        <!--                                             class="float-left">+ Add an-->
+                                        <!--                                            item-->
+                                        <!--                                        </div>-->
+                                    </div>
+
+                                    <div class="tab-pane fade"
+                                         id="discipline"
+                                         role="tabpanel"
+                                         aria-labelledby="discipline-tab">
+                                        <div>
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="notes">
+                                                            Notes
+                                                        </label>
+                                                        <p>
+                                                            <input type="text"
+                                                                   name="notes"
+                                                                   id="notes"
+                                                                   t-att-value="event_type.note"
+                                                                   class="form-control se-form-control"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="notes">
+                                                            Ticket Extra
+                                                            Instructions
+                                                        </label>
+                                                        <p>
+                                                            <input type="text"
+                                                                   name="extra_info"
+                                                                   id="extra_info"
+                                                                   t-att-value="event_type.ticket_instructions"
+                                                                   class="form-control se-form-control"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--                                    <div class="tab-pane fade"-->
+                                    <!--                                         id="coaches"-->
+                                    <!--                                         role="tabpanel"-->
+                                    <!--                                         aria-labelledby="coaches-tab">-->
+                                    <!--                                        <div>-->
+                                    <!--                                            <span class="d-block text-muted"-->
+                                    <!--                                                  style="margin-top:50px !important;">-->
+                                    <!--                                                <select name="coaches"-->
+                                    <!--                                                        id="coaches"-->
+                                    <!--                                                        class="form-control se-form-control sports-erp-dashbaord-select"-->
+                                    <!--                                                        multiple="multiple"-->
+                                    <!--                                                        placeholder="Coaches*">-->
+                                    <!--                                                    <t t-if="athlete.coach_ids"-->
+                                    <!--                                                       t-foreach="athlete.coach_ids or []"-->
+                                    <!--                                                       t-as="coach">-->
+                                    <!--                                                        <option selected="selected"-->
+                                    <!--                                                                t-att-value="coach.id">-->
+                                    <!--                                                            <t t-esc="coach.name"/>-->
+                                    <!--                                                        </option>-->
+                                    <!--                                                    </t>-->
+                                    <!--                                                    <t t-set="coach_ids"-->
+                                    <!--                                                       t-value="request.env['organisation.coaches'].sudo().search([])"/>-->
+                                    <!--                                                    <t t-foreach="coaches or []"-->
+                                    <!--                                                       t-as="coach_id">-->
+                                    <!--                                                        <option t-att-value="coach_id.id">-->
+                                    <!--                                                            <t t-esc="coach_id.name"/>-->
+                                    <!--                                                        </option>-->
+                                    <!--                                                    </t>-->
+                                    <!--                                                </select>-->
+                                    <!--                                            </span>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+                                    <!--                                    <div class="tab-pane fade"-->
+                                    <!--                                         id="organisations-tab"-->
+                                    <!--                                         role="tabpanel"-->
+                                    <!--                                         aria-labelledby="organisation-tab">-->
+                                    <!--                                        <div>-->
+                                    <!--                                            <span class="d-block text-muted"-->
+                                    <!--                                                  style="margin-top:50px !important;">-->
+                                    <!--                                                <select name="organisations"-->
+                                    <!--                                                        id="organisations"-->
+                                    <!--                                                        class="form-control se-form-control sports-erp-dashbaord-select"-->
+                                    <!--                                                        multiple="multiple"-->
+                                    <!--                                                        placeholder="Organisations*">-->
+                                    <!--                                                    <t t-if="athlete.organisation_ids"-->
+                                    <!--                                                       t-foreach="athlete.organisation_ids or []"-->
+                                    <!--                                                       t-as="organisation_id">-->
+                                    <!--                                                        <option selected="selected"-->
+                                    <!--                                                                t-att-value="organisation_id.id">-->
+                                    <!--                                                            <t t-esc="organisation_id.name"/>-->
+                                    <!--                                                        </option>-->
+                                    <!--                                                    </t>-->
+                                    <!--                                                    <t t-foreach="organisations or []"-->
+                                    <!--                                                       t-as="organisation_id">-->
+                                    <!--                                                        <option t-att-value="organisation_id.id">-->
+                                    <!--                                                            <t t-esc="organisation_id.name"/>-->
+                                    <!--                                                        </option>-->
+                                    <!--                                                    </t>-->
+                                    <!--                                                </select>-->
+                                    <!--                                            </span>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+                                    <!--                                    <div class="tab-pane fade"-->
+                                    <!--                                         id="performance"-->
+                                    <!--                                         role="tabpanel"-->
+                                    <!--                                         aria-labelledby="documents-tab">-->
+                                    <!--                                        <div class="w-100 h-100 d-flex flex-column justify-content-center align-items-center">-->
+                                    <!--                                            <img src="/sports_erp_dashboard/static/src/images/ui/robot.svg"-->
+                                    <!--                                                 width="64" height="64"-->
+                                    <!--                                                 class="se-dashboard__message-icon mb-3"/>-->
+                                    <!--                                            <span class="d-block text-muted">-->
+                                    <!--                                                Performance-->
+                                    <!--                                            </span>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                    <!--                                    <div class="tab-pane fade"-->
+                                    <!--                                         id="parents"-->
+                                    <!--                                         role="tabpanel"-->
+                                    <!--                                         aria-labelledby="parents-tab">-->
+                                    <!--                                        <div class="w-100 h-100"-->
+                                    <!--                                             style="margin-top:50px !important;">-->
+                                    <!--                                            <select name="parents"-->
+                                    <!--                                                    id="parent"-->
+                                    <!--                                                    class="form-control se-form-control sports-erp-dashbaord-select"-->
+                                    <!--                                                    multiple="multiple"-->
+                                    <!--                                                    placeholder="Parents*">-->
+                                    <!--                                                <t t-if="athlete.parent_ids"-->
+                                    <!--                                                   t-foreach="athlete.parent_ids or []"-->
+                                    <!--                                                   t-as="parent_id">-->
+                                    <!--                                                    <option selected="selected"-->
+                                    <!--                                                            t-att-value="parent_id.id">-->
+                                    <!--                                                        <t t-esc="parent_id.name"/>-->
+                                    <!--                                                    </option>-->
+                                    <!--                                                </t>-->
+                                    <!--&lt;!&ndash;                                                <t t-set="parents"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                   t-value="request.env['organisation.parents'].sudo().search([])"/>&ndash;&gt;-->
+                                    <!--                                                <t t-foreach="parents or []"-->
+                                    <!--                                                   t-as="parent_id">-->
+                                    <!--                                                    <option t-att-value="parent_id.id">-->
+                                    <!--                                                        <t t-esc="parent_id.name"/>-->
+                                    <!--                                                    </option>-->
+                                    <!--                                                </t>-->
+                                    <!--                                            </select>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+                                    <!--                                    <div class="tab-pane fade"-->
+                                    <!--                                         id="products"-->
+                                    <!--                                         role="tabpanel"-->
+                                    <!--                                         aria-labelledby="products-tab">-->
+                                    <!--                                        <div class="w-100 h-100"-->
+                                    <!--                                             style="margin-top:50px !important;">-->
+                                    <!--                                            <select name="products"-->
+                                    <!--                                                    id="products"-->
+                                    <!--                                                    class="form-control se-form-control sports-erp-dashbaord-select"-->
+                                    <!--                                                    multiple="multiple"-->
+                                    <!--                                                    placeholder="Products*" style="pointer-events: none;">-->
+                                    <!--                                                <t t-if="athlete.sudo().product_ids"-->
+                                    <!--                                                   t-foreach="athlete.sudo().product_ids or []"-->
+                                    <!--                                                   t-as="product_id">-->
+                                    <!--                                                    <option selected="selected"-->
+                                    <!--                                                            t-att-value="product_id.id">-->
+                                    <!--                                                        <t t-esc="product_id.name"/>-->
+                                    <!--                                                    </option>-->
+                                    <!--                                                </t>-->
+                                    <!--&lt;!&ndash;                                                <t t-set="product_ids"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                   t-value="request.env['product.product'].sudo().search([])"/>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                <t t-foreach="product_ids or []"&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                   t-as="product_id">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                    <option t-att-value="product_id.id">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                        <t t-esc="product_id.name"/>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                    </option>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;                                                </t>&ndash;&gt;-->
+                                    <!--                                            </select>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <button
+                                        style="float:right !important; border-radius: 5px !important;"
+                                        class="btn se-btn se-btn--no-rounded se-btn--primary px-4 event_submit"
+                                        value="">Update Event Template
+                                </button>
+                            </div>
+                        </div>
+                        <!--                        </form>-->
+                    </div>
+                </div>
+
+
+            </t>
+        </template>
+    </data>
+</odoo>

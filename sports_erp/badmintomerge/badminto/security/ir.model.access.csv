@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_badminto_assessment,access_badminto_assessment,model_badminto_assessment,,1,1,1,1
+access_badminto_assessment_stage,access_badminto_assessment_stage,model_badminto_assessment_stage,,1,1,1,1
+access_badminto_assessment_tags,access_badminto_assessment_tags,model_badminto_assessment_tags,,1,1,1,1
+access_badminto_assessment_types,access_badminto_assessment_types,model_assessment_types,,1,1,1,1

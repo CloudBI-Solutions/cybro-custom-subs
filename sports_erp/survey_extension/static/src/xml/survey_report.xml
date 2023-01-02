@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+
+	<t t-name="survey_report_test">
+<!--		<script>-->
+        <!--		$('.select2_survey').select2({-->
+        <!--			closeOnSelect: false-->
+        <!--		     });-->
+        <!--		$('.select2_user').select2({-->
+        <!--			closeOnSelect: false-->
+        <!--		     });-->
+        <!--	   </script>-->
+        <!--		<h1>Hello, World</h1>-->
+        <div class="mt16">
+			<div class="col-12">
+				<div class="row">
+<!--					<div class="col-1">-->
+                    <!--						<label name="start_date"><strong></strong></label>-->
+                    <!--					</div>-->
+                    <div class="col-2">
+						<div>
+							<strong>Start Date :</strong>
+                            <input id="start_date" name="start_date"
+                                   class="form-control" type="date"
+                                   placeholder="Start Date"
+                                   required="required"/>
+						</div>
+					</div>
+                    <!--					<div class="col-1">-->
+                    <!--						<label name="end_date"><strong>End Date :</strong></label>-->
+                    <!--					</div>-->
+                    <div class="col-2">
+						<div>
+	<!--						<label name="end_date"><strong>End Date :</strong></label>-->
+                            <strong>End Date :</strong>
+                            <input id="end_date" name="end_date"
+                                   class="form-control" type="date"
+                                   placeholder="End Date"
+                                   required="required"/>
+						</div>
+					</div>
+                    <!--					<div class="col-1">-->
+                    <!--						<label name="end_date"><strong>Survey :</strong></label>-->
+                    <!--					</div>-->
+                    <div class="col-2">
+						<strong>Survey :</strong>
+                        <select id="survey" name="survey"
+                                class="form-control select2_survey">
+							<option value="none">---Select---</option>
+						</select>
+					</div>
+                    <!--					<div class="col-3">-->
+                    <!--						<label name="user"><strong>User :</strong></label>-->
+                    <!--					</div>-->
+                    <div class="col-2">
+						<strong>User :</strong>
+                        <select id="user" name="user"
+                                class="form-control select2_user">
+							<option value="none">---Select---</option>
+						</select>
+					</div>
+
+                    <div class="col-2" style="padding: 20px;">
+						<strong></strong>
+                        <button type="button" class="search_btn"
+                                style="background-color:#875a7b;color:#ffffff;"><i class="fa fa-search"/></button>
+					</div>
+				 </div>
+                <div class="row">
+
+                </div>
+			</div>
+            <div class="Report-content mt-3"
+                 style="overflow:auto;height:auto;max-height:700px;"/>
+        </div>
+    </t>
+
+    <t t-name="survey-answer-table">
+		<table class="table">
+			<thead>
+				<tr>
+					<t t-foreach="header_list" t-as="header">
+						<th style="min-width:150px;"
+                            data-toggle="tooltip" t-att-title="header">
+							<span class="que_header" t-esc="header"/></th>
+					</t>
+				</tr>
+			</thead>
+            <tbody>
+				<t t-foreach="answer_lst" t-as="answer">
+						<tr>
+							<t t-set="count" t-value="0"></t>
+                            <t t-foreach="answer" t-as="ans">
+								<t t-set="count" t-value="count+1"></t>
+                                <t t-if="count > 2">
+									<td>
+										<t t-foreach="ans" t-as="data">
+											<t t-if="data['question_id']">
+												<a t-attf-href="/survey/download/{{data['answer_id']}}/{{data['question_id']}}/{{data['access_token']}}"
+                                                   style="font-size: 20px;padding: 10px;"><i class="fa fa-download"></i></a>
+                                                <a target="_blank"
+                                                   t-attf-href="/documents/content/preview/{{data['answer_id']}}/{{data['question_id']}}/{{data['access_token']}}"
+                                                   style="font-size: 20px;padding: 10px;"><i class="fa fa-eye"></i></a>
+											</t>
+                                            <t t-else="">
+												<t t-esc="data"> </t>
+                                                <br/>
+											</t>
+										</t>
+									</td>
+								</t>
+                                <t t-else="">
+									<td><t t-esc="ans"/> </td>
+								</t>
+							</t>
+						</tr>
+					</t>
+
+			</tbody>
+		</table>
+	</t>
+</template>

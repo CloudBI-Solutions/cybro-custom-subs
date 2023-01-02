@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="component_add_remove_view_wizard" model="ir.ui.view">
+            <field name="name">component.add.remove.form</field>
+            <field name="model">component.add.remove</field>
+            <field name="arch" type="xml">
+                <form string="Components List">
+                    <div>
+                        <field name="allowed"/>
+                        <label for="allowed"/>
+                    </div>
+                    <field name="component_lines">
+                        <tree editable="bottom" create="false" delete="false">
+                            <field name="allowed"/>
+                            <field name="product_id" readonly="1" force_save="1"/>
+                            <field name="barcode"/>
+                            <field name="list_price"/>
+                            <field name="standard_price"/>
+                            <field name="qty_available"/>
+                        </tree>
+                    </field>
+                    <field name="type" invisible="1"/>
+                    <footer>
+                        <button string="ADD" name="action_submit" type="object" class="oe_highlight"
+                                attrs="{'invisible': [('type', '=','remove')]}"/>
+                        <button string="REMOVE" name="action_submit" type="object" class="oe_highlight"
+                                attrs="{'invisible': [('type', '!=','remove')]}"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_component_add_remove" model="ir.actions.act_window">
+            <field name="name">Components List</field>
+            <field name="res_model">component.add.remove</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="component_add_remove_view_wizard"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

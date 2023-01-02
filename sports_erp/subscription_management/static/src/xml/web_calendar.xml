@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+<!--    extending CalendarView.quick_create template-->
+    <t t-name="CalendarView.quick_create" t-inherit="web.CalendarView.quick_create" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('form-group')]" position="after">
+            <div class="form-group">
+                <label for='coach_id' class='col-form-label o_form_label'>Coach:</label>
+                <input type='text' name='name' class="o_input o_required_modifier"/>
+            </div>
+        </xpath>
+    </t>
+</templates>

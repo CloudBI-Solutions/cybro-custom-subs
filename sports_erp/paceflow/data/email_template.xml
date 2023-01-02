@@ -1,0 +1,51 @@
+
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data>
+
+        <record id="assign_email_template" model="mail.template">
+            <field name="name">Assessment Assigned</field>
+            <field name="model_id" ref="paceflow.model_assessment_assessment"/>
+            <field name="email_from">${object.partner_id.email}</field>
+            <field name="email_to">${object.coach_id.email_formatted | safe}</field>
+            <field name="subject">${object.company_id.name} Assessment (Ref ${object.name or 'n/a'})</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    Dear Coach,
+                    <br /><br />
+                    <p>You have been assigned to this assessment</p>
+                    <p><b><i>Assessment (Ref ${object.name or 'n/a'})</i></b></p>
+
+                    <br /><br />
+                    Do not hesitate to contact us if you have any questions.
+
+                </p>
+            </div>
+            </field>
+        </record>
+
+        <record id="done_email_template" model="mail.template">
+            <field name="name">Assessment Done</field>
+            <field name="model_id" ref="paceflow.model_assessment_assessment"/>
+            <field name="email_from">${object.coach_id.email_formatted | safe}</field>
+            <field name="email_to">${object.partner_id.email}</field>
+            <field name="subject">${object.company_id.name} Assessment (Ref ${object.name or 'n/a'})</field>
+            <field name="body_html" type="html">
+            <div style="margin: 0px; padding: 0px;">
+                <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                    Dear Client,
+                    <br /><br />
+                    <p>Your assessment has been done</p>
+
+                    <br /><br />
+                    Do not hesitate to contact us if you have any questions.
+
+                </p>
+            </div>
+            </field>
+        </record>
+    </data>
+</odoo>

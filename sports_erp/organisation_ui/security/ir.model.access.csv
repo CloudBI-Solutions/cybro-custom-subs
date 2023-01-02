@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_coach_link,organisation_ui.coach_dashboard_link,model_coach_dashboard_link,base.group_user,1,1,1,1
+access_athlete_link,organisation_ui.athlete_dashboard_link,model_athlete_dashboard_link,base.group_user,1,1,1,1
+access_fan_link,organisation_ui.fan_dashboard_link,model_fan_dashboard_link,base.group_user,1,1,1,1
+access_parent_link,organisation_ui.parent_dashboard_link,model_parent_dashboard_link,base.group_user,1,1,1,1

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_surevy_body_map_value,access.surevy.body.map.value,survey_extension.model_survey_body_map_value,,1,1,1,1
+access_calculated_metric_operator,access.calculated.metric.operator,survey_extension.model_calculated_metric_operator,,1,1,1,1
+

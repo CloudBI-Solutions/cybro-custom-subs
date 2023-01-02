@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view"
+            id="technical_configuration_type_tree">
+        <field name="name">technical.configuration.type.view.tree</field>
+        <field name="model">technical.configuration.types</field>
+        <field name="arch" type="xml">
+            <tree create="0" delete="0">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <!--        ORGANISATION NOTEBOOK-->
+
+    <record model="ir.ui.view" id="organisation_view_form_inherited">
+        <field name="name">organisation.form.view.inherited</field>
+        <field name="model">organisation.organisation</field>
+        <field name="inherit_id" ref="organisation.organisation_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Technical Assessment Configuration"
+                      name="technical_configuration">
+                    <field name="technical_configuration_ids">
+                        <tree>
+                            <field name="type"/>
+                            <field name="configuration_ids"/>
+                        </tree>
+                        <form string="Technical Assessment Configuration">
+                            <sheet>
+                                <group>
+                                    <group>
+                                        <field name="type" string="Type"
+                                               required="1"/>
+                                    </group>
+
+                                    <br/>
+                                    <br/>
+                                    <field name="configuration_ids"
+                                    required="1">
+                                        <tree editable="bottom">
+                                            <field name="start"
+                                                   required="1"/>
+                                            <field name="end"
+                                                   required="1"/>
+                                            <field name="level"
+                                                   required="1"/>
+                                            <field name="color"/>
+                                            <field name="comments"/>
+                                        </tree>
+                                    </field>
+
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_products_data">
+        <!--        <section class="ia-section wrapwrap oe_website_sale">-->
+<!--  dec_6_aj     <div class="col-sm-12 col-md-12 col-lg-3">-->
+            <div class="ian-home__product-item wrapwrap oe_website_sale">
+                <div class="ian-product-card" id="wrap_product">
+                    <div class="ian-product-card__image-container">
+                        <div class="ian-product-card__badge-container">
+                            <t t-if="product_id.qty_available &gt; 0">
+                                <span class="ian-badge ian-badge--yellow">In Stock</span>
+                            </t>
+                            <t t-else="">
+                                <span class="ian-badge ian-badge--red">Out Of Stock</span>
+                            </t>
+                        </div>
+                        <t t-set="product_variant_id" t-value="product_id._create_first_product_variant()"/>
+                        <t t-set="in_wish" t-value="product_variant_id and product_variant_id._is_in_wishlist()"/>
+                        <t t-if="in_wish">
+                            <button type="button" role="button"
+                                    class="btn ian-product-card__wishlist"
+                                    style="background-color:#ff0000d9 !important; width:30px; height:30px; opacity:0.8; margin-top: 3px;"
+                                    title="Added to Wishlist" t-att-data-product-template-id="product_id.id">
+                                <span class="fa fa-heart" role="img" aria-label="Added to wishlist"/>
+                            </button>
+                        </t>
+                        <t t-else="">
+                            <button type="button" role="button"
+                                    class="btn btn-outline-primary bg-white o_add_wishlist o_add_wishlist_dyn ian-product-card__wishlist"
+                                    title="Add to Wishlist" t-att-data-product-template-id="product_id.id"
+                                    t-att-data-product-product-id="product_variant_id"
+                                    data-action="o_wishlist">
+                                <span class="fa fa-heart" role="img" aria-label="Add to wishlist"/>
+                            </button>
+                        </t>
+                        <a t-att-href="'/shop/%s'%(product_id.id)">
+                            <img t-att-src="request.env['website.configuration'].get_product_image(product_id)"
+                                 alt="Product" class="ian-product-card__image"/>
+                        </a>
+                    </div>
+
+
+                    <div class="ian-product-card__details">
+                        <a t-att-href="'/shop/%s'%(product_id.id)" data-abc="true">
+                            <span class="ian-product-card__product-name">
+                                <t t-esc="product_id.name[:40]"/>
+                            </span>
+                        </a>
+                        <t t-set="combination_info"
+                           t-value="product_id._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                        <div class="product_price mb-1" itemprop="offers" itemscope="itemscope"
+                             itemtype="http://schema.org/Offer">
+                            <span class="h5 ian-product-card__product-price" t-if="combination_info['price']"
+                                  t-esc="combination_info['price']"
+                                  t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            <del t-attf-class="ian-product-card__old-price ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                 style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                 t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            <t t-if="combination_info['has_discounted_price']">
+                                <t t-set="percentage"
+                                   t-value="( (combination_info['list_price']-combination_info['price'])/combination_info['list_price'] ) *100"/>
+                                <span><t t-esc="int(percentage)"/>%
+                                </span>
+                            </t>
+
+                            <span itemprop="price" style="display:none;" t-esc="combination_info['price']"/>
+                            <span itemprop="priceCurrency" style="display:none;" t-esc="website.currency_id.name"/>
+                        </div>
+
+                        <div class="ian-product-card__actions">
+                            <input type="hidden" class="ian_prod_id"
+                                   t-att-value="product_id._get_first_possible_variant_id()"/>
+                            <a style="width:75% !important; padding: 10px !important;"
+                               class="ian-btn ian-btn--primary ian-btn--card mt-3 ian-add-cart-btn">Add to Cart
+                            </a>
+                            <t t-if="product_id.type_of_pc == 'customize'">
+                                <a t-att-href="'/store/%s'%(product_id.id)"
+                                   class="ian-btn ian-btn--dark ian-btn--sq mt-3">
+                                    <img src="/iwesabe_website_theme/static/src/img/icons/pencil-square.svg" width="18"
+                                         height="18" alt="Customize"/>
+                                </a>
+                            </t>
+                            <t class="wrap_product" t-else=" ">
+                                <button id="quick_view_button"
+                                        href="#quick_view_model_shop"
+                                        data-toggle="modal"
+                                        t-att-data-id="product_id.id"
+                                        class="ian-btn ian-btn--dark ian-btn--sq mt-3 button_modal_info">
+                                    <img src="/iwesabe_website_theme/static/src/img/icons/eye.svg" width="18"
+                                         height="18" alt="Quick View"/>
+                                </button>
+                            </t>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+<!--  dec_6_aj     </div>-->
+
+
+    </template>
+    <template id="modal_dialogue_quick_view">
+        <!-- dec_7_aj -->
+        <div id="dialogue_data_quick_view">
+        <!-- dec_7_aj -->
+            <div class="ian-body">
+                <div class="ian-container">
+                    <div class="modal-dialog">
+                        <div class="modal-content quick_view_modal">
+                            <div class="modal-body ian-popup__modal-body">
+                                <button type="button" class="close ian-popup__close-btn"
+                                        data-dismiss="modal" aria-label="Close">
+                                    <span>
+                                        <img src="/iwesabe_website_theme/static/src/img/icons/close.svg"
+                                             width="22" height="22"/>
+                                    </span>
+                                </button>
+                                <t t-if="product_id">
+                                    <div class="ian-popup__product-details">
+                                        <div class="ian-popup__product-image-container">
+                                            <div class="ian-popup__badge-container">
+                                                <t t-if="product_id.qty_available &gt; 0">
+                                                    <span class="ian-badge ian-badge--yellow">In Stock</span>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="ian-badge ian-badge--red">Out Of Stock</span>
+                                                </t>
+                                            </div>
+                                            <div id="popupIndicators" class="carousel slide"
+                                                 data-ride="carousel">
+                                                <div class="carousel-inner"
+                                                     t-if="product_id.product_template_image_ids">
+                                                    <div class="carousel-item active">
+                                                        <img class="d-block w-100 ian-popup__product-image"
+                                                             t-att-src="request.env['website.configuration'].get_product_image(product_id)"/>
+                                                    </div>
+                                                    <t t-foreach="product_id.product_template_image_ids" t-as="image">
+                                                        <div class="carousel-item">
+                                                            <img t-attf-src="data:image/*;base64,{{image.image_1920}}"
+                                                                 t-att-src="request.env['website.configuration'].get_product_image(product_id)"
+                                                                 alt="..."/>
+                                                        </div>
+                                                    </t>
+                                                    <!--                                                    <div class="carousel-item">-->
+                                                    <!--                                                        <img src="/iwesabe_website_theme/static/src/img/product-1.png"-->
+                                                    <!--                                                             class="d-block w-100 ian-popup__product-image"-->
+                                                    <!--                                                             alt="..."/>-->
+                                                    <!--                                                    </div>-->
+                                                </div>
+                                                <div class="carousel-inner" t-else=" ">
+                                                    <!--                                                    <div class="carousel-item ">-->
+                                                    <img class="d-block w-100 ian-popup__product-image"
+                                                         t-att-src="request.env['website.configuration'].get_product_image(product_id)"/>
+                                                    <!--                                                    </div>-->
+                                                </div>
+                                                <button class="carousel-control-prev ian-popup__nav-button"
+                                                        type="button" data-target="#popupIndicators"
+                                                        data-slide="prev"
+                                                        style="background: transparent;border: none;">
+                                                     <!-- dec_7_aj -->
+<!--                                                    <img src="/iwesabe_website_theme/static/src/img/icons/chevron-left.svg"/>-->
+                                                    <span class="carousel-control-prev-icon ian-popup__nav-icon--left"
+                                                          aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next ian-popup__nav-button "
+                                                        type="button" data-target="#popupIndicators"
+                                                        data-slide="next"
+                                                        style="background: transparent;border: none;">
+                                                     <!-- dec_7_aj -->
+
+<!--                                                    <img src="/iwesabe_website_theme/static/src/img/icons/chevron-right.svg"/>-->
+                                                    <span class="carousel-control-next-icon ian-popup__nav-icon--right"
+                                                          aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="ian-popup__product-meta-details">
+                                            <span class="ian-popup__product-title">
+                                                <t t-esc="product_id.name"/>
+                                            </span>
+                                            <div class="ian-popup__price">
+                                                <span class="ian-popup__product-price">
+                                                    <t t-esc="product_id.currency_id.symbol"/>
+                                                    <t t-esc="product_id.list_price"/>
+                                                </span>
+                                                <span class="ian-popup__old-price">
+                                                    <t t-esc="product_id.currency_id.symbol"/>
+                                                    <t t-esc="product_id.standard_price"/>
+                                                </span>
+                                                <span class="ian-popup__percentage">10% Off</span>
+                                            </div>
+                                            <div class="ian-popup__counter oe_website_sale">
+
+                                                <div class="css_quantity quantity input-group d-inline-flex mr-2 my-1 align-middle"
+                                                     contenteditable="false">
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend input-group-btn">
+                                                            <a t-attf-href="#"
+                                                               class="btn btn-primary js_add_cart_json ian-popup__counter-btn btn btn-minus btn-number"
+                                                               aria-label="Remove one" title="Remove one">
+                                                                <i class="fa fa-minus"></i>
+                                                            </a>
+                                                        </div>
+                                                        <input type="text"
+                                                               class="form-control quantity ian-popup__counter-input input-number"
+                                                               data-min="1"
+                                                               name="add_qty" t-att-value="add_qty or 1"/>
+                                                        <div class="input-group-append input-group-btn">
+                                                            <a t-attf-href="#"
+                                                               class="btn btn-primary float_left js_add_cart_json ian-popup__counter-btn btn-plus btn-number"
+                                                               aria-label="Add one" title="Add one">
+                                                                <i class="fa fa-plus ian-cart-plus"/>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="d-flex justify-content-start align-items-center flex-wrap mt-4">
+                                                <input type="hidden" class="ian_prod_id"
+                                                       t-att-value="product_id.product_variant_id.id"/>
+                                                <a class="btn ia-product-card__cta-btn ia-btn--primary ian-add-cart-btn"
+                                                   t-att-data-id="'%s' % product_id.product_variant_id.id"
+                                                   style="width:75%; height:50px; border-radius:0px; margin-top:0px; margin-bottom:0px; align-items:center;">
+                                                    <span>Add To Cart</span>
+                                                </a>
+                                                <a t-att-href="'/shop/%s'%(product_id.id)"
+                                                   class="ian-btn--link ian-btn--view-detail py-3 text-center text-white d-block">
+                                                    View in detail
+                                                </a>
+                                            </div>
+                                            <div class="d-flex justify-content-center align-items-center w-100">
+                                                <a href="#" class="ian-popup__view-spec-btn">
+                                                    View Specification
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/chevron-up-arrow.svg"
+                                                         class="ian-popup__viewspec ian-popup__viewspec--up ml-1 d-none"
+                                                         width="12" height="12"/>
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/chevron-down-arrow.svg"
+                                                         class="ian-popup__viewspec ian-popup__viewspec--down ml-1"
+                                                         width="12" height="12"/>
+                                                </a>
+                                            </div>
+                                            <div class="ian-popup__product-specification d-none">
+                                                <ul class="ian-popup__product-spec-items">
+                                                    <t t-foreach="product_id.specification_line" t-as="specification">
+                                                        <li class="ian-popup__product-spec-item">
+                                                            <span class="ian-popup__product-spec-title">
+                                                                <t t-esc="specification.item_id.name"/>
+                                                            </span>
+                                                            <span class="ian-popup__product-spec-value">
+                                                                <t t-esc="specification.name"/>
+                                                            </span>
+                                                        </li>
+                                                    </t>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </t>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <script>
+                var viewSpecBtn = document.querySelector('.ian-popup__view-spec-btn');
+                var viewSpecArrowUp = document.querySelector('.ian-popup__viewspec--up');
+                var viewSpecArrowDown = document.querySelector('.ian-popup__viewspec--down');
+                var viewSpec = document.querySelector('.ian-popup__product-specification');
+
+                viewSpecBtn.addEventListener("click", function(e){
+                e.preventDefault();
+                viewSpecArrowUp.classList.toggle('d-none');
+                viewSpecArrowDown.classList.toggle('d-none');
+                viewSpec.classList.toggle('d-none');
+                });
+            </script>
+
+        </div>
+    </template>
+
+    <template id="infiniarc_header" inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <div groups="base.group_user" class="top-view-header"></div>
+            <header id="top" data-anchor="true" data-name="Header" class="o_header_standard o_top_fixed_element">
+
+                <div class="ian-header">
+                    <div class="ian-header__container ian-container">
+                        <div class="ian-header__search d-none">
+                            <form class="o_searchbar_form" t-call="website.s_searchbar_input">
+                                ->
+                            </form>
+                            <a href="#" id="closeSearch">
+                                <img src="/iwesabe_website_theme/static/src/img/icons/close.svg"
+                                     class="ian-header__search-close"
+                                     alt="Close"/>
+                            </a>
+                        </div>
+                        <div class="ian-header__left-actions">
+
+                            <button class="mt-1 hamburger hamburger--squeeze ian-header__mobile-toggler" id="menuToggle"
+                                    type="button">
+                                <span class="hamburger-box">
+                                    <span class="hamburger-inner"></span>
+                                </span>
+                            </button>
+
+                            <a href="/" class="ian-header__logo-link mr-5">
+                                <img src="/iwesabe_website_theme/static/src/img/logo.png" class="ian-header__logo"
+                                     alt="Infiniarc" width="183"
+                                     height="30"/>
+                            </a>
+                            <nav class="ian-header__nav ian-header__nav-hide">
+                                <ul class="ian-header__nav-items">
+                                    <li class="ian-header__nav-item">
+                                        <t t-if="website.filter_ids">
+                                            <t t-foreach="website.filter_ids[0]" t-as="site">
+                                                <a class="ian-header__nav-link"
+                                                   t-attf-href="/desk/{{slug(site)}}">
+                                                    Desktop
+                                                </a>
+
+                                            </t>
+                                        </t>
+                                        <t t-else=" ">
+                                            <a class="ian-header__nav-link"
+                                               href="/gaming-desktops">
+                                                Desktop
+                                            </a>
+
+                                        </t>
+                                    </li>
+                                    <li class="ian-header__nav-item">
+                                        <a href="/nvidia" class="ian-header__nav-link">Nvidia</a>
+                                    </li>
+                                    <li class="ian-header__nav-item">
+                                        <a href="/products/gear_store" class="ian-header__nav-link">Gear Store</a>
+                                    </li>
+                                    <li class="ian-header__nav-item">
+                                        <a href="/special_offer" class="ian-header__nav-link">Special Offer</a>
+                                    </li>
+                                    <li class="ian-header__nav-item">
+                                        <a href="#" class="ian-header__nav-link" data-toggle="dropdown">More</a>
+                                        <ul class="dropdown-menu multi-level" role="menu"
+                                            aria-labelledby="dropdownMenu">
+
+                                            <li class="ian-header__nav-item">
+                                                <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                                    <t t-call="website.submenu">
+                                                        <t t-set="item_class" t-valuef="nav-item"/>
+                                                        <t t-set="link_class" t-valuef="nav-link"/>
+                                                    </t>
+                                                </t>
+
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="ian-header__right-actions">
+                            <div class="ian-header__support-container">
+                                <a href="#" class="ian-header__support-icon-link" id="openSupport">
+                                    <img src="/iwesabe_website_theme/static/src/img/icons/customer-service.svg"
+                                         class="ian-header__support-icon"
+                                         width="24" height="24"
+                                         alt="Support"/>
+                                </a>
+                                <div class="ian-header__support-detail d-none">
+                                    <span class="ian-header__support-title mb-2 text-center">Customer Support</span>
+                                    <p class="mb-4 text-center">Looking for support? Don&apos;t worry, We&apos;ve got
+                                        your back!
+                                    </p>
+                                    <a href="mailto:cs@infiniarc.com" class="ian-btn ian-btn--success ian-btn--block">
+                                        cs@infiniarc.com
+                                    </a>
+                                    <a href="tel:+96653888468" class="ian-btn ian-btn--primary ian-btn--block">(+966)
+                                        53888468
+                                    </a>
+                                </div>
+                            </div>
+
+                            <a href="#" class="ian-header__support-icon-link header-icon-left" id="openSearch">
+                                <img src="/iwesabe_website_theme/static/src/img/icons/search.svg"
+                                     class="ian-header__support-icon" width="24"
+                                     height="24" alt="Search"/>
+
+                            </a>
+
+                            <t t-set="website_sale_order" t-value="website.sale_get_order()"/>
+                            <t t-set="show_cart" t-value="true"/>
+                            <t t-set="_icon" t-value="True"/>
+                            <li t-attf-class="o_wsale_my_cart align-self-md-start #{not show_cart and 'd-none'} #{_item_class}">
+                                <a href="/shop/cart" t-attf-class="#{_link_class}">
+                                    <img t-if="_icon"
+                                         src="/iwesabe_website_theme/static/src/img/icons/shopping-cart.svg"
+                                         class="ian-header__support-icon-link header-icon ian-shopping-cart-icon"
+                                         height="24"/>
+                                    <sup class="my_cart_quantity badge badge-primary"
+
+                                         t-esc="website_sale_order and website_sale_order.cart_quantity or '0'"
+                                         t-att-data-order-id="website_sale_order and website_sale_order.id or ''"/>
+                                </a>
+                            </li>
+                            <t t-esc="wishcount"/>
+                            <t t-set="wishcount" t-value="len(request.env['product.wishlist'].current())"/>
+                            <t t-set="show_wishes" t-value="True"/>
+                            <li t-if="wishcount"
+                                t-attf-class="o_wsale_my_wish #{not show_wishes and 'd-none'} #{_item_class}">
+                                <a href="/shop/wishlist" t-attf-class="#{_link_class} header-icon-left">
+                                    <img t-if="_icon" class="fa fa-1x fa-heart ian-wishlist-icon" style="width: 29px;"
+                                         src="/iwesabe_website_theme/static/src/img/icons/heart-o.svg"/>
+                                    <span t-if="_text">Wishlist</span>
+                                    <sup t-esc="wishcount"
+                                         t-attf-class="my_wish_quantity o_animate_blink badge badge-primary"/>
+
+                                </a>
+                            </li>
+
+                            <!--                            <a href="#" class="ian-header__support-icon-link" id="userAccount">-->
+                            <!--                                <a class="ia-btn&#45;&#45;muted ia-product-card__square-btn button_pc_info"-->
+                            <!--                                   href="#quick_view_pc_shop"-->
+                            <!--                                   data-toggle="modal"-->
+                            <!--                                   t-att-data-id="product.product_tmpl_id.id">-->
+                            <!--                                    <img src="/iwesabe_website_theme/static/src/img/shop/view.svg"-->
+                            <!--                                         height="16" width="16"/>-->
+                            <!--                                </a>-->
+
+                            <a t-if="user_id._is_public()" href="#log_out_modal"
+                               data-toggle="modal" class="te_user_account_icon header-icon-left">
+                                <!-- dec_6_aj -->
+                                <img class="arc-user-icon" src="/iwesabe_website_theme/static/src/img/icons/user.svg"
+                                     style="width: 29px;"/>
+                                <t t-call="iwesabe_website_theme.infiniarc_login_popup"
+                                   t-if="user_id._is_public()"/>
+
+                            </a>
+
+                            <div class="dropdown" t-ignore="true"
+                                 t-if="not user_id._is_public()">
+
+                                <a href="#" class="dropdown-toggle btn btn-link"
+                                   data-toggle="dropdown">
+                                       <!-- dec_6_aj -->
+                                    <img class="arc-user-icon" src="/iwesabe_website_theme/static/src/img/icons/user.svg"
+                                         style="width: 29px;"/>
+                                    <span class="te_user_account_icon">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right js_usermenu" role="menu">
+                                    <a href="/my/home" role="menuitem" class="dropdown-item">
+                                        <span class="fa fa-user"/>
+                                        <span class="te_user_drop_item">My Account</span>
+                                    </a>
+                                    <a href="/my/orders" role="menuitem" class="dropdown-item">
+                                        <span class="fa fa-pie-chart"/>
+                                        <span class="te_user_drop_item">My orders</span>
+                                    </a>
+                                    <a id="o_logout" class="dropdown-item"
+                                       t-attf-href="/web/session/logout?redirect=/aboutus"
+                                       role="menuitem">
+                                        <span class="fa fa-sign-out"/>
+                                        <span class="te_user_drop_item">Logout</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <!--                            </a>-->
+
+                            <div class="btn-group" id="langSwitcher" style="border: none !important;">
+                                <img src="/iwesabe_website_theme/static/src/img/icons/us-flag.svg"
+                                     class="mr-2 ian-header__curr-language-icon"
+                                     style="width: 17px;height: 21px !important;"
+                                     width="16" height="16"/>
+                                 <!-- dec_7_aj Removed inline height and width -->
+                                <t t-call="portal.language_selector" style="margin-top: -28px !important;"/>
+                                <!--                                <button type="button" class="btn btn-secondary dropdown-toggle ian-header__dropdown"-->
+                                <!--                                        data-toggle="dropdown"-->
+                                <!--                                        aria-expanded="false">-->
+                                <!--                                    <img src="/iwesabe_website_theme/static/src/img/icons/us-flag.svg"-->
+                                <!--                                         class="mr-2 ian-header__curr-language-icon"-->
+                                <!--                                         width="16" height="16"/>-->
+                                <!--                                    <span class="ian-header__curr-language">English (US)</span>-->
+                                <!--&lt;!&ndash;                                    <span class="ian-header__curr-language">English (US)</span>&ndash;&gt;-->
+                                <!--                                </button>-->
+                                <!--                                <div class="ian-dropdown-menu dropdown-menu dropdown-menu-right">-->
+                                <!--                                    <button class="dropdown-item ian-dropdown-item" type="button">-->
+                                <!--                                        <img src="/iwesabe_website_theme/static/src/img/icons/us-flag.svg"-->
+                                <!--                                             class="mr-2" width="16" height="16"/>-->
+                                <!--                                        English (US)-->
+                                <!--                                    </button>-->
+                                <!--                                    <button class="dropdown-item ian-dropdown-item" type="button"><img-->
+                                <!--                                            src="/iwesabe_website_theme/static/src/img/icons/ksa-flag.svg"-->
+                                <!--                                            class="mr-2" width="16" height="16"/>Arabic-->
+                                <!--                                    </button>-->
+                                <!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <script>
+                // Search input trigger
+                let searchOpen = document.querySelector('#openSearch');
+                let searchClose = document.querySelector('#closeSearch');
+                let searchDialog = document.querySelector('.ian-header__search');
+                <!--                let searchInput = document.querySelector('.ian-header__search-input');-->
+
+                // Open Search Dialog
+                searchOpen.addEventListener('click', function (e) {
+                e.preventDefault();
+                searchDialog.classList.toggle('d-none');
+                <!--                searchInput.focus();-->
+                });
+                // Close Search Dialog
+                searchClose.addEventListener('click', function (e) {
+                e.preventDefault();
+                searchDialog.classList.toggle('d-none');
+                });
+            </script>
+            <script>
+                // Open / Close Customer Support Modal
+                let supportToggle = document.querySelector('#openSupport');
+                let supportModal = document.querySelector('.ian-header__support-detail');
+
+                supportToggle.addEventListener('click', function (e) {
+                supportModal.classList.toggle('d-none');
+                });
+            </script>
+            <script>
+                // Mobile Navigation Toggle
+                let mobileToggler = document.querySelector('#menuToggle');
+                let mobileMenu = document.querySelector('.ian-header__nav');
+
+                mobileToggler.addEventListener('click', function (e) {
+                e.preventDefault();
+                mobileMenu.classList.toggle('ian-header__nav-hide');
+                mobileToggler.classList.toggle('is-active')
+                });
+            </script>
+
+
+            <div class="modal fade log-out-model-root" id="log_out_modal" tabindex='-1'>
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content logout_view_modal" style="background:black !important;">
+                        <div class="modal-header">
+                            <button type="button" class="quick_close" data-dismiss="modal"
+                                    aria-label="Close" tabindex="-1" style="background: black;border: none;"
+                                    id="login_popup">
+                                <img src="/iwesabe_website_theme/static/src/img/icons/close.svg"
+                                     width="22" height="22"/>
+                            </button>
+                        </div>
+
+                        <div class="ia-login">
+                            <div class="ia-login__left" style="width: 100% !important;">
+                                <div class="ia-login__left-container">
+                                    <!--                                    <img src="/images/brand/logo-white.png" width="141" height="23" alt="Infiniarc"-->
+                                    <!--                                         title="Infiniarc"/>-->
+                                    <h2 class="ia-login__lead mt-5 mb-4">Welcome back,
+                                        <br/>
+                                        Please login to continue.
+                                    </h2>
+                                    <div class="ia-login__social-login">
+                                        <a href="#" class="ia-login__social-button"><img
+                                                src="/iwesabe_website_theme/static/src/img/google.svg"
+                                                class="mr-2" width="24" height="24" alt=""/>Google
+                                        </a>
+                                        <a href="#" class="ia-login__social-button"><img
+                                                src="/iwesabe_website_theme/static/src/img/facebook.svg"
+                                                class="mr-2" width="22" height="22" alt=""/>Facebook
+                                        </a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center my-4">
+                                        <span class="ia-login__social-divider">or</span>
+                                    </div>
+                                    <form class="oe_login_form mt-4" role="form"
+                                          method="post"
+                                          onsubmit="this.action = '/web/login' + location.hash">
+
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                                        <div class="form-group field-login ia-form-group">
+                                            <label for="login" class="ia-floating-label ia-text--small ia-text--muted">
+                                                Email
+                                            </label>
+                                            <input type="text" placeholder="Email" name="login" t-att-value="login"
+                                                   id="login"
+                                                   t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                                   class="ia-form__input"
+                                                   required="required" autofocus="autofocus" autocapitalize="off"/>
+                                        </div>
+
+                                        <div class="form-group field-password ia-form-group mt-4">
+                                            <label for="password"
+                                                   class="ia-floating-label ia-text--small ia-text--muted">
+                                                Password
+                                            </label>
+                                            <input type="password" placeholder="Password" name="password" id="password"
+                                                   t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                                   required="required" autocomplete="current-password"
+                                                   class="ia-form__input"
+                                                   t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                                        </div>
+
+                                        <p class="alert alert-danger" t-if="error" role="alert">
+                                            <t t-esc="error"/>
+                                        </p>
+                                        <p class="alert alert-success" t-if="message" role="status">
+                                            <t t-esc="message"/>
+                                        </p>
+                                        <div class="justify-content-between mt-2 d-flex small">
+                                            <t t-set="signup_enabled" t-value="True"/>
+                                            <a t-if="signup_enabled" t-attf-href="/web/signup?{{ keep_query() }}">Don't
+                                                have
+                                                an
+                                                account?
+                                            </a>
+
+                                            <a t-if="reset_password_enabled"
+                                               t-attf-href="/web/reset_password?{{ keep_query() }}">Reset Password
+                                            </a>
+                                        </div>
+
+                                        <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                                            <button type="submit"
+                                                    class="ia-btn ia-btn--primary ia-login__button btn-block mt-5 py-3">
+                                                Log in
+                                            </button>
+
+                                            <a class="small ia-link ia-white--link text-center mt-2 d-block"
+                                               id="otp_logout_page"
+                                               href="/phone_number">Login with OTP instead
+                                            </a>
+                                            <!--                                                                                     &lt;!&ndash;   <a class="small ia-link ia-white&#45;&#45;link text-center mt-2 d-block"-->
+                                            <!--                                                                                           id="otp_logout_page"-->
+                                            <!--                                                                                           href="#otp_log_out_modal"-->
+                                            <!--                                                                                           data-toggle="modal">Login with OTP instead-->
+                                            <!--                                                                                        &ndash;&gt;</a>-->
+
+                                            <div class="o_login_auth"/>
+                                        </div>
+
+                                        <input type="hidden" name="redirect" t-att-value="redirect"/>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            <div class="ia-login__right">-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade otp-log-out-model-root" id="otp_log_out_modal" tabindex='-1'>
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content otp_logout_view_modal" style="background:black !important;">
+                        <div class="modal-header">
+                            <button type="button" class="quick_close otp" data-dismiss="modal"
+                                    aria-label="Close" tabindex="-1" id="otp_login">
+                            </button>
+                        </div>
+
+                        <div class="ia-login">
+                            <div class="ia-login__left" style="width: 100% !important;">
+                                <div class="ia-login__left-container">
+                                    <!--                                    <img src="/images/brand/logo-white.png" width="141" height="23" alt="Infiniarc"-->
+                                    <!--                                         title="Infiniarc"/>-->
+                                    <h2 class="ia-login__lead mt-5 mb-4">Welcome back,
+                                        <br/>
+                                        Please login to continue.
+                                    </h2>
+                                    <div class="ia-login__social-login">
+                                        <a href="#" class="ia-login__social-button">
+                                            <img src="/images/ui/flat-color-icons_google.svg"
+                                                 class="mr-2" width="24" height="24" alt="Google"/>
+                                            Google
+                                        </a>
+                                        <a href="#" class="ia-login__social-button"><img
+                                                src="/images/ui/flat-color-icons_facebook.svg"
+                                                class="mr-2" width="22" height="22"
+                                                alt="Facebook"/>Facebook
+                                        </a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center my-4">
+                                        <span class="ia-login__social-divider">or</span>
+                                    </div>
+                                    <form class="mt-4" action="/otp_login">
+                                        <div class="form-group field-password ia-form-group mt-4">
+                                            <label for="password"
+                                                   class="ia-floating-label ia-text--small ia-text--muted">
+                                                Phone Number
+                                            </label>
+                                            <input type="phone" placeholder="Phone Number" name="phone" id="phone"
+                                                   t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                                   required="required" autocomplete="current-password"
+                                                   class="ia-form__input"
+                                                   t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+
+                                        </div>
+
+                                        <button class="ia-btn ia-btn--primary ia-login__button btn-block mt-5 py-3"
+                                                id="get_otp_logout_page"
+                                                href="#get_otp_modal"
+                                                data-toggle="modal">
+                                            <span>Get OTP
+                                            </span>
+                                        </button>
+
+                                        <a class="small ia-link ia-white--link text-center mt-2 d-block"
+                                           id="o_logout_again"
+                                           href="#log_out_modal"
+                                           data-toggle="modal">Login with Email &amp; Password
+                                        </a>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            <div class="ia-login__right"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade get-otp-model-root" id="get_otp_modal" tabindex='-1'>
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content get_otp_view_modal" style="background:black !important;">
+                        <div class="modal-header">
+                            <button type="button" class="quick_close" data-dismiss="modal"
+                                    aria-label="Close" tabindex="-1">
+                            </button>
+                        </div>
+
+                        <div class="ia-login">
+                            <div class="ia-login__left" style="width: 100% !important;">
+                                <div class="ia-login__left-container">
+                                    <!--                                    <img src="/images/brand/logo-white.png" width="141" height="23" alt="Infiniarc"-->
+                                    <!--                                         title="Infiniarc"/>-->
+                                    <h2 class="ia-login__lead mt-5 mb-4">Welcome back,
+                                        <br/>
+                                        Please login to continue.
+                                    </h2>
+                                    <div class="ia-login__social-login">
+                                        <a href="#" class="ia-login__social-button">
+                                            <img src="/images/ui/flat-color-icons_google.svg"
+                                                 class="mr-2" width="24" height="24" alt="Google"/>
+                                            Google
+                                        </a>
+                                        <a href="#" class="ia-login__social-button"><img
+                                                src="/images/ui/flat-color-icons_facebook.svg"
+                                                class="mr-2" width="22" height="22"
+                                                alt="Facebook"/>Facebook
+                                        </a>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center my-4">
+                                        <span class="ia-login__social-divider">or</span>
+                                    </div>
+                                    <form class="mt-4" action="/">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <label class="ia-form__label small ia-text--muted">OTP</label>
+                                            <a class="small ia-text--muted" href="#">Resend</a>
+                                        </div>
+                                        <div id="ia-otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                                            <input class="m-2 text-center ia-form__input" type="text" id="first"
+                                                   maxlength="1"
+                                                   autofocus="on"/>
+                                            <input class="m-2 text-center ia-login__otp-input ia-form__input"
+                                                   type="text"
+                                                   id="second"
+                                                   maxlength="1"/>
+                                            <input class="m-2 text-center ia-login__otp-input ia-form__input"
+                                                   type="text" id="third"
+                                                   maxlength="1"/>
+                                            <input class="m-2 text-center ia-login__otp-input ia-form__input"
+                                                   type="text"
+                                                   id="fourth"
+                                                   maxlength="1"/>
+                                            <input class="m-2 text-center ia-login__otp-input ia-form__input"
+                                                   type="text" id="fifth"
+                                                   maxlength="1"/>
+                                            <input class="m-2 text-center ia-login__otp-input ia-form__input"
+                                                   type="text" id="sixth"
+                                                   maxlength="1"/>
+                                        </div>
+                                        <button type="submit"
+                                                class="ia-btn ia-btn--primary ia-login__button btn-block mt-5 py-3">
+                                            Log In
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!--                            <div class="ia-login__right"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </xpath>
+        <xpath expr="//footer" position="replace">
+            <footer t-if="not no_footer" id="bottom" data-anchor="true">
+                <div id="footer" class="container container-fit-content pt64 pb64">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="row">
+                                <div class="col-4">
+                                    <h3 class="footer-title">COMPANY</h3>
+                                    <ul class="footer-col-ul">
+                                        <li>
+                                            <a href="/aboutus">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/warranty">Warranty Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="/return_policy">Return Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="/shipping_policy">Shipping Policy</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-4">
+                                    <h3 class="footer-title">SUPPORT</h3>
+                                    <ul class="footer-col-ul">
+                                        <li>
+                                            <a href="/support">Customer Service</a>
+                                        </li>
+                                        <li>
+                                            <a href="/contactus">Contact Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="/order_status">Order Status</a>
+                                        </li>
+                                        <li>
+                                            <a href="">RMA Status</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!--                                <div class="col-4">-->
+                                <!--                                    <h3 class="footer-title">COMMUNITY</h3>-->
+                                <!--                                    <ul class="footer-col-ul">-->
+                                <!--                                        <li>-->
+                                <!--                                            <a href="">Origin PC Family</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li>-->
+                                <!--                                            <a href="/blog">Blog</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li>-->
+                                <!--                                            <a href="">Twitch Prime</a>-->
+                                <!--                                        </li>-->
+                                <!--                                        <li>-->
+                                <!--                                            <a href="">Affiliates</a>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </div>-->
+
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="row">
+                                <div class="col-5">
+                                    <h3 class="footer-title">PRODUCT</h3>
+                                    <ul class="footer-col-ul">
+                                        <li>
+                                            <a href="/gaming-desktops">Desktop</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Ready to Ship PC</a>
+                                        </li>
+                                        <li>
+                                            <a href="">Installment PC</a>
+                                        </li>
+                                        <li>
+                                            <a href="/products/gear_store">Gear Store</a>
+                                        </li>
+                                        <li>
+                                            <a href="/nvidia">NVIDIA</a>
+                                        </li>
+                                        <li>
+                                            <a href="/special_offer">Special Offer</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6">
+
+                                    <h3 class="footer-title">Newsletter</h3>
+                                    <p>Get access to exclusive offers!</p>
+                                    <form action="#" class="subscribe-form pt-2">
+                                        <input type="email" placeholder="Enter Your Email"
+                                               class="form-control email-subscriber"
+                                               name="email"/>
+                                        <a role="button" href="#" type="submit"
+                                           class="subscribe-form-submit mt-3 ian_newsletter_subscribe">
+                                            SUBSCRIBE
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div t-if="not no_copyright" class="o_footer_copyright">
+                    <div class="container py-3">
+                        <div class="row">
+                            <div class="col-sm text-center text-sm-left">
+                                <t t-call="web.debug_icon"/>
+                                <span class="o_footer_copyright_name mr-2">
+                                    © 2022 INFINIARC Corporation. All Rights Reserved.
+                                </span>
+                            </div>
+                            <div class="col-sm text-center text-sm-right">
+                                <p class="fa-social-icon">
+                                    <a href="https://api.whatsapp.com">
+                                        <i class="fa fa-whatsapp"/>
+                                    </a>
+                                    <a href="/website/social/linkedin">
+                                        <i class="fa fa-linkedin-square"/>
+                                    </a>
+                                    <a href="/website/social/instagram">
+                                        <i class="fa fa-instagram"/>
+                                    </a>
+                                    <a href="/website/social/facebook">
+                                        <i class="fa fa-facebook-square"/>
+                                    </a>
+                                    <a href="/website/social/twitter">
+                                        <i class="fa fa-twitter"/>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </xpath>
+    </template>
+
+    <template id="infiniarc_index">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section id="notification-slider" class="newhome-slider">
+                    <div class="container-fit-content">
+                        <div class="row m-0">
+
+                            <div class="col-lg-12 p-0">
+                                <div class="card-raised card-carousel">
+                                    <div id="notification-indicators" class="carousel slide" data-ride="carousel"
+                                         data-interval="3000">
+                                        <div class="carousel-inner" style="width: 1540px;">
+                                            <t t-foreach="announcements" t-as="announce">
+                                                <div t-attf-class="carousel-item carousel-item-left {{ 'active' if announce_index == 1 else ''}}">
+                                                    <div class="slider-caption d-none d-md-block">
+
+                                                        <a href="#">
+                                                            <t class="text-center" t-esc="announce.announcement"/>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </t>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#notification-indicators" role="button"
+                                           data-slide="prev" data-abc="true">
+                                            <i class="fa fa-angle-left previous"/>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#notification-indicators" role="button"
+                                           data-slide="next" data-abc="true">
+                                            <i class="fa fa-angle-right next"/>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                        <a class="carousel-control-close" href="#" role="button">
+                                            <img src="/iwesabe_website_theme/static/src/img/new-home-page/cross.png"
+                                                 class="close" alt="Close"/>
+                                            <span class="sr-only">Close</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="infiniarc-slider" class="home-slider">
+                    <div class="container container-fit-content">
+                        <div class="row m-0">
+                            <div class="col-lg-12 p-0">
+                                <div class="card card-raised card-carousel">
+                                    <div id="carouselindicators" class="carousel slide" data-ride="carousel"
+                                         data-interval="30000">
+                                        <ol class="carousel-indicators">
+                                            <!--                                            <t t-esc="len(banner)"/>-->
+                                            <t t-set="count" t-value="len(banner)"/>
+                                            <t t-foreach="range(count)" t-as="item">
+                                                <t t-esc="item"/>
+                                                <!--                                                <t t-foreach="banner" t-as="banners">-->
+
+
+                                                <li data-target="#carouselindicators" data-slide-to="item"
+                                                    t-attf-class="{{ 'active' if item_index == 0 else ''}}"/>
+                                            </t>
+                                            <!--        </t>-->
+                                        </ol>
+                                        <div class="carousel-inner" style="height:640px;">
+                                            <t t-foreach="banner" t-as="banners">
+                                                <div t-attf-class="carousel-item {{ 'active' if banners_index == 1 else ''}} ">
+                                                    <img class="d-block w-100"
+                                                         t-att-src="'/web/image?model=home.banner&amp;id=%s&amp;field=banner'%(banners.id)"
+                                                         alt="First slide"/>
+
+                                                </div>
+                                            </t>
+
+                                        </div>
+                                        <a class="carousel-control-prev" href="#carouselindicators" role="button"
+                                           data-slide="prev" data-abc="true">
+                                            <i class="fa fa-angle-left previous"/>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#carouselindicators" role="button"
+                                           data-slide="next" data-abc="true">
+                                            <i class="fa fa-angle-right next"/>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="ia-latest-deals__background">
+                    <section class="ian-container ian-section__padding">
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="ian-header__h2 text-center">Latest Deals</h2>
+                                <p class="ian-lead text-center">Explore all the latest deals from us.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="ian-home__slider-beta">
+                                    <t t-foreach="small_banner" t-as="small">
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <img class="ian-home__slider-beta-img"
+                                                 t-att-src="'/web/image?model=home.small.banner&amp;id=%s&amp;field=small_banner'%(small.id)"/>
+                                        </div>
+                                    </t>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+        <!-- dec_6_aj : removed mt64 mb64 -->
+        <section id="infiniarc-models" class="arc-container" t-if="configuration_id.website_model_line">
+             <!-- dec_6_aj : removed mt64 -->
+            <div class="container ia-title-bar">
+                <h2 class="section-title ia-title-bar__left">Infiniarc Models</h2>
+                <a href="/gaming-desktops" class="btn btn-danger ia-title-bar__right">
+                    View all
+                </a>
+            </div>
+
+                    <div class="container mt16">
+                        <ul class="content-center nav">
+                            <!-- All Category -->
+                            <li class="models-categ col content-center nav-item">
+                                <a class="nav-link active" id="all-infiniarc-models-tab" data-toggle="tab"
+                                   href="#all-infiniarc-models" role="tab" aria-controls="all-infiniarc-models"
+                                   aria-selected="true">ALL MODELS
+                                </a>
+                            </li>
+                            <t t-foreach="configuration_id.website_model_line" t-as="line">
+                                <t t-set="categ_name_low" t-value="configuration_id.get_category_lower(line)"/>
+                                <li class="models-categ col content-center nav-item">
+                                    <a class="nav-link nav-title-root" t-att-id="'%s-tab'%(categ_name_low)"
+                                       data-toggle="tab" t-att-href="'#%s'%(categ_name_low)" role="tab"
+                                       t-att-aria-controls="categ_name_low" aria-selected="false">
+                                        <t t-esc="line.filter_id.filter"/>
+                                    </a>
+                                </li>
+                            </t>
+
+                        </ul>
+
+            </div>
+            <div class="container mt16">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="all-infiniarc-models" role="tabpanel"
+                         aria-labelledby="all-infiniarc-models-tab">
+                        <div class="arc-product-card-container">
+                            <t t-set="i" t-value="0"/>
+
+
+                                    <t t-set='product'
+                                       t-value="env['product.model'].search([('filter_id','=', '')])"/>
+                                    <t t-foreach="configuration_id.website_model_line.mapped('products_id')"
+                                       t-as="product_id">
+                                        <t t-if="product_id.is_published">
+                                            <t t-if="i&lt;4">
+                                                <t t-set="i" t-value="i+1"/>
+                                                <t t-call="iwesabe_website_theme.infiniarc_products_data"/>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                            </div>
+                            <t t-foreach="configuration_id.website_model_line" t-as="line">
+                                <t t-set="categ_name_low" t-value="configuration_id.get_category_lower(line)"/>
+                                <div class="tab-pane fade" t-att-id="categ_name_low" role="tabpanel"
+                                     t-att-aria-labelledby="'%s-tab'%(categ_name_low)">
+                                    <div class="arc-product-card-container">
+                                        <t t-set="i" t-value="0"/>
+
+                                        <t t-foreach="line.products_id" t-as="product_id">
+                                            <t t-if="product_id.is_published">
+                                                <t t-if="i&lt;4">
+                                                    <t t-set="i" t-value="i+1"/>
+                                                    <t t-call="iwesabe_website_theme.infiniarc_products_data"/>
+                                                </t>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </div>
+                                <!--                                </t>-->
+                            </t>
+                        </div>
+                    </div>
+                </section>
+                <div class="modal fade quick-view-model-root" id="quick_view_model_shop" tabindex='-1'>
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <t t-call="iwesabe_website_theme.modal_dialogue_quick_view"/>
+                    </div>
+                </div>
+
+                <section id="infiniarc-middle-slider" class="mid-section-slider mt64 mb64">
+                    <div class="container container-fit-content"
+                         style="border-bottom: 1px solid #464646;border-top: 1px solid #464646;">
+                        <div class="row m-0">
+                            <div class="col-lg-12 p-0">
+                                <div class="card card-raised card-carousel">
+                                    <div id="carouselindicators1" class="carousel slide" data-ride="carousel"
+                                         data-interval="3000">
+                                        <ol class="carousel-indicators">
+                                            <t t-set="count" t-value="len(banner_slider)"/>
+                                            <t t-foreach="range(count)" t-as="item">
+<!--                                            <t t-foreach="banner_slider" t-as="slider">-->
+                                                <li data-target="#carouselindicators1" data-slide-to="item"
+                                                    t-attf-class="{{ 'active' if item_index == 0 else ''}}"/>
+                                            </t>
+                                        </ol>
+                                        <div class="carousel-inner">
+                                            <t t-foreach="banner_slider" t-as="slider">
+                                                <div t-attf-class="carousel-item {{ 'active' if slider_index == 1 else ''}} ">
+                                                    <img class="d-block w-100"
+                                                         t-att-src="'/web/image?model=home.banner.slider&amp;id=%s&amp;field=banner_slider'%(slider.id)"
+                                                         alt="First slide"/>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+
+                                    <a class="carousel-control-prev" href="#carouselindicators1" role="button"
+                                       data-slide="prev" data-abc="true">
+                                        <i class="fa fa-angle-left previous" style="font-size:50px;"/>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselindicators1" role="button"
+                                       data-slide="next" data-abc="true">
+                                        <i class="fa fa-angle-right next" style="font-size: 50px;"/>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="ia-section my-5">
+                    <div class="ia-wrapper">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h2 class="text-center ia-homepage__h2">Explore Our Stores</h2>
+                                <p class="ia-homepage__lead text-center mx-auto">Explore our wide range of the hottest
+                                    gaming gears and components in the industry.
+                                </p>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6" t-foreach="gearstore" t-as="gear">
+                                <div class="ia-homepage__store-card" t-if="gear.name=='Base Component'">
+                                    <div class="ia-homepage__image-container">
+                                        <img src="iwesabe_website_theme/static/src/img/basic.png"
+                                             class="ia-homepage__image"/>
+                                    </div>
+                                    <div class="ia-homepage__store-details">
+                                        <div class="ia-homepage__store-left">
+                                            <span class="ia-homepage__store-subhead">Explore</span>
+                                            <span class="ia-homepage__store-head">Basic Components</span>
+                                        </div>
+                                        <div class="ia-homepage__store-right">
+                                            <a t-attf-href="/gear/{{slug(gear)}}"
+                                               style="min-width: 145px;"
+                                               class="d-inline-flex align-items-center justify-content-center pt-1 pb-0 px-0 ia-btn ia-btn--primary">
+                                                <span>Shop Now</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ia-homepage__store-card" t-if="gear.name=='Accessories'">
+                                    <div class="ia-homepage__image-container">
+                                        <img src="iwesabe_website_theme/static/src/img/gear.png"
+                                             class="ia-homepage__image"/>
+                                    </div>
+                                    <div class="ia-homepage__store-details">
+                                        <div class="ia-homepage__store-left">
+                                            <span class="ia-homepage__store-subhead">Explore</span>
+                                            <span class="ia-homepage__store-head">Accessories</span>
+                                        </div>
+                                        <div class="ia-homepage__store-right">
+                                            <a t-attf-href="/gear/{{ slug(gear) }}"
+                                               class="d-inline-flex align-items-center justify-content-center pt-1 pb-0 px-0 ia-btn ia-btn--primary"
+                                               style="min-width: 145px;">
+                                                <span>Shop Now</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!--                            <div class="col-12 col-sm-12 col-md-12 col-lg-6">-->
+                            <!--                            </div>-->
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="ian-container ian-section__padding" t-if="best_sellers">
+
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <h2 class="ian-header__h2 text-center">Our Products</h2>
+                            <p class="ian-lead text-center">Explore wide range of our products.</p>
+                        </div>
+                    </div>
+
+                    <div class="ian-home__product-slider mt-5">
+
+                        <t t-foreach="best_sellers" t-as="products">
+                            <div class="ian-home__product-item">
+                                <div class="ian-product-card oe_website_sale" style="width: 300px;">
+                                    <div class="ian-product-card__image-container"> <!-- dec_8_aj -->
+                                        <div class="ian-product-card__badge-container"
+                                             t-if="products.best_seller == True">
+                                            <span class="ian-badge ian-badge--yellow">Best Seller</span>
+                                        </div>
+                                        <div class="ian-product-card__badge-container" t-if="products.arrival == True">
+                                            <span class="ian-badge ian-badge--blue">New Arrival</span>
+                                        </div>
+                                        <a t-att-href="'/shop/%s'%(products.id)">
+                                            <img t-att-src="request.env['website.configuration'].get_product_image(products)"
+                                                 alt="Product" class="ian-product-card__image"/>
+                                        </a>
+
+                                        <t t-set="in_wish" t-value="products._is_in_wishlist()"/>
+                                        <!--                                        <t t-esc="product_id._is_in_wishlist()"/>-->
+                                        <!--                        <t t-esc="product_id._get_first_possible_variant_id()"/>-->
+                                        <t t-set="product_variant_id"
+                                           t-value="products._create_first_product_variant()"/>
+                                        <t t-set="in_wish"
+                                           t-value="product_variant_id and product_variant_id._is_in_wishlist()"/>
+                                        <t t-if="in_wish">
+                                            <button type="button" role="button"
+                                                    class="btn ian-product-card__wishlist"
+                                                    style="background-color:#ff0000d9 !important; width:30px; height:30px; opacity:0.8; margin-top: 3px;"
+                                                    title="Added to Wishlist"
+                                                    t-att-data-product-template-id="products.id">
+                                                <span class="fa fa-heart" role="img" aria-label="Added to wishlist"/>
+                                            </button>
+                                        </t>
+                                        <t t-else="">
+                                            <button type="button" role="button"
+                                                    class="btn btn-outline-primary bg-white o_add_wishlist o_add_wishlist_dyn ian-product-card__wishlist"
+                                                    t-att-disabled='in_wish or None'
+                                                    title="Add to Wishlist" t-att-data-product-template-id="products.id"
+                                                    t-att-data-product-product-id="product_variant_id"
+                                                    data-action="o_wishlist">
+                                                <span class="fa fa-heart" role="img" aria-label="Add to wishlist"/>
+                                            </button>
+                                        </t>
+
+                                    </div>
+
+                                    <div class="ian-product-card__details">
+                                        <span class="ian-product-card__product-name align-middle">
+                                            <a t-att-href="'/shop/%s'%(products.id)">
+                                                <span t-if="products" t-esc="products['display_name'][:23]"/>
+                                            </a>
+                                        </span>
+                                        <t t-set="combination_info"
+                                           t-value="products._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                                        <div class="product_price mb-1" itemprop="offers" itemscope="itemscope"
+                                             itemtype="http://schema.org/Offer">
+                                            <span class="h5 ian-product-card__product-price"
+                                                  t-if="combination_info['price']"
+                                                  t-esc="combination_info['price']"
+                                                  t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                            <del t-attf-class="ian-product-card__old-price ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                 style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                                 t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                            <t t-if="combination_info['has_discounted_price']">
+                                                <t t-set="percentage"
+                                                   t-value="( (combination_info['list_price']-combination_info['price'])/combination_info['list_price'] ) *100"/>
+                                                <span><t t-esc="int(percentage)"/>%
+                                                </span>
+                                            </t>
+
+                                            <span itemprop="price" style="display:none;"
+                                                  t-esc="combination_info['price']"/>
+                                            <span itemprop="priceCurrency" style="display:none;"
+                                                  t-esc="website.currency_id.name"/>
+                                        </div>
+                                        <div class="ian-product-card__actions">
+                                            <input type="hidden" class="ian_prod_id"
+                                                   t-att-value="products._get_first_possible_variant_id()"/>
+                                            <a class="btn ia-product-card__cta-btn ia-btn--primary ian-add-cart-btn"
+                                               t-att-data-id="'%s' % products.product_variant_id.id"
+                                               style="width:75%; height:50px; border-radius:0px; margin-top:0px; margin-bottom:0px; align-items:center;">
+                                                <span>Add To Cart</span>
+                                            </a>
+                                            <button id="quick_view_button" href="#quick_view_model_shop"
+                                                    data-toggle="modal" t-att-data-id="products.id"
+                                                    class="ian-btn ian-btn--dark ian-btn--sq mt-3 button_modal_info">
+                                                <img src="/iwesabe_website_theme/static/src/img/icons/eye.svg"
+                                                     width="18" height="18" alt="Quick View"/>
+                                            </button>
+                                            <!--                                            <button href="#quick_view_model_shop" data-toggle="modal"-->
+                                            <!--                                                    t-att-data-id="products.id"-->
+                                            <!--                                                    class="ian-btn ian-btn&#45;&#45;dark ian-btn&#45;&#45;sq mt-3 button_modal_info">-->
+                                            <!--                                                <img src="/iwesabe_website_theme/static/src/img/icons/eye.svg"-->
+                                            <!--                                                     width="18"-->
+                                            <!--                                                     height="18" alt="Quick View"/>-->
+                                            <!--                                            </button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </section>
+                <div class="modal fade quick-view-model-root" id="quick_view_modal_gearstore" tabindex='-1'>
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <t t-call="iwesabe_website_theme.modal_dialogue_quick_view"/>
+                    </div>
+                </div>
+
+                <section id="whats_new" class="mt64 mb64" t-if="posts">
+                    <div class="container">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2 class="section-title">What's New?</h2>
+                            <a href="/blog" class="btn btn-danger">View all</a>
+                        </div>
+                    </div>
+                    <div class="container my-4">
+                        <div class="row what-new-future" style="padding-left: 20px;">
+                            <div t-foreach="posts" t-as="p" class="col-md-4 mt16">
+                                <a t-attf-href="/blog/#{p.blog_id.id}/post/#{p.id}"
+                                   t-att-title="'Read' + p.name">
+                                    <div class="new-banner-image" t-call="website.record_cover">
+                                        <t t-set="_record" t-value="p"/>
+                                        <t t-set="additionnal_classes"
+                                           t-value="'w-100 h-100 bg-200 position-absolute'"/>
+
+                                        <div class="right-game-banner-text">
+                                            <p>
+                                                <time t-field="p.post_date" class="text-nowrap font-weight-bold px-2"
+                                                      t-options='{"format": "MMM d, yyyy"}'/>
+                                            </p>
+                                            <h4 style="font-size: 16px;">
+                                                <t t-esc="p.name"/>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <t t-call="iwesabe_website_theme.infiniarc_our_partner"/>
+            </div>
+        </t>
+    </template>
+</odoo>

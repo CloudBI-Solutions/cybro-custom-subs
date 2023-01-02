@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="infiniarc_login_page" inherit_id="webs.login">-->
+
+<!--&lt;!&ndash;        <xpath expr="//t" position="replace">&ndash;&gt;-->
+
+<!--            <div class="ia-login">-->
+<!--                <div class="ia-login__left">-->
+<!--                    <div class="ia-login__left-container">-->
+<!--                        <img src="/images/brand/logo-white.png" width="141" height="23" alt="Infiniarc"-->
+<!--                             title="Infiniarc"/>-->
+<!--                        <h2 class="ia-login__lead mt-5 mb-4">Welcome back,-->
+<!--                            <br/>-->
+<!--                            Please login to continue.-->
+<!--                        </h2>-->
+<!--                        <div class="ia-login__social-login">-->
+<!--                            <a href="#" class="ia-login__social-button"><img-->
+<!--                                    src="/images/ui/flat-color-icons_google.svg"-->
+<!--                                    class="mr-2" width="24" height="24"-->
+<!--                                    alt="Google"/>Google-->
+<!--                            </a>-->
+<!--                            <a href="#" class="ia-login__social-button"><img-->
+<!--                                    src="/images/ui/flat-color-icons_facebook.svg"-->
+<!--                                    class="mr-2" width="22" height="22"-->
+<!--                                    alt="Facebook"/>Facebook-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                        <div class="d-flex align-items-center justify-content-center my-4">-->
+<!--                            <span class="ia-login__social-divider">or</span>-->
+<!--                        </div>-->
+<!--                        <form class="mt-4">-->
+<!--                            <div class="ia-form-group">-->
+<!--                                <input type="text" name="email" id="email" class="ia-form__input" required="required"/>-->
+<!--                                <label class="ia-floating-label ia-text&#45;&#45;small ia-text&#45;&#45;muted" for="email">Email</label>-->
+<!--                            </div>-->
+<!--                            <div class="ia-form-group mt-4">-->
+<!--                                <input type="password" name="password" id="password" class="ia-form__input"-->
+<!--                                       required="required"/>-->
+<!--                                <label class="ia-floating-label ia-text&#45;&#45;small ia-text&#45;&#45;muted" for="password">Password-->
+<!--                                </label>-->
+<!--                            </div>-->
+<!--                            <div class="d-flex justify-content-between align-items-center flex-wrap">-->
+<!--                                <span class="small ia-text&#45;&#45;muted mt-4">Don&apos;t have account?-->
+<!--                                    <a href="#" class="ia-link ia-white&#45;&#45;link">Create now</a>-->
+<!--                                </span>-->
+<!--                                <a href="#" class="small ia-white&#45;&#45;link mt-4">Forgot Password?</a>-->
+<!--                            </div>-->
+<!--                            <button type="submit" class="ia-btn ia-btn&#45;&#45;primary ia-login__button btn-block mt-5 py-3">-->
+<!--                                <span>Log In</span>-->
+<!--                            </button>-->
+<!--                            <a href="#" class="small ia-link ia-white&#45;&#45;link text-center mt-2 d-block">Login with OTP-->
+<!--                                instead-->
+<!--                            </a>-->
+<!--                            &lt;!&ndash;                        </span>&ndash;&gt;-->
+<!--                        </form>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="ia-login__right"></div>-->
+<!--            </div>-->
+<!--&lt;!&ndash;        </xpath>&ndash;&gt;-->
+<!--    </template>-->
+    <!--        </div>-->
+</odoo>

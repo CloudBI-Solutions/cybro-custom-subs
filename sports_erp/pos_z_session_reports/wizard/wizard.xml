@@ -1,0 +1,29 @@
+<odoo>
+    <record id="wizard_session_form_view" model="ir.ui.view">
+        <field name="name">Session Wizard</field>
+        <field name="model">wizard.session</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group col="4">
+                        <field name="pos_sessions" string="POS Sessions" widget='many2many_tags'
+                               domain="[('state','=','closed')]" options="{'no_create': True}"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print" string="PRINT" type="object" class="btn-primary"/>
+                    <button name="cancel" special="cancel" type="object" string="Cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="session_report_action" model="ir.actions.act_window">
+        <field name="name">Posted Session Report</field>
+        <field name="res_model">wizard.session</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="wizard_session_form_view"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

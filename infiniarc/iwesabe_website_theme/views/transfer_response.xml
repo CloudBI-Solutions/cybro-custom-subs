@@ -1,0 +1,83 @@
+<odoo>
+    <template id="wire_response">
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-8 p-4 d-flex justify-content-center align-items-center">
+                        <div class="ia-success__message">
+                            <h1 class="ia-response__title">Order Placed Successfully</h1>
+                            <t t-foreach="order" t-as="order_val">
+                                <span class="ia-response__order-id">Order ID:
+                                    <t t-esc="order_val.display_name"/>
+                                </span>
+                            </t>
+                            <span class="ia-response__details mt-4">To confirm order please follow the following steps:
+                            </span>
+                            <ol class="ia-response__points">
+                                <li class="ia-success__point mt-2">Transfer the amount to any of our bank accounts
+                                    below.
+                                </li>
+                                <li class="ia-response__point">Upload the payment receipt from your website account.
+                                </li>
+                                <li class="ia-response__point">Contact our customer service number via
+                                    <img src="/iwesabe_website_theme/static/src/img/banks/whatsapp.png" alt="WhatsApp"
+                                         width="16" height="16"/>
+                                    WhatsApp.
+                                    <span>
+                                        <t t-esc="mobile"/>
+                                    </span>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-4 p-4 d-flex justify-content-center align-items-center">
+                        <img src="/iwesabe_website_theme/static/src/img/banks/confirmed.svg" width="245" height="289"
+                             class="ia-success__hero" alt="Order Placed"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-9 mx-auto">
+                        <ul class="ia-response__tabs nav nav-tabs" id="myTab" role="tablist">
+                            <t t-foreach="banks" t-as="bank_val">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" t-attf-data-target="#a#{bank_val.id}"
+                                            id="alimna-tab" data-toggle="tab"
+                                            type="button"
+                                            role="tab" aria-controls="home" aria-selected="true">
+                                        <t t-esc="bank_val.display_name"/>
+                                    </button>
+
+                                </li>
+                            </t>
+                        </ul>
+
+                        <div class="ia-response__tab-content tab-content" id="myTabContent">
+                            <t t-foreach="banks" t-as="bank_val">
+                                <div class="tab-pane fade " t-attf-id="a#{bank_val.id}" role="tabpanel"
+                                     aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center align-items-center">
+                                            <img t-att-src="'/web/image?model=company.banks&amp;id=%s&amp;field=bank_image'%(bank_val.id)"
+                                                 class="ia-success__bank-logo"
+                                                 t-att-alt="bank_val.name"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column justify-content-center align-items-center">
+                                            <p>
+                                                <t t-esc="bank_val.account_no"/>
+                                            </p>
+                                            <p>
+                                                <t t-esc="bank_val.name_in_ac"/>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </t>
+
+    </template>
+</odoo>

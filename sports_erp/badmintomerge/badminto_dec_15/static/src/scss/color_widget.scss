@@ -1,0 +1,38 @@
+$o-colors: #e6e6e6 #EF1B1B #E54F4F #F46363 #F5CF6D #E9B34A #FABD20 #E2D454 #C0D63D #A6F12B #10F335;
+.o_int_colorpicker {
+    .o_color_pill {
+        display: inline-block;
+        height: 25px;
+        width: 25px;
+        position: relative;
+        @for $size from 1 through length($o-colors) {
+            $o-color: #10F335;
+            &.o_color_#{$size - 1} {
+                background-color: nth($o-colors, $size);
+                &:not(.readonly):hover {
+                    transform: scale(1.5);
+                    transition: 0.3s;
+                    cursor: pointer;
+                    z-index: 100;
+                }
+                &.active{
+                    border: 1.5px solid black;
+                    top: 1px;
+                }
+            }
+        }
+    }
+}
+.o_inner_text{
+    font-size: 16px;
+    color: #ffffff;
+}
+.o_color_pill{
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+.o_color_pill .active{
+    height: 30px;
+    width: 30px;
+}

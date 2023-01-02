@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="s_hero_snippet" name="Hero Snippet">
+            <section class="">
+                <div class="set-home-hero">
+                    <div class="set-wrapper set-home-hero__container  position-relative">
+                        <div class="set-home-hero__content">
+                            <h1 class="set-home-hero__header">Set your Sport
+                                Organization to Grow.
+                            </h1>
+                            <p class="set-home-hero__lead">Let everyone focus on
+                                the
+                                best part of the work.
+                            </p>
+                            <div class="set-home-hero__button-container">
+                                <a href="#"
+                                   class="set-button set-button--primary set-button--resp-block set-button--shadow">
+                                    Schedule Demo
+                                </a>
+                                <a href="#" class="set-button set-button--link">
+                                    <img src="/theme_sport_erp/static/src/images/ui/play-circle-outline.svg"
+                                         class="set-button__icon mr-1"/>Check
+                                    out our
+                                    Videos
+                                </a>
+                            </div>
+                            <img src="/theme_sport_erp/static/src/images/brand/hero-image.png"
+                                 title="Set your Sport Organization to Grow"
+                                 alt="A running athlete"
+                                 class="set-home-hero__heo-image"/>
+                        </div>
+                        <div class="set-home-hero__categories">
+                            <div class="set-home-hero__category-card">
+                                <img class="set-home-hero__category-icon set-home-hero__category-icon--individual-icon"
+                                     src="/theme_sport_erp/static/src/images/ui/individual-sports.svg"
+                                     alt="Individual Sport" width="18"
+                                     height="18"/>
+                                <span class="set-home-hero__category-text">
+                                    Individual Sports
+                                </span>
+                                <img class="set-home-hero__category-chevron"
+                                     src="/theme_sport_erp/static/src/images/ui/chevron-right-grey.svg"
+                                     alt="Individual Sport"
+                                     width="18" height="18"/>
+                            </div>
+
+                            <div class="set-home-hero__category-card">
+                                <img class="set-home-hero__category-icon set-home-hero__category-icon--team-icon"
+                                     src="/theme_sport_erp/static/src/images/ui/team-sport.svg"
+                                     alt="Team Sport" width="32" height="32"/>
+                                <span class="set-home-hero__category-text">Team
+                                    Sports
+                                </span>
+                                <img class="set-home-hero__category-chevron"
+                                     src="/theme_sport_erp/static/src/images/ui/chevron-right-grey.svg"
+                                     alt="Individual Sport"
+                                     width="18" height="18"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="s_feature_snippet" name="Features Snippet">
+            <section class="set-home-service py-0 py-lg-5">
+                <div class="set-wrapper">
+                    <div class="set-warper-content mt-5 pt-5">
+                        <div class="row">
+                            <div class="col-lg-3 col-6">
+                                <div class="set-h-s-card">
+                                    <div class="set-img_warpper">
+                                        <img src="/theme_sport_erp/static/src/images/home-service/clock.svg"
+                                             alt=""/>
+                                    </div>
+                                    <p class="set-h-s_desc">
+                                        75% time saved for all admin
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="set-h-s-card">
+                                    <div class="set-img_warpper">
+                                        <img src="/theme_sport_erp/static/src/images/home-service/thumb.svg"
+                                             alt=""/>
+                                    </div>
+                                    <p class="set-h-s_desc">
+                                        Satisfaction of key stakeholders
+                                        increased by 88%
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="set-h-s-card">
+                                    <div class="set-img_warpper">
+                                        <img src="/theme_sport_erp/static/src/images/home-service/star.svg"
+                                             alt=""/>
+                                    </div>
+                                    <p class="set-h-s_desc">
+                                        Satisfaction of members increased by 88%
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="set-h-s-card">
+                                    <div class="set-img_warpper">
+                                        <img src="/theme_sport_erp/static/src/images/home-service/dollar.svg"
+                                             alt=""/>
+                                    </div>
+                                    <p class="set-h-s_desc">
+                                        55%+ budgets released from admin to
+                                        sport
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="s_leader_template" name="Leaders &amp; Managers">
+            <section class="set-home-demo py-5">
+                <div class="dm_bg_grey">
+                    <div class="set-wrapper">
+                        <div class="set-warper-content">
+                            <div class="row dm_spacing ">
+                                <div class="col-lg-6 col-12 ">
+                                    <div class="demo_img">
+                                        <div class="img_wrapper">
+                                            <img class="btm_img"
+                                                 src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                                 alt=""/>
+                                            <img class="top_img"
+                                                 src="/theme_sport_erp/static/src/images/demo-section/leaders_and_managers.jpg"
+                                                 alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="demo_details">
+                                        <div class="wrapper dm_d_m">
+                                            <h3>
+                                                For Leaders &amp; Managers
+                                            </h3>
+                                            <p>
+                                                Get everyone connected, help
+                                                coaches and allow parents to
+                                                help you safeguard their
+                                                children.
+                                                Automate
+                                                admin to 95%. 
+                                            </p>
+                                            <a href="#"
+                                               class="set-button set-button--primary  set-button--shadow">
+                                                Schedule
+                                                Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+
+        <template id="s_coaches_template" name="Coaches Managing Groups">
+            <section class="set-home-demo py-5">
+                <div class="set-wrapper">
+                    <div class="set-warper-content">
+                        <div class="row dm_spacing">
+                            <div class="col-lg-6 col-12 d-lg-none">
+                                <div class="demo_img">
+                                    <div class="img_wrapper">
+                                        <img class="btm_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                             alt=""/>
+                                        <img class="top_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/coaches_managing_groups.jpg"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="demo_details">
+                                    <div class="wrapper dm_d_m">
+                                        <h3>
+                                            For Coaches Managing Groups
+                                        </h3>
+                                        <p>
+                                            Get everyone connected, help coaches
+                                            and allow parents to help you
+                                            safeguard their children. Automate
+                                            admin to 95%. 
+                                        </p>
+                                        <a href="#"
+                                           class="set-button set-button--primary  set-button--shadow">
+                                            Schedule
+                                            Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 d-none d-lg-block">
+                                <div class="demo_img">
+                                    <div class="img_wrapper">
+                                        <img class="btm_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                             alt=""/>
+                                        <img class="top_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/coaches_managing_groups.jpg"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+
+        <template id="s_athlete_template" name="Athletes &amp; Parents">
+            <section class="set-home-demo py-5">
+                <div class="dm_bg_grey">
+                    <div class="set-wrapper">
+                        <div class="set-warper-content">
+                            <div class="row dm_spacing">
+                                <div class="col-lg-6 col-12">
+                                    <div class="demo_img">
+                                        <div class="img_wrapper">
+                                            <img class="btm_img"
+                                                 src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                                 alt=""/>
+                                            <img class="top_img"
+                                                 src="/theme_sport_erp/static/src/images/demo-section/athletes_and_parents.jpg"
+                                                 alt=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                    <div class="demo_details">
+                                        <div class="wrapper dm_d_m">
+                                            <h3>
+                                                For Athletes &amp; Parents
+                                            </h3>
+                                            <p>
+                                                Get everyone connected, help
+                                                coaches and allow parents to
+                                                help you safeguard their
+                                                children.
+                                                Automate
+                                                admin to 95%. 
+                                            </p>
+                                            <a href="#"
+                                               class="set-button set-button--primary  set-button--shadow">
+                                                Schedule
+                                                Demo
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="s_administrator_template" name="Administrator">
+            <section class="set-home-demo py-5">
+                <div class="set-wrapper">
+                    <div class="set-warper-content">
+                        <div class="row dm_spacing">
+                            <div class="col-lg-6 col-12 d-lg-none">
+                                <div class="demo_img">
+                                    <div class="img_wrapper">
+                                        <img class="btm_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                             alt=""/>
+                                        <img class="top_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/smart_administrators.jpg"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="demo_details">
+                                    <div class="wrapper dm_d_m">
+                                        <h3>
+                                            For Smart Administrators
+                                        </h3>
+                                        <p>
+                                            Get everyone connected, help coaches
+                                            and allow parents to help you
+                                            safeguard their children. Automate
+                                            admin to 95%. 
+                                        </p>
+                                        <a href="#"
+                                           class="set-button set-button--primary  set-button--shadow">
+                                            Schedule
+                                            Demo
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12 d-none d-lg-block">
+                                <div class="demo_img">
+                                    <div class="img_wrapper">
+                                        <img class="btm_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/Rectangle 6.jpg"
+                                             alt=""/>
+                                        <img class="top_img"
+                                             src="/theme_sport_erp/static/src/images/demo-section/smart_administrators.jpg"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+
+        <template id="s_branding" name="Branding">
+            <section class="partners py-5 mb-5">
+                <div class="set-wrapper">
+                    <div class="set-partners-content mt-5 pb-3 pb-lg-5">
+                        <div class="set-partners_heading">
+                            <h4 class="set-txt_warpper">
+                                As Seen At
+                            </h4>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-3 col-6 d-flex align-items-center ">
+                                <div class="img_wrapper">
+                                    <img src="/theme_sport_erp/static/src/images/partners/capterra 1.png"
+                                         alt=""/>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 d-flex align-items-center">
+                                <div class="img_wrapper">
+                                    <img src="/theme_sport_erp/static/src/images/partners/good-firms-logo 1.png"
+                                         alt=""/>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 d-flex align-items-center">
+                                <div class="img_wrapper">
+                                    <img src="/theme_sport_erp/static/src/images/partners/Trust-Radius-Logo 1.png"
+                                         alt=""/>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6 d-flex align-items-center">
+                                <div class="img_wrapper">
+                                    <img src="/theme_sport_erp/static/src/images/partners/software_suggest__logo_ 1.png"
+                                         alt=""/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="s_comments" name="Client Comments">
+            <section class="s_carousel_wrapper set-clients" data-vxml="001">
+                <t t-set="uniq" t-value="datetime.datetime.now().microsecond"/>
+                <div t-attf-id="myCarousel{{uniq}}"
+                     class="s_carousel s_carousel_default carousel slide"
+                     data-interval="10000">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators"
+                        style="margin-bottom: -35px;">
+                        <li t-attf-data-target="#myCarousel{{uniq}}"
+                            data-slide-to="0" class="active"/>
+                        <li t-attf-data-target="#myCarousel{{uniq}}"
+                            data-slide-to="1"/>
+                        <li t-attf-data-target="#myCarousel{{uniq}}"
+                            data-slide-to="2"/>
+                    </ol>
+                    <!-- Content -->
+                    <div class="carousel-inner">
+                        <!-- #01 -->
+                        <div class="carousel-item active"
+                             data-name="Slide">
+                            <div class="container oe_unremovable">
+                                <div class="item set-slider__item">
+
+                                    <div class="set-slider__content">
+                                        <div class="set-slider__img">
+                                            <div class="set-slider__client">
+                                                <img src="/theme_sport_erp/static/src/images/client-slider/client-nina-jones.png"
+                                                     class="set-slider__client-image"
+                                                     alt="Nina Jones"/>
+                                            </div>
+                                            <div class="set-slider__quote-container set-slider__quote-container--primary">
+                                                <img class="set-slider__quote"
+                                                     src="/theme_sport_erp/static/src/images/ui/right-quote-sign.svg"
+                                                     alt="Testimonial"/>
+                                            </div>
+                                        </div>
+                                        <div class="set-slider__detials">
+                                            <p class="set-slider__text">
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit.
+                                                Cras eu
+                                                tincidunt tellus. Morbi viverra
+                                                iaculis ex, eu volutpat nisl
+                                                commodo
+                                                id. Ut ullamcorper sodales nibh,
+                                                nec
+                                                vestibulum turpis volutpat.
+                                            </p>
+                                            <span class="set-slider__author">
+                                                Nina Jones, Sports Coach
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #02 -->
+                        <div class="carousel-item"
+                             data-name="Slide">
+                            <div class="container oe_unremovable">
+                                <div class="item set-slider__item">
+                                    <div class="set-slider__content">
+                                        <div class="set-slider__img">
+                                            <div class="set-slider__client">
+                                                <img src="/theme_sport_erp/static/src/images/client-slider/client-nina-jones.png"
+                                                     class="set-slider__client-image"
+                                                     alt="Nina Jones"/>
+                                            </div>
+                                            <div class="set-slider__quote-container set-slider__quote-container--primary">
+                                                <img class="set-slider__quote"
+                                                     src="/theme_sport_erp/static/src/images/ui/right-quote-sign.svg"
+                                                     alt="Testimonial"/>
+                                            </div>
+                                        </div>
+                                        <div class="set-slider__detials">
+                                            <p class="set-slider__text">
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit.
+                                                Cras eu
+                                                tincidunt tellus. Morbi viverra
+                                                iaculis ex, eu volutpat nisl
+                                                commodo
+                                                id. Ut ullamcorper sodales nibh,
+                                                nec
+                                                vestibulum turpis volutpat.
+                                            </p>
+                                            <span class="set-slider__author">
+                                                Nina Jones, Sports Coach
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- #03 -->
+                        <div class="carousel-item"
+                             data-name="Slide">
+                            <div class="container oe_unremovable">
+                                <div class="item set-slider__item">
+                                    <div class="set-slider__content">
+                                        <div class="set-slider__img">
+                                            <div class="set-slider__client">
+                                                <img src="/theme_sport_erp/static/src/images/client-slider/client-nina-jones.png"
+                                                     class="set-slider__client-image"
+                                                     alt="Nina Jones"/>
+                                            </div>
+                                            <div class="set-slider__quote-container set-slider__quote-container--primary">
+                                                <img class="set-slider__quote"
+                                                     src="/theme_sport_erp/static/src/images/ui/right-quote-sign.svg"
+                                                     alt="Testimonial"/>
+                                            </div>
+                                        </div>
+                                        <div class="set-slider__detials">
+                                            <p class="set-slider__text">
+                                                Lorem ipsum dolor sit amet,
+                                                consectetur adipiscing elit.
+                                                Cras eu
+                                                tincidunt tellus. Morbi viverra
+                                                iaculis ex, eu volutpat nisl
+                                                commodo
+                                                id. Ut ullamcorper sodales nibh,
+                                                nec
+                                                vestibulum turpis volutpat.
+                                            </p>
+                                            <span class="set-slider__author">
+                                                Nina Jones, Sports Coach
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls -->
+                </div>
+            </section>
+        </template>
+
+        <template id="sport_erp_snippets" inherit_id="website.snippets"
+                  priority="8">
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_hero_snippet"
+                   t-thumbnail="/theme_sport_erp/static/src/images/brand/hero-image.png"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_feature_snippet"
+                   t-thumbnail="/theme_sport_erp/static/src/images/demo-section/features.png"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_leader_template"
+                   t-thumbnail="/theme_sport_erp/static/src/images/demo-section/leaders_and_managers.jpg"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_coaches_template"
+                   t-thumbnail="/theme_sport_erp/static/src/images/demo-section/coaches_managing_groups.jpg"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_athlete_template"
+                   t-thumbnail="/theme_sport_erp/static/src/images/demo-section/athletes_and_parents.jpg"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_administrator_template"
+                   t-thumbnail="/theme_sport_erp/static/src/images/demo-section/smart_administrators.jpg"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_branding"
+                   t-thumbnail="/theme_sport_erp/static/src/images/brand/brand.png"/>
+            </xpath>
+            <xpath expr="//div[@id='snippet_feature']//t[@t-snippet][last()]"
+                   position="after">
+                <t t-snippet="theme_sport_erp.s_comments"
+                   t-thumbnail="/theme_sport_erp/static/src/images/client-slider/client-nina-jones.png"/>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

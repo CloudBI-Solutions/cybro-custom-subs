@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="s_questions" name="Questions">
+        <section>
+            <div class="set-accordion__item">
+                <div class="set-accordion__header set-accordion__header--light">
+                    <span class="set-accordion__title">Type your question here?
+
+                    </span>
+                    <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                          alt="Accordion"/>
+                </div>
+                <div class="set-accordion__body d-none">
+                    <p class="set-accordion__text set-text set-text--grey">
+                        Type your answer here... <a
+                            href="#"
+                            class="set-link set-link--grey font-weight-bold">
+                        sales@sporterp.co.uk
+                    </a> and we&apos;ll get back to you
+                        shortly.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_f_a_q"
+              name="Facts and Questions">
+        <section class="set-pricing__accordion">
+            <div class="set-wrapper">
+                <h2 class="set-title set-title--h2 mx-auto text-center mb-5">
+                    Frequently Asked Questions
+                </h2>
+                <div class="set-accordion">
+                    <section>
+                        <div class="set-accordion__item">
+                            <div class="set-accordion__header set-accordion__header--light">
+                                <span class="set-accordion__title">My preferred
+                                    payment method isn&apos;t listed. What
+                                    should I
+                                    do?
+                                </span>
+                                <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                                      alt="Accordion"/>
+                            </div>
+                            <div class="set-accordion__body d-none">
+                                <p class="set-accordion__text set-text set-text--grey">
+                                    We accept all major credit/debit cards and
+                                    Klarna. If
+                                    your prefer to pay by
+                                    some other method please write to us at <a
+                                        href="#"
+                                        class="set-link set-link--grey font-weight-bold">
+                                    sales@sporterp.co.uk
+                                </a> and we&apos;ll get back to you
+                                    shortly.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="set-accordion__item">
+                            <div class="set-accordion__header set-accordion__header--light">
+                                <span class="set-accordion__title">Is there a
+                                    way to
+                                    handpick the exact features I need?
+                                </span>
+                                <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                                      alt="Accordion"/>
+                            </div>
+                            <div class="set-accordion__body d-none">
+                                <p class="set-accordion__text set-text set-text--grey">
+                                    We accept all major credit/debit cards and
+                                    Klarna. If
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Earum autem excepturi quas
+                                    accusamus
+                                    consequatur. Blanditiis quis autem
+                                    voluptatibus
+                                    voluptatem quibusdam.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="set-accordion__item">
+                            <div class="set-accordion__header set-accordion__header--light">
+                                <span class="set-accordion__title">My card gets
+                                    declined. What should I do now?
+                                </span>
+                                <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                                      alt="Accordion"/>
+                            </div>
+                            <div class="set-accordion__body d-none">
+                                <p class="set-accordion__text set-text set-text--grey">
+                                    We accept all major credit/debit cards and
+                                    Klarna. If
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Earum autem excepturi quas
+                                    accusamus
+                                    consequatur. Blanditiis quis autem
+                                    voluptatibus
+                                    voluptatem quibusdam.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="set-accordion__item">
+                            <div class="set-accordion__header set-accordion__header--light">
+                                <span class="set-accordion__title">I got billed
+                                    twice accidently. What shoud I do?
+                                </span>
+                                <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                                      alt="Accordion"/>
+                            </div>
+                            <div class="set-accordion__body d-none">
+                                <p class="set-accordion__text set-text set-text--grey">
+                                    We accept all major credit/debit cards and
+                                    Klarna. If
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Earum autem excepturi quas
+                                    accusamus
+                                    consequatur. Blanditiis quis autem
+                                    voluptatibus
+                                    voluptatem quibusdam.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="set-accordion__item">
+                            <div class="set-accordion__header set-accordion__header--light">
+                                <span class="set-accordion__title">How do I
+                                    request
+                                    for a refund?
+                                </span>
+                                <span class="set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                                      alt="Accordion"/>
+                            </div>
+                            <div class="set-accordion__body d-none">
+                                <p class="set-accordion__text set-text set-text--grey">
+                                    We accept all major credit/debit cards and
+                                    Klarna. If
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipisicing elit. Earum autem excepturi quas
+                                    accusamus
+                                    consequatur. Blanditiis quis autem
+                                    voluptatibus
+                                    voluptatem quibusdam.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div id="wrap" class="oe_structure oe_empty"/>
+
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_terms_and_conditions" name="Terms and Conditions">
+        <section class="set-pricing set-pricing--desktop">
+            <div class="set-wrapper">
+                <div class="row mt-4 mb-5">
+                    <div class="col-sm-12 col-md-12 col-lg-7">
+                        <small class="set-text set-text--grey">
+                            All purchases are subject to our billing <a
+                                href="#"
+                                class="set-link set-link--grey font-weight-bold">
+                            terms
+                            and conditions</a>. All transactions are
+                            processed through secure
+                            third-party channels and may subject to
+                            their
+                            respective terms and conditions as well.
+                            Please
+                            refer <a
+                                href="#"
+                                class="set-link set-link--grey font-weight-bold">
+                            here
+                        </a> for
+                            more information.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_pricing_feature"
+              name="Features">
+        <section class="set-pricing set-pricing--desktop">
+            <div class="set-wrapper">
+                <section>
+                    <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">All core
+                                features
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">All sport
+                                business modules
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="16"
+                                     height="16"/>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">No. of
+                                coaches
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">10</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">25</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">No. of
+                                athletes
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">50</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">200</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">No. of
+                                parents
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">100</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">400</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">No. of events
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">50/year</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">200/year</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">No. of
+                                subscription types
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">3</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">10</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Unlimited
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">Profiling
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">General
+                                Profiling
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">General
+                                Profiling
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Gerneral
+                                Profiling
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">General
+                                Profiling
+                            </span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                        <div class="col-sm-12 col-md-12 col-lg-3">
+                            <span class="set-pricing__feature">Sport
+                                Profiling
+                            </span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">1</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">1</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">2</span>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <span class="set-pricing__point">Custom</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_see_all_features" name="See All Features">
+        <section class="mt-3">
+            <section>
+                <div class="features-header-div">
+                    <span class="features-header">
+                        <h3 style="font-weight: 600;">
+                            Full Features
+                        </h3>
+                    </span>
+                </div>
+            </section>
+            <section>
+                <div class="row no-gutters set-pricing__row">
+                    <div class="col-sm-12 col-md-12 col-lg-3">
+                        <span class="set-pricing__feature">All sport
+                            business modules
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">
+                            <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                 width="16"
+                                 height="16"/>
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">
+                            <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                 width="16"
+                                 height="16"/>
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">
+                            <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                 width="16"
+                                 height="16"/>
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">
+                            <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                 width="16"
+                                 height="16"/>
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row no-gutters set-pricing__row set-pricing__row--grey">
+                    <div class="col-sm-12 col-md-12 col-lg-3">
+                        <span class="set-pricing__feature">No. of
+                            coaches
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">10</span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">25</span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">Unlimited
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">Unlimited
+                        </span>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="row no-gutters set-pricing__row">
+                    <div class="col-sm-12 col-md-12 col-lg-3">
+                        <span class="set-pricing__feature">No. of
+                            athletes
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">50</span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">200</span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">Unlimited
+                        </span>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-2">
+                        <span class="set-pricing__point">Unlimited
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </template>
+
+    <template id="pricing_template" name="Subscription Pricing">
+        <t t-call="portal.portal_layout">
+
+            <section class="set-banner set-banner--light">
+                <div class="set-wrapper">
+                    <h1 class="set-title set-title--h2 mb-3">Subscriptions
+                    </h1>
+                    <p class="set-banner__lead">Explore our different
+                        packages and pick one that best suit your needs.
+                    </p>
+                </div>
+            </section>
+
+            <section class="set-pricing set-pricing--desktop">
+                <div class="set-wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-sm-12 col-md-12 col-lg-2 offset-lg-1">
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <div class="set-pricing__info oe_website_order">
+                                <span class="set-pricing__title set-text--grey">
+                                    <t t-esc="products[0].name"/>
+                                </span>
+                                <div class="set-pricing__price-container">
+                                    <div class="d-flex justify-content-center align-items-end mt-2 mb-3">
+                                        <span class="set-pricing__price">
+                                            <t t-esc="request.env.company.currency_id.symbol"/>
+                                            <t t-esc="products[0].list_price"/>
+                                        </span>
+                                        <span class="set-pricing__month mb-2"
+                                              t-if="products[0].activate_subscription">
+                                            /
+                                            <t t-if="products[0].subscription_plan_id.unit == 'month'">
+                                                <span>
+                                                    mo
+                                                </span>
+                                            </t>
+                                            <t t-else=""
+                                               t-esc="products[0].subscription_plan_id.unit"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[0].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <div class="set-pricing__info oe_website_order">
+                                <span class="set-pricing__title set-text--grey">
+                                    <t t-esc="products[1].name"/>
+                                </span>
+                                <div class="set-pricing__price-container">
+                                    <div class="d-flex justify-content-center align-items-end mt-2 mb-3">
+                                        <span class="set-pricing__price">
+                                            <t t-esc="request.env.company.currency_id.symbol"/>
+                                            <t t-esc="products[1].list_price"/>
+                                        </span>
+                                        <span class="set-pricing__month mb-2"
+                                              t-if="products[1].activate_subscription">
+                                            /
+                                            <t t-if="products[1].subscription_plan_id.unit == 'month'">
+                                                <span>
+                                                    mo
+                                                </span>
+                                            </t>
+                                            <t t-else=""
+                                               t-esc="products[1].subscription_plan_id.unit"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[1].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <div class="set-pricing__info oe_website_order">
+                                <span class="set-pricing__title set-text--grey">
+                                    <t t-esc="products[2].name"/>
+                                </span>
+                                <div class="set-pricing__price-container">
+                                    <div class="d-flex justify-content-center align-items-end mt-2 mb-3">
+                                        <span class="set-pricing__price">
+                                            <t t-esc="request.env.company.currency_id.symbol"/>
+                                            <t t-esc="products[2].list_price"/>
+                                        </span>
+                                        <span class="set-pricing__month mb-2"
+                                              t-if="products[2].activate_subscription">
+                                            /
+                                            <t t-if="products[2].subscription_plan_id.unit == 'month'">
+                                                <span>
+                                                    mo
+                                                </span>
+                                            </t>
+                                            <t t-else=""
+                                               t-esc="products[2].subscription_plan_id.unit"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[2].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <div class="set-pricing__info">
+                                <span class="set-pricing__title set-text--grey">
+                                    Enterprise
+                                </span>
+                                <div class="set-pricing__price-container">
+                                    <div class="d-flex justify-content-center align-items-end mt-2 mb-3">
+                                        <span class="set-pricing__price">
+                                            $14.99
+                                        </span>
+                                        <span class="set-pricing__month mb-2">
+                                            /mo
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="/contactus"
+                                   class="set-button set-button--primary-border my-3 mx-auto d-block">
+                                    Let&apos;s Talk
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <t t-call="theme_sport_erp.s_pricing_feature"/>
+
+            <div class="set-wrapper features-top ">
+                <div class="set-accordion__header set-accordion__header--light features-page"
+                     style="display: flex; justify-content: flex-end;">
+                    <span class="set-accordion__title"
+                          style="color: rgb(255,41,5);">See all Features
+                    </span>
+                    <span class="ml-3 set-accordion__sign set-accordion__sign--minus set-accordion__sign--plus"
+                          alt="Accordion"/>
+                </div>
+                <div class="set-accordion__body d-none" style="padding: 0px;">
+
+                    <t t-call="theme_sport_erp.s_see_all_features"/>
+
+                    <div id="wrap"
+                         class="oe_structure oe_empty"/>
+                </div>
+                <div id="wrap"
+                     class="oe_structure oe_empty"/>
+
+            </div>
+
+            <div id="wrap" class="oe_structure oe_empty"/>
+
+            <section class="set-pricing set-pricing--desktop">
+                <div class="set-wrapper">
+                    <div class="row no-gutters">
+                        <div class="col-sm-12 col-md-12 col-lg-2 offset-lg-1">
+                        </div>
+
+
+                        <div class="col-sm-12 col-md-12 col-lg-2 oe_website_order">
+                            <div class="set-pricing__info">
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[0].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-2 oe_website_order">
+                            <div class="set-pricing__info">
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[1].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-2 oe_website_order">
+                            <div class="set-pricing__info">
+                                <input name="product_id"
+                                       type="hidden"
+                                       t-att-value="products[2].id"/>
+                                <div id="wrap"
+                                     class="oe_structure oe_empty">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-12 col-lg-2 oe_website_order">
+                            <div class="set-pricing__info">
+                                <div class="oe_structure">
+                                    <section>
+                                        <a href="/contactus"
+                                           class="set-button set-button--primary-border my-3 mx-auto d-block">
+                                            Let&apos;s Talk
+                                        </a>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <t t-call="theme_sport_erp.s_terms_and_conditions"/>
+
+            <div id="wrap" class="oe_structure oe_empty"/>
+
+            <section class="set-pricing set-pricing--mobile mt-4 d-xl-none">
+
+                <div t-if="products[0]"
+                     class="set-pricing-card oe_website_order">
+                    <div class="set-pricing-card__header">
+                        <span class="set-pricing-card__plan set-text set-text--grey">
+                            <t t-esc="products[0].name"/>
+                        </span>
+                        <div class="set-pricing-card__pricing">
+                            <span class="set-pricing-card__amount">
+                                <t t-esc="request.env.company.currency_id.symbol"/>
+                                <t t-esc="products[0].list_price"/>
+                            </span>
+                            <span class="set-pricing-card__month"
+                                  t-if="products[0].activate_subscription">
+                                /
+                                <t t-if="products[0].subscription_plan_id.unit == 'month'">
+                                    <span>
+                                        mo
+                                    </span>
+                                </t>
+                                <t t-else=""
+                                   t-esc="products[0].subscription_plan_id.unit"/>
+                            </span>
+                        </div>
+                    </div>
+
+                    <input name="product_id"
+                           type="hidden"
+                           t-att-value="products[0].id"/>
+
+                    <div id="wrap" class="oe_structure oe_empty">
+                    </div>
+
+                    <div class="set-pricing-card__detailed d-none mt-4"
+                         id="minioMobile">
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                    <span class="set-pricing-card__feature">All
+                                        core
+                                        features
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">
+                                        <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                             width="18"
+                                             height="18"
+                                             class="set-pricing-card__checked"/>
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                    <span class="set-pricing-card__feature">All
+                                        sport
+                                        business modules
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">
+                                        <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                             width="18"
+                                             height="18"
+                                             class="set-pricing-card__checked"/>
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                    <span class="set-pricing-card__feature">No.
+                                        of
+                                        coaches
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">10
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                    <span class="set-pricing-card__feature">No.
+                                        of
+                                        athletes
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">50
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                    <span class="set-pricing-card__feature">No.
+                                        of
+                                        parents
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">100
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                    <span class="set-pricing-card__feature">No.
+                                        of
+                                        events
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">
+                                        50/year
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                    <span class="set-pricing-card__feature">No.
+                                        of
+                                        subscription types
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">3
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                    <span class="set-pricing-card__feature">
+                                        Profiling
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">
+                                        General
+                                        Profiling
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                    <span class="set-pricing-card__feature">
+                                        Sport
+                                        Profiling
+                                    </span>
+                                </section>
+                                <section>
+                                    <span class="set-pricing-card__point">1
+                                    </span>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+
+
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--show"
+                       data-target="minioMobile">See what&apos;s
+                        included
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-down-grey.svg"
+                             width="12" height="12"/>
+                    </a>
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--hide  d-none"
+                       data-target="minioMobile">Hide Pricing Details
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-up-grey.svg"
+                             width="12"
+                             height="12"/>
+                    </a>
+                </div>
+
+                <div t-if="products[1]"
+                     class="set-pricing-card oe_website_order">
+                    <div class="set-pricing-card__header">
+                        <span class="set-pricing-card__plan set-text set-text--grey">
+                            <t t-esc="products[1].name"/>
+                        </span>
+                        <div class="set-pricing-card__pricing">
+                            <span class="set-pricing-card__amount">
+                                <t t-esc="request.env.company.currency_id.symbol"/>
+                                <t t-esc="products[1].list_price"/>
+                            </span>
+                            <span class="set-pricing-card__month"
+                                  t-if="products[1].activate_subscription">
+                                /
+                                <t t-if="products[1].subscription_plan_id.unit == 'month'">
+                                    <span>
+                                        mo
+                                    </span>
+                                </t>
+                                <t t-else=""
+                                   t-esc="products[1].subscription_plan_id.unit"/>
+                            </span>
+                        </div>
+                    </div>
+                    <input name="product_id"
+                           type="hidden"
+                           t-att-value="products[1].id"/>
+
+                    <div id="wrap" class="oe_structure oe_empty">
+                    </div>
+
+                    <div class="set-pricing-card__detailed d-none mt-4"
+                         id="medioMobile">
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">All core
+                                    features
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">
+                                    <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                         width="18"
+                                         height="18"
+                                         class="set-pricing-card__checked"/>
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">All
+                                    sport
+                                    business modules
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">
+                                    <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                         width="18"
+                                         height="18"
+                                         class="set-pricing-card__checked"/>
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    coaches
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">10</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    athletes
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    parents
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">100</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    events
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50/year
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    subscription types
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">3</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">General
+                                    Profiling
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">Sport
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">1</span>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+
+
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--show"
+                       data-target="medioMobile">See what&apos;s
+                        included
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-down-grey.svg"
+                             width="12" height="12"/>
+                    </a>
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--hide  d-none"
+                       data-target="medioMobile">Hide Pricing Details
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-up-grey.svg"
+                             width="12"
+                             height="12"/>
+                    </a>
+                </div>
+
+                <div t-if="products[2]"
+                     class="set-pricing-card oe_website_order">
+                    <div class="set-pricing-card__header">
+                        <span class="set-pricing-card__plan set-text set-text--grey">
+                            <t t-esc="products[2].name"/>
+                        </span>
+                        <div class="set-pricing-card__pricing">
+                            <span class="set-pricing-card__amount">
+                                <t t-esc="request.env.company.currency_id.symbol"/>
+                                <t t-esc="products[2].list_price"/>
+                            </span>
+                            <span class="set-pricing-card__month"
+                                  t-if="products[2].activate_subscription">
+                                /
+                                <t t-if="products[2].subscription_plan_id.unit == 'month'">
+                                    <span>
+                                        mo
+                                    </span>
+                                </t>
+                                <t t-else=""
+                                   t-esc="products[2].subscription_plan_id.unit"/>
+                            </span>
+                        </div>
+                    </div>
+                    <input name="product_id"
+                           type="hidden"
+                           t-att-value="products[2].id"/>
+
+                    <div id="wrap" class="oe_structure oe_empty">
+                    </div>
+
+                    <div class="set-pricing-card__detailed d-none mt-4"
+                         id="maxioMobile">
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <span class="set-pricing-card__feature">All core
+                                    features
+                                </span>
+                                <span class="set-pricing-card__point">
+                                    <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                         width="18"
+                                         height="18"
+                                         class="set-pricing-card__checked"/>
+                                </span>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <span class="set-pricing-card__feature">All
+                                    sport
+                                    business modules
+                                </span>
+                                <span class="set-pricing-card__point">
+                                    <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                         width="18"
+                                         height="18"
+                                         class="set-pricing-card__checked"/>
+                                </span>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    coaches
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">10</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    athletes
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    parents
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">100</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    events
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50/year
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    subscription types
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">3</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">General
+                                    Profiling
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">Sport
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">1</span>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--show"
+                       data-target="maxioMobile">See what&apos;s
+                        included
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-down-grey.svg"
+                             width="12" height="12"/>
+                    </a>
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--hide  d-none"
+                       data-target="maxioMobile">Hide Pricing Details
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-up-grey.svg"
+                             width="12"
+                             height="12"/>
+                    </a>
+                </div>
+
+                <div class="set-pricing-card">
+                    <div class="set-pricing-card__header">
+                        <span class="set-pricing-card__plan set-text set-text--grey">
+                            Enterprise
+                        </span>
+                        <div class="set-pricing-card__pricing">
+                            <span class="set-pricing-card__amount">
+                                $14.99
+                            </span>
+                            <span class="set-pricing-card__month">
+                                /mo
+                            </span>
+                        </div>
+                    </div>
+                    <a href="/contactus"
+                       class="set-button set-button--primary-border set-button--block">
+                        Let&apos;s Talk
+                    </a>
+
+                    <div class="set-pricing-card__detailed d-none mt-4"
+                         id="smallMobile">
+                        <div class="set-pricing-card__row set-pricing-card__row--grey">
+                            <span class="set-pricing-card__feature">All core
+                                features
+                            </span>
+                            <span class="set-pricing-card__point">
+                                <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                     width="18"
+                                     height="18"
+                                     class="set-pricing-card__checked"/>
+                            </span>
+                        </div>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">All
+                                    sport
+                                    business modules
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">
+                                    <img src="/theme_sport_erp/static/src/images/ui/checked.svg"
+                                         width="18"
+                                         height="18"
+                                         class="set-pricing-card__checked"/>
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    coaches
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">10</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    athletes
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    parents
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">100</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    events
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">50/year
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">No. of
+                                    subscription types
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">3</span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row">
+                                <section>
+                                <span class="set-pricing-card__feature">
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">General
+                                    Profiling
+                                </span>
+                                </section>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="set-pricing-card__row set-pricing-card__row--grey">
+                                <section>
+                                <span class="set-pricing-card__feature">Sport
+                                    Profiling
+                                </span>
+                                </section>
+                                <section>
+                                <span class="set-pricing-card__point">1</span>
+                                </section>
+                            </div>
+                        </section>
+                    </div>
+
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--show"
+                       data-target="smallMobile">See what&apos;s included
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-down-grey.svg"
+                             width="12" height="12"/>
+                    </a>
+                    <a href="#"
+                       class="set-pricing-card__whats-included set-pricing-card__whats-included--hide  d-none"
+                       data-target="smallMobile">Hide Pricing Details
+                        <img class="set-pricing-card__"
+                             src="/theme_sport_erp/static/src/images/ui/chevron-up-grey.svg"
+                             width="12"
+                             height="12"/>
+                    </a>
+                </div>
+
+            </section>
+
+            <t t-call="theme_sport_erp.s_f_a_q"/>
+
+            <div id="wrap" class="oe_structure oe_empty"/>
+
+        </t>
+
+    </template>
+
+</odoo>

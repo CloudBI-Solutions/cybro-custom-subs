@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_specification_item_tree" model="ir.ui.view">
+        <field name="name">specification.item.tree</field>
+        <field name="model">specification.item</field>
+        <field name="arch" type="xml">
+            <tree string="Specification Item" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_specification_item" model="ir.actions.act_window">
+        <field name="name">Specification Item</field>
+        <field name="res_model">specification.item</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Specification Item.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Specification Item"
+            parent="stock.menu_stock_config_settings"
+            action="action_specification_item"
+            id="sub_specification_item_config"
+            sequence="6"/>
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="products_add_video_viewer" inherit_id="website_sale.products_item" active="False" customize_show="True" name="Advertisement">
+        <xpath expr="//div[hasclass('o_wsale_product_btn')]" position="inside">
+            <div class="css_quantity input-group d-inline-flex mr-2 my-1 align-middle" contenteditable="false">
+                <div class="input-group-prepend">
+                    <i class=" fa fa-play btn btn-primary js_add_cart_json"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+

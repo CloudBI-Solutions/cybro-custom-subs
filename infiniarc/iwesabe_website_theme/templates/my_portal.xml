@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="portal_home_gridview" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="attributes">
+            <attribute name="id">portal_grid</attribute>
+        </xpath>
+<!--        <xpath expr="//div[hasclass('o_portal_my_home')]/h3" position="replace">-->
+<!--            <h3 class="page-header" style="display: revert!important;">My Dashboard</h3>-->
+<!--        </xpath>-->
+    </template>
+
+    <template id="portal_docs_custom_entry" inherit_id="portal.portal_docs_entry">
+        <xpath expr="//t[@t-esc='title']" position="replace">
+            <p class="text-black m-0">
+                <t t-esc="title"/>
+            </p>
+        </xpath>
+        <xpath expr="//span[@t-esc='count']" position="attributes">
+            <attribute name="class">text-black bg-transparent</attribute>
+        </xpath>
+    </template>
+
+
+    <template id="purchase.portal_my_home_purchase" name="Show Requests for Quotation / Purchase Orders"
+              customize_show="True"
+              inherit_id="portal.portal_my_home" priority="25">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+
+        </xpath>
+    </template>
+
+    <template id="project.portal_my_home" name="Show Projects / Tasks" customize_show="True"
+              inherit_id="portal.portal_my_home"
+              priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+
+        </xpath>
+    </template>
+
+    <template id="hr_timesheet.portal_my_home_timesheet" name="Show Timesheets" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="45">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+
+        </xpath>
+    </template>
+
+    <template id="sale.portal_my_home_sale" name="Show Quotations / Sales Orders" customize_show="True"
+              inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <!--            <t t-call="portal.portal_docs_entry">-->
+            <!--                <t t-set="title">Quotations</t>-->
+            <!--                <t t-set="url" t-value="'/my/quotes'"/>-->
+            <!--                <t t-set="placeholder_count" t-value="'quotation_count'"/>-->
+            <!--            </t>-->
+            <!--            <t t-call="portal.portal_docs_entry">-->
+            <!--                <t t-set="title">Sales Orders</t>-->
+            <!--                <t t-set="url" t-value="'/my/orders'"/>-->
+            <!--                <t t-set="placeholder_count" t-value="'order_count'"/>-->
+            <!--            </t>-->
+        </xpath>
+    </template>
+    <template id="account.portal_my_home_invoice" name="Show Invoices &amp; Bills" inherit_id="portal.portal_my_home"
+              customize_show="True" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+<!--            <t t-call="portal.portal_docs_entry">-->
+<!--&lt;!&ndash;                <t t-set="title">Invoices &amp; Bills</t>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-set="url" t-value="'/my/invoices'"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <t t-set="placeholder_count" t-value="'invoice_count'"/>&ndash;&gt;-->
+<!--            </t>-->
+        </xpath>
+    </template>
+
+
+</odoo>

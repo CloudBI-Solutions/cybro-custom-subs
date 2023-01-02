@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">
+                res.config.settings.view.form.inherit.paceflow
+            </field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="10"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Paceflow" data-key="paceflow"
+                         string="Paceflow">
+                        <h2>Dashboard Columns</h2>
+                        <div class="row mt16 o_settings_container" name="dashboard_columns_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 id="mobile">
+                                <div class="o_setting_right_pane">
+                                    <label for="mobile"/>
+                                    <field name="mobile"/>
+                                    <div class="text-muted">Set number of
+                                        columns to be shown on mobile devices.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 id="tablet">
+                                <div class="o_setting_right_pane">
+                                    <label for="tablet"/>
+                                    <field name="tablet"/>
+                                    <div class="text-muted">Set number of
+                                        columns to be shown on tablet devices.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box"
+                                 id="desktop">
+                                <div class="o_setting_right_pane">
+                                    <label for="desktop"/>
+                                    <field name="desktop"/>
+                                    <div class="text-muted">Set number of
+                                        columns to be shown on desktop devices.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_config_settings_menu_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'paceflow'}</field>
+        </record>
+
+    </data>
+</odoo>

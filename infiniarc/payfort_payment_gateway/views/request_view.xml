@@ -1,0 +1,61 @@
+<odoo>
+      <template id="request_order_form" name="Token form">
+        <t t-call="website.layout">
+            <div class="container">
+                <div id="wrap" class="oe_structure oe_empty">
+                        <div class="col-md-12">
+                            <form action="https://sbcheckout.payfort.com/FortAPI/paymentPage"  method="post">
+                                     <div class="form-group">
+                                    <div class="container">
+                                         <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="service_command" value="TOKENIZATION"/>
+
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="language" value="en"/>
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="merchant_identifier" value="197b6080"/>
+
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="access_code" value="uSmoO9cqZTwXvPnOkqwQ"/>
+
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="signature" value="2423c2c5512c6d36c4e5ce6151d5882aaceee92099ebad5322e09656fefb17d0e918733554aeb9cd250f941245a3d69b0a51d77e5a9ab42cb9cc426e024082d0"/>
+
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="return_url" value="/response/value"/>
+                                           <input  type="hidden" class="form-control s_website_form_input"
+                                                   name="merchant_reference" value="ORD4"/>
+                <button value="Send" type="submit" id="response"/>
+                                    </div>
+                                     </div>
+                            </form>
+                        </div>
+
+                </div>
+            </div>
+        </t>
+      </template>
+</odoo>
+
+<!--    <html>-->
+<!--        <head>-->
+<!--            <meta data-fr-http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+<!--            <title>Fort Request</title>-->
+<!--        </head>-->
+<!--        <body>-->
+<!--            <iframe style="border:5px dotted red" name="myframe" src="" width="400" height="600">-->
+<!--            </iframe>-->
+<!--            <form action="https://sbcheckout.payfort.com/FortAPI/paymentPage" method="post" id="" target="myframe">-->
+<!--                <INPUT type="hidden" NAME="service_command" value="TOKENIZATION"/>-->
+<!--                <INPUT type="hidden" NAME="language" value="en"/>-->
+<!--                <INPUT type="hidden" NAME="merchant_identifier" value="197b6080"/>-->
+<!--                <INPUT type="hidden" NAME="access_code" value="uSmoO9cqZTwXvPnOkqwQ"/>-->
+<!--                <INPUT type="hidden" NAME="signature"-->
+<!--                       value="8e0e150640d1545c2720a201d6453e223d4f13e8f85865d030fbad5b11fbd5ac"/>-->
+<!--                <INPUT type="hidden" NAME="return_url" value="https://www.example.com"/>-->
+<!--                <INPUT type="hidden" NAME="merchant_reference" value="ORD1"/>-->
+<!--                <input value="Send" type="submit" id="form1"/>-->
+<!--            </form>-->
+<!--        </body>-->
+<!--    </html>-->
+<!--</odoo>-->

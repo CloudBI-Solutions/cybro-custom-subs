@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<template id="badminto_sidebar"
+          inherit_id="sports_erp_dashboard.organisation_header">
+    <xpath expr="//li[@id='calendar']" position="after">
+        <li class="set-dashboard__sidebar-item">
+            <a id="/my/badmintoo/assessment"
+               href="/my/badmintoo/assessment"
+               class="set-dashboard__sidebar-link">
+                <img class="set-dashboard__sidebar-icon"
+                     id="Layer_1"
+                     src="/badminto/static/src/images/badmintoo.svg">
+                </img>
+
+                <span class="set-dashboard__sidebar-text">
+                    Badminton
+                </span>
+            </a>
+        </li>
+    </xpath>
+</template>
+
+</odoo>

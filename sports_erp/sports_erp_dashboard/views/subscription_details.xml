@@ -1,0 +1,728 @@
+<odoo>
+    <data>
+        <template id="subscription_details"
+                  name="Subscription Details">
+            <t t-call="portal.portal_layout">
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscriptions"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscription
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a t-att-href="'/my/subscription_details/%s' % subscription.id"
+                                   class="set-dashboard__breadcrumb-link">
+                                    <t t-esc="subscription.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+                        <form id="contract_edit_form"
+                              action="/my/update_subscription"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="subscription_id"
+                                   t-att-value="subscription.id"/>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="se-dashboard">
+                                        <div class="w-100">
+                                            <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                                <span>
+                                                    <t t-esc="subscription.name"/>
+                                                </span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group py-3">
+                                        <label class="se-form-label"
+                                               for="active_subscription">Active
+                                            Subscription
+                                        </label>
+                                        <input type="checkbox"
+                                               class="form-control se-form-control"
+                                               id="active_subscription"
+                                               name="active_subscription"
+                                               t-att-checked="'checked' if subscription.active else None"/>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="form-group py-3">
+                                        <label class="se-form-label"
+                                               for="state_subscription">
+                                            Subscription
+                                            State
+                                        </label>
+                                        <select class="form-control se-form-control"
+                                                id="state_subscription"
+                                                name="state_subscription">
+                                            <option selected="1"
+                                                    t-att-value="subscription.stage_id.id">
+                                                <t t-esc="subscription.stage_id.name"/>
+                                            </option>
+                                            <t t-foreach="stages"
+                                               t-as="stage">
+                                                <option t-att-value="stage.id">
+                                                    <t t-esc="stage.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul class="nav nav-tabs" id="myTab"
+                                        role="tablist">
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link active"
+                                                    id="contract-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#contract"
+                                                    type="button" role="tab"
+                                                    aria-controls="home"
+                                                    aria-selected="true">
+                                                Contract
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="customer-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#customer"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Customer
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="product-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#product"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Product
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="plan-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#plan"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Plan
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="payment-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#payment"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Payment
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="project-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#project"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Project
+                                                Information
+                                            </button>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active"
+                                             id="contract" role="tabpanel"
+                                             aria-labelledby="contract-tab">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="contract">
+                                                            Contract
+                                                        </label>
+                                                        <select class="form-control se-form-control"
+                                                                id="contract"
+                                                                name="contract">
+                                                            <option selected="1"
+                                                                    t-att-value="subscription.contract_id.id">
+                                                                <t t-esc="subscription.contract_id.name"/>
+                                                            </option>
+                                                            <t t-foreach="contracts"
+                                                               t-as="contract">
+                                                                <option t-att-value="contract.id">
+                                                                    <t t-esc="contract.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="customer"
+                                             role="tabpanel"
+                                             aria-labelledby="customer-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="customer_name">
+                                                            Customer Name
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="customer"
+                                                                    name="customer">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.customer_name.id">
+                                                                    <t t-esc="subscription.customer_name.sudo().name"/>
+                                                                </option>
+                                                                <t t-foreach="customers"
+                                                                   t-as="customer">
+                                                                    <option t-att-value="customer.id">
+                                                                        <t t-esc="customer.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="billing_address">
+                                                            Customer Billing
+                                                            Address
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="billing_address"
+                                                                    name="billing_address">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.customer_billing_address.id">
+                                                                    <t t-esc="subscription.customer_billing_address.name"/>
+                                                                </option>
+                                                                <t t-foreach="billing_address"
+                                                                   t-as="address">
+                                                                    <option t-att-value="address.id">
+                                                                        <t t-esc="address.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="company_id">
+                                                            Company
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="company_id"
+                                                                    name="company_id">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.company_id.id">
+                                                                    <t t-esc="subscription.company_id.name"/>
+                                                                </option>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="product"
+                                             role="tabpanel"
+                                             aria-labelledby="product-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="product">
+                                                            Product
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="product"
+                                                                    name="product">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.product_id.id">
+                                                                    <t t-esc="subscription.product_id.sudo().name"/>
+                                                                </option>
+                                                                <t t-foreach="products"
+                                                                   t-as="product">
+                                                                    <option t-att-value="product.id">
+                                                                        <t t-esc="product.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="taxes">
+                                                            Taxes
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                                                    id="taxes"
+                                                                    name="taxes"
+                                                                    multiple="true"
+                                                                    style="height: calc(1.5em + 0.75rem + 2px) !important;">
+                                                                <t t-foreach="subscription.tax_id or []"
+                                                                   t-as="tax">
+                                                                    <option selected="selected"
+                                                                            t-att-value="tax.id">
+                                                                        <t t-esc="tax.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <t t-foreach="taxes or []"
+                                                                   t-as="tax">
+                                                                    <option t-att-value="tax.id">
+                                                                        <t t-esc="tax.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="quantity">
+                                                            Quantity
+                                                        </label>
+                                                        <p>
+                                                            <input type="number"
+                                                                   class="form-control se-form-control"
+                                                                   id="quantity"
+                                                                   name="quantity"
+                                                                   min="0"
+                                                                   t-att-value="subscription.quantity if subscription.quantity else '0'"/>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="plan"
+                                             role="tabpanel"
+                                             aria-labelledby="plan-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="plan">
+                                                            Subscription Plan
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="plan"
+                                                                    name="plan">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.sub_plan_id.id">
+                                                                    <t t-esc="subscription.sub_plan_id.name"/>
+                                                                </option>
+                                                                <t t-foreach="plans"
+                                                                   t-as="plan">
+                                                                    <option t-att-value="plan.id">
+                                                                        <t t-esc="plan.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="recurrency">
+                                                            Recurrency
+                                                        </label>
+                                                        <p>
+                                                            <div>
+                                                                <div style="width: 60%; float:left">
+                                                                    <input type="number"
+                                                                           class="form-control se-form-control"
+                                                                           name="duration"
+                                                                           id="duration"
+                                                                           min="0"
+                                                                           t-att-value="subscription.duration if subscription.duration else '0'"
+                                                                           style="text-align: end;"
+                                                                    />
+                                                                </div>
+                                                                <div style="width: 35%; float:right">
+                                                                    <select class="form-control se-form-control"
+                                                                            id="duration_type"
+                                                                            name="duration_type">
+                                                                        <option value="day"
+                                                                                t-att-selected="subscription.unit == 'day'">
+                                                                            Day(s)
+                                                                        </option>
+                                                                        <option value="week"
+                                                                                t-att-selected="subscription.unit == 'week'">
+                                                                            Week(s)
+                                                                        </option>
+                                                                        <option value="month"
+                                                                                t-att-selected="subscription.unit == 'month'">
+                                                                            Month(s)
+                                                                        </option>
+                                                                        <option value="year"
+                                                                                t-att-selected="subscription.unit == 'year'">
+                                                                            Year(s)
+                                                                        </option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="has_trial">
+                                                            Plan has trail
+                                                            period
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               name="has_trial"
+                                                               id="has_trial"
+                                                               onclick="hasTrial()"
+                                                               class="form-control se-form-control"
+                                                               t-att-checked="'checked' if subscription.trial_period else None"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group"
+                                                         id="duration_trial"
+                                                         t-attf-class="{{ '' if subscription.trial_period else 'd-none' }}">
+                                                        <label class="se-form-label"
+                                                               for="has_trial">
+                                                            Trial Duration
+                                                        </label>
+                                                        <div>
+                                                            <div style="width: 60%; float:left">
+                                                                <input type="number"
+                                                                       class="form-control se-form-control"
+                                                                       name="trial_duration"
+                                                                       id="trial_duration"
+                                                                       min="0"
+                                                                       t-att-value="subscription.trial_duration if subscription.trial_duration else '0'"
+                                                                       style="text-align: end;"
+                                                                />
+                                                            </div>
+                                                            <div style="width: 35%; float:right">
+                                                                <select class="form-control se-form-control"
+                                                                        id="trial_duration_type"
+                                                                        name="trial_duration_type">
+                                                                    <option value="day"
+                                                                            t-att-selected="subscription.unit == 'day'">
+                                                                        Day(s)
+                                                                    </option>
+                                                                    <option value="week"
+                                                                            t-att-selected="subscription.unit == 'week'">
+                                                                        Week(s)
+                                                                    </option>
+                                                                    <option value="month"
+                                                                            t-att-selected="subscription.unit == 'month'">
+                                                                        Month(s)
+                                                                    </option>
+                                                                    <option value="year"
+                                                                            t-att-selected="subscription.unit == 'year'">
+                                                                        Year(s)
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="price">
+                                                            Price
+                                                        </label>
+                                                        <p>
+                                                            <input type="number"
+                                                                   class="form-control se-form-control"
+                                                                   step="0.01"
+                                                                   name="price"
+                                                                   id="price"
+                                                                   t-att-value="subscription.price if subscription.price else '0.00'"
+                                                                   style="text-align: end;"
+                                                            />
+                                                            <input type="text"
+                                                                   t-att-value="request.env.company.currency_id.symbol"
+                                                                   id="currency_symbol"
+                                                                   disabled="1"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="start_date">
+                                                            Start Date
+                                                        </label>
+                                                        <p>
+                                                            <input type="date"
+                                                                   class="form-control se-form-control"
+                                                                   name="start_date"
+                                                                   id="start_date"
+                                                                   t-att-value="subscription.start_date"
+                                                            />
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="end_date">
+                                                            End Date
+                                                        </label>
+                                                        <p>
+                                                            <input type="date"
+                                                                   class="form-control se-form-control"
+                                                                   name="end_date"
+                                                                   id="end_date"
+                                                                   t-att-value="subscription.end_date"
+                                                            />
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="num_billing_cycle">
+                                                            Number of Billing
+                                                            Cycle
+                                                        </label>
+                                                        <p>
+                                                            <input type="number"
+                                                                   class="form-control se-form-control"
+                                                                   name="num_billing_cycle"
+                                                                   id="num_billing_cycle"
+                                                                   t-att-value="subscription.num_billing_cycle if subscription.num_billing_cycle else '0'"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="payment"
+                                             role="tabpanel"
+                                             aria-labelledby="payment-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="source">
+                                                            Source
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="source"
+                                                                    name="source"
+                                                                    onchange="hide_show_ref()">
+                                                                <option value="so"
+                                                                        t-att-selected="subscription.source == 'so'">
+                                                                    Sale Order
+                                                                </option>
+                                                                <option value="manual"
+                                                                        t-att-selected="subscription.source == 'manual'">
+                                                                    Manual
+                                                                </option>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="ref">
+                                                            Subscription Ref
+                                                        </label>
+                                                        <p>
+                                                            <input type="text"
+                                                                   class="form-control se-form-control"
+                                                                   id="ref"
+                                                                   name="ref"
+                                                                   t-att-value="subscription.subscription_ref"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group"
+                                                         id="origin_so"
+                                                         t-attf-class="{{ '' if subscription.source == 'so' else 'd-none' }}">
+                                                        <label class="se-form-label"
+                                                               for="so_origin">
+                                                            Order Ref
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="so_origin"
+                                                                    name="so_origin">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.so_origin.id">
+                                                                    <t t-esc="subscription.so_origin.name"/>
+                                                                </option>
+                                                                <t t-foreach="sos"
+                                                                   t-as="so">
+                                                                    <option t-att-value="so.id">
+                                                                        <t t-esc="so.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade" id="project"
+                                             role="tabpanel"
+                                             aria-labelledby="project-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="project">
+                                                            Project
+                                                        </label>
+                                                        <p>
+                                                            <select class="form-control se-form-control"
+                                                                    id="project"
+                                                                    name="project">
+                                                                <option selected="1"
+                                                                        t-att-value="subscription.project_id.id">
+                                                                    <t t-esc="subscription.project_id.sudo().name"/>
+                                                                </option>
+                                                                <t t-foreach="projects"
+                                                                   t-as="project">
+                                                                    <option t-att-value="project.id">
+                                                                        <t t-esc="project.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </select>
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="next_payment">
+                                                            Date of next Payment
+                                                        </label>
+                                                        <p>
+                                                            <input type="datetime-local"
+                                                                   class="form-control se-form-control"
+                                                                   name="next_payment"
+                                                                   id="next_payment"
+                                                                   t-att-value="subscription.next_payment_date"
+                                                            />
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                    <input type="submit"
+                                           style="float:right !important; border-radius: 5px !important;"
+                                           class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                           value="Update Subscription"/>
+                                </div>
+                            </div>
+                            <script>
+                                function hide_show_ref() {
+                                var val = document.getElementById("source").value;
+                                console.log("val", val);
+                                if (val == 'so') {
+                                document.getElementById("origin_so").classList.remove("d-none");
+                                }
+                                else {
+                                document.getElementById("origin_so").classList.add("d-none");
+                                }
+
+                                }
+
+
+
+                                function hasTrial() {
+                                var trialDuration =
+                                document.getElementById("duration_trial");
+                                var trialCheck =
+                                document.getElementById("has_trial");
+                                if (trialCheck.checked == true){
+                                trialDuration.classList.remove("d-none");
+                                }
+                                if (trialCheck.checked == false){
+                                document.getElementById("duration").value
+                                = 0;
+                                trialDuration.classList.add("d-none");
+                                }
+                                }
+                            </script>
+
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

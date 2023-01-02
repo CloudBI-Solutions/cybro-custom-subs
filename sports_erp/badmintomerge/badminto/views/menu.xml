@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!--ASSESSMENT ACTION-->
+        <record id="badminto_assessment_action"
+                model="ir.actions.act_window">
+            <field name="name">Assessments</field>
+            <field name="res_model">badminto.assessment</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <!--ASSESSMENT STAGE ACTION-->
+
+        <record id="badminto_stages_menu_action" model="ir.actions.act_window">
+            <field name="name">Stage</field>
+            <field name="res_model">badminto.assessment.stage</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No stage found. Let's create one!
+                </p>
+                <p>
+
+                </p>
+            </field>
+        </record>
+
+        <!--        tags menu action-->
+        <record id="badminto_tags_menu_action" model="ir.actions.act_window">
+            <field name="name">Tags</field>
+            <field name="res_model">badminto.assessment.tags</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No tags found. Let's create one!
+                </p>
+                <p>
+                    Tags are perfect to categorize your assessments.
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="badminto_menu"
+                  name="Badmintoo"
+                  sequence="10"/>
+
+        <menuitem id="badminto_sub_menu"
+                  name="Assessment"
+                  parent="badminto_menu"
+                  action="badminto.badminto_assessment_action"
+                  sequence="10"/>
+
+        <menuitem id="badminto_config_menu"
+                  parent="badminto_menu"
+                  name="Configuration"
+                  sequence="100"/>
+
+        <menuitem id="badminto_assessment_stages_menu"
+                  parent="badminto_config_menu"
+                  name="Stages" sequence="10"
+                  action="badminto.badminto_stages_menu_action"/>
+
+        <menuitem id="badminto_assessment_tags_menu"
+                  parent="badminto_config_menu"
+                  name="Tags" sequence="11"
+                  action="badminto.badminto_tags_menu_action"/>
+
+    </data>
+
+</odoo>

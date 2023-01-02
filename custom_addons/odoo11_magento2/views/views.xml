@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="magento_config_settings_view_form" model="ir.ui.view">
+            <field name="name">magento.settings.view.form.inherit.sale</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="11"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Magento"
+                         string="Magento"
+                         data-key="odoo11_magento2">
+                        <h2>API Key</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-xs-12 col-md-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <label for="access_token"/>
+                                    <field name="access_token" />
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <label for="magento_host"/>
+                                    <field name="magento_host" />
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="magento_settings_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="magento_config_settings_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'odoo11_magento2'}</field>
+        </record>
+
+        <record id="magento_product_attribute_action" model="ir.actions.act_window">
+            <field name="name">Attributes</field>
+            <field name="res_model">product.attribute</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="product.attribute_tree_view"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create Attribute.
+                </p>
+            </field>
+        </record>
+
+        <record id="magento_categories_action" model="ir.actions.act_window">
+            <field name="name">Categories</field>
+            <field name="res_model">product.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="product.product_category_search_view"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Category.
+                </p>
+            </field>
+        </record>
+
+        <record id="magento_product_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="product.product_template_tree_view"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Product.
+                </p>
+            </field>
+        </record>
+        <record id="magento_product_variants_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">product.product</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_id" ref="product.product_product_tree_view"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Product.
+                </p>
+            </field>
+        </record>
+
+        <record id="magento_invoice_action" model="ir.actions.act_window">
+            <field name="name">Invoices</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
+            <field name="view_id" ref="account.view_invoice_tree"/>
+            <field name="domain">[('move_type', '!=', 'out_refund'), ('magento','=','True')]</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                  Create a customer invoice
+              </p>
+            </field>
+        </record>
+
+        <record id="magento_credit_note_action" model="ir.actions.act_window">
+            <field name="name">Credit Notes</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_id" ref="account.view_invoice_tree"/>
+            <field name="domain">[('move_type', '=', 'out_refund'), ('magento','=','True')]</field>
+            <field name="context">{'default_move_type': 'out_refund'}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Create a credit note
+              </p><p>
+                Note that the easiest way to create a credit note is to do it directly
+                from the customer invoice.
+              </p>
+            </field>
+        </record>
+
+        <record id="magento_order_action" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="view_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create an Order.
+                </p>
+            </field>
+        </record>
+
+        <record id="magento_customer_action" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">tree,kanban,form,pivot</field>
+            <field name="view_id" ref="base.res_partner_kanban_view"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Customer.
+                </p>
+            </field>
+        </record>
+        <record id="magento_taxes_action" model="ir.actions.act_window">
+            <field name="name">Taxes</field>
+            <field name="res_model">account.tax</field>
+            <field name="view_mode">kanban,tree,form,pivot</field>
+            <field name="view_id" ref="account.view_tax_tree"/>
+            <field name="domain">[('magento','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_no content_create">
+                    Click to create a Tax.
+                </p>
+            </field>
+        </record>
+
+        <record id="magento_dashboard_action" model="ir.actions.client">
+            <field name="name">Magento Dashboard</field>
+            <field name="tag">magento_dashboard_tag</field>
+        </record>
+
+
+        <menuitem id="magento_main_menu" name="Magento" sequence="1" web_icon="odoo11_magento2,static/description/icon.png"/>
+
+        <menuitem id="magento_dashboard" name="Dashboard" parent="magento_main_menu" sequence="0" action="magento_dashboard_action"/>
+        <menuitem id="magento_sales" name="Sales" parent="magento_main_menu" sequence="1"/>
+        <menuitem action="magento_order_action" id="magento_order" name="Orders" parent="magento_sales" sequence="1"/>
+
+        <menuitem id="magento_customers" name="Customers" parent="magento_main_menu" sequence="3"/>
+        <menuitem action="magento_customer_action" id="magento_customer" name="Customers" parent="magento_customers" sequence="5"/>
+
+        <menuitem id="magento_products" name="Catalog" parent="magento_main_menu" sequence="2"/>
+        <menuitem action="magento_product_action" id="magento_product_child" name="Products" parent="magento_products" sequence="1"/>
+        <menuitem action="magento_product_variants_action" id="magento_product_variants_child" name="Product Variants" parent="magento_products" groups="product.group_product_variant" sequence="2"/>
+        <menuitem action="magento_categories_action" id="magento_categories" name="Categories" parent="magento_products" sequence="3"/>
+
+        <menuitem id="magento_accounting" name="Invoices" parent="magento_main_menu" sequence="4"/>
+        <menuitem action="magento_invoice_action" id="magento_invoice" name="Invoices" parent="magento_accounting" sequence="1"/>
+        <menuitem action="magento_credit_note_action" id="magento_credit_notes" name="Credit Notes" parent="magento_accounting" sequence="1"/>
+
+
+        <menuitem id="magento_sync" name="Synchronize" parent="magento_main_menu" sequence="9"/>
+
+        <menuitem id="magento_configuration" name="Configuration" parent="magento_main_menu" sequence="10"/>
+        <menuitem action="magento_settings_action" id="magento_configuration_settings" name="Settings" parent="magento_configuration" sequence="1"/>
+        <menuitem id="magento_configuration_product" name="Products" parent="magento_configuration" sequence="3"/>
+        <menuitem action="magento_product_attribute_action" id="magento_product_attribute" name="Attributes" parent="magento_configuration_product" sequence="2"/>
+        <menuitem id="magento_accounting_configurations" name="Accounting" parent="magento_configuration" sequence="3"/>
+        <menuitem action="magento_taxes_action" id="magento_taxes" name="Taxes" parent="magento_accounting_configurations" sequence="1"/>
+<!--        <menuitem action="magento_customer_groups_action" id="magento_customer_groups" name="Customer groups" parent="magento_customers" sequence="6"/>-->
+
+    </data>
+</odoo>

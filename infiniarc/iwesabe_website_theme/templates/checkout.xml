@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="checkout" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@id='wrap']" position="attributes">
+            <attribute name="class">checkout-page</attribute>
+        </xpath>
+    </template>
+
+    <template id="portal_view_inherit" inherit_id="portal.portal_my_home">
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <t t-set="my_details" t-value="True"/>
+
+                <div class="o_portal_my_home" style="margin-left: 125px;margin-top: 100px;">
+                    <div class="oe_structure" id="oe_structure_portal_my_home_1"/>
+                    <div class="ian-dashboard__tile-container">
+                        <h3 class="ian-dashboard__title">My Dashboard</h3>
+                    </div>
+                    <div class="o_portal_docs list-group">
+                        <div class="row" style="margin-left: -13px !important;">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="ian-dashboard__card">
+                                    <div class="ian-dashboard__icon-container ian-dashboard__icon-container--blue mr-3">
+                                        <img src="/iwesabe_website_theme/static/src/img/icons/document.svg" width="18" height="18"
+                                             class="ian-dashboard__icon"/>
+                                    </div>
+                                    <div class="ian-dashboard__details">
+                                        <a href="/my/quotes?{{ keep_query() }}">
+                                            <span class="ian-dashboard__quotation">Quotations</span>
+                                            <span class="ian-dashboard__count">
+                                                <t t-set="placeholder_count" t-value="'quotation_count' or 0"/>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="ian-dashboard__card">
+                                    <div class="ian-dashboard__icon-container ian-dashboard__icon-container--green mr-3">
+                                        <img src="/iwesabe_website_theme/static/src/img/icons/dollar-circle.svg" width="18" height="18"
+                                             class="ian-dashboard__icon"/>
+                                    </div>
+                                    <div class="ian-dashboard__details">
+                                        <a href="/my/orders?{{ keep_query() }}">
+                                            <span class="ian-dashboard__quotation">Sales Order</span>
+                                            <span class="ian-dashboard__count">
+                                                <t t-set="placeholder_count" t-value="'order_count' or 0"/>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="ian-dashboard__card">
+                                    <div class="ian-dashboard__icon-container ian-dashboard__icon-container--orange mr-3">
+                                        <img src="/iwesabe_website_theme/static/src/img/icons/invoice.svg" width="18" height="18"
+                                             class="ian-dashboard__icon"/>
+                                    </div>
+                                    <div class="ian-dashboard__details">
+                                        <a href="/my/invoices?{{ keep_query() }}">
+                                            <span class="ian-dashboard__quotation">Invoices &amp; Bills</span>
+                                            <span class="ian-dashboard__count">
+                                                <t t-set="placeholder_count" t-value="'invoice_count or 0'"/>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="oe_structure" id="oe_structure_portal_my_home_2"/>
+
+                <div id="wrap" class='o_portal_wrap'>
+                    <div class="container mb64" style="margin-left: 221px;">
+                        <t t-if="my_details">
+                            <div class="row justify-content-between mt-4">
+                                <div t-attf-class="col-12 col-md col-lg-6">
+                                    <t t-out="0"/>
+                                </div>
+                                <div id="o_my_sidebar" style="margin-right: -232px; margin-top: -164px;"
+                                     class="pt-3 pt-lg-0 col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                    <div class="o_my_contact" t-if="sales_user">
+                                        <t t-call="portal.portal_contact"/>
+                                    </div>
+                                    <div class="o_portal_my_details" style=" margin-left: -119px;">
+                                        <h4>Details
+                                            <a role="button" href="/my/account" class="btn btn-sm btn-link">
+                                                <i class="fa fa-pencil"/>
+                                                Edit
+                                            </a>
+                                        </h4>
+                                        <hr class="mt-1 mb-0"/>
+                                        <div t-field="user_id.partner_id"
+                                             t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}'/>
+                                    </div>
+                                    <div class="o_portal_my_security mt-3" style=" margin-left: -119px;">
+                                        <h4>Account Security</h4>
+                                        <hr class="mt-1 mb-1"/>
+                                        <a href="/my/security"><i class="fa fa-pencil mx-1"/>Edit Security Settings
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <t t-out="0"/>
+                        </t>
+                    </div>
+                </div>
+
+            </t>
+        </xpath>
+    </template>
+
+    <template inherit_id="sale.portal_my_quotations" id="portal_quotation_view">
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Quotations</t>
+                </t>
+                <t t-if="not quotations">
+                    <p class="text-center align-middle" style="margin-bottom: 50px;font-size: 30px;margin-top: 100px;">
+                        There are currently no quotations for your account.
+                    </p>
+                </t>
+                <t t-if="quotations" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Quotation #</th>
+                            <th class="text-right">Quotation Date</th>
+                            <th class="text-right">Valid Until</th>
+                            <th class="text-center"/>
+                            <th class="text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="quotations" t-as="quotation">
+                        <tr>
+                            <td>
+                                <a t-att-href="quotation.get_portal_url()">
+                                    <t t-esc="quotation.name"/>
+                                </a>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="quotation.date_order"/>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="quotation.validity_date"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-if="quotation.state == 'cancel'" class="badge badge-pill badge-secondary">
+                                    <i class="fa fa-fw fa-remove"/>
+                                    Cancelled
+                                </span>
+                                <span t-if="quotation.is_expired" class="badge badge-pill badge-secondary">
+                                    <i class="fa fa-fw fa-clock-o"/>
+                                    Expired
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="quotation.amount_total"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="portal_sale_view" inherit_id="sale.portal_my_orders">
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Sales Orders</t>
+                </t>
+                <t t-if="not orders">
+                    <p class="text-center align-middle" style="margin-bottom: 50px;font-size: 30px;margin-top: 100px;">
+                        There are currently no orders for your account.
+                    </p>
+                </t>
+                <t t-if="orders" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>
+                                <span class='d-none d-md-inline'>Sales Order #</span>
+                                <span class='d-block d-md-none'>Ref.</span>
+                            </th>
+                            <th class="text-right">Order Date</th>
+                            <th class="text-center"/>
+                            <th class="text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="orders" t-as="order">
+                        <tr>
+                            <td>
+                                <a t-att-href="order.get_portal_url()">
+                                    <t t-esc="order.name"/>
+                                </a>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;
+                                <span class='d-none d-md-inline' t-field="order.date_order"
+                                      t-options="{'time_only': True}"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-if="order.state == 'done'" class="badge badge-pill badge-success">
+                                    <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"/>Done
+                                </span>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="order.amount_total"/>
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+
+        </xpath>
+    </template>
+
+    <!--    <template inherit_id="purchase.portal_my_purchase_rfqs" id="portal_rfq_view">-->
+    <!--        <xpath expr="//t" position="replace">-->
+    <!--            <t t-call="website.layout">-->
+    <!--                <t t-set="breadcrumbs_searchbar" t-value="True"/>-->
+
+    <!--                <t t-call="portal.portal_searchbar">-->
+    <!--                    <t t-set="title">Requests For Quotation</t>-->
+    <!--                </t>-->
+    <!--                <t t-if="not rfqs">-->
+    <!--                    <p>There are currently no requests for quotation for your account.</p>-->
+    <!--                </t>-->
+    <!--                <t t-if="rfqs" t-call="portal.portal_table">-->
+    <!--                    <thead>-->
+    <!--                        <tr class="active">-->
+    <!--                            <th>-->
+    <!--                                <span class='d-none d-md-inline'>Request for Quotation #</span>-->
+    <!--                                <span class='d-block d-md-none'>Ref.</span>-->
+    <!--                            </th>-->
+    <!--                            <th class="text-right">Order Deadline</th>-->
+    <!--                            <th class="text-right">Total</th>-->
+    <!--                        </tr>-->
+    <!--                    </thead>-->
+    <!--                    <t t-foreach="rfqs" t-as="rfq">-->
+    <!--                        <tr>-->
+    <!--                            <td>-->
+    <!--                                <a t-att-href="rfq.get_portal_url()">-->
+    <!--                                    <t t-esc="rfq.name"/>-->
+    <!--                                </a>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-right">-->
+    <!--                                <span t-field="rfq.date_order" t-options="{'widget': 'date'}"/>&amp;nbsp;-->
+    <!--                                <span class='d-none d-md-inline' t-field="rfq.date_order"-->
+    <!--                                      t-options="{'time_only': True}"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-right">-->
+    <!--                                <span t-field="rfq.amount_total"/>-->
+    <!--                            </td>-->
+    <!--                        </tr>-->
+    <!--                    </t>-->
+    <!--                </t>-->
+    <!--            </t>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <!--    <template inherit_id="purchase.portal_my_purchase_orders" id="portal_purchase_order">-->
+    <!--        <xpath expr="//t" position="replace">-->
+    <!--            <t t-call="website.layout">-->
+    <!--                <t t-set="breadcrumbs_searchbar" t-value="True"/>-->
+
+    <!--                <t t-call="portal.portal_searchbar">-->
+    <!--                    <t t-set="title">Purchase Orders</t>-->
+    <!--                </t>-->
+    <!--                <t t-if="not orders">-->
+    <!--                    <p>There are currently no purchase orders for your account.</p>-->
+    <!--                </t>-->
+    <!--                <t t-if="orders" t-call="portal.portal_table">-->
+    <!--                    <thead>-->
+    <!--                        <tr class="active">-->
+    <!--                            <th>-->
+    <!--                                <span class='d-none d-md-inline'>Purchase Order #</span>-->
+    <!--                                <span class='d-block d-md-none'>Ref.</span>-->
+    <!--                            </th>-->
+    <!--                            <th class="text-right">-->
+    <!--                                <span class='d-none d-md-inline'>Confirmation Date</span>-->
+    <!--                                <span class='d-block d-md-none'>Confirmation</span>-->
+    <!--                            </th>-->
+    <!--                            <th class="text-center"/>-->
+    <!--                            <th class="text-right">Total</th>-->
+    <!--                        </tr>-->
+    <!--                    </thead>-->
+    <!--                    <t t-foreach="orders" t-as="order">-->
+    <!--                        <tr>-->
+    <!--                            <td>-->
+    <!--                                <a t-att-href="order.get_portal_url()">-->
+    <!--                                    <t t-esc="order.name"/>-->
+    <!--                                </a>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-right">-->
+    <!--                                <span t-field="order.date_approve" t-options="{'widget': 'date'}"/>&amp;nbsp;-->
+    <!--                                <span class='d-none d-md-inline' t-field="order.date_approve"-->
+    <!--                                      t-options="{'time_only': True}"/>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-center">-->
+    <!--                                <span t-if="order.invoice_status == 'to invoice'" class="badge badge-pill badge-info">-->
+    <!--                                    <i class="fa fa-fw fa-file-text" role="img" aria-label="Waiting for Bill"-->
+    <!--                                       title="Waiting for Bill"></i>-->
+    <!--                                    <span class="d-none d-md-inline">Waiting for Bill</span>-->
+    <!--                                </span>-->
+    <!--                                <span t-if="order.state == 'cancel'" class="badge badge-pill badge-secondary">-->
+    <!--                                    <i class="fa fa-fw fa-remove" role="img" aria-label="Cancelled"-->
+    <!--                                       title="Cancelled"></i>-->
+    <!--                                    <span class="d-none d-md-inline">Cancelled</span>-->
+    <!--                                </span>-->
+    <!--                                <span t-if="order.state == 'done'" class="badge badge-pill badge-success">-->
+    <!--                                    <i class="fa fa-fw fa-check" role="img" aria-label="Done" title="Done"></i>-->
+    <!--                                    <span class="d-none d-md-inline">Done</span>-->
+    <!--                                </span>-->
+    <!--                            </td>-->
+    <!--                            <td class="text-right">-->
+    <!--                                <span t-field="order.amount_total"/>-->
+    <!--                            </td>-->
+    <!--                        </tr>-->
+    <!--                    </t>-->
+    <!--                </t>-->
+    <!--            </t>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <template inherit_id="account.portal_my_invoices" id="portal_invoice_view">
+        <xpath expr="//t" position="replace">
+            <t t-call="website.layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Invoices</t>
+                </t>
+                <t t-if="not invoices">
+                    <p class="text-center align-middle" style="margin-bottom: 50px;font-size: 30px;margin-top: 100px;">
+                        There are currently no invoices and payments for your account.
+                    </p>
+                </t>
+                <t t-if="invoices" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Invoice #</th>
+                            <th>Invoice Date</th>
+                            <th class='d-none d-md-table-cell'>Due Date</th>
+                            <th/>
+                            <th class="text-right">Amount Due</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="invoices" t-as="invoice">
+                            <tr>
+                                <td>
+                                    <a t-att-href="invoice.get_portal_url()" t-att-title="invoice.name">
+                                        <t t-esc="invoice.name" t-if="invoice.name != '/'"/>
+                                        <em t-else="">Draft Invoice</em>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-field="invoice.invoice_date"/>
+                                </td>
+                                <td class='d-none d-md-table-cell'>
+                                    <span t-field="invoice.invoice_date_due"/>
+                                </td>
+                                <td class="tx_status">
+                                    <t t-if="invoice.state == 'posted' and invoice.payment_state not in ('in_payment', 'paid', 'reversed')">
+                                        <span class="badge badge-pill badge-info">
+                                            <i class="fa fa-fw fa-clock-o" aria-label="Opened" title="Opened"
+                                               role="img"></i>
+                                            <span class="d-none d-md-inline">Waiting for Payment</span>
+                                        </span>
+                                    </t>
+                                    <t t-if="invoice.state == 'posted' and invoice.payment_state in ('paid', 'in_payment')">
+                                        <span class="badge badge-pill badge-success">
+                                            <i class="fa fa-fw fa-check" aria-label="Paid" title="Paid" role="img"></i>
+                                            <span class="d-none d-md-inline">Paid</span>
+                                        </span>
+                                    </t>
+                                    <t t-if="invoice.state == 'posted' and invoice.payment_state == 'reversed'">
+                                        <span class="badge badge-pill badge-success">
+                                            <i class="fa fa-fw fa-check" aria-label="Reversed" title="Reversed"
+                                               role="img"></i>
+                                            <span class="d-none d-md-inline">Reversed</span>
+                                        </span>
+                                    </t>
+                                    <t t-if="invoice.state == 'cancel'">
+                                        <span class="badge badge-pill badge-warning">
+                                            <i class="fa fa-fw fa-remove" aria-label="Cancelled" title="Cancelled"
+                                               role="img"></i>
+                                            <span class="d-none d-md-inline">Cancelled</span>
+                                        </span>
+                                    </t>
+                                </td>
+                                <td class="text-right">
+                                    <span t-esc="-invoice.amount_residual if invoice.move_type == 'out_refund' else invoice.amount_residual"
+                                          t-options='{"widget": "monetary", "display_currency": invoice.currency_id}'/>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+
+    <!-- 	<template id="theme_clarico_vega_cart_summary_ept_inherit" inherit_id="theme_clarico_vega.cart_summary_ept"> -->
+    <!-- 		<xpath expr="//div[@class='te_checkout_prod_attr_lines']" position="replace"> -->
+    <!-- 			<div class="te_checkout_prod_attr_lines mt4"> -->
+    <!-- 				<t t-esc="line.product_id.product_template_attribute_value_ids"/> -->
+    <!--                 <t t-if="len(line.product_id.product_template_attribute_value_ids)"> -->
+    <!--                     <t t-set="total_attribute" t-value="0"></t> -->
+    <!--                     <t t-foreach="line.product_id.product_template_attribute_value_ids" t-as="val_vart"> -->
+    <!--                         <label class="w-100 mb0"> -->
+    <!--                             <span class="te_attr_span"> -->
+    <!--                                 <t t-esc="val_vart.attribute_id.name"></t> -->
+    <!--                             </span> -->
+    <!--                             : -->
+
+    <!--                             <span class="te_attr_span"> -->
+    <!--                                 <t t-esc="val_vart.name"></t> -->
+    <!--                             </span> -->
+    <!--                             <t t-set="total_attribute" t-value="total_attribute + 1"></t> -->
+    <!--                         </label> -->
+    <!--                     </t> -->
+    <!--                 </t> -->
+    <!--             </div> -->
+    <!-- 		</xpath> -->
+    <!-- 	</template> -->
+</odoo>

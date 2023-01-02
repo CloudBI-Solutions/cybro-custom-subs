@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_session_config" model="ir.ui.view">
+        <field name="name">pos.config.form.inherit</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='auto_printing']" position="after">
+                <div class="col-lg-6 col-12 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="session_report"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="session_report">Enable Session Report
+                        </label>
+                        <div class="text-muted">
+                            This will allow to print Session Report Directly
+                            from
+                            POS Screen
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

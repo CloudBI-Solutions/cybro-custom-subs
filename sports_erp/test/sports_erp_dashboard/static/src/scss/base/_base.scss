@@ -1,0 +1,68 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+/**
+ * Set up a decent box model on the root element
+ */
+html {
+  box-sizing: border-box;
+}
+
+/**
+ * Make all elements from the DOM inherit from the parent box-sizing
+ * Since `*` has a specificity of 0, it does not override the `html` value
+ * making all elements inheriting from the root box-sizing value
+ * See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+* Styles for the page body
+*/
+body {
+  font-family: $text-font-stack;
+}
+main{
+  background-color: $white-100;
+}
+.fa,
+.fa-solid,
+.fab,
+.far {
+  font-family: $icon-font-stack !important;
+}
+/**
+* Styles for Radio Button and Checkboxes
+*/
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: $primary-500;
+}
+
+/**
+ * Basic styles for links
+ */
+a {
+  color: $primary-500;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  &:focus,
+  &:focus-visible {
+    color: $white-100;
+  }
+  @include on-event {
+    color: $text-color;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+  }
+}
+a.link-dark {
+  color: $text-color;
+}

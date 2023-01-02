@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="subscription_coaches_view_form" model="ir.ui.view">
+        <field name="name">subscription.coaches.view.form</field>
+        <field name="model">organisation.coaches</field>
+        <field name="inherit_id" ref="organisation.coaches_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='img_coaches']" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_subscription" type="object"
+                        class="oe_stat_button" icon="fa-strikethrough">
+                        <div class="o_stat_info">
+                            <field name="subscription_count" class="o_stat_value"/>
+                            <span class="o_stat_text"> Subscriptions</span>
+                        </div>
+                    </button>
+                </div>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Subscriptions" name="subscriptions">
+                    <field name="subscription_ids">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

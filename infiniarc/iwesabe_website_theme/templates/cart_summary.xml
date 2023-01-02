@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="website_sale_cart_summary_infiniarc_inherit" inherit_id="website_sale.cart_summary">
+        <xpath expr="//table[@id='cart_products']/tbody/tr" position="attributes">
+            <attribute name="t-if">line.product_id.product_tmpl_id.type_of_pc == 'customize'</attribute>
+        </xpath>
+    </template>
+</odoo>

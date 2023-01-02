@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_filter_notebook" model="ir.ui.view">
+        <field name="name">product.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[last()]" position="inside">
+                <page string="Filters" name="filter">
+                    <!--                    <group>-->
+                    <!--                        <group string="Extra Info">-->
+                    <!--                            <field name="extra_info"/>-->
+
+
+                    <!--                        </group>-->
+                    <!--                        <group string="Terms And Conditions">-->
+                    <!--                            <field name="terms"/>-->
+
+                    <!--                        </group>-->
+                    <!--                    </group>-->
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='list_price']" position="attributes">
+                <attribute name="string">Offer Price</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="component_filter_form" model="ir.ui.view">
+        <field name="name">component.filter.form</field>
+        <field name="model">component.filter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="filter"/>
+                            <field name="component_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Values">
+                            <field name="product_ids">
+                                <tree editable="bottom">
+                                    <field name="values"/>
+                                    <field name="product_id_domain" invisible="1"/>
+                                    <field name="product_id" domain="product_id_domain" widget="many2many_tags"/>
+                                    <field name="component_domain_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="desktop_filter_form" model="ir.ui.view">
+        <field name="name">desktop.filter.form</field>
+        <field name="model">desktop.filter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Values">
+                            <field name="value_ids">
+                                <tree editable="bottom">
+                                    <field name="values"/>
+                                    <field name="product_id_domain"  invisible="1"/>
+                                    <field name="product_id" domain="product_id_domain" invisible='1' widget="many2many_tags"/>
+                                    <field name="desktop_domain_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="special_filter_form" model="ir.ui.view">
+        <field name="name">special.filter.form</field>
+        <field name="model">special.filter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Values">
+                            <field name="value_ids">
+                                <tree editable="bottom">
+                                    <field name="values"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_component_filter" model="ir.actions.act_window">
+        <field name="name">Filters</field>
+        <field name="res_model">component.filter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new filter.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_desktop_filter" model="ir.actions.act_window">
+        <field name="name">Desktop Filters</field>
+        <field name="res_model">desktop.filter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new filter.
+            </p>
+        </field>
+    </record>
+    <record id="action_special_filter" model="ir.actions.act_window">
+        <field name="name">Special Offer Filters</field>
+        <field name="res_model">special.filter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new filter.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Gear Store Filters"
+            parent="website.menu_website_global_configuration"
+            action="action_component_filter"
+            id="filter_config"/>
+
+    <menuitem
+            name="Desktop Filters"
+            parent="website.menu_website_global_configuration"
+            action="action_desktop_filter"
+            id="desktop_filter_config"/>
+
+    <menuitem
+            name="Special Offer Filters"
+            parent="website.menu_website_global_configuration"
+            action="action_special_filter"
+            id="special_filter_config"/>
+
+
+</odoo>

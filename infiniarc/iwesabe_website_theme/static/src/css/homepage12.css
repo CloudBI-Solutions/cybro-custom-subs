@@ -1,0 +1,89 @@
+/*@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap");*/
+.ia-homepage__h2 {
+  font-size: 38px;
+}
+
+.ia-homepage__lead {
+  width: 30%;
+}
+@media (max-width: 767.98px) {
+  .ia-homepage__lead {
+    width: 90%;
+  }
+}
+
+.ia-homepage__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.ia-homepage__store-subhead,
+.ia-homepage__store-head {
+  display: block;
+}
+
+.ia-homepage__image {
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.ia-homepage__store-card {
+  position: relative;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.75);
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.ia-homepage__store-card:hover .ia-homepage__image {
+  -webkit-transform: scale(110%);
+          transform: scale(110%);
+  -webkit-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+}
+
+.ia-homepage__store-subhead {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.ia-homepage__store-head {
+/*
+  font-family: "Bebas Neue", "Plus Jakarta Sans", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+*/
+  /* dec_6_aj */
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.ia-homepage__store-subhead{
+    /* dec_6_aj */
+    font-size: 18px;
+}
+.ia-homepage__image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.ia-homepage__store-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 30px;
+  flex-wrap: wrap;
+}

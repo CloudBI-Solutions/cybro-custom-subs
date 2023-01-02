@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sports_erp_portal_home_edit"
+              name="Image Edit">
+        <t t-call="portal.portal_layout">
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script>tinymce.init({
+    selector: 'textarea',
+    skin: 'bootstrap',
+    plugins: 'lists, link, image, media',
+    toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help',
+    menubar: false,
+    });</script>
+
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/edit_home_image"
+                               class="set-dashboard__breadcrumb-link">
+                                Edit Image
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2">Images</h2>
+                    </div>
+                </div>
+            </div>
+            <form action="/update/image_template"  method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="row image_edit_template">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <table class="set-dashboard__table mt-3" id="image_table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i" t-value="1"/>
+                            <tr t-foreach="home_images"
+                                t-as="home_image"
+                                t-att-id="'row_' + str(i)">
+                                <td contenteditable='true'
+                                    class="td-product_name"
+                                    name="home_name">
+                                    <input type="text"
+                                           t-att-name="'name_' + str(i)"
+                                           t-att-id="'name_' + str(i)"
+                                           class="form-control"
+                                           t-att-value="home_image.name"/>
+                                </td>
+                                <td contenteditable='true'
+                                    class="td-product_name"
+                                    name="home_image">
+                                    <label t-att-for="'image_' + str(i)">
+                                        <img id="profile_picture"
+                                             class="form-control profile_pictures"
+                                             t-att-src="image_data_uri(home_image.image) if home_image.image else None"
+                                             style="cursor: pointer;"
+                                             />
+                                    </label>
+<!--                                    <img class="form-control"-->
+<!--                                         t-att-name="'image_' + str(i)"-->
+<!--                                         t-att-src="image_data_uri(home_image.image) if home_image.image else None"/>-->
+                                    <input id="name"
+                                           style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           t-att-name="'image_' + str(i)"
+                                           type="file"
+                                           class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true"
+                                           lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"
+                                            />
+                                    <script>
+                                        function image_preview() {
+                                        console.log("image")
+                                        $(".profile_pictures").last().src=URL.createObjectURL(event.target.files[0]);
+                                        }
+                                    </script>
+                                </td>
+                                <td contenteditable='true'
+                                    class="td-product_name">
+                                    <input type="text"
+                                           name="home_description"
+                                           t-att-name="'description_' + str(i)"
+                                           t-att-id="'description_' + str(i)"
+                                           class="form-control"
+                                           t-att-value="home_image.description"/>
+<!--                                    <textarea name="home_description"-->
+<!--                                           t-att-name="'description_' + str(i)"-->
+<!--                                           t-att-id="'description_' + str(i)"-->
+<!--                                           class="form-control"-->
+<!--                                           t-att-value="home_image.description"/>-->
+                                    <input type="hidden"
+                                           name="home_id"
+                                           t-att-name="'id_' + str(i)"
+                                           t-att-id="'id_' + str(i)"
+                                           class="form-control"
+                                           t-att-value="home_image.id"/>
+                                </td>
+                                <t t-set="i"
+                                   t-value="i+1"/>
+                                <td class="td-action">
+                                    <a href="#"
+                                       aria-label="Remove"
+                                       title="Remove"
+                                       class="delete_image no-decoration">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                             class="set-dashboard__table-action-icon"
+                                             alt="Remove"
+                                             title="Remove"/>
+                                    </a>
+                                </td>
+                            </tr>
+                            <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                        </tbody>
+                    </table>
+                    <div id="add_image"
+                     class="float-left px-4 mt-2">
+                    + Add an
+                    Image
+                </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                    <input type="submit"
+                            style="float:right !important; border-radius: 5px !important;"
+                            class="btn se-btn se-btn--no-rounded se-btn--primary px-4 update_image"
+                            value="Update Images">
+                    </input>
+                </div>
+            </div>
+
+
+            </form>
+
+
+        </t>
+    </template>
+
+    <template id="sports_erp_portal_gallery_edit"
+              name="Gallery Edit">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/edit_home_image"
+                               class="set-dashboard__breadcrumb-link">
+                                Edit Image
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2">Images</h2>
+                    </div>
+                </div>
+            </div>
+            <form action="/update/gallery/images" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <div class="row col-lg-12 gallery_images">
+                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                       id="gallery_images">
+                    <thead>
+                        <tr>
+                            <th class="td-img">
+                                Name
+                            </th>
+                            <th>Image</th>
+                            <th class="text-center td-action"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="i" t-value="1"/>
+                        <tr t-foreach="home_images"
+                            t-as="home_image"
+                            t-att-id="'row_' + str(i)">
+                            <td contenteditable='true'
+                                class="td-product_name"
+                                name="home_name">
+                                <input type="text"
+                                       t-att-id="'name_' + str(i)"
+                                       t-att-name="'name_' + str(i)"
+                                       class="form-control"
+                                       t-att-value="home_image.name"/>
+                            </td>
+                            <td contenteditable='true'
+                                class="td-product_name"
+                                name="home_image">
+                                <img class="form-control"
+                                     t-att-src="image_data_uri(home_image.image)"/>
+                            </td>
+                            <t t-set="i"
+                               t-value="i+1"/>
+                            <td class="td-action">
+                                <a href="#"
+                                   aria-label="Remove from cart"
+                                   title="Remove from cart"
+                                   class="delete_image no-decoration">
+                                    <small>
+                                        <i class="fa fa-trash-o"/>
+                                    </small>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div id="add_item"
+                     class="float-left">+ Add an
+                    item
+                </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                        <input type="submit"
+                                style="float:right !important; border-radius: 5px !important;"
+                                class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                value="Update Gallery">
+                        </input>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+</odoo>

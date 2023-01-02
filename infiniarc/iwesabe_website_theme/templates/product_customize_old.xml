@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_customize" name="Infiniarc">
+        <t t-call="website.layout">
+            <t t-set="body_classname" t-value="'website_dekstop_page'"/>
+            <div class="container-fluid">
+                <div class="row mt32">
+                    <div class="col-lg-12 te_title_2 mt16">
+                        <div class="te_title_sub_div">
+                            <h2 class="te_s_title_default te_title_style2" style="text-transform: uppercase;">
+                                BUILD YOUR
+                                <t t-esc="product_id.name"/>
+                                SYSTEM
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 vertical-tabs sticky-100">
+                        <ul class="nav nav-tabs">
+                            <li class="tital_comopnents">
+                                COMPONENTS
+                                <i class="fa fa-chevron-down"/>
+                            </li>
+                            <li class="nav-item" t-foreach="product_id.component_lines" t-as="line">
+                                <a t-att-class="'nav-link scroll-animate nav-com active ' if line.id == product_id.component_lines[0].id else 'nav-link scroll-animate nav-com'"
+                                   data-toggle="tab" t-att-href="'#page' + str(line.component_id.id)" role="tab"
+                                   aria-controls="home">
+                                    <img t-if="line.sudo().component_id.image"
+                                         t-att-src="image_data_uri(line.sudo().component_id.image)" class="compo-img"/>
+                                    <img t-else="" src="/iwesabe_website_theme/static/src/img/cpu.png"
+                                         class="compo-img"/>
+                                    <p t-esc="line.sudo().component_id.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-tabs">
+                            <li class="tital_comopnents">
+                                Accessories
+                                <i class="fa fa-chevron-down"/>
+                            </li>
+                            <li class="nav-item" t-foreach="product_id.accessories_lines" t-as="line">
+                                <a t-att-class="'nav-link scroll-animate nav-com active ' if line.id == product_id.component_lines[0].id else 'nav-link scroll-animate nav-com'"
+                                   data-toggle="tab" t-att-href="'#page' + str(line.component_id.id)" role="tab"
+                                   aria-controls="home">
+                                    <img t-if="line.sudo().component_id.image"
+                                         t-att-src="image_data_uri(line.sudo().component_id.image)" class="compo-img"/>
+                                    <img t-else="" src="/iwesabe_website_theme/static/src/img/cpu.png"
+                                         class="compo-img"/>
+                                    <p t-esc="line.sudo().component_id.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="component_list_part" t-foreach="product_id.component_lines" t-as="line"
+                             t-if="line.product_ids" t-att-id="'page'+str(line.component_id.id)">
+                            <t t-set="component_name" t-value="line.sudo().component_id.name"/>
+                            <div class="row mt32">
+                                <div class="component_name">
+                                    <img t-if="line.sudo().component_id.image"
+                                         t-att-src="image_data_uri(line.sudo().component_id.image)"/>
+                                    <img t-else="" src="/iwesabe_website_theme/static/src/img/cpu.png"/>
+                                    <p>
+                                        <t t-esc="component_name"/>
+                                        :
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <t t-set="brands" t-value="line.get_barnd_name()"/>
+                                <div class="card tab-card">
+                                    <div class="card-header tab-card-header">
+                                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active all-data" t-att-line-id="str(line.id)"
+                                                   id="all-data-id" data-toggle="tab"
+                                                   t-att-href="'#all_' + str(line.id)" role="tab" aria-controls="All"
+                                                   aria-selected="false">EVERYTHING
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" t-foreach="brands" t-as="brand">
+                                                <a class="nav-link brand-filter" t-att-line-id="str(line.id)"
+                                                   t-att-filter-id="str(line.id) + str(brand.id)"
+                                                   t-att-id="brand.field_name" data-toggle="tab"
+                                                   t-att-href="'#' + brand.field_name + '_' + str(line.id)" role="tab"
+                                                   t-att-aria-controls="brand.field_name + '_' + str(line.id)"
+                                                   aria-selected="true">
+                                                    <t t-esc="brand.name"/>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item pull-right-block web_view_type">
+                                                <i t-att-class="'fa fa-th-large th-block active' if line.component_id.web_view_type == 'grid' else 'fa fa-th-large th-block'"
+                                                   t-att-grid-id="str(line.id)"/>
+                                                <i t-att-class="'fa fa-bars bar-block active' if line.component_id.web_view_type == 'list' else 'fa fa-bars bar-block'"
+                                                   t-att-list-id="str(line.id)"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content tab-content-infiniarc" t-att-id="'grid_' + str(line.id)"
+                                         t-att-style="'display: none;' if line.component_id.web_view_type == 'list' else ''">
+                                        <div class="tab-pane tab_pane_grid_view fade show active p-3"
+                                             t-att-id="'all_' + str(line.id)" role="tabpanel">
+                                            <div class="col-md-3 componet_iteam mt16"
+                                                 t-foreach="line.sudo().product_ids" t-as="pro"
+                                                 t-att-id="str(line.id) + str(pro.brand_id.id)">
+                                                <label t-att-for="pro.id">
+                                                    <img class="pro_compo_img" t-if="pro.image_1024"
+                                                         t-att-src="image_data_uri(pro.image_1024)"
+                                                         t-att-alt="pro.name"/>
+                                                    <img class="ex_pro_compo_img" t-else=""
+                                                         src="https://w7.pngwing.com/pngs/333/814/png-transparent-computer-icons-settings-computer-flower-svg.png"
+                                                         t-att-alt="pro.name"/>
+                                                </label>
+                                                <div class="pro_name_tab">
+                                                    <t t-set="json_data" t-value="pro.get_json_data()"/>
+                                                    <t t-if="pro.id == line.product_id.id">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" checked="true"
+                                                               t-att-data="json_data"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" t-att-data="json_data"/>
+                                                    </t>
+                                                    <span class="r-pro-name" t-esc="pro.name"/>
+                                                </div>
+                                                <p class="text-center" style="font-size: 13px;color: red;">Offer Price
+                                                </p>
+                                                <p class="text-center">
+                                                    <span t-esc="pro.sales_price"
+                                                          style="color:red;font-size:11px;text-decoration: 1px line-through;"/>
+                                                    <t t-esc="pro.list_price"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content tab-content-infiniarc" t-att-id="'list_' + str(line.id)"
+                                         t-att-style="'display: none;' if line.component_id.web_view_type == 'grid' else ''">
+                                        <div class="tab_pane_list_view show p-3" t-att-id="'all_' + str(line.id)"
+                                             role="tabpanel">
+                                            <div class="componet_iteam_list mt16" t-foreach="line.sudo().product_ids"
+                                                 t-as="pro" t-att-id="str(line.id) + str(pro.brand_id.id)">
+                                                <label>
+                                                    <img t-if="pro.image_1024"
+                                                         t-att-src="image_data_uri(pro.image_1024)"
+                                                         t-att-alt="pro.name"/>
+                                                    <img t-else=""
+                                                         src="https://w7.pngwing.com/pngs/333/814/png-transparent-computer-icons-settings-computer-flower-svg.png"
+                                                         t-att-alt="pro.name"/>
+                                                    <t t-set="json_data" t-value="pro.get_json_data()"/>
+                                                    <t t-if="pro.id == line.product_id.id">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" checked="true"
+                                                               t-att-data="json_data"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" t-att-data="json_data"/>
+                                                    </t>
+                                                    <span class="r-pro-name" t-esc="pro.name"/>
+                                                </label>
+                                                <p class="text-right">
+                                                    <span>Offer Price :</span>
+                                                    <b>
+                                                        <span t-esc="pro.list_price"/>
+                                                        <br/>
+                                                        <span t-esc="pro.sales_price"
+                                                              style="color:red;font-size:12px;text-decoration: 1px line-through;"/>
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <t t-set="pro_brands" t-value="line.get_barnd_name()"/>
+                                        <!-- <div t-foreach="pro_brands" t-as="bra" class="tab-pane fade p-3 row"  t-att-id="bra.field_name + '_' + str(line.id)" role="tabpanel" t-att-aria-labelledby="bra.field_name + '_' + str(bra.id)">
+
+                                        <div class="col-md-3 componet_iteam mt16" t-foreach="line.sudo().product_ids" t-as="pro" t-if="pro.brand_id.id == bra.id">
+
+                                            <label t-att-for="pro.id">
+                                                <img class="pro_compo_img" t-if="pro.image_1024" t-att-src="image_data_uri(pro.image_1024)" t-att-alt="pro.name" />
+                                            </label>
+                                            <div class="pro_name_tab">
+                                                <t t-set="json_data" t-value="pro.get_json_data()"/>
+                                                <t t-if="pro.id == line.product_id.id">
+                                                    <input type="radio" t-att-name="line.id" t-att-id="pro.id" class="input-hidden" checked="true" t-att-data="json_data"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <input type="radio" t-att-name="line.id" t-att-id="pro.id" class="input-hidden" t-att-data="json_data"/>
+                                                </t>
+                                                <span class="r-pro-name" t-esc="pro.name"/>
+                                            </div>
+                                            <p class="text-center">Offer Price </p>
+                                            <p class="text-center">
+                                                <span t-esc="pro.sales_price" style="color:red;font-size:11px;text-decoration: 1px line-through;"/>
+                                                <t t-esc="pro.list_price"/>
+                                            </p>
+                                          </div>
+                                  </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Accessories -->
+
+                        <div class="component_list_part" t-foreach="product_id.accessories_lines" t-as="line"
+                             t-if="line.product_ids" t-att-id="'page'+str(line.component_id.id)">
+                            <t t-set="component_name" t-value="line.sudo().component_id.name"/>
+                            <div class="row mt32">
+                                <div class="component_name">
+                                    <img t-if="line.sudo().component_id.image"
+                                         t-att-src="image_data_uri(line.sudo().component_id.image)"/>
+                                    <img t-else="" src="/iwesabe_website_theme/static/src/img/cpu.png"/>
+                                    <p>
+                                        <t t-esc="component_name"/>
+                                        :
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <t t-set="brands" t-value="line.get_barnd_name()"/>
+                                <div class="card tab-card">
+                                    <div class="card-header tab-card-header">
+                                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active all-data" t-att-line-id="str(line.id)"
+                                                   id="all-data-id" data-toggle="tab"
+                                                   t-att-href="'#all_' + str(line.id)" role="tab" aria-controls="All"
+                                                   aria-selected="false">EVERYTHING
+                                                </a>
+                                            </li>
+                                            <li class="nav-item" t-foreach="brands" t-as="brand">
+                                                <a class="nav-link brand-filter" t-att-line-id="str(line.id)"
+                                                   t-att-filter-id="str(line.id) + str(brand.id)"
+                                                   t-att-id="brand.field_name" data-toggle="tab"
+                                                   t-att-href="'#' + brand.field_name + '_' + str(line.id)" role="tab"
+                                                   t-att-aria-controls="brand.field_name + '_' + str(line.id)"
+                                                   aria-selected="true">
+                                                    <t t-esc="brand.name"/>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item pull-right-block web_view_type">
+                                                <i t-att-class="'fa fa-th-large th-block active' if line.component_id.web_view_type == 'grid' else 'fa fa-th-large th-block'"
+                                                   t-att-grid-id="str(line.id)"/>
+                                                <i t-att-class="'fa fa-bars bar-block active' if line.component_id.web_view_type == 'list' else 'fa fa-bars bar-block'"
+                                                   t-att-list-id="str(line.id)"/>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content tab-content-infiniarc" t-att-id="'grid_' + str(line.id)"
+                                         t-att-style="'display: none;' if line.component_id.web_view_type == 'list' else ''">
+                                        <div class="tab-pane tab_pane_grid_view fade show active p-3"
+                                             t-att-id="'all_' + str(line.id)" role="tabpanel">
+                                            <div class="col-md-3 componet_iteam mt16"
+                                                 t-foreach="line.sudo().product_ids" t-as="pro"
+                                                 t-att-id="str(line.id) + str(pro.brand_id.id)">
+                                                <label t-att-for="pro.id">
+                                                    <img class="pro_compo_img" t-if="pro.image_1024"
+                                                         t-att-src="image_data_uri(pro.image_1024)"
+                                                         t-att-alt="pro.name"/>
+                                                    <img class="ex_pro_compo_img" t-else=""
+                                                         src="https://w7.pngwing.com/pngs/333/814/png-transparent-computer-icons-settings-computer-flower-svg.png"
+                                                         t-att-alt="pro.name"/>
+                                                </label>
+                                                <div class="pro_name_tab">
+                                                    <t t-set="json_data" t-value="pro.get_json_data()"/>
+                                                    <t t-if="pro.id == line.product_id.id">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" checked="true"
+                                                               t-att-data="json_data"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" t-att-data="json_data"/>
+                                                    </t>
+                                                    <span class="r-pro-name" t-esc="pro.name"/>
+                                                </div>
+                                                <p class="text-center" style="font-size: 13px;color: red;">Offer Price
+                                                </p>
+                                                <p class="text-center">
+                                                    <span t-esc="pro.sales_price"
+                                                          style="color:red;font-size:11px;text-decoration: 1px line-through;"/>
+                                                    <t t-esc="pro.list_price"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-content tab-content-infiniarc" t-att-id="'list_' + str(line.id)"
+                                         t-att-style="'display: none;' if line.component_id.web_view_type == 'grid' else ''">
+                                        <div class="tab_pane_list_view show p-3" t-att-id="'all_' + str(line.id)"
+                                             role="tabpanel">
+                                            <div class="componet_iteam_list mt16" t-foreach="line.sudo().product_ids"
+                                                 t-as="pro" t-att-id="str(line.id) + str(pro.brand_id.id)">
+                                                <label>
+                                                    <img t-if="pro.image_1024"
+                                                         t-att-src="image_data_uri(pro.image_1024)"
+                                                         t-att-alt="pro.name"/>
+                                                    <img t-else=""
+                                                         src="https://w7.pngwing.com/pngs/333/814/png-transparent-computer-icons-settings-computer-flower-svg.png"
+                                                         t-att-alt="pro.name"/>
+                                                    <t t-set="json_data" t-value="pro.get_json_data()"/>
+                                                    <t t-if="pro.id == line.product_id.id">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" checked="true"
+                                                               t-att-data="json_data"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <input type="radio" t-att-name="line.id" t-att-id="pro.id"
+                                                               class="input-hidden" t-att-data="json_data"/>
+                                                    </t>
+                                                    <span class="r-pro-name" t-esc="pro.name"/>
+                                                </label>
+                                                <p class="text-right">
+                                                    <span>Offer Price :</span>
+                                                    <b>
+                                                        <span t-esc="pro.list_price"/>
+                                                        <br/>
+                                                        <span t-esc="pro.sales_price"
+                                                              style="color:red;font-size:12px;text-decoration: 1px line-through;"/>
+                                                    </b>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <t t-set="pro_brands" t-value="line.get_barnd_name()"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-3 mt64">
+                        <div class="product_details_cart">
+                            <div class="product_name text-center p-3">
+                                <h5 t-esc="product_id.name"/>
+                            </div>
+                            <div class="product_img pb-5">
+                                <img t-if="product_id.image_1024" t-att-src="image_data_uri(product_id.image_1024)"
+                                     t-att-alt="product_id.name"/>
+                            </div>
+                            <div class="product_price">
+                                <div class="p-3">
+                                    <h4 class="without_price">Price
+                                        <span>303000 $</span>
+                                    </h4>
+                                    <h5>Price Price with VAT
+                                        <br/>
+                                        <span>‏318,000 $</span>
+                                    </h5>
+                                </div>
+                                <!-- 								<p class="selling_price" style="font-size: 16px;"> -->
+                                <!-- 									Offer Price : -->
+                                <!-- 									<span t-esc="product_id.sales_price" style="text-decoration: 2px line-through;" /> -->
+                                <!-- 								</p> -->
+                                <!-- 								<p class="selling_price"> -->
+                                <!-- 									Price With VAT : -->
+                                <!-- 									<span class="price"> -->
+                                <!-- 										<t t-esc="product_id.list_price" /> -->
+                                <!-- 									</span> -->
+                                <!-- 								</p> -->
+                            </div>
+                            <div class="product_default_info">
+                                <div class="component_part" section_id="15" id="69">
+                                    <div class="component_text">Expected delivery date</div>
+                                    <div class="component_price">4-8 Days</div>
+                                </div>
+                            </div>
+                            <div class="product_info">
+                                <div class="product_info_part">
+                                    <div class="product_info_text">GAMER ESSENTIAL ESPORTS</div>
+                                    <div class="product_info_price">
+                                        <span>$2,524</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product_cart_btn text-center">
+                                <button name="cart" class="btn btn-secondary com-cart-btn"
+                                        t-att-data-product-id="product_id.id">Add To Cart
+                                </button>
+                            </div>
+                            <div class="product_component">
+                                <p>Nothing to Add cart !!!</p>
+                            </div>
+                            <div id="config-options" class="col text-light mt-1 pb-3">
+                                <h5 class="text-center">
+                                    Save or load
+                                </h5>
+                                <div class="mt-n3 content-center">
+                                    <div class="row align-items-center">
+                                        <div class="d-flex justify-content-between mt16">
+                                            <div class="action-button text-center">
+                                                <div class="action-button-img">
+                                                    <img src="/iwesabe_website_theme/static/src/img/desktop/floppy-disk.png"
+                                                         alt="Save"/>
+                                                </div>
+                                                <div class="action-button-test">
+                                                    <span>Save</span>
+                                                </div>
+                                            </div>
+                                            <div class="action-button text-center">
+                                                <div class="action-button-img">
+                                                    <img src="/iwesabe_website_theme/static/src/img/desktop/reset.png"
+                                                         alt="Reset"/>
+                                                </div>
+                                                <div class="action-button-test">
+                                                    <span>Reset</span>
+                                                </div>
+                                            </div>
+                                            <div class="action-button text-center">
+                                                <div class="action-button-img">
+                                                    <img src="/iwesabe_website_theme/static/src/img/desktop/download.png"
+                                                         alt="Download"/>
+                                                </div>
+                                                <div class="action-button-test">
+                                                    <span>Download</span>
+                                                </div>
+                                            </div>
+                                            <div class="action-button text-center">
+                                                <div class="action-button-img">
+                                                    <img src="/iwesabe_website_theme/static/src/img/desktop/share.png"
+                                                         alt="Share"/>
+                                                </div>
+                                                <div class="action-button-test">
+                                                    <span>Share</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

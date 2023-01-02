@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="infiniarc_warranty" name="Infiniarc Warranty">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/support" class="ian-link__unstyled">Support</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Warranty</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero-banner hero-banner--contactus">
+
+                    <h1 class="page-title mt32">
+                        Infiniarc Warranty
+                    </h1>
+                </div>
+
+            </section>
+
+
+            <!--            <section id="infiniarc-models" class="mt32 mb32">-->
+            <!--                <div class="container"-->
+            <!--                     style="text-align: center;border-top: 1px solid #2C2C2C;border-bottom: 1px solid #2C2C2C;">-->
+            <!--                    <div class="warranty-container mt16 mb16">-->
+            <!--                        <ul class="content-center nav">-->
+            <!--                            <t t-foreach="warranty" t-as="warranties">-->
+            <!--                                <li class="models-categ col content-center nav-item">-->
+            <!--                                    <a role="tab" class="nav-link nav-title-root"-->
+            <!--                                       aria-selected="false" aria-controls="combos"-->
+            <!--                                       t-attf-href="/warranty/{{slug(warranties)}}" t-esc="warranties.type"/>-->
+            <!--                                </li>-->
+            <!--                            </t>-->
+            <!--                        </ul>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </section>-->
+
+
+            <section id="support-type" class="">
+                <div class="container">
+                    <div class="row support-row">
+                        <div class="section-faq" style="margin-bottom: 70px;">
+                            <t t-foreach="description" t-as="descriptions">
+                                <div class="accordion" id="accordionExample">
+                                    <div class="card card-faq">
+                                        <div class="card-header faq-card-header" id="headingOne">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link btn-block text-left" type="button"
+                                                        data-toggle="collapse" data-target="#collapseOne"
+                                                        aria-expanded="true"
+                                                        aria-controls="collapseOne" style="color: white !important;">
+
+                                                    <t t-esc="descriptions.type"/>
+                                                </button>
+                                            </h2>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                             data-parent="#accordionExample">
+                                            <div class="card-body faq-card-body">
+
+                                                <t t-esc="descriptions.description"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+
+<!--                        <t t-foreach="description" t-as="descriptions">-->
+<!--                            <t t-esc="descriptions.description"/>-->
+<!--                        </t>-->
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <!--    <template id="infiniarc_blog" inherit_id="website_blog.index">-->
+    <!--        <xpath expr="//t" position="replace">-->
+    <!--            <t t-call="website.layout">-->
+    <!--                <div id="wrap" class="js_blog website_blog">-->
+    <!--                    <t t-out="0"/>-->
+
+    <!--                    &lt;!&ndash; Droppable-area shared across all blog's pages &ndash;&gt;-->
+    <!--                    <t t-set="oe_structure_blog_footer_description">Visible in all blogs' pages</t>-->
+    <!--                    <div class="oe_structure oe_empty oe_structure_not_nearest"-->
+    <!--                         id="oe_structure_blog_footer"-->
+    <!--                         t-att-data-editor-sub-message="oe_structure_blog_footer_description"/>-->
+    <!--                </div>-->
+
+    <!--            </t>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+</odoo>

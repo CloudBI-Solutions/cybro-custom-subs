@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assets_frontend_organisation_booking" name="Client Dashboard" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="booking/static/src/js/booking.js"/>
+            <script type="text/javascript" src="booking/static/src/js/booking_form_editor.js"/>
+            <link rel="stylesheet" type="text/css" href="/booking/static/src/css/booking.css"/>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+                integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="
+                crossorigin="anonymous" />
+        </xpath>
+    </template>
+</odoo>

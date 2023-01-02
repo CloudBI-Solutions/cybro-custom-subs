@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="sports_portal_layout" inherit_id="portal.portal_layout">
+        <xpath expr="//t[@t-call='portal.frontend_layout']" position="replace">
+            <t t-call="portal.frontend_layout">
+                <t t-set="is_portal" t-value="True"/>
+                <div id="wrap" class="o_portal_wrap">
+                    <t t-if="is_home">
+                        <div id="main-container">
+                            <t t-if="my_details">
+                                <div class="row justify-content-between mt-4">
+                                    <div t-attf-class="col-12 col-md col-lg-6">
+                                        <t t-out="0"/>
+                                    </div>
+                                    <div id="o_my_sidebar"
+                                         class="pt-3 pt-lg-0 col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                        <div class="o_my_contact"
+                                             t-if="sales_user">
+                                            <t t-call="portal.portal_contact"/>
+                                        </div>
+                                        <div class="o_portal_my_details">
+                                            <h4>
+                                                Details
+                                                <a role="button"
+                                                   href="/my/account"
+                                                   class="btn btn-sm btn-link">
+                                                    <i class="fa fa-pencil"/>
+                                                    Edit
+                                                </a>
+                                            </h4>
+                                            <hr class="mt-1 mb-0"/>
+                                            <div t-field="user_id.partner_id"
+                                                 t-options="{'widget': 'contact', 'fields': ['email', 'phone', '
+                                            address', 'name']}"/>
+                                        </div>
+                                        <div class="o_portal_my_security mt-3">
+                                            <h4>Account Security</h4>
+                                            <hr class="mt-1 mb-1"/>
+                                            <a href="/my/security">
+                                                <i class="fa fa-pencil mx-1"/>
+                                                Edit Security Settings
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <t t-out="0"/>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div id="main-container"
+                             class="p-5 main-container--margin">
+                            <t t-if="my_details">
+                                <div class="row justify-content-between mt-4">
+                                    <div t-attf-class="col-12 col-md col-lg-6">
+                                        <t t-out="0"/>
+                                    </div>
+                                    <div id="o_my_sidebar"
+                                         class="pt-3 pt-lg-0 col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                        <div class="o_my_contact"
+                                             t-if="sales_user">
+                                            <t t-call="portal.portal_contact"/>
+                                        </div>
+                                        <div class="o_portal_my_details">
+                                            <h4>
+                                                Details
+                                                <a role="button"
+                                                   href="/my/account"
+                                                   class="btn btn-sm btn-link">
+                                                    <i class="fa fa-pencil"/>
+                                                    Edit
+                                                </a>
+                                            </h4>
+                                            <hr class="mt-1 mb-0"/>
+                                            <div t-field="user_id.partner_id"
+                                                 t-options="{'widget': 'contact', 'fields': ['email', 'phone', '
+                                            address', 'name']}"/>
+                                        </div>
+                                        <div class="o_portal_my_security mt-3">
+                                            <h4>Account Security</h4>
+                                            <hr class="mt-1 mb-1"/>
+                                            <a href="/my/security">
+                                                <i class="fa fa-pencil mx-1"/>
+                                                Edit Security Settings
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <t t-out="0"/>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <odoo>
+            <record id="paceflow_pwa_settings_view_form" model="ir.ui.view">
+            <field name="name">paceflow.pwa.settings.view.form.inherit.paceflow.pwa
+            </field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('app_settings_block')]//div[@name='dashboard_columns_settings_container']"
+                       position="after">
+                    <h2>PWA Settings</h2>
+
+                    <div class="row mt16 o_settings_container" name="dashboard_columns_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="activate_pwa">
+                        <div class="o_setting_left_pane">
+                            <field name="activate_pwa"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <span class="o_form_label">Activate PWA</span>
+                            <div class="text-muted">Activate Progressive Web Application
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="name_pwa"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Name" for="pwa_name"/>
+                                <div class="text-muted">Give Name For PWA
+                                </div>
+                                <field name="pwa_name"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="pwa_short_name"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Short Name" for="pwa_short_name"/>
+                                <div class="text-muted">Give Short Name For PWA
+                                </div>
+                                <field name="pwa_short_name"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="pwa_description"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Description" for="pwa_description"/>
+                                <div class="text-muted">Give Description For PWA
+                                </div>
+                                <field name="pwa_description"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="pwa_theme_color"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Theme Color" for="pwa_theme_color"/>
+                                <div class="text-muted">Give Theme Color For PWA
+                                </div>
+                                <field name="pwa_theme_color" widget="color"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="pwa_background_color"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Background Color" for="pwa_background_color"/>
+                                <div class="text-muted">Give Background Color For PWA
+                                </div>
+                                <field name="pwa_background_color" widget="color"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box"
+                         id="pwa_icon"
+                         attrs="{'invisible': [('activate_pwa', '=', False)]}">
+                        <div class="o_setting_right_pane">
+                            <div class="content-group">
+                                <label string="Icon" for="pwa_icon"/>
+                                <div class="text-muted">Choose Icon For PWA
+                                </div>
+                                <field name="pwa_icon" widget="image"
+                                       attrs="{'required': [('activate_pwa', '=', True)]}"/>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </xpath>
+            </field>
+            </record>
+        </odoo>
+    </data>
+</odoo>

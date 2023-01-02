@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="1">
+        <record id="stage_assessment" model="badminto.assessment.stage">
+            <field name="name">Assessment</field>
+        </record>
+        <record id="stage_assigned" model="badminto.assessment.stage">
+            <field name="name">Assigned</field>
+        </record>
+        <record id="stage_in_progress" model="badminto.assessment.stage">
+            <field name="name">In Progress</field>
+        </record>
+        <record id="stage_done" model="badminto.assessment.stage">
+            <field name="name">Done</field>
+        </record>
+        <record id="stage_cancel" model="badminto.assessment.stage">
+            <field name="name">Cancel</field>
+        </record>
+        <record id="general_assessment" model="assessment.types">
+            <field name="name">General Assessment</field>
+        </record>
+        <record id="mental_assessment" model="assessment.types">
+            <field name="name">Mental Assessment</field>
+        </record>
+        <record id="physical_assessment" model="assessment.types">
+            <field name="name">Physical Assessment</field>
+        </record>
+        <record id="technical_assessment" model="assessment.types">
+            <field name="name">Technical Assessment</field>
+        </record>
+        <record id="tactical_assessment" model="assessment.types">
+            <field name="name">Tactical Assessment</field>
+        </record>
+        <record id="adaptation_assessment" model="assessment.types">
+            <field name="name">Adaptation</field>
+        </record>
+
+    </data>
+
+</odoo>

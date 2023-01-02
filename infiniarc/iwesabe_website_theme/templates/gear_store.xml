@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="gear_store" name="Gear Store">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Gear Store</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="hero-banner hero-banner--gearstore">
+                    <h1 class="page-title gear_store_heading mt32" style="margin-top: 0px;">
+                        Gear STORE
+                    </h1>
+                    <p class="mt32 page-title-line" style="margin-top: -28px!important;">You can buy and view our
+                        products from here
+                    </p>
+                </div>
+
+                <section id="infiniarc-models" class="infiniarc-categories"
+                         style="height: 72px !important;">
+                    <div class="arc-container gear-container"
+                         style="text-align: center;">
+                        <div class="game-container mt16 mb16">
+                            <ul class="content-center nav">
+                                <li class="models-categ col content-center nav-item"
+                                    data-oe-id="2588" data-oe-field="arch">
+                                    <a class="nav-link active" id="all-infiniarc-models-tab"
+                                       href="/products/gear_store">All Parts
+                                    </a>
+                                </li>
+                                <t t-foreach="component_type_parent" t-as="component_type">
+                                    <li class="models-categ col content-center nav-item">
+                                        <a role="tab" class="nav-link"
+                                           aria-selected="false" aria-controls="component_type"
+                                           t-attf-href="/gear/{{ slug(component_type) }}" t-esc="component_type.name"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <t t-set="component_type_ids" t-value="website_configuration_id.component_type_ids"/>
+                <t t-set="accessories_type_ids" t-value="website_configuration_id.accessories_type_ids"/>
+
+                <section class="mt64 mb64">
+
+                    <t t-foreach="component.parents_type" t-as="parent">
+
+                        <div class="container gear-container">
+                            <h3 style="text-transform: uppercase;">
+                                <t t-esc="parent.name"/>
+                            </h3>
+                            <div class="row base-components">
+                                <t t-set="base_component"
+                                   t-value="request.env['component.type'].sudo().search([['parents_type', '=', parent.name]])"/>
+                                <t t-foreach="base_component" t-as="components">
+                                    <div class="gear-store-box">
+                                        <a t-att-href="'/products/gear_store_type?type=base-components&amp;component_id=%s'%(components.id)">
+                                            <div class="store-img">
+                                                <img t-if="components.image"
+                                                     t-att-src="'/web/image?model=component.type&amp;id=%s&amp;field=image'%(components.id)"
+                                                     class="gear_store_image"
+                                                     t-att-alt="components.name"/>
+                                                <img t-else=""
+                                                     src="/iwesabe_website_theme/static/src/img/gaming-pc-desktop/gear_cpu.png"
+                                                     class="gear_store_image"/>
+                                            </div>
+                                            <div class="gear-name">
+                                                <p>
+                                                    <t t-esc="components.name[:23]"/>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </t>
+
+                            </div>
+                        </div>
+
+                    </t>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

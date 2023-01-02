@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+<!--    CHILD/ PLAYERS HOME PAGE-->
+
+    <template id="paceflow_child" name="Child">
+        <t t-call="portal.portal_layout"><br/>
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header paceflow-section-header--resp-down col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Players
+                        </h1>
+                        <a href="/my/create_child">
+                        <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected"
+                            t-if="client_view">
+                            Add New Player
+                            <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                 width="16" height="16"/>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <t t-foreach="child_contacts" t-as="child">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="paceflow-card-item paceflow-card-item--xx-large paceflow-shadow">
+                                <div class="paceflow-card-item__profile-image mr-5">
+                                    <a t-att-href="'/my/assessment_report/%s' % child.id">
+                                    <img class="paceflow-card-item__profile-image ml-3"
+                                         width="100" height="100"
+                                         t-if="child.image_1920"
+                                         t-att-src="image_data_uri(child.image_1920)"/>
+                                    <img t-if="not child.image_1920"
+                                         width="100" height="100"
+                                         class="paceflow-card-item__profile-image ml-3"
+                                         src="/paceflow/static/description/images/ui/profile-placeholder.png"/>
+                                    </a>
+                                </div>
+                                <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                    <a t-att-href="'/my/assessment_report/%s' % child.id"
+                                       style="color: #7f7e7f;">
+                                    <t t-esc="child.name"/>
+                                    <t t-if="child.last_name">
+                                        <t t-esc="child.last_name"/>
+                                    </t>
+                                </a>
+                                </div>
+                                <div>
+                                <a t-attf-href="/my/edit_child/{{child.id}}">
+                                    <i class="fa fa-edit paceflow-text-grey-800" title="Edit"/>
+                                </a>
+                                </div>
+                                <div>
+                                <a t-att-href="'/my/assessment_report/%s' % child.id">
+                                    <i class="fa fa-chevron-right paceflow-text-grey-800 ml-4"
+                                       title="See Full Details"/>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <!--    NEW ADD PLAYER/ CHILD CREATE TEMPLATE-->
+
+    <template id="create_child_template" name="Create Child">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/child_cont">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Add Player
+                        </h1>
+                    </div>
+                </div>
+                <form id="upload_form" action="/my/create" method="post"
+                      enctype="multipart/form-data" class="o_mark_required"
+                      data-mark="*" data-model_name="mail.mail">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="name">
+                                        <img id="profile_picture"
+                                             src="/paceflow/static/description/images/ui/camera.png"
+                                             class="paceflow-profile-section__camera"
+                                             style="cursor: pointer;"/>
+                                    </label>
+                                    <input id="name" style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function image_preview() {
+                            profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                            profile_picture.className="paceflow-profile-section__photo";
+                            }
+                        </script>
+                        <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                            <input type="text" name="name" id="firstName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="First Name*"/>
+                            <input type="text" name="lastname" id="lastName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Last Name*"/>
+                            <input type="email" name="email" id="email"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Email*"/>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="code" id="code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="+44"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="phone" id="phone"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           placeholder="Phone (incl. country code)"/>
+                                </div>
+                            </div>
+
+                            <select name="hand" id="hand"
+                                    class="paceflow-select"
+                                    placeholder="Highest Standard Played">
+                                <option value="" selected="selected">
+                                    Hand of Player
+                                </option>
+                                <option value="left">Left Handed
+                                </option>
+                                <option value="right">Right Handed
+                                    Academy
+                                </option>
+                            </select>
+
+                            <div class="input-group position-relative">
+                                <select name="parent" id="parent"
+                                        class="paceflow-select"
+                                        multiple="multiple"
+                                        placeholder="Parent*">
+                                        <t t-foreach="parents or []" t-as="parent">
+                                        <option t-att-value="parent.id">
+                                            <t t-esc="parent.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                                <a href="/my/create_parent" title="Create a Parent">
+                                    <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                         width="18" height="18"
+                                         class="position-absolute"
+                                         style="top: 12px; right: 15px"/>
+                                </a>
+                            </div>
+                            <input type="text" name="dob" id="dob"
+                                   class="paceflow-form-control paceflow-form-control--max-width paceflow-datepicker"
+                                   onfocus="(this.type='date')"
+                                   placeholder="DOB*"/>
+
+                            <div class="input-group position-relative">
+                                <select name="group" id="group"
+                                        class="paceflow-select"
+                                        multiple="multiple"
+                                        placeholder="Select Group">
+                                    <t t-foreach="groups or []" t-as="group">
+                                        <option t-att-value="group.id">
+                                            <t t-esc="group.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                                <a href="/my/create_group" title="Create a Group">
+                                    <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                         width="18" height="18"
+                                         class="position-absolute"
+                                         style="top: 12px; right: 15px"/>
+                                </a>
+                            </div>
+
+                            <select name="highestStd" id="highestStd"
+                                    class="paceflow-select"
+                                    placeholder="Highest Standard Played">
+                                <option value="" selected="selected">
+                                    Highest Standard Played
+                                </option>
+                                <option value="professional">Professional
+                                </option>
+                                <option value="country_academy">Country
+                                    Academy
+                                </option>
+                                <option value="country_age_group">Country Age
+                                    Group
+                                </option>
+                                <option value="club_cricket">Club Cricket
+                                </option>
+                                <option value="non_competitive">
+                                    Non-Competitive
+                                </option>
+                            </select>
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <button type="submit"
+                                        class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                    Create
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </t>
+    </template>
+
+
+    <!--            NEW EDIT DESIGNNN-->
+
+    <template id="child_edit_form_template" name="Edit">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a t-attf-href="/my/child_cont">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Player Details
+                        </h1>
+                    </div>
+                </div>
+                <form id="athlete_edit_form" action="/my/submit_details"
+                      method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="child_id"
+                               t-att-value="child.id"/>
+                        <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="picture">
+                                        <t t-if="child.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 width="100" height="100"
+                                                 class="paceflow-profile-section__photo"
+                                                 t-att-src="image_data_uri(child.partner_id.image_1024)"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                        <t t-if="not child.partner_id.image_1024">
+                                            <img id="profile_picture"
+                                                 class="paceflow-profile-section__camera"
+                                                 src="/paceflow/static/description/images/ui/camera.png"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                    </label>
+                                    <input id="picture"
+                                           style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 col-md-12 col-lg-6 mx-auto">
+                            <input type="text" name="name" id="firstName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="First Name*"
+                                   t-att-value="child.name"/>
+                            <input type="text" name="lastname" id="lastName"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Last Name*"
+                                   t-att-value="child.last_name"/>
+                            <input type="email" name="email" id="email"
+                                   class="paceflow-form-control paceflow-form-control--max-width"
+                                   placeholder="Email*"
+                                   t-att-value="child.email"/>
+                            <div class="form-row">
+                                <div class="col-2 col-sm-2 col-md-2 col-lg-2 pr-1">
+                                    <input type="text" name="code" id="code"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           t-att-value="country_code"/>
+                                </div>
+                                <div class="col-10 col-sm-10 col-md-10 col-lg-10 pl-1">
+                                    <input type="text" name="phone" id="phone"
+                                           class="paceflow-form-control paceflow-form-control--max-width"
+                                           t-att-value="number"/>
+                                </div>
+                            </div>
+
+                            <!--                            PLAYER HAND  -->
+
+                            <select t-if="client_view" name="hand" id="hand"
+                                    class="paceflow-select"
+                                    placeholder="Player Hand">
+                                <t t-if="child.partner_id.hand">
+                                    <t t-if="child.partner_id.hand == 'left'">
+                                        <option value="left"
+                                                selected="selected">Left Handed
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="left">
+                                            Left Handed
+                                        </option>
+                                    </t>
+                                    <t t-if="child.partner_id.hand == 'right'">
+                                        <option value="right"
+                                                selected="selected">Right Handed
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="right">Right Handed
+                                        </option>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option value="left">Left Handed
+                                    </option>
+                                    <option value="right">Right Handed
+                                    </option>
+                                </t>
+                            </select>
+                            <select t-if="parent_view"
+                                    class="paceflow-select"
+                                    placeholder="Player Hand"
+                                    disabled="true">
+                                <t t-if="child.partner_id.hand">
+                                    <t t-if="child.partner_id.hand == 'left'">
+                                        <option value="left"
+                                                selected="selected">Left Handed
+                                        </option>
+                                    </t>
+                                    <t t-if="child.partner_id.hand == 'right'">
+                                        <option value="right"
+                                                selected="selected">Right Handed
+                                        </option>
+                                    </t>
+                                </t>
+                            </select>
+
+                            <select t-if="client_view"
+                                    name="parents" id="parents"
+                                    class="paceflow-select"
+                                    multiple="multiple"
+                                    placeholder="Parents*">
+                                <t t-if="child_parents"
+                                   t-foreach="child_parents or []"
+                                   t-as="child_parent">
+                                    <option selected="selected"
+                                            t-att-value="child_parent.id">
+                                        <t t-esc="child_parent.name"/>
+                                    </option>
+                                </t>
+                                <t t-foreach="parents or []"
+                                   t-as="parent">
+                                    <option t-att-value="parent.id">
+                                        <t t-esc="parent.name"/>
+                                    </option>
+                                </t>
+                            </select>
+
+                            <input type="date" name="dob" id="dob"
+                                   class="paceflow-form-control paceflow-form-control--max-width paceflow-datepicker"
+                                   t-att-value="child.dob"/>
+
+                            <select t-if="client_view"
+                                    name="groups" id="groups"
+                                    class="paceflow-select"
+                                    multiple="multiple"
+                                    placeholder="Groups*">
+                                <t t-if="child_groups"
+                                   t-foreach="child_groups or []"
+                                   t-as="child_group">
+                                    <option selected="selected"
+                                            t-att-value="child_group.id">
+                                        <t t-esc="child_group.name"/>
+                                    </option>
+                                </t>
+                                <t t-foreach="groups or []"
+                                   t-as="group">
+                                    <option t-att-value="group.id">
+                                        <t t-esc="group.name"/>
+                                    </option>
+                                </t>
+                            </select>
+
+                            <select t-if="parent_view"
+                                    class="paceflow-select"
+                                    multiple="multiple"
+                                    placeholder="Groups*"
+                                    disabled="true">
+                                <t t-if="child_groups"
+                                   t-foreach="child_groups or []"
+                                   t-as="child_group">
+                                    <option selected="selected"
+                                            t-att-value="child_group.id">
+                                        <t t-esc="child_group.name"/>
+                                    </option>
+                                </t>
+                            </select>
+
+                            <select t-if="client_view"
+                                    name="highestStd" id="highestStd"
+                                    class="paceflow-select"
+                                    placeholder="Highest Standard Played">
+                                <t t-if="child.highest_standard">
+                                    <t t-if="child.highest_standard == 'professional'">
+                                        <option value="professional"
+                                                selected="selected">Professional
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="professional">
+                                            Professional
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_academy'">
+                                        <option value="country_academy"
+                                                selected="selected">Country
+                                            Academy
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="country_academy">Country
+                                            Academy
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_age_group'">
+                                        <option value="country_age_group"
+                                                selected="selected">Country Age
+                                            Group
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="country_age_group">
+                                            Country Age Group
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'club_cricket'">
+                                        <option value="club_cricket"
+                                                selected="selected">Club Cricket
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="club_cricket">Club
+                                            Cricket
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'non_competitive'">
+                                        <option value="non_competitive"
+                                                selected="selected">
+                                            Non-Competitive
+                                        </option>
+                                    </t>
+                                    <t t-else="">
+                                        <option value="non_competitive">
+                                            Non-Competitive
+                                        </option>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <option value="professional">Professional
+                                    </option>
+                                    <option value="country_academy">Country
+                                        Academy
+                                    </option>
+                                    <option value="country_age_group">Country
+                                        Age Group
+                                    </option>
+                                    <option value="club_cricket">Club Cricket
+                                    </option>
+                                    <option value="non_competitive">
+                                        Non-Competitive
+                                    </option>
+                                </t>
+                            </select>
+
+                            <select t-if="parent_view"
+                                    class="paceflow-select"
+                                    placeholder="Highest Standard Played"
+                                    disabled="true">
+                                <t t-if="child.highest_standard">
+                                    <t t-if="child.highest_standard == 'professional'">
+                                        <option value="professional"
+                                                selected="selected">Professional
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_academy'">
+                                        <option value="country_academy"
+                                                selected="selected">Country
+                                            Academy
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'country_age_group'">
+                                        <option value="country_age_group"
+                                                selected="selected">Country Age
+                                            Group
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'club_cricket'">
+                                        <option value="club_cricket"
+                                                selected="selected">Club Cricket
+                                        </option>
+                                    </t>
+                                    <t t-if="child.highest_standard == 'non_competitive'">
+                                        <option value="non_competitive"
+                                                selected="selected">
+                                            Non-Competitive
+                                        </option>
+                                    </t>
+                                </t>
+                            </select>
+
+                            <div class="w-100 d-flex justify-content-center align-items-center">
+                                <button type="submit"
+                                        class="paceflow-btn paceflow-btn--primary mt-4 mx-auto">
+                                    Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+        </t>
+    </template>
+</odoo>

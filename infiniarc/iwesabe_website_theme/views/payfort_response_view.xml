@@ -1,0 +1,24 @@
+<odoo>
+    <template id="payfort_response_view">
+        <t t-call="iwesabe_website_theme.infiniarc_frontend_layout">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-8 p-4 d-flex justify-content-center align-items-center">
+                    <div class="ia-success__message">
+                        <h1 class="ia-response__title">Order Placed Successfully</h1>
+<!--                        <t t-foreach="order" t-as="order_val">-->
+<!--&lt;!&ndash;                            <span class="ia-response__order-id">Order ID:&ndash;&gt;-->
+<!--&lt;!&ndash;                                <t t-esc="order_val.display_name"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            </span>&ndash;&gt;-->
+<!--                        </t>-->
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 p-4 d-flex justify-content-center align-items-center">
+                    <img src="/iwesabe_website_theme/static/src/img/banks/confirmed.svg" width="245" height="289"
+                         class="ia-success__hero" alt="Order Placed"/>
+                </div>
+            </div>
+
+
+        </t>
+    </template>
+</odoo>

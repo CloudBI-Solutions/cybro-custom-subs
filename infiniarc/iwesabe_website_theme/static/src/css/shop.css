@@ -1,0 +1,187 @@
+.fa {
+	/*font-family: "FontAwesome" !important;*/
+}
+
+.o_wsale_apply_list.active,.o_wsale_apply_grid.active {
+	color: black !important;
+}
+.te_custom_h_shop_container .te_shop_breadcrumb{
+	background-color: #1e1f24 !important;
+}
+.te_shop_breadcrumb .breadcrumb {
+	line-height: 3;
+}
+.breadcrumb{
+background-color: inherit !important;
+}
+.te_no_products h3{
+	color: #fff !important;
+}
+#products_grid .te_theme_button {
+	font-weight: 900;
+}
+.te_quick_view,.o_add_wishlist,.o_add_compare {
+	color: #000 !important;
+}
+
+#products_grid .te_shop_grid {
+	padding: 15px !important;
+}
+
+#products_grid .te_shop_grid .te_product_info .o_wsale_product_btn .btn:hover {
+	background-color: #cc181e !important;
+	color: white !important;
+}
+
+.o_wsale_products_grid_table_wrapper .oe_product.te_shop_grid .te_product_info{
+	background-color: #1e1f24 !important;
+}
+#products_grid .table .o_wsale_product_grid_wrapper {
+	border: none;
+	transition: transform .2s;
+}
+#products_grid .table .o_wsale_product_grid_wrapper:hover {
+	transform: scale(1.05);
+	z-index: 38;
+}
+#products_grid .o_wsale_products_grid_table_wrapper > .table .o_wsale_product_grid_wrapper > *.card {
+	border-bottom: none;
+}
+#products_grid .o_wsale_product_grid_wrapper:hover {
+	box-shadow: none;
+}
+#products_grid .table .o_wsale_product_grid_wrapper .card.oe_product_cart:hover .o_wsale_product_information {
+	background-color: #1e1f24 !important;
+}
+.o_wsale_product_information .te_p_sm{
+	color: white;
+	font-weight: bold;
+}
+#mainSlider .owl-carousel,
+#thumbnailSlider .owl-carousel{
+	display: block !important;
+}
+.o_wsale_product_btn {
+	display: none;
+}
+.oe_product_image img {
+	background-color: transparent !important;
+}
+.card.oe_product_cart {
+	background-color: transparent !important;
+}
+.oe_product_image.card-body {
+	background-color: transparent !important;
+}
+#products_grid .te_shop_grid h6.o_wsale_products_item_title .product_name {
+	-webkit-line-clamp: 2;
+	height: 48px;
+	color: #ce1922 !important;
+	font-weight: bolder;
+	font-size: 15px;
+}
+.o_wsale_product_information .product_price {
+ 	display: none !important; 
+}
+.o_wsale_product_information .oe_subdescription{
+	display: none !important;
+}
+.product-price {
+	color: #fff ;
+	text-align: center;
+	font-size: 18px;
+}
+.product-price .offer-price {
+	color: #fff ;
+	font-weight: bolder;
+	font-size: 18px;
+}
+
+.product-price del{
+	color:#afafaf !important;
+	font-weight: bolder;
+	font-size: 14px;
+}
+.o_wsale_product_information .vat {
+	color: #a1a1a1;
+	text-align: center;
+	margin-top: -15px;
+	font-size: 12px;
+	font-weight: 300;
+}
+.o_wsale_product_information .quick {
+	position: absolute;
+	text-align: center;
+	width: 100%;
+}
+.o_wsale_product_information .quick a {
+	font-size: 0.8rem;
+	font-weight: 500;
+	color: #d2d2d2 !important;
+}
+
+.o_wsale_product_information .btn-group {
+    margin: 1rem 0;
+}
+.o_wsale_product_information .btn-group .show-toaster-cart {
+	padding-top: 15px;
+	background: linear-gradient(90deg, #212529 0%, #c22929 100%);
+}
+.show-toaster-cart{
+	padding: 9px;
+}
+.o_wsale_product_information .btn-group .customize {
+	background: #ce1922;
+	font-size: 0.8rem;
+	font-weight: 600;
+	color: #fff;
+	padding: 1rem 2rem;
+}
+.o_wsale_products_item_title {
+	text-align: center !important;
+}
+.oe_website_sale.shop-page {
+	width: 90%;
+}
+.o_wsale_products_grid_table_wrapper .table th, .table td {
+	border-bottom: none !important;
+}
+#products_grid_before{
+	height: 100% !important;
+}
+.customize{
+	border-radius: 0px 5px 5px 0px;
+}
+.te_product_breadcrumb{
+	background-color: transparent;
+}
+.te_product_breadcrumb .breadcrumb li.breadcrumb-item > a,
+.te_product_breadcrumb .breadcrumb li.breadcrumb-item > span{
+	color: #fff !important;
+}
+.product-buttons{
+	/*display: flow-root;*/
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+
+}
+.js_main_product .product_price{
+	background: transparent;
+    text-align: inherit;
+}
+.te_s_shipping_info .text-muted,
+.te_s_shipping_info .text-black,
+.te_p_sku .js_sku_div{
+	color: inherit !important;	
+}
+.specification_line{
+border-radius: 30px;
+    border-bottom: 1px solid #6c757d9c;
+    line-height: 0;
+    padding: 0px 15px;
+}
+.specification_line .col-lg-5,
+.specification_line .col-lg-7{
+	line-height: 2;
+}

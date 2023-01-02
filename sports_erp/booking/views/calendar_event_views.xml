@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_calendar_event_form_inherit" model="ir.ui.view">
+            <field name="name">view.calendar.event.form.inherit</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <div>
+                        <field name="has_booking"/>
+                        <label for="has_booking"/>
+                        <field name="booking_id" readonly="1" attrs="{'invisible': [('has_booking', '=', False)]}"/>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='page_options']" position="after">
+                    <page string="Booking" name="booking">
+                        <group>
+                            <group>
+                                <field name="booking_id"/>
+                                <field name="venue_id"/>
+                                <field name="coach_id"/>
+                            </group>
+                            <group/>
+                            <field name="event_description"/>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//page[@name='page_options']" position="after">
+                    <page string="Checklist" name="checklist">
+                        <group>
+                            <group>
+                                <field name="checklist_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="description" invisible="1"/>
+                                        <field name="state" invisible="1"/>
+                                        <button string="Complete" name="btn_check" type="object" icon="fa-check" attrs="{'invisible':[('state','=','completed')]}" />
+                                    </tree>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="checklist" widget="percentage"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+<!--                <xpath expr="//page//field[@name='booking_id']" position="before">-->
+<!--                    <field name="org_planning_id"/>-->
+<!--                </xpath>-->
+            </field>
+        </record>
+
+        <record id="view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='sales_purchases']" position='after'>
+                    <page string="Bookings">
+                        <field name="booking_ids">
+                            <tree>
+                                <field name="sequence"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+                <!--        checklist form view-->
+        <record model="ir.ui.view" id="calendar_checklist_form_view">
+            <field name="name">Checklist</field>
+            <field name="model">calendar.checklist</field>
+            <field name="arch" type="xml">
+                <form string="Checklist">
+                    <sheet>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name"/>
+                        </div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="event_id"/>
+                        </group>
+                    </group>
+                    <separator string="Description"/>
+                    <field name="description" nolabel="1"/>
+                </sheet>
+                </form>
+            </field>
+        </record>
+        <!--        checklist tree view-->
+        <record model="ir.ui.view" id="calendar_checklist_tree_view">
+            <field name="name">Checklist</field>
+            <field name="model">calendar.checklist</field>
+            <field name="arch" type="xml">
+                <tree string="checklist" sample="1" multi_edit="1">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        calendar checklist menu action-->
+        <record id="calendar_checklist_menu_action" model="ir.actions.act_window">
+            <field name="name">Calendar Checklist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">calendar.checklist</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No checklist found. Let's create one!
+                </p>
+            </field>
+        </record>
+
+        <record id="opportunity_booking_form" model="ir.ui.view">
+            <field name="name">crm.lead.oppor.inherited.booking</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_deadline']" position="before">
+                    <field name="product_ids" widget="many2many_tags"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

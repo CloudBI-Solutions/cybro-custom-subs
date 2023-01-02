@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!--      child  form view-->
+        <record id="child_view_form" model="ir.ui.view">
+        	<field name="name">child.view.form</field>
+        	<field name="model">paceflow.child</field>
+			<field name="arch" type="xml">
+                <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="view_client"
+                                string="Coach" type="object"
+                                class="oe_stat_button" icon="fa-user">
+                        </button>
+                    </div>
+                    <field name="image_1920" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <h2>
+                            <field name="last_name"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="phone"/>
+                            <field name="dob"/>
+                        </group>
+                        <group>
+                            <field name="user_id" readonly="1"/>
+                            <field name="email"/>
+                            <field name="highest_standard"/>
+                        </group>
+                    </group>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                    <notebook>
+                        <page name="coach" string="Coach">
+                        </page>
+                        <page name="group" string="Groups">
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+			</field>
+        </record>
+        <!--      clients  tree view-->
+        <record id='child_view_tree' model='ir.ui.view'>
+            <field name="name">child_tree</field>
+            <field name="model">paceflow.child</field>
+            <field name="arch" type="xml">
+                <tree string="Player" sample="1">
+                    <field name="partner_id"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                </tree>
+            </field>
+        </record>
+        <!--        child menu action-->
+        <record id="all_child_menu_action" model="ir.actions.act_window">
+            <field name="name">Player</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">paceflow.child</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inline_form">
+<!--        <head>-->
+<!--            <script src="https://js.braintreegateway.com/web/dropin/1.33.2/js/dropin.min.js"></script>-->
+<!--        </head>-->
+<!--        <body>-->
+<!--            <div id="dropin-container"></div>-->
+<!--        </body>-->
+    </template>
+</odoo>

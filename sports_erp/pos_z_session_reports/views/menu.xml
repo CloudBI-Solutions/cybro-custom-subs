@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="session_report"
+              name="Sessions"
+              parent="point_of_sale.menu_point_rep"
+              action="session_report_action"/>
+</odoo>

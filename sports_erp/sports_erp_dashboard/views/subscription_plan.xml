@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="subscription_plan_template">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscriptions"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscriptions
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscription_plans"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscription Plans
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="se-wrapper">
+
+                    <div class="col-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__title-container">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Subscription Plans
+                                </h2>
+                                <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                    <t t-esc="total"/>
+                                </span>
+                            </div>
+
+                            <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        <span class="title--show">Go To</span>
+                                    </button>
+                                    <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/subscriptions/">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Subscriptions</span>
+                                        </a>
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/subscription_contracts/">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Subscription Contracts</span>
+                                        </a>
+                                        <a class="set-dropdown-item dropdown-item"
+                                           href="/my/subscription_products">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                 width="14" height="14"
+                                                 class="mr-3"/>
+                                            <span>Subscription Products</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button"
+                                            class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                            data-toggle="modal"
+                                            data-target="#addPlanModal"
+                                            aria-expanded="false">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                             width="18" height="18"
+                                             class="mr-2"/>
+                                        <span class="title--show">
+                                            Add New Subscription Plan
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="set-dashboard__table-options">
+                                    <a href="#"
+                                       class="set-button set-button--light set-dashboard__table-button mr-2">
+                                        <i class="fa fa-filter mr-2"/>Filter
+                                    </a>
+                                    <div class="set-dashboard__input-container">
+                                        <form class="o_wsale_products_searchbar_form"
+                                              method="get"
+                                              action="/my/subscription_plans">
+                                            <input type="search"
+                                                   name="search"
+                                                   id="myInput"
+                                                   placeholder="Search"
+                                                   class="set-dashboard__input-search"
+                                                   onFocus="myFunction()"
+                                                   autocomplete="off"
+                                                   onBlur="setTimeout(myFunction, 300);"
+                                                   onkeyup="filterFunction()"/>
+                                            <div id="myDropdown"
+                                                 class="dropdown-content">
+                                                <t t-foreach="total_subscription_plans"
+                                                   t-as="plans">
+                                                    <a t-att-href="'/my/subscription_plan_details/%s' % plans.id">
+                                                        <t t-esc="plans.name"/>
+                                                    </a>
+                                                </t>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                                <script>function
+                                    myFunction() {
+                                    document.getElementById("myDropdown").classList.toggle("show-div");
+                                    } function
+                                    filterFunction() {
+                                    var input, filter,
+                                    ul, li, a, i; input
+                                    =
+                                    document.getElementById("myInput");
+                                    filter =
+                                    input.value.toUpperCase();
+                                    div =
+                                    document.getElementById("myDropdown");
+                                    a =
+                                    div.getElementsByTagName("a");
+                                    for (i = 0; i
+                                    &lt; a.length
+                                    ; i++) { txtValue =
+                                    a[i].textContent ||
+                                    a[i].innerText; if
+                                    (txtValue.toUpperCase().indexOf(filter)
+                                    > -1) {
+                                    a[i].style.display =
+                                    ""; } else {
+                                    a[i].style.display =
+                                    "none"; } } }
+                                </script>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <table class="set-dashboard__table mt-3">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select-all"/>
+                                            </th>
+                                            <th>Name</th>
+                                            <th>Duration</th>
+                                            <th>Price</th>
+                                            <th>Number of Sessions</th>
+                                            <th>Number of One to One</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="subscription_plans"
+                                           t-as="plans">
+                                            <tr>
+                                                <td>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select"/>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="plans.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Subscription
+                                                            Plan
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--blue set-badge--wide">
+                                                            <t t-esc="plans.duration"/>
+                                                            <t t-esc="plans.unit"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--green set-badge--wide">
+                                                            <t t-esc="plans.plan_amount"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--gold set-badge--wide">
+                                                            <t t-esc="plans.sessions"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                        <span class="set-badge set-badge--gold set-badge--wide">
+                                                            <t t-esc="plans.one2one"/>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="set-dashboard__table-actions">
+                                                        <a t-att-href="'/my/subscription_plan_details/%s' % plans.id"
+                                                           class="set-dashboard__table-action mr-4">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Edit"
+                                                                 title="Edit"/>
+                                                        </a>
+                                                        <a t-att-href="'/my/delete_subscription_plan/%s' % plans.id"
+                                                           class="set-dashboard__table-action">
+                                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                 class="set-dashboard__table-action-icon"
+                                                                 alt="Remove"
+                                                                 title="Remove"/>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+
+                                <div class="set-dashboard__table-footer">
+                                    <span class="set-dashboard__page-position set-text set-text--grey">
+                                        Page
+                                        <span t-out="pager['page']['num']"/>
+                                        of
+                                        <t t-if="pager['page_count'] > 1">
+                                            <span t-out="pager['pages'][-1]['num']"/>
+                                        </t>
+                                        <t t-else="">
+                                            <span t-out="pager['page']['num']"/>
+                                        </t>
+                                    </span>
+                                    <ul
+                                            class="set-dashboard__pagination">
+                                        <t t-foreach="pager['pages']"
+                                           t-as="page">
+                                            <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                <a t-att-href="page['url']"
+                                                   t-attf-class="page-link #{extraLinkClass}"
+                                                   t-out="page['num']"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal se-modal" id="addPlanModal"
+                         tabindex="-1" role="dialog"
+                         aria-labelledby="addPlanLabel" aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addPlanModalLabel">Add New
+                                        Subscription Plan
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/subscription_plan"
+                                      method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="contract_name">
+                                                    Plan Name
+                                                </label>
+                                                <input type="text"
+                                                       class="form-control se-form-control"
+                                                       id="plan_name"
+                                                       name="plan_name"/>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div>
+                                            <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                style="font-size: 1.15rem !important;">
+                                                Plan Information
+                                            </h5>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="duration">
+                                                    Duration
+                                                </label>
+                                                <div>
+                                                    <div style="width: 60%; float:left">
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               name="duration"
+                                                               id="duration"
+                                                               min="0"
+                                                               value="0"
+                                                               style="text-align: end;"
+                                                        />
+                                                    </div>
+                                                    <div style="width: 35%; float:right">
+                                                        <select class="form-control se-form-control"
+                                                                id="duration_type"
+                                                                name="duration_type">
+                                                            <option value="day">
+                                                                Day(s)
+                                                            </option>
+                                                            <option value="week">
+                                                                Week(s)
+                                                            </option>
+                                                            <option value="month">
+                                                                Month(s)
+                                                            </option>
+                                                            <option value="year">
+                                                                Year(s)
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="price">
+                                                    Price
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       step="0.01"
+                                                       name="price"
+                                                       id="price"
+                                                       value="0.00"
+                                                       style="text-align: end;"
+                                                />
+                                                <input type="text"
+                                                       t-att-value="request.env.company.currency_id.symbol"
+                                                       id="currency_symbol"
+                                                       disabled="1"
+                                                />
+                                            </div>
+                                            <div id="never_expire_div"
+                                                 class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="never_expires">
+                                                    Never Expire
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="never_expires"
+                                                       name="never_expires"
+                                                       onclick="hide_show_billing_cycles()"/>
+                                            </div>
+                                            <div id="billing_cycle_div"
+                                                 class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="billing_cycles">
+                                                    Number of Billing Cycles
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="billing_cycles"
+                                                       id="billing_cycles"
+                                                       style="text-align: end;"
+                                                       value="0"
+                                                       min="0"
+                                                />
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="start_immediate">
+                                                    Start Immediately
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="start_immediate"
+                                                       name="start_immediate"
+                                                       onclick="start_immediate_fun()"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="has_trial">
+                                                    Has Trial Period
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="has_trial"
+                                                       name="has_trial"
+                                                       onclick="hasTrial()"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="billing_month_day">
+                                                    Billing Day of the Month
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="billing_month_day"
+                                                       id="billing_month_day"
+                                                       style="text-align: end;"
+                                                       value="0"
+                                                       min="0"
+                                                />
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3"
+                                                 id="duration_trial"
+                                                 style="display: none;">
+                                                <label class="se-form-label"
+                                                       for="trial_duration">
+                                                    Trial Duration
+                                                </label>
+                                                <div>
+                                                    <div style="width: 60%; float:left">
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               name="trial_duration"
+                                                               id="trial_duration"
+                                                               min="0"
+                                                               value="0"
+                                                               style="text-align: end;"
+                                                        />
+                                                    </div>
+                                                    <div style="width: 35%; float:right">
+                                                        <select class="form-control se-form-control"
+                                                                id="trial_duration_type"
+                                                                name="trial_duration_type">
+                                                            <option value="day">
+                                                                Day(s)
+                                                            </option>
+                                                            <option value="week">
+                                                                Week(s)
+                                                            </option>
+                                                            <option value="month">
+                                                                Month(s)
+                                                            </option>
+                                                            <option value="year">
+                                                                Year(s)
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="no_of_sessions">
+                                                    No of Sessions
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="no_of_sessions"
+                                                       id="no_of_sessions"
+                                                       style="text-align: end;"
+                                                       value="8"
+                                                />
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="one2one">
+                                                    No of One 2 One
+                                                </label>
+                                                <input type="number"
+                                                       class="form-control se-form-control"
+                                                       name="one2one"
+                                                       id="one2one"
+                                                       style="text-align: end;"
+                                                       value="4"
+                                                />
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="task_stages">
+                                                    Task Stages
+                                                </label>
+                                                <t t-set="tasks"
+                                                   t-value="request.env['project.task.type'].sudo().search([])"/>
+                                                <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple"
+                                                        id="task_stages"
+                                                        name="task_stages">
+                                                    <t t-foreach="tasks"
+                                                       t-as="task">
+                                                        <option t-att-value="task.id">
+                                                            <t t-esc="task.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="project_template_id">
+                                                    Project
+                                                </label>
+                                                <t t-set="projects"
+                                                   t-value="request.env['project.project'].sudo().search([('active', '=', True),('is_template', '=', True)])"/>
+                                                <select class="form-control se-form-control"
+                                                        id="project_template_id"
+                                                        name="project_template_id">
+                                                    <t t-foreach="projects"
+                                                       t-as="project">
+                                                        <option t-att-value="project.id">
+                                                            <t t-esc="project.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <hr/>
+
+                                        <div>
+                                            <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                style="font-size: 1.15rem !important;">
+                                                Product Related Detail
+                                            </h5>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="override_product_price">
+                                                    Override Product Price
+                                                </label>
+                                                <input type="checkbox"
+                                                       class="form-control se-form-control"
+                                                       id="override_product_price"
+                                                       name="override_product_price"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer d-flex justify-content-between align-items-center">
+                                            <a href="#"
+                                               class="font-weight-bold se-link--unstyled text-muted">
+                                                <i class="fa fa-cog mr-2"/>
+                                                Advanced Details
+                                            </a>
+                                            <input type="submit"
+                                                   class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                   value="Add Plan"
+                                                   style="border-radius: 5px !important;"/>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <script>
+                    function hasTrial() {
+                    var trialDuration =
+                    document.getElementById("duration_trial");
+                    var trialCheck = document.getElementById("has_trial");
+                    var startImmediate =
+                    document.getElementById("start_immediate");
+                    if (trialCheck.checked == true){
+                    trialDuration.style.display = "block";
+                    startImmediate.checked = false;
+
+                    }
+                    if (trialCheck.checked == false){
+                    document.getElementById("trial_duration").value = 0;
+                    trialDuration.style.display = "none";
+                    }
+                    }
+                    function start_immediate_fun(){
+                    var selfBox = document.getElementById("start_immediate");
+                    var trialCheck = document.getElementById("has_trial");
+                    var trialDuration =
+                    document.getElementById("duration_trial");
+                    if (selfBox.checked == true){
+                    trialCheck.checked = false;
+                    document.getElementById("trial_duration").value = 0;
+                    trialDuration.style.display = "none";
+                    }
+                    }
+                    function hide_show_billing_cycles(){
+                    var checkBox =
+                    document.getElementById("never_expires");
+                    var div =
+                    document.getElementById("billing_cycle_div");
+                    if (checkBox.checked == true){
+                    document.getElementById("billing_cycles").value = 0;
+                    div.style.display = "none";
+                    } else {
+                    div.style.display = "block";
+                    }
+                    }
+                    function hide_show_plans()
+                    {
+                    var element =
+                    document.getElementById("se-sidebar");
+                    var main = document.getElementById("main-container");
+                    console.log("amin", main);
+                    if
+                    (main.classList.contains("main-container--margin")){
+                    main.classList.toggle("main-container--margin");
+                    }
+                    if
+                    (element.classList.contains("se-sidebar--show")){
+                    element.classList.toggle("se-sidebar--show");
+                    } };
+                </script>
+            </t>
+        </template>
+
+        <!--        PLAN DETAILS -->
+
+        <template id="subscription_plan_details_template"
+                  name="Subscription Plan details">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscriptions"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscriptions
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/subscription_plans"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscription Plans
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a t-att-href="'/my/subscription_plan_details/%s' % plan.id"
+                                   class="set-dashboard__breadcrumb-link">
+                                    <t t-esc="plan.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+                        <form id="contract_edit_form"
+                              action="/my/update_subscription_plan"
+                              method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="plan_id"
+                                   t-att-value="plan.id"/>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="se-dashboard">
+                                        <div class="w-100">
+                                            <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                                <span>
+                                                    <t t-esc="plan.name"/>
+                                                </span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul class="nav nav-tabs" id="myTab"
+                                        role="tablist">
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link active"
+                                                    id="home-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#home"
+                                                    type="button" role="tab"
+                                                    aria-controls="home"
+                                                    aria-selected="true">
+                                                Plan
+                                                Information
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link"
+                                                    id="freeze-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#freeze"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="profile"
+                                                    aria-selected="false">
+                                                Product Related Detail
+                                            </button>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active"
+                                             id="home" role="tabpanel"
+                                             aria-labelledby="home-tab">
+
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="name">Name
+                                                        </label>
+                                                        <input type="text"
+                                                               class="form-control se-form-control"
+                                                               id="name"
+                                                               name="name"
+                                                               t-att-value="plan.name"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="duration">
+                                                            Duration
+                                                        </label>
+                                                        <div>
+                                                            <div style="width: 60%; float:left">
+                                                                <input type="number"
+                                                                       class="form-control se-form-control"
+                                                                       name="duration"
+                                                                       id="duration"
+                                                                       min="0"
+                                                                       t-att-value="plan.duration"
+                                                                       style="text-align: end;"
+                                                                />
+                                                            </div>
+                                                            <div style="width: 35%; float:right">
+                                                                <select class="form-control se-form-control"
+                                                                        id="duration_type"
+                                                                        name="duration_type">
+                                                                    <option value="day"
+                                                                            t-att-selected="plan.unit == 'day'">
+                                                                        Day(s)
+                                                                    </option>
+                                                                    <option value="week"
+                                                                            t-att-selected="plan.unit == 'week'">
+                                                                        Week(s)
+                                                                    </option>
+                                                                    <option value="month"
+                                                                            t-att-selected="plan.unit == 'month'">
+                                                                        Month(s)
+                                                                    </option>
+                                                                    <option value="year"
+                                                                            t-att-selected="plan.unit == 'year'">
+                                                                        Year(s)
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="never_expire_div"
+                                                         class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="never_expires">
+                                                            Never Expire
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               name="never_expires"
+                                                               id="never_expires"
+                                                               class="form-control se-form-control"
+                                                               t-att-checked="'checked' if plan.never_expires else None"
+                                                               onclick="hide_show_billing_cycles()"
+                                                        />
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="start_immediate">
+                                                            Start Immediately
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               name="start_immediate"
+                                                               id="start_immediate"
+                                                               class="form-control se-form-control"
+                                                               t-att-checked="'checked' if plan.start_immediately else None"
+                                                               onclick="start_immediate_fun()"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="month_billing_day">
+                                                            Billing Day of Month
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="month_billing_day"
+                                                               style="text-align: end;"
+                                                               name="month_billing_day"
+                                                               t-att-value="plan.month_billing_day if plan.month_billing_day else '0'"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="price">Price
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="price"
+                                                               name="price"
+                                                               step="0.01"
+                                                               t-att-value="plan.plan_amount"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="has_trial">
+                                                            Has trail period
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               name="has_trial"
+                                                               id="has_trial"
+                                                               class="form-control se-form-control"
+                                                               t-att-checked="'checked' if plan.trial_period else None"
+                                                               onclick="hasTrial()"
+                                                        />
+                                                    </div>
+
+                                                    <div class="form-group py-3"
+                                                         id="duration_trial"
+                                                         t-attf-class="{{ '' if plan.trial_period else 'd-none' }}"
+                                                    >
+                                                        <label class="se-form-label"
+                                                               for="trial_duration">
+                                                            Trial Duration
+                                                        </label>
+                                                        <div>
+                                                            <div style="width: 60%; float:left">
+                                                                <input type="number"
+                                                                       class="form-control se-form-control"
+                                                                       name="trial_duration"
+                                                                       id="trial_duration"
+                                                                       min="0"
+                                                                       t-att-value="plan.trial_duration if plan.trial_duration else '0'"
+                                                                       style="text-align: end;"
+                                                                />
+                                                            </div>
+                                                            <div style="width: 35%; float:right">
+                                                                <select class="form-control se-form-control"
+                                                                        id="trial_duration_unit"
+                                                                        name="trial_duration_unit">
+                                                                    <option value="day"
+                                                                            t-att-selected="plan.trial_duration_unit == 'day'">
+                                                                        Day(s)
+                                                                    </option>
+                                                                    <option value="week"
+                                                                            t-att-selected="plan.trial_duration_unit == 'week'">
+                                                                        Week(s)
+                                                                    </option>
+                                                                    <option value="month"
+                                                                            t-att-selected="plan.trial_duration_unit == 'month'">
+                                                                        Month(s)
+                                                                    </option>
+                                                                    <option value="year"
+                                                                            t-att-selected="plan.trial_duration_unit == 'year'">
+                                                                        Year(s)
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="billing_cycle_div"
+                                                         class="form-group py-3"
+                                                         t-attf-class="{{ 'd-none' if plan.never_expires else '' }}">
+                                                        <label class="se-form-label"
+                                                               for="num_billing_cycle">
+                                                            Number of billing
+                                                            cycles
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="num_billing_cycles"
+                                                               name="num_billing_cycles"
+                                                               t-att-value="plan.num_billing_cycle if plan.num_billing_cycle else '0'"/>
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="sessions">
+                                                            Number of sessions
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="sessions"
+                                                               name="sessions"
+                                                               min="0"
+                                                               t-att-value="plan.sessions"/>
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="one2one">
+                                                            Number of one to one
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="one2one"
+                                                               name="one2one"
+                                                               min="0"
+                                                               t-att-value="plan.one2one"/>
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="stage_ids">
+                                                            Task stages
+                                                        </label>
+                                                        <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                                                id="stage_ids"
+                                                                name="stage_ids"
+                                                                multiple="true"
+                                                                style="height: calc(1.5em + 0.75rem + 2px) !important;">
+                                                            <t t-foreach="plan.stage_ids or []"
+                                                               t-as="stage">
+                                                                <option selected="selected"
+                                                                        t-att-value="stage.id">
+                                                                    <t t-esc="stage.name"/>
+                                                                </option>
+                                                            </t>
+                                                            <t t-foreach="stages or []"
+                                                               t-as="stage">
+                                                                <option t-att-value="stage.id">
+                                                                    <t t-esc="stage.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="project_template_id">
+                                                            Project
+                                                        </label>
+                                                        <select class="form-control se-form-control"
+                                                                id="project_template_id"
+                                                                name="project_template_id">
+                                                            <option selected="1"
+                                                                    t-att-value="plan.project_template_id.id">
+                                                                <t t-esc="plan.project_template_id.name"/>
+                                                            </option>
+                                                            <t t-foreach="templates"
+                                                               t-as="template">
+                                                                <option t-att-value="template.id">
+                                                                    <t t-esc="template.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane fade"
+                                             id="freeze"
+                                             role="tabpanel"
+                                             aria-labelledby="freeze-tab">
+                                            <div class="row col-12 col-sm-12">
+                                                <div class="col-md-6 col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="se-form-label"
+                                                               for="override_product_price">
+                                                            Override Product
+                                                            Price
+                                                        </label>
+                                                        <p>
+                                                            <input type="checkbox"
+                                                                   name="override_product_price"
+                                                                   id="override_product_price"
+                                                                   class="form-control se-form-control"
+                                                                   t-att-checked="'checked' if plan.override_product_price else None"
+                                                            />
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                    <input type="submit"
+                                           style="float:right !important; border-radius: 5px !important;"
+                                           class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                           value="Update Plan"/>
+                                </div>
+                            </div>
+
+                            <script>
+                                function hasTrial() {
+                                var trialDuration =
+                                document.getElementById("duration_trial");
+                                var trialCheck =
+                                document.getElementById("has_trial");
+                                console.log("trial", trialCheck);
+                                var startImmediate =
+                                document.getElementById("start_immediate");
+                                if (trialCheck.checked == true){
+                                console.log("displayyyy");
+                                console.log('trial', trialDuration);
+                                trialDuration.classList.remove("d-none");
+                                startImmediate.checked = false;
+                                }
+                                if (trialCheck.checked == false){
+                                document.getElementById("trial_duration").value
+                                = 0;
+                                trialDuration.classList.add("d-none");
+                                }
+                                }
+                                function start_immediate_fun(){
+                                var selfBox =
+                                document.getElementById("start_immediate");
+                                var trialCheck =
+                                document.getElementById("has_trial");
+                                var trialDuration =
+                                document.getElementById("duration_trial");
+                                if (selfBox.checked == true){
+                                trialCheck.checked = false;
+                                document.getElementById("trial_duration").value
+                                = 0;
+                                trialDuration.style.display = "none";
+                                }
+                                }
+                                function hide_show_billing_cycles(){
+                                var checkBox =
+                                document.getElementById("never_expires");
+                                var div =
+                                document.getElementById("billing_cycle_div");
+                                if (checkBox.checked == true){
+                                document.getElementById("num_billing_cycles").value
+                                = 0;
+                                div.style.display = "none";
+                                } else {
+                                div.style.display = "block";
+                                }
+                                }
+                            </script>
+
+                        </form>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

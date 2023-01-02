@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="s_home_gallery_desc" name="Gallery Description">
+        <section class="col-sm-12 col-md-6 col-lg-4">
+            <a href="#" class="set-link set-link--unstyled">
+                <section>
+                    <div class="set-newscard">
+                        <section>
+                            <div class="set-newscard__image-container">
+                                <img class="set-newscard__image"
+                                     src="/sports_erp_dashboard/static/src/images/upload/news-1.jpeg"
+                                     alt="County Cricket Tournament  Next Saturday, Lancashire vs Somerst"/>
+                            </div>
+                        </section>
+                        <div class="set-newscard__details mt-2">
+                            <section>
+                                <span class="set-newscard__title">County
+                                    Cricket
+                                    Tournament Next Saturday, Lancashire vs
+                                    Somerst
+                                </span>
+                            </section>
+                            <section>
+                                <p class="set-newscard__description  mt-2">
+                                    Sed
+                                    feugiat feugiat justo at rhoncus. Donec
+                                    convallis mi,
+                                    at
+                                    tristique erat ultricies eget. In ut
+                                    elit
+                                    consequat, mollis quam eget, iaculis
+                                    arcu. Donec
+                                    blandit
+                                    id
+                                    arcu a c maximus.
+                                </p>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </a>
+        </section>
+    </template>
+
+    <template id="s_gallery_image" name="Gallery Image">
+        <section class="col-sm-12 col-md-6 col-lg-4">
+            <a href="#" class="set-link set-link--unstyled">
+                <div class="set-dasboard__gallery-tile">
+                    <section>
+                        <img src="/sports_erp_dashboard/static/src/images/upload/gallery-1.jpeg"
+                             class="set-dashboard__gallery-image"/>
+                    </section>
+                    <div class="set-dashboard__gallery-meta">
+                        <section>
+                            <span class="set-dashboard__gallery-title">
+                                Gallery Caption
+                            </span>
+                        </section>
+                    </div>
+                </div>
+            </a>
+        </section>
+    </template>
+
+    <template id="sports_erp_portal"
+              name="My Portal">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="set-dashboard__title-container">
+                <h2 class="set-dashboard__title">Home</h2>
+                <span>
+                    <a href="/my/edit_home_image">
+                        <i class="fa fa-edit"
+                           alt="Edit"
+                           title="Edit"/>
+                        Edit
+                    </a>
+                </span>
+            </div>
+
+            <div class="row">
+                <t t-call="sports_erp_dashboard.s_home_gallery_desc"/>
+                <t t-call="sports_erp_dashboard.s_home_gallery_desc"/>
+                <t t-call="sports_erp_dashboard.s_home_gallery_desc"/>
+            </div>
+            <div id="wrap" class="row oe_structure oe_empty"/>
+            <div class="set-dashboard__title-container">
+                <h2 class="set-dashboard__title">Gallery</h2>
+                <a href="/my/edit_gallery_image">
+                    <i class="fa fa-edit"
+                       alt="Edit"
+                       title="Edit"/>
+                    Edit
+                </a>
+            </div>
+            <div class="row">
+                <t t-call="sports_erp_dashboard.s_gallery_image"/>
+                <t t-call="sports_erp_dashboard.s_gallery_image"/>
+                <t t-call="sports_erp_dashboard.s_gallery_image"/>
+            </div>
+            <div id="wrap" class="row oe_structure oe_empty"/>
+        </t>
+    </template>
+
+    <template id="sport_erp_home_snippets" inherit_id="website.snippets">
+        <xpath expr="//t[@id='default_snippets']" position="inside">
+            <div id="snippet_home__sportERP" class="o_panel">
+                <div class="o_panel_header">SportERP</div>
+                <div class="o_panel_body">
+                    <t t-snippet="sports_erp_dashboard.s_home_gallery_desc"
+                       t-thumbnail="/sports_erp_dashboard/static/src/images/upload/news-1.jpeg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                    <t t-snippet="sports_erp_dashboard.s_gallery_image"
+                       t-thumbnail="/sports_erp_dashboard/static/src/images/upload/gallery-1.jpeg">
+                        <keywords>separator, divider</keywords>
+                    </t>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+</odoo>

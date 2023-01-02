@@ -1,0 +1,1074 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+        <record id="stage_assessment" model="badminto.assessment.stage">
+            <field name="name">Assessment</field>
+        </record>
+        <record id="stage_assigned" model="badminto.assessment.stage">
+            <field name="name">Assigned</field>
+        </record>
+        <record id="stage_in_progress" model="badminto.assessment.stage">
+            <field name="name">In Progress</field>
+        </record>
+        <record id="stage_done" model="badminto.assessment.stage">
+            <field name="name">Done</field>
+        </record>
+        <record id="stage_cancel" model="badminto.assessment.stage">
+            <field name="name">Cancel</field>
+        </record>
+        <record id="general_assessment" model="assessment.types">
+            <field name="name">General Assessment</field>
+        </record>
+        <record id="mental_assessment" model="assessment.types">
+            <field name="name">Mental Assessment</field>
+        </record>
+        <record id="physical_assessment" model="assessment.types">
+            <field name="name">Physical Assessment</field>
+        </record>
+        <record id="technical_assessment" model="assessment.types">
+            <field name="name">Technical Assessment</field>
+        </record>
+        <record id="tactical_assessment" model="assessment.types">
+            <field name="name">Tactical Assessment</field>
+        </record>
+        <record id="adaptation_assessment" model="assessment.types">
+            <field name="name">Adaptation</field>
+        </record>
+
+        <record id="in_service_technical" model="technical.configuration.types">
+            <field name="name">IN: Service</field>
+        </record>
+        <record id="in_receiving_technical" model="technical.configuration.types">
+            <field name="name">IN: Receiving</field>
+        </record>
+
+<!--        FNZ NAMES-->
+
+        <record id="fnz_to_forehand_technical" model="technical.configuration.types">
+            <field name="name">FNZ: TO: Forehand net kill</field>
+        </record>
+        <record id="fnz_co_forehand_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CO: Forehand net push</field>
+        </record>
+        <record id="fnz_co_offensive_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CO: Offensive forehand cross net</field>
+        </record>
+        <record id="fnz_co_forehand_offensive_lift_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CO: Forehand offensive lift</field>
+        </record>
+        <record id="fnz_co_forehand_straight_spin_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CO: Forehand straight spin</field>
+        </record>
+        <record id="fnz_co_forehand_reverse_spin_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CO: Forehand reverse spin</field>
+        </record>
+        <record id="fnz_co_net_block_technical" model="technical.configuration.types">
+            <field name="name">FNZ: 50/50 to CO: Net block</field>
+        </record>
+        <record id="fnz_forehand_reverse_spin_technical" model="technical.configuration.types">
+            <field name="name">FNZ: 50/50: Forehand reverse spin</field>
+        </record>
+        <record id="fnz_neutralisation_technical" model="technical.configuration.types">
+            <field name="name">FNZ: Neutralisation</field>
+        </record>
+        <record id="fnz_defensive_forehand_cross_net_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CD: Defensive forehand cross net</field>
+        </record>
+        <record id="fnz_defensive_forehand_lifts_technical" model="technical.configuration.types">
+            <field name="name">FNZ: CD: Defensive forehand lifts</field>
+        </record>
+        <record id="fnz_defensive_dive_technical" model="technical.configuration.types">
+            <field name="name">FNZ: TD: Defensive dive</field>
+        </record>
+
+<!--        BNZ NAMES-->
+
+        <record id="bnz_to_fnk_technical" model="technical.configuration.types">
+            <field name="name">BNZ: TO: Forehand net kill</field>
+        </record>
+        <record id="bnz_co_fnp_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CO: Forehand net push</field>
+        </record>
+        <record id="bnz_co_ofcn_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CO: Offensive forehand cross net</field>
+        </record>
+        <record id="bnz_co_fol_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CO: Forehand offensive lift</field>
+        </record>
+        <record id="bnz_co_fss_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CO: Forehand straight spin</field>
+        </record>
+        <record id="bnz_co_frs_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CO: Forehand reverse spin</field>
+        </record>
+        <record id="bnz_co_nb_technical" model="technical.configuration.types">
+            <field name="name">BNZ: 50/50 to CO: Net block</field>
+        </record>
+        <record id="bnz_frs_technical" model="technical.configuration.types">
+            <field name="name">BNZ: 50/50: Forehand reverse spin</field>
+        </record>
+        <record id="bnz_neutralisation_technical" model="technical.configuration.types">
+            <field name="name">BNZ: Neutralisation</field>
+        </record>
+        <record id="bnz_cd_dfcn_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CD: Defensive forehand cross net</field>
+        </record>
+        <record id="bnz_cd_dfl_technical" model="technical.configuration.types">
+            <field name="name">BNZ: CD: Defensive forehand lifts</field>
+        </record>
+        <record id="bnz_td_dd_technical" model="technical.configuration.types">
+            <field name="name">BNZ: TD: Defensive dive</field>
+        </record>
+
+<!--        FMZ NAMES-->
+
+        <record id="fmz_co_ss_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CO: Side smash</field>
+        </record>
+        <record id="fmz_fmcp_technical" model="technical.configuration.types">
+            <field name="name">FMZ: 50/50: Forehand mid-court push (straight &amp; cross)</field>
+        </record>
+        <record id="fmz_cd_fds_s_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CD: Forehand defense straight (short)</field>
+        </record>
+        <record id="fmz_cd_fdc_s_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CD: Forehand defense cross (short)</field>
+        </record>
+        <record id="fmz_cd_fds_l_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CD: Forehand defense straight (long)</field>
+        </record>
+        <record id="fmz_cd_fdc_l_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CD: Forehand defense cross (long)</field>
+        </record>
+        <record id="fmz_cd_fdca_technical" model="technical.configuration.types">
+            <field name="name">FMZ: CD: Forehand defense contra-attack</field>
+        </record>
+        <record id="fmz_fd_technical" model="technical.configuration.types">
+            <field name="name">FMZ: TD: Forehand dive</field>
+        </record>
+
+<!--        MENUSSSS-->
+
+        <record id="menu_badmintoo" model="website.menu">
+            <field name="name">Assessments</field>
+            <field name="url">/badmintoo_products</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">10</field>
+        </record>
+
+        <record id="seq_badminto_assessment" model="ir.sequence">
+            <field name="name">Assessment Sequence</field>
+            <field name="code">badminto.assessment</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+<!--        IN SERVICE-->
+
+        <record id="in_service" model="technical.assessment.configuration">
+            <field name="type" ref="badminto.in_service_technical"/>
+        </record>
+        <record id="low_service" model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.in_service"/>
+        </record>
+        <record id="medium_service" model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.in_service"/>
+        </record>
+        <record id="high_service" model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.in_service"/>
+        </record>
+
+<!--        IN RECEIVING-->
+
+        <record id="in_receiving"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.in_receiving_technical"/>
+        </record>
+        <record id="low_receiving"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.in_receiving"/>
+        </record>
+        <record id="medium_receiving" model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.in_receiving"/>
+        </record>
+        <record id="high_receiving" model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.in_receiving"/>
+        </record>
+
+<!--        FNZ-->
+
+        <record id="fnz_to_forehand"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.fnz_to_forehand_technical"/>
+        </record>
+        <record id="low_fnz_to_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.fnz_to_forehand"/>
+        </record>
+        <record id="medium_fnz_to_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.fnz_to_forehand"/>
+        </record>
+        <record id="high_fnz_to_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.fnz_to_forehand"/>
+        </record>
+        <record id="fnz_co_forehand"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.fnz_co_forehand_technical"/>
+        </record>
+        <record id="low_fnz_co_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.fnz_co_forehand"/>
+        </record>
+        <record id="medium_fnz_co_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.fnz_co_forehand"/>
+        </record>
+        <record id="high_fnz_co_forehand"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.fnz_co_forehand"/>
+        </record>
+        <record id="fnz_co_offensive"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.fnz_co_offensive_technical"/>
+        </record>
+        <record id="low_fnz_co_offensive"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.fnz_co_offensive"/>
+        </record>
+        <record id="medium_fnz_co_offensive"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.fnz_co_offensive"/>
+        </record>
+        <record id="high_fnz_co_offensive"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.fnz_co_offensive"/>
+        </record>
+        <record id="fnz_co_forehand_offensive_lift"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_co_forehand_offensive_lift_technical"/>
+        </record>
+        <record id="low_fnz_co_forehand_offensive_lift"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+        <record id="medium_fnz_co_forehand_offensive_lift"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+        <record id="high_fnz_co_forehand_offensive_lift"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+        <record id="fnz_co_forehand_straight_spin"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_co_forehand_straight_spin_technical"/>
+        </record>
+        <record id="low_fnz_co_forehand_straight_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+        <record id="medium_fnz_co_forehand_straight_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+        <record id="high_fnz_co_forehand_straight_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+        <record id="fnz_co_forehand_reverse_spin"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_co_forehand_reverse_spin_technical"/>
+        </record>
+        <record id="low_fnz_co_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_reverse_spin"/>
+        </record>
+        <record id="medium_fnz_co_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_reverse_spin"/>
+        </record>
+        <record id="high_fnz_co_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_reverse_spin"/>
+        </record>
+        <record id="fnz_co_net_block"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_co_net_block_technical"/>
+        </record>
+        <record id="low_fnz_co_net_block"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_net_block"/>
+        </record>
+        <record id="medium_fnz_co_net_block"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_net_block"/>
+        </record>
+        <record id="high_fnz_co_net_block"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_net_block"/>
+        </record>
+        <record id="fnz_forehand_reverse_spin"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_forehand_reverse_spin_technical"/>
+        </record>
+        <record id="low_fnz_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_forehand_reverse_spin"/>
+        </record>
+        <record id="medium_fnz_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_forehand_reverse_spin"/>
+        </record>
+        <record id="high_fnz_forehand_reverse_spin"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_forehand_reverse_spin"/>
+        </record>
+        <record id="fnz_neutralisation"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_neutralisation_technical"/>
+        </record>
+        <record id="low_fnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_neutralisation"/>
+        </record>
+        <record id="medium_fnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_neutralisation"/>
+        </record>
+        <record id="high_fnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_neutralisation"/>
+        </record>
+        <record id="fnz_defensive_forehand_cross_net"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_defensive_forehand_cross_net_technical"/>
+        </record>
+        <record id="low_fnz_defensive_forehand_cross_net"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_cross_net"/>
+        </record>
+        <record id="medium_fnz_defensive_forehand_cross_net"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_cross_net"/>
+        </record>
+        <record id="high_fnz_defensive_forehand_cross_net"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_cross_net"/>
+        </record>
+        <record id="fnz_defensive_forehand_lifts"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_defensive_forehand_lifts_technical"/>
+        </record>
+        <record id="low_fnz_defensive_forehand_lifts"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_lifts"/>
+        </record>
+        <record id="medium_fnz_defensive_forehand_lifts"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_lifts"/>
+        </record>
+        <record id="high_fnz_defensive_forehand_lifts"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_forehand_lifts"/>
+        </record>
+        <record id="fnz_defensive_dive"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.fnz_defensive_dive_technical"/>
+        </record>
+        <record id="low_fnz_defensive_dive"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_dive"/>
+        </record>
+        <record id="medium_fnz_defensive_dive"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_dive"/>
+        </record>
+        <record id="high_fnz_defensive_dive"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_defensive_dive"/>
+        </record>
+
+
+<!--        BNZ-->
+
+         <record id="bnz_to_fnk"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.bnz_to_fnk_technical"/>
+        </record>
+        <record id="low_bnz_to_fnk"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.bnz_to_fnk"/>
+        </record>
+        <record id="medium_bnz_to_fnk"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.bnz_to_fnk"/>
+        </record>
+        <record id="high_bnz_to_fnk"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.bnz_to_fnk"/>
+        </record>
+
+        <record id="bnz_co_fnp"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.bnz_co_fnp_technical"/>
+        </record>
+        <record id="low_bnz_co_fnp"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.bnz_co_fnp"/>
+        </record>
+        <record id="medium_bnz_co_fnp"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.bnz_co_fnp"/>
+        </record>
+        <record id="high_bnz_co_fnp"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.bnz_co_fnp"/>
+        </record>
+
+        <record id="bnz_co_ofcn"
+                model="technical.assessment.configuration">
+            <field name="type" ref="badminto.bnz_co_ofcn_technical"/>
+        </record>
+        <record id="low_bnz_co_ofcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id" ref="badminto.bnz_co_ofcn"/>
+        </record>
+        <record id="medium_bnz_co_ofcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id" ref="badminto.bnz_co_ofcn"/>
+        </record>
+        <record id="high_bnz_co_ofcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id" ref="badminto.bnz_co_ofcn"/>
+        </record>
+
+        <record id="bnz_co_fol"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_co_fol_technical"/>
+        </record>
+        <record id="low_bnz_co_fol"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+        <record id="medium_bnz_co_fol"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+        <record id="high_bnz_co_fol"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_offensive_lift"/>
+        </record>
+
+        <record id="bnz_co_fss"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_co_fss_technical"/>
+        </record>
+        <record id="low_bnz_co_fss"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+        <record id="medium_bnz_co_fss"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+        <record id="high_bnz_co_fss"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.fnz_co_forehand_straight_spin"/>
+        </record>
+
+        <record id="bnz_co_frs"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_co_frs_technical"/>
+        </record>
+        <record id="low_bnz_co_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_frs"/>
+        </record>
+        <record id="medium_bnz_co_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_frs"/>
+        </record>
+        <record id="high_bnz_co_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_frs"/>
+        </record>
+
+        <record id="bnz_co_nb"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_co_nb_technical"/>
+        </record>
+        <record id="low_bnz_co_nb"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_nb"/>
+        </record>
+        <record id="medium_bnz_co_nb"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_nb"/>
+        </record>
+        <record id="high_bnz_co_nb"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_co_nb"/>
+        </record>
+
+        <record id="bnz_frs"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_frs_technical"/>
+        </record>
+        <record id="low_bnz_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_frs"/>
+        </record>
+        <record id="medium_bnz_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_frs"/>
+        </record>
+        <record id="high_bnz_frs"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_frs"/>
+        </record>
+
+
+        <record id="bnz_neutralisation"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_neutralisation_technical"/>
+        </record>
+        <record id="low_bnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_neutralisation"/>
+        </record>
+        <record id="medium_bnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_neutralisation"/>
+        </record>
+        <record id="high_bnz_neutralisation"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_neutralisation"/>
+        </record>
+
+
+        <record id="bnz_cd_dfcn"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_cd_dfcn_technical"/>
+        </record>
+        <record id="low_bnz_cd_dfcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfcn"/>
+        </record>
+        <record id="medium_bnz_cd_dfcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfcn"/>
+        </record>
+        <record id="high_bnz_cd_dfcn"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfcn"/>
+        </record>
+
+
+        <record id="bnz_cd_dfl"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_cd_dfl_technical"/>
+        </record>
+        <record id="low_bnz_cd_dfl"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfl"/>
+        </record>
+        <record id="medium_bnz_cd_dfl"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfl"/>
+        </record>
+        <record id="high_bnz_cd_dfl"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_cd_dfl"/>
+        </record>
+
+
+        <record id="bnz_td_dd"
+                model="technical.assessment.configuration">
+            <field name="type"
+                   ref="badminto.bnz_td_dd_technical"/>
+        </record>
+        <record id="low_bnz_td_dd"
+                model="technical.assessment.configuration.data">
+            <field name="start">0.00</field>
+            <field name="end">33.33</field>
+            <field name="color">red</field>
+            <field name="level">low</field>
+            <field name="comments">Low</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_td_dd"/>
+        </record>
+        <record id="medium_bnz_td_dd"
+                model="technical.assessment.configuration.data">
+            <field name="start">33.33</field>
+            <field name="end">66.66</field>
+            <field name="color">yellow</field>
+            <field name="level">medium</field>
+            <field name="comments">Medium</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_td_dd"/>
+        </record>
+        <record id="high_bnz_td_dd"
+                model="technical.assessment.configuration.data">
+            <field name="start">66.66</field>
+            <field name="end">100.00</field>
+            <field name="color">green</field>
+            <field name="level">high</field>
+            <field name="comments">High</field>
+            <field name="technical_id"
+                   ref="badminto.bnz_td_dd"/>
+        </record>
+
+
+<!--        FMZ-->
+
+
+
+
+    </data>
+
+</odoo>

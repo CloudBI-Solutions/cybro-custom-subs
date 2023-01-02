@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+       <template id="portal_my_home" name="Show Projects / Tasks" customize_show="True" inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Application</t>
+                <t t-set="url" t-value="'/my/surveys'"/>
+                <t t-set="placeholder_count" t-value="'survey_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    </data>
+
+    <template id="portal_my_surveys" name="My Application">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Application</t>
+            </t>
+            <t t-if="not surveys">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no surveys.
+                </div>
+            </t>
+            <t t-if="surveys" t-call="portal.portal_table">
+                <thead>
+                    <tr t-attf-class="{{'thead-light' if not groupby == 'none' else ''}}">
+                        <th class="text-left">Title</th>
+                        <th class="text-left">Display Name</th>
+                        <th class="text-left">State</th>
+                        <th class="text-left">Create Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="surveys" t-as="survey">
+                        <td>
+                            <a t-attf-href="/my/survey/#{survey.id}?{{ keep_query() }}">
+                                <span t-field="survey.survey_id.title"/>
+                            </a>
+                        </td>
+                        <td>
+                            <span t-field="survey.display_name"/>
+                        </td>
+                        <td>
+<!--                            <t t-esc="survey.state"/>-->
+                            <t t-if="survey.state == 'new'">
+                                Draft
+                            </t>
+                            <t t-if="survey.state == 'in_progress'">
+                                In Progress
+                            </t>
+                            <t t-if="survey.state == 'done'">
+                                Completed
+                            </t>
+                        </td>
+                        <td>
+                            <span t-field="survey.create_date" t-options='{"widget": "date"}'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_my_survey" name="My Survey">
+        <t t-call="portal.portal_layout">
+            <t t-set="o_portal_fullwidth_alert" groups="project.group_project_user">
+                <t t-call="portal.portal_back_in_edit_mode">
+                    <t t-set="backend_url"
+                       t-value="'/web#model=survey.user_input&amp;id=%s&amp;view_type=form' % (answer.id)"/>
+                </t>
+            </t>
+
+            <t t-call="portal.portal_record_layout">
+                <t t-set="card_header">
+                    <div class="d-flex flex-row survey-portal-header">
+                        <div class="ml-auto p-2">
+                            <a role="button"
+                               id="edit_application" class="btn btn-secondary btn-sm p-2"
+                               t-att-href="'/survey/%s/%s?edit=True' %(answer.survey_id.access_token, answer.access_token)">
+                                Edit
+                            </a>
+                        </div>
+                    </div>
+                </t>
+                <t t-set="card_body">
+                    <table class="table rounded mb-0 bg-white o_portal_my_doc_table table-responsive-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Question
+                                </th>
+                                <th>
+                                    Answer
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="body_map" t-value="False"/>
+                            <t t-set="user_input_line_ids" t-value="answer.answer_prettify()"/>
+<!--                            <t t-if="survey.user_input_line_ids">-->
+
+                            <tr t-foreach="user_input_line_ids" t-as="line">
+                                <t t-if="line.question_type == 'body_map'">
+                                    <t t-set="body_map" t-value="True"/>
+                                </t>
+                                <td>
+                                    <t t-esc="line.title"/>
+                                </td>
+                                <td>
+                                    <t t-if="len(line_value) > 1">
+                                        <t t-foreach="line_value" t-as="value">
+                                            <div class="row" style="margin-left: 2px;">
+                                                <t t-esc="value"/>
+                                            </div>
+                                        </t>
+                                    </t>
+                                    <t t-if="len(line_value) == 1">
+                                        <div class="row" style="margin-left: 2px;">
+                                            <t t-esc="line_value[0]"/>
+                                        </div>
+                                    </t>
+                                </td>
+                            </tr>
+<!--                            </t>-->
+                        </tbody>
+                    </table>
+                    <t t-if="body_map">
+                        <t t-call="survey_extension.tmpl_body_map_review"/>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

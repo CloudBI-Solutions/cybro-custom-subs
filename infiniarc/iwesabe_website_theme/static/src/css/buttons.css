@@ -1,0 +1,16 @@
+.ial-btn {
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  padding: 15px 25px;
+}
+
+.ial-btn--primary {
+  background-color: #FF2905;
+  color: #FFFFFF;
+}
+
+.ial-btn--block {
+  width: 100%;
+}
+/*# sourceMappingURL=buttons.css.map */

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="anaerobic_assessment_details_template"
+              name="Anaerobic Assessment">
+        <!--        <t t-call="portal.portal_layout">-->
+        <t t-call="survey.layout">
+            <div id="main-container" class="p-5 main-container--margin">
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/badmintoo/assessment"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Badminton Profiling(Assessment)
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="#"
+                                   class="set-dashboard__breadcrumb-link">
+                                    General Assessment
+                                    <!--                                <t t-esc="asssessment.name"/>-->
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="#"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Anaerobic Assessment
+                                    <!--                                <t t-esc="asssessment.name"/>-->
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">Badminton
+                                Profile
+                            </h2>
+                        </div>
+                    </div>
+                    <!-- FILTER SECTION -->
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-3">
+                            <select class="set-input__input my-3">
+                                <option value="1">Athlete</option>
+                                <option value="2">Parent</option>
+                                <option value="3">Organization</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-6 d-flex">
+                            <a href="#"
+                               class="set-button set-button--sm set-button--dark w-50 my-3 mr-2"
+                               style="width: 30% !important;">Date Range Filter
+                            </a>
+                            <input type="text"
+                                   class="set-input__input w-75 my-3"
+                                   style="width: 65% !important;"/>
+                            <i class="fa fa-search badminto--search badminto-profile-search"/>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-3 d-flex align-items-center justify-content-start align-content-start flex-wrap">
+                            <span class="set-tag set-tag--primary-light set-tag--close">
+                                Athlete 1
+                            </span>
+                            <span class="set-tag set-tag--primary-light set-tag--close">
+                                Athlete 2
+                            </span>
+                            <span class="set-tag set-tag--primary-light set-tag--close">
+                                Athlete 3
+                            </span>
+                        </div>
+                    </div>
+                    <!-- END OF FILTER SECTION -->
+                    <!-- PROFILE SUMMARY SECTION -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__client-profile d-flex align-items-center justify-content-between">
+                                <div class="set-dashboard__profile-group">
+                                    <span class="set-dashboard__profile-label">
+                                        Client
+                                        Name:
+                                    </span>
+                                    <span class="set-dashboard__profile-value">
+                                        <t t-esc="assessment.athlete_id.partner_id.name"/>&#160;&#160;<t
+                                            t-esc="assessment.athlete_id.partner_id.last_name"/>
+                                    </span>
+                                </div>
+                                <div class="set-dashboard__profile-group">
+                                    <span class="set-dashboard__profile-label">
+                                        Current
+                                        BWF ranking:
+                                    </span>
+                                    <span class="set-dashboard__profile-value">
+                                        <span class="set-dashboard__profile-flag-container">
+                                            <img t-if="assessment.athlete_id.partner_id.country_id"
+                                                 t-att-src="assessment.athlete_id.partner_id.country_id.image_url"
+                                                 class="set-dashboard__profile-flag"
+                                                 alt="Country Flag"/>
+                                        </span>
+                                        <t t-esc="assessment.current_rank"/>
+                                    </span>
+                                </div>
+                                <div class="set-dashboard__profile-group">
+                                    <span class="set-dashboard__profile-label">
+                                        Client
+                                        Age:
+                                    </span>
+                                    <span class="set-dashboard__profile-value">
+                                        <t t-esc="assessment.age"/>
+                                    </span>
+                                </div>
+                                <div class="set-dashboard__profile-group">
+                                    <span class="set-dashboard__profile-label">
+                                        Playing
+                                        hand:
+                                    </span>
+                                    <span class="set-dashboard__profile-value">
+                                        <t t-if="assessment.hand"
+                                           t-esc="dict(assessment.fields_get(allfields=['hand'])['hand']['selection'])[assessment.hand]"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF PROFILE SUMMARY SECTION -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__title-container">
+                                <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                    <h2 class="set-dashboard__title mr-2">
+                                        Anaerobic Assessment - Athletes
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--                <div class="row">-->
+                    <!--                    <div class="col-sm-12 col-md-12 col-lg-12">-->
+                    <!--                        <div>-->
+                    <!--                            <div class="text-center">-->
+                    <!--                                <h6 class="set-dashboard__title mr-2">-->
+                    <!--                                    <t t-foreach="lifestyle_assessment.question_and_page_ids.filtered(lambda x:x.is_page)" t-as="page">-->
+                    <!--                                        <a href="#">-->
+                    <!--                                            <t t-esc="page.title"/>/-->
+                    <!--                                        </a>-->
+
+
+                    <!--                                    </t>-->
+
+
+                    <!--                                </h6>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                </div>-->
+                    <t t-if="not answer_complete">
+                        <div class="wrap o_survey_wrap d-flex">
+                            <div class="container o_survey_form d-flex flex-column mb-5">
+                                <!--                    <t t-foreach='lifestyle_assessment.question_and_page_ids.filtered(lambda x:not x.is_page)' t-as='question'>-->
+                                <!--                <t t-if="question in answer.predefined_question_ids" t-call="survey.question_container"/>-->
+                                <!--            </t>-->
+                                <form role="form" method="post"
+                                      t-att-name="survey.id"
+                                      class="d-flex flex-grow-1 align-items-center"
+                                      t-att-data-answer-token="answer.access_token"
+                                      t-att-data-survey-token="survey.access_token"
+                                      t-att-data-users-can-go-back="survey.users_can_go_back and not answer.is_session_answer"
+                                      t-att-data-session-in-progress="answer.is_session_answer"
+                                      t-att-data-is-start-screen="answer.state == 'new'"
+                                      t-att-data-readonly="survey_form_readonly"
+                                      t-att-data-has-answered="bool(has_answered)"
+                                      t-att-data-is-page-description="bool(question and question.is_page and not is_html_empty(question.description))"
+                                      t-att-data-questions-layout="survey.questions_layout"
+                                      t-att-data-triggered-questions-by-answer="json.dumps(triggered_questions_by_answer)"
+                                      t-att-data-selected-answers="json.dumps(selected_answers)">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="token"
+                                           t-att-value="answer.access_token"/>
+                                    <div class="o_survey_error alert alert-danger d-none"
+                                         role="alert">
+                                        <p>There was an error during the
+                                            validation of the survey.
+                                        </p>
+                                    </div>
+
+                                    <div class="o_survey_form_content w-100">
+                                        <t t-if="answer.state == 'new'"
+                                           t-call="survey.survey_fill_form_start"/>
+                                        <t t-else=""
+                                           t-call="survey.survey_fill_form_done"/>
+                                    </div>
+                                </form>
+
+
+                                <!--                    <t t-call="survey.survey_fill_header" />-->
+                                <!--                    <t t-call="survey.survey_fill_form" />-->
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </t>
+        <!--        </t>-->
+
+    </template>
+
+
+</odoo>

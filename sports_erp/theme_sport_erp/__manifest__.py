@@ -1,0 +1,45 @@
+{
+    'name': 'Sports ERP Theme',
+    'version': '15.0.1.0.0',
+    'category': 'Theme/sportERP',
+    'author': 'Ljutzkanov Limited',
+    'website': 'www.ljutzkanov.ltd',
+    'description': """ Sport ERP Theme
+    """,
+    'summary': 'Sport ERP Theme',
+    'depends': ['sports_erp_dashboard',
+                'website_mass_mailing'],
+    'data': [
+        'data/website_menus.xml',
+        'views/header.xml',
+        'views/footer.xml',
+        'views/choose_modules.xml',
+        'views/snippet.xml',
+        'views/snippet_menu.xml',
+        'views/layout.xml',
+        'views/special_snippet.xml',
+        'views/tabs_snippet.xml',
+        'views/sport_erp_button.xml',
+        'views/pricing.xml',
+        'views/core_modules.xml',
+        'views/company_and_backend_access.xml',
+        'views/sport_business_management.xml',
+        'views/sport_performance_and_customizations.xml',
+    ],
+    'assets': {
+        'web.assets_frontend': [
+            'theme_sport_erp/static/src/css/style.min.css',
+            'theme_sport_erp/static/src/css/main.css',
+            'theme_sport_erp/static/src/js/header.js',
+            'theme_sport_erp/static/src/js/sport_erp_cart.js',
+        ],
+        'web.assets_qweb': [],
+    },
+
+    'snippet_lists': {
+        'homepage': ['s_hero_snippet', 's_feature_snippet'], },
+    'images': ['static/src/images/brand/logo-color.png',
+               'static/src/images/brand/hero-image.png'],
+    'installable': True,
+    'license': 'LGPL-3',
+}

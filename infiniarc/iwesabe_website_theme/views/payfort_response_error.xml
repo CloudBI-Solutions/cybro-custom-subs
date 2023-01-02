@@ -1,0 +1,27 @@
+<odoo>
+    <template id="payfort_response_error">
+        <t t-call="iwesabe_website_theme.infiniarc_frontend_layout">
+            <span>Payfort</span>
+            <div>
+                <html>
+                    <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                        <title>Fort Request</title>
+                    </head>
+                    <body>
+                        <div class="alert alert-danger">
+                            <strong>Failed</strong>
+                            Payment Failed.
+                            <a role="button" class="ia-btn ia-btn--primary ia-btn--medium float-right my-4 active_two"
+                               type="button" id="Back_to home" href="/">
+                                <span>Home</span>
+                            </a>
+                        </div>
+
+
+                    </body>
+                </html>
+            </div>
+        </t>
+    </template>
+</odoo>

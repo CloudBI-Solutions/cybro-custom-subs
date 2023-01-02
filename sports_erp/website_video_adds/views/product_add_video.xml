@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="invoice_line_tree_inherit">
+        <field name="name">invoice_tree_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+         <xpath expr="//page[@name='sales']/group[@name='sale']/group[@name='shop']/field[@name='public_categ_ids']" position="after">
+                <field name="web_video_file" string="Video Adds"
+                       widget="video_widget"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

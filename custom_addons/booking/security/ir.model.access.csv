@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_booking,booking,model_booking_booking,,1,1,1,1
+access_booking_stage,booking_stage,model_booking_stage,,1,1,1,1
+access_event_checklist,calendar_checklist,model_calendar_checklist,,1,1,1,1
+access_booking_type,booking_type,model_booking_type,,1,1,1,1
+access_slot_monday,slot_monday,model_slot_monday,,1,1,1,1
+access_slot_tuesday,slot_tuesday,model_slot_tuesday,,1,1,1,1
+access_slot_wednesday,slot_wednesday,model_slot_wednesday,,1,1,1,1
+access_slot_thursday,slot_thursday,model_slot_thursday,,1,1,1,1
+access_slot_friday,slot_friday,model_slot_friday,,1,1,1,1
+access_slot_saturday,slot_saturday,model_slot_saturday,,1,1,1,1
+access_slot_sunday,slot_sunday,model_slot_sunday,,1,1,1,1

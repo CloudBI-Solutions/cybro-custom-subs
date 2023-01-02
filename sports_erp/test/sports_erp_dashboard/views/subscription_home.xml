@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    <template id="susbscription_search" name="Subscription Search" inherit_id="website_blog.blogs_nav">-->
+    <!--        <xpath expr="//t[@t-call='website.website_search_box_input']" position="replace">-->
+    <!--            <form id="o_wblog_post_search" class="m-auto w-100" role="search"-->
+    <!--                  t-att-action="blog_url(tag=tag,search=search)" method="get">-->
+    <!--                <t t-call="website.website_search_box">-->
+    <!--                    <t t-set="_classes" t-valuef="w-100"/>-->
+    <!--                </t>-->
+    <!--            </form>-->
+    <!--        </xpath>-->
+    <!--    </template>-->
+
+    <template id="subscription_home_template" name="Allowed Subscriptions">
+        <t t-call="website.layout">
+            <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/subscriptions"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Subscriptions
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            <div id="wrap" class="o_wevent_index mt-3 p-5 main-container--margin">
+                <!-- Options -->
+                <!--            <t t-set="opt_events_list_cards" t-value="is_view_active('website_event.opt_events_list_cards')"/>-->
+                <!--            <t t-set="opt_events_list_columns" t-value="is_view_active('website_event.opt_events_list_columns')"/>-->
+                <!-- Topbar -->
+                <t t-call="sports_erp_dashboard.subscription_topbar">
+                    <!--                <t t-set="search" t-value="original_search or search or searches['search']"/>-->
+                </t>
+                <!-- Drag/Drop Area -->
+                <div id="oe_structure_we_index_1"
+                     class="oe_structure oe_empty"/>
+                <!-- Content -->
+                <div t-attf-class="o_wevent_events_list opt_event_list_cards_bg">
+                    <div class="container">
+                        <!--                    <div class="row">-->
+                        <!--                        <t t-call="website_event.searched_tags"/>-->
+                        <!--                    </div>-->
+                        <div class="row">
+                            <div id="o_wevent_index_main_col"
+                                 t-attf-class="col-md my-5 #{opt_events_list_columns and 'opt_events_list_columns' or 'opt_events_list_rows'}">
+                                <div class="row">
+                                    <!-- Events List -->
+                                    <div id="o_wevent_index_main_col"
+                                         class="col-md my-5 opt_events_list_columns">
+                                        <div class="row">
+                                            <t t-foreach="subscription"
+                                               t-as="sub">
+                                                <div class=" col-md-6 col-lg-4 mb-4">
+                                                    <a class="text-decoration-none"
+                                                       t-attf-href="/shop/product/{{sub.id}}"
+                                                       data-publish="on">
+                                                        <article
+                                                                itemscope="itemscope"
+                                                                itemtype="http://schema.org/Event"
+                                                                class="h-100 card border-0 shadow-sm">
+                                                            <div class="h-100 row no-gutters">
+                                                                <header class="overflow-hidden bg-secondary col-12 ">
+                                                                    <div class="d-block h-100 w-100">
+                                                                        <div data-name="Cover"
+                                                                             class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3">
+                                                                            <div class="o_record_cover_component o_record_cover_image">
+                                                                                <img class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3"
+                                                                                     t-att-src="image_data_uri(sub.image_1920) if sub.image_1920 else None"/>
+                                                                            </div>
+                                                                            <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">
+                                                                                <span class="o_wevent_event_month">
+                                                                                    <span t-field="sub.list_price"
+                                                                                          t-options='{"widget": "monetary", "display_currency": currency_id}'/>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </header>
+                                                                <div class="col-12 ">
+                                                                    <main class="card-body">
+                                                                        <h5 class="card-title mt-2 mb-0 text-truncate ">
+                                                                            <span itemprop="name">
+                                                                                <t t-esc="sub.name"/>
+                                                                            </span>
+                                                                        </h5>
+                                                                        <span>
+                                                                            <span>
+                                                                                <t t-esc="sub.description"/>
+                                                                            </span>
+
+                                                                        </span>
+                                                                        <!--                                                                        <div itemprop="location">-->
+                                                                        <!--                                                                            <address-->
+                                                                        <!--                                                                                    class="mb-0"-->
+                                                                        <!--                                                                                    itemscope="itemscope"-->
+                                                                        <!--                                                                                    itemtype="http://schema.org/Organization">-->
+                                                                        <!--                                                                                <div class="css_non_editable_mode_hidden">-->
+                                                                        <!--                                                                                    &#45;&#45;<span-->
+                                                                        <!--                                                                                        class="text-muted">-->
+                                                                        <!--                                                                                    ASDFGHJKL-->
+                                                                        <!--                                                                                    SDFGHJK</span>&#45;&#45;-->
+                                                                        <!--                                                                                </div>-->
+                                                                        <!--                                                                                <div itemprop="address"-->
+                                                                        <!--                                                                                     itemscope="itemscope"-->
+                                                                        <!--                                                                                     itemtype="http://schema.org/PostalAddress">-->
+                                                                        <!--                                                                                </div>-->
+                                                                        <!--                                                                            </address>-->
+                                                                        <!--                                                                        </div>-->
+                                                                        <div class="mt8 d-flex align-items-center">
+                                                                            <span>
+                                                                                <span>
+                                                                                    <button class="btn btn-primary">
+                                                                                        Add
+                                                                                        to
+                                                                                        your
+                                                                                        Profile
+                                                                                    </button>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </main>
+                                                                </div>
+
+                                                            </div>
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                            </t>
+
+                                            <!--                                                <div class=" col-md-6 col-lg-4 mb-4">-->
+                                            <!--                                                    <a class="text-decoration-none"-->
+                                            <!--                                                       href="/event/group-1-13/"-->
+                                            <!--                                                       data-publish="on">-->
+                                            <!--                                                        <article-->
+                                            <!--                                                                itemscope="itemscope"-->
+                                            <!--                                                                itemtype="http://schema.org/Event"-->
+                                            <!--                                                                class="h-100 card border-0 shadow-sm">-->
+                                            <!--                                                            <div class="h-100 row no-gutters">-->
+                                            <!--                                                                <header class="overflow-hidden bg-secondary col-12 ">-->
+                                            <!--                                                                    <div class="d-block h-100 w-100">-->
+                                            <!--                                                                        <div data-name="Cover"-->
+                                            <!--                                                                             class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3   ">-->
+                                            <!--                                                                            <div class="o_record_cover_component o_record_cover_image "-->
+                                            <!--                                                                                 style="background-image: url('/website_event/static/src/img/event_cover_4.jpg');"></div>-->
+                                            <!--                                                                            <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">-->
+                                            <!--                                                                                <span class="o_wevent_event_month">-->
+                                            <!--                                                                                    Oct-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                                <span class="o_wevent_event_day oe_hide_on_date_edit">-->
+                                            <!--                                                                                    17-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                            </div>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </div>-->
+                                            <!--                                                                </header>-->
+                                            <!--                                                                <div class="col-12 ">-->
+                                            <!--                                                                    <main class="card-body">-->
+                                            <!--                                                                        <h5 class="card-title mt-2 mb-0 text-truncate ">-->
+                                            <!--                                                                            <span itemprop="name">-->
+                                            <!--                                                                                Group-->
+                                            <!--                                                                                1-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </h5>-->
+                                            <!--                                                                        <time itemprop="startDate"-->
+                                            <!--                                                                              datetime="2022-10-17 16:10:00">-->
+                                            <!--                                                                            <span>-->
+                                            <!--                                                                                October-->
+                                            <!--                                                                                17,-->
+                                            <!--                                                                                2022-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                            - -->
+                                            <!--                                                                            <span class="oe_hide_on_date_edit">-->
+                                            <!--                                                                                4:10-->
+                                            <!--                                                                                PM-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </time>-->
+                                            <!--                                                                        <div itemprop="location">-->
+                                            <!--                                                                            <address-->
+                                            <!--                                                                                    class="mb-0"-->
+                                            <!--                                                                                    itemscope="itemscope"-->
+                                            <!--                                                                                    itemtype="http://schema.org/Organization">-->
+                                            <!--                                                                                <div class="css_non_editable_mode_hidden">-->
+                                            <!--                                                                                    &#45;&#45;<span-->
+                                            <!--                                                                                        class="text-muted">-->
+                                            <!--                                                                                    ASDFGHJKL-->
+                                            <!--                                                                                    SDFGHJK</span>&#45;&#45;-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                                <div itemprop="address"-->
+                                            <!--                                                                                     itemscope="itemscope"-->
+                                            <!--                                                                                     itemtype="http://schema.org/PostalAddress">-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                            </address>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                        <div class="mt8 d-flex align-items-center">-->
+                                            <!--                                                                            <span class="badge mr8 badge-light o_tag_color_6">-->
+                                            <!--                                                                                <span>-->
+                                            <!--                                                                                    ef-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </main>-->
+                                            <!--                                                                </div>-->
+                                            <!--                                                                <footer class="small align-self-end w-100 card-footer border-top">-->
+                                            <!--                                                                    <span class="text-danger">-->
+                                            <!--                                                                        Sold Out-->
+                                            <!--                                                                    </span>-->
+                                            <!--                                                                </footer>-->
+                                            <!--                                                            </div>-->
+                                            <!--                                                        </article>-->
+                                            <!--                                                    </a>-->
+                                            <!--                                                </div>-->
+                                            <!--                                                <div class=" col-md-6 col-lg-4 mb-4">-->
+                                            <!--                                                    <a class="text-decoration-none"-->
+                                            <!--                                                       href="/event/test-event-5-12/"-->
+                                            <!--                                                       data-publish="on">-->
+                                            <!--                                                        <article-->
+                                            <!--                                                                itemscope="itemscope"-->
+                                            <!--                                                                itemtype="http://schema.org/Event"-->
+                                            <!--                                                                class="h-100 card border-0 shadow-sm">-->
+                                            <!--                                                            <div class="h-100 row no-gutters">-->
+                                            <!--                                                                <header class="overflow-hidden bg-secondary col-12 ">-->
+                                            <!--                                                                    <div class="d-block h-100 w-100">-->
+                                            <!--                                                                        <div data-name="Cover"-->
+                                            <!--                                                                             class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3   ">-->
+                                            <!--                                                                            <div class="o_record_cover_component o_record_cover_image "-->
+                                            <!--                                                                                 style="background-image: url('/website_event/static/src/img/event_cover_4.jpg');"></div>-->
+                                            <!--                                                                            <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">-->
+                                            <!--                                                                                <span class="o_wevent_event_month">-->
+                                            <!--                                                                                    Oct-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                                <span class="o_wevent_event_day oe_hide_on_date_edit">-->
+                                            <!--                                                                                    17-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                            </div>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </div>-->
+                                            <!--                                                                </header>-->
+                                            <!--                                                                <div class="col-12 ">-->
+                                            <!--                                                                    <main class="card-body">-->
+                                            <!--                                                                        <h5 class="card-title mt-2 mb-0 text-truncate ">-->
+                                            <!--                                                                            <span itemprop="name">-->
+                                            <!--                                                                                Test-->
+                                            <!--                                                                                Event-->
+                                            <!--                                                                                5-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </h5>-->
+                                            <!--                                                                        <time itemprop="startDate"-->
+                                            <!--                                                                              datetime="2022-10-17 16:10:00">-->
+                                            <!--                                                                            <span>-->
+                                            <!--                                                                                October-->
+                                            <!--                                                                                17,-->
+                                            <!--                                                                                2022-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                            - -->
+                                            <!--                                                                            <span class="oe_hide_on_date_edit">-->
+                                            <!--                                                                                4:10-->
+                                            <!--                                                                                PM-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </time>-->
+                                            <!--                                                                        <div itemprop="location">-->
+                                            <!--                                                                            <address-->
+                                            <!--                                                                                    class="mb-0"-->
+                                            <!--                                                                                    itemscope="itemscope"-->
+                                            <!--                                                                                    itemtype="http://schema.org/Organization">-->
+                                            <!--                                                                                <div class="css_non_editable_mode_hidden">-->
+                                            <!--                                                                                    &#45;&#45;<span-->
+                                            <!--                                                                                        class="text-muted">-->
+                                            <!--                                                                                    Administrator</span>&#45;&#45;-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                                <div itemprop="address"-->
+                                            <!--                                                                                     itemscope="itemscope"-->
+                                            <!--                                                                                     itemtype="http://schema.org/PostalAddress">-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                            </address>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                        <div class="mt8 d-flex align-items-center">-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </main>-->
+                                            <!--                                                                </div>-->
+                                            <!--                                                                <footer class="small align-self-end w-100 card-footer border-top">-->
+                                            <!--                                                                    <span class="text-danger">-->
+                                            <!--                                                                        Sold Out-->
+                                            <!--                                                                    </span>-->
+                                            <!--                                                                </footer>-->
+                                            <!--                                                            </div>-->
+                                            <!--                                                        </article>-->
+                                            <!--                                                    </a>-->
+                                            <!--                                                </div>-->
+                                            <!--                                                <div class=" col-md-6 col-lg-4 mb-4">-->
+                                            <!--                                                    <a class="text-decoration-none"-->
+                                            <!--                                                       href="/event/test-5/register"-->
+                                            <!--                                                       data-publish="on">-->
+                                            <!--                                                        <article-->
+                                            <!--                                                                itemscope="itemscope"-->
+                                            <!--                                                                itemtype="http://schema.org/Event"-->
+                                            <!--                                                                class="h-100 card border-0 shadow-sm">-->
+                                            <!--                                                            <div class="h-100 row no-gutters">-->
+                                            <!--                                                                <header class="overflow-hidden bg-secondary col-12 ">-->
+                                            <!--                                                                    <div class="d-block h-100 w-100">-->
+                                            <!--                                                                        <div data-name="Cover"-->
+                                            <!--                                                                             class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3   ">-->
+                                            <!--                                                                            <div class="o_record_cover_component o_record_cover_image "-->
+                                            <!--                                                                                 style="background-image: url('/website_event/static/src/img/event_cover_4.jpg');"></div>-->
+                                            <!--                                                                            <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">-->
+                                            <!--                                                                                <span class="o_wevent_event_month">-->
+                                            <!--                                                                                    Oct-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                                <span class="o_wevent_event_day oe_hide_on_date_edit">-->
+                                            <!--                                                                                    18-->
+                                            <!--                                                                                </span>-->
+                                            <!--                                                                            </div>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </div>-->
+                                            <!--                                                                </header>-->
+                                            <!--                                                                <div class="col-12 ">-->
+                                            <!--                                                                    <main class="card-body">-->
+                                            <!--                                                                        <h5 class="card-title mt-2 mb-0 text-truncate ">-->
+                                            <!--                                                                            <span itemprop="name">-->
+                                            <!--                                                                                Test-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </h5>-->
+                                            <!--                                                                        <time itemprop="startDate"-->
+                                            <!--                                                                              datetime="2022-10-18 12:10:00">-->
+                                            <!--                                                                            <span>-->
+                                            <!--                                                                                October-->
+                                            <!--                                                                                18,-->
+                                            <!--                                                                                2022-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                            - -->
+                                            <!--                                                                            <span class="oe_hide_on_date_edit">-->
+                                            <!--                                                                                12:10-->
+                                            <!--                                                                                PM-->
+                                            <!--                                                                            </span>-->
+                                            <!--                                                                        </time>-->
+                                            <!--                                                                        <div itemprop="location">-->
+                                            <!--                                                                            <address-->
+                                            <!--                                                                                    class="mb-0"-->
+                                            <!--                                                                                    itemscope="itemscope"-->
+                                            <!--                                                                                    itemtype="http://schema.org/Organization">-->
+                                            <!--                                                                                <div class="css_non_editable_mode_hidden">-->
+                                            <!--                                                                                    &#45;&#45;<span-->
+                                            <!--                                                                                        class="text-muted">-->
+                                            <!--                                                                                    My-->
+                                            <!--                                                                                    Organisation-->
+                                            <!--                                                                                    Frontend-->
+                                            <!--                                                                                    Company</span>&#45;&#45;-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                                <div itemprop="address"-->
+                                            <!--                                                                                     itemscope="itemscope"-->
+                                            <!--                                                                                     itemtype="http://schema.org/PostalAddress">-->
+                                            <!--                                                                                </div>-->
+                                            <!--                                                                            </address>-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                        <div class="mt8 d-flex align-items-center">-->
+                                            <!--                                                                        </div>-->
+                                            <!--                                                                    </main>-->
+                                            <!--                                                                </div>-->
+                                            <!--                                                                <footer class="small align-self-end w-100 card-footer border-top">-->
+                                            <!--                                                                    <span class="text-danger">-->
+                                            <!--                                                                        Sold Out-->
+                                            <!--                                                                    </span>-->
+                                            <!--                                                                </footer>-->
+                                            <!--                                                            </div>-->
+                                            <!--                                                        </article>-->
+                                            <!--                                                    </a>-->
+                                            <!--                                                </div>-->
+                                            <div class="form-inline justify-content-center my-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Drag/Drop Area -->
+                <div id="oe_structure_we_index_2"
+                     class="oe_structure oe_empty"/>
+            </div>
+        </t>
+
+    </template>
+
+    <template id="subscription_topbar" name="Topbar">
+        <nav class="navbar navbar-light border-top shadow-sm d-print-none">
+            <div class="container">
+                <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                    <span class="navbar-brand h4 my-0 mr-auto">Subscriptions
+                    </span>
+                    <ul class="o_wevent_index_topbar_filters nav">
+                        <!--                    <t t-foreach="categories" t-as="category">-->
+                        <!--                        <li t-if="category.is_published and category.tag_ids and any(tag.color for tag in category.tag_ids)" class="nav-item dropdown mr-2 my-1">-->
+                        <!--                            <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">-->
+                        <!--                                <i class="fa fa-folder-open"/>-->
+                        <!--                                <t t-esc="category.name"/>-->
+                        <!--                            </a>-->
+                        <!--                            <div class="dropdown-menu">-->
+                        <!--                                <t t-foreach="category.tag_ids" t-as="tag">-->
+                        <!--                                    <a t-if="tag.color"-->
+                        <!--                                        t-att-href="'/event?%s' % keep_query('*', tags=str((search_tags - tag).ids if tag in search_tags else (tag | search_tags).ids))"-->
+                        <!--                                        t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if tag in search_tags else ''}">-->
+                        <!--                                        <t t-esc="tag.name"/>-->
+                        <!--                                    </a>-->
+                        <!--                                </t>-->
+                        <!--                            </div>-->
+                        <!--                        </li>-->
+                        <!--                    </t>-->
+                    </ul>
+                    <div class="d-flex align-items-center flex-wrap pl-sm-3 pr-0">
+                        <form action="/subscriptions">
+                            <t t-call="website.website_search_box">
+                                <t t-set="action" t-value="'/subscriptions'"/>
+                            </t>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </template>
+    <template id="subscription_list" name="Subscription list">
+        <!-- Options -->
+        <t t-set="opt_index_sidebar"
+           t-value="is_view_active('website_event.opt_index_sidebar')"/>
+        <t t-if="opt_events_list_columns" t-set="opt_event_size"
+           t-value="opt_index_sidebar and 'col-md-6' or 'col-md-6 col-lg-4'"/>
+        <t t-else="" t-set="opt_event_size"
+           t-value="opt_index_sidebar and 'col-12' or 'col-xl-10 offset-xl-1'"/>
+        <!-- No events -->
+        <t t-if="not event_ids">
+            <div class="col-12">
+                <div class="h2 mb-3">No events found.</div>
+                <div class="alert alert-info text-center"
+                     groups="event.group_event_user">
+                    <p class="m-0">Use the top button '<b>+ New</b>' to create
+                        an event.
+                    </p>
+                </div>
+            </div>
+        </t>
+        <!-- Fuzzy search -->
+        <div t-if="event_ids and original_search"
+             class="col-12 alert alert-warning mt8">
+            No results found for '<span t-esc="original_search"/>'. Showing
+            results for '<span t-esc="searches['search']"/>'.
+        </div>
+        <!-- List -->
+        <div t-foreach="subscription" t-as="event"
+             t-attf-class=" #{opt_event_size} mb-4">
+            <a t-attf-href="#" class="text-decoration-none"
+               t-att-data-publish="event.website_published and 'on' or 'off'">
+                <article
+                        t-attf-class="h-100 #{opt_events_list_cards and 'card border-0 shadow-sm'}"
+                        itemscope="itemscope"
+                        itemtype="http://schema.org/Event">
+                    <div class="h-100 row no-gutters">
+                        <!-- Header -->
+                        <header t-attf-class="overflow-hidden bg-secondary #{opt_events_list_columns and 'col-12' or 'col-sm-4 col-lg-3'} #{(not opt_events_list_cards) and 'shadow'}">
+                            <!-- Image + Link -->
+                            <div class="d-block h-100 w-100">
+                                <!--                            <t t-call="website.record_cover">-->
+                                <!--                                <t t-set="_record" t-value="event"/>-->
+
+                                <!--                                &lt;!&ndash; Short Date &ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <span t-field="event.with_context(tz=event.date_tz).date_begin" t-options="{'format': 'LLL'}" class="o_wevent_event_month"/>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <span t-field="event.with_context(tz=event.date_tz).date_begin" t-options="{'format': 'dd'}" class="o_wevent_event_day oe_hide_on_date_edit"/>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+                                <!--                                &lt;!&ndash; Participating &ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <small t-if="event.is_participating" class="o_wevent_participating bg-success">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <i class="fa fa-check mr-2"/>Registered&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                </small>&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                &lt;!&ndash; Unpublished &ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                <small t-if="not event.website_published" class="o_wevent_unpublished bg-danger">&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                    <i class="fa fa-ban mr-2"/>Unpublished&ndash;&gt;-->
+                                <!--&lt;!&ndash;                                </small>&ndash;&gt;-->
+                                <!--                            </t>-->
+                            </div>
+                        </header>
+                        <div>
+                            <!-- Body -->
+                            <main t-attf-class="#{opt_events_list_cards and 'card-body' or (opt_events_list_columns and 'py-3' or 'px-4')}">
+                                <!-- Title -->
+                                <h5 t-attf-class="card-title mt-2 mb-0 text-truncate #{(not event.website_published) and 'text-danger'}">
+                                    <span t-field="event.name" itemprop="name"/>
+                                </h5>
+                                <!-- Start Date & Time -->
+                                <!--                            <time itemprop="startDate" t-att-datetime="event.date_begin">-->
+                                <!--                                <span t-field="event.with_context(tz=event.date_tz).date_begin" t-options="{'date_only': 'true', 'format': 'long'}"/> - -->
+                                <!--                                <span t-field="event.with_context(tz=event.date_tz).date_begin" t-options="{'time_only': 'true', 'format': 'short'}" class="oe_hide_on_date_edit"/>-->
+                                <!--                            </time>-->
+                                <!-- Location -->
+                                <!--                            <div itemprop="location" t-field="event.address_id" t-options="{'widget': 'contact', 'fields': ['city'], 'no_marker': 'true'}"/>-->
+                                <!--                            <div class="mt8 d-flex align-items-center">-->
+                                <!--                                <t t-foreach="event.tag_ids.filtered(lambda tag: tag.category_id.is_published)" t-as="tag">-->
+                                <!--                                    <span t-if="tag.color"-->
+                                <!--                                        t-attf-class="badge mr8 #{'badge-primary' if tag in search_tags else 'badge-light'} #{'o_tag_color_%s' % tag.color if tag.color else ''}">-->
+                                <!--                                        <span t-esc="tag.name"/>-->
+                                <!--                                    </span>-->
+                                <!--                                </t>-->
+                                <!--                            </div>-->
+                            </main>
+                        </div>
+                        <!-- Footer -->
+                        <!--                    <footer t-if="not event.event_registrations_open or event.event_registrations_sold_out"-->
+                        <!--                        t-att-class="'small align-self-end w-100 %s %s' % (-->
+                        <!--                            opt_events_list_cards and 'card-footer' or (not opt_events_list_columns and 'mx-4 mt-auto pt-2') or 'py-2',-->
+                        <!--                            opt_events_list_cards and 'border-top' or '',-->
+                        <!--                        )">-->
+                        <!--                        <span t-if="not event.event_registrations_open" class="text-danger">-->
+                        <!--                            <t t-if="not event.event_registrations_started">-->
+                        <!--                                Registrations not yet open-->
+                        <!--                            </t>-->
+                        <!--                            <t t-elif="event.event_registrations_sold_out">-->
+                        <!--                                Sold Out-->
+                        <!--                            </t>-->
+                        <!--                            <t t-else="">-->
+                        <!--                                Registrations Closed-->
+                        <!--                            </t>-->
+                        <!--                        </span>-->
+                        <!--                    </footer>-->
+                    </div>
+                </article>
+            </a>
+        </div>
+        <!-- Pager -->
+        <!--    <div class="form-inline justify-content-center my-3">-->
+        <!--        <t t-call="website.pager"/>-->
+        <!--    </div>-->
+    </template>
+
+
+</odoo>

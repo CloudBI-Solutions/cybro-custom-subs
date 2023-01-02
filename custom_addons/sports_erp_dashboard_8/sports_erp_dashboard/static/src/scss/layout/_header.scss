@@ -1,0 +1,20 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+#se-header {
+  // Medium devices (tablets, less than 992px)
+  @media (max-width: 991.98px) {
+    margin-left: -300px;
+  }
+}
+.se-topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid $grey-500;
+}
+.se-topnav__menu-toggle{
+  color: $black-400;
+}

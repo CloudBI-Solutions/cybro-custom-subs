@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.booking</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="10"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Booking" data-key="booking"
+                         string="Booking">
+                        <h2 groups="website.group_multi_website">Booking</h2>
+                        <div class="row mt16 o_settings_container" id="time_format">
+                            <div class="col-xs-12 col-md-6 o_setting_box" id="time_format">
+                                <div class="o_setting_right_pane">
+                                    <label for="time_format"/>
+                                    <div class="text-muted">
+                                        Select Time format.
+                                    </div>
+                                    <div class="mt16">
+                                        <field name="time_format" widget="selection"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="res_config_settings_menu_action" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'booking'}</field>
+        </record>
+    </data>
+</odoo>

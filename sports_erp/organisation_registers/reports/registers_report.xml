@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_organisation_registers" model="ir.actions.report">
+        <field name="name">Organisation Registers</field>
+        <field name="model">athlete.groups</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">organisation_registers.report_organisation_registers</field>
+        <field name="report_file">organisation_registers.report_organisation_registers</field>
+        <field name="print_report_name">'Registers - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_athlete_groups"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="sport_erp_footer" inherit_id="website.layout">
+            <xpath expr="//footer[@id='bottom']" position="replace">
+                <footer id="bottom"
+                        t-att-class="'main-container--margin' if is_account else None">
+                    <div id="footer" class="set-dashboard__footer"
+                         style="background: white;">
+                        <div class="set-wrapper">
+                            <div class="set-dashboard__footer-container">
+                                <div class="set-dashboard__left">
+                                    <span class="set-dashboard__copyright">All
+                                        rights reserved © Sport ERP Limited 2021
+                                        - 2022
+                                    </span>
+                                </div>
+                                <div class="set-dashboard__right">
+                                    <ul class="set-dashboard__footer-items">
+                                        <li class="set-dashboard__footer-item">
+                                            <a href=""
+                                               class="set-dashboard__footer-link">
+                                                Tutorials
+                                            </a>
+                                        </li>
+                                        <li class="set-dashboard__footer-item">
+                                            <a href=""
+                                               class="set-dashboard__footer-link">
+                                                Terms &amp; Conditions
+                                            </a>
+                                        </li>
+                                        <li class="set-dashboard__footer-item">
+                                            <a href=""
+                                               class="set-dashboard__footer-link">
+                                                About Us
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </xpath>
+        </template>
+    </data>
+</odoo>

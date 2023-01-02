@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_dynamic_micro_store_tree" model="ir.ui.view">
+        <field name="name">dynamic.micro.store.tree</field>
+        <field name="model">dynamic.micro.store</field>
+        <field name="arch" type="xml">
+            <tree string="Dynamic Micro Store" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_dynamic_micro_store" model="ir.actions.act_window">
+        <field name="name">Dynamic Micro Store</field>
+        <field name="res_model">dynamic.micro.store</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Dynamic Micro Store.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Dynamic Micro Store"
+            parent="stock.menu_stock_config_settings"
+            action="action_dynamic_micro_store"
+            id="sub_dynamic_micro_store_config"
+            sequence="5"/>
+
+    <menuitem
+            name="Dynamic Micro Store"
+            parent="website.menu_website_global_configuration"
+            action="action_dynamic_micro_store"
+            id="sub_dynamic_micro_store_config"
+            sequence="5"/>
+
+</odoo>

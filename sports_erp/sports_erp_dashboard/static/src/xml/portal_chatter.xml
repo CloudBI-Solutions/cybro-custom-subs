@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="portal.Chatter.Attachments">
+        <t t-jquery=".o_portal_chatter_attachment" t-operation="replace">
+            <div class="o_portal_chatter_attachment mb-2 position-relative text-center"
+                 t-att-data-id="attachment.id">
+                    <button t-if="showDelete and attachment.state == 'pending'"
+                            class="o_portal_chatter_attachment_delete btn btn-sm btn-outline-danger"
+                            title="Delete">
+                        <i class="fa fa-times"/>
+                    </button>
+                <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}"
+                   target="_blank">
+                    <t t-set="type"
+                       t-value="attachment.mimetype and attachment.mimetype.split('/').shift()"/>
+                    <div t-if="type == 'image'">
+                    <img class="o_chatter_view"
+                         t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-elif="type == 'video'">
+                    <video class='o_chatter_view'
+                           t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"
+                           controls="controls"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-else="">
+                        <div class='oe_attachment_embedded o_image'
+                             t-att-title="attachment.name"
+                             t-att-data-mimetype="attachment.mimetype"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>
+                    </div>
+                    </a>
+            </div>
+        </t>
+    </t>
+
+
+    <t t-extend="portal.chatter_messages">
+        <t t-jquery=".o_portal_chatter_messages" t-operation="replace">
+                    <div class="o_portal_chatter_messages">
+            <t t-foreach="widget.get('messages') || []" t-as="message">
+                <div class="media o_portal_chatter_message"
+                     t-att-id="'message-' + message.id">
+                    <img class="o_portal_chatter_avatar"
+                         t-att-src="message.author_avatar_url" alt="avatar"/>
+                    <div class="media-body">
+                        <t t-call="sport_erp_dashboard.chatter_internal_toggle"
+                           t-if="widget.options['is_user_employee']"/>
+
+                        <div class="o_portal_chatter_message_title">
+                            <h5 class='set-chathub__speech-username mb-1'><t t-esc="message.author_id[1]"/></h5>
+                            <p class="o_portal_chatter_puslished_date"><t t-esc="message.published_date_str"/></p>
+                        </div>
+                        <t t-out="message.body"/>
+
+                        <div class="o_portal_chatter_attachments">
+                            <t t-call="sport_erp_dashboard.Chatter.Attachments">
+                                <t t-set="attachments"
+                                   t-value="message.attachment_ids"/>
+                            </t>
+                        </div>
+
+                    </div>
+                </div>
+            </t>
+        </div>
+        </t>
+
+    </t>
+
+
+    <t t-name="sport_erp_dashboard.Chatter.Attachments">
+        <div t-if="attachments.length" class="row">
+            <div t-foreach="attachments" t-as="attachment"
+                 id="tab-view"
+                 class="col-12 col-md-12 col-lg-6 tab-view">
+            <div class="o_portal_chatter_attachment mb-2 position-relative text-center"
+                 t-att-data-id="attachment.id">
+                    <button t-if="showDelete and attachment.state == 'pending'"
+                            class="o_portal_chatter_attachment_delete btn btn-sm btn-outline-danger"
+                            title="Delete">
+                        <i class="fa fa-times"/>
+                    </button>
+                <a t-attf-href="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"
+                   target="_blank">
+                    <t t-set="type"
+                       t-value="attachment.mimetype and attachment.mimetype.split('/').shift()"/>
+                    <t t-if="type == 'image'">
+                    <img class="sport_erp_viewer"
+                         t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </t>
+                    <t t-elif="type == 'video'">
+                    <video class="sport_erp_viewer"
+                           t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"
+                           controls="controls"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </t>
+                    <t t-else="">
+                        <div class='oe_attachment_embedded o_image'
+                             t-att-title="attachment.name"
+                             t-att-data-mimetype="attachment.mimetype"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>
+                    </t>
+                    </a>
+            </div>
+            </div>
+            </div>
+    </t>
+
+
+    <t t-name="sport_erp_dashboard.chatter_internal_toggle">
+        <div t-attf-class="float-right o_portal_chatter_js_is_internal #{message.is_internal and 'o_portal_message_internal_on' or 'o_portal_message_internal_off'}"
+             t-att-data-message-id="message.id"
+             t-att-data-is-internal="message.is_internal">
+            <button class="btn btn-danger"
+                    title="Currently restricted to internal employees, click to make it available to everyone viewing this document."
+                    style="background: none;
+                    border: none;">
+                <div class="set-chathub__speech-status"><span
+                    class="set-chathub__speech-dot-status set-chathub__speech-dot-status--red"/>
+                    Employees Only</div>
+            </button>
+            <button class="btn btn-success"
+                    title="Currently available to everyone viewing this document, click to restrict to internal employees."
+                    style="background: none;
+                    border: none;">
+                <div class="set-chathub__speech-status"><span
+                    class="set-chathub__speech-dot-status set-chathub__speech-dot-status--green"/>
+                    Visible</div>
+            </button>
+        </div>
+    </t>
+
+    <t t-extend="portal.Chatter">
+        <t t-jquery="div"
+           t-operation="replace">
+            <div t-attf-class="o_portal_chatter p-0 #{two_columns and 'row' or ''}"
+                 style="margin-top: 15px;">
+            <div t-attf-class="#{two_columns and 'offset-lg-1 col-lg-6' or ''}"
+                 style="overflow-y: scroll; max-height: 65vh; overflow-x:hidden;">
+                <t t-call="portal.chatter_messages"/>
+                <div class="o_portal_chatter_footer">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>
+                <hr t-if="!two_columns"/>
+                <div t-attf-class="#{two_columns and 'col-lg-5' or ''}">
+                <div class="o_portal_chatter_header">
+                    <t t-call="portal.chatter_message_count"/>
+                </div>
+                    <hr t-if="widget.options['allow_composer']"/>
+                    <div class="o_portal_chatter_composer"/>
+            </div>
+
+        </div>
+        </t>
+
+
+        <!--            <div t-attf-class="#{two_columns and 'offset-lg-1 col-lg-6' or ''}"-->
+        <!--                 id="style_scroll">-->
+        <!--                <t t-call="portal.chatter_messages"/>-->
+        <!--                <div class="o_portal_chatter_footer">-->
+        <!--                    <t t-call="portal.pager"/>-->
+        <!--                </div>-->
+        <!--            </div>-->
+    </t>
+
+
+
+</templates>

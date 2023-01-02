@@ -1,0 +1,334 @@
+.list-group-item{
+    background-color: #343333!important;
+}
+.text-black{
+    color: #f5e9e9 !important;
+}
+#infiniarc-checkout .order-summary {
+	background-color: #1c1c1c;
+}
+#infiniarc-checkout .sec-title h4{
+	font-weight : 600;
+}
+#infiniarc-checkout .summary-lines tr{
+	background-color: inherit;
+}
+#infiniarc-checkout .summary-lines tr td{
+	border-top: 1px solid #1c1c1c;
+	padding: 12px 5px 20px 10px;
+}
+#infiniarc-checkout .summary-lines .summary-product-img {
+	height: 75px;
+	width: 160px;
+}
+
+#infiniarc-checkout .summary-lines .product-name {
+	color: white;
+	font-weight: 700;
+	font-size: 22px;
+}
+#infiniarc-checkout .summary-lines .extra-line {
+	font-size: 16px;
+	color: white;
+}
+
+#infiniarc-checkout .summary-lines .td-subtotal-price {
+	color: #CC181E;
+	font-size: 18px;
+	font-weight: 800;
+	width: 23%;
+	text-align: center;
+	padding-top: 30px;
+}
+#infiniarc-checkout .summary-total .common-div {
+	border-bottom: 1px solid white;
+	padding-right: 25px;
+	padding-left: 25px;
+	font-weight: 700;
+	font-size: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+#infiniarc-checkout .summary-total .border-none {
+	border-bottom: none;
+}
+
+
+/* col_2 */
+#infiniarc-checkout .design-methods .design-method-type {
+	display: flex;
+	margin-left: -25px;
+}
+#infiniarc-checkout .design-methods .method-type-input {
+	margin-left : 15px;
+	position: relative;
+	display: flex;
+}
+/* #infiniarc-checkout .design-methods .method-type-input input { */
+/* 	height: 22px; */
+/* 	width: 22px; */
+/* } */
+input.global-radio {
+	height: 28px;
+	width: 28px;
+}
+input.global-radio:checked:after {
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	top: -2px;
+	left: -1px;
+	position: relative;
+	background-color: #CC181E;
+	content: '';
+	display: inline-block;
+	visibility: visible;
+	border: 3px solid white;
+}
+.method-type-input label:after {
+	content: '';
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	border: 6px solid blue;
+	border-radius: 50px;
+	opacity: 0;
+}
+
+
+.label-radio {
+	margin-left: 10px;
+	margin-top: 2px;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+#infiniarc-checkout .customer-details .customer-detail {
+	margin: 15px 0px 15px 0px;
+}
+
+#infiniarc-checkout .customer-details .customer-detail input {
+	padding: 15px 15px 15px 15px;
+	background-color: #1C1C1C;
+	border: none;
+	border-radius: 6px;
+	width: 100%;
+}
+
+#infiniarc-checkout .customer-details .customer-detail input::placeholder {
+	color: rgba(255, 255, 255, 0.27);
+	font-weight : 700;
+}
+
+#infiniarc-checkout .pickup-type {
+	display: flex;
+	margin-left: -25px;
+}
+
+#infiniarc-checkout .pickup-type .pickup-type-input {
+	margin-left: 15px;
+	position: relative;
+	display: flex;
+}
+#infiniarc-checkout .delivery-address input{
+	padding: 15px 15px 15px 15px;
+	background-color: #1C1C1C;
+	border: none;
+	border-radius: 6px;
+	width: 100%;
+}
+
+#infiniarc-checkout .delivery-address input::placeholder {
+	color: rgba(255, 255, 255, 0.27);
+	font-weight : 700;
+}
+
+#infiniarc-checkout .payment-method .payment-method-input {
+	display: flex;
+	margin: 20px 0px 10px 0px;
+}
+
+.label-terms-condition {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight : 700;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+/* Hide the browser's default checkbox */
+.label-terms-condition input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: rgba(255, 255, 255, 0.56);
+	margin-top: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.label-terms-condition input:checked ~ .checkmark {
+	background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+/* Show the checkmark when checked */
+.label-terms-condition input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the checkmark/indicator */
+.label-terms-condition .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+#infiniarc-checkout .action-buttons .transparent-button {
+	background-color: transparent !important;
+	border: 1px solid antiquewhite !important;
+}
+
+#infiniarc-checkout .action-buttons .action-button {
+	width: 45%;
+	background-color: red;
+	padding: 20px;
+	border: 0;
+	font-size: 18px;
+	border-radius: 5px;
+	font-weight: 700;
+}
+
+.text-deco {
+	font-size: 18px;
+	color: white;
+	font-weight: 700;
+}
+#infiniarc-checkout .extra-charges-input {
+	display:flex;
+}
+
+
+
+
+
+
+
+/* checkout page design */
+
+.checkout-page h3.o_page_header{
+	border:none;
+}
+.checkout-page .one_kanban .card{
+	border:1px solid #fff !important;
+}
+.checkout-page .one_kanban .card-body{
+	min-height: 130px;
+	background-color: #000 !important;
+	border: 1px solid white;
+	color: white;
+}
+.checkout-page a[role=button].btn.btn-secondary.te_theme_button{
+	background: transparent;
+	font-weight: 700;
+	border: 1px solid white;
+	margin-top: 12px;
+}
+.checkout-page a[role=button].btn.btn-primary.te_theme_button{
+	font-weight: 700;
+	margin-top: 12px;
+}
+.checkout-page .te_cart_summary_card .card-body{
+	background: #212529 !important;
+}
+.checkout-page .te_cart_summary_card table#cart_products,
+.checkout-page .te_cart_summary_card table#cart_products thead th {
+	color:white;
+}
+.checkout-page .te_cart_summary_card table#cart_products thead th {
+	border-bottom: 1px solid white !important;
+}
+.checkout-page #cart_total table tr#order_total_untaxed {
+	border-top: 1.1px solid white;
+}
+.checkout-page .coupon_form form .input-group input{
+	margin-top: 12px;
+}
+
+
+
+
+
+
+/* Main Page */
+#infiniarc-checkout .te_cart_table .td-img img, .oe_cart table td:first-child {
+	height: 60px;
+}
+.br-6{
+	border-radius: 6px;
+}
+
+.list-group{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+}
+.list-group-item{
+    width:250px !important;
+    height:120px !important;
+    margin:5px !important;
+}
+.o_portal_my_details address span[itemprop="name"]{
+        color: white !important;
+}
+
+.btn-group{
+    border-radius: 30px;
+    box-shadow: unset;
+    line-height: 7px;
+    height: 26px;
+    /* padding: 0px 1rem; dec_6_aj */
+    padding: 0px !important;
+    font-size: 1rem !important;
+    border-radius: 30px;
+    border-color: transparent;
+    border: 2px solid #eaeff3;
+}
+#portal_searchbar_filters{
+    margin-top: -11px;
+}
+#portal_searchbar_sortby{
+        margin-top: -11px;
+}
+.btn-fill-secondary, .btn-secondary{
+        background-color: transparent!important;
+}

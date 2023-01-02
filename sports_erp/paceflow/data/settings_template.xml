@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="my_settings_link" name="Link to Settings"
+                  inherit_id="portal.user_dropdown">
+            <xpath expr="//*[@id='o_logout_divider']" position="before">
+                <a href="/my/settings" role="menuitem" class="dropdown-item">
+                    Settings
+                </a>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="website_return_policy" name="Website Return Policy">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Return Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ian-main-banner"
+                     style="background-image: url('/iwesabe_website_theme/static/src/img/background.jpeg');">
+                    <h2 class="ian-main-banner__header">Return Policy</h2>
+                    <p class="ian-main-banner__lead"></p>
+                </div>
+
+            </section>
+
+            <section id="support-type" class="">
+                <div class="container">
+                    <div class="row support-row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                            <div class="ial-terms-p">
+                                <p>
+                                    -The customer has 30 days to return the product in its original new condition to
+                                    receive a full refund minus the shipping fee. -In case the product arrives defective
+                                    or not as described on the website, you will receive a full refund along with any
+                                    shipping fees applied or a replacement product whichever agreed upon between
+                                    infiniarc.com and the customer. -If the customer decides to cancel his order while
+                                    on "Assembly" or " Testing" or " Packaging" status the customer will be charged 150
+                                    SAR of the refunded amount.-If the customer decides to cancel his order while on
+                                    "Shipped" status the customer will be charged 300SAR of the refunded amount. -All
+                                    our products carry a manufacturer warranty, in case of product failure within the
+                                    warranty period, INFINIARC is willing to help the customer apply for a replacement
+                                    part with the manufacturer company.
+                                </p>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+        <template id="website_shipping_policy" name="Website Return Policy">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Shipping Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ian-main-banner"
+                     style="background-image: url('/iwesabe_website_theme/static/src/img/background.jpeg');">
+                    <h2 class="ian-main-banner__header">Shipping Policy</h2>
+                    <p class="ian-main-banner__lead"></p>
+                </div>
+
+            </section>
+
+            <section id="support-type" class="">
+                <div class="container">
+                    <div class="row support-row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+
+
+                            <div class="ial-terms-p">
+                                <p>
+                                    -The customer has 30 days to return the product in its original new condition to
+                                    receive a full refund minus the shipping fee. -In case the product arrives defective
+                                    or not as described on the website, you will receive a full refund along with any
+                                    shipping fees applied or a replacement product whichever agreed upon between
+                                    infiniarc.com and the customer. -If the customer decides to cancel his order while
+                                    on "Assembly" or " Testing" or " Packaging" status the customer will be charged 150
+                                    SAR of the refunded amount.-If the customer decides to cancel his order while on
+                                    "Shipped" status the customer will be charged 300SAR of the refunded amount. -All
+                                    our products carry a manufacturer warranty, in case of product failure within the
+                                    warranty period, INFINIARC is willing to help the customer apply for a replacement
+                                    part with the manufacturer company.
+                                </p>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+
+
+</odoo>

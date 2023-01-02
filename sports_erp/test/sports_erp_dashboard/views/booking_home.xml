@@ -1,0 +1,2495 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Booking-->
+    <template id="booking_home_template" name="Bookings">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/bookings"
+                               class="set-dashboard__breadcrumb-link">
+                                Bookings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">
+                                Bookings
+                            </h2>
+                            <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                <t t-esc="total"/>
+                            </span>
+                        </div>
+                        <div class="set-dashboard__right-action d-flex align-items-center flex-wrap" groups="organisation.group_organisation_administrator,organisation.group_organisation_coaches">
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>
+                                    <span class="title--show">
+                                        Go To
+                                    </span>
+                                </button>
+                                <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                    <a class="set-dropdown-item dropdown-item"
+                                       href="/my/booking/types">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                             width="14" height="14"
+                                             class="mr-3"/>
+                                        <span>Booking Type</span>
+                                    </a>
+                                    <a class="set-dropdown-item dropdown-item"
+                                       href="/my/coach/schedule">
+                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                             width="14" height="14"
+                                             class="mr-3"/>
+                                        <span>Coach Schedule</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                        data-toggle="modal"
+                                        data-target="#addBookingModal"
+                                        aria-expanded="false">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>
+                                    <span class="title--show">
+                                        Add New Booking
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__table-options">
+                                <a href="#"
+                                   class="set-button set-button--light set-dashboard__table-button mr-2">
+                                    <i class="fa fa-filter mr-2"/>
+                                    Filter
+                                </a>
+                                <div class="set-dashboard__input-container">
+                                    <form class="o_wsale_products_searchbar_form"
+                                          method="get"
+                                          action="/my/bookings">
+                                        <input type="search"
+                                               name="search"
+                                               id="myInput"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"
+                                               onFocus="myFunction()"
+                                               autocomplete="off"
+                                               onBlur="setTimeout(myFunction, 300);"
+                                               onkeyup="filterFunction()"/>
+                                        <div id="myDropdown"
+                                             class="dropdown-content">
+                                            <t t-foreach="total_bookings"
+                                               t-as="booking">
+                                                <a href="'/my/booking/edit?booking=%s' % booking.id">
+                                                    <t t-esc="booking.sequence"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <script>function
+                                myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show-div");
+                                } function
+                                filterFunction() {
+                                var input, filter,
+                                ul, li, a, i; input
+                                =
+                                document.getElementById("myInput");
+                                filter =
+                                input.value.toUpperCase();
+                                div =
+                                document.getElementById("myDropdown");
+                                a =
+                                div.getElementsByTagName("a");
+                                for (i = 0; i
+                                &lt; a.length
+                                ; i++) { txtValue =
+                                a[i].textContent ||
+                                a[i].innerText; if
+                                (txtValue.toUpperCase().indexOf(filter)
+                                > -1) {
+                                a[i].style.display =
+                                ""; } else {
+                                a[i].style.display =
+                                "none"; } } }
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="set-dashboard__table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select-all"/>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Assigned To</th>
+                                        <th>Venue</th>
+                                        <th>Appointment Type</th>
+                                        <th groups="organisation.group_organisation_administrator,organisation.group_organisation_coaches">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="bookings"
+                                       t-as="booking">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select"/>
+                                            </td>
+                                            <td>
+                                                <a href="'/my/booking/edit?booking=%s' % booking.id">
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="booking.sequence"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Booking
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--blue set-badge--wide">
+                                                        <t t-esc="booking.assigned_user_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--green set-badge--wide">
+                                                        <t t-esc="booking.venue_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--gold set-badge--wide">
+                                                        <t t-esc="booking.appointment_type_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td groups="organisation.group_organisation_administrator,organisation.group_organisation_coaches">
+                                                <div class="set-dashboard__table-actions">
+                                                    <a href="'/my/booking/edit?booking=%s' % booking.id"
+                                                       class="set-dashboard__table-action mr-4">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Edit"
+                                                             title="Edit"/>
+                                                    </a>
+                                                    <a t-att-href="'/my/booking/delete?booking=%s' % booking.id"
+                                                       class="set-dashboard__table-action">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Remove"
+                                                             title="Remove"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="set-dashboard__table-footer">
+                                <span class="set-dashboard__page-position set-text set-text--grey">
+                                    Page
+                                    <span t-out="pager['page']['num']"/>
+                                    of
+                                    <t t-if="pager['page_count'] > 1">
+                                        <span t-out="pager['pages'][-1]['num']"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-out="pager['page']['num']"/>
+                                    </t>
+                                </span>
+                                <ul class="set-dashboard__pagination">
+                                    <t t-foreach="pager['pages']"
+                                       t-as="page">
+                                        <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                            <a t-att-href="page['url']"
+                                               t-attf-class="page-link #{extraLinkClass}"
+                                               t-out="page['num']"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal se-modal" id="addBookingModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addSubscriptionLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addSubscriptionModalLabel">Add
+                                    New Booking
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form id="booking_form"
+                                  action="/my/booking/form_submit"
+                                  method="post"
+                                  enctype="multipart/form-data"
+                                  class="o_mark_required" data-mark="*"
+                                  data-model_name="mail.mail">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body" id="booking-form">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="booking_type">
+                                                Appointment Type
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="booking_type"
+                                                    name="booking_type">
+                                                <option></option>
+                                                <t t-foreach="booking_types"
+                                                   t-as="booking_type">
+                                                    <option t-att-value="booking_type.id">
+                                                        <t t-esc="booking_type.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="date">
+                                                Date
+                                            </label>
+                                            <input type="date"
+                                                   class="form-control se-form-control"
+                                                   id="input_appointment_date"
+                                                   name="date"/>
+                                        </div>
+                                    </div>
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="duration">
+                                                Duration
+                                            </label>
+                                            <input id="input_duration"
+                                                   type="string"
+                                                   name="duration"
+                                                   class="form-control se-form-control"
+                                                   required="required"
+                                                   readonly="readonly"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_customers">
+                                                Coach
+                                            </label>
+                                            <input id="input_coach"
+                                                   type="string"
+                                                   class="form-control se-form-control"
+                                                   name="coach_id"
+                                                   required="required"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="venue">
+                                                Venue
+                                            </label>
+                                            <input id="input_venue"
+                                                   type="string"
+                                                   class="form-control se-form-control"
+                                                   required="required"
+                                                   readonly="readonly"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="assigned_user_id">
+                                                Assigned To
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="assigned_user_id"
+                                                    name="assigned_user_id">
+                                                <option></option>
+                                                <t t-foreach="assigned_user_ids"
+                                                   t-as="assigned_user_id">
+                                                    <option t-att-value="assigned_user_id.id">
+                                                        <t t-esc="assigned_user_id.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_customers">
+                                                Attendees
+                                            </label>
+                                            <select name="user_ids"
+                                                    id="user_ids"
+                                                    class="form-control se-form-control sports-erp-dashbaord-select"
+                                                    multiple="multiple"
+                                                    placeholder="Choose Attendees">
+                                                <t t-foreach="user_ids or []"
+                                                   t-as="user_id">
+                                                    <option t-att-value="user_id.id">
+                                                        <t t-esc="user_id.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="responsible">
+                                                Responsible
+                                            </label>
+                                            <select class="form-control se-form-control"
+                                                    id="responsible"
+                                                    name="responsible">
+                                                <option></option>
+                                                <t t-foreach="user_ids"
+                                                   t-as="user_id">
+                                                    <option t-att-value="user_id.id">
+                                                        <t t-esc="user_id.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                            <label class="se-form-label"
+                                                   for="description">
+                                                Description
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   name="description"/>
+                                        </div>
+                                    </div>
+                                    <input type="hidden"
+                                           id="booking_coach_id"
+                                           name="coach_id"/>
+                                    <div class="row radio-toolbar"
+                                         id="schedules"/>
+                                    <div class="modal-footer d-flex float-right">
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5"
+                                               value="Add Subscription"
+                                               style="border-radius: 5px !important;"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <!--    Booking Types-->
+    <template id="booking_types_template" name="Booking Types">
+        <t t-call="portal.portal_layout">
+            <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"/>
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/bookings"
+                               class="set-dashboard__breadcrumb-link">Bookings
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/booking/types"
+                               class="set-dashboard__breadcrumb-link">Booking
+                                Types
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">Booking
+                                Types
+                            </h2>
+                            <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                <t t-esc="total"/>
+                            </span>
+                        </div>
+                        <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                            <a href="#"
+                               class="set-button set-button--primary-muted mr-2">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                     width="18" height="18" class="mr-2"/>
+                                <span class="title--show">
+                                    Assign
+                                </span>
+                            </a>
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                        data-toggle="modal"
+                                        data-target="#addBookingTypeModal"
+                                        aria-expanded="false">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>
+                                    <span class="title--show">
+                                        Add New Booking Type
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__table-options">
+                                <a href="#"
+                                   class="set-button set-button--light set-dashboard__table-button mr-2">
+                                    <i class="fa fa-filter mr-2"/>
+                                    Filter
+                                </a>
+                                <div class="set-dashboard__input-container">
+                                    <form class="o_wsale_products_searchbar_form"
+                                          method="get"
+                                          action="/my/booking/types">
+                                        <input type="search"
+                                               name="search"
+                                               id="myInput"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"
+                                               onFocus="myFunction()"
+                                               autocomplete="off"
+                                               onBlur="setTimeout(myFunction, 300);"
+                                               onkeyup="filterFunction()"/>
+                                        <div id="myDropdown"
+                                             class="dropdown-content">
+                                            <t t-foreach="total_booking_types"
+                                               t-as="booking_type">
+                                                <a href="#">
+                                                    <t t-esc="booking_type.name"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <script>function
+                                myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show-div");
+                                } function
+                                filterFunction() {
+                                var input, filter,
+                                ul, li, a, i; input
+                                =
+                                document.getElementById("myInput");
+                                filter =
+                                input.value.toUpperCase();
+                                div =
+                                document.getElementById("myDropdown");
+                                a =
+                                div.getElementsByTagName("a");
+                                for (i = 0; i
+                                &lt; a.length
+                                ; i++) { txtValue =
+                                a[i].textContent ||
+                                a[i].innerText; if
+                                (txtValue.toUpperCase().indexOf(filter)
+                                > -1) {
+                                a[i].style.display =
+                                ""; } else {
+                                a[i].style.display =
+                                "none"; } } }
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="set-dashboard__table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select-all"/>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Duration</th>
+                                        <th>Venue</th>
+                                        <th>Coach</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="booking_types"
+                                       t-as="type">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select"/>
+                                            </td>
+                                            <td>
+                                                <a href="#">
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="type.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Booking Type
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--blue set-badge--wide">
+
+                                                        <t t-esc="int(type.duration)"/>
+                                                        :
+                                                        <t t-set="val"
+                                                           t-value="int((type.duration *60) % 60)"/>
+
+                                                        <t t-if="len(str(val)) == 1">
+                                                            0
+                                                            <t t-esc="int((type.duration *60) % 60)"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <t t-esc="int((type.duration *60) % 60)"/>
+                                                        </t>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--green set-badge--wide">
+                                                        <t t-esc="type.venue_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--gold set-badge--wide">
+                                                        <t t-esc="type.coach_id.name"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="set-dashboard__table-actions">
+                                                    <a href="#"
+                                                       class="set-dashboard__table-action mr-4">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Edit"
+                                                             title="Edit"/>
+                                                    </a>
+                                                    <a t-att-href="'/my/booking/type/delete?type=%s' % type.id"
+                                                       class="set-dashboard__table-action">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Remove"
+                                                             title="Remove"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="set-dashboard__table-footer">
+                                <span class="set-dashboard__page-position set-text set-text--grey">
+                                    Page
+                                    <span t-out="pager['page']['num']"/>
+                                    of
+                                    <t t-if="pager['page_count'] > 1">
+                                        <span t-out="pager['pages'][-1]['num']"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-out="pager['page']['num']"/>
+                                    </t>
+                                </span>
+                                <ul class="set-dashboard__pagination">
+                                    <t t-foreach="pager['pages']"
+                                       t-as="page">
+                                        <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                            <a t-att-href="page['url']"
+                                               t-attf-class="page-link #{extraLinkClass}"
+                                               t-out="page['num']"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal se-modal" id="addBookingTypeModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addSubscriptionLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addSubscriptionModalLabel">Add
+                                    New
+                                    Booking Type
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form action="/create/booking/type"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="name">
+                                                Stage Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   id="name"
+                                                   name="name"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="duration">
+                                                Duration
+                                            </label>
+                                            <input class="html-duration-picker se-form-control"
+                                                   name="duration"
+                                                   type="text"
+                                                   data-hide-seconds="true"
+                                                   style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="venue">
+                                                Venue
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="venue"
+                                                    name="venue">
+                                                <t t-foreach="venues"
+                                                   t-as="venue">
+                                                    <option t-att-value="venue.id">
+                                                        <t t-esc="venue.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="coach">
+                                                Coach
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="coach"
+                                                    name="coach">
+                                                <t t-foreach="coaches"
+                                                   t-as="coach">
+                                                    <option t-att-value="coach.id">
+                                                        <t t-esc="coach.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_products">
+                                                OnetoOne Session
+                                            </label>
+                                            <!--                                                    <t t-set="products"-->
+                                            <!--                                                       t-value="request.env['product.product'].sudo().search([('sale_ok', '=', True), ('activate_subscription', '=', True), ('company_id', '=', request.env.user.company_id.id)-->
+                                            <!--                                                       ])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="subscription_products"
+                                                    name="subscription_products">
+                                                <t t-foreach="products"
+                                                   t-as="product">
+                                                    <option t-att-value="product.id">
+                                                        <t t-esc="product.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_taxes">
+                                                Team Session
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="team_price"
+                                                   name="team_price"/>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_plans">
+                                                Description
+                                            </label>
+                                            <input type="text"
+                                                   id="description"
+                                                   class="form-control se-form-control"
+                                                   name="description"/>
+                                            <!--                                                    <t t-set="plans"-->
+                                            <!--                                                       t-value="request.env['subscription.plan'].sudo().search([])"/>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer d-flex">
+                                        <!--                                            <a href="#"-->
+                                        <!--                                               class="font-weight-bold se-link&#45;&#45;unstyled text-muted">-->
+                                        <!--                                                <i class="fa fa-cog mr-2"/>-->
+                                        <!--                                                Advanced Details-->
+                                        <!--                                            </a>-->
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float"
+                                               value="Add Booking Type"
+                                               style="border-radius: 5px !important;"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+
+    </template>
+    <!--    Coach Schedule-->
+    <template id="coach_schedules_template" name="Coach Schedule">
+        <t t-call="portal.portal_layout">
+            <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"/>
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/bookings"
+                               class="set-dashboard__breadcrumb-link">Bookings
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/coach/schedule"
+                               class="set-dashboard__breadcrumb-link">Coach
+                                Schedule
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">Coach
+                                Schedules
+                            </h2>
+                            <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                <t t-esc="total"/>
+                            </span>
+                        </div>
+                        <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                            <a href="#"
+                               class="set-button set-button--primary-muted mr-2">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                     width="18" height="18"
+                                     class="mr-2"/>
+                                <span class="title--show">Assign</span>
+                            </a>
+<!--                            <div class="btn-group">-->
+<!--                                <button type="button"-->
+<!--                                        class="btn set-button set-button&#45;&#45;primary set-button&#45;&#45;no-shadow dropdown-toggle"-->
+<!--                                        data-toggle="modal"-->
+<!--                                        data-target="#addCoachScheduleModal">-->
+<!--                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"-->
+<!--                                         width="18" height="18"-->
+<!--                                         class="mr-2"/>-->
+<!--                                    <span class="title&#45;&#45;show">Add New Schedule-->
+<!--                                    </span>-->
+<!--                                </button>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__table-options">
+                                <a href="#"
+                                   class="set-button set-button--light set-dashboard__table-button mr-2">
+                                    <i class="fa fa-filter mr-2"/>
+                                    Filter
+                                </a>
+                                <div class="set-dashboard__input-container">
+                                    <form class="o_wsale_products_searchbar_form"
+                                          method="get"
+                                          action="/my/coach/schedule">
+                                        <input type="search"
+                                               name="search"
+                                               id="myInput"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"
+                                               onFocus="myFunction()"
+                                               autocomplete="off"
+                                               onBlur="setTimeout(myFunction, 300);"
+                                               onkeyup="filterFunction()"/>
+                                        <div id="myDropdown"
+                                             class="dropdown-content">
+                                            <t t-foreach="total_coach_schedule"
+                                               t-as="schedule">
+                                                <a t-att-href="'/my/coach/schedule/edit?coach=%s' % schedule.id">
+                                                    <t t-esc="schedule.name"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <script>function
+                                myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show-div");
+                                } function
+                                filterFunction() {
+                                var input, filter,
+                                ul, li, a, i; input
+                                =
+                                document.getElementById("myInput");
+                                filter =
+                                input.value.toUpperCase();
+                                div =
+                                document.getElementById("myDropdown");
+                                a =
+                                div.getElementsByTagName("a");
+                                for (i = 0; i
+                                &lt; a.length
+                                ; i++) { txtValue =
+                                a[i].textContent ||
+                                a[i].innerText; if
+                                (txtValue.toUpperCase().indexOf(filter)
+                                > -1) {
+                                a[i].style.display =
+                                ""; } else {
+                                a[i].style.display =
+                                "none"; } } }
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="set-dashboard__table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select-all"/>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="coach_schedule"
+                                       t-as="schedule">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select"/>
+                                            </td>
+                                            <td>
+                                                <a t-att-href="'/my/coach/schedule/edit?coach=%s' % schedule.id">
+                                                    <div class="set-dashboard__table-details">
+                                                        <span class="set-dashboard__table-name mb-1">
+                                                            <t t-esc="schedule.name"/>
+                                                        </span>
+                                                        <span class="set-dashboard__table-role">
+                                                            Name
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--green set-badge--wide">
+                                                        <t t-esc="schedule.phone"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--gold set-badge--wide">
+                                                        <t t-esc="schedule.email"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="set-dashboard__table-actions">
+                                                    <a t-att-href="'/my/coach/schedule/edit?coach=%s' % schedule.id"
+                                                       class="set-dashboard__table-action mr-4">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Edit"
+                                                             title="Edit"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="set-dashboard__table-footer">
+                                <span class="set-dashboard__page-position set-text set-text--grey">
+                                    Page
+                                    <span t-out="pager['page']['num']"/>
+                                    of
+                                    <t t-if="pager['page_count'] > 1">
+                                        <span t-out="pager['pages'][-1]['num']"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-out="pager['page']['num']"/>
+                                    </t>
+                                </span>
+                                <ul class="set-dashboard__pagination">
+                                    <t t-foreach="pager['pages']"
+                                       t-as="page">
+                                        <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                            <a t-att-href="page['url']"
+                                               t-attf-class="page-link #{extraLinkClass}"
+                                               t-out="page['num']"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal se-modal" id="addCoachScheduleModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addSubscriptionLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addSubscriptionModalLabel">Add
+                                    New
+                                    Booking Type
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form action="/create/booking/type"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="name">
+                                                Stage Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   id="name"
+                                                   name="name"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="duration">
+                                                Duration
+                                            </label>
+                                            <input class="html-duration-picker se-form-control"
+                                                   name="duration"
+                                                   type="text"
+                                                   data-hide-seconds="true"
+                                                   style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="venue">
+                                                Venue
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="venue"
+                                                    name="venue">
+                                                <t t-foreach="venues"
+                                                   t-as="venue">
+                                                    <option t-att-value="venue.id">
+                                                        <t t-esc="venue.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="coach">
+                                                Coach
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="coach"
+                                                    name="coach">
+                                                <t t-foreach="coaches"
+                                                   t-as="coach">
+                                                    <option t-att-value="coach.id">
+                                                        <t t-esc="coach.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_products">
+                                                OnetoOne Session
+                                            </label>
+                                            <!--                                                    <t t-set="products"-->
+                                            <!--                                                       t-value="request.env['product.product'].sudo().search([('sale_ok', '=', True), ('activate_subscription', '=', True), ('company_id', '=', request.env.user.company_id.id)-->
+                                            <!--                                                       ])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="subscription_products"
+                                                    name="subscription_products">
+                                                <t t-foreach="products"
+                                                   t-as="product">
+                                                    <option t-att-value="product.id">
+                                                        <t t-esc="product.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_taxes">
+                                                Team Session
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="team_price"
+                                                   name="team_price"/>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="quantity">
+                                                Price
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control se-form-control"
+                                                   name="quantity"
+                                                   id="quantity"
+                                                   min="0"
+                                                   value="1.00"
+                                                   step="0.01"
+                                                   style="text-align: end;"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_plans">
+                                                Description
+                                            </label>
+                                            <input type="text"
+                                                   id="description"
+                                                   class="form-control se-form-control"
+                                                   name="description"/>
+                                            <!--                                                    <t t-set="plans"-->
+                                            <!--                                                       t-value="request.env['subscription.plan'].sudo().search([])"/>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer d-flex">
+                                        <!--                                            <a href="#"-->
+                                        <!--                                               class="font-weight-bold se-link&#45;&#45;unstyled text-muted">-->
+                                        <!--                                                <i class="fa fa-cog mr-2"/>-->
+                                        <!--                                                Advanced Details-->
+                                        <!--                                            </a>-->
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float"
+                                               value="Add Booking Type"
+                                               style="border-radius: 5px !important;"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+
+    </template>
+    <template id="coach_schedule_details" name="Coach Schedule">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/bookings"
+                               class="set-dashboard__breadcrumb-link">Bookings
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/coach/schedule"
+                               class="set-dashboard__breadcrumb-link">Coach
+                                Schedule
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-att-href="'/my/coach/schedule/edit?coach=%s' % coach.id"
+                               class="set-dashboard__breadcrumb-link">
+                                <t t-esc="coach.name"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="container-fluid">
+                    <form action="/update/coach/schedule" method="post"
+                          enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="coach"
+                               t-att-value="coach.id"/>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="se-dashboard">
+                                    <div class="w-100">
+                                        <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                            Coach:
+                                            <t t-esc="coach.name"/>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <ul class="nav nav-tabs" id="myTab"
+                                    role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active"
+                                                id="home-tab" data-toggle="tab"
+                                                data-target="#home"
+                                                type="button" role="tab"
+                                                aria-controls="home"
+                                                aria-selected="true">
+                                            Availability
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="profile-tab"
+                                                data-toggle="tab"
+                                                data-target="#profile"
+                                                type="button" role="tab"
+                                                aria-controls="profile"
+                                                aria-selected="false">Monday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="tuesday-tab"
+                                                data-toggle="tab"
+                                                data-target="#tuesdaytab"
+                                                type="button" role="tab"
+                                                aria-controls="tuesdaytab"
+                                                aria-selected="false">
+                                            Tuesday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="wednesday-tab"
+                                                data-toggle="tab"
+                                                data-target="#wednesdaytab"
+                                                type="button" role="tab"
+                                                aria-controls="wednesdaytab"
+                                                aria-selected="false">Wednesday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="thursday-tab"
+                                                data-toggle="tab"
+                                                data-target="#thursdaytab"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="thursdaytab">
+                                            Thursday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="friday-tab"
+                                                data-toggle="tab"
+                                                data-target="#fridaytab"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="fridaytab">
+                                            Friday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="saturday-tab"
+                                                data-toggle="tab"
+                                                data-target="#saturdaytab"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="saturdaytab">
+                                            Saturday
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link"
+                                                id="sunday-tab"
+                                                data-toggle="tab"
+                                                data-target="#sundaytab"
+                                                type="button" role="tab"
+                                                aria-controls="contact"
+                                                aria-selected="sundaytab">Sunday
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active"
+                                         id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="monday">Monday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="monday"
+                                                           name="monday"
+                                                           t-att-checked="coach.mon"/>
+                                                </div>
+
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="wednesday">
+                                                        Wednesday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="wednesday"
+                                                           name="wednesday"
+                                                           t-att-checked="coach.wed"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="friday">Friday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="friday"
+                                                           t-att-checked="coach.fri"
+                                                           name="friday"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="sunday">Sunday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="sunday"
+                                                           t-att-checked="coach.sun"
+                                                           name="sunday"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="tuesday">Tuesday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="tuesday"
+                                                           name="tuesday"
+                                                           t-att-checked="coach.tue"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="thursday">
+                                                        Thursday
+
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="thursday"
+                                                           t-att-checked="coach.thu"
+                                                           name="thursday"/>
+                                                </div>
+                                                <div class="form-group py-3">
+                                                    <label class="se-form-label"
+                                                           for="saturday">
+                                                        Saturday
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="saturday"
+                                                           t-att-checked="coach.sat"
+                                                           name="saturday"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile"
+                                         role="tabpanel"
+                                         aria-labelledby="profile-tab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="monday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.mon_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'row_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="mon_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'mon_from_' + str(i)"
+                                                                   t-att-id="'mon_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.mon_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'mon_id_' + str(i)"
+                                                                   t-att-id="'mon_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'mon_to_' + str(i)"
+                                                                   t-att-id="'mon_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.mon_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tuesdaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="tuesdaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="tuesday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.tue_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'tue_row_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="tue_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'tue_from_' + str(i)"
+                                                                   t-att-id="'tue_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.tue_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'tue_id_' + str(i)"
+                                                                   t-att-id="'tue_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'tue_to_' + str(i)"
+                                                                   t-att-id="'tue_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.tue_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="wednesdaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="wednesdaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="wednesday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.wed_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'wed_from_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="wed_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'wed_from_' + str(i)"
+                                                                   t-att-id="'wed_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.wed_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'wed_id_' + str(i)"
+                                                                   t-att-id="'wed_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'wed_to_' + str(i)"
+                                                                   t-att-id="'wed_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.wed_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="thursdaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="thursdaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="thursday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.thu_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'thu_row_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="thu_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'thu_from_' + str(i)"
+                                                                   t-att-id="'thu_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.thu_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'thu_id_' + str(i)"
+                                                                   t-att-id="'thu_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'thu_to_' + str(i)"
+                                                                   t-att-id="'thu_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.thu_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="fridaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="fridaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="friday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.fri_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'fri_from_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="fri_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'fri_from_' + str(i)"
+                                                                   t-att-id="'fri_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.fri_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'fri_id_' + str(i)"
+                                                                   t-att-id="'fri_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'fri_to_' + str(i)"
+                                                                   t-att-id="'fri_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.fri_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove from cart"
+                                                               title="Remove from cart"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="saturdaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="saturdaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="saturday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.sat_slot_ids"
+                                                        t-as="slot">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="mon_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'sat_from_' + str(i)"
+                                                                   t-att-id="'sat_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.sat_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'sat_id_' + str(i)"
+                                                                   t-att-id="'sat_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'sat_to_' + str(i)"
+                                                                   t-att-id="'sat_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.sat_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="sundaytab"
+                                         role="tabpanel"
+                                         aria-labelledby="sundaytab">
+                                        <div class="row col-12 col-sm-12">
+                                            <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                                   id="sunday_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="td-img">
+                                                            From
+                                                        </th>
+                                                        <th>To</th>
+                                                        <th class="text-center td-action"/>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-set="i" t-value="1"/>
+                                                    <tr t-foreach="coach.sun_slot_ids"
+                                                        t-as="slot"
+                                                        t-att-id="'sun_row_' + str(i)">
+                                                        <td contenteditable='true'
+                                                            class="td-product_name"
+                                                            name="mon_slot">
+                                                            <input type="text"
+                                                                   t-att-name="'sun_from_' + str(i)"
+                                                                   t-att-id="'sun_from_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.sun_from"/>
+                                                            <input type="hidden"
+                                                                   t-att-name="'sun_id_' + str(i)"
+                                                                   t-att-id="'sun_id_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.id"/>
+                                                        </td>
+                                                        <td contenteditable='true'
+                                                            class="td-product_name">
+                                                            <input type="text"
+                                                                   t-att-name="'sun_to_' + str(i)"
+                                                                   t-att-id="'sun_to_' + str(i)"
+                                                                   class="form-control"
+                                                                   t-att-value="slot.sun_to"/>
+                                                        </td>
+                                                        <td class="td-action">
+                                                            <a href="#"
+                                                               aria-label="Remove"
+                                                               title="Remove"
+                                                               class="delete_image no-decoration">
+                                                                <small>
+                                                                    <i class="fa fa-trash-o"/>
+                                                                </small>
+                                                            </a>
+                                                        </td>
+                                                        <t t-set="i"
+                                                           t-value="i+1"/>
+                                                    </tr>
+                                                    <input type="hidden"
+                                                           id="number"
+                                                           t-att-value="i"/>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        <div id="add_item"
+                                             class="float-left">+ Add an
+                                            item
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                <input type="submit"
+                                       style="float:right !important; border-radius: 5px !important;"
+                                       class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                       value="Update Profile"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+
+    </template>
+    <!--    Checklist-->
+    <template id="checkist_template" name="Checklist">
+        <t t-call="portal.portal_layout">
+            <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"/>
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/bookings"
+                               class="set-dashboard__breadcrumb-link">Bookings
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/booking/types"
+                               class="set-dashboard__breadcrumb-link">Checklist
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="se-wrapper">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <div class="set-dashboard__title-container">
+                        <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                            <h2 class="set-dashboard__title mr-2">Calendar
+                                Checklist
+                            </h2>
+                            <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                <t t-esc="total"/>
+                            </span>
+                        </div>
+                        <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                            <a href="#"
+                               class="set-button set-button--primary-muted mr-2">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                     width="18" height="18" class="mr-2"/>
+                                <span class="title--show">
+                                    Assign
+                                </span>
+                            </a>
+                            <div class="btn-group">
+                                <button type="button"
+                                        class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                        data-toggle="modal"
+                                        data-target="#addChecklistModal"
+                                        aria-expanded="false">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                         width="18" height="18"
+                                         class="mr-2"/>
+                                    <span class="title--show">
+                                        Add New Checklist
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__table-options">
+                                <a href="#"
+                                   class="set-button set-button--light set-dashboard__table-button mr-2">
+                                    <i class="fa fa-filter mr-2"/>
+                                    Filter
+                                </a>
+                                <div class="set-dashboard__input-container">
+                                    <form class="o_wsale_products_searchbar_form"
+                                          method="get"
+                                          action="/my/calendar/checklist">
+                                        <input type="search"
+                                               name="search"
+                                               id="myInput"
+                                               placeholder="Search"
+                                               class="set-dashboard__input-search"
+                                               onFocus="myFunction()"
+                                               autocomplete="off"
+                                               onBlur="setTimeout(myFunction, 300);"
+                                               onkeyup="filterFunction()"/>
+                                        <div id="myDropdown"
+                                             class="dropdown-content">
+                                            <t t-foreach="total_calendar_checklist"
+                                               t-as="checklist">
+                                                <a herf="#">
+                                                    <t t-esc="checklist.name"/>
+                                                </a>
+                                            </t>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                            <script>function
+                                myFunction() {
+                                document.getElementById("myDropdown").classList.toggle("show-div");
+                                } function
+                                filterFunction() {
+                                var input, filter,
+                                ul, li, a, i; input
+                                =
+                                document.getElementById("myInput");
+                                filter =
+                                input.value.toUpperCase();
+                                div =
+                                document.getElementById("myDropdown");
+                                a =
+                                div.getElementsByTagName("a");
+                                for (i = 0; i
+                                &lt; a.length
+                                ; i++) { txtValue =
+                                a[i].textContent ||
+                                a[i].innerText; if
+                                (txtValue.toUpperCase().indexOf(filter)
+                                > -1) {
+                                a[i].style.display =
+                                ""; } else {
+                                a[i].style.display =
+                                "none"; } } }
+                            </script>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <table class="set-dashboard__table mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox"
+                                                   class="set-input--checkbox"
+                                                   name="select-all"/>
+                                        </th>
+                                        <th>Name</th>
+                                        <th>Description</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="calendar_checklist"
+                                       t-as="checklist">
+                                        <tr>
+                                            <td>
+                                                <input type="checkbox"
+                                                       class="set-input--checkbox"
+                                                       name="select"/>
+                                            </td>
+                                            <td>
+                                                <div class="set-dashboard__table-details">
+                                                    <span class="set-dashboard__table-name mb-1">
+                                                        <t t-esc="checklist.name"/>
+                                                    </span>
+                                                    <span class="set-dashboard__table-role">
+                                                        Name
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                    <span class="set-badge set-badge--green set-badge--wide">
+                                                        <t t-esc="checklist.description"/>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="set-dashboard__table-actions">
+                                                    <a href="#"
+                                                       class="set-dashboard__table-action mr-4">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Edit"
+                                                             title="Edit"/>
+                                                    </a>
+                                                    <a t-att-href="'/my/booking/type/delete?type=%s' % checklist.id"
+                                                       class="set-dashboard__table-action">
+                                                        <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                             class="set-dashboard__table-action-icon"
+                                                             alt="Remove"
+                                                             title="Remove"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <div class="set-dashboard__table-footer">
+                                <span class="set-dashboard__page-position set-text set-text--grey">
+                                    Page
+                                    <span t-out="pager['page']['num']"/>
+                                    of
+                                    <t t-if="pager['page_count'] > 1">
+                                        <span t-out="pager['pages'][-1]['num']"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-out="pager['page']['num']"/>
+                                    </t>
+                                </span>
+                                <ul class="set-dashboard__pagination">
+                                    <t t-foreach="pager['pages']"
+                                       t-as="page">
+                                        <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                            <a t-att-href="page['url']"
+                                               t-attf-class="page-link #{extraLinkClass}"
+                                               t-out="page['num']"/>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal se-modal" id="addCoachScheduleModal"
+                     tabindex="-1" role="dialog"
+                     aria-labelledby="addSubscriptionLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog se-modal__dialog"
+                         role="document">
+                        <div class="modal-content se-modal__content">
+                            <div class="modal-header">
+                                <h5 class="modal-title se-modal__title"
+                                    id="addSubscriptionModalLabel">Add
+                                    New
+                                    Booking Type
+                                </h5>
+                                <button type="button" class="close"
+                                        data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="false">X</span>
+                                </button>
+                            </div>
+                            <form action="/create/booking/type"
+                                  method="post"
+                                  enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <div class="modal-body">
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="name">
+                                                Stage Name
+                                            </label>
+                                            <input type="text"
+                                                   class="form-control se-form-control"
+                                                   id="name"
+                                                   name="name"/>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="duration">
+                                                Duration
+                                            </label>
+                                            <input class="html-duration-picker se-form-control"
+                                                   name="duration"
+                                                   type="text"
+                                                   data-hide-seconds="true"
+                                                   style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="venue">
+                                                Venue
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="venue"
+                                                    name="venue">
+                                                <t t-foreach="venues"
+                                                   t-as="venue">
+                                                    <option t-att-value="venue.id">
+                                                        <t t-esc="venue.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="coach">
+                                                Coach
+                                            </label>
+                                            <!--                                                    <t t-set="contracts"-->
+                                            <!--                                                       t-value="request.env['subscription.contract'].sudo().search([-->
+                                            <!--                                                       ('company_id', '=', request.env.user.company_id.id)])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="coach"
+                                                    name="coach">
+                                                <t t-foreach="coaches"
+                                                   t-as="coach">
+                                                    <option t-att-value="coach.id">
+                                                        <t t-esc="coach.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_products">
+                                                OnetoOne Session
+                                            </label>
+                                            <!--                                                    <t t-set="products"-->
+                                            <!--                                                       t-value="request.env['product.product'].sudo().search([('sale_ok', '=', True), ('activate_subscription', '=', True), ('company_id', '=', request.env.user.company_id.id)-->
+                                            <!--                                                       ])"/>-->
+                                            <select class="form-control se-form-control"
+                                                    id="subscription_products"
+                                                    name="subscription_products">
+                                                <t t-foreach="products"
+                                                   t-as="product">
+                                                    <option t-att-value="product.id">
+                                                        <t t-esc="product.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_taxes">
+                                                Team Session
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control"
+                                                   id="team_price"
+                                                   name="team_price"/>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                            <label class="se-form-label"
+                                                   for="quantity">
+                                                Price
+                                            </label>
+                                            <input type="number"
+                                                   class="form-control se-form-control"
+                                                   name="quantity"
+                                                   id="quantity"
+                                                   min="0"
+                                                   value="1.00"
+                                                   step="0.01"
+                                                   style="text-align: end;"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div class="row px-4">
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                            <label class="se-form-label"
+                                                   for="subscription_plans">
+                                                Description
+                                            </label>
+                                            <input type="text"
+                                                   id="description"
+                                                   class="form-control se-form-control"
+                                                   name="description"/>
+                                            <!--                                                    <t t-set="plans"-->
+                                            <!--                                                       t-value="request.env['subscription.plan'].sudo().search([])"/>-->
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer d-flex">
+                                        <!--                                            <a href="#"-->
+                                        <!--                                               class="font-weight-bold se-link&#45;&#45;unstyled text-muted">-->
+                                        <!--                                                <i class="fa fa-cog mr-2"/>-->
+                                        <!--                                                Advanced Details-->
+                                        <!--                                            </a>-->
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float"
+                                               value="Add Booking Type"
+                                               style="border-radius: 5px !important;"/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+
+    </template>
+
+
+    <template id="booking_portal_home_template" name="Allowed Subscriptions">
+        <t t-call="website.layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/bookings"
+                               class="set-dashboard__breadcrumb-link">
+                                Bookings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="wrap"
+                 class="o_wevent_index mt-3 p-5 main-container--margin">
+                <!-- Options -->
+                <!--            <t t-set="opt_events_list_cards" t-value="is_view_active('website_event.opt_events_list_cards')"/>-->
+                <!--            <t t-set="opt_events_list_columns" t-value="is_view_active('website_event.opt_events_list_columns')"/>-->
+                <!-- Topbar -->
+                <t t-call="sports_erp_dashboard.booking_topbar">
+                    <!--                <t t-set="search" t-value="original_search or search or searches['search']"/>-->
+                </t>
+                <!-- Drag/Drop Area -->
+                <div id="oe_structure_we_index_1"
+                     class="oe_structure oe_empty"/>
+                <!-- Content -->
+                <div t-attf-class="o_wevent_events_list opt_event_list_cards_bg">
+                    <div class="container">
+                        <!--                    <div class="row">-->
+                        <!--                        <t t-call="website_event.searched_tags"/>-->
+                        <!--                    </div>-->
+                        <div class="row">
+                            <div id="o_wevent_index_main_col"
+                                 t-attf-class="col-md my-5 #{opt_events_list_columns and 'opt_events_list_columns' or 'opt_events_list_rows'}">
+                                <div class="row">
+                                    <!-- Events List -->
+                                    <div id="o_wevent_index_main_col"
+                                         class="col-md my-5 opt_events_list_columns">
+                                        <div class="row">
+                                            <t t-foreach="bookings"
+                                               t-as="booking">
+                                                <div class=" col-md-6 col-lg-4 mb-4">
+                                                    <a class="text-decoration-none"
+                                                       t-attf-href="/shop/product/{{booking.id}}"
+                                                       data-publish="on">
+                                                        <article
+                                                                itemscope="itemscope"
+                                                                itemtype="http://schema.org/Event"
+                                                                class="h-100 card border-0 shadow-sm">
+                                                            <div class="h-100 row no-gutters">
+                                                                <header class="overflow-hidden bg-secondary col-12 ">
+                                                                    <div class="d-block h-100 w-100">
+                                                                        <div data-name="Cover"
+                                                                             class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3">
+                                                                            <div class="o_record_cover_component o_record_cover_image">
+                                                                                <img class="o_record_cover_container d-flex flex-column h-100 o_colored_level o_cc o_cc3"
+                                                                                     t-att-src="image_data_uri(booking.image_1920) if booking.image_1920 else None"/>
+                                                                            </div>
+                                                                            <div class="o_wevent_event_date position-absolute bg-white shadow-sm text-dark">
+                                                                                <span class="o_wevent_event_month">
+                                                                                    <span t-field="booking.list_price"
+                                                                                          t-options='{"widget": "monetary", "display_currency": currency_id}'/>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </header>
+                                                                <div class="col-12 ">
+                                                                    <main class="card-body">
+                                                                        <h5 class="card-title mt-2 mb-0 text-truncate ">
+                                                                            <span itemprop="name">
+                                                                                <t t-esc="booking.name"/>
+                                                                            </span>
+                                                                        </h5>
+                                                                        <span>
+                                                                            <span>
+                                                                                <t t-esc="booking.description"/>
+                                                                            </span>
+
+                                                                        </span>
+                                                                        <div class="mt8 d-flex align-items-center">
+                                                                            <span>
+                                                                                <span>
+                                                                                    <button class="btn btn-primary">
+                                                                                        Add
+                                                                                        to
+                                                                                        your
+                                                                                        Profile
+                                                                                    </button>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </main>
+                                                                </div>
+
+                                                            </div>
+                                                        </article>
+                                                    </a>
+                                                </div>
+                                            </t>
+
+
+                                            <div class="form-inline justify-content-center my-3">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Drag/Drop Area -->
+                <div id="oe_structure_we_index_2"
+                     class="oe_structure oe_empty"/>
+            </div>
+        </t>
+
+    </template>
+
+    <template id="booking_topbar" name="Topbar">
+        <nav class="navbar navbar-light border-top shadow-sm d-print-none">
+            <div class="container">
+                <div class="d-flex flex-column flex-sm-row justify-content-between w-100">
+                    <span class="navbar-brand h4 my-0 mr-auto">Bookings
+                    </span>
+                    <ul class="o_wevent_index_topbar_filters nav">
+                        <!--                    <t t-foreach="categories" t-as="category">-->
+                        <!--                        <li t-if="category.is_published and category.tag_ids and any(tag.color for tag in category.tag_ids)" class="nav-item dropdown mr-2 my-1">-->
+                        <!--                            <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">-->
+                        <!--                                <i class="fa fa-folder-open"/>-->
+                        <!--                                <t t-esc="category.name"/>-->
+                        <!--                            </a>-->
+                        <!--                            <div class="dropdown-menu">-->
+                        <!--                                <t t-foreach="category.tag_ids" t-as="tag">-->
+                        <!--                                    <a t-if="tag.color"-->
+                        <!--                                        t-att-href="'/event?%s' % keep_query('*', tags=str((search_tags - tag).ids if tag in search_tags else (tag | search_tags).ids))"-->
+                        <!--                                        t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{'active' if tag in search_tags else ''}">-->
+                        <!--                                        <t t-esc="tag.name"/>-->
+                        <!--                                    </a>-->
+                        <!--                                </t>-->
+                        <!--                            </div>-->
+                        <!--                        </li>-->
+                        <!--                    </t>-->
+                    </ul>
+                    <div class="d-flex align-items-center flex-wrap pl-sm-3 pr-0">
+                        <form action="/bookings">
+                            <t t-call="website.website_search_box">
+                                <t t-set="action" t-value="'/bookings'"/>
+                            </t>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </template>
+
+
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="parent_portal_dashboard" inherit_id="portal.portal_my_home"
+                  name="Parent Portal Dashboard">
+             <xpath expr="//h3" position="replace">
+             <div class="container py-5">
+                <div class="row mb-3">
+                    <div class="col-12 col-md-6 col-lg-6">
+                        <h1 class="paceflow-section-header--h1 font-weight-bold paceflow-text-grey-800 paceflow-mb-3-resp">
+                            Parent Dashboard
+                        </h1>
+                    </div>
+                </div>
+            </div>
+                 <div class="row paceflow-reverse-resp">
+                <div class="col-12 col-md-12 col-lg-12">
+                    <a href="/my/profile">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/profile.png"
+                                     width="35" height="35"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Profile
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="/my/child_cont">
+                        <div class="paceflow-card-item paceflow-card-item--x-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__icon-contianer mr-4">
+                                <img src="/paceflow/static/description/images/ui/person.png"
+                                     width="35" height="35"
+                                     class="paceflow-card-item__icon-image ml-3"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                Players
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                 </div>
+             </xpath>
+        </template>
+
+        <template id="portal_docs_updated_entry" inherit_id="portal.portal_docs_entry" name="My Portal Modified">
+            <xpath expr="//a[hasclass('list-group-item')]" position="replace">
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

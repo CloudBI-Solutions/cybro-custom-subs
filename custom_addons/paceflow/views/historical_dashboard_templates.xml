@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="historical_dashboard" name="Upload" inherit_id="portal.portal_my_home" customize_show="True" priority="-60">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Historical Dashboard</t>
+                <t t-set="url" t-value="'/my/history_dashboard'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="history_child_list" name="Child Contacts">
+        <t t-call="portal.portal_layout"><br/>
+            <t t-if="not child_contacts">
+                <div class="alert alert-warning mt8" role="alert">
+                    No Child Contacts!
+                </div>
+            </t>
+            <t t-else="">
+                <div class="container row mx-n2 mt8">
+                <t t-foreach="child_contacts" t-as="child">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6 pb16">
+                        <a class="child-card list-group-item-action d-block mx-auto" t-att-href="'history_dashboard/%s' % child.id">
+                            <div class="media">
+                                <div class="img-bg">
+                                    <img style="width:100%; height: 100%;" t-if="child.partner_id.image_1024" class="custom-profile-image rounded-circle img img-responsive img-fluid d-block mx-auto mr4" t-att-src="image_data_uri(child.partner_id.image_1024)"/>
+                                    <img t-if="not child.partner_id.image_1024" class="custom-profile-image img img-responsive img-fluid d-block mx-auto mr4" src="/web/static/src/img/placeholder.png"/>
+                                </div>
+                                <div class="media-body">
+                                    <h4 id="child_name" style="border-bottom: 1px solid #e7e7e7;" class="pb8"><span class="child-name"><t t-esc="child.name"/></span></h4>
+                                    <p class="pt8 mb-0">
+                                        <i class="fa fa-calendar" style="margin-left: 50px;"></i>
+                                        <span class="child-detail"><span t-field="child.dob" t-options='{"format": "dd/MM/yyyy"}'/></span>
+                                    </p>
+                                    <p class="pt8 mb-0">
+                                        <i class="fa fa-phone" style="margin-left: 50px;"></i>
+                                        <span class="child-detail"><t t-esc="child.phone"/></span>
+                                    </p>
+                                    <p class="pt8 mb-0">
+                                        <i class="fa fa-envelope-o" style="margin-left: 50px;"></i>
+                                        <span class="child-detail"><t t-esc="child.email"/></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div><br/>
+                </t>
+            </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="portal_history_dashboard" name="Client Dashboard">
+        <t t-call="portal.portal_layout"><br/><br/>
+            <t t-if="not assessments">
+                <div class="alert alert-warning mt8" role="alert">
+                    There are no done assessments for this child
+                </div>
+            </t>
+            <t t-else="">
+<!--                header-->
+                <div class="in_dashboards">
+                    <div class="container-fluid o_in_dashboard">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 section-header-container pt-4">
+                                    <h2>Historical Dashboard</h2>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                progress dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Progress Dashboard</h4>
+                    </div>
+                    <div id="h_filter" class="lite-pink-bkg row">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">10 most recent assessments</span>
+                                <select class="form-control" id="h_filter_selection">
+                                    <t t-foreach="assessments or []" t-as="assessment">
+                                        <option class="state" t-att-value="assessment.id">
+                                            <t t-esc="assessment.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                        <div style="display:none;">
+                            <input name="child" id="h_child_id" t-att-value="child.id"/>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="chart">
+                                <canvas id="progress_canvas" width="100%" height="400"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                score dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Pace-flow Score</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_score_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_score_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_score_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_score_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card"
+                         style="padding:0px;">
+                        <div class="text-color">
+                            <div class="oh-card-body pb-0">
+                                <h2 class="card-container__normal-header p-3">Current Pace-flow score</h2>
+                            </div>
+                            <div class="oh-card-body pb-0">
+                                <h2 class="card-container__normal-header p-3"><span t-field="assessment.summary_overall_score"/>%</h2>
+                            </div>
+                            <div class="chart">
+                                <canvas id="score_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                speed dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Ball Speed</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_speed_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_speed_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_speed_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_speed_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="oh-card-body pb-0">
+                                <h2 class="card-container__normal-header p-3">Current Ball speed</h2>
+                            </div>
+                            <div class="oh-card-body pb-0">
+                                <h2 class="card-container__normal-header p-3"><span t-field="assessment.velocity"/>MPH</h2>
+                            </div>
+                            <div class="chart">
+                                <canvas id="speed_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                legality dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Legality</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_legality_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_legality_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_legality_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_legality_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="chart">
+                                <canvas id="legality_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                momentum dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Momentum</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_runup_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_runup_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_runup_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_runup_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="chart">
+                                <canvas id="runup_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                stability dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Stability</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_stride_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_stride_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_stride_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_stride_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="chart">
+                                <canvas id="stride_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                paceflow dashboard-->
+                <div class="container">
+                    <div class="row lite-pink-bkg">
+                        <h4>Pace-flow</h4>
+                    </div>
+                    <div class="row lite-pink-bkg" id="h_ffc_filter">
+                        <div class="col-12 d-flex flex-wrap section-header-container pt-4">
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date from</span>
+                                <input id="h_ffc_date_from" class="form-control" type="date" name="date_from"/>
+                            </div>
+                            <div class="card-tools">
+                                <span class="dashboard-filter-label">Date to</span>
+                                <input id="h_ffc_date_to" class="form-control" type="date" name="date_to"/>
+                            </div>
+                            <div class="card-tools">
+                                <div class="clear-btn">
+                                    <button id="h_ffc_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-card" style="padding:0px;">
+                        <div class="text-color">
+                            <div class="chart">
+                                <canvas id="ffc_canvas" width="100%" height="300"> </canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div><br/><br/>
+<!--                br-ft dashboard-->
+<!--                <div class="container">-->
+<!--                <div class="row lite-pink-bkg">-->
+<!--                    <h4>Follow-through(BR-FT)</h4>-->
+<!--                </div>-->
+<!--                <div class="row lite-pink-bkg" id="h_ft_filter">-->
+<!--                    <div class="col-12 d-flex flex-wrap section-header-container pt-4">-->
+<!--                        <div class="card-tools">-->
+<!--                            <span class="dashboard-filter-label">Date from</span>-->
+<!--                            <input id="h_ft_date_from" class="form-control" type="date" name="date_from"/>-->
+<!--                        </div>-->
+<!--                        <div class="card-tools">-->
+<!--                            <span class="dashboard-filter-label">Date to</span>-->
+<!--                            <input id="h_ft_date_to" class="form-control" type="date" name="date_to"/>-->
+<!--                        </div>-->
+<!--                        <div class="card-tools">-->
+<!--                            <div class="clear-btn">-->
+<!--                                <button id="h_ft_clear_dates" type="button" class="btn btn-danger"><b>Clear</b></button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="chart-card" style="padding:0px;">-->
+<!--                    <div class="text-color">-->
+<!--                        <div class="chart">-->
+<!--                            <canvas id="ft_canvas" width="100%" height="300"> </canvas>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div><br/><br/>-->
+            </t>
+        </t>
+    </template>
+
+</odoo>

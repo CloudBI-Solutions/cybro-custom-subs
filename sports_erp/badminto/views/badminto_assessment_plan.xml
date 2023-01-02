@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <!--        ASSESSMENT PLAN TREE -->
+        <record model="ir.ui.view" id="badminto_assessment_plan_tree">
+            <field name="name">badminto.assessment.plan.view.tree</field>
+            <field name="model">assessment.plan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="assessment_type_ids"
+                           widget="many2many_tags"
+                           options="{'color_field': 'color'}"/>
+                    <field name="price"/>
+                    <field name="tax_ids"
+                           widget="many2many_tags"
+                           optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        ASSESSMENT PLAN FORM-->
+
+        <record id="badminto_assessment_plan_view_form" model="ir.ui.view">
+            <field name="name">badminto.assessment.plan.view.form</field>
+            <field name="model">assessment.plan</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="get_badminto_product"
+                                    string="Badminto Product"
+                                    type="object"
+                                    class="oe_stat_button"
+                                    icon="fa-gift"
+                                    attrs="{'invisible': [('id','=', False)]}">
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name"
+                                   string="Name"
+                                   required="1"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="assessment_type_ids"
+                                       widget="many2many_tags"
+                                       options="{'color_field': 'color', 'no_create_edit': True}"/>
+                                <field name="sequence_format"/>
+                                <field name="organisation_id"/>
+                            </group>
+                            <group>
+                                <field name="company_id" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="price"
+                                       required="1"/>
+                                <field name="tax_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--        BADMINTO PRODUCT VIEW FORM-->
+
+        <record id="badminto_product_view_form" model="ir.ui.view">
+            <field name="name">badminto.product.view.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options']" position="inside">
+                    <div>
+                        <div class="d-inline-block">
+                            <field name="is_badminto_product"/>
+                            <label for="is_badminto_product"/>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

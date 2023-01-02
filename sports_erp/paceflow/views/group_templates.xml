@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--GROUP HOME-->
+    <template id="group_home" name="Groups">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header paceflow-section-header--resp-down col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/home">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Groups
+                        </h1>
+                        <a href="/my/create_group/">
+                        <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected">
+                            Add New Group
+                            <img src="/paceflow/static/description/images/ui/plus-circle-o.png"
+                                 width="16" height="16"/>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <t t-foreach="groups" t-as="group">
+                    <div class="col-sm-12 col-md-12 col-lg-6">
+                        <a t-att-href="'group_details/%s' % group.id">
+                        <div class="paceflow-card-item paceflow-card-item--xx-large paceflow-card-item--right paceflow-shadow">
+                            <div class="paceflow-card-item__profile-image mr-5">
+                                <img class="paceflow-card-item__profile-image ml-3"
+                                         width="100" height="100"
+                                         t-if="group.image_1920"
+                                         t-att-src="image_data_uri(group.image_1920)"/>
+                                    <img t-if="not group.image_1920"
+                                         width="100" height="100"
+                                         class="paceflow-card-item__profile-image ml-3"
+                                         src="/paceflow/static/description/images/ui/profile-placeholder.png"/>
+                            </div>
+                            <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                <t t-esc="group.name"/>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    CREATE NEW GROUP-->
+
+    <template id="group_create" name="Create Group">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <form id="group_create_form" action="/my/submit_group"
+                      method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/group">
+                        <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            Add Group
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                     <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="name">
+                                        <img id="profile_picture"
+                                             src="/paceflow/static/description/images/ui/camera.png"
+                                             class="paceflow-profile-section__camera"
+                                             style="cursor: pointer;"/>
+                                    </label>
+                                    <input id="name" style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <script>
+                            function image_preview() {
+                            profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                            profile_picture.className="paceflow-profile-section__photo";
+                            }
+                        </script>
+                    <div class="col-sm-12 col-md-12 col-lg-6 mx-auto d-flex flex-column justify-content-center align-items-center">
+                        <input type="text" name="group-name" id="groupName"
+                               class="paceflow-form-control paceflow-form-control--max-width"
+                               placeholder="Group Name*"
+                               required="1"/>
+                        <select name="childs" id="childs"
+                            class="paceflow-select"
+                            multiple="multiple"
+                            placeholder="Choose Players*">
+                            <t t-foreach="players or []"
+                                   t-as="player">
+                                <option t-att-value="player.id">
+                                    <t t-esc="player.name"/>
+                                </option>
+                            </t>
+                        </select>
+                        <textarea name="group-description"
+                                  id="groupDescription"
+                                  class="paceflow-form-control paceflow-form-control--h-unlimited"
+                                  rows="8"
+                                  placeholder="Group Description"/>
+                        <button type="submit"
+                                class="paceflow-btn paceflow-btn--primary mt-5">
+                            Create
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+        </t>
+    </template>
+
+<!--    GROUP OPEN -->
+
+    <template id="group_view" name="Group View">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a href="/my/group">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1 class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center">
+                            <t t-esc="group.name"/>
+                        </h1>
+                        <a t-att-href="'/my/group_edit/%s' % group.id" class="paceflow-profile-section__edit ml-4">
+                            <i class="fa fa-edit paceflow-text-grey-800"/>
+                        </a>
+                        <!-- Button visible on Desktop only -->
+                        <a href="/my/create_child">
+                        <div class="paceflow-card-item paceflow-card-item--right-down paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected 	d-none d-lg-flex">
+                            Add Player
+                            <img src="/paceflow/static/description/images/ui/plus-circle-o.png" width="16"
+                                 height="16"/>
+                        </div>
+                        </a>
+                        <!-- Button visible on Desktop only -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 mb-5">
+                        <ul class="nav nav-pills paceflow-tab-pills mb-3"
+                            id="pills-tab" role="tablist">
+                            <li class="nav-item paceflow-tab-pills__item"
+                                role="presentation">
+                                <a class="nav-link paceflow-tab-pills__link active"
+                                   id="pills-home-tab" data-toggle="pill"
+                                   href="#pills-home" role="tab"
+                                   aria-controls="pills-home"
+                                   aria-selected="true">Last Session
+                                </a>
+                            </li>
+                            <li class="nav-item paceflow-tab-pills__item"
+                                role="presentation">
+                                <a class="nav-link paceflow-tab-pills__link"
+                                   id="pills-profile-tab" data-toggle="pill"
+                                   href="#pills-profile"
+                                   role="tab" aria-controls="pills-profile"
+                                   aria-selected="false">Last 10 Sessions
+                                </a>
+                            </li>
+                            <li class="nav-item paceflow-tab-pills__item"
+                                role="presentation">
+                                <a class="nav-link paceflow-tab-pills__link"
+                                   id="pills-contact-tab" data-toggle="pill"
+                                   href="#pills-contact"
+                                   role="tab" aria-controls="pills-contact"
+                                   aria-selected="false">Top 10 Performers
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active"
+                                 id="pills-home" role="tabpanel"
+                                 aria-labelledby="pills-home-tab">
+                                <canvas id="lastSession"/>
+                            </div>
+                            <div class="tab-pane fade" id="pills-profile"
+                                 role="tabpanel"
+                                 aria-labelledby="pills-profile-tab">
+                                <canvas id="lastSession1"/>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact"
+                                 role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <canvas id="lastSession2"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Button visible on Mobile only -->
+                    <div class="col-sm-12 col-md-12 col-lg-12 mb-5">
+                        <div class="paceflow-card-item w-100 paceflow-card-item--outline paceflow-shadow paceflow-card--header-action paceflow-card-item--selected d-flex d-lg-none">
+                            <a href="#">Add Player</a>
+                            <img src="/images/ui/plus-circle-o.png" width="16"
+                                 height="16"/>
+                        </div>
+                    </div>
+                    <!-- Button visible on Mobile only -->
+                        <t t-foreach="group_players" t-as="group_player">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <div class="paceflow-card-item paceflow-card-item--xx-large paceflow-shadow">
+                                <div class="paceflow-card-item__profile-image mr-5">
+                                    <a t-att-href="'/my/assessment_report/%s' % group_player.id">
+                                        <img class="paceflow-card-item__profile-image ml-3"
+                                             width="100" height="100"
+                                             t-if="group_player.partner_id.image_1024"
+                                             t-att-src="image_data_uri(group_player.partner_id.image_1024)"/>
+                                        <img t-if="not group_player.partner_id.image_1024"
+                                             width="100" height="100"
+                                             class="paceflow-card-item__profile-image ml-3"
+                                             src="/paceflow/static/description/images/ui/profile-placeholder.png"/>
+                                    </a>
+                                </div>
+                                <div class="paceflow-card-item__text paceflow-card-item__text--large">
+                                    <a t-att-href="'/my/assessment_report/%s' % group_player.id"
+                                       style="color: #7f7e7f;">
+                                    <t t-esc="group_player.name"/>
+                                    <t t-if="group_player.last_name">
+                                        <t t-esc="group_player.last_name"/>
+                                    </t>
+                                </a>
+                                </div>
+                                <div>
+                                    <a t-attf-href="/my/edit_child/{{group_player.id}}">
+                                        <i class="fa fa-edit paceflow-text-grey-800" title="Edit"/>
+                                    </a>
+                                </div>
+                                <div>
+                                <a t-att-href="'/my/assessment_report/%s' % group_player.id">
+                                    <i class="fa fa-chevron-right paceflow-text-grey-800 ml-4"
+                                       title="See Full Details"/>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+<!--    GROUP EDIT -->
+
+    <template id="group_edit" name="Group edit">
+        <t t-call="portal.portal_layout">
+            <div class="container py-5">
+                <form id="group_edit_form" action="/my/update_group"
+                      method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="csrf_token"
+                               t-att-value="request.csrf_token()"/>
+                <div class="row mb-5">
+                    <div class="paceflow-section-header col-12 col-md-12 col-lg-12 d-flex justify-content-center align-items-center">
+                        <a t-att-href="'/my/group_details/%s' % group.id">
+                            <i class="fa fa-chevron-left paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"/>
+                        </a>
+                        <a href="/my/home">
+                            <i class="fa fa-home paceflow-section-header__left-action paceflow-section-header--h1 paceflow-text-grey-800"
+                               style="margin-left: 65px;"/>
+                        </a>
+                        <h1>
+                            <input type="hidden" name="id" t-att-value="group.id"/>
+                            <input type="text"
+                                   class="paceflow-section-header--h1 paceflow-section-header--ml-md font-weight-bold paceflow-text-grey-800 text-center"
+                                   name="group_name"
+                                   t-att-value='group.name'
+                                   style="background-color: transparent;
+                                          color: #7f7e7f;
+                                          outline: none;
+                                          border:none;
+                                          text-align: center;" >
+                            </input>
+                        </h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12 py-2">
+                            <div class="paceflow-profile-section">
+                                <div class="paceflow-profile-section__photo">
+                                    <label for="picture">
+                                        <t t-if="group.image_1920">
+                                            <img id="profile_picture"
+                                                 width="100" height="100"
+                                                 class="paceflow-profile-section__photo"
+                                                 t-att-src="image_data_uri(group.image_1920)"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                        <t t-if="not group.image_1920">
+                                            <img id="profile_picture"
+                                                 class="paceflow-profile-section__camera"
+                                                 src="/paceflow/static/description/images/ui/camera.png"
+                                                 style="cursor: pointer;"/>
+                                        </t>
+                                    </label>
+                                    <input id="picture"
+                                           style="margin-left: 50px;"
+                                           onchange="image_preview()"
+                                           type="file" name="photo" class="file"
+                                           multiple="true"
+                                           data-show-upload="true"
+                                           data-show-caption="true" lass="file"
+                                           data-show-preview="true"
+                                           hidden="true"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-6 mx-auto d-flex flex-column justify-content-center align-items-center">
+                        <select name="childs" id="childs"
+                            class="paceflow-select"
+                            multiple="multiple"
+                            placeholder="Choose Player*">
+                            <t t-if="group_players"
+                               t-foreach="group_players or []"
+                                   t-as="group_player">
+                                <option selected="selected"
+                                        t-att-value="group_player.id">
+                                    <t t-esc="group_player.name"/>
+                                </option>
+                            </t>
+                            <t t-foreach="players or []"
+                               t-as="player">
+                                <option t-att-value="player.id">
+                                    <t t-esc="player.name"/>
+                                </option>
+                            </t>
+                        </select>
+
+                        <textarea placeholder="Write Group Description"
+                                  name="description"
+                                  id="description"
+                                  class="paceflow-form-control paceflow-form-control--h-unlimited"
+                                  rows="8"
+                                  t-esc="group.description">
+                        </textarea>
+                        <button type="submit"
+                                class="paceflow-btn paceflow-btn--primary mt-5">
+                            Save
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+           <script>
+                function image_preview() {
+                profile_picture.src=URL.createObjectURL(event.target.files[0]);
+                profile_picture.className="paceflow-profile-section__photo";
+                }
+            </script>
+        </t>
+    </template>
+</odoo>

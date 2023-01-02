@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_product_filter,access.product.filter,model_product_filter,,1,1,1,1
+access_product_model,access.product.model,model_product_model,,1,1,1,1
+access_gpu_gpu,access.gpu.gpu,model_gpu_gpu,,1,1,1,1
+
+

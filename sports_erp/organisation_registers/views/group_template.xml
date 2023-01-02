@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="group_template_inherit"
+              inherit_id="sports_erp_dashboard.group_dashboard_details_template">
+        <xpath expr="//div[@id='home']/div/div[2]" position="inside">
+            <div class="form-group py-3">
+                <label class="se-form-label"
+                       for="athletes">
+                    Athletes
+                </label>
+                <select class="form-control se-form-control sports-erp-dashbaord-select"
+                        id="athletes"
+                        name="athletes"
+                        multiple="true"
+                        style="height: calc(1.5em + 0.75rem + 2px) !important;"
+                        t-att-disabled="not request.env.user.has_group('organisation.group_organisation_administrator') and not request.env.user.has_group('organisation.group_organisation_coaches')">
+                    <t t-foreach="athletes or []"
+                       t-as="athlete">
+                        <option t-att-selected="athlete.id in group.athlete_ids.ids"
+                                t-att-value="athlete.id">
+                            <t t-esc="athlete.name"/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='home']" position="inside">
+            <div class="row">
+
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="form-group py-3">
+                        <label class="se-form-label"
+                               for="coaches">
+                            Coaches
+                        </label>
+                        <select class="form-control se-form-control sports-erp-dashbaord-select"
+                                id="coaches"
+                                name="coaches"
+                                multiple="true"
+                                style="height: calc(1.5em + 0.75rem + 2px) !important;"
+                                t-att-disabled="not request.env.user.has_group('organisation.group_organisation_administrator') and not request.env.user.has_group('organisation.group_organisation_coaches')">
+                            <t t-foreach="coaches or []"
+                               t-as="coach">
+                                <option t-att-selected="coach.id in group.coach_ids.ids"
+                                        t-att-value="coach.id">
+                                    <t t-esc="coach.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="form-group py-3">
+                        <label class="se-form-label"
+                               for="venue">
+                            Venue
+                        </label>
+                        <select class="form-control se-form-control"
+                                id="venue"
+                                name="venue">
+                            <option selected="1"
+                                    disabled="1">
+                                Select one
+                            </option>
+                            <t t-foreach="venues"
+                               t-as="venue">
+                                <option t-att-value="venue.id">
+                                    <t t-esc="venue.name"/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                    <div class="form-group py-3">
+                        <label class="se-form-label"
+                               for="color">
+                            Color
+                        </label>
+                        <input type="color"
+                               class="form-control se-form-control"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//ul[@id='myTab']" position="inside">
+            <li class="nav-item"
+                role="presentation">
+                <button class="nav-link"
+                        id="schedule-tab"
+                        data-toggle="tab"
+                        data-target="#schedule"
+                        type="button" role="tab"
+                        aria-controls="home"
+                        aria-selected="false">Schedule
+                </button>
+            </li>
+
+        </xpath>
+        <xpath expr="//div[@id='myTabContent']" position="inside">
+            <script src="https://cdn.jsdelivr.net/npm/html-duration-picker@latest/dist/html-duration-picker.min.js"/>
+            <div class="tab-pane fade"
+                 id="schedule" role="tabpanel"
+                 aria-labelledby="schedule-tab">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <ul class="nav nav-tabs" id="myTab"
+                            role="tablist">
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link active"
+                                        id="availability-tab"
+                                        data-toggle="tab"
+                                        data-target="#availability"
+                                        type="button" role="tab"
+                                        aria-controls="availability"
+                                        aria-selected="true">Availability
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="monday-tab"
+                                        data-toggle="tab"
+                                        data-target="#monday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="monday"
+                                        aria-selected="false">Monday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="tuesday-tab"
+                                        data-toggle="tab"
+                                        data-target="#tuesday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="tuesday"
+                                        aria-selected="false">Tuesday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="wednesday-tab"
+                                        data-toggle="tab"
+                                        data-target="#wednesday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="wednesday"
+                                        aria-selected="true">Wednesday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="thursday-tab"
+                                        data-toggle="tab"
+                                        data-target="#thursday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="thursday"
+                                        aria-selected="false">Thursday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="friday-tab"
+                                        data-toggle="tab"
+                                        data-target="#friday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="friday"
+                                        aria-selected="false">Friday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="saturday-tab"
+                                        data-toggle="tab"
+                                        data-target="#saturday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="saturday"
+                                        aria-selected="false">Saturday
+                                </button>
+                            </li>
+                            <li class="nav-item"
+                                role="presentation">
+                                <button class="nav-link"
+                                        id="sunday-tab"
+                                        data-toggle="tab"
+                                        data-target="#sunday_tab"
+                                        type="button" role="tab"
+                                        aria-controls="sunday"
+                                        aria-selected="false">Sunday
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="Content">
+                            <div class="tab-pane fade show active"
+                                 id="availability" role="tabpanel"
+                                 aria-labelledby="availability-tab">
+                                <div class="row">
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="monday">Monday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="monday"
+                                                   name="monday"
+                                                   t-att-checked="group.mon"/>
+                                        </div>
+
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="wednesday">
+                                                Wednesday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="wednesday"
+                                                   name="wednesday"
+                                                   t-att-checked="group.wed"/>
+                                        </div>
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="friday">Friday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="friday"
+                                                   t-att-checked="group.fri"
+                                                   name="friday"/>
+                                        </div>
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="sunday">Sunday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="sunday"
+                                                   t-att-checked="group.sun"
+                                                   name="sunday"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="tuesday">Tuesday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="tuesday"
+                                                   name="tuesday"
+                                                   t-att-checked="group.tue"/>
+                                        </div>
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="thursday">
+                                                Thursday
+
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="thursday"
+                                                   t-att-checked="group.thu"
+                                                   name="thursday"/>
+                                        </div>
+                                        <div class="form-group py-3">
+                                            <label class="se-form-label"
+                                                   for="saturday">
+                                                Saturday
+                                            </label>
+                                            <input type="checkbox"
+                                                   class="form-control se-form-control"
+                                                   id="saturday"
+                                                   t-att-checked="group.sat"
+                                                   name="saturday"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="monday_tab" role="tabpanel"
+                                 aria-labelledby="monday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="monday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.mon_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="mon_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'mon_name_' + str(i)"
+                                                           t-att-id="'mon_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="mon_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'mon_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="mon_slot_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'mon_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="mon_slot_from">
+                                                    <input type="time"
+                                                           t-att-name="'mon_from_' + str(i)"
+                                                           t-att-id="'mon_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.mon_from)"/>
+                                                    <input type="hidden"
+                                                           t-att-name="'mon_id_' + str(i)"
+                                                           t-att-id="'mon_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'>
+                                                    <input type="time"
+                                                           t-att-name="'mon_to_' + str(i)"
+                                                           t-att-id="'mon_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.mon_to)"/>
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/mon/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="tuesday_tab" role="tabpanel"
+                                 aria-labelledby="tuesday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="tuesday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.tue_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    name="tue_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'tue_name_' + str(i)"
+                                                           t-att-id="'tue_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="tue_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'tue_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="tue_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'tue_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="tue_slot">
+                                                    <input type="time"
+                                                           t-att-name="'tue_from_' + str(i)"
+                                                           t-att-id="'tue_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.tue_from)"/>
+
+                                                    <input type="hidden"
+                                                           t-att-name="'tue_id_' + str(i)"
+                                                           t-att-id="'tue_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'tue_to_' + str(i)"
+                                                           t-att-id="'tue_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.tue_to)"/>
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/tue/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="wednesday_tab" role="tabpanel"
+                                 aria-labelledby="wednesday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="wednesday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.wed_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    name="wed_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'wed_name_' + str(i)"
+                                                           t-att-id="'wed_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="wed_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'wed_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="wed_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'wed_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="wed_slot">
+                                                    <input type="time"
+                                                           t-att-name="'wed_from_' + str(i)"
+                                                           t-att-id="'wed_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.wed_from)"/>
+                                                    <input type="hidden"
+                                                           t-att-name="'wed_id_' + str(i)"
+                                                           t-att-id="'wed_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'wed_to_' + str(i)"
+                                                           t-att-id="'wed_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.wed_to)"/>
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/wed/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="thursday_tab" role="tabpanel"
+                                 aria-labelledby="thursday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="thursday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.thu_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    name="thu_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'thu_name_' + str(i)"
+                                                           t-att-id="'thu_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="thu_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'thu_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="thu_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'thu_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="thu_slot">
+                                                    <input type="time"
+                                                           t-att-name="'thu_from_' + str(i)"
+                                                           t-att-id="'thu_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.thu_from)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'thu_from_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'thu_from_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.thu_from"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+                                                    <input type="hidden"
+                                                           t-att-name="'thu_id_' + str(i)"
+                                                           t-att-id="'thu_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'thu_to_' + str(i)"
+                                                           t-att-id="'thu_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.thu_to)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'thu_to_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'thu_to_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.thu_to"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/thu/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="friday_tab" role="tabpanel"
+                                 aria-labelledby="friday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="friday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.fri_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    name="fri_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'fri_name_' + str(i)"
+                                                           t-att-id="'fri_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    name="fri_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'fri_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="fri_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'fri_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="fri_slot">
+                                                    <input type="time"
+                                                           t-att-name="'fri_from_' + str(i)"
+                                                           t-att-id="'fri_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.fri_from)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'fri_from_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'fri_from_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.fri_from"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                    <input type="hidden"
+                                                           t-att-name="'fri_id_' + str(i)"
+                                                           t-att-id="'fri_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'fri_to__' + str(i)"
+                                                           t-att-id="'fri_to__' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.fri_to)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'fri_to_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'fri_to_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.fri_to"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/fri/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="saturday_tab" role="tabpanel"
+                                 aria-labelledby="saturday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="saturday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th>From</th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.sat_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sat_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'sat_name_' + str(i)"
+                                                           t-att-id="'sat_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sun_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            t-att-name="'sat_venue_' + str(i)">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sat_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"
+                                                               t-att-name="'sat_recurrent_' + str(i)"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sat_slot">
+                                                   <input type="time"
+                                                           t-att-name="'sat_from_' + str(i)"
+                                                           t-att-id="'sat_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.sat_from)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'sat_from_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'sat_from_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.sat_from"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                    <input type="hidden"
+                                                           t-att-name="'sat_id_' + str(i)"
+                                                           t-att-id="'sat_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'sat_to_' + str(i)"
+                                                           t-att-id="'sat_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.sat_to)"/>
+                                                    <!--                                                                                                        <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'sat_to_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'sat_to_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.sat_to"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/sat/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade"
+                                 id="sunday_tab" role="tabpanel"
+                                 aria-labelledby="sunday-tab">
+                                <div class="row col-12 col-sm-12">
+                                    <table class="mb16 table table-sm js_cart_lines col-lg-12"
+                                           id="sunday_table">
+                                        <thead>
+                                            <tr>
+                                                <th>Training Name</th>
+                                                <th>Venue</th>
+                                                <th>Recurrent</th>
+                                                <th class="td-img">
+                                                    From
+                                                </th>
+                                                <th>To</th>
+                                                <th class="text-center td-action"/>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="i" t-value="1"/>
+                                            <tr t-foreach="group.sun_schedule_ids"
+                                                t-as="slot"
+                                                t-att-id="'row_' + str(i)">
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sun_slot_name">
+                                                    <input type="text"
+                                                           t-att-name="'sun_name_' + str(i)"
+                                                           t-att-id="'sun_name_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.name"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sun_slot_venue">
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            name="venue">
+                                                        <option selected="1"
+                                                                disabled="1">
+                                                            Select one
+                                                        </option>
+                                                        <t t-foreach="venues"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id"
+                                                                    t-att-selected="venue.id == slot.venue_id.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sun_recurrent">
+                                                    <label class="switch">
+                                                        <input type="checkbox"
+                                                               t-att-checked="slot.is_recurrent"/>
+                                                        <span class="slider round"></span>
+                                                    </label>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name"
+                                                    name="sun_slot">
+                                                    <input type="time"
+                                                           t-att-name="'sun_from_' + str(i)"
+                                                           t-att-id="'sun_from_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.sun_from)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'sun_from_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'sun_from_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           t-att-value="slot.sun_from"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                    <input type="hidden"
+                                                           t-att-name="'sun_id_' + str(i)"
+                                                           t-att-id="'sun_id_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="slot.id"/>
+                                                </td>
+                                                <td contenteditable='true'
+                                                    class="td-product_name">
+                                                    <input type="time"
+                                                           t-att-name="'sun_to_' + str(i)"
+                                                           t-att-id="'sun_to_' + str(i)"
+                                                           class="form-control"
+                                                           t-att-value="group.get_time_from_slot(slot.sun_to)"/>
+                                                    <!--                                                    <input class="html-duration-picker se-form-control"-->
+                                                    <!--                                                           t-att-name="'sun_to_' + str(i)"-->
+                                                    <!--                                                           t-att-id="'sun_to_' + str(i)"-->
+                                                    <!--                                                           type="text"-->
+                                                    <!--                                                           data-hide-seconds="true"-->
+                                                    <!--                                                           data-duration-max="23:59"-->
+                                                    <!--                                                           data-duration="00:15"-->
+                                                    <!--                                                           t-att-value="slot.sun_to"-->
+                                                    <!--                                                           style="height: calc(1.5em + 0.75rem + 2px); border: 1px solid #CED4DA; transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;}"/>-->
+
+                                                </td>
+                                                <td class="td-action">
+                                                    <a t-att-href="'/delete/sun/schedule?id=%s' % slot.id"
+                                                       aria-label="Remove"
+                                                       title="Remove"
+                                                       class="delete_image no-decoration">
+                                                        <small>
+                                                            <i class="fa fa-trash-o"/>
+                                                        </small>
+                                                    </a>
+                                                </td>
+                                                <t t-set="i"
+                                                   t-value="i+1"/>
+                                            </tr>
+                                            <input type="hidden"
+                                                   id="number"
+                                                   t-att-value="i"/>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <div id="add_item"
+                                     class="float-left">+ Add an
+                                    item
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </xpath>
+    </template>
+</odoo>

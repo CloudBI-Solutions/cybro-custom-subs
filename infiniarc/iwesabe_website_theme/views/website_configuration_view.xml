@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_website_configuration_tree" model="ir.ui.view">
+        <field name="name">website.configuration.tree</field>
+        <field name="model">website.configuration</field>
+        <field name="arch" type="xml">
+            <tree string="Website Configuration" create="0" delete="0">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_website_configuration_form" model="ir.ui.view">
+        <field name="name">website.configuration.form</field>
+        <field name="model">website.configuration</field>
+        <field name="arch" type="xml">
+            <form string="Website Configuration" create="0" delete="0">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name" required="1"/>
+                        </h1>
+                    </div>
+                    <h3 class="mt16 text-center">***------------ Cart Page ------------***</h3>
+                    <group>
+                        <group>
+                            <field name="cart_qty_limit"/>
+                        </group>
+                    </group>
+
+                    <h3 class="mt16 text-center">***------------ HOME Page ------------***</h3>
+                    <group>
+                        <field name="home_category_ids" widget="many2many_tags"/>
+                    </group>
+                    <notebook>
+                        <page name="website_category_line" string="Website Category Line">
+                            <field name="website_category_line">
+                                <tree editable="bottom">
+                                    <field name="category_id" required="1"/>
+                                    <field name="product_ids" domain="[('public_categ_ids','in',category_id)]"
+                                           widget="many2many_tags" required="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page name="website_model_line" string="Website Models">
+                            <field name="website_model_line">
+                                <tree editable="bottom">
+                                    <field name="filter_id"/>
+                                    <field name="products_id" domain="[('filter_type', '=', filter_id)]"
+                                           widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <h3 class="mt16 text-center">***------------ GEARSTORE Page ------------***</h3>
+                    <notebook>
+                        <page name="website_component_line" string="Website component Line">
+                            <field name="website_component_line">
+                                <tree editable="bottom">
+                                    <field name="parent_ids" required="1"/>
+                                    <field name="sub_ids" domain="[('parents_type','=',parent_ids)]"
+                                           widget="many2many_tags" required="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <!--					<group>-->
+                    <!--						<field name="component_type_ids" widget="many2many_tags"/>-->
+                    <!--						<field name="accessories_type_ids" widget="many2many_tags"/>-->
+                    <!--					</group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Web Products Menu -->
+    <record id="action_website_configuration" model="ir.actions.act_window">
+        <field name="name">Website Configuration</field>
+        <field name="res_model">website.configuration</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            id="menu_website_configuration"
+            name="Website Configuration"
+            parent="website.menu_website_global_configuration"
+            action="action_website_configuration"/>
+
+
+    <record id="website_website_menus_form_view_extend" model="ir.ui.view">
+        <field name="name">website.menu</field>
+        <field name="model">website.menu</field>
+        <field name="inherit_id" ref="website.website_menus_form_view"/>
+        <field name="arch" type="xml">
+            <field name="child_id" position="after">
+                <group>
+                    <field name="menu_category_ids" widget="many2many_tags"/>
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>

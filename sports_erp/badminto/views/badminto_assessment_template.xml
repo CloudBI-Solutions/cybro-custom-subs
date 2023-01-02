@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="assessment_template" name="Assessment Template">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/registers"
+                               class="set-dashboard__breadcrumb-link">
+                                Badminton Profiling(Assessment)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container badminto--main-title">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2 badminto-tiltle">
+                            Badminton
+                            Profile
+                        </h2>
+                    </div>
+                    <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                     width="18" height="18"
+                                     class="mr-2"/>
+                                <span class="title--show">
+                                    Go To
+                                </span>
+                            </button>
+                            <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                <a class="set-dropdown-item dropdown-item"
+                                   href="/my/badmintoo/assessment/plans">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                         width="14" height="14"
+                                         class="mr-3"/>
+                                    <span>Assessment Plans</span>
+                                </a>
+                                <button type="button"
+                                        class="set-dropdown-item dropdown-item"
+                                        data-toggle="modal"
+                                        data-target="#changeAssessmentConfigurationModal">
+                                    <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                         width="14" height="14" class="mr-3"/>
+                                    <span>Assessment Configuration</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button"
+                                    class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                     width="18" height="18" class="mr-2"/>
+                                Add New
+                            </button>
+                            <div class="set-dropdown-menu dropdown-menu dropdown-menu-right badminto-dropdown">
+
+                                <t t-set="request.env['assessment.types'].search([])"
+                                   t-as="assessment_types"/>
+                                <t t-foreach="assessment_types" t-as="types">
+
+                                    <div class="set-dropdown-item dropdown-item">
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select-assessment"
+                                               t-att-value="types.id"/>
+                                        <span class="ml-2">
+                                            <t t-esc="types.name"/>
+                                        </span>
+                                    </div>
+
+                                </t>
+                                <div class="float-right">
+                                    <input type="button"
+                                           id="add_assessment_type"
+                                           name="select-assessment" value="Add"
+                                           class="btn set-button set-button--primary set-button--no-shadow badminto-add-button"
+                                           data-toggle="modal"
+                                           data-target="#addAssessmentModal"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- FILTER SECTION -->
+                <div class="row mt-4 ml-1">
+                    <div class="col-12 col-md-12 col-lg-3 badminto-sub">
+                        <h3>Badminton Profiles</h3>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-9 d-flex badminto-date-range">
+                        <div class="col-6 filter-box-badminto">
+                            <a href="#"
+                               class="set-button set-button--sm set-button--dark w-50 my-3 mr-2">
+                                Date Range Filter
+                            </a>
+                        </div>
+                        <div class="col-6 search-box--badminto">
+                            <input type="search" name="search"
+                                   class="set-input__input w-75 my-3"/>
+                            <i class="fa fa-search badminto--search"/>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF FILTER SECTION -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <table class="set-dashboard__table mt-3">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select-all"/>
+                                    </th>
+                                    <th>Name</th>
+                                    <th>Level</th>
+                                    <th>Last Score</th>
+                                    <th>Assessment Types</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="assessments" t-as="assessment">
+                                    <td>
+                                        <input type="checkbox"
+                                               class="set-input--checkbox"
+                                               name="select"/>
+                                    </td>
+                                    <td>
+                                        <a t-attf-href="/my/assessment?assessment={{assessment.id}}">
+                                            <div class="set-dashboard__table-details">
+                                                <span class="set-dashboard__table-name mb-1">
+                                                    <t t-esc="assessment.name"/>
+                                                </span>
+                                                <span class="set-dashboard__table-role">
+                                                    <t t-esc="assessment.athlete_id.name"/>
+                                                </span>
+                                            </div>
+
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                            <span class="set-badge set-badge--blue set-badge--wide">
+                                                <t t-if="assessment.highest_standard"
+                                                   t-esc="dict(assessment.fields_get(allfields=['highest_standard'])['highest_standard']['selection'])[assessment.highest_standard]"/>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                            <span class="set-badge set-badge--green set-badge--wide">
+                                                <!--                                                <t t-if="assessment.highest_standard" t-esc="dict(assessment.fields_get(allfields=['highest_standard'])['highest_standard']['selection'])[assessment.highest_standard]"/>-->
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                            <span class="set-badge set-badge--gold set-badge--wide">
+                                                <!--                                                <t t-if="assessment.highest_standard" t-esc="dict(assessment.fields_get(allfields=['highest_standard'])['highest_standard']['selection'])[assessment.highest_standard]"/>-->
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="set-dashboard__table-actions">
+                                            <a href="#"
+                                               class="set-dashboard__table-action mr-4">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                     class="set-dashboard__table-action-icon"
+                                                     alt="Edit" title="Edit"/>
+                                            </a>
+                                            <a href="#"
+                                               class="set-dashboard__table-action">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                     class="set-dashboard__table-action-icon"
+                                                     alt="Remove"
+                                                     title="Remove"/>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="set-dashboard__table-footer">
+                            <span class="set-dashboard__page-position set-text set-text--grey">
+                                Page
+                                <span t-out="pager['page']['num']"/>
+                                of
+                                <t t-if="pager['page_count'] > 1">
+                                    <span t-out="pager['pages'][-1]['num']"/>
+                                </t>
+                                <t t-else="">
+                                    <span t-out="pager['page']['num']"/>
+                                </t>
+                            </span>
+                            <ul
+                                    class="set-dashboard__pagination">
+                                <t t-foreach="pager['pages']"
+                                   t-as="page">
+                                    <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                        <a t-att-href="page['url']"
+                                           t-attf-class="page-link #{extraLinkClass}"
+                                           t-out="page['num']"/>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="modal se-modal"
+                         id="changeAssessmentConfigurationModal"
+                         tabindex="-1"
+                         role="dialog"
+                         aria-labelledby="changeAssessmentConfigurationModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addAssessmentModalLabel">Assessment
+                                        Configuration
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/update/assessment_configuration" method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Lifestyle Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="lifestyle_assessment">
+                                                    Lifestyle Assessment
+                                                </label>
+                                                <select name="lifestyle_assessment"
+                                                        id="lifestyle_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.lifestyle_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.lifestyle_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    S &amp; C Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="s_c_assessment">
+                                                    S &amp; C Assessment
+                                                </label>
+                                                <select name="s_c_assessment"
+                                                        id="s_c_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.sc_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.sc_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Mobility Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="mobility">
+                                                    Mobility Assessment
+                                                </label>
+                                                <select name="mobility_assessment"
+                                                        id="mobility_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.mobility_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.mobility_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Mental Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="mental_assessment">
+                                                    Mental Assessment
+                                                </label>
+                                                <select name="mental_assessment"
+                                                        id="mental_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.mental_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.mental_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    HR/HRV Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="hrv_assessment">
+                                                    HR/HRV Assessment
+                                                </label>
+                                                <select name="hrv_assessment"
+                                                        id="hrv_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.hrv_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.hrv_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Nutrition Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="nutrition_assessment">
+                                                    Nutrition Assessment
+                                                </label>
+                                                <select name="nutrition_assessment"
+                                                        id="nutrition_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.nutrition_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.nutrition_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Aerobic Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="aerobic_assessment">
+                                                    Aerobic Assessment
+                                                </label>
+                                                <select name="aerobic_assessment"
+                                                        id="aerobic_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.aerobic_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.aerobic_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Anaerobic Assessment
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="anaerobic_assessment">
+                                                    Anaerobic Assessment
+                                                </label>
+                                                <select name="anaerobic_assessment"
+                                                        id="anaerobic_assessment"
+                                                        class="form-control se-form-control">
+                                                    <t t-if="organisation.anaerobic_assessment_data_id">
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+                                                            <option t-att-selected="survey.id == organisation.anaerobic_assessment_data_id.id"
+                                                                    t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <option selected="selected">
+                                                        </option>
+                                                        <t t-foreach="request.env['survey.survey'].sudo().search([])"
+                                                           t-as="survey">
+
+                                                            <option t-att-value="survey.id">
+                                                                <t t-esc="survey.title"/>
+                                                            </option>
+                                                        </t>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex">
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                               style="border-radius: 5px !important;"
+                                               value="Update Assessment Configuration"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal se-modal" id="addAssessmentModal"
+                         tabindex="-1"
+                         role="dialog" aria-labelledby="addAssessmentModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog se-modal__dialog"
+                             role="document">
+                            <div class="modal-content se-modal__content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title se-modal__title"
+                                        id="addAssessmentModalLabel">Add New
+                                        Assessment
+                                    </h5>
+                                    <button type="button" class="close"
+                                            data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="false">X</span>
+                                    </button>
+                                </div>
+                                <form action="/create/assessment" method="post"
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" name="csrf_token"
+                                           t-att-value="request.csrf_token()"/>
+                                    <div class="modal-body">
+                                        <div class="row px-4">
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Customer Information
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="customers">
+                                                    Customers
+                                                </label>
+                                                <select name="customers"
+                                                        id="customers"
+                                                        placeholder="Choose Customers"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple">
+                                                    <option></option>
+                                                    <t t-foreach="customers or []"
+                                                       t-as="customer">
+                                                        <option t-att-value="customer.id">
+                                                            <t t-esc="customer.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <h5 class="font-weight-bold se-link--unstyled text-muted"
+                                                    style="font-size: 1.15rem !important;">
+                                                    Product Information
+                                                </h5>
+                                            </div>
+                                            <hr/>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="assessments">
+                                                    Assessments
+                                                </label>
+                                                <select name="assessment_types"
+                                                        id="assessment_types"
+                                                        placeholder="Choose Assessment Types"
+                                                        class="form-control se-form-control sports-erp-dashbaord-select"
+                                                        multiple="multiple">
+                                                    <option></option>
+                                                    <t t-foreach="assessment_types or []"
+                                                       t-as="type">
+                                                        <option t-att-value="type.id">
+                                                            <t t-esc="type.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="price">Price
+                                                </label>
+                                                <input type="number"
+                                                       id="price"
+                                                       name="price"
+                                                       class="form-control se-form-control"/>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="taxes">Taxes
+                                                </label>
+                                                <select name="taxes" id="taxes"
+                                                        class="form-control se-form-control"
+                                                        placeholder="Choose Tax">
+                                                    <t t-foreach="taxes or []"
+                                                       t-as="tax">
+                                                        <option t-att-value="tax.id">
+                                                            <t t-esc="tax.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                <label class="se-form-label"
+                                                       for="taxes">Assessment
+                                                    Plans
+                                                </label>
+                                                <select name="assessment_plans"
+                                                        id="assessment_plans"
+                                                        class="form-control se-form-control"
+                                                        placeholder="Choose Assessment Plan">
+                                                    <t t-foreach="assessment_plans or []"
+                                                       t-as="assessment_plan">
+                                                        <option t-att-value="assessment_plan.id">
+                                                            <t t-esc="assessment_plan.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 py-3">
+                                                <label class="se-form-label"
+                                                       for="athletes">
+                                                    Quantity
+                                                </label>
+                                                <input type="number"
+                                                       id="qty"
+                                                       name="qty"
+                                                       class="form-control se-form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer d-flex">
+                                        <input type="submit"
+                                               class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                               style="border-radius: 5px !important;"
+                                               value="Add Assessment"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </t>
+    </template>
+</odoo>

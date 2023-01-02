@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="infiniarc_support" name="Infiniarc Support">
+        <t t-call="website.layout">
+
+            <section id="section-title">
+                <div class="ian-main-banner__breadcrumb">
+                    <div class="ian-breadcrumb__container">
+                        <ul class="ian-main-banner__breadcrumb-items">
+                            <li class="ian-main-banner__breadcrumb-item">
+                                <a href="/" class="ian-link__unstyled">Home</a>
+                            </li>
+                            <li class="ian-main-banner__breadcrumb-item active">
+                                <a href="#" class="ian-link__unstyled">Support</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="ian-main-banner"
+                     style="background-image: url('/iwesabe_website_theme/static/src/img/esports.webp');">
+                    <h2 class="ian-main-banner__header">Support</h2>
+                    <p class="ian-main-banner__lead">Get help from our dedicated support team</p>
+                </div>
+
+            </section>
+
+            <section id="support-type" class="">
+                <div class="container" style="margin-top: -100px; margin-bottom: 25px;">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/contactus">Contact Us</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        If you have query you can contact us directly through different channels.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-contact.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/order_status">Order Status</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can check all the details of your order here.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-order.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/faq">FAQs / Knowledge Base</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can view some questions befor contacting us and some guidelines.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-faq.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <t t-foreach="type[0]" t-as="typ">
+                                            <a t-attf-href="/terms/{{slug(typ)}}">Terms &amp; Conditions</a>
+                                        </t>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can learn about our warranty check and terms and conditions.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-terms.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/warranty">Infiniarc Warranty</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can learn about our warranty check here.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-warranty.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/aboutus">About Us</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can learn about our company here.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-about.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/rma_status">RMA Status</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can check all the details of RMA here.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-about.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="ian-support-card">
+                                <div class="ian-support-card__detail">
+                                    <span class="ian-support-card__title">
+                                        <a href="/infiniarc_business">Infiniarc Business</a>
+                                    </span>
+                                    <p class="ian-support-card__lead">
+                                        You can check all the details of Infiniarc here.
+                                    </p>
+                                </div>
+                                <img src="/iwesabe_website_theme/static/src/img/support-about.png"
+                                     class="ian-support-card__image"/>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </section>
+
+        </t>
+    </template>
+</odoo>

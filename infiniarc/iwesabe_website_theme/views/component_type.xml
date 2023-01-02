@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_component_type_tree" model="ir.ui.view">
+        <field name="name">component.type.tree</field>
+        <field name="model">component.type</field>
+        <field name="arch" type="xml">
+            <tree string="Components">
+                <field name="is_default"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="parents_type"/>
+                <field name="web_view_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_component_type_form" model="ir.ui.view">
+        <field name="name">component.type.form</field>
+        <field name="model">component.type</field>
+        <field name="arch" type="xml">
+            <form string="Components">
+                <sheet>
+                    <field name="image" class="oe_avatar" widget="image"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" default_focus="1" placeholder="Name" required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="is_default"/>
+                            <field name="code"/>
+                            <field name="allowed_to_multiple" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="web_view_type"/>
+                            <field name="sequence"/>
+                            <field name="parents_type" required="1"/>
+                            <field name="type" invisible="1"/>
+                        </group>
+                    </group>
+<!--                    <group>-->
+<!--                        <field name="parent_category_id"/>-->
+<!--                    </group>-->
+                    <h3>Select Components</h3>
+                    <field name="product_line">
+                        <tree create="false" delete="false" edit="false">
+                            <field name="sequence" widget="handle"/>
+                            <field name="is_allowed_components" invisible="1"/>
+                            <field name="name"/>
+                            <field name="barcode"/>
+                            <field name="list_price"/>
+                            <field name="standard_price"/>
+                            <field name="qty_available"/>
+                        </tree>
+                    </field>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_component_type" model="ir.actions.act_window">
+        <field name="name">Components</field>
+        <field name="res_model">component.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Product Components.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Components"
+            parent="website.menu_website_global_configuration"
+            action="action_component_type"
+            id="sub_components_config"
+            sequence="105"/>
+
+</odoo>

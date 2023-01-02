@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="survey_user_input_view_form_inherit" model="ir.ui.view">
+        <field name="name">survey.user_input.view.form.inherited</field>
+        <field name="model">survey.user_input</field>
+        <field name="inherit_id" ref="survey.survey_user_input_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_input_line_ids']/tree/field[@name='answer_type']" position="after">
+                <field name="toggle_answer" attrs="{'invisible': [('answer_type','!=','toggle')]}"/>
+                <field name="value_progress_bar" attrs="{'invisible': [('answer_type','!=','progress_bar')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

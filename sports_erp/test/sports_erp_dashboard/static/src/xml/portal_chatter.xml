@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="portal.Chatter.Attachments">
+        <t t-jquery=".o_portal_chatter_attachment" t-operation="replace">
+            <div class="o_portal_chatter_attachment mb-2 position-relative text-center"
+                 t-att-data-id="attachment.id">
+                    <button t-if="showDelete and attachment.state == 'pending'"
+                            class="o_portal_chatter_attachment_delete btn btn-sm btn-outline-danger"
+                            title="Delete">
+                        <i class="fa fa-times"/>
+                    </button>
+                <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}"
+                   target="_blank">
+                    <t t-set="type"
+                       t-value="attachment.mimetype and attachment.mimetype.split('/').shift()"/>
+                    <div t-if="type == 'image'">
+                    <img class="o_chatter_view"
+                         t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-elif="type == 'video'">
+                    <video class='o_chatter_view'
+                           t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"
+                           controls="controls"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-else="">
+                        <div class='oe_attachment_embedded o_image'
+                             t-att-title="attachment.name"
+                             t-att-data-mimetype="attachment.mimetype"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>
+                    </div>
+                    </a>
+            </div>
+        </t>
+    </t>
+
+    <t t-extend="portal.chatter_messages">
+        <t t-jquery=".o_portal_chatter_attachments" t-operation="replace">
+            <t t-call="sport_erp_dashboard.Chatter.Attachments">
+                <t t-set="attachments"
+                   t-value="message.attachment_ids"/>
+            </t>
+
+        </t>
+    </t>
+
+    <t t-name="sport_erp_dashboard.Chatter.Attachments">
+        <div t-if="attachments.length">
+            <div t-foreach="attachments" t-as="attachment"
+                 class="row">
+            <div class="o_portal_chatter_attachment mb-2 position-relative text-center"
+                 t-att-data-id="attachment.id">
+                    <button t-if="showDelete and attachment.state == 'pending'"
+                            class="o_portal_chatter_attachment_delete btn btn-sm btn-outline-danger"
+                            title="Delete">
+                        <i class="fa fa-times"/>
+                    </button>
+                <a t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.access_token}"
+                   target="_blank">
+                    <t t-set="type"
+                       t-value="attachment.mimetype and attachment.mimetype.split('/').shift()"/>
+                    <div t-if="type == 'image'">
+                    <img class="sport_erp_viewer"
+                         t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"/>
+                        <div class='o_portal_chatter_attachment_name sport_erp_viewer'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-elif="type == 'video'">
+                    <video class="sport_erp_viewer"
+                           t-attf-src="/web/content/#{attachment.id}?&amp;access_token=#{attachment.access_token}"
+                           controls="controls"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>                    </div>
+                    <div t-else="">
+                        <div class='oe_attachment_embedded o_image'
+                             t-att-title="attachment.name"
+                             t-att-data-mimetype="attachment.mimetype"/>
+                        <div class='o_portal_chatter_attachment_name'>
+                            <t t-esc='attachment.name'/>
+                        </div>
+                    </div>
+                    </a>
+            </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_delivery_clean" model="ir.actions.act_window">
+        <field name="name">Delivery Cleaning</field>
+        <field name="res_model">delivery.cleaning.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_delivery_cleaning"
+              name="Delivery Cleaning"
+              parent="stock.menu_stock_root"
+              action="action_delivery_clean"
+              sequence="15"/>
+
+</odoo>

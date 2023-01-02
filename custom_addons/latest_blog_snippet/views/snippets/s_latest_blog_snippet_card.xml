@@ -1,0 +1,57 @@
+<odoo>
+    <template id="s_latest_blog_snippet_card">
+        <div class="blog_carousel_slider oe_blog_event">
+            <input type="hidden"
+                   name="blog_count"
+                   t-if="blogs"
+                   t-att-value="len(blogs)"/>
+            <div t-att-id="uniqueId"
+                 class="carousel slide d-flex"
+                 data-ride="carousel">
+                <a class="o_blogs_carousel_control carousel-control-prev position-relative"
+                   t-att-href="'#' + uniqueId"
+                    role="button"
+                    data-slide="prev"
+                    t-if='num_slides > 1'>
+                    <i class="fa fa-2x fa-chevron-left text-black-50" />
+                    <span class="sr-only">Previous</span>
+                </a>
+                <div class="carousel-inner">
+                    <t t-foreach="blogs" t-as="blog">
+                        <div t-attf-class="carousel-item #{'' if blog_index else 'active'}">
+                            <div>
+                                <t t-call="latest_blog_snippet.latest_blogs"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <a
+                    class="o_blog_carousel_control carousel-control-next position-relative"
+                    t-att-href="'#' + uniqueId"
+                    role="button"
+                    data-slide="next"
+                    t-if='num_slides > 1'>
+                    <i class="fa fa-2x fa-chevron-right text-black-50" />
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </template>
+
+    <template id="latest_blogs" name="blogs">
+        <div class="container">
+            <h3 class="text-center mb32">Latest Blogs</h3>
+            <t t-foreach="blog" t-as="data">
+<!--                <span t-esc="slug(data)"/>-->
+                <div style="float:left; width:25%;">
+                    <h5 class="card-header" t-esc="data.name" style="height:65px"/>
+                    <a t-attf-href="/blog/#{slug(data)}/#{slug(data)}">
+                        <img class="card-img-top p-3" loading="lazy"
+                             t-attf-src="/website_blog/static/src/img/cover_#{data.id}.jpg"
+                             style="width:200px; height:200px;"/>
+                    </a>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>

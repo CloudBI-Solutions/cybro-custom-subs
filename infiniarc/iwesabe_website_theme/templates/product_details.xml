@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_details" name="Product" track="1">
+        <t t-set="combination" t-value="product._get_first_possible_combination()"/>
+        <t t-set="combination_info"
+           t-value="product._get_combination_info(combination, add_qty=add_qty or 1, pricelist=pricelist)"/>
+        <t t-set="product_variant" t-value="product.env['product.product'].browse(combination_info['product_id'])"/>
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="product.name"/>
+            <div itemscope="itemscope" itemtype="http://schema.org/Product" id="wrap" class="js_sale">
+                <div class="oe_structure oe_empty oe_structure_not_nearest" id="oe_structure_website_sale_product_1"
+                     data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+                <section
+                        t-attf-class="container py-4 oe_website_sale #{'discount' if combination_info['has_discounted_price'] else ''}"
+                        id="product_detail" t-att-data-view-track="view_track and '1' or '0'"
+                        t-att-data-product-tracking-info="json.dumps(request.env['product.template'].get_google_analytics_data(combination_info))">
+
+                    <div class="container mt-5">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="ial-product">
+                                    <div class="ial-product__image">
+
+                                        <div id="carouselProduct" class="ial-product-carousel carousel slide"
+                                             data-ride="carousel">
+
+                                            <div class="d-flex align-items-center">
+                                                <div class="ial-product-carousel__indicator-container">
+                                                    <ul class="ial-product-carousel__items"
+                                                        t-foreach="product.product_template_image_ids" t-as="image">
+                                                        <!--                                                        <t t-esc="image.image_1920"/>-->
+                                                        <li class="ial-product-carousel__item">
+                                                            <img t-attf-src="/web/image/product.image/{{ image.id }}/image_1920"
+                                                                 data-target="#carouselProduct" data-slide-to="0"
+                                                                 class="ial-product__carousel-image"
+                                                                 alt=" "/>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <img t-attf-src="/web/image/product.template/{{ product.id }}/image_1920"
+                                                             class="ial-product__carousel-image"
+                                                             alt="Elgato Wave:3 Microphone"/>
+                                                    </div>
+                                                    <div class="carousel-item"
+                                                         t-foreach="product.product_template_image_ids" t-as="images">
+                                                        <img t-attf-src="/web/image/product.image/{{ images.id }}/image_1920"
+                                                             class="ial-product__carousel-image"
+                                                             alt="Elgato Wave:3 Microphone"/>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            <button class="carousel-control-prev" type="button"
+                                                    data-target="#carouselProduct" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </button>
+                                            <button class="carousel-control-next" type="button"
+                                                    data-target="#carouselProduct" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <div class="ial-product__details">
+                                        <ul class="ial-product__breadcrumb">
+                                            <li class="ial-product__breadcrumb-item" id="go_back"><a href="#">Back</a></li>
+                                            <li class="ial-product__breadcrumb-item">
+                                                <a href="/">Home</a>
+                                            </li>
+                                            <li class="ial-product__breadcrumb-item">
+                                                <span t-field="product.name"/>
+                                            </li>
+                                        </ul>
+                                        <h1 class="ial-product__title">
+                                            <t t-esc="product.name"/>
+                                        </h1>
+                                        <div class="ial-product__prices">
+                                            <t t-set="combination_info"
+                                               t-value="product._get_combination_info(only_template=True, add_qty=add_qty or 1, pricelist=pricelist)"/>
+                                            <div class="product_price mb-1" itemprop="offers" itemscope="itemscope"
+                                                 itemtype="http://schema.org/Offer">
+                                                <span class="h5 ian-product-card__product-price"
+                                                      t-if="combination_info['price']"
+                                                      t-esc="combination_info['price']"
+                                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <del t-attf-class="ian-product-card__old-price ml-1 h6 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                     style="white-space: nowrap;" t-esc="combination_info['list_price']"
+                                                     t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <t t-if="combination_info['has_discounted_price']">
+                                                    <t t-set="percentage"
+                                                       t-value="( (combination_info['list_price']-combination_info['price'])/combination_info['list_price'] ) *100"/>
+                                                    <span><t t-esc="int(percentage)"/>%
+                                                    </span>
+                                                </t>
+
+                                                <span itemprop="price" style="display:none;"
+                                                      t-esc="combination_info['price']"/>
+                                                <span itemprop="priceCurrency" style="display:none;"
+                                                      t-esc="website.currency_id.name"/>
+                                            </div>
+
+                                        </div>
+                                        <div class="ial-product__description">
+                                            <t t-esc="product.description_sale"/>
+
+                                        </div>
+                                        <div class="ial-product__meta">
+                                            <div class="d-flex align-items-center ial-product__share">
+                                                <span class="ial-product__share-product-label mr-2">Share this
+                                                    product:
+                                                </span>
+                                                <a href="/website/social/facebook" class="ial-product__social-link">
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/facebook.svg"
+                                                         width="18" height="18"
+                                                         class="ial-product__social-icon"
+                                                         alt="facebook"/>
+                                                </a>
+                                                <a href="/website/social/twitter" class="ial-product__social-link">
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/twitter.svg"
+                                                         width="18" height="18"
+                                                         class="ial-product__social-icon"
+                                                         alt="twitter"/>
+                                                </a>
+                                                <a href="https://api.whatsapp.com" class="ial-product__social-link">
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/whatsapp.svg"
+                                                         width="18" height="18"
+                                                         class="ial-product__social-icon"
+                                                         alt="whatsapp"/>
+                                                </a>
+                                                <a href="https://mail.google.com/mail/u/0/#inbox?compose=new"
+                                                   class="ial-product__social-link">
+                                                    <img src="/iwesabe_website_theme/static/src/img/icons/email.svg"
+                                                         width="18" height="18"
+                                                         class="ial-product__social-icon"
+                                                         alt="email"/>
+                                                </a>
+                                            </div>
+                                            <form t-if="product._is_add_to_cart_possible()" action="/shop/cart/update"
+                                                  method="POST">
+                                                <input type="hidden" name="csrf_token"
+                                                       t-att-value="request.csrf_token()"/>
+                                                <div class="d-flex align-items-center ial-product__share">
+                                                    <div class="css_quantity quantity input-group ial-product__counter  mr-3"
+                                                         contenteditable="false">
+                                                        <div class="input-group">
+                                                            <div class="input-group-prepend input-group-btn">
+                                                                <a t-attf-href="#"
+                                                                   class="btn btn-primary js_add_cart_json ial-product__counter-btn border-right-0"
+                                                                   aria-label="Remove one" title="Remove one">
+                                                                    <i class="fa fa-minus"/>
+                                                                </a>
+                                                            </div>
+                                                            <input type="text"
+                                                                   class="form-control quantity ial-product__counter-input"
+                                                                   data-min="1"
+                                                                   name="add_qty" t-att-value="add_qty or 1"/>
+                                                            <div class="input-group-append input-group-btn">
+                                                                <a t-attf-href="#"
+                                                                   class="btn btn-primary float_left js_add_cart_json ial-product__counter-btn border-left-0"
+                                                                   aria-label="Add one" title="Add one">
+                                                                    <i class="fa fa-plus"></i>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="hidden" class="product_id"
+                                                           name="product_id"
+                                                           t-att-value="product.product_variant_id.id"/>
+                                                    <button type="submit"
+                                                            class="ial-btn__product-page ial-btn ial-btn--primary ial-btn--block"
+                                                            t-att-data-id="'%s' % product.product_variant_id.id">
+                                                        <!--                                            <i class="fa fa-cart-arrow-down"/>-->
+                                                        ADD TO CART
+                                                    </button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <ul class="ial-product__nav-tabs nav nav-tabs" id="productTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="desc-tab" data-toggle="tab"
+                                                data-target="#desc" type="button" role="tab"
+                                                aria-controls="home" aria-selected="true">Description
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="spec-tab" data-toggle="tab" data-target="#spec"
+                                                type="button" role="tab"
+                                                aria-controls="profile" aria-selected="false">Specification
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="doc-tab" data-toggle="tab" data-target="#doc"
+                                                type="button" role="tab"
+                                                aria-controls="contact" aria-selected="false">Documents
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="ext-tab" data-toggle="tab" data-target="#ext"
+                                                type="button" role="tab"
+                                                aria-controls="contact" aria-selected="false">Extra Info
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="con-tab" data-toggle="tab" data-target="#con"
+                                                type="button" role="tab"
+                                                aria-controls="contact" aria-selected="false">Conditions
+                                        </button>
+                                    </li>
+                                </ul>
+                                <div class="ial-product__tab-content tab-content" id="productTabContent">
+                                    <div class="tab-pane fade show active" id="desc" role="tabpanel"
+                                         aria-labelledby="desc-tab">
+                                        <h3 class="ial-product__sub-header">Product Description</h3>
+                                        <p class="ial-product__sub-desc">
+                                            <t t-esc="product.product_description"/>
+                                        </p>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="spec" role="tabpanel" aria-labelledby="spec-tab">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-6"
+                                                 t-foreach="product.specification_line" t-as="specification">
+                                                <div class="ial-product__technical-spec">
+                                                    <span class="ial-product__technical-spec-title">
+                                                        <t t-esc="specification.item_id.name"/>
+                                                    </span>
+                                                    <span class="ial-product__technical-spec-value">
+                                                        <t t-esc="specification.name"/>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="doc" role="tabpanel" aria-labelledby="spec-tab">
+                                        <a href="#" class="ia-product__download" t-foreach="product.document_ids"
+                                           t-as="documents">
+                                            <img src="/iwesabe_website_theme/static/src/img/icons/download-doc.svg"
+                                                 width="32" height="32"
+                                                 class="ia-product__download-icon"
+                                                 alt="Download"/>
+                                            <span class="ia-product__download-name">
+                                                <t t-esc="documents.name"/>
+                                            </span>
+                                        </a>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="ext" role="tabpanel" aria-labelledby="ext-tab">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                                <div class="ial-product__technical-spec">
+                                                    <span class="ial-product__technical-spec-title">Information</span>
+                                                    <span class="ial-product__technical-spec-value">
+                                                        <t t-esc="product.extra_info"/>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="con" role="tabpanel" aria-labelledby="con-tab">
+                                        <h3 class="ial-product__sub-header">Terms &amp; Conditions</h3>
+                                        <p class="ial-product__sub-desc">
+                                            <t t-esc="product.terms"/>
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div t-if="product.accessory_product_ids">
+                        <div class="row mt-5">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3>Accessory Products</h3>
+                                <table t-if="product.accessory_product_ids" id="accessory_products" class="js_cart_lines table table-striped table-sm">
+                                    <tbody>
+                                        <tr t-foreach="product.accessory_product_ids" t-as="accessory_product">
+                                            <t t-set="combination_info" t-value="accessory_product"/>
+                                            <td class='td-img text-center'>
+                                                <a t-att-href="accessory_product.website_url">
+                                                    <span t-field="accessory_product.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
+                                                </a>
+                                            </td>
+                                            <td class='td-product_name'>
+                                                <div>
+                                                    <a t-att-href="accessory_product.website_url">
+                                                        <strong t-esc="combination_info['display_name']" />
+                                                    </a>
+                                                </div>
+                                                <div class="text-muted d-none d-md-block" t-field="accessory_product.description_sale" />
+                                            </td>
+                                            <td class='td-price'>
+                                                <del t-attf-class="text-danger mr8" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <span t-esc="combination_info['price']" style="white-space: nowrap;" t-options="{'widget': 'monetary','display_currency': website.currency_id}"/>
+                                            </td>
+                                            <td class="w-25 text-center">
+                                                <input class="js_quantity" name="product_id" t-att-data-product-id="accessory_product.id" type="hidden" />
+                                                <a role="button" class="btn btn-link js_add_suggested_products">
+                                                    <strong>Add to Cart</strong>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div t-if="product.alternative_product_ids">
+                        <div class="row mt-5">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <h3>Alternative Products</h3>
+                                <table t-if="product.alternative_product_ids" id="alternative_products" class="js_cart_lines table table-striped table-sm mb64">
+                                    <tbody>
+                                        <tr t-foreach="product.alternative_product_ids" t-as="alternative_product">
+                                            <t t-set="combination_info" t-value="alternative_product"/>
+                                            <td class='td-img text-center'>
+                                                <a t-att-href="alternative_product.website_url">
+                                                    <span t-field="alternative_product.image_128" t-options="{'widget': 'image', 'qweb_img_responsive': False, 'class': 'rounded o_image_64_max'}" />
+                                                </a>
+                                            </td>
+                                            <td class='td-product_name'>
+                                                <div>
+                                                    <a t-att-href="alternative_product.website_url">
+                                                        <strong t-esc="combination_info['display_name']"/>
+                                                    </a>
+                                                </div>
+                                                <div class="text-muted d-none d-md-block" t-field="alternative_product.description_sale" />
+                                            </td>
+                                            <td class='td-price'>
+                                                <del t-attf-class="text-danger mr8" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                <span t-esc="combination_info['price']" style="white-space: nowrap;" t-options="{'widget': 'monetary','display_currency': website.currency_id}"/>
+                                            </td>
+                                            <td class="w-25 text-center">
+                                                <input class="js_quantity" name="product_id" t-att-data-product-id="alternative_product.id" type="hidden" />
+                                                <a role="button" class="btn btn-link js_add_suggested_products">
+                                                    <strong>Add to Cart</strong>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="oe_structure oe_empty oe_structure_not_nearest mt16"
+                     id="oe_structure_website_sale_product_2"
+                     data-editor-message="DROP BUILDING BLOCKS HERE TO MAKE THEM AVAILABLE ACROSS ALL PRODUCTS"/>
+            </div>
+        </t>
+    </template>
+</odoo>

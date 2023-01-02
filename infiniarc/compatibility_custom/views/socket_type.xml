@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_socket_type_tree" model="ir.ui.view">
+        <field name="name">socket.type.tree</field>
+        <field name="model">socket.type</field>
+        <field name="arch" type="xml">
+            <tree string="Socket Type">
+                <field name="name" required="1"/>
+                <field name="cpu_type" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_socket_type_tree" model="ir.ui.view">
+        <field name="name">socket.type.form</field>
+        <field name="model">socket.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1"/>
+                            <field name="cpu_type" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_socket_type" model="ir.actions.act_window">
+        <field name="name">Socket Type</field>
+        <field name="res_model">socket.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new CPU Type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Socket Type"
+            parent="stock.menu_stock_inventory_control"
+            action="action_socket_type"
+            id="submenu_socket_type_config"
+            sequence="100"/>
+
+
+</odoo>

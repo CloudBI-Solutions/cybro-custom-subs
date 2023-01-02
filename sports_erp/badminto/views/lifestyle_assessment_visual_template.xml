@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="lifestyle_assessment_visual_template"
+              name="Lifestyle Assessment Visual">
+        <t t-call="portal.portal_layout">
+            <div class="set-dashboard__breadcrumbs">
+                <div class="set-wrapper">
+                    <ul class="set-dashboard__breadcrumb-items">
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/home"
+                               class="set-dashboard__breadcrumb-link">
+                                Home
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="/my/badmintoo/assessment"
+                               class="set-dashboard__breadcrumb-link">
+                                Badminton Profiling(Assessment)
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a t-attf-href="/my/assessment?assessment={{assessment.id}}"
+                               class="set-dashboard__breadcrumb-link">
+                                General Assessment
+                                <!--                                <t t-esc="asssessment.name"/>-->
+                            </a>
+                        </li>
+                        <li class="set-dashboard_breadcrumb-item">
+                            <a href="#"
+                               class="set-dashboard__breadcrumb-link">
+                                Lifestyle
+                                <!--                                <t t-esc="asssessment.name"/>-->
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12">
+                <div class="set-dashboard__title-container">
+                    <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                        <h2 class="set-dashboard__title mr-2">Badminton
+                            Profile
+                        </h2>
+                    </div>
+                </div>
+                <!-- FILTER SECTION -->
+                <div class="row">
+                    <div class="col-12 col-md-12 col-lg-3">
+                        <select class="set-input__input my-3">
+                            <option value="1">Athlete</option>
+                            <option value="2">Parent</option>
+                            <option value="3">Organization</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6 d-flex">
+                        <a href="#"
+                           class="set-button set-button--sm set-button--dark w-50 my-3 mr-2"
+                           style="width: 30% !important;">Date Range Filter
+                        </a>
+                        <input type="text"
+                               class="set-input__input w-75 my-3"
+                               style="width: 65% !important;"/>
+                        <i class="fa fa-search badminto--search badminto-profile-search"/>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-3 d-flex align-items-center justify-content-start align-content-start flex-wrap">
+                        <span class="set-tag set-tag--primary-light set-tag--close">
+                            Athlete 1
+                        </span>
+                        <span class="set-tag set-tag--primary-light set-tag--close">
+                            Athlete 2
+                        </span>
+                        <span class="set-tag set-tag--primary-light set-tag--close">
+                            Athlete 3
+                        </span>
+                    </div>
+                </div>
+                <!-- END OF FILTER SECTION -->
+                <!-- PROFILE SUMMARY SECTION -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__client-profile d-flex align-items-center justify-content-between">
+                            <div class="set-dashboard__profile-group">
+                                <span class="set-dashboard__profile-label">
+                                    Client
+                                    Name:
+                                </span>
+                                <span class="set-dashboard__profile-value">
+                                    <t t-esc="assessment.athlete_id.partner_id.name"/>&#160;&#160;<t
+                                        t-esc="assessment.athlete_id.partner_id.last_name"/>
+                                </span>
+                            </div>
+                            <div class="set-dashboard__profile-group">
+                                <span class="set-dashboard__profile-label">
+                                    Current
+                                    BWF ranking:
+                                </span>
+                                <span class="set-dashboard__profile-value">
+                                    <span class="set-dashboard__profile-flag-container">
+                                        <img t-if="assessment.athlete_id.partner_id.country_id"
+                                             t-att-src="assessment.athlete_id.partner_id.country_id.image_url"
+                                             class="set-dashboard__profile-flag"
+                                             alt="Country Flag"/>
+                                    </span>
+                                    <t t-esc="assessment.current_rank"/>
+                                </span>
+                            </div>
+                            <div class="set-dashboard__profile-group">
+                                <span class="set-dashboard__profile-label">
+                                    Client
+                                    Age:
+                                </span>
+                                <span class="set-dashboard__profile-value">
+                                    <t t-esc="assessment.age"/>
+                                </span>
+                            </div>
+                            <div class="set-dashboard__profile-group">
+                                <span class="set-dashboard__profile-label">
+                                    Playing
+                                    hand:
+                                </span>
+                                <span class="set-dashboard__profile-value">
+                                    <t t-if="assessment.hand"
+                                       t-esc="dict(assessment.fields_get(allfields=['hand'])['hand']['selection'])[assessment.hand]"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END OF PROFILE SUMMARY SECTION -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="set-dashboard__title-container">
+                            <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                <h2 class="set-dashboard__title mr-2">
+                                    Lifestyle Assessment - Dashboard
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <!-- CHART -->
+                        <div class="set-dashboard__chart-container set-dashboard__chart-container--r-h">
+                            <canvas id="chartLifestyle" width="450"
+                                    height="450"/>
+                        </div>
+                        <!-- END OF CHART -->
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <t t-foreach="lifestyle_assessment.question_and_page_ids.filtered(lambda x:x.question_type == 'calculated_metric')"
+                       t-as="metric">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
+                            <div class="set-assessment-card--light">
+                                <div class="set-assessment-card__header">
+                                    <span class="set-assessment-card__title--light">
+                                        <t t-esc="metric.title"/>
+                                    </span>
+                                </div>
+                                <div class="set-assessment-card__body">
+                                    <ul class="nav nav-pills set-assessment-card__nav-pills set-assessment-card__nav-pills--light mb-3"
+                                        id="pills-tab" role="tablist">
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link set-assessment-card__nav-link set-assessment-card__nav-link--light active"
+                                                    id="pills-results-tab"
+                                                    data-toggle="pill"
+                                                    t-att-data-target="'#pills-results-%s' %metric.id"
+                                                    type="button" role="tab"
+                                                    aria-controls="pills-results"
+                                                    aria-selected="true">Results
+                                            </button>
+                                        </li>
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link set-assessment-card__nav-link set-assessment-card__nav-link--light"
+                                                    id="pills-trend-tab"
+                                                    data-toggle="pill"
+                                                    t-att-data-target="'#pills-trend-%s' %metric.id"
+                                                    type="button" role="tab"
+                                                    aria-controls="pills-trend"
+                                                    aria-selected="false">Trend
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="set-assessment-card__tab-content tab-content"
+                                         id="pills-tabContent">
+                                        <div class="tab-pane fade show active"
+                                             t-att-id="'pills-results-%s' %metric.id"
+                                             role="tabpanel"
+                                             aria-labelledby="pills-results-tab">
+                                            <div class="set-assessment-card__graph">
+
+                                                <t t-set="low"
+                                                   t-value="metric.visualization_configuration_ids.filtered(lambda x:x.level == 'low')"/>
+                                                <t t-set="low_metric"
+                                                   t-value="(low.end - low.start) + 1"/>
+                                                <t t-set="medium"
+                                                   t-value="metric.visualization_configuration_ids.filtered(lambda x:x.level == 'medium')"/>
+                                                <t t-set="medium_metric"
+                                                   t-value="(medium.end - medium.start) + 1"/>
+                                                <t t-set="high"
+                                                   t-value="metric.visualization_configuration_ids.filtered(lambda x:x.level == 'high')"/>
+                                                <t t-set="high_metric"
+                                                   t-value="(high.end - high.start) + 1"/>
+                                                <t t-if="organisation_id">
+                                                    <t t-set="configuration" t-value="organisation_id.lifestyle_assessment_configuration_ids.filtered(lambda x:x.question_id.id == metric.id)"/>
+                                                    <t t-if="configuration">
+                                                        <t t-set="low" t-value="configuration.visualisation_configuration_id.filtered(lambda x:x.level == 'low')"/>
+                                                        <t t-set="low_metric"
+                                                           t-value="(low.end - low.start) + 1"/>
+                                                        <t t-set="medium" t-value="configuration.visualisation_configuration_id.filtered(lambda x:x.level == 'medium')"/>
+                                                        <t t-set="medium_metric"
+                                                           t-value="(medium.end - medium.start) + 1"/>
+                                                        <t t-set="high" t-value="configuration.visualisation_configuration_id.filtered(lambda x:x.level == 'high')"/>
+                                                        <t t-set="high_metric"
+                                                           t-value="(high.end - high.start) + 1"/>
+                                                    </t>
+                                                </t>
+                                                <t t-if="not metric.is_start_green">
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--low"
+                                                          t-att-style="'width:' + str(low_metric) + '%;' if low_metric > 1 else 'width:33%;'"/>
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--mid"
+                                                          t-att-style="'width:' + str(medium_metric) + '%;' if medium_metric > 1 else 'width:33%;'"/>
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--high"
+                                                          t-att-style="'width:' + str(high_metric) + '%;' if high_metric > 1 else 'width:33%;'"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--high"
+                                                          t-att-style="'width:' + str(high_metric) + '%;' if high_metric > 1 else 'width:33%;'"/>
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--mid"
+                                                          t-att-style="'width:' + str(medium_metric) + '%;' if medium_metric > 1 else 'width:33%;'"/>
+                                                    <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--low"
+                                                          t-att-style="'width:' + str(low_metric) + '%;' if low_metric > 1 else 'width:33%;'"/>
+
+                                                </t>
+
+                                                <span class="set-assessment-card__graph-low-label--light">
+                                                    Low
+                                                </span>
+                                                <span class="set-assessment-card__graph-high-label--light">
+                                                    High
+                                                </span>
+                                                <t t-set="answer_val" t-value="answers.user_input_line_ids.filtered(lambda x:x.question_id.id == metric.id)"/>
+                                                <t t-if="answer_val">
+                                                    <img class="badminto--location-mark"
+                                                         src="/badminto/static/src/images/ui/marker.svg"
+                                                          t-att-style="'left:' + str(float(answer_val.value_calculated_metric)-2) + '%;'" t-att-title="answer_val.value_calculated_metric"/>
+                                                </t>
+
+                                            </div>
+                                            <div class="set-assessment-card__details">
+                                                <div class="set-assessment-card__score">
+                                                    <span class="set-assessment-card__score-num--light">
+                                                        <t t-esc="answer_val.value_calculated_metric"/>
+                                                    </span>
+                                                    <t t-set="value" t-value="metric.visualization_configuration_ids.filtered(lambda x:float(x.start) &lt;= float(answer_val.value_calculated_metric) &lt;= float(x.end))"/>
+                                                    <t t-if="organisation_id">
+                                                    <t t-set="configuration" t-value="organisation_id.lifestyle_assessment_configuration_ids.filtered(lambda x:x.question_id.id == metric.id)"/>
+                                                    <t t-if="configuration">
+                                                        <t t-set="value" t-value="configuration.visualisation_configuration_id.filtered(lambda x:float(x.start) &lt;= float(answer_val.value_calculated_metric) &lt;= float(x.end))"/>
+                                                    </t>
+                                                </t>
+                                                    <t t-if="value and value.level == 'low' or float(answer_val.value_calculated_metric) == 0">
+                                                        <span class="set-assessment-card__score-cat set-assessment-card__score-cat--low">
+                                                            Low
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="value and value.level == 'medium'">
+                                                        <span class="set-assessment-card__score-cat set-assessment-card__score-cat--mid">
+                                                            Medium
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="value and value.level == 'high'">
+                                                        <span class="set-assessment-card__score-cat set-assessment-card__score-cat--high">
+                                                            High
+                                                        </span>
+                                                    </t>
+                                                </div>
+                                                <a href="#"
+                                                   class="set-link set-link--arrow--light set-link--light set-link--small font-weight-bold">
+                                                    See details
+                                                    <i class="arrow right"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade"
+                                             t-att-id="'pills-trend-%s' %metric.id"
+                                             role="tabpanel"
+                                             aria-labelledby="pills-trend-tab">
+                                            <div class="set-assessment-card__graph">
+                                                <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--low"/>
+                                                <span
+                                                        class="set-assessment-card__graph-bar set-assessment-card__graph-bar--mid set-assessment-card__graph-bar--active"/>
+                                                <span class="set-assessment-card__graph-bar set-assessment-card__graph-bar--high"/>
+                                                <span class="set-assessment-card__graph-low-label--light">
+                                                    Low
+                                                </span>
+                                                <span class="set-assessment-card__graph-meter--light"
+                                                      style="left: 26%;"/>
+                                            </div>
+                                            <div class="set-assessment-card__details">
+                                                <div class="set-assessment-card__score">
+                                                    <span class="set-assessment-card__score-num--light">
+                                                        3.2
+                                                    </span>
+                                                    <span class="set-assessment-card__score-cat set-assessment-card__score-cat--mid">
+                                                        Medium
+                                                    </span>
+                                                </div>
+                                                <a href="#"
+                                                   class="set-link set-link--arrow--light set-link--light set-link--small font-weight-bold">
+                                                    See details >
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="set-assessment-card__footer--light">
+                                    <div class="set-assessment-card__footer-header">
+                                        <img src="/badminto/static/src/images/ui/info-dark.svg"
+                                             width="16" height="16"
+                                             class="set-assessment-card__footer-icon"/>
+                                        <span class="set-assessment-card__footer-title--light">
+                                            Improve your <t t-esc="metric.title"/>:
+                                        </span>
+                                    </div>
+                                    <p class="set-assessment-card__footer-text--light">
+                                        <t t-esc="value.comments"/>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+
+                </div>
+
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"/>
+            <script>
+
+                var ctx = document.getElementById("chartLifestyle");
+                const chartData = {
+                labels: [
+                'Overhead reach',
+                'Knees rotation',
+                'Trunc rotation',
+                'Left foot reach',
+                'Right foot reach'
+                ],
+                datasets: [{
+                labels: [],
+                data: [15, 18, 16, 20, 28],
+                fill: true,
+                backgroundColor: 'rgba(29, 180, 64, 0.2)',
+                borderColor: 'rgb(29, 180, 64)',
+                pointBackgroundColor: 'rgb(29, 180, 64)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(29, 180, 64)'
+                }]
+                };
+                const config = {
+                type: 'radar',
+                data: chartData,
+                options: {
+                scales: {
+
+                r: {
+                angleLines: {
+                display: true
+                },
+                suggestedMin: 5,
+                suggestedMax: 35
+                }
+                },
+                elements: {
+                line: {
+                borderWidth: 3
+                }
+                },
+                plugins: {
+                legend: {
+                display: false
+                },
+                tooltip: true
+                }
+                },
+                };
+                const radarChart = new Chart(ctx, config)
+            </script>
+
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="ir_cron_frozen_to_active" model="ir.cron">
+        <field name="name">Activate Frozen Subscription</field>
+        <field name="active" eval="True" />
+        <field name="model_id" ref="model_subscription_subscription"/>
+        <field name="state">code</field>
+        <field name="code">model._activate_frozen_subscription()</field>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+</odoo>

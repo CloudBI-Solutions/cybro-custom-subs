@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <menuitem id="planning_root_menu" name="Planning" sequence="25" web_icon="organisation_planning,static/description/icon.png"
+            groups="organisation.group_organisation_admins,organisation.group_organisation_coaches_internal"/>
+    <menuitem id="menu_org_project_config" name="Configuration" parent="planning_root_menu"
+            sequence="100" groups="project.group_project_manager"/>
+    <menuitem id="org_project_config_settings_menu_action" name="Settings" parent="menu_org_project_config"
+            sequence="0" action="project.project_config_settings_action" groups="base.group_system"/>
+    <menuitem id="menu_org_tasks_config" name="GTD" parent="menu_org_project_config" sequence="2"/>
+    <menuitem action="organisation_planning.open_view_org_project_all_config" id="menu_org_projects_config"
+              name="Projects" parent="menu_org_project_config" sequence="10"/>
+    <menuitem action="project.open_task_type_form" id="menu_org_project_config_project"
+              name="Stages" parent="menu_org_project_config" sequence="3" groups="base.group_no_one"/>
+    <menuitem action="project.project_tags_action" id="menu_org_project_tags_act" parent="menu_org_project_config"/>
+    <menuitem id="menu_org_project_report" name="Reporting"
+            groups="project.group_project_manager"
+            parent="planning_root_menu" sequence="99"/>
+
+        <menuitem id="menu_org_project_report_task_analysis"
+            name="Tasks Analysis"
+            action="project.action_project_task_user_tree"
+            parent="menu_org_project_report"
+            sequence="10"/>
+
+        <menuitem id="rating_rating_menu_org_project"
+            action="project.rating_rating_action_project_report"
+            parent="menu_org_project_report"
+            groups="project.group_project_rating"
+            sequence="40"/>
+    <menuitem action="organisation_planning.open_view_org_project_all" id="menu_org_projects"
+              name="Projects" parent="planning_root_menu" sequence="1"/>
+    <menuitem name="Tasks" id="menu_org_project_management" parent="planning_root_menu"
+            action="organisation_planning.action_view_all_planning_task" sequence="2" groups="base.group_no_one,project.group_project_user"/>
+</odoo>

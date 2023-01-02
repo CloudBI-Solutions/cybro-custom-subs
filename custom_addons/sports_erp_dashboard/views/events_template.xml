@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="event_template" name="Events">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/events"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Events
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+
+                        <div class="col-12 col-md-12 col-lg-12">
+                            <div class="set-dashboard__title-container">
+                                <div class="set-dashboard__left-action d-flex flex-wrap align-items-center">
+                                    <h2 class="set-dashboard__title mr-2">
+                                        Events
+                                    </h2>
+                                    <span class="set-badge set-badge--round set-badge--primary set-text set-text--small">
+                                        <t t-esc="total"/>
+                                    </span>
+                                </div>
+                                <div class="set-dashboard__right-action d-flex align-items-center flex-wrap">
+                                    <div class="btn-group">
+                                        <button type="button"
+                                                class="btn set-button set-button--primary-muted mr-2 dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/repeat.svg"
+                                                 width="18" height="18"
+                                                 class="mr-2"/>
+                                            Go To
+                                        </button>
+                                        <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/event/templates">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Event Templates</span>
+                                            </a>
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/event/stages">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Event Stages</span>
+                                            </a>
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="/my/event/tag_category">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Event Tag Category</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="btn-group">
+                                        <button type="button"
+                                                class="btn set-button set-button--primary set-button--no-shadow dropdown-toggle"
+                                                data-toggle="dropdown"
+                                                aria-expanded="false">
+                                            <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus.svg"
+                                                 width="18" height="18"
+                                                 class="mr-2"/>
+                                            Add New
+                                        </button>
+                                        <div class="set-dropdown-menu dropdown-menu dropdown-menu-right">
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="#"
+                                               data-toggle="modal"
+                                               data-target="#addEventModal">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Add New Event</span>
+                                            </a>
+                                            <a class="set-dropdown-item dropdown-item"
+                                               href="#"
+                                               data-toggle="modal"
+                                               data-target="#addEventTagsModal">
+                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/dashboard-plus-grey.svg"
+                                                     width="14" height="14"
+                                                     class="mr-3"/>
+                                                <span>Add New Event Tag
+                                                    Category
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="set-dashboard__table-options">
+                                        <a href="#"
+                                           class="set-button set-button--light set-dashboard__table-button mr-2">
+                                            <i class="fa fa-filter mr-2"/>Filter
+                                        </a>
+                                        <div class="set-dashboard__input-container">
+                                            <input type="search" name="search"
+                                                   id="search"
+                                                   placeholder="Search"
+                                                   class="set-dashboard__input-search"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <table class="set-dashboard__table mt-3">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox"
+                                                           class="set-input--checkbox"
+                                                           name="select-all"/>
+                                                </th>
+                                                <th>Name</th>
+                                                <th>Venue</th>
+                                                <th>Date and Time</th>
+                                                <th>Stage</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-foreach="events"
+                                               t-as="event">
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox"
+                                                               class="set-input--checkbox"
+                                                               name="select"/>
+                                                    </td>
+                                                    <td>
+                                                        <div class="set-dashboard__table-details">
+                                                            <span class="set-dashboard__table-name mb-1">
+                                                                <t t-esc="event.name"/>
+                                                            </span>
+                                                            <span class="set-dashboard__table-role">
+                                                                Event
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--blue set-badge--wide">
+                                                                <t t-esc="event.address_id.name"/>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--green set-badge--wide">
+                                                                <t t-esc="event.date_begin"/>
+                                                                : &#160;
+                                                                <t t-esc="event.date_end"/>
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex flex-wrap align-items-center align-content-center">
+                                                            <span class="set-badge set-badge--gold set-badge--wide">
+
+                                                                <t t-esc="event.stage_id.name"/>
+
+                                                            </span>
+
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="set-dashboard__table-actions">
+                                                            <a t-att-href="'/my/event/detail?event=%s' % event.id"
+                                                               class="set-dashboard__table-action mr-4">
+                                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/edit.svg"
+                                                                     class="set-dashboard__table-action-icon"
+                                                                     alt="Edit"
+                                                                     title="Edit"/>
+                                                            </a>
+                                                            <a t-att-href="'/my/event/delete?event=%s' % event.id"
+                                                               class="set-dashboard__table-action">
+                                                                <img src="/sports_erp_dashboard/static/src/images/dashboard/delete.svg"
+                                                                     class="set-dashboard__table-action-icon"
+                                                                     alt="Remove"
+                                                                     title="Remove"/>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="set-dashboard__table-footer">
+                                        <span class="set-dashboard__page-position set-text set-text--grey">
+                                            Page
+                                            <span t-out="pager['page']['num']"/>
+                                            of
+                                            <t t-if="pager['page_count'] > 1">
+                                                <span t-out="pager['pages'][-1]['num']"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-out="pager['page']['num']"/>
+                                            </t>
+                                        </span>
+                                        <ul class="set-dashboard__pagination">
+                                            <t t-foreach="pager['pages']"
+                                               t-as="page">
+                                                <li t-attf-class="page-item #{'active' if page['num'] == pager['page']['num'] else ''}">
+                                                    <a t-att-href="page['url']"
+                                                       t-attf-class="page-link #{extraLinkClass}"
+                                                       t-out="page['num']"/>
+                                                </li>
+                                            </t>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal se-modal" id="addEventModal"
+                             tabindex="-1" role="dialog"
+                             aria-labelledby="addSubscriptionLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog se-modal__dialog"
+                                 role="document">
+                                <div class="modal-content se-modal__content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title se-modal__title"
+                                            id="0addSubscriptionModalLabel">Add
+                                            New
+                                            Event
+                                        </h5>
+                                        <button type="button" class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="false">X</span>
+                                        </button>
+                                    </div>
+                                    <form action="/create/event"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token"
+                                               t-att-value="request.csrf_token()"/>
+                                        <div class="modal-body">
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">
+                                                        Event Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                    />
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="activate">
+                                                        Time Zone
+                                                    </label>
+                                                    <select class="form-control se-form-control"
+                                                            id="time_zone"
+                                                            name="time_zone">
+                                                        <t t-foreach="time_zone"
+                                                           t-as="time">
+                                                            <option t-att-value="time[0]">
+                                                                <t t-esc="time[1]"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="start_date">
+                                                        Start Date -> End Date
+                                                    </label>
+                                                    <input class="form-control se-form-control"
+                                                           type="text"
+                                                           name="datetimes"/>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="template">
+                                                        Template
+                                                    </label>
+                                                    <t t-set="templates"
+                                                       t-value="request.env['event.type'].sudo().search([])"/>
+                                                    <select class="form-control se-form-control"
+                                                            id="template"
+                                                            name="template">
+                                                        <t t-foreach="templates or []"
+                                                           t-as="template">
+                                                            <option t-att-value="template.id">
+                                                                <t t-esc="template.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="organizer">
+                                                        Organizer
+                                                    </label>
+                                                    <t t-set="organizers"
+                                                       t-value="request.env['res.partner'].sudo().search([])"/>
+                                                    <select class="form-control se-form-control"
+                                                            id="organizer"
+                                                            name="organizer">
+                                                        <t t-foreach="organizers or []"
+                                                           t-as="organizer">
+                                                            <option t-att-value="organizer.id">
+                                                                <t t-esc="organizer.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="responsible">
+                                                        Responsible
+                                                    </label>
+                                                    <t t-set="users"
+                                                       t-value="request.env['res.users'].sudo().search([])"/>
+                                                    <select class="form-control se-form-control"
+                                                            id="responsible"
+                                                            name="responsible">
+                                                        <t t-foreach="users or []"
+                                                           t-as="responsible">
+                                                            <option t-att-value="responsible.id">
+                                                                <t t-esc="responsible.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row px-4">
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="next_payment">
+                                                        Venue
+                                                    </label>
+                                                    <t t-set="venues"
+                                                       t-value="request.env['res.partner'].sudo().search([])"/>
+                                                    <select class="form-control se-form-control"
+                                                            id="venue"
+                                                            name="venue">
+                                                        <t t-foreach="venues or []"
+                                                           t-as="venue">
+                                                            <option t-att-value="venue.id">
+                                                                <t t-esc="venue.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="tags">
+                                                        Tags
+                                                    </label>
+                                                    <t t-set="tags"
+                                                       t-value="request.env['event.tag'].sudo().search([])"/>
+                                                    <select name="tags"
+                                                            id="tags"
+                                                            class="form-control se-form-control sports-erp-dashbaord-select"
+                                                            multiple="multiple"
+                                                            placeholder="Choose Tags">
+                                                        <t t-foreach="tags or []"
+                                                           t-as="tag">
+                                                            <option t-att-value="tag.id">
+                                                                <t t-esc="tag.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                </div>
+
+                                            </div>
+                                            <div class="row px-4">
+
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="limit_reg">
+                                                        Limit Registration
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="limit_reg"
+                                                           name="limit_reg"
+                                                           checked="1"/>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                               for="website_menu">
+                                                            No. of Attendees
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="no_attendees"
+                                                               name="no_attendees"
+                                                        />
+                                                </div>
+
+                                            </div>
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="register_button">
+                                                        Register Button
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="register_button"
+                                                           name="register_button"
+                                                           checked="1"/>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="auto_confirmation">
+                                                        Auto Confirmation
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="auto_confirmation"
+                                                           name="auto_confirmation"
+                                                           checked="1"/>
+                                                </div>
+
+                                            </div>
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="is_published">
+                                                        Is Published
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="is_published"
+                                                           name="is_published"
+                                                           checked="1"/>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="event_extension">
+                                                        Event extension
+                                                    </label>
+                                                    <input type="checkbox"
+                                                           class="form-control se-form-control"
+                                                           id="event_extension"
+                                                           name="event_extension"
+                                                           checked="1"/>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="notes">
+                                                        Notes
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="notes"
+                                                           name="notes"
+                                                    />
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="extra_info">
+                                                        Ticket Extra
+                                                        Instructions
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="extra_info"
+                                                           name="extra_info"
+                                                    />
+                                                </div>
+
+
+                                            </div>
+
+
+                                            <div class="modal-footer d-flex">
+                                                <!--                                                <a href="#"-->
+                                                <!--                                                   class="font-weight-bold se-link&#45;&#45;unstyled text-muted">-->
+                                                <!--                                                    <i class="fa fa-cog mr-2"/>-->
+                                                <!--                                                    Advanced Details-->
+                                                <!--                                                </a>-->
+                                                <input type="submit"
+                                                       class="btn se-btn--primary se-btn--no-rounded px-5"
+                                                       value="Add Event"
+                                                       style="border-radius: 5px !important;"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal se-modal" id="addEventTagsModal"
+                             tabindex="-1" role="dialog"
+                             aria-labelledby="addSubscriptionLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog se-modal__dialog"
+                                 role="document">
+                                <div class="modal-content se-modal__content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title se-modal__title"
+                                            id="addSubscriptionModalLabel">Add
+                                            New
+                                            Event Tag Category
+                                        </h5>
+                                        <button type="button" class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="false">X</span>
+                                        </button>
+                                    </div>
+                                    <form action="/create/event/tag/categories"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token"
+                                               t-att-value="request.csrf_token()"/>
+                                        <div class="modal-body">
+                                            <div class="row px-4">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="name">
+                                                        Name
+                                                    </label>
+                                                    <input type="text"
+                                                           class="form-control se-form-control"
+                                                           id="name"
+                                                           name="name"
+                                                    />
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 py-3">
+                                                    <label class="se-form-label"
+                                                           for="tags">
+                                                        Tags
+                                                    </label>
+                                                    <input name="tags"
+                                                           id="event_tags"
+                                                           class="form-control se-form-control"
+                                                           placeholder="Choose Tags">
+                                                    </input>
+                                                </div>
+                                            </div>
+
+                                            <div class="modal-footer d-flex">
+                                                <input type="submit"
+                                                       class="btn se-btn--primary se-btn--no-rounded px-5 float-right"
+                                                       value="Add event tag category"
+                                                       style="border-radius: 5px !important;"/>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="event_details" name="Events Details">
+            <t t-call="portal.portal_layout">
+
+                <div class="set-dashboard__breadcrumbs">
+                    <div class="set-wrapper">
+                        <ul class="set-dashboard__breadcrumb-items">
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/home"
+                                   class="set-dashboard__breadcrumb-link">Home
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a href="/my/events"
+                                   class="set-dashboard__breadcrumb-link">
+                                    Events
+                                </a>
+                            </li>
+                            <li class="set-dashboard_breadcrumb-item">
+                                <a t-att-href="'/my/event/detail?event=%s' % event.id"
+                                   class="set-dashboard__breadcrumb-link">
+                                    <t t-esc="event.name"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="se-wrapper">
+                    <div class="container-fluid">
+                        <form action="/update/event" method="post"
+                              enctype="multipart/form-data">
+                            <input type="hidden"
+                                   name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="event"
+                                   t-att-value="event.id"/>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="se-dashboard">
+                                        <div class="w-100">
+                                            <h1 class="display-5 text-secondary mt-5 se-dashboard__title mb-2">
+                                                Event:
+                                                <t t-esc="event.name"/>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <hr/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                    <ul class="nav nav-tabs" id="myTab"
+                                        role="tablist">
+                                        <li class="nav-item"
+                                            role="presentation">
+                                            <button class="nav-link active"
+                                                    id="home-tab"
+                                                    data-toggle="tab"
+                                                    data-target="#home"
+                                                    type="button"
+                                                    role="tab"
+                                                    aria-controls="home"
+                                                    aria-selected="true">
+                                                Event Details
+                                            </button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="tab-pane fade show active"
+                                             id="home" role="tabpanel"
+                                             aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="nameform-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="name">Name
+                                                        </label>
+                                                        <input type="text"
+                                                               class="form-control se-form-control"
+                                                               id="name"
+                                                               name="name"
+                                                               t-att-value="event.name"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="sequence">
+                                                            Start Date -> End
+                                                            Date
+                                                        </label>
+                                                        <input class="form-control se-form-control"
+                                                               type="text"
+                                                               name="datetimes"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="template">
+                                                            Template
+                                                        </label>
+                                                        <t t-set="templates"
+                                                           t-value="request.env['event.type'].sudo().search([])"/>
+                                                        <select class="form-control se-form-control"
+                                                                id="template"
+                                                                name="template">
+                                                            <t t-foreach="templates or []"
+                                                               t-as="template">
+<!--                                                                <t t-if="template.id == event.event_type_id.id">-->
+<!--                                                                    <option t-att-value="template.id"-->
+<!--                                                                            selected="1">-->
+<!--                                                                        <t t-esc="template.name"/>-->
+<!--                                                                    </option>-->
+<!--                                                                </t>-->
+                                                                <option t-att-value="template.id" t-att-selected="template.id == event.event_type_id.id">
+                                                                    <t t-esc="template.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="organizer">
+                                                            Organizer
+                                                        </label>
+                                                        <t t-set="organizers"
+                                                           t-value="request.env['res.partner'].sudo().search([])"/>
+                                                        <select class="form-control se-form-control"
+                                                                id="organizer"
+                                                                name="organizer">
+
+                                                            <t t-foreach="organizers or []"
+                                                               t-as="organizer">
+                                                                <t t-if="organizer.id == event.organizer_id.id">
+                                                                    <option t-att-value="organizer.id"
+                                                                            selected="1">
+                                                                        <t t-esc="organizer.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <option t-att-value="organizer.id">
+                                                                    <t t-esc="organizer.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="auto_confirmation">
+                                                            Auto Confirmation
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               class="form-control se-form-control"
+                                                               id="auto_confirmation"
+                                                               name="auto_confirmation"
+                                                               t-att-checked="event.auto_confirm"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="event_extension">
+                                                            Event extension
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               class="form-control se-form-control"
+                                                               id="event_extension"
+                                                               name="event_extension"
+                                                               t-att-checked="event.event_extension"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="is_published">
+                                                            Is Published
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               class="form-control se-form-control"
+                                                               id="is_published"
+                                                               name="is_published"
+                                                               t-att-checked="event.is_published"/>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="extra_info">
+                                                            Ticket Extra
+                                                            Instructions
+                                                        </label>
+                                                        <input type="text"
+                                                               class="form-control se-form-control"
+                                                               id="extra_info"
+                                                               name="extra_info"
+                                                               t-att-value="event.ticket_instructions"
+                                                        />
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="responsible">
+                                                            Responsible
+                                                        </label>
+                                                        <t t-set="users"
+                                                           t-value="request.env['res.users'].sudo().search([])"/>
+                                                        <select class="form-control se-form-control"
+                                                                id="responsible"
+                                                                name="responsible">
+                                                            <t t-foreach="users or []"
+                                                               t-as="responsible">
+                                                                <t t-if="responsible.id == event.user_id.id">
+                                                                    <option t-att-value="responsible.id"
+                                                                            selected="1">
+                                                                        <t t-esc="responsible.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <option t-att-value="responsible.id">
+                                                                    <t t-esc="responsible.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="next_payment">
+                                                            Venue
+                                                        </label>
+                                                        <t t-set="venues"
+                                                           t-value="request.env['res.partner'].sudo().search([])"/>
+                                                        <select class="form-control se-form-control"
+                                                                id="venue"
+                                                                name="venue">
+                                                            <t t-foreach="venues or []"
+                                                               t-as="venue">
+                                                                <t t-if="venue.id == event.address_id.id">
+                                                                    <option t-att-value="venue.id"
+                                                                            selected="1">
+                                                                        <t t-esc="venue.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <option t-att-value="venue.id">
+                                                                    <t t-esc="venue.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="tags">
+                                                            Tags
+                                                        </label>
+<!--                                                        <t t-foreach="event.tag_ids or []"-->
+<!--                                                           t-as="tag">-->
+<!--                                                            <option selected="selected"-->
+<!--                                                                    t-att-value="tag.id">-->
+<!--                                                                <t t-esc="tag.name"/>-->
+<!--                                                            </option>-->
+<!--                                                        </t>-->
+                                                        <t t-set="tags"
+                                                           t-value="request.env['event.tag'].sudo().search([])"/>
+                                                        <select name="tags"
+                                                                id="tags"
+                                                                class="form-control se-form-control sports-erp-dashbaord-select"
+                                                                multiple="multiple"
+                                                                placeholder="Choose Tags">
+                                                            <t t-foreach="tags or []"
+                                                               t-as="tag">
+                                                                <option t-att-value="tag.id" t-att-selected="tag.id in event.tag_ids.ids">
+                                                                    <t t-esc="tag.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group py-3">
+
+                                                        <label class="se-form-label"
+                                                               for="limit_reg">
+                                                            Limit Registration
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               class="form-control se-form-control"
+                                                               id="limit_reg"
+                                                               name="limit_reg"
+                                                               t-att-checked="event.seats_limited"/>
+
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="website_menu">
+                                                            No. of Attendees
+                                                        </label>
+                                                        <input type="number"
+                                                               class="form-control se-form-control"
+                                                               id="no_attendees"
+                                                               name="no_attendees"
+                                                               t-att-value="event.seats_max"/>
+
+                                                    </div>
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="register_button">
+                                                            Register Button
+                                                        </label>
+                                                        <input type="checkbox"
+                                                               class="form-control se-form-control"
+                                                               id="register_button"
+                                                               name="register_button"
+                                                               t-att-checked="event.menu_register_cta"/>
+
+                                                    </div>
+
+                                                    <div class="form-group py-3">
+                                                        <label class="se-form-label"
+                                                               for="notes">
+                                                            Notes
+                                                        </label>
+                                                        <input type="text"
+                                                               class="form-control se-form-control"
+                                                               id="notes"
+                                                               name="notes"
+                                                               t-att-value="event.note"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+                                    <input type="submit"
+                                           style="float:right !important; border-radius: 5px !important;"
+                                           class="btn se-btn se-btn--no-rounded se-btn--primary px-4"
+                                           value="Update Event Template"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </t>
+        </template>
+
+    </data>
+
+</odoo>

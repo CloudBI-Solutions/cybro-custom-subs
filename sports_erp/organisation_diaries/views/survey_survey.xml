@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="survey_view_form_inherit" model="ir.ui.view">
+        <field name="name">survey.view.form.inherited</field>
+        <field name="model">survey.survey</field>
+        <field name="inherit_id" ref="survey.survey_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="is_diary"/>
+            </xpath>
+            <xpath expr="//tree" position="inside">
+                <field name="calculated_metric_ids"/>
+            </xpath>
+        </field>
+    </record>
+    <!--	<record id="survey_response_line_view_tree_inherit" model="ir.ui.view">-->
+    <!--        <field name="name">survey.user_input.line.view.tree</field>-->
+    <!--        <field name="model">survey.user_input.line</field>-->
+    <!--        <field name="inherit_id" ref="survey.survey_response_line_view_tree"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//field[@name='answer_type']" position="after">-->
+    <!--            	<field name="value_char_box" colspan='2' attrs="{'invisible': [('answer_type','!=','char_box')]}"/>-->
+    <!--                <field name="value_numerical_box" colspan='2' attrs="{'invisible': [('answer_type','!=','numerical_box')]}"/>-->
+    <!--                <field name="value_date" colspan='2' attrs="{'invisible': [('answer_type','!=','date')]}"/>-->
+    <!--                <field name="value_datetime" colspan='2' attrs="{'invisible': [('answer_type','!=','datetime')]}"/>-->
+    <!--                <field name="value_text_box" colspan='2' attrs="{'invisible': [('answer_type','!=','text_box')]}"/>-->
+    <!--                <field name="matrix_row_id" colspan='2' />-->
+    <!--                <field name="suggested_answer_id" colspan='2' attrs="{'invisible': [('answer_type','!=','suggestion')]}"/>-->
+    <!--                <field name="value_toggle" colspan='2' attrs="{'invisible': [('answer_type','!=','toggle')]}"/>-->
+    <!--                <field name="value_progress_bar" colspan='2' attrs="{'invisible': [('answer_type','!=','progress_bar')]}"/>-->
+    <!--                <field name="value_calculated_metric" colspan='2' attrs="{'invisible': [('answer_type','!=','calculated_metric')]}"/>-->
+    <!--                <field name="file_name" invisible="1"/>-->
+    <!--                <field name="value_file" filename="file_name" widget="binary" colspan='2' attrs="{'invisible': [('answer_type','!=','file')]}"/>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+    <!--    -->
+    <!--    &lt;!&ndash; Inherit Form View to Modify it &ndash;&gt;-->
+    <!--    <record id="survey_user_input_line_view_form_inherit" model="ir.ui.view">-->
+    <!--        <field name="name">inherit.survey.user_input.line.view.form</field>-->
+    <!--        <field name="model">survey.user_input.line</field>-->
+    <!--        <field name="inherit_id" ref="survey.survey_user_input_line_view_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//form/sheet/group/field[@name='suggested_answer_id']" position="after">-->
+    <!--                <field name="value_body_map" attrs="{'invisible': [('answer_type','!=','body_map')]}">-->
+    <!--                    <tree>-->
+    <!--&lt;!&ndash;                        <field name="name"/>&ndash;&gt;-->
+    <!--                        <field name="pain_level"/>-->
+    <!--&lt;!&ndash;                        <field name="mark_area"/>&ndash;&gt;-->
+    <!--                        <field name="comment"/>-->
+    <!--                        <field name="x_value"/>-->
+    <!--                        <field name="y_value"/>-->
+    <!--                    </tree>-->
+    <!--                </field>-->
+    <!--            </xpath>-->
+    <!--            <xpath expr="//form/sheet" position="inside">-->
+    <!--                <group>-->
+    <!--                    <widget name="body_map" attrs="{'invisible': [('answer_type','!=','body_map')]}"/>-->
+    <!--                </group>-->
+    <!--            </xpath>-->
+    <!--            <xpath expr="//field[@name='matrix_row_id']" position="before">-->
+    <!--                <field name="value_toggle" colspan='2' attrs="{'invisible': [('answer_type','!=','toggle')]}"/>-->
+    <!--                <field name="toggle_answer"/>-->
+    <!--                <field name="value_progress_bar" colspan='2' attrs="{'invisible': [('answer_type','!=','progress_bar')]}"/>-->
+    <!--                <field name="value_calculated_metric" colspan='2' attrs="{'invisible': [('answer_type','!=','calculated_metric')]}"/>-->
+    <!--                <field name="value_file" filename="file_name" colspan='2' attrs="{'invisible': [('answer_type','!=','file')]}"/>-->
+    <!--                <field name="file_name" invisible="1"/>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+
+    <record model="ir.ui.view" id="survey_question_form_inherited">
+        <field name="name">Form view for survey question inherited</field>
+        <field name="model">survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page>
+                    <field name="visualization_configuration_ids">
+                        <tree editable="bottom">
+                            <field name="start"/>
+                            <field name="end"/>
+                            <field name="level"/>
+                            <field name="color"/>
+                            <field name="comments"/>
+                        </tree>
+                    </field>
+                </page>
+
+            </xpath>
+
+            <xpath expr="//div[hasclass('o_preview_questions')]"
+                   position="inside">
+                <!-- Time -->
+                <div attrs="{'invisible': [('question_type', '!=', 'progress_bar')]}">
+                    <p style="margin-bottom: -1px">
+                        <i class="fa fa-sliders fa-2x" role="img"
+                           aria-label="Progress Bar" title="Progress Bar"/>
+                    </p>
+                </div>
+                <div attrs="{'invisible': [('question_type', '!=', 'toggle')]}">
+                    <p style="margin-bottom: -1px">
+                        <i class="fa fa-toggle-on fa-2x" role="img"
+                           aria-label="Toggle" title="Toggle"/>
+                    </p>
+                </div>
+            </xpath>
+            <xpath expr="//notebook//page[@name='answers']" position="inside">
+                <div attrs="{'invisible': [('question_type', '!=', 'progress_bar')]}">
+                    <group>
+                        <group>
+                            <field name="min_width"/>
+                            <field name="max_width"/>
+                            <field name="step"/>
+                        </group>
+                        <group>
+                            <field name="set_color"/>
+                        </group>
+                    </group>
+
+                </div>
+                <div attrs="{'invisible': [('question_type', '!=', 'toggle')]}">
+                    <group>
+                        <group>
+                            <field name="toggle_on_name"/>
+                            <field name="toggle_off_name"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="suggested_answer_ids" readonly="1"
+                               string="Answers"
+                               context="{'default_question_id': active_id}">
+                            <tree editable="bottom">
+                                <field name="sequence" widget="handle"/>
+                                <field name="value" string="Choices"/>
+                                <field name="value_image"
+                                       options="{'accepted_file_extensions': 'image/*'}"
+                                       attrs="{'column_invisible': ['|', ('parent.allow_value_image', '=', False), ('parent.question_type', '=', 'matrix')]}"/>
+                                <field name="is_correct"
+                                       attrs="{'column_invisible': ['|', ('parent.scoring_type', '=', 'no_scoring'), ('parent.question_type', '=', 'matrix')]}"/>
+                                <field name="answer_score"
+                                       attrs="{'column_invisible': ['|', ('parent.scoring_type', '=', 'no_scoring'), ('parent.question_type', '=', 'matrix')]}"/>
+                            </tree>
+                        </field>
+                    </group>
+                </div>
+                <div attrs="{'invisible': [('question_type', '!=', 'calculated_metric')]}">
+                    <group>
+                        <group>
+                            <!--                           <field name="calculated_metric_operand1" domain="[('survey_id','=',parent.id),('is_page','=',False),-->
+                            <!--                           ('question_type','!=','calculated_metric')]"/>-->
+                            <!--                           <field name="calculated_metric_operand2" domain="[('survey_id','=',parent.id),('is_page','=',False),-->
+                            <!--                           ('question_type','!=','calculated_metric')]"/>-->
+                            <!--                           <field name="calculated_operator"/>-->
+                            <field name="in_portal_show"
+                                   attrs="{'required': [('question_type', '=', 'calculated_metric')]}"/>
+                        </group>
+                    </group>
+                </div>
+
+            </xpath>
+            <xpath expr="//field[@name='constr_mandatory']"
+                   position="attributes">
+                <attribute name="attrs">{'invisible': [('question_type', '=',
+                    'toggle')]}
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="customization_orderline" model="ir.ui.view">
+            <field name="name">sale.order.customization.inherited</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_total']"
+                       position="after">
+                    <field name="created_mo_id"/>
+                    <field name="website_customized"/>
+                    <field name="created_bom_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

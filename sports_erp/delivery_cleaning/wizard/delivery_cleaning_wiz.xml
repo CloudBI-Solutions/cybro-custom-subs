@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="delivery_clean_form">
+
+        <field name="name">delivery.cleaning.wizard.form</field>
+
+        <field name="model">delivery.cleaning.wizard</field>
+
+
+        <field name="type">form</field>
+
+        <field name="arch" type="xml">
+
+            <form string="Delivery Cleaning">
+
+                <sheet>
+
+                    <group>
+
+                        <field name="delivery_id"/>
+
+                    </group>
+
+
+                </sheet>
+
+                <footer>
+
+                    <button name="action_clean" type="object" string="Clean" class="oe_highlight"/>
+
+                    <button special="cancel" string="Cancel"/>
+
+                </footer>
+
+
+            </form>
+
+        </field>
+
+    </record>
+</odoo>

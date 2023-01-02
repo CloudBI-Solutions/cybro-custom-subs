@@ -1,0 +1,195 @@
+header {
+	background: #000000 !important;
+}
+.dropdown-menu{
+	background: #0c0c0c !important;
+	border:none !important;
+}
+/* dec_7_aj */
+.ian-header__support-icon-link{
+    width: 27px;
+}
+@media (max-width: 767.98px) {
+    .ian-header__support-icon-link{
+        width: 27px;
+    }
+}
+@media (max-width: 575.98px) {
+    .ian-header__support-icon-link{
+        width: 20px;
+    }
+    .ian-header__support-icon{
+        width: 21px;
+    }
+}
+/* dec_7_aj */
+.s_mega_menu_odoo_menu{
+	background-color: #212529 !important;
+	color: #f6f6f6 !important;
+}
+.te_header_8_search.te_header_search .input-group{
+	border-radius: 2px !important;
+	border: 1px solid #383e45 !important;
+}
+.oe_search_button,
+.oe_search_button:hover{
+	background-color: transparent !important;
+	border-color: transparent !important;
+	background: transparent !important;
+}
+.te_header_8_search.te_header_search .input-group .oe_search_box{
+	border-radius: 0px !important;
+	color: #000 !important;
+}
+.te_sub_search{
+	margin: 10px;
+}
+.oe_search_button i,
+.navbar a:not(.btn){
+	color: #fff !important;
+}
+
+.oe_search_button .fa-search{
+	font-size: 22px;
+	margin-top: 0px !important;
+}
+.navbar .container{
+	width: auto !important;
+}
+.navbar-light{
+	background-color: #000 !important;
+}
+.o_searchbar_form .dropdown-menu{
+	background: #212529 !important;
+}
+.te_currency_symbol,
+.te_currency_name{
+	color: #fff !important;
+}
+.te_user_account > .dropdown-menu a.dropdown-item > span.fa{
+	color: #fff !important;
+	margin-right: 0.5rem !important;
+}
+.te_user_account > .dropdown-menu a.dropdown-item{
+	padding: 0.55rem 0.5rem !important;
+    border-bottom: 1px solid #ededed42 !important;
+}
+.mega-dropdown-menu .btn-add-cart{
+	background-color: #d60000;
+	border-radius: 0;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+}
+.infiniar-menu-item{
+	list-style-type: none;
+	display: flex;
+	margin-bottom: 0;
+}
+.navbar-expand-md .navbar-collapse.show{
+	background-color: #2e2e2e !important;
+	top: 3.8rem !important;
+}
+.navbar-collapse{
+	flex-grow:inherit !important;
+}
+.top-view-header{
+	/*margin-top: 46px;*/
+}
+@media (max-width: 991.98px){
+	header .navbar-brand.logo img{
+		max-height: 3.2rem !important;
+		margin: 0px 70px !important;
+		width: 100%;
+	    margin: 0px auto !important;
+	    height: 4rem !important;
+	}
+}
+
+    
+
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+/*.multi-level li {
+	line-height: 2.7;
+}*/
+.nav-link .fa-caret-down{
+	padding-left: 5px;
+}
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 15px;
+    margin-right: 0px;
+}
+.dropdown-menu.show a:hover{
+	color: #CC181E !important;
+}
+/*.infiniar-menu-item .nav-item .active{
+	color: #CC181E !important;
+}*/
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+header .navbar .dropdown-menu{
+	overflow-y: inherit !important;
+    overflow-x: inherit !important;
+    background-color: #2e2e2e !important;
+    border-radius: 3px;
+    border:none;
+    width:130px;
+    padding:10px;
+    margin:0px;
+    font-size:14px;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+.te_user_account .dropdown-menu:before,
+.te_user_account .dropdown-menu:after{
+	display:none !important
+}
+/* dec_7_aj */
+/*.js_language_selector{
+    margin-top:-28px;
+}*/
+@media (max-width: 575.98px){
+    .header-icon-left{
+        width: 20px !important;
+        display: inline-block;
+    }
+}

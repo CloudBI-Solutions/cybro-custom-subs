@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_memories_type_tree" model="ir.ui.view">
+        <field name="name">memories.type.tree</field>
+        <field name="model">memories.type</field>
+        <field name="arch" type="xml">
+            <tree string="Memories Type" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_memories_type" model="ir.actions.act_window">
+        <field name="name">Memories Type</field>
+        <field name="res_model">memories.type</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Memories Type.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Memories Type"
+            parent="stock.menu_stock_config_settings"
+            action="action_memories_type"
+            id="submenu_memories_type_config"
+            sequence="7"/>
+
+</odoo>

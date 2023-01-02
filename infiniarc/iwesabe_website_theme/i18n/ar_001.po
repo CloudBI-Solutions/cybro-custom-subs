@@ -1,0 +1,4389 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* iwesabe_website_theme
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-28 06:44+0000\n"
+"PO-Revision-Date: 2022-10-28 06:44+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "%s review"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "%s reviews"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"(+966)\n"
+"                                        53888468"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"(+966) 538888468\n"
+"                                <br/>\n"
+"                                cs@infiniarc.com"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.iwesabe_website_theme_products_item_inherit
+msgid "(VAT Inclusive)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "***------------ GEARSTORE Page ------------***"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "***------------ HOME Page ------------***"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "+92"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "123"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "1234  1234  1234  1234"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "1234567890"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "2TB HYPERPC PRO M.2"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "4K Uncapped"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "4TB Seagate BarraCuda"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "64GB Kingston Renegade RGB DDR4-3600 (2 x 32GB)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid ""
+"<i class=\"bi bi-cart-plus mr-1\"/>\n"
+"                                                            Add to cart"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<i class=\"fa fa-angle-left previous\" style=\"font-size:50px;\"/>\n"
+"                                        <span class=\"sr-only\">Previous</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<i class=\"fa fa-angle-left previous\"/>\n"
+"                                            <span class=\"sr-only\">Previous</span>"
+msgstr "السابق"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<i class=\"fa fa-angle-right next\" style=\"font-size: 50px;\"/>\n"
+"                                        <span class=\"sr-only\">Next</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<i class=\"fa fa-angle-right next\"/>\n"
+"                                            <span class=\"sr-only\">Next</span>"
+msgstr "التالي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid ""
+"<i class=\"fa fa-chevron-left\"/>\n"
+"                                    <span class=\"sr-only\">Previous</span>"
+msgstr "السابق"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid ""
+"<i class=\"fa fa-chevron-right\"/>\n"
+"                                    <span class=\"sr-only\">Next</span>"
+msgstr "التالي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "<i class=\"fa fa-fw fa-check\" role=\"img\" aria-label=\"Done\" title=\"Done\"/>Done"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid ""
+"<i class=\"fa fa-fw fa-clock-o\"/>\n"
+"                                    Expired"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid ""
+"<i class=\"fa fa-fw fa-globe\" style=\"color: green;font-size: 20px;\" aria-label=\"Publish\" role=\"img\" title=\"Publish\" attrs=\"{'invisible': [('is_published', '=', False)]}\">\n"
+"                                Published\n"
+"                            </i>\n"
+"                            <i class=\"fa fa-fw fa-globe\" style=\"color: red;font-size: 20px;\" aria-label=\"Publish\" role=\"img\" title=\"UnPublish\" attrs=\"{'invisible': [('is_published', '=', True)]}\">\n"
+"                                Unpublished\n"
+"                            </i>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid ""
+"<i class=\"fa fa-fw fa-remove\"/>\n"
+"                                    Cancelled"
+msgstr "ألغيت"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_view_inherit
+msgid "<i class=\"fa fa-pencil mx-1\"/>Edit Security Settings"
+msgstr "تحرير إعدادات الأمان"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_view_inherit
+msgid ""
+"<i class=\"fa fa-pencil\"/>\n"
+"                                                Edit"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid ""
+"<i class=\"fa fa-shopping-cart mr-2 mb-1\"/>Add To\n"
+"                                Cart"
+msgstr "السلة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid ""
+"<i class=\"fa fa-th-large mr-2\"/>\n"
+"                            WEBSITE"
+msgstr "الموقع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_products_data
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "<i style=\"margin-top: 6px;\">Customize</i>"
+msgstr "تطوير"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<small>Remove</small>"
+msgstr "إزالة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid "<span class=\"\">+</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid "<span class=\"\">-</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<span class=\"\">Checkout</span>"
+msgstr "صفحة الدفع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid ""
+"<span class=\"badge badge-pill badge-info\">\n"
+"                                            <i class=\"fa fa-fw fa-clock-o\" aria-label=\"Opened\" title=\"Opened\" role=\"img\"/>\n"
+"                                            <span class=\"d-none d-md-inline\">Waiting for Payment</span>\n"
+"                                        </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid ""
+"<span class=\"badge badge-pill badge-success\">\n"
+"                                            <i class=\"fa fa-fw fa-check\" aria-label=\"Paid\" title=\"Paid\" role=\"img\"/>\n"
+"                                            <span class=\"d-none d-md-inline\">Paid</span>\n"
+"                                        </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid ""
+"<span class=\"badge badge-pill badge-success\">\n"
+"                                            <i class=\"fa fa-fw fa-check\" aria-label=\"Reversed\" title=\"Reversed\" role=\"img\"/>\n"
+"                                            <span class=\"d-none d-md-inline\">Reversed</span>\n"
+"                                        </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid ""
+"<span class=\"badge badge-pill badge-warning\">\n"
+"                                            <i class=\"fa fa-fw fa-remove\" aria-label=\"Cancelled\" title=\"Cancelled\" role=\"img\"/>\n"
+"                                            <span class=\"d-none d-md-inline\">Cancelled</span>\n"
+"                                        </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid ""
+"<span class=\"clear_not_mandatory\">\n"
+"                                                                    Clear\n"
+"                                                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid ""
+"<span class=\"clear_not_mandatory\">\n"
+"                                                                Clear\n"
+"                                                            </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid ""
+"<span class=\"d-none d-md-inline\">Sales Order #</span>\n"
+"                                <span class=\"d-block d-md-none\">Ref.</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "<span class=\"d-none\">.</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid "<span class=\"d-none\">ddd</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid "<span class=\"d-none\">klk.</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "<span class=\"fa fa-pencil mr-2\"/>Edit"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"<span class=\"fa fa-pie-chart\"/>\n"
+"                                            <span class=\"te_user_drop_item\">My orders</span>"
+msgstr "طلباتي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "<span class=\"fa fa-plus mr-2\"/>New"
+msgstr "جديد"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"<span class=\"fa fa-sign-out\"/>\n"
+"                                            <span class=\"te_user_drop_item\">Logout</span>"
+msgstr "تسجيل خروج"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"<span class=\"fa fa-user\"/>\n"
+"                                            <span class=\"te_user_drop_item\">My Account</span>"
+msgstr "حسابي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"<span class=\"ia-checkout-nav__title ia-checkout-nav__title--left-divider ml-2\">\n"
+"                                            Checkout\n"
+"                                        </span>"
+msgstr "صفحة الدفع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"<span class=\"ia-counter__count mr-2\">02</span>\n"
+"                                <span class=\"ia-counter__capiton ia-counter__capiton--grey\">Offline Shops at\n"
+"                                    <br/>\n"
+"                                    2 Cities\n"
+"                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"<span class=\"ia-counter__count mr-2\">05</span>\n"
+"                                <span class=\"ia-counter__capiton ia-counter__capiton--grey\">Years\n"
+"                                    <br/>\n"
+"                                    and counting\n"
+"                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"<span class=\"ia-counter__count mr-2\">1M</span>\n"
+"                                <span class=\"ia-counter__capiton ia-counter__capiton--grey\">Over 1 Million\n"
+"                                    <br/>\n"
+"                                    Satisfied Customers\n"
+"                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"<span class=\"ia-counter__count mr-2\">20</span>\n"
+"                                <span class=\"ia-counter__capiton ia-counter__capiton--grey\">National Level\n"
+"                                    <br/>\n"
+"                                    Tournaments Hosted\n"
+"                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<span class=\"ia-homepage__store-subhead\">Explore</span>\n"
+"                                            <span class=\"ia-homepage__store-head\">Accessories</span>"
+msgstr "الاكسسوارات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"<span class=\"ia-homepage__store-subhead\">Explore</span>\n"
+"                                            <span class=\"ia-homepage__store-head\">Basic Components</span>"
+msgstr "المكونات الرئيسية"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid "<span class=\"ia-login__social-divider\">or</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"<span class=\"ia-text ia-text--small ia-text--muted\">\n"
+"                                        <i class=\"fa fa-lock mr-2\"/>\n"
+"                                        Safe &amp;\n"
+"                                        Secure Payments\n"
+"                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"<span class=\"ia-text--white font-weight-bold d-block\">\n"
+"                                                                                    Pickup\n"
+"                                                                                    Location\n"
+"                                                                                </span>\n"
+"                                                                                <span class=\"ia-text--muted d-block\">\n"
+"                                                                                    Address\n"
+"                                                                                    line\n"
+"                                                                                </span>\n"
+"                                                                                <span class=\"ia-text--muted d-block\">\n"
+"                                                                                    City, ZIP\n"
+"                                                                                    Code\n"
+"                                                                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"<span class=\"ian-header__support-title mb-2 text-center\">Customer "
+"Support</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span class=\"md-menu-align-target\">ContactUs</span>"
+msgstr "تواصل معنا"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+msgid "<span class=\"md-menu-align-target\">Desktop</span>"
+msgstr "التجميعات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "<span class=\"md-menu-align-target\">FAQ’S/Knowledge base</span>"
+msgstr "الأسئلة الشائعة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid "<span class=\"md-menu-align-target\">Gear Store</span>"
+msgstr "متجر القطع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_warranty
+msgid "<span class=\"md-menu-align-target\">Infiniarc Warranty</span>"
+msgstr "ضمان انفني آرك"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "<span class=\"md-menu-align-target\">Order Status</span>"
+msgstr "حالة الطلب"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "<span class=\"md-menu-align-target\">Support</span>"
+msgstr "الدعم"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_terms_and_conditions
+msgid "<span class=\"md-menu-align-target\">Terms and Conditions</span>"
+msgstr "الشروط والأحكام"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "<span class=\"min-max-space\">-</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template_list_filter
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_filter
+msgid ""
+"<span class=\"mr-3\">\n"
+"                Price\n"
+"            </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid ""
+"<span class=\"o_footer_copyright_name mr-2\">\n"
+"                                        © 2022 INFINIARC Corporation. All Rights Reserved.\n"
+"                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "<span class=\"o_stat_text\">On Hand</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "<span class=\"o_stat_text\">Sold</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid "<span class=\"offer\">20% OFF</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<span class=\"pull-left\">Sub Total</span>"
+msgstr "المجموع الفرعي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<span class=\"pull-left\">Total</span>"
+msgstr "المجموع "
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<span class=\"pull-left\">VAT</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "<span class=\"sr-only\">Close</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "<span class=\"sr-only\">Toggle Dropdown</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"<span class=\"text-danger price_change_warning d-none\">You can't set min value in\n"
+"                                            Maximum field.\n"
+"                                        </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"<span class=\"text-danger price_change_warning d-none\">You can't set min value in\n"
+"                                        Maximum field.\n"
+"                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "<span class=\"watts\">Watts</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_terms_and_conditions
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_warranty
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "<span ng-if=\"breadcrumbs.length &gt; 1\">/</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid ""
+"<span title=\"Mobile preview\" role=\"img\" aria-label=\"Mobile preview\" "
+"class=\"fa fa-mobile\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>+50 $</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>1000$( 1 pc)</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>1000$</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "<span>A:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_products_data
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "<span>Add To Cart</span>"
+msgstr "أضف إلى السلة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Attributes</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Bank card</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "<span>Buy now</span>"
+msgstr "اشتر الآن"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>CO EXTENSION OPTIONS MORE RRY MX(1 pc)</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>CPU: Intel® Core ™ i5-11400 (F)</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid ""
+"<span>Check the\n"
+"                                        Compatibility issues in:\n"
+"                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Contact No:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "<span>Continue</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Credit / Installment</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>DELIVERY</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template_list_filter
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_filter
+msgid "<span>Default</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid ""
+"<span>Delivery (smsa‏)</span>\n"
+"                                        <span class=\"pull-right\">+50 $</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Description:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_download
+msgid "<span>Driver Download</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Email:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Entity</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"<span>Filter</span>\n"
+"                                            <span>Reset</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"<span>Filter</span>\n"
+"                                        <span>Reset</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>First name:</span>"
+msgstr "الاسم الأول"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"<span>Get OTP\n"
+"                                            </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid ""
+"<span>Get OTP\n"
+"                                </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template_list_filter
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_filter
+msgid "<span>High to Low</span>"
+msgstr "من الأعلى إلى الأقل"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>IPlay mat HYPERPC</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Individual</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Keyb</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Last name:</span>"
+msgstr "اسم العائلة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "<span>Learn More</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>Logitech G413</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template_list_filter
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_filter
+msgid "<span>Low to High</span>"
+msgstr "من الأقل إلى الأعلى"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>Low</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>Motherboard: ASUS PRIME B560M-A</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "<span>Order Confirmation Number</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.order_history_status_page
+msgid "<span>Order Date:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Order No:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.order_history_status_page
+msgid "<span>Order Number:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.order_history_status_page
+msgid "<span>Order Status:</span>"
+msgstr "حالة الطلب"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.order_history_status_page
+msgid "<span>Order Total:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>PICKUP</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "<span>Phone Number</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "<span>Place Order</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "<span>Q:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>RAM: 16GB Kingston Fury Beast RGB DDR4-3200 (2 x 8GB)</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>Samsung C27FG73FQI</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "<span>Shop Now</span>"
+msgstr "تسوق الآن "
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "<span>Specification</span>"
+msgstr "المواصفات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "<span>Sub total</span>"
+msgstr "المجموع الفرعي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "<span>Subject:</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid ""
+"<span>Subtotal</span>\n"
+"                                        <span class=\"pull-right\">1000$</span>"
+msgstr "المجموع الفرعي"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "<span>Total</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid ""
+"<span>Total</span>\n"
+"                                        <span class=\"pull-right\">1150$</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "<span>VAT</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid ""
+"<span>Value Added Tax</span>\n"
+"                                        <span class=\"pull-right\">150$</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "<span>Video card: GIGABYTE GeForce GTX 1660 SUPER GAMING</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "<span>smsa</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "A short description that will also appear on documents."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_customize
+msgid "A simple warning alert—check it out!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "A+ BBB Rating"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_add_remove__type__add
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_add_remove_view_wizard
+msgid "ADD"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "ADD TO CART"
+msgstr "أضف إلى السلة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "ALL MODELS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "AMD Ryzen 9 5950X"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "ASUS GeForce RTX 3080 Ti STRIX"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "About Us"
+msgstr "من نحن"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__accessories_type_ids
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_type__type__accessories
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "Accessories"
+msgstr "الاكسسوارات"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__accessories_lines
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__accessories_lines
+msgid "Accessories Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__accessories_product_tmpl_id
+msgid "Accessories Product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_view_inherit
+msgid "Account Security"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Action"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Add Features"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_product_template_infiniarc
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_menu_stock_product_template_infiniarc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_tree
+msgid "Add Pc Builder"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Add a Media"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.iwesabe_website_theme_products_item_inherit
+msgid "Add to Cart"
+msgstr "أضف إلى السلة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Address"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Address*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Affiliates"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_cooler__air_cooler
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_cooler_support__air_cooler
+msgid "Air Cooler"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__air_cooler_height
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__air_cooler_height
+msgid "Air cooler Height support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Al\n"
+"                                                                                    Qasim"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Al Mazroua, Hofuf,\n"
+"                                Saudi Arabia"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Alert"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid "All Parts"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_allowed_components
+msgid "Allowed Components"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__allowed_multi_sel
+msgid "Allowed Number of Quantities"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__allowed_to_multiple
+msgid "Allowed to Multiple"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.sign_ip_login_page
+msgid ""
+"Already\n"
+"                            have an account?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Amount Due"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/controllers/signup.py:0
+#: code:addons/staging/iwesabe_website_theme/controllers/signup.py:0
+#, python-format
+msgid "Another user is already registered using this email address."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__answer
+msgid "Answer"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Apply A Discount Code"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__arabic_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__arabic_name
+msgid "Arabic Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Arabic Product Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Archived"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "Back"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.reset_password_portal
+msgid "Back to Login"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "Back to School"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__barcode
+msgid "Barcode"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__component_type_ids
+msgid "Base Component"
+msgstr "المكونات الأساسية"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "Base Components"
+msgstr "المكونات الأساسية"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Basic Information"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__best
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__best_seller
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__best
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__best_seller
+msgid "Best Seller"
+msgstr "الأفضل مبيعا"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Best Sellers"
+msgstr "الأفضل مبيعا"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Billing Address"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Blog"
+msgstr "المدونة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Blog Post"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_cooler_support__both
+msgid "Both Cooler"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_brand_brand
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__brand_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__brand_id
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_brand_config
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_brand_brand_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_brand_brand_tree
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Brand"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"Brand\n"
+"                                                    <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"Brand\n"
+"                                                <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Building your website..."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__built_fans_no
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__built_fans_no
+msgid "Built in fans No."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_case
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_case
+msgid "CASE"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "CASE Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "COMMUNITY"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_cpu
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_cpu
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_cpu
+msgid "CPU"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "CPU Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__cpu_support_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__cpu_support_id
+msgid "CPU Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_cpu_type
+#: model:ir.model,name:iwesabe_website_theme.model_cpu_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__cpu_type_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__cpu_type_id
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_cpu_type_tree
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_radiator_size_tree
+msgid "CPU Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "CVV*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_add_remove_view_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Card Number*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Cardholder\n"
+"                                                                                        Name*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Cart"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Cart Lines"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_case
+msgid "Case"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Cash On\n"
+"                                                                        Delivery"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__component_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__category_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__category_id
+msgid "Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "Check Status"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__allowed
+msgid "CheckBox"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "City*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid "Clear"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Clear Cart"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+msgid "Clear Selection"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_cpu_type
+msgid "Click to define a new CPU Type."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_dynamic_micro_store
+msgid "Click to define a new Dynamic Micro Store."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_micro_dynamic
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_special_offer_configuration
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_website_driver_configuration
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_website_faq_configuration
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_website_policy_configuration
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_website_warranty_configuration
+msgid "Click to define a new FAQ Questions."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_memories_type
+msgid "Click to define a new Memories Type."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_our_partner
+msgid "Click to define a new Our Partner."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_brand_brand
+msgid "Click to define a new Product Brand."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_component_type
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_product_template_infiniarc
+msgid "Click to define a new Product Components."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_component_parents_type
+msgid "Click to define a new Product component parent type."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_radiator_size
+msgid "Click to define a new Radiator Size."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.actions.act_window,help:iwesabe_website_theme.action_specification_item
+msgid "Click to define a new Specification Item."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_products_card_single
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.dialogue_box_content
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_product_spec
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid "Close"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__code
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__code
+msgid "Code"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Communication"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__component_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__component_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__component_id
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Component"
+msgstr "المكونات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Component :"
+msgstr "المكونات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Component Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_component_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__component_lines
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__sub_ids
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_type__type__components
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_components_config
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_component_type_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_component_type_tree
+msgid "Components"
+msgstr "المكونات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Components / Products"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Components Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_line
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__component_lines
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__component_lines
+msgid "Components Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_component_add_remove
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_add_remove_view_wizard
+msgid "Components List"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Components Restrictions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "Conditions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__configuration_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__configuration_comp_id
+msgid "Configuration Id"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.reset_password_portal
+msgid "Confirm"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Contact Number*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "Contact US"
+msgstr "تواصل معنا"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Contact Us"
+msgstr "تواصل معنا"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid ""
+"Continue\n"
+"                                                <span class=\"d-none d-md-inline\">Shopping</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_cooler
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_cooler
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_cooler
+msgid "Cooler"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Cooler Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__type_cooler
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__type_cooler
+msgid "Cooler Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__type_cooler_support
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__type_cooler_support
+msgid "Cooler Type Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__standard_price
+msgid "Cost Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/controllers/signup.py:0
+#: code:addons/staging/iwesabe_website_theme/controllers/signup.py:0
+#, python-format
+msgid "Could not create a new account."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Country*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Course"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.ui.menu,name:iwesabe_website_theme.submenu_cpu_type_config
+msgid "Cpu Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__create_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__create_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_add_remove_line__qty_available
+msgid ""
+"Current quantity of products.\n"
+"In a context with a single Stock Location, this includes goods stored at this Location, or any of its children.\n"
+"In a context with a single Warehouse, this includes goods stored in the Stock Location of this Warehouse, or any of its children.\n"
+"stored in the Stock Location of the Warehouse of this Shop, or any of its children.\n"
+"Otherwise, this includes goods stored in any Stock Location with 'internal' type."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Custom Design"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Customer Service"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_pc__customize
+msgid "Customizable"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Customize"
+msgstr "تطوير"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_products__customized
+msgid "Customized"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "DD/YY"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Damam"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__product_id
+msgid "Default One"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Default Selling Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Delivery address (street, house, etc.)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__description
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__terms
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__description
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "Description"
+msgstr "الوصف"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid ""
+"Description text lorem ipsum product content\n"
+"                        lorem ipsum product content will go here and\n"
+"                        various information Description."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Design methods"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Desktop"
+msgstr "التجميعات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_view_inherit
+msgid "Details"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__display_name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid ""
+"Do you Want to remove all items from the\n"
+"                                                                            cart?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_view_inherit
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "Documents"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid ""
+"Don't\n"
+"                                                have\n"
+"                                                an\n"
+"                                                account?"
+msgstr "ليس لديك حساب؟"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+msgid ""
+"Don't have an\n"
+"                                        account?"
+msgstr "ليس لديك حساب؟"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Draft Invoice"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_website_driver_configuration
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__driver
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_driver
+msgid "Driver"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_download
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "Driver Download"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Due Date"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_dynamic_micro_store
+#: model:ir.model,name:iwesabe_website_theme.model_dynamic_micro_store
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__micro_store_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__micro_store_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__micro_store_id
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_dynamic_micro_store_config
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_dynamic_micro_store_tree
+msgid "Dynamic Micro Store"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "EXPLORE NEW DEALS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Edit"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Edit Menu"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Edit Top Menu"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Edit in backend"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid "Email"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Email*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_product_product__best_seller
+#: model:ir.model.fields,help:iwesabe_website_theme.field_product_template__best_seller
+msgid "Enable the field to display as best sellers"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter Discount Code"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Enter Your Email"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter ZIP Code"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter your city name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter your delivery address"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter your e-mail address"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Enter your name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Event"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Expected Shipping Date:"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Expiry Date*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "Explore Our Stores"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "Explore all the latest deals from us."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"Explore our wide range of the hottest\n"
+"                                    gaming gears and components in the industry."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__extra_info
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__extra_info
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_template_notebook
+msgid "Extra Info"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_fans
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_fans
+msgid "FANS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_website_faq_configuration
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__faq_faq__type__faq
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_faq
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "FAQs"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "FAQs/Knowledge Base"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "FAQ’S / Knowledge base"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "FEATURED PRODUCTS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid "Facebook"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_fans
+msgid "Fans"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Fans Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__fans_no_support
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__fans_no_support
+msgid "Fans Number Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__feature_id
+msgid "Feature"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.micro_dynamic_form
+msgid "Featured Product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__featured_product_ids
+msgid "Featured Products"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__field_name
+msgid "Field Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__filter_id
+msgid "Filter"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid "First slide"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Fit Products Definitions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Forum"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Full Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"GPU\n"
+"                                                    <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"GPU\n"
+"                                                <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+msgid ""
+"Gaming\n"
+"                            <span>Desktops</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Gaming Desktop"
+msgstr "التجميعات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+msgid "Gaming Desktops"
+msgstr "التجميعات"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Gaming Laptops"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+msgid "Gear STORE"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Gear Store"
+msgstr "متجر القطع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Gear Store Product"
+msgstr "منتجات متجر القطع"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Gearshop"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Get access to exclusive offers!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Get in Touch With Us"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_line__sequence
+#: model:ir.model.fields,help:iwesabe_website_theme.field_specification_item__sequence
+msgid ""
+"Gives the sequence order when displaying a list of bank statement lines."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid "Google"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Google Maps"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Government &amp; Corporate"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_type__web_view_type__grid
+msgid "Grid"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "HTML/CSS/JS Editor"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__air_height
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__air_height
+msgid "Height"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_download
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_terms_and_conditions
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_warranty
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "Home"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__home_category_ids
+msgid "Home Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__id
+msgid "ID"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "IMG 1"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_needaction
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_has_error
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid ""
+"If you have any issues with your computer order, please contact one of\n"
+"                                                our\n"
+"                                                customer service specialists."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid ""
+"If you have any technical issues with your computer, please contact one\n"
+"                                                of\n"
+"                                                our\n"
+"                                                technicians"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__image
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__image
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__image
+msgid "Image"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"In\n"
+"                                                        Stock"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_add_remove_line__standard_price
+msgid ""
+"In Standard Price & AVCO: value of the product (automatically computed in AVCO).\n"
+"        In FIFO: value of the next unit that will leave the stock (automatically computed).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_product_template
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_products_data
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_list_view
+msgid "In Stock"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid "Infiniarc"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Infiniarc Logo"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "Infiniarc Models"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_warranty
+msgid "Infiniarc Warranty"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "Intel CoreI5"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_add_remove_line__barcode
+msgid "International Article Number used for product identification."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Invoice #"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Invoice Date"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "Invoices"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_gear_store
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_gear_store
+msgid "Is Gear Store Product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_k_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_k_type
+msgid "Is K Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_ready_to_ship
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_ready_to_ship
+msgid "Is Ready to Ship?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_featured_pc_builder
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_featured_pc_builder
+msgid "Is it Featured PC Builder?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_free_shipping_pc_builder
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_free_shipping_pc_builder
+msgid "Is it Free shipping PC Builder?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_nvidia_micro_store
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_nvidia_micro_store
+msgid "Is this an NVIDIA product for the micro store?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__item_id
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Item"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Jeddah"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Jinaddriyah"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Job Offer"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__faq_faq__type__knowledge
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+msgid "Knowledge Base"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line____last_update
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__write_uid
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_driver_download__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__write_date
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "Latest Deals"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_type__web_view_type__list
+msgid "List"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Livechat Widget"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Local\n"
+"                                                                        Payments"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Local\n"
+"                                                                        Pickup"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+msgid "Log In"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid "Log in"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid ""
+"Login\n"
+"                                with Email &amp; Password"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Login with Email &amp; Password"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+msgid ""
+"Login with OTP\n"
+"                                        instead"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid "Login with OTP instead"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Logo"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid ""
+"Looking for support? Don't worry, We've got\n"
+"                                        your back!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Lorem ipsum dolor sit amet,\n"
+"                        consectetur\n"
+"                        adipiscing\n"
+"                        elit Torem\n"
+"                        ipsum dolor sit amet, consectetu."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Lorem ipsum dolor sit amet,\n"
+"                        consectetur adipiscing\n"
+"                        elit Torem ipsum dolor\n"
+"                        sit amet, consectetu."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur\n"
+"                        adipiscing elit. Duis\n"
+"                        libero\n"
+"                        tellus, vehicula ut massa at, viverra\n"
+"                        finibus metus. In a elementum lacus. Sed vel ex in orci ullamcorper efficitur. Donec hendrerit\n"
+"                        lobortis posuere.\n"
+"                        Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque\n"
+"                        ut diam quis\n"
+"                        metus\n"
+"                        commodo imperdiet."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing\n"
+"                                                            elit Torem ipsum dolor sit amet, consectetu."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis libero tellus, vehicula ut\n"
+"                                massa\n"
+"                                at, viverra\n"
+"                                finibus metus. In a elementum lacus. Sed vel ex in orci ullamcorper efficitur. Donec\n"
+"                                hendrerit\n"
+"                                lobortis\n"
+"                                posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere\n"
+"                                cubilia curae;\n"
+"                                Quisque ut\n"
+"                                diam quis metus commodo imperdiet."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__m_2
+msgid "M.2"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_memory
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_memory
+msgid "MEMORY"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Manage Pages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Manage Your Website Pages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__mandatory_all
+msgid "Mandatory All"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__mandatory_category
+msgid "Mandatory Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "Max"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__max_delivery_days
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__max_delivery_days
+msgid "Max Delivery Days"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_memories_type
+#: model:ir.model,name:iwesabe_website_theme.model_memories_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__memories_type_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__memories_type_id
+#: model:ir.ui.menu,name:iwesabe_website_theme.submenu_memories_type_config
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_memories_type_tree
+msgid "Memories Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__memories_type_support_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__memories_type_support_id
+msgid "Memories Type Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_memory
+msgid "Memory"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Memory Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Menu"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_menu__menu_category_ids
+msgid "Menu Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__unfit_product_msg
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__unfit_product_msg
+msgid "Message of the unfit product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_micro_dynamic
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_micro_dynamic
+msgid "Micro Dynamic"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "Min"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__min_delivery_days
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__min_delivery_days
+msgid "Min Delivery Days"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"Models\n"
+"                                                    <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"Models\n"
+"                                                <span class=\"plusminus fa fa-caret-down\"/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "Mon - Fri: 8:30 am - 5:20 pm Pacific Time"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "More"
+msgstr " المزيد"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_motherboard
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__motherboard_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_motherboard
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__motherboard_ids
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_motherboard
+msgid "Motherboard"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Motherboard Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_home_gridview
+msgid "My Dashboard"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "NVIDIA"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_brand_brand__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_category__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_parents_type__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_cpu_type__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_dynamic_micro_store__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_memories_type__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_radiator_size_values__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__name
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__name
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_brand_brand_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_component_type_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_our_partner_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Name*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__arrival
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__arrival
+msgid "New Arrival"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "New page"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "News"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Newsletter"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Nijran"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_free_shipping_pc_builder__no
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_k_type__no
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_ready_to_ship__no
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__support_oc__no
+msgid "No"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "No Offers are available for now!!!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__allowed_number_qty
+msgid "No. of Quantities"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__allowed_number
+msgid "No. of selections"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_products__normal
+msgid "Normal"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_pc__normal
+msgid "Not Customizable"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/wizard/component_add_remove.py:0
+#: code:addons/staging/iwesabe_website_theme/wizard/component_add_remove.py:0
+#, python-format
+msgid "Not Found Any Records!!!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__no_of_fans
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__no_of_fans
+msgid "Number of Fans"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__no_of_support
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__no_of_support
+msgid "Number of m.2 Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Nvidia"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "Nvidia RTX"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid ""
+"ORIGIN PC Ready-to-Ship (RTS) Systems Now Shipping within 1-3 Days*\n"
+"                                                    <br/>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "ORIGINPCFAMILY"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+msgid "OTP"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__offer_percent
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__offer_percent
+msgid "Offer Percentage"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Offer Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Ok"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Online\n"
+"                                                                        Payment"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/controllers/web_login.py:0
+#: code:addons/staging/iwesabe_website_theme/controllers/web_login.py:0
+#, python-format
+msgid ""
+"Only employees can access this database. Please contact the administrator."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Optimize SEO"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "Order Date"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.order_history_status_page
+msgid "Order Status"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Order Summary"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Our Goals"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Our Mision"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "Our Mission"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_our_partner
+#: model:ir.model,name:iwesabe_website_theme.model_our_partner
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_menu_our_partner
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_our_partner_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_our_partner_tree
+msgid "Our Partner"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "PC Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__is_power_suplly
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__is_power_suplly
+msgid "POWER SUPLLY"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "PRODUCT"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__pak_fans_no
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__pak_fans_no
+msgid "Package Fans No."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Page"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Page Properties"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Pages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.ui.menu,name:iwesabe_website_theme.website_sale_product_public_category
+msgid "Parent Section / Main Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_component_line__parent_ids
+msgid "Parent component"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.ui.menu,name:iwesabe_website_theme.submenu_component_parents_type
+msgid "Parent component type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Parent section/ Main Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid "Password"
+msgstr "الرمز السري"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Payment\n"
+"                                                    <span class=\"ia-accordion__card-sub-text ia-text--small ia-text--muted\">\n"
+"                                                        Cash on\n"
+"                                                        Delivery, Online, Local &amp; STC Payments\n"
+"                                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Payment methods"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid "Phone Number"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "Phone: (888) 462-3899"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Please enter the required information for payment to complete your\n"
+"                                                order."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_website_policy_configuration
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_policy
+msgid "Policy"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_of_restrictions__is_power_suplly
+msgid "Power Supply"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Power Supply Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Power Supply:"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__power_value_support
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__power_value_support
+msgid "Power Value Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__power_watt
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__power_watt
+msgid "Power Watts"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid ""
+"Price Range\n"
+"                                            <span class=\"plusminus\">+</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"Price Range\n"
+"                                        <span class=\"plusminus\">+</span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Price and Tax"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_add_remove_line__list_price
+msgid "Price at which the product is sold to customers."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__policy
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__terms_and_conditions__type__privacy
+msgid "Privacy Policy"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_product_product
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__product_id
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Product"
+msgstr "المنتج"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Product Category(Backend)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__product_tmp_id
+msgid "Product Component"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_category
+msgid "Product Components Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_type
+msgid "Product Components Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__product_description
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__product_description
+msgid "Product Description"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "Product Img"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Product Name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_product_spec
+msgid "Product Specifications"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration_category_line__product_ids
+msgid "Product(s)"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__product_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__product_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__product_line
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__products_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__relative_product_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__relative_product_ids
+msgid "Products"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Promote"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Promote page on the web"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Purchase Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.iwesabe_website_theme_products_item_inherit
+msgid "QUICK VIEW"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__quantity
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__quantity
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Quantity"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__qty_available
+msgid "Quantity On Hand"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__question
+msgid "Question"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid "Quotation #"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid "Quotation Date"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid "Quotations"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid "READY. SET. GAME!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.component_add_remove_view_wizard
+msgid "REMOVE"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "REVIEWS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_radiator_size
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__radiator_size_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__radiator_size_id
+#: model:ir.ui.menu,name:iwesabe_website_theme.submenu_radiator_size_config
+msgid "Radiator Size"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_radiator_size_values
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__radiator_size_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__radiator_size_ids
+msgid "Radiator Size Values"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__component_add_remove__type__remove
+msgid "Remove"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "Remove from cart"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+msgid "Resend"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Reset"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid "Reset Password"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "SEE IT IN ACTION"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_nvidia_page
+msgid "SINGLE PRODUCTS"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "SKU"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "SMSA"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"STC\n"
+"                                                                        Pay"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "SUBSCRIBE"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "SUPPORT"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove_line__list_price
+msgid "Sale Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "Sales Orders"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__sales_price
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__sales_price
+msgid "Sales Price"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid ""
+"Saturday - Friday\n"
+"                                <br/>\n"
+"                                From 10:00 AM to 10:00 PM"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Save"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.iwebsite_search_box
+msgid "Search"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Search for a product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid "Second slide"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__parent_category_id
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__parent_category_id
+msgid "Section / Parent Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__allowed
+msgid "Select All"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_component_type_form
+msgid "Select Components"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_line__sequence
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__sequence
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__sequence
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item__sequence
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__serics_motherboard
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__serics_motherboard
+msgid "Series Mother-Board"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Share"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid ""
+"Shipping Method\n"
+"                                                    <span class=\"ia-accordion__card-sub-text ia-text--small ia-text--muted\">\n"
+"                                                        Delivery\n"
+"                                                        &amp; Local Pickup\n"
+"                                                    </span>"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__shipping
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__terms_and_conditions__type__shipping
+msgid "Shipping Policy"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.sign_ip_login_page
+msgid "Sign up"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__single_id
+msgid "Single"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.micro_dynamic_form
+msgid "Single Product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product__single_ids
+msgid "Single Products"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Sold in the last 365 days"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_special_offer_configuration
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_special_offer
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "Special Offer"
+msgstr "العروض الخاصة"
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "Special Store"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__special_offer
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__special_offer
+msgid "Special offer"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Specification"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_specification_item
+#: model:ir.model,name:iwesabe_website_theme.model_specification_item
+#: model:ir.ui.menu,name:iwesabe_website_theme.sub_specification_item_config
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_specification_item_tree
+msgid "Specification Item"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_specification_item_line
+msgid "Specification Item Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Specification Items"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__specification_line
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__specification_line
+msgid "Specification Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Specifications"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Starting Price:"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__stock_clearance
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__stock_clearance
+msgid "Stock Clearance"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "Submit"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_quick_view_container
+msgid "Super Flower Leadex Platinum SE 850W"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_download
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_faq
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_terms_and_conditions
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_warranty
+msgid "Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__support_oc
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__support_oc
+msgid "Support OC"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid ""
+"TIP: Once loaded, follow the\n"
+"                    <span class=\"o_tooltip o_tooltip_visible bottom o_animated position-relative\"/>\n"
+"                    <br/>pointer to build the perfect page in 7 steps."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "TRANSLATE"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "Technical Support"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid "Telephone"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__terms
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__terms
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__terms_and_conditions__type__terms
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_template_notebook
+msgid "Terms And Conditions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_terms_and_conditions
+msgid "Terms and Conditions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Terms of Use"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__terms_of_use_arabic
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__terms_of_use_arabic
+msgid "Terms of Use in Arabic"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Testimonials"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/controllers/main.py:0
+#: code:addons/staging/iwesabe_website_theme/controllers/main.py:0
+#, python-format
+msgid "The Phone number you entered is not matching for any users"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_invoice_view
+msgid "There are currently no invoices and payments for your account."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "There are currently no orders for your account."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid "There are currently no quotations for your account."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "Third slide"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid ""
+"This combination\n"
+"                                        does not exist."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid "This product has no valid combination."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_details
+msgid ""
+"This product is no longer\n"
+"                                available."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_sale_view
+msgid "Total"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_our_partner
+msgid "Trusted By"
+msgstr "شركاؤنا "
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Trustlink"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Twitch Prime"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_add_remove__type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_faq_faq__type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_terms_and_conditions__types
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_warranty_warranty__type
+msgid "Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__type_of_restrictions
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__type_of_restrictions
+msgid "Type Restrictions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_template_notebook
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Type of PC Builder"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__type_of_pc
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__type_of_pc
+msgid "Type of Product PC"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__type_products
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__type_products
+msgid "Type of Products"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "Updated Price:"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "VR"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.portal_quotation_view
+msgid "Valid Until"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_specification_item_line__name
+msgid "Value"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "View all"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_our_partner__website_published
+msgid "Visible in Portal / Website"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_blog
+msgid "Visible in all blogs' pages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_about_us_page
+msgid "WE MAKE EVERY MOVE COUNT"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Wallpapers"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_website_warranty_configuration
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_warranty
+msgid "Warranty"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__water_cooler_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__water_cooler_ids
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_cooler__water_cooler
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__type_cooler_support__water_cooler
+msgid "Water Cooler"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__water_cooling_ids
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__water_cooling_ids
+msgid "Water-cooling"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_model__web_id
+msgid "Web"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__web_view_type
+msgid "Web View Type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_product_template_infiniarc_form
+msgid "Website Category"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__website_category_line
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "Website Category Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_website_configuration
+#: model:ir.model,name:iwesabe_website_theme.model_website_configuration
+#: model:ir.ui.menu,name:iwesabe_website_theme.menu_website_configuration
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_tree
+msgid "Website Configuration"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_website_configuration_category_line
+msgid "Website Configuration Category Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_website_configuration_component_line
+msgid "Website Configuration Component Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_website_menu
+msgid "Website Menu"
+msgstr "قائمة الموقع الإلكتروني "
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__website_model_line
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "Website Models"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.product_product_template_form_view_extend
+msgid "Website Multi Media"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_product_public_category
+msgid "Website Product Category"
+msgstr "فئة منتج الموقع"
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,help:iwesabe_website_theme.field_component_type__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_website_configuration__website_component_line
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.view_website_configuration_form
+msgid "Website component Line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_popup
+msgid ""
+"Welcome back,\n"
+"                                        <br/>\n"
+"                                        Please login to continue."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_login_page
+msgid ""
+"Welcome back,\n"
+"                                <br/>\n"
+"                                Please login to continue."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.otp_login_page
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.phone_login_page
+msgid ""
+"Welcome back,\n"
+"                            <br/>\n"
+"                            Please login to continue."
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_index
+msgid "What's New?"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Workstation Desktop"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "Workstation Laptops"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: code:addons/iwesabe_website_theme/controllers/web_login.py:0
+#: code:addons/staging/iwesabe_website_theme/controllers/web_login.py:0
+#, python-format
+msgid "Wrong login/password"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_cart
+msgid "YOUR CART IS EMPTY!!!"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_free_shipping_pc_builder__yes
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_k_type__yes
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__is_ready_to_ship__yes
+#: model:ir.model.fields.selection,name:iwesabe_website_theme.selection__product_template__support_oc__yes
+msgid "Yes"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+msgid "You Can select and customize your system"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store_type
+msgid ""
+"You can buy and view our\n"
+"                        products from here"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gear_store
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.special_offer
+msgid "You can buy and view our products from here"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "You can learn about bios and download drivers for Custom parts"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "You can learn about our company here"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "You can learn about our warranty check and"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "You can learn about our warrenty check and terms and conditions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "You can view some question before Contact us and some guidelines"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.reset_password_portal
+msgid "Your Email"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_new_checkout
+msgid "ZIP*"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_brand_brand
+msgid "brand.brand"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.gaming_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_download
+msgid "breadcrumb"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_custom_checkout
+msgid ""
+"by placing the order you are accepting the terms and conditions and privacy "
+"policy"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.actions.act_window,name:iwesabe_website_theme.action_component_parents_type
+msgid "component parents type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_add_remove
+msgid "component.add.remove"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_add_remove_line
+msgid "component.add.remove.line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_component_parents_type
+msgid "component.parents.type"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "contact number"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_header
+msgid "cs@infiniarc.com"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "description"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "download"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_driver_download
+msgid "driver.download"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "email"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_faq_faq
+msgid "faq.faq"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_featured_product
+msgid "featured.product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_featured_product_line
+msgid "featured.product.line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "first name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.iwesabe_website_theme_products_item_inherit
+msgid "icon"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid ""
+"if you have any query you can contact us directly through different channels"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "img"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__is_default
+msgid "is Default"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "last name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_slider
+msgid "learn more"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_special_offer__name
+msgid "name"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_frontend_layout
+msgid "or Edit Master"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "order confirmation number"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "order no"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_component_type__parents_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_product__parents_type
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_product_template__parents_type
+msgid "parents component"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_order_status
+msgid "phone number"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_featured_product_line__featured_product
+#: model:ir.model.fields,field_description:iwesabe_website_theme.field_single_product_line__single_product
+msgid "product"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_product_model
+msgid "product.model"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.refresh_div
+msgid "share"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_single_product_line
+msgid "single.product.line"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_special_offer
+msgid "special.offer"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_contactus_page
+msgid "subject"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_terms_and_conditions
+msgid "terms.and.conditions"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_gear_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_pc_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_quick_view
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.modal_dialogue_special_view
+msgid "view in detail"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model:ir.model,name:iwesabe_website_theme.model_warranty_warranty
+msgid "warranty.warranty"
+msgstr ""
+
+#. module: iwesabe_website_theme
+#: model_terms:ir.ui.view,arch_db:iwesabe_website_theme.infiniarc_support
+msgid "you can check the all details of your order from here"
+msgstr ""

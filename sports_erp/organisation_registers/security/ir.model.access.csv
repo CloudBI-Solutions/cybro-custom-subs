@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_monday_schedule,monday_schedule,model_group_mon_schedule,,1,1,1,1
+access_tuesday_schedule,tuesday_schedule,model_group_tue_schedule,,1,1,1,1
+access_wednesday_schedule,wednesday_schedule,model_group_wed_schedule,,1,1,1,1
+access_thursday_schedule,thursday_schedule,model_group_thu_schedule,,1,1,1,1
+access_friday_schedule,friday_schedule,model_group_fri_schedule,,1,1,1,1
+access_saturday_schedule,saturday_schedule,model_group_sat_schedule,,1,1,1,1
+access_sunday_schedule,sunday_schedule,model_group_sun_schedule,,1,1,1,1
+access_registers,organisation_registers,model_organisation_registers,,1,1,1,1
+access_registers_attendees,organisation_registers_attendees,model_organisation_registers_attendees,,1,1,1,1

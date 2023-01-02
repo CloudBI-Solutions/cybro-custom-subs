@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_radiator_size_tree" model="ir.ui.view">
+        <field name="name">radiator.size.values.tree</field>
+        <field name="model">radiator.size.values</field>
+        <field name="arch" type="xml">
+            <tree string="CPU Type" editable="bottom">
+                <field name="name" required="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_radiator_size" model="ir.actions.act_window">
+        <field name="name">Radiator Size</field>
+        <field name="res_model">radiator.size.values</field>
+        <field name="view_mode">tree</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new Radiator Size.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            name="Radiator Size"
+            parent="stock.menu_stock_config_settings"
+            action="action_radiator_size"
+            id="submenu_radiator_size_config"
+            sequence="7"/>
+
+</odoo>

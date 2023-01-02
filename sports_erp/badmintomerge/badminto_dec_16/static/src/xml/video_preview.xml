@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+   <t t-name="BadmintoVideoPreview">
+       <div class="col d-flex" style="padding-left: 0; padding-right: 0;">
+            <button type="button" class="btn btn-primary o_file_upload_button" title="Select">Upload your video</button>
+            <input type="text" class="o_field_char o_input_file_name badminto-video-name" readonly="readonly" style="display: none; width: 100%; border: 1px solid #ccc; border-radius: 3px 3px 3px 3px; padding: 0px 8px;"/>
+            <div class="row badminto-backend-preview" style="padding: 0 15px; flex-wrap: nowrap; border-radius: 3px 3px 3px 3px;">
+                <button type="button" class="btn btn-secondary btn-sm fa fa-play fa-lg o_play_video_button" title="Play" aria-label="Play" style="display:none; height:35px; width:35px; border: 1px solid #ccc;"/>
+                <button type="button" class="btn btn-secondary btn-sm fa fa-pencil fa-lg o_select_new_video_button" title="Select" aria-label="Select" style="display:none; height:35px; width:35px; border: 1px solid #ccc;"/>
+                <button type="button" class="btn btn-secondary btn-sm fa fa-trash-o fa-lg o_clear_video_button" title="Clear" aria-label="Clear" style="display:none; height:35px; width:35px; border: 1px solid #ccc;"/>
+            </div>
+        </div>
+   </t>
+</templates>

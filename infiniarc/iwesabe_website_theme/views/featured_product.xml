@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="micro_dynamic_form" model="ir.ui.view">
+        <field name="name">featured.product.form</field>
+        <field name="model">featured.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Featured Product">
+                            <field name="featured_product_ids">
+                                <tree editable="bottom">
+                                    <field name="featured_product"/>
+                                </tree>
+
+                            </field>
+                        </page>
+                    </notebook>
+
+                    <notebook>
+                        <page string="Single Product">
+                            <field name="single_ids">
+                                <tree editable="bottom">
+                                    <field name="single_product"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="micro_dynamic_tree" model="ir.ui.view">
+        <field name="name">featured.product.tree</field>
+        <field name="model">featured.product</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_micro_dynamic" model="ir.actions.act_window">
+        <field name="name">Micro Dynamic</field>
+        <field name="res_model">featured.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new FAQ Questions.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="menu_website_micro_dynamic"
+            name="Micro Dynamic"
+            parent="website.menu_website_global_configuration"
+            action="action_micro_dynamic"/>
+
+</odoo>

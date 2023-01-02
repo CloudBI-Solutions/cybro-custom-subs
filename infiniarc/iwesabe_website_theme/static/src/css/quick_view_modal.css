@@ -1,0 +1,107 @@
+.quick-view-model-root .quick_view_modal {
+	background-color: black ;
+}
+/*#quick_view_micro_shop{
+    width: 938px !important;
+    margin-left: -343px;
+    margin-top: -239px;
+}*/
+.quick-view-model-root .modal-header .quick_close {
+	background-color: transparent;
+    box-shadow: none;
+    color: #fff;
+    right: 5px;
+    top: 8px;
+    transition: transform .2s;
+}
+.quick-view-model-root .modal-header .quick_close:before {
+	font-size: 40px; 
+}
+
+.quick-view-model-root .modal-header .quick_close:hover {
+	box-shadow: none;
+	transform: scale(1.3);
+}
+.quick-view-model-root .quick_view_modal .modal-footer {
+	justify-content: center;
+}
+
+.quick-view-model-root .quick_view_modal .add-to-cart {
+	background-color: #D60000;
+	border: 0;
+	padding: 12px 30px 12px 30px;
+	color: white;
+	border-radius: 8px;
+	font-weight: bold;
+}
+
+.infiniarc-quick_view_container .custom-table {
+	width: 100%;
+}
+.infiniarc-quick_view_container .custom-table thead th{
+	vertical-align: bottom;
+	border-bottom: 2px solid #d60000;
+}
+.infiniarc-quick_view_container .custom-table th,
+.infiniarc-quick_view_container .custom-table td {
+	padding: 1rem;
+}
+
+.quick-view-model-root .modal-header,
+.quick-view-model-root .modal-footer {
+	border:none;
+}
+
+.infiniarc-quick_view_container .custom-table td{
+	border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+	font-weight: bold;
+	font-size: 12px;
+	width: 50%;
+}
+
+.infiniarc-quick_view_container .custom-table tbody:last-child td{
+	border-bottom: none;
+}
+
+.infiniarc-quick_view_container .custom-table th{ 
+	color: #d60000;
+}
+.infiniarc-quick_view_container .custom-table td.categ-type {
+	font-size: 16px;
+}
+.infiniarc-quick_view_container {
+	padding: 0px 25px 0px 25px;
+}
+.infiniarc-quick_view_container .custom-table .categ-type > div {
+	display:flex;
+}
+.infiniarc-quick_view_container .custom-table .table-img {
+	height: 40px;
+	width: 50px;
+	vertical-align: text-top;
+}
+/*  MODAL */
+.modal{
+    z-index: 9999 !important;
+}
+.dialogue_micro_type_view{
+    width: 100%;
+}
+.modal-content{
+    width: unset;
+}
+@media (max-width: 767.98px) {
+    .modal-body ian-popup__modal-body{
+        width: 90% !important;
+        margin: 0 auto !important;
+    }
+    .quick_view_modal{
+        width: 100vw !important;
+    }
+    .modal-dialog{
+        margin: 0px !important;
+    }
+}
+
+
+

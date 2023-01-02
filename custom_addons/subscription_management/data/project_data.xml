@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="month1" model="project.task.type">
+            <field name="name">Month 1</field>
+            <field name="sequence">1</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month2" model="project.task.type">
+            <field name="name">Month 2</field>
+            <field name="sequence">2</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month3" model="project.task.type">
+            <field name="name">Month 3</field>
+            <field name="sequence">3</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month4" model="project.task.type">
+            <field name="name">Month 4</field>
+            <field name="sequence">4</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month5" model="project.task.type">
+            <field name="name">Month 5</field>
+            <field name="sequence">5</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month6" model="project.task.type">
+            <field name="name">Month 6</field>
+            <field name="sequence">6</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month7" model="project.task.type">
+            <field name="name">Month 7</field>
+            <field name="sequence">7</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month8" model="project.task.type">
+            <field name="name">Month 8</field>
+            <field name="sequence">8</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month9" model="project.task.type">
+            <field name="name">Month 9</field>
+            <field name="sequence">9</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month10" model="project.task.type">
+            <field name="name">Month 10</field>
+            <field name="sequence">10</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month11" model="project.task.type">
+            <field name="name">Month 11</field>
+            <field name="sequence">11</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="month12" model="project.task.type">
+            <field name="name">Month 12</field>
+            <field name="sequence">12</field>
+            <field name="legend_normal">In Progress</field>
+            <field name="legend_blocked">Terminated</field>
+            <field name="legend_done">Completed</field>
+        </record>
+        <record id="onboard" model="subscription.tasks">
+            <field name="name">On-boarding</field>
+            <field name="sequence">1</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month1"/>
+        </record>
+        <record id="session1" model="subscription.tasks">
+            <field name="name">Session 1</field>
+            <field name="sequence">1</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month1"/>
+        </record>
+        <record id="session2" model="subscription.tasks">
+            <field name="name">Session 2</field>
+            <field name="sequence">2</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month1"/>
+        </record>
+        <record id="session3" model="subscription.tasks">
+            <field name="name">Session 3</field>
+            <field name="sequence">3</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month2"/>
+        </record>
+        <record id="session4" model="subscription.tasks">
+            <field name="name">Session 4</field>
+            <field name="sequence">4</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month2"/>
+        </record>
+        <record id="session4" model="subscription.tasks">
+            <field name="name">Session 5</field>
+            <field name="sequence">5</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month3"/>
+        </record>
+        <record id="session4" model="subscription.tasks">
+            <field name="name">Session 6</field>
+            <field name="sequence">6</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month3"/>
+        </record>
+        <record id="one2one1" model="subscription.tasks">
+            <field name="name">One to One 1</field>
+            <field name="sequence">1</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month1"/>
+        </record>
+        <record id="one2one2" model="subscription.tasks">
+            <field name="name">One to One 2</field>
+            <field name="sequence">2</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month2"/>
+        </record>
+        <record id="one2one3" model="subscription.tasks">
+            <field name="name">One to One 3</field>
+            <field name="sequence">3</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month3"/>
+        </record>
+        <record id="one2one4" model="subscription.tasks">
+            <field name="name">One to One 4</field>
+            <field name="sequence">4</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month4"/>
+        </record>
+        <record id="one2one5" model="subscription.tasks">
+            <field name="name">One to One 5</field>
+            <field name="sequence">5</field>
+            <field name="sub_plan_id" ref="subscription_management.subscription_plan_1"/>
+            <field name="stage_id" ref="subscription_management.month5"/>
+        </record>
+
+    </data>
+</odoo>

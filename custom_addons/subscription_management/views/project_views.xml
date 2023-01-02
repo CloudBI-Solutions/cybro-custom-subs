@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="project_form_inherit" model="ir.ui.view">
+            <field name="name">project.form.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('oe_title')]" position="after">
+                    <div name="options_project">
+                        <div>
+                            <label for="is_template"/>
+                            <field name="is_template"/>
+                        </div>
+                    </div>
+                </xpath>
+                <xpath expr="//page[@name='settings']//field[@name='privacy_visibility']"
+                       position='after'>
+                    <field name="subscription_id"/>
+                    <field name="date_start"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="task_form_inherit" model="ir.ui.view">
+            <field name="name">task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='description_page']" position='after'>
+                    <page string="Tracking">
+                        <group>
+                            <group>
+                                <field name="session_planned_date"/>
+                                <field name="is_session"/>
+                                <field name="is_o2o"/>
+                                <field name="is_booked"/>
+                                <field name="is_used"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+<!--        DEPENDS organisation planning-->
+<!--        <record id="planning_task_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">task.form.inherit</field>-->
+<!--            <field name="model">project.task</field>-->
+<!--            <field name="inherit_id" ref="organisation_planning.org_view_task_form2"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//page[@name='extra_info']" position='after'>-->
+<!--                    <page string="Tracking">-->
+<!--                        <group>-->
+<!--                            <group>-->
+<!--                                <field name="session_planned_date"/>-->
+<!--                                <field name="is_session"/>-->
+<!--                                <field name="is_o2o"/>-->
+<!--                                <field name="is_booked"/>-->
+<!--                                <field name="is_used"/>-->
+<!--                            </group>-->
+<!--                        </group>-->
+<!--                    </page>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="otp_login_page">
+        <t t-call="website.layout">
+            <div class="ia-login">
+                <div class="ia-login__left">
+                    <div class="ia-login__left-container">
+                        <img src="/images/brand/logo-white.png" width="141" height="23" alt="Infiniarc"
+                             title="Infiniarc"/>
+                        <h2 class="ia-login__lead mt-5 mb-4">Welcome back,
+                            <br/>
+                            Please login to continue.
+                        </h2>
+                        <div class="ia-login__social-login">
+                            <a href="#" class="ia-login__social-button">
+                                <img src="/images/ui/flat-color-icons_google.svg"
+                                     class="mr-2" width="24" height="24" alt="Google"/>
+                                Google
+                            </a>
+                            <a href="#" class="ia-login__social-button"><img
+                                    src="/images/ui/flat-color-icons_facebook.svg"
+                                    class="mr-2" width="22" height="22"
+                                    alt="Facebook"/>Facebook
+                            </a>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center my-4">
+                            <span class="ia-login__social-divider">or</span>
+                        </div>
+                        <form class="mt-4" action="/">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <label class="ia-form__label small ia-text--muted">OTP</label>
+                                <a class="small ia-text--muted" href="#">Resend</a>
+                            </div>
+                            <div id="ia-otp" class="inputs d-flex flex-row justify-content-center mt-2">
+                                <input class="m-2 text-center ia-form__input" type="text" id="first" maxlength="1"
+                                       autofocus="on"/>
+                                <input class="m-2 text-center ia-login__otp-input ia-form__input" type="text"
+                                       id="second"
+                                       maxlength="1"/>
+                                <input class="m-2 text-center ia-login__otp-input ia-form__input" type="text" id="third"
+                                       maxlength="1"/>
+                                <input class="m-2 text-center ia-login__otp-input ia-form__input" type="text"
+                                       id="fourth"
+                                       maxlength="1"/>
+                                <input class="m-2 text-center ia-login__otp-input ia-form__input" type="text" id="fifth"
+                                       maxlength="1"/>
+                                <input class="m-2 text-center ia-login__otp-input ia-form__input" type="text" id="sixth"
+                                       maxlength="1"/>
+                            </div>
+                            <button type="submit" class="ia-btn ia-btn--primary ia-login__button btn-block mt-5 py-3">
+                                Log In
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="ia-login__right"></div>
+            </div>
+        </t>
+    </template>
+</odoo>

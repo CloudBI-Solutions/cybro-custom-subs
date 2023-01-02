@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+<!--        coach schedule form view-->
+        <record id="coach_schedule_view_form" model="ir.ui.view">
+        	<field name="name">coach.view.form</field>
+        	<field name="model">organisation.coaches</field>
+			<field name="arch" type="xml">
+                <form>
+                    <header/>
+                <sheet>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name"/>
+                        </div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="mon"/>
+                            <field name="tue"/>
+                            <field name="wed"/>
+                            <field name="thu"/>
+                        </group>
+                        <group>
+                            <field name="fri"/>
+                            <field name="sat"/>
+                            <field name="sun"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="monday" string="Monday" attrs="{'invisible': [('mon', '!=', True)]}">
+                            <field name="mon_slot_ids">
+                                <tree string="Monday Available Hours" editable="bottom">
+                                    <field name="mon_from" widget="float_time"/>
+                                    <field name="mon_to" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="tuesday" string="Tuesday" attrs="{'invisible': [('tue', '!=', True)]}">
+                            <field name="tue_slot_ids">
+                                <tree string="Tuesday Available Hours" editable="bottom">
+                                    <field name="tue_from" widget="float_time"/>
+                                    <field name="tue_to" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="wednesday" string="Wednesday" attrs="{'invisible': [('wed', '!=', True)]}">
+                            <field name="wed_slot_ids">
+                                <tree string="Wednesday Available Hours" editable="bottom">
+                                    <field name="wed_from" widget="float_time"/>
+                                    <field name="wed_to" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="thursday" string="Thursday" attrs="{'invisible': [('thu', '!=', True)]}">
+                            <field name="thu_slot_ids">
+                                <tree string="Thursday Available Hours" editable="bottom">
+                                    <field name="thu_from" widget="float_time"/>
+                                    <field name="thu_to" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="friday" string="Friday" attrs="{'invisible': [('fri', '!=', True)]}">
+                            <field name="fri_slot_ids">
+                                <tree string="Friday Available Hours" editable="bottom">
+                                    <field name="fri_from" widget="float_time"/>
+                                    <field name="fri_to" widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="saturday" string="Saturday" attrs="{'invisible': [('sat', '!=', True)]}">
+                            <field name="sat_slot_ids">
+                                <tree string="Saturday Available Hours" editable="bottom">
+                                    <field name="sat_from" widget="float_time"/>
+                                    <field name="sat_to"  widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="sunday" string="Sunday" attrs="{'invisible': [('sun', '!=', True)]}">
+                            <field name="sun_slot_ids">
+                                <tree string="Sunday Available Hours" editable="bottom">
+                                    <field name="sun_from"  widget="float_time"/>
+                                    <field name="sun_to"  widget="float_time"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--      coach  tree view-->
+        <record id='coach_schedule_view_tree' model='ir.ui.view'>
+            <field name="name">coach.tree</field>
+            <field name="model">organisation.coaches</field>
+            <field name="arch" type="xml">
+                <tree string="Coaches" sample="1">
+                    <field name="name"/>
+                    <field name="phone"/>
+                    <field name="email"/>
+                    <field name="tag_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="coach_schedule_menu_action" model="ir.actions.act_window">
+            <field name="name">Coach Schedule</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">organisation.coaches</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('coach_schedule_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('coach_schedule_view_form')})]"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No Records Found!
+                </p>
+            </field>
+        </record>
+
+        <!--      coach monday schedule view form-->
+        <record id='coach_monday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.monday</field>
+            <field name="model">slot.monday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="mon_from"/>
+                                <field name="mon_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="mon_to"/>
+                                <field name="mon_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach tuesday schedule view form-->
+        <record id='coach_tuesday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.tuesday</field>
+            <field name="model">slot.tuesday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="tue_from"/>
+                                <field name="tue_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="tue_to"/>
+                                <field name="tue_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach wednesday schedule view form-->
+        <record id='coach_wednesday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.wednesday</field>
+            <field name="model">slot.wednesday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="wed_from"/>
+                                <field name="wed_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="wed_to"/>
+                                <field name="wed_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach thursday schedule view form-->
+        <record id='coach_thursday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.thursday</field>
+            <field name="model">slot.thursday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="thu_from"/>
+                                <field name="thu_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="thu_to"/>
+                                <field name="thu_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach friday schedule view form-->
+        <record id='coach_friday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.friday</field>
+            <field name="model">slot.friday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="fri_from"/>
+                                <field name="fri_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="fri_to"/>
+                                <field name="fri_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach saturday schedule view form-->
+        <record id='coach_saturday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.saturday</field>
+            <field name="model">slot.saturday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="sat_from"/>
+                                <field name="sat_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="sat_to"/>
+                                <field name="sat_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!--      coach sunday schedule view form-->
+        <record id='coach_sunday_schedule_view_form' model='ir.ui.view'>
+            <field name="name">slot.sunday</field>
+            <field name="model">slot.sunday</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header/>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name"/>
+                            </div>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <div class="o_row">
+                                <label for="sun_from"/>
+                                <field name="sun_from" style="width: 50%" widget="float_time"/><span>Hours</span>
+                                <label for="sun_to"/>
+                                <field name="sun_to" style="width: 50%" widget="float_time"/><span>Hours</span>
+                            </div>
+                        </group>
+                        <separator string="Description"/>
+                        <field name="description" nolabel="1"
+                           placeholder="Describe here..."/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

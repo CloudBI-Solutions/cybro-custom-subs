@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template name="ksDashboardNinjaHeader" id="ksDashboardNinjaHeader">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div class="ks_dashboard_ninja d-flex flex-column">
+
+            <div class="ks_dashboard_header d-flex p-3 w-100 bg-white justify-content-between flex-column flex-lg-row">
+                <div id="ks_dashboard_title">
+                    <span id="ks_dashboard_title_label" class="ks_am_element">
+                        <t t-esc="ks_dashboard_name"/>
+                    </span>
+                    <input id="ks_dashboard_title_input" typ="text" maxlength="30"
+                           class="form-control form-control-lg ks_em_element ks_hide"
+                    />
+                    <t t-if="ks_dashboard_manager">
+                        <div class="ks_dashboard_top_settings dropdown d-md-block d-lg-none">
+                            <span class="clybay_dashboard_toggle_menu  m-2"
+                                  title="Customize Dashboard" data-toggle="dropdown"
+                                  aria-expanded="false"/>
+                            <ul class="oe_dashboard_links ks_dashboard_links dropdown-menu dropdown-menu-right"
+                                role="menu">
+                                <li class="ks_dashboard_setting_container ks_dashboard_add_layout ks_hide"
+                                    title="Add Item">
+                                    <i class="fa fa-plus-circle"/>
+                                    <span>Add Item</span>
+                                </li>
+                                <li class="ks_dashboard_setting_container ks_dashboard_edit_layout ks_hide"
+                                    title="Edit Layout">
+                                    <i class="fa fa-pencil"/>
+                                    <span>Edit Layout</span>
+                                </li>
+                                <li class="ks_dashboard_setting_container print-dashboard-btn d-md-block d-lg-none ks_hide"
+                                    title="Print">
+                                    <i class="fa fa-print"/>
+                                    <span>Print</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </t>
+                </div>
+
+
+                <div class="ks_dashboard_top_menu ks_select_none ks_hide">
+
+                    <!--  Date Filter Selection Options (Hide default for no content view)-->
+                    <div class="ks_dashboard_link ks_am_content_element mr-4">
+                        <div class="ks_date_filter_selection_input">
+                            <div class="ks_date_selection_box">
+                                <div class="btn-group ">
+                                    <button class="o_dropdown_toggler_btn btn btn-secondary dropdown-toggle ks_date_filter_dropdown"
+                                            data-toggle="dropdown"
+                                            aria-expanded="false">
+                                        <span class="fa fa-lg fa-calendar"/>
+                                        <span id="ks_date_filter_selection"/>
+                                        <span class="caret"/>
+                                    </button>
+
+                                    <ul id="ks_date_selector_container"
+                                        class="dropdown-menu ks_date_filters_menu_drop_down ks_dashboard_custom_srollbar ks_date_filters_menu dropdown-max-height"
+                                        role="menu">
+                                        <li id="l_none">
+                                            <span class="df_selection_text">All Time</span>
+                                        </li>
+                                        <li class="divider"/>
+                                        <t t-foreach="date_selection_order" t-as="date_id">
+                                            <li t-att-id="date_id">
+                                                <span class="df_selection_text">
+                                                    <t t-esc="date_selection_data[date_id]"/>
+                                                </span>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!--Date input fields are shown only when Date Filter : Custom-->
+                            <div class="ks_date_input_fields ks_hide">
+                            </div>
+                        </div>
+                        <div class="ks_date_apply_clear_print d-none    ">
+                            <!--Apply and Clear buttons will only be shown when Date filter : Custom-->
+                            <button type='button' class='button btn btn-primary apply-dashboard-date-filter ks_hide'
+                            >Apply
+                            </button>
+                            <button type='button' class='button btn btn-primary clear-dashboard-date-filter ks_hide'
+                            >Clear
+                            </button>
+                            <button type='button'
+                                    class='btn btn-primary d-none d-lg-block fa fa-print print-dashboard-btn m-1 ml-3'
+                                    title="Print"/>
+                        </div>
+                    </div>
+
+                    <t t-if="ks_dashboard_manager">
+
+                        <!-- Add and Edit buttons-->
+                        <div class="ks_dashboard_top_settings dropdown d-lg-block ks_hide">
+
+                            <button class="btn btn-primary ks_add_item_type_button dropdown-toggle mr-1"
+                                    data-toggle="dropdown"
+                                    aria-expanded="false">
+                                <span class="fa fa-lg fa-plus-circle"/>
+                                Add
+                                <span class="caret"/>
+                            </button>
+                            <ul id="ks_add_item_selection" class="dropdown-menu"
+                                role="menu">
+                                <li data-item="ks_tile">
+                                    <span class="df_selection_text">
+                                        Tile
+                                    </span>
+                                </li>
+                                <li data-item="ks_bar_chart">
+                                    <span class="df_selection_text">
+                                        Bar Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_horizontalBar_chart">
+                                    <span class="df_selection_text">
+                                        Horizontal Bar Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_line_chart">
+                                    <span class="df_selection_text">
+                                        Line Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_area_chart">
+                                    <span class="df_selection_text">
+                                        Area Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_pie_chart">
+                                    <span class="df_selection_text">
+                                        Pie Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_doughnut_chart">
+                                    <span class="df_selection_text">
+                                        Doughnut Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_polarArea_chart">
+                                    <span class="df_selection_text">
+                                        Polar Area Chart
+                                    </span>
+                                </li>
+                                <li data-item="ks_list_view">
+                                    <span class="df_selection_text">
+                                        List View
+                                    </span>
+                                </li>
+                                <li data-item="ks_kpi">
+                                    <span class="df_selection_text">
+                                        KPI
+                                    </span>
+                                </li>
+                                <li data-item="ks_json">
+                                    <span class="df_selection_text">
+                                        Import Item
+                                    </span>
+                                </li>
+                                <input accept=".json " t-attf-id="file_#{_id}"
+                                       name="file" class="ks_input_import_item_button" type="file"
+                                       style="display:none;"/>
+                            </ul>
+                            <button id="ks_dashboard_layout_edit"
+                                    class="btn btn-primary d-none ks_dashboard_edit_layout">
+                                <span class="fa fa-lg fa-pencil"/>
+                                Edit Layout
+                            </button>
+                        </div>
+
+                        <!-- This should only be shown on : Edit Mode Layout-->
+                        <div class="ks_dashboard_edit_mode_settings ks_hide">
+                            <div class="oe_dashboard_links ">
+                                <button type="button"
+                                        class="button ks_dashboard_save_layout btn btn-primary o_form_button_save"
+                                        title="Save Changes">
+                                    <span>Save</span>
+                                </button>
+
+                                <button type="button"
+                                        class="button ks_dashboard_cancel_layout btn btn-secondary o_form_button_cancel"
+                                        title="Discard Changes">
+                                    <span>Discard</span>
+                                </button>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template name="ks_main_body_container" id="ks_main_body_container">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+
+        <div class="ks_dashboard_main_content" id="ks_dash1">
+            <div class="ks_dashboard_item_content grid-stack ks_dashboard_items_list m-3">
+                <div class="row">
+
+                    <t t-foreach="dashboard_items" t-as="item">
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout1'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout1">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout2'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout2">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="style_image_body_l2" t-value='item.get_style_image_body_l2(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout3'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout3">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout4'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout4">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="style_image_body_l2"
+                                       t-value='item.get_style_image_body_l2_layout_4(item)'></t>
+                                    <t t-set="style_domain_count_body"
+                                       t-value='item.get_style_domain_count_body(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout5'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout5">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-if="item.ks_dashboard_item_type == 'ks_tile' and item.ks_layout== 'layout6'">
+                            <div class="col-4">
+                                <t t-call="dashboard_extension.ks_dashboard_item_layout6">
+                                    <t t-set="item" t-value='item'></t>
+                                    <t t-if="item.ks_icon_select == 'Custom'">
+                                        <t t-set="ks_icon_url" t-value='item.get_ks_icon_url(item)'></t>
+                                    </t>
+                                    <t t-set="ks_container_class" t-value='ks_container_class_layout1'></t>
+                                    <t t-set="ks_inner_container_class" t-value='ks_inner_container_class_layout1'></t>
+                                    <t t-set="ks_dashboard_list" t-value='dashboard_data["ks_dashboard_list"]'></t>
+                                    <t t-set="style_main_body" t-value='item.get_style_main_body_layout_1(item)'></t>
+                                    <t t-set="data_count" t-value='item.get_ks_record_count(item)'></t>
+                                    <t t-set="style_image_body_l2"
+                                       t-value='item.get_style_image_body_l2_layout_4(item)'></t>
+                                    <t t-set="ks_rgba_default_icon_color"
+                                       t-value='item.get_ks_rgba_default_icon_color_layout_1(item)'></t>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template name="ks_dashboard_item_layout1" id="ks_dashboard_item_layout1">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item ks_dashboard_item_hover ' + ks_inner_container_class"
+                 t-att-style="style_main_body">
+                <div class="ks_dashboard_item_main_body">
+                    <div class="ks_dashboard_icon">
+                        <t t-if="item.ks_icon_select=='Custom'">
+                            <t t-if="ks_icon_url">
+                                <img t-att-src="ks_icon_url"/>
+                            </t>
+                        </t>
+                        <t t-elif="item.ks_icon_select=='Default'">
+                            <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                                  t-att-class="'fa fa-' + item.ks_default_icon + ' fa-4x'"/>
+                        </t>
+                        <!--<img t-att-src="ks_icon_url"/>-->
+                    </div>
+                    <div class="ks_dashboard_item_info">
+                        <div class="ks_dashboard_item_name" t-att-title="item.name">
+                            <t t-esc="item.name"/>
+                        </div>
+                        <div class="ks_dashboard_item_domain_count" t-att-title="count">
+                            <t t-esc="data_count"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template name="ks_dashboard_item_layout2" id="ks_dashboard_item_layout2">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item_l2 ks_dashboard_item_hover ' + ks_inner_container_class"
+                 t-att-style="style_main_body">
+                <div class="ks_dashboard_icon_l2" t-att-style="style_image_body_l2">
+                    <!--<img t-att-src="ks_icon_url"/>-->
+                    <t t-if="item.ks_icon_select=='Custom'">
+                        <t t-if="ks_icon_url">
+                            <img t-att-src="ks_icon_url"/>
+                        </t>
+                    </t>
+                    <t t-elif="item.ks_icon_select=='Default'">
+                        <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                              t-att-class="'fa fa-' + item.ks_default_icon"/>
+                    </t>
+                </div>
+
+                <div class="ks_dashboard_item_main_body_l2 ">
+                    <div class="ks_dashboard_item_domain_count_l2" t-att-title="count">
+                        <t t-esc="data_count"/>
+                    </div>
+                    <div class="ks_dashboard_item_name_l2" t-att-title="item.name">
+                        <t t-esc="item.name"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <template name="ks_dashboard_item_layout3" id="ks_dashboard_item_layout3">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item ks_dashboard_item_hover '+ ks_inner_container_class"
+                 t-att-style="style_main_body">
+
+                <div class="ks_dashboard_item_main_body">
+                    <div class="ks_dashboard_icon_l3">
+                        <t t-if="item.ks_icon_select=='Custom'">
+                            <t t-if="ks_icon_url">
+                                <img t-att-src="ks_icon_url"/>
+                            </t>
+                        </t>
+                        <t t-elif="item.ks_icon_select=='Default'">
+                            <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                                  t-att-class="'fa fa-' + item.ks_default_icon + ' fa-5x'"/>
+                        </t>
+                    </div>
+                    <div class="ks_dashboard_item_info ks_dashboard_item_info_l3">
+                        <div class="ks_dashboard_item_domain_count_l3" t-att-title="count">
+                            <t t-esc="data_count"/>
+                        </div>
+                        <div class="ks_dashboard_item_name_l3" t-att-title="item.name">
+                            <t t-esc="item.name"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </template>
+
+    <template name="ks_dashboard_item_layout4" id="ks_dashboard_item_layout4">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item_l2 ks_dashboard_item_hover '+ ks_inner_container_class"
+                 t-att-style="style_main_body">
+                <div class="ks_dashboard_icon_l4" t-att-style="style_image_body_l2">
+                    <t t-if="item.ks_icon_select=='Custom'">
+                        <t t-if="ks_icon_url">
+                            <img t-att-src="ks_icon_url"/>
+                        </t>
+                    </t>
+                    <t t-elif="item.ks_icon_select=='Default'">
+                        <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                              t-att-class="'fa fa-' + item.ks_default_icon + ' fa-4x'"/>
+                    </t>
+                </div>
+
+                <div class="ks_dashboard_item_main_body_l2 ks_bg_white">
+                    <div class="ks_dashboard_item_domain_count_l2" t-att-title="count">
+                        <t t-esc="data_count"/>
+                    </div>
+                    <div class="ks_dashboard_item_name_l2" t-att-title="item.name">
+                        <t t-esc="item.name"/>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </template>
+    <template name="ks_dashboard_item_layout1" id="ks_dashboard_item_layout5">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item_l5 ks_dashboard_item_hover '+ ks_inner_container_class"
+                 t-att-style="style_main_body">
+                <div class="ks_dashboard_icon_l5">
+                    <t t-if="item.ks_icon_select=='Custom'">
+                        <t t-if="ks_icon_url">
+                            <img t-att-src="ks_icon_url"/>
+                        </t>
+                    </t>
+                    <t t-elif="item.ks_icon_select=='Default'">
+                        <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                              t-att-class="'fa fa-' + item.ks_default_icon + ' fa-4x'"/>
+                    </t>
+                </div>
+                <div class="ks_dashboard_item_main_body_l5">
+                    <div class="ks_dashboard_item_domain_count_l5" t-att-title="count">
+                        <t t-esc="data_count"/>
+                    </div>
+                    <div class="ks_dashboard_item_name_l5" t-att-title="item.name">
+                        <t t-esc="item.name"/>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </template>
+    <template name="ks_dashboard_item_layout6" id="ks_dashboard_item_layout6">
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja.scss"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_item.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_icon_container_modal.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/style.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/font-awesome.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_item_theme.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dn_filter.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_toggle_icon.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_options.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/gridstack.min.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_ninja_pro.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_dashboard_gridstack.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/main.css"/>
+        <link rel="stylesheet" href="/dashboard_extension/static/src/css/ks_to_do_item.css"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_global_functions.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_to_do_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/custom.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_filter_props.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_color_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_item_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_image_basic_widget.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_item_theme.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_widget_toggle.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_import_dashboard.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_domain_fix.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_quick_edit_view.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_dashboard_ninja_kpi_preview.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/ks_date_picker.js"/>
+        <script type="text/javascript" src="/dashboard_extension/static/src/js/gridstack-h5.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_graph_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_dashboard_ninja_list_view_preview.js"/>
+        <script type="text/javascript"
+                src="/dashboard_extension/static/src/js/ks_to_do_preview.js"/>
+        <div t-att-class="'ks_item_click ' + ks_container_class">
+            <div t-att-id="item.id"
+                 t-att-class="'ks_dashboarditem_id ks_dashboard_item_l2 ks_dashboard_item_hover '+ ks_inner_container_class"
+                 t-att-style="style_main_body">
+
+
+                <div class="ks_dashboard_item_main_body_l2">
+                    <div class="ks_dashboard_item_domain_count_l2" t-att-title="count">
+                        <t t-esc="data_count"/>
+                    </div>
+                    <div class="ks_dashboard_item_name_l2" t-att-title="item.name">
+                        <t t-esc="item.name"/>
+                    </div>
+                </div>
+
+                <div class="ks_dashboard_icon_l2">
+                    <t t-if="item.ks_icon_select=='Custom'">
+                        <t t-if="ks_icon_url">
+                            <img t-att-src="ks_icon_url"/>
+                        </t>
+                    </t>
+                    <t t-elif="item.ks_icon_select=='Default'">
+                        <span t-att-style="'color:'+ ks_rgba_default_icon_color + ';'"
+                              t-att-class="'fa fa-' + item.ks_default_icon + ' fa-4x'"/>
+                    </t>
+                </div>
+
+
+            </div>
+        </div>
+    </template>
+
+</odoo>

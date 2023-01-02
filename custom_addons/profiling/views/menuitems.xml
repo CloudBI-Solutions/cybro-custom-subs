@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="assessment_root_menu"
+                  name="Profiling"
+                  sequence="100"
+                  web_icon="profiling,static/description/icon.png"
+                  groups="organisation.group_organisation_admins,organisation.group_organisation_coaches_internal"/>
+        <menuitem id="assessment_menu"
+                  parent="assessment_root_menu"
+                  name="Assessments" sequence="5"
+                  action="profiling.all_assessments_menu_action"/>
+    </data>
+</odoo>

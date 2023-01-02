@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="website_banner_form" model="ir.ui.view">
+        <field name="name">home.banner.form</field>
+        <field name="model">home.banner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="show"/>
+                        </group>
+                        <group>
+                            <field name="banner"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="website_small_banner_form" model="ir.ui.view">
+        <field name="name">home.small.banner.form</field>
+        <field name="model">home.small.banner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="show"/>
+                        </group>
+                        <group>
+                            <field name="small_banner"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="website_banner_slider_form" model="ir.ui.view">
+        <field name="name">home.banner.slider.form</field>
+        <field name="model">home.banner.slider</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="show"/>
+                        </group>
+                        <group>
+                            <field name="banner_slider"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="website_micro_dynamic_banner_form" model="ir.ui.view">
+        <field name="name">micro.dynamic.deals.banner.form</field>
+        <field name="model">micro.dynamic.deals.banner</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="show"/>
+                        </group>
+                        <group>
+                            <field name="deal_banner"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_website_banner" model="ir.actions.act_window">
+        <field name="name">Home Page Banner</field>
+        <field name="res_model">home.banner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new banner.
+            </p>
+        </field>
+    </record>
+    <record id="action_website_small_banner" model="ir.actions.act_window">
+        <field name="name">Small Banner</field>
+        <field name="res_model">home.small.banner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new small banners.
+            </p>
+        </field>
+    </record>
+    <record id="action_website_banner_slider" model="ir.actions.act_window">
+        <field name="name">Banner Slider</field>
+        <field name="res_model">home.banner.slider</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new banner slider.
+            </p>
+        </field>
+    </record>
+    <record id="action_website_micro_dynamic_banner" model="ir.actions.act_window">
+        <field name="name">NVIDIA New Deal Banner</field>
+        <field name="res_model">micro.dynamic.deals.banner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to define a new banner slider.
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem
+            name="Banner"
+            parent="website.menu_website_global_configuration"
+            action="action_website_banner"
+            id="website_banner_config"/>
+    <menuitem
+            name="Small Banner"
+            parent="website.menu_website_global_configuration"
+            action="action_website_small_banner"
+            id="website_small_banner_config"/>
+    <menuitem
+            name="Banner Slider"
+            parent="website.menu_website_global_configuration"
+            action="action_website_banner_slider"
+            id="website_banner_slider_config"/>
+
+    <menuitem
+            name="NVIDIA New Deal Banner"
+            parent="website.menu_website_global_configuration"
+            action="action_website_micro_dynamic_banner"
+            id="website_micro_dynamic_banner_config"/>
+</odoo>
